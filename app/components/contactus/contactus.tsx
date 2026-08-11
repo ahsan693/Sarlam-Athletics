@@ -2,31 +2,31 @@
 
 import { useState } from "react";
 // Import the Header correctly from the home.tsx file
-import { Header } from "../home/home"; 
+import { Header } from "../home/home";
 
 // ─── HERO SECTION ──────────────────────────────────────────────────
+// Reference: on desktop (1440w) the hero is a full-bleed, square-cornered
+// image section with a dark overlay — not just a mobile treatment. The
+// rounded, inset "card" look is mobile-only. Paragraph copy is uppercase.
 function HeroSection() {
   return (
-    <section className="w-full bg-white px-2 pt-[42px] lg:pt-[42px]">
-      <div className="relative bg-[#F0EDE9] rounded-xl overflow-hidden px-5 py-20 lg:px-12 lg:pt-[164px] lg:pb-[180px]">
-        {/* Light overlay decoration */}
-        <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none" />
-
-        {/* Mobile: image background with dark overlay */}
-        <div className="lg:hidden absolute inset-0 bg-black/50 z-[1]" />
+    <section className="w-full bg-white px-2 pt-[42px] lg:px-0 lg:pt-0">
+      <div className="relative bg-[#F0EDE9] rounded-xl overflow-hidden px-5 py-20 lg:rounded-none lg:px-12 lg:pt-[164px] lg:pb-[180px]">
+        {/* Background image + dark overlay — shown on every breakpoint */}
+        <div className="absolute inset-0 bg-black/50 z-[1]" />
         <div
-          className="lg:hidden absolute inset-0 bg-cover bg-center z-0"
+          className="absolute inset-0 bg-cover bg-center z-0"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=800&q=80')",
+              "url('https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=1600&q=80')",
           }}
         />
 
         <div className="relative z-[2] max-w-[640px]">
-          <h1 className="text-[28px] lg:text-[47px] font-medium leading-[1.2] text-white lg:text-white">
+          <h1 className="text-[28px] lg:text-[47px] font-medium leading-[1.2] text-white">
             Request a Private Label Manufacturing Quote
           </h1>
-          <p className="mt-4 lg:mt-6 text-[14px] lg:text-[15px] font-medium leading-[1.6] text-[#F0EDE9] lg:text-[#F0EDE9]">
+          <p className="mt-4 lg:mt-6 text-[14px] lg:text-[15px] font-medium leading-[1.6] text-[#F0EDE9] lg:uppercase lg:tracking-wide">
             Tell us what you want to manufacture, and our team will prepare a
             customized production plan, MOQ recommendation, material options,
             pricing estimate, and production timeline within 1–2 business days.
@@ -38,6 +38,9 @@ function HeroSection() {
 }
 
 // ─── QUOTE FORM SECTION ────────────────────────────────────────────
+// Reference: single-line fields identified only by their placeholder text
+// (no separate floating label), vertically centered, gray placeholder copy.
+// "Product Category" and "Estimated Order Quantity" sit side by side.
 function QuoteFormSection() {
   return (
     <section className="w-full bg-white px-4 lg:px-3 py-10 lg:py-20">
@@ -57,81 +60,51 @@ function QuoteFormSection() {
         {/* Form Fields */}
         <form className="flex flex-col gap-4">
           {/* Full Name */}
-          <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
-            <label className="text-[11px] lg:text-[12px] text-[#707070] font-normal">
-              Full Name*
-            </label>
-            <input
-              type="text"
-              placeholder="e.g. John Doe"
-              className="text-[14px] lg:text-[12px] text-[#0D0D0D] font-normal bg-transparent outline-none mt-0.5 placeholder:text-[#0D0D0D]/40"
-            />
-          </div>
+          <input
+            type="text"
+            placeholder="Full Name*"
+            className="border border-[#C9C9C9] rounded px-3 py-3.5 text-[14px] text-[#707070] font-normal bg-transparent outline-none placeholder:text-[#707070]"
+          />
 
           {/* Business Email */}
-          <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
-            <label className="text-[11px] lg:text-[12px] text-[#707070] font-normal">
-              Business Email*
-            </label>
-            <input
-              type="email"
-              placeholder="e.g. john@yourbrand.com"
-              className="text-[14px] lg:text-[12px] text-[#0D0D0D] font-normal bg-transparent outline-none mt-0.5 placeholder:text-[#0D0D0D]/40"
-            />
-          </div>
+          <input
+            type="email"
+            placeholder="Business Email*"
+            className="border border-[#C9C9C9] rounded px-3 py-3.5 text-[14px] text-[#707070] font-normal bg-transparent outline-none placeholder:text-[#707070]"
+          />
 
           {/* Phone Number */}
-          <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
-            <label className="text-[11px] lg:text-[12px] text-[#707070] font-normal">
-              Phone Number (Optional)
-            </label>
-            <input
-              type="tel"
-              placeholder="e.g. +1 (555) 000-0000"
-              className="text-[14px] lg:text-[12px] text-[#0D0D0D] font-normal bg-transparent outline-none mt-0.5 placeholder:text-[#0D0D0D]/40"
-            />
-          </div>
+          <input
+            type="tel"
+            placeholder="Phone Number (Optional)"
+            className="border border-[#C9C9C9] rounded px-3 py-3.5 text-[14px] text-[#707070] font-normal bg-transparent outline-none placeholder:text-[#707070]"
+          />
 
-          {/* Product Category */}
-          <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
-            <label className="text-[11px] lg:text-[12px] text-[#707070] font-normal">
-              Product Category*
-            </label>
+          {/* Product Category + Estimated Order Quantity — side by side */}
+          <div className="grid grid-cols-2 gap-3">
             <input
               type="text"
-              placeholder="Select Category (e.g. Boxing Gloves)"
-              className="text-[14px] lg:text-[12px] text-[#0D0D0D] font-normal bg-transparent outline-none mt-0.5 placeholder:text-[#0D0D0D]/40"
+              placeholder="Product Category*"
+              className="border border-[#C9C9C9] rounded px-3 py-3.5 text-[14px] text-[#707070] font-normal bg-transparent outline-none placeholder:text-[#707070] min-w-0"
             />
-          </div>
-
-          {/* Estimated Order Quantity */}
-          <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
-            <label className="text-[11px] lg:text-[12px] text-[#707070] font-normal">
-              Estimated Order Quantity*
-            </label>
             <input
               type="text"
-              placeholder="e.g. 500 pairs"
-              className="text-[14px] lg:text-[12px] text-[#0D0D0D] font-normal bg-transparent outline-none mt-0.5 placeholder:text-[#0D0D0D]/40"
+              placeholder="Estimated Order Quantity"
+              className="border border-[#C9C9C9] rounded px-3 py-3.5 text-[14px] text-[#707070] font-normal bg-transparent outline-none placeholder:text-[#707070] min-w-0"
             />
           </div>
 
           {/* Project Details (Textarea) */}
-          <div className="border border-[#C9C9C9] rounded px-3 pt-3 pb-10 flex flex-col gap-0">
-            <label className="text-[11px] lg:text-[12px] text-[#707070] font-normal">
-              Project Details*
-            </label>
-            <textarea
-              placeholder="Tell us about your branding, materials, colors, logo requirements, packaging, target market, or any other details."
-              rows={3}
-              className="text-[14px] lg:text-[12px] text-[#0D0D0D] font-normal bg-transparent outline-none mt-0.5 resize-none placeholder:text-[#0D0D0D]/40"
-            />
-          </div>
+          <textarea
+            placeholder="Project Details*"
+            rows={3}
+            className="border border-[#C9C9C9] rounded px-3 py-3.5 text-[14px] text-[#707070] font-normal bg-transparent outline-none resize-none placeholder:text-[#707070]"
+          />
 
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-[#0D0D0D] text-white text-[12px] font-medium py-[7px] px-10 rounded hover:bg-[#2a2a2a] transition-colors"
+            className="w-full bg-[#0D0D0D] text-white text-[12px] font-medium py-[7px] px-10 rounded hover:bg-[#2a2a2a] transition-colors uppercase tracking-wide"
           >
             Request Manufacturing Quote
           </button>
@@ -142,60 +115,38 @@ function QuoteFormSection() {
 }
 
 // ─── TRUST BADGES / WHY CONTACT ────────────────────────────────────
+// Reference: simple checkmark icons, uppercase heading + labels, spread
+// evenly across the full container width (not clustered to a narrower box).
+const CheckIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0D0D0D" strokeWidth="2">
+    <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
 const badges = [
-  {
-    icon: (
-      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0D0D0D" strokeWidth="1.5">
-        <path d="M3 21h18M3 7v14M21 7v14M6 11h4M6 15h4M14 11h4M14 15h4M10 21V17h4v4" />
-      </svg>
-    ),
-    label: "Factory-Direct Manufacturing",
-  },
-  {
-    icon: (
-      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0D0D0D" strokeWidth="1.5">
-        <path d="M9 12l2 2 4-4M20 12a8 8 0 11-16 0 8 8 0 0116 0z" />
-      </svg>
-    ),
-    label: "OEM & Private Label Production",
-  },
-  {
-    icon: (
-      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0D0D0D" strokeWidth="1.5">
-        <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-      </svg>
-    ),
-    label: "Flexible Minimum Order Quantities",
-  },
-  {
-    icon: (
-      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0D0D0D" strokeWidth="1.5">
-        <circle cx="12" cy="12" r="10" />
-        <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10A15.3 15.3 0 0112 2z" />
-      </svg>
-    ),
-    label: "Worldwide Shipping",
-  },
+  { label: "Factory-Direct Manufacturing" },
+  { label: "OEM & Private Label Production" },
+  { label: "Flexible Minimum Order Quantities" },
+  { label: "Worldwide Shipping" },
 ];
 
 function TrustBadgesSection() {
   return (
-    <section className="w-full bg-white border-t border-[#C9C9C9] px-4 lg:px-3 py-10 lg:py-20">
+    <section className="w-full bg-white border-t border-[#C9C9C9] px-4 lg:px-10 py-10 lg:py-20">
       <div className="max-w-[1416px] mx-auto">
         {/* Title */}
-        <p className="text-center text-[15px] font-medium text-[#0D0D0D] mb-12">
+        <p className="text-center text-[15px] font-medium uppercase tracking-wide text-[#0D0D0D] mb-12">
           Why Contact Sarlam Athletics?
         </p>
 
-        {/* Badges grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-[117px] max-w-[1100px] mx-auto lg:px-[53px]">
+        {/* Badges row */}
+        <div className="flex flex-wrap justify-between gap-6 lg:gap-4">
           {badges.map((badge, i) => (
-            <div
-              key={i}
-              className="flex flex-col gap-2 p-3 lg:p-0 lg:flex-row lg:items-start lg:gap-[6px]"
-            >
-              <div className="w-[30px] h-[30px] flex-shrink-0">{badge.icon}</div>
-              <p className="text-[12px] lg:text-[15px] font-medium text-[#0D0D0D] leading-tight">
+            <div key={i} className="flex items-start gap-2 basis-[45%] lg:basis-auto">
+              <div className="w-5 h-5 flex-shrink-0 mt-0.5">
+                <CheckIcon />
+              </div>
+              <p className="text-[12px] lg:text-[15px] font-bold lg:font-medium uppercase text-[#0D0D0D] leading-tight">
                 {badge.label}
               </p>
             </div>
@@ -207,6 +158,8 @@ function TrustBadgesSection() {
 }
 
 // ─── WHAT HAPPENS NEXT ─────────────────────────────────────────────
+// Reference: heading and the whole steps row are centered, and step 4 has
+// a second line of copy ("This reduces uncertainty.") that was missing.
 const steps = [
   { num: "1", text: "We review your requirements." },
   { num: "2", text: "Our manufacturing team prepares a quotation." },
@@ -216,31 +169,31 @@ const steps = [
   },
   {
     num: "4",
-    text: "Prototype development begins after approval.",
+    text: "Prototype development begins after approval. This reduces uncertainty.",
   },
 ];
 
 function WhatHappensNextSection() {
   return (
     <section className="w-full bg-[#232323] px-4 lg:px-20 py-12 lg:py-20">
-      <div className="max-w-[1280px] mx-auto">
+      <div className="max-w-[1280px] mx-auto text-center">
         <h2 className="text-[35px] lg:text-[47px] font-medium text-white leading-tight mb-8 lg:mb-14">
           What Happens Next?
         </h2>
 
-        {/* Desktop: horizontal row with connecting lines */}
+        {/* Desktop: horizontal row with connecting lines, centered columns */}
         <div className="hidden lg:flex items-start relative">
           {steps.map((step, i) => (
-            <div key={i} className="flex-1 relative flex flex-col items-start">
+            <div key={i} className="flex-1 relative flex flex-col items-center">
               {/* Number circle */}
-              <div className="w-[48px] h-[48px] rounded-full bg-white flex items-center justify-center mb-6">
+              <div className="w-[48px] h-[48px] rounded-full bg-white flex items-center justify-center mb-6 z-[1]">
                 <span className="text-[24px] font-bold text-[#0D0D0D]">
                   {step.num}
                 </span>
               </div>
               {/* Connecting line */}
               {i < steps.length - 1 && (
-                <div className="absolute top-[24px] left-[56px] right-[8px] h-[1px] bg-white/60" />
+                <div className="absolute top-[24px] left-1/2 w-full h-[1px] bg-white/60" />
               )}
               <p className="text-[15px] font-medium text-white leading-[1.4] max-w-[296px]">
                 {step.text}
@@ -305,7 +258,7 @@ function FAQSection() {
     <section className="w-full bg-white px-4 lg:px-20 py-12 lg:py-20">
       <div className="max-w-[640px] mx-auto flex flex-col gap-16">
         {/* Heading */}
-        <h2 className="text-[35px] font-medium text-black leading-tight">
+        <h2 className="text-[35px] font-medium text-black leading-tight text-center">
           Before You Request a Quote
         </h2>
 
@@ -347,8 +300,8 @@ function FAQSection() {
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="flex flex-col gap-4 items-center lg:items-start">
+        {/* CTA — centered at every breakpoint per the PDF */}
+        <div className="flex flex-col gap-4 items-center text-center">
           <p className="text-[15px] font-normal text-[#434343] leading-[1.5]">
             If you have any further questions or just want to reach our team,
             click the button below.
@@ -408,20 +361,20 @@ function Footer() {
       <div className="hidden lg:block">
         {/* Top: CTA + Nav columns */}
         <div className="flex items-start justify-between px-8 py-16">
-          {/* Left: Big heading + email */}
+          {/* Left: Big heading + email (email is muted gray, no underline) */}
           <div className="max-w-[580px] flex flex-col gap-4">
             <h3 className="text-[47px] font-medium text-black leading-tight">
               Ready to Manufacture Your Products?
             </h3>
             <a
               href="mailto:hello@sarlamathletics.com"
-              className="text-[47px] font-medium text-black leading-tight underline decoration-1 underline-offset-8 hover:opacity-70 transition-opacity"
+              className="text-[47px] font-medium text-[#A5A5A5] leading-tight hover:text-black transition-colors"
             >
               hello@sarlamathletics.com
             </a>
           </div>
 
-          {/* Right: Nav columns */}
+          {/* Right: Nav columns — each link has a persistent thin underline */}
           <div className="flex gap-16">
             {footerNavGroups.map((group, i) => (
               <div key={i} className="flex flex-col gap-3">
@@ -429,7 +382,7 @@ function Footer() {
                   <a
                     key={j}
                     href={link.href}
-                    className="text-[14px] text-[#0D0D0D] hover:opacity-70 transition-opacity"
+                    className="text-[14px] text-[#0D0D0D] hover:opacity-70 transition-opacity border-b border-gray-200 pb-2"
                   >
                     {link.label}
                   </a>
@@ -478,7 +431,7 @@ function Footer() {
           </h3>
           <a
             href="mailto:hello@sarlamathletics.com"
-            className="text-[47px] font-medium text-black leading-tight underline decoration-1 underline-offset-8 hover:opacity-70 transition-opacity break-all"
+            className="text-[47px] font-medium text-[#A5A5A5] leading-tight hover:text-black transition-colors break-all"
           >
             hello@sarlamathletics.com
           </a>
