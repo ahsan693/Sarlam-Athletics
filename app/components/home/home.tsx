@@ -218,7 +218,7 @@ export function Header() {
             About
           </Link>
           <Link
-            href="/contactus"
+            href="/contact"
             className="font-medium text-xs leading-[18px] uppercase text-black hover:opacity-70 transition"
           >
             Contact

@@ -49,59 +49,59 @@ export default function PrivateLabel() {
       {/* ─── HEADER ─── */}
       <Header />
 
-      {/* ─── HERO SECTION ─── */}
-      <section className="relative bg-[#0D0D0D] text-white overflow-hidden">
-        {/* Background Image */}
-        <img
-          src="https://images.unsplash.com/photo-1544717684-1243da23b545?auto=format&fit=crop&q=80&w=2000"
-          alt="Boxing training ring"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        {/* Dark gradient — strongest on the left/bottom where the copy sits */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-black/10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/40" />
+     {/* ─── HERO SECTION ─── */}
+<section className="relative h-[495px] bg-[#0D0D0D] text-white overflow-hidden">
+  {/* Background Image */}
+  <img
+    src="https://images.unsplash.com/photo-1544717684-1243da23b545?auto=format&fit=crop&q=80&w=2000"
+    alt="Boxing training ring"
+    className="absolute inset-0 w-full h-full object-cover"
+  />
+  {/* Dark gradient — strongest on the left/bottom where the copy sits */}
+  <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-black/10" />
+  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/40" />
 
-        <div className="relative z-20 max-w-[1440px] mx-auto px-5 md:px-8 py-16 md:py-24">
-          <div>
-            <h1 className="text-[32px] md:text-[47px] leading-[1.15] font-bold tracking-tight max-w-2xl">
-              Private Label Manufacturing
-            </h1>
+  <div className="relative z-20 max-w-[1440px] mx-auto px-5 md:px-8 py-16 md:py-24 h-full flex flex-col justify-center">
+    <div>
+      <h1 className="text-[32px] md:text-[47px] leading-[1.15] font-bold tracking-tight max-w-2xl">
+        Private Label Manufacturing
+      </h1>
 
-            {/* Subtitle - mobile only */}
-            <p className="md:hidden text-[15px] text-white/70 mt-4 leading-relaxed max-w-sm">
-              Sarlam Athletics delivers high-end custom manufacturing for premium combat sports brands worldwide.
-            </p>
-          </div>
+      {/* Subtitle - mobile only */}
+      <p className="md:hidden text-[15px] text-white/70 mt-4 leading-relaxed max-w-sm">
+        Sarlam Athletics delivers high-end custom manufacturing for premium combat sports brands worldwide.
+      </p>
+    </div>
 
-          {/* Meta Info */}
-          <div className="mt-8 md:mt-16 flex flex-col md:flex-row md:items-start gap-6 md:gap-16">
-            <div className="space-y-1">
-              <p className="text-[12px] md:text-[13px] text-white/50 uppercase tracking-wider">
-                Production Timeline
-              </p>
-              <p className="text-[14px] md:text-[15px] text-white/90">
-                Production: 4–8 Weeks (After Sample Approval)
-              </p>
-            </div>
-            <div className="space-y-1">
-              <p className="text-[12px] md:text-[13px] text-white/50 uppercase tracking-wider">
-                Ideal For
-              </p>
-              <p className="text-[14px] md:text-[15px] text-white/90">
-                Sports Brands, Gyms, Retailers & Distributors
-              </p>
-            </div>
-            <div className="space-y-1">
-              <p className="text-[12px] md:text-[13px] text-white/50 uppercase tracking-wider">
-                Manufacturing Model
-              </p>
-              <p className="text-[14px] md:text-[15px] text-white/90">
-                OEM & Private Label Production
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+    {/* Meta Info */}
+    <div className="mt-8 md:mt-16 flex flex-col md:flex-row md:items-start gap-6 md:gap-16">
+      <div className="space-y-1">
+        <p className="text-[12px] md:text-[13px] text-white/50 uppercase tracking-wider">
+          Production Timeline
+        </p>
+        <p className="text-[14px] md:text-[15px] text-white/90">
+          Production: 4–8 Weeks (After Sample Approval)
+        </p>
+      </div>
+      <div className="space-y-1">
+        <p className="text-[12px] md:text-[13px] text-white/50 uppercase tracking-wider">
+          Ideal For
+        </p>
+        <p className="text-[14px] md:text-[15px] text-white/90">
+          Sports Brands, Gyms, Retailers & Distributors
+        </p>
+      </div>
+      <div className="space-y-1">
+        <p className="text-[12px] md:text-[13px] text-white/50 uppercase tracking-wider">
+          Manufacturing Model
+        </p>
+        <p className="text-[14px] md:text-[15px] text-white/90">
+          OEM & Private Label Production
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* ─── PROCESS OVERVIEW ─── */}
       <section className="pt-16 md:pt-24">
