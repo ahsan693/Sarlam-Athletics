@@ -42,22 +42,24 @@ const HandshakeIcon = () => (
 );
 
 // ─── Hero Section ───
+// Reference: centered eyebrow + heading over a dark, red-toned athletic image,
+// section has rounded bottom corners.
 function HeroSection() {
   return (
-    <section className="relative w-full h-[620px] bg-[#0D0D0D] overflow-hidden">
-         {/* Background image */}
+    <section className="relative w-full h-[620px] bg-[#0D0D0D] overflow-hidden rounded-b-[24px]">
+      {/* Background image */}
       <img
-        src="https://images.unsplash.com/photo-1591117207239-788bf8de6c3b?auto=format&fit=crop&q=80&w=2000"
-        alt="Manufacturing"
+        src="https://images.unsplash.com/photo-1670768457987-f78bc97df50c?auto=format&fit=crop&q=80&w=2000"
+        alt="Boxing equipment manufacturing"
         className="absolute inset-0 w-full h-full object-cover"
       />
-      
-      {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-black/50" />
 
-      {/* Text overlay */}
-      <div className="relative z-10 px-8 md:px-12 py-20 w-full max-w-[1440px] mx-auto">
-        <div className="max-w-[700px]">
+      {/* Dark maroon overlay for text readability + mood */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-[#3a0f14]/60 to-black/70" />
+
+      {/* Text overlay — centered */}
+      <div className="relative z-10 flex flex-col items-center justify-center h-full px-8 md:px-12 text-center">
+        <div className="max-w-[760px] flex flex-col items-center">
           <p className="text-[15px] font-medium text-[#F0EDE9] tracking-wide mb-5">
             ABOUT SARLAM ATHLETICS
           </p>
@@ -101,8 +103,8 @@ function VideoSection() {
         {/* Video placeholder */}
         <div className="relative w-full aspect-[1376/535] rounded-lg overflow-hidden bg-gray-200 group cursor-pointer">
           <img
-            src="https://images.unsplash.com/photo-1612423284934-2850a4ea6b0f?auto=format&fit=crop&q=80&w=1200"
-            alt="Factory video"
+            src="https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&q=80&w=1400"
+            alt="Martial arts training"
             className="w-full h-full object-cover"
           />
           {/* Dark overlay */}
@@ -153,8 +155,8 @@ function ValuesSection() {
   return (
     <section className="pb-12">
       {/* Heading */}
-      <div className="pt-[120px] pb-12 text-center md:text-left">
-        <div className="max-w-[800px] mx-auto md:mx-0 md:pl-[calc((100%-800px)/2)]">
+      <div className="pt-[120px] pb-12 px-8">
+        <div className="max-w-[1280px] mx-auto">
           <h2 className="text-2xl md:text-[37px] font-medium text-black">Our Values</h2>
         </div>
       </div>
@@ -179,6 +181,9 @@ function ValuesSection() {
 }
 
 // ─── Manufacturing Process Timeline ───
+// Reference: fully centered layout — heading centered, a single vertical line
+// runs down the middle with a dot before each step, step title + copy centered
+// beneath each dot, ending with a centered CTA and button.
 const timelineSteps = [
   {
     title: "Consultation & Product Specs",
@@ -200,9 +205,9 @@ const timelineSteps = [
 function TimelineSection() {
   return (
     <section className="bg-black py-[200px] px-8 md:px-20">
-      <div className="max-w-[1280px] mx-auto space-y-24">
+      <div className="max-w-[1000px] mx-auto flex flex-col items-center text-center">
         {/* Heading */}
-        <div className="max-w-[640px] space-y-0">
+        <div className="max-w-[820px] space-y-0 mb-12">
           <h2 className="text-3xl md:text-[47px] md:leading-[58px] font-medium text-[#B2B2B2]">
             Our Manufacturing Process
           </h2>
@@ -211,64 +216,34 @@ function TimelineSection() {
           </h2>
         </div>
 
-        {/* Timeline */}
-        <div className="max-w-[800px] space-y-0">
-          {/* Initial progress bar */}
-          <div className="flex items-start gap-0 h-[100px]">
-            <div className="w-8 flex justify-center">
-              <div className="w-[3px] h-full bg-gradient-to-b from-transparent to-white/30" />
+        {/* Lead-in line before first dot */}
+        <div className="w-[3px] h-[100px] bg-gradient-to-b from-transparent to-white/30" />
+
+        {/* Steps */}
+        {timelineSteps.map((step, i) => (
+          <div key={i} className="flex flex-col items-center">
+            <div className="w-3 h-3 rounded-full bg-[#B2B2B2] my-6" />
+            <div className="max-w-[600px] space-y-4">
+              <h3 className="text-2xl md:text-[33px] md:leading-[40px] font-medium text-white">
+                {step.title}
+              </h3>
+              <p className="text-[17px] leading-relaxed text-[#CBCBCB]">{step.description}</p>
             </div>
+            <div className="w-[3px] h-[220px] bg-white/20 mt-6" />
           </div>
+        ))}
 
-          {/* Steps */}
-          {timelineSteps.map((step, i) => (
-            <div key={i} className="space-y-12">
-              {/* Content */}
-              <div className="flex items-start gap-8 md:gap-12">
-                <div className="w-8 flex-shrink-0 flex flex-col items-center">
-                  {/* Dot */}
-                  <div className="w-3 h-3 rounded-full bg-[#B2B2B2]" />
-                  {/* Line */}
-                  <div className="w-[3px] flex-1 min-h-[180px] bg-white/20" />
-                </div>
-                <div className="flex-1 max-w-[550px] space-y-4 pb-8">
-                  <h3 className="text-2xl md:text-[33px] md:leading-[40px] font-medium text-white">
-                    {step.title}
-                  </h3>
-                  <p className="text-[17px] leading-relaxed text-[#CBCBCB]">
-                    {step.description}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
-
-          {/* CTA at bottom of timeline */}
-          <div className="flex items-start gap-8 md:gap-12">
-            <div className="w-8" />
-            <div className="flex-1 max-w-[550px] space-y-8">
-              <h2 className="text-2xl md:text-[37px] md:leading-[44px] font-medium text-white">
-                Ready to Launch Your Private Label Sports Brand?
-              </h2>
-              <Link
-                href="/contactus"
-                className="inline-block px-8 py-3.5 border border-white rounded-md text-[15px] text-black bg-white hover:bg-transparent hover:text-white transition-colors"
-              >
-                Request Manufacturing Quote
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        {/* Hidden last step note */}
-        <div className="hidden">
-          <h3 className="text-2xl font-bold text-[#0D0D0D]">
-            Private Label Packaging & Delivery
-          </h3>
-          <p className="text-base text-[#434343]">
-            We prepare branded packaging, tags, labels, and shipping support for U.S. brands,
-            gyms, retailers, and distributors.
-          </p>
+        {/* CTA at bottom of timeline */}
+        <div className="max-w-[600px] space-y-8 mt-2">
+          <h2 className="text-2xl md:text-[37px] md:leading-[44px] font-medium text-white">
+            Ready to Launch Your Private Label Sports Brand?
+          </h2>
+          <Link
+            href="/contactus"
+            className="inline-block px-8 py-3.5 border border-white rounded-md text-[15px] text-black bg-white hover:bg-transparent hover:text-white transition-colors"
+          >
+            Request Manufacturing Quote
+          </Link>
         </div>
       </div>
     </section>
@@ -281,7 +256,7 @@ const services = [
     title: "Private Label & OEM Manufacturing",
     description:
       "Manufacture custom boxing gloves, MMA gear, martial arts uniforms, belts, wraps, and training accessories under your own brand.",
-    image: "https://images.unsplash.com/photo-1583473848882-f9a5bc7fd2ee?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1565992441121-4367c2967103?auto=format&fit=crop&q=80&w=800",
   },
   {
     title: "Wholesale Sports Equipment",
@@ -293,7 +268,7 @@ const services = [
     title: "Product Development & Sampling",
     description:
       "Develop and refine your products through prototype sampling, material testing, branding, and packaging before production.",
-    image: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800",
   },
 ];
 
@@ -302,8 +277,8 @@ function ServicesSection() {
     <section className="py-0">
       {/* Heading */}
       <div className="px-8 pt-0 pb-12">
-        <div className="max-w-[800px] mx-auto md:mx-0 md:pl-[calc((100%-800px)/2)]">
-          <h2 className="text-2xl md:text-[37px] font-medium text-black">
+        <div className="max-w-[1280px] mx-auto">
+          <h2 className="text-2xl md:text-[37px] font-bold text-black">
             OEM & Private Label Manufacturing Services
           </h2>
         </div>
@@ -326,7 +301,7 @@ function ServicesSection() {
               <p className="text-[15px] leading-relaxed text-[#434343]">{service.description}</p>
             </div>
             {/* Image */}
-            <div className="aspect-square rounded-md overflow-hidden bg-gray-200">
+            <div className="aspect-[4/3] rounded-lg overflow-hidden bg-gray-200">
               <img
                 src={service.image}
                 alt={service.title}
@@ -364,7 +339,7 @@ function ProductsSection() {
             <Link
               key={i}
               href={`/products`}
-              className="px-6 py-3.5 bg-[#F5F5F5] rounded text-base text-[#0D0D0D] hover:bg-[#E8E8E8] transition-colors"
+              className="px-6 py-3.5 bg-[#F5F5F5] border border-[#DADADA] rounded-md text-base text-[#0D0D0D] hover:bg-[#E8E8E8] transition-colors"
             >
               {tag}
             </Link>
@@ -377,24 +352,24 @@ function ProductsSection() {
 
 // ─── Industries We Serve Section ───
 const industries = [
-  { title: "Sports Brands", image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=600" },
+  { title: "Sports Brands", image: "https://images.unsplash.com/photo-1517438476312-10d79c077509?auto=format&fit=crop&q=80&w=600" },
   { title: "Gyms & Martial Arts Academies", image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=600" },
   { title: "Retailers & eCommerce Brands", image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=600" },
   { title: "Wholesale Distributors", image: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&q=80&w=600" },
-  { title: "Sports Equipment Companies", image: "https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&q=80&w=600" },
+  { title: "Sports Equipment Companies", image: "https://images.unsplash.com/photo-1515523110800-9415d13b84a8?auto=format&fit=crop&q=80&w=600" },
 ];
 
 function IndustriesSection() {
   return (
     <section className="py-12 px-3">
       <div className="max-w-[1416px] mx-auto space-y-10">
-        <p className="text-[15px] font-medium text-black">Industries We Serve</p>
+        <p className="text-[15px] font-medium text-black text-center">Industries We Serve</p>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 border-t border-gray-200 pt-6">
           {industries.map((industry, i) => (
             <div
               key={i}
-              className="relative aspect-[251/284] overflow-hidden group cursor-pointer"
+              className="relative aspect-[251/284] overflow-hidden rounded-md group cursor-pointer"
             >
               {/* Background image */}
               <img
@@ -465,7 +440,10 @@ function Footer() {
           {/* Pages */}
           <div className="space-y-3">
             {footerNav.pages.map((link) => (
-              <div key={link.label} className="flex items-center justify-between group">
+              <div
+                key={link.label}
+                className="flex items-center justify-between group border-b border-gray-200 pb-2"
+              >
                 <Link
                   href={link.href}
                   className="text-sm text-black hover:opacity-70 transition-opacity"
@@ -482,7 +460,10 @@ function Footer() {
           {/* Company */}
           <div className="space-y-3">
             {footerNav.company.map((link) => (
-              <div key={link.label} className="flex items-center justify-between group">
+              <div
+                key={link.label}
+                className="flex items-center justify-between group border-b border-gray-200 pb-2"
+              >
                 <Link
                   href={link.href}
                   className="text-sm text-black hover:opacity-70 transition-opacity"
@@ -499,7 +480,10 @@ function Footer() {
           {/* Products */}
           <div className="space-y-3">
             {footerNav.products.map((link) => (
-              <div key={link.label} className="flex items-center justify-between group">
+              <div
+                key={link.label}
+                className="flex items-center justify-between group border-b border-gray-200 pb-2"
+              >
                 <Link
                   href={link.href}
                   className="text-sm text-black hover:opacity-70 transition-opacity"
