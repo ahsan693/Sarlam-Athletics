@@ -5,34 +5,65 @@ import { useState } from "react";
 // Import the Header correctly from the home.tsx file
 import { Header } from "../home/home";
 
+const includedItems = [
+  "Product development and manufacturing consultation",
+  "Custom material sourcing and testing",
+  "Logo branding and private label customization",
+  "Prototype sampling and approval process",
+  "Bulk manufacturing with quality control inspections",
+  "Custom packaging and labeling",
+  "Export documentation and worldwide shipping support",
+];
+
+const industries = [
+  "Sports Brands",
+  "Gyms & Fitness Chains",
+  "Martial Arts Academies",
+  "Retailers",
+  "eCommerce Brands",
+  "Wholesale Distributors",
+];
+
+const testimonials = [
+  {
+    quote:
+      "Sarlam helped us launch our private label boxing equipment range on schedule. The product quality was consistent, communication was excellent, and the manufacturing process was transparent from sampling through delivery.",
+    name: "Linnéa Moberg",
+    role: "CEO, IronHand Gym",
+    avatar:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=150",
+  },
+  {
+    quote:
+      "Unlike many manufacturers, Sarlam worked closely with our team to refine materials, branding, and packaging before production. The finished products matched our specifications exactly.",
+    name: "Erik Sandell",
+    role: "Co-founder, Waypoint Athletics",
+    avatar:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150",
+  },
+];
+
 export default function PrivateLabel() {
   return (
     <div className="min-h-screen bg-white text-[#0D0D0D] font-sans">
-      
       {/* ─── HEADER ─── */}
       <Header />
 
       {/* ─── HERO SECTION ─── */}
       <section className="relative bg-[#0D0D0D] text-white overflow-hidden">
-        {/* Background Image Placeholder */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80 z-10" />
-        <div className="absolute inset-0 bg-[#1a1a1a]">
-          {/* Replace with actual hero image */}
-          <div className="w-full h-full bg-[#2a2a2a] flex items-center justify-center text-gray-600 text-sm">
-            [Hero Background Image]
-          </div>
-        </div>
+        {/* Background Image */}
+        <img
+          src="https://images.unsplash.com/photo-1544717684-1243da23b545?auto=format&fit=crop&q=80&w=2000"
+          alt="Boxing training ring"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        {/* Dark gradient — strongest on the left/bottom where the copy sits */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-black/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/40" />
 
         <div className="relative z-20 max-w-[1440px] mx-auto px-5 md:px-8 py-16 md:py-24">
-          {/* Breadcrumbs */}
-          <div className="flex items-center gap-2 text-[11px] md:text-xs text-white/60 mb-6 md:mb-0">
-            <a href="/" className="hover:text-white transition">Home</a>
-            <span>/</span>
-            <span>Services</span>
-          </div>
-
-          <div className="mt-4 md:mt-12">
-            <h1 className="text-[32px] md:text-[47px] leading-[1.15] font-light tracking-tight max-w-2xl">
+          <div>
+            <h1 className="text-[32px] md:text-[47px] leading-[1.15] font-bold tracking-tight max-w-2xl">
               Private Label Manufacturing
             </h1>
 
@@ -45,7 +76,7 @@ export default function PrivateLabel() {
           {/* Meta Info */}
           <div className="mt-8 md:mt-16 flex flex-col md:flex-row md:items-start gap-6 md:gap-16">
             <div className="space-y-1">
-              <p className="text-[12px] md:text-[15px] text-white/50 uppercase tracking-wider">
+              <p className="text-[12px] md:text-[13px] text-white/50 uppercase tracking-wider">
                 Production Timeline
               </p>
               <p className="text-[14px] md:text-[15px] text-white/90">
@@ -53,7 +84,7 @@ export default function PrivateLabel() {
               </p>
             </div>
             <div className="space-y-1">
-              <p className="text-[12px] md:text-[15px] text-white/50 uppercase tracking-wider">
+              <p className="text-[12px] md:text-[13px] text-white/50 uppercase tracking-wider">
                 Ideal For
               </p>
               <p className="text-[14px] md:text-[15px] text-white/90">
@@ -61,7 +92,7 @@ export default function PrivateLabel() {
               </p>
             </div>
             <div className="space-y-1">
-              <p className="text-[12px] md:text-[15px] text-white/50 uppercase tracking-wider">
+              <p className="text-[12px] md:text-[13px] text-white/50 uppercase tracking-wider">
                 Manufacturing Model
               </p>
               <p className="text-[14px] md:text-[15px] text-white/90">
@@ -73,177 +104,159 @@ export default function PrivateLabel() {
       </section>
 
       {/* ─── PROCESS OVERVIEW ─── */}
-      <section className="max-w-[1440px] mx-auto px-5 md:px-8 py-16 md:py-24">
-        <h2 className="text-[24px] md:text-[22px] font-light leading-snug max-w-xl">
-          How Our Private Label Manufacturing Process Works
-        </h2>
+      <section className="pt-16 md:pt-24">
+        <div className="max-w-[1440px] mx-auto px-5 md:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
+            <h2 className="text-[24px] md:text-[28px] font-bold leading-snug max-w-xl">
+              How Our Private Label Manufacturing Process Works
+            </h2>
 
-        <div className="mt-8 md:mt-12 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
-          {/* Text Content */}
-          <div className="space-y-6 text-[15px] leading-relaxed text-gray-700">
-            <p>
-              Sarlam Athletics helps sports brands develop, manufacture, and launch custom combat
-              sports equipment through a complete OEM and private label production process. From
-              product planning and material selection to sampling, branding, manufacturing, and
-              worldwide delivery, every stage is managed by our production team.
-            </p>
-            <p>
-              We manufacture boxing gloves, MMA gear, BJJ uniforms, karate apparel, hand wraps,
-              protective equipment, and training accessories using premium materials, consistent
-              quality control, and scalable wholesale production.
-            </p>
-            <p>
-              Whether you're launching a new sports brand or expanding an existing product line,
-              we provide flexible production, custom branding, and reliable manufacturing support
-              from prototype to shipment.
-            </p>
+            {/* Text Content */}
+            <div className="space-y-6 text-[15px] leading-relaxed text-gray-700">
+              <p>
+                Sarlam Athletics helps sports brands develop, manufacture, and launch custom combat
+                sports equipment through a complete OEM and private label production process. From
+                product planning and material selection to sampling, branding, manufacturing, and
+                worldwide delivery, every stage is managed by our production team.
+              </p>
+              <p>
+                We manufacture boxing gloves, MMA gear, BJJ uniforms, karate apparel, hand wraps,
+                protective equipment, and training accessories using premium materials, consistent
+                quality control, and scalable wholesale production.
+              </p>
+              <p>
+                Whether you're launching a new sports brand or expanding an existing product line,
+                we provide flexible production, custom branding, and reliable manufacturing support
+                from prototype to shipment.
+              </p>
+            </div>
           </div>
+        </div>
 
-          {/* Image Placeholder */}
-          <div className="w-full aspect-[4/3] md:aspect-square bg-[#F0EDE9] rounded-sm flex items-center justify-center text-gray-400 text-sm">
-            [Manufacturing Process Image]
-          </div>
+        {/* Full-bleed image — spans the entire page width, not boxed beside the text */}
+        <div className="w-full h-[380px] md:h-[520px] mt-10 md:mt-14 overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&q=80&w=2000"
+            alt="MMA training in the cage"
+            className="w-full h-full object-cover"
+          />
         </div>
       </section>
 
-      {/* ─── WHAT'S INCLUDED ─── */}
-      <section className="max-w-[1440px] mx-auto px-5 md:px-8 pb-16 md:pb-24">
-        <h2 className="text-[24px] md:text-[22px] font-light leading-snug max-w-xl">
-          What's Included in Our Manufacturing Service
-        </h2>
+      {/* ─── DETAIL LIST SECTIONS (2-col: heading left, content right) ─── */}
+      <section className="max-w-[1440px] mx-auto px-5 md:px-8">
+        <div className="divide-y divide-gray-200 border-b border-gray-200">
+          {/* What's Included */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-20 py-16 md:py-20">
+            <h2 className="text-[24px] md:text-[28px] font-bold leading-snug max-w-xl">
+              What's Included in Our Manufacturing Service
+            </h2>
+            <ul className="space-y-4 text-[15px] leading-relaxed text-gray-700 max-w-xl">
+              {includedItems.map((item, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <span className="text-[17px] leading-6 text-[#0D0D0D]">•</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        <ul className="mt-8 space-y-4 text-[15px] leading-relaxed text-gray-700 max-w-xl">
-          {[
-            "Product development and manufacturing consultation",
-            "Custom material sourcing and testing",
-            "Logo branding and private label customization",
-            "Prototype sampling and approval process",
-            "Bulk manufacturing with quality control inspections",
-            "Custom packaging and labeling",
-            "Export documentation and worldwide shipping support",
-          ].map((item, i) => (
-            <li key={i} className="flex items-start gap-3">
-              <span className="text-[17px] leading-6 text-[#0D0D0D]">•</span>
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
+          {/* Start Your Project */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-20 py-16 md:py-20">
+            <h2 className="text-[24px] md:text-[28px] font-bold leading-snug max-w-xl">
+              Start Your Manufacturing Project
+            </h2>
+            <p className="text-[15px] leading-relaxed text-gray-700 max-w-xl">
+              Most manufacturing partnerships start with a conversation. Tell us about your product
+              idea, branding, materials, estimated order quantity, and timeline. We'll recommend the
+              right manufacturing approach and prepare a tailored quotation.
+            </p>
+          </div>
 
-      {/* ─── START YOUR PROJECT ─── */}
-      <section className="max-w-[1440px] mx-auto px-5 md:px-8 pb-16 md:pb-24">
-        <h2 className="text-[22px] md:text-[22px] font-light leading-snug max-w-xl">
-          Start Your Manufacturing Project
-        </h2>
+          {/* Industries We Serve */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-20 py-16 md:py-20">
+            <h2 className="text-[24px] md:text-[28px] font-bold leading-snug max-w-xl">
+              Industries We Serve
+            </h2>
+            <ul className="space-y-3 text-[15px] leading-relaxed text-gray-700 max-w-xl">
+              {industries.map((item, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <span className="text-[17px] leading-6 text-[#0D0D0D]">•</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
 
-        <p className="mt-6 text-[15px] leading-relaxed text-gray-700 max-w-xl">
-          Most manufacturing partnerships start with a conversation. Tell us about your product
-          idea, branding, materials, estimated order quantity, and timeline. We'll recommend the
-          right manufacturing approach and prepare a tailored quotation.
-        </p>
-      </section>
-
-      {/* ─── INDUSTRIES WE SERVE ─── */}
-      <section className="max-w-[1440px] mx-auto px-5 md:px-8 pb-16 md:pb-24">
-        <h2 className="text-[24px] md:text-[22px] font-light leading-snug max-w-xl">
-          Industries We Serve
-        </h2>
-
-        <ul className="mt-8 space-y-3 text-[15px] leading-relaxed text-gray-700 max-w-xl">
-          {[
-            "Sports Brands",
-            "Gyms & Fitness Chains",
-            "Martial Arts Academies",
-            "Retailers",
-            "eCommerce Brands",
-            "Wholesale Distributors",
-          ].map((item, i) => (
-            <li key={i} className="flex items-start gap-3">
-              <span className="text-[17px] leading-6 text-[#0D0D0D]">•</span>
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-
-        {/* Request Quote Button */}
-        <div className="mt-10">
+        {/* Request Quote Button — solid black, centered, no border/arrow */}
+        <div className="flex justify-center py-16 md:py-20">
           <a
             href="/contact"
-            className="inline-flex items-center gap-2 border border-[#0D0D0D] px-6 py-3 text-xs tracking-widest uppercase hover:bg-[#0D0D0D] hover:text-white transition-colors duration-300"
+            className="inline-flex items-center justify-center bg-[#0D0D0D] text-white px-8 py-4 text-xs tracking-widest uppercase hover:bg-gray-800 transition-colors duration-300"
           >
             Request a Manufacturing Quote
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
           </a>
         </div>
       </section>
 
       {/* ─── TESTIMONIALS ─── */}
-      <section className="max-w-[1440px] mx-auto px-5 md:px-8 py-16 md:py-24 border-t border-gray-200">
-        <h2 className="text-[31px] md:text-[37px] font-light tracking-tight">
+      <section className="max-w-[1440px] mx-auto px-5 md:px-8 pb-16 md:pb-24">
+        <h2 className="text-[31px] md:text-[37px] font-bold tracking-tight">
           Testimonials
         </h2>
 
-        <div className="mt-10 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
-          {/* Testimonial 1 */}
-          <div className="border border-gray-200 p-6 md:p-10 flex flex-col justify-between">
-            <p className="text-[14px] md:text-[22px] font-light leading-relaxed text-gray-800">
-              "Sarlam helped us launch our private label boxing equipment range on schedule. The
-              product quality was consistent, communication was excellent, and the manufacturing
-              process was transparent from sampling through delivery."
-            </p>
-            <div className="mt-8 flex items-center gap-4">
-              <div className="w-10 h-10 rounded-full bg-[#F0EDE9] flex items-center justify-center text-xs text-gray-500">
-                LM
-              </div>
-              <div>
-                <p className="text-[15px] font-medium">Linnéa Moberg</p>
-                <p className="text-[15px] text-gray-500">CEO, IronHand Gym</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Testimonial 2 */}
-          <div className="border border-gray-200 p-6 md:p-10 flex flex-col justify-between">
-            <p className="text-[14px] md:text-[22px] font-light leading-relaxed text-gray-800">
-              "Unlike many manufacturers, Sarlam worked closely with our team to refine materials,
-              branding, and packaging before production. The finished products matched our
-              specifications exactly."
-            </p>
-            <div className="mt-8 flex items-center gap-4">
-              <div className="w-10 h-10 rounded-full bg-[#F0EDE9] flex items-center justify-center text-xs text-gray-500">
-                ES
-              </div>
-              <div>
-                <p className="text-[15px] font-medium">Erik Sandell</p>
-                <p className="text-[15px] text-gray-500">Co-founder, Waypoint Athletics</p>
+        <div className="mt-10 md:mt-16 grid grid-cols-1 md:grid-cols-2 border-t border-gray-200">
+          {testimonials.map((t, i) => (
+            <div
+              key={i}
+              className={`py-10 md:py-12 ${
+                i === 0 ? "md:pr-16 md:border-r border-gray-200" : "md:pl-16"
+              }`}
+            >
+              <p className="text-[16px] md:text-[20px] font-bold leading-relaxed text-gray-900">
+                &ldquo;{t.quote}&rdquo;
+              </p>
+              <div className="mt-8 flex items-center gap-4">
+                <img
+                  src={t.avatar}
+                  alt={t.name}
+                  className="w-10 h-10 rounded-full object-cover"
+                />
+                <div>
+                  <p className="text-[15px] font-medium">{t.name}</p>
+                  <p className="text-[15px] text-gray-500">{t.role}</p>
+                </div>
               </div>
             </div>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* ─── CTA SECTION ─── */}
-      <section className="bg-[#0D0D0D] text-white">
-        <div className="max-w-[1440px] mx-auto px-5 md:px-8 py-16 md:py-24">
-          <div className="max-w-2xl mx-auto text-center md:text-left">
-            <h2 className="text-[24px] md:text-[37px] font-light leading-snug">
+      {/* ─── CTA SECTION — rounded photo card with centered overlay text ─── */}
+      <section className="max-w-[1440px] mx-auto px-5 md:px-8 pb-16 md:pb-24">
+        <div className="relative rounded-sm overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=2000"
+            alt="BJJ academy training session"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/55" />
+
+          <div className="relative z-10 py-20 md:py-28 px-8 flex flex-col items-center text-center">
+            <h2 className="text-[24px] md:text-[37px] font-bold leading-snug max-w-2xl text-white">
               Ready to Start Your Private Label Manufacturing Project?
             </h2>
-            <p className="mt-6 text-[14px] md:text-[17px] text-white/70 leading-relaxed">
+            <p className="mt-6 text-[14px] md:text-[17px] text-white/80 leading-relaxed max-w-xl">
               Tell us what you want to manufacture, and our team will prepare a production plan,
               pricing estimate, and recommended manufacturing approach.
             </p>
             <div className="mt-8">
               <a
                 href="/contact"
-                className="inline-flex items-center gap-2 border border-white px-6 py-3 text-xs tracking-widest uppercase hover:bg-white hover:text-[#0D0D0D] transition-colors duration-300"
+                className="inline-flex items-center gap-2 border border-white text-white px-6 py-3 text-xs tracking-widest uppercase hover:bg-white hover:text-[#0D0D0D] transition-colors duration-300"
               >
-                Request a Quote
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M7 17L17 7M17 7H7M17 7V17" />
-                </svg>
+                Request a Manufacturing Quote
               </a>
             </div>
           </div>
@@ -252,20 +265,22 @@ export default function PrivateLabel() {
 
       {/* ─── FOOTER ─── */}
       <footer className="bg-white border-t border-gray-100">
-        <div className="max-w-[1440px] mx-auto px-5 md:px-8 py-16 md:py-24">
-          {/* Large Brand Name */}
-          <h2 className="text-[69px] md:text-[101px] font-bold leading-[0.9] tracking-tight uppercase">
-            sarlam
-            <br />
-            athletics
-          </h2>
-
-          {/* Footer Bottom */}
-          <div className="mt-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
+        <div className="max-w-[1440px] mx-auto px-5 md:px-8 py-12">
+          {/* Top Footer */}
+          <div className="flex flex-col lg:flex-row justify-between gap-12">
             {/* Left */}
-            <div className="space-y-2 text-xs text-gray-500">
-              <p>© 2026 Sarlam Athletics.</p>
-              <p>Private-label sports equipment manufacturer for combat sports brands.</p>
+            <div className="lg:w-1/2">
+              <h3 className="text-3xl md:text-[47px] font-bold leading-tight mb-4">
+                Ready to Build Your Sports
+                <br />
+                Equipment Brand?
+              </h3>
+              <a
+                href="mailto:hello@sarlamathletics.com"
+                className="text-xl md:text-[47px] text-gray-400 hover:text-black transition break-all"
+              >
+                hello@sarlamathletics.com
+              </a>
             </div>
 
             {/* Navigation Links - Mobile: Accordion style */}
@@ -285,49 +300,74 @@ export default function PrivateLabel() {
                 <FooterLink href="/products/mma">MMA Gear</FooterLink>
                 <FooterLink href="/products/accessories">Training Accessories</FooterLink>
               </FooterAccordion>
-              <FooterAccordion title="Company">
-                <FooterLink href="/about">About Us</FooterLink>
-                <FooterLink href="/contact">Contact</FooterLink>
-              </FooterAccordion>
             </div>
 
-            {/* Navigation Links - Desktop */}
-            <div className="hidden md:flex gap-16">
-              <div className="space-y-3">
-                <p className="text-xs font-medium uppercase tracking-wider">Navigation</p>
-                <div className="flex flex-col gap-2 text-sm text-gray-500">
-                  <a href="/" className="hover:text-[#0D0D0D] transition">Home</a>
-                  <a href="/products" className="hover:text-[#0D0D0D] transition">Products</a>
-                  <a href="/private-label" className="hover:text-[#0D0D0D] transition">Private Label</a>
-                  <a href="/manufacturing" className="hover:text-[#0D0D0D] transition">Manufacturing</a>
-                  <a href="/contact" className="hover:text-[#0D0D0D] transition">Contact</a>
-                </div>
+            {/* Navigation Links - Desktop: 3 columns, matching the PDF's grouping */}
+            <div className="hidden lg:flex gap-16">
+              <div className="flex flex-col gap-3">
+                {["Home", "Products", "Private Label", "Manufacturing Process"].map(
+                  (link) => (
+                    <a
+                      key={link}
+                      href="#"
+                      className="text-sm text-gray-500 hover:text-black transition"
+                    >
+                      {link}
+                    </a>
+                  )
+                )}
               </div>
-              <div className="space-y-3">
-                <p className="text-xs font-medium uppercase tracking-wider">Products</p>
-                <div className="flex flex-col gap-2 text-sm text-gray-500">
-                  <a href="/products/boxing-gloves" className="hover:text-[#0D0D0D] transition">Boxing Gloves</a>
-                  <a href="/products/martial-arts" className="hover:text-[#0D0D0D] transition">Martial Arts Uniforms</a>
-                  <a href="/products/mma" className="hover:text-[#0D0D0D] transition">MMA Gear</a>
-                  <a href="/products/accessories" className="hover:text-[#0D0D0D] transition">Training Accessories</a>
-                </div>
+              <div className="flex flex-col gap-3">
+                {["About", "Contact", "Request Quote"].map((link) => (
+                  <a
+                    key={link}
+                    href="#"
+                    className="text-sm text-gray-500 hover:text-black transition"
+                  >
+                    {link}
+                  </a>
+                ))}
+              </div>
+              <div className="flex flex-col gap-3">
+                {[
+                  "Boxing Gloves",
+                  "Martial Arts Uniforms",
+                  "MMA Gear",
+                  "Training Accessories",
+                ].map((link) => (
+                  <a
+                    key={link}
+                    href="#"
+                    className="text-sm text-gray-500 hover:text-black transition"
+                  >
+                    {link}
+                  </a>
+                ))}
               </div>
             </div>
+          </div>
 
-            {/* Right */}
-            <div className="text-xs text-gray-500">
-              <p>USA (USD $) / ENGLISH</p>
-              <p className="mt-1">Website by Sanna Granqvist</p>
-              <p className="mt-1">© 2026</p>
-            </div>
+          <div className="border-t border-gray-200 mt-12" />
+
+          {/* Large Brand Name */}
+          <div className="pt-10 flex items-end justify-between">
+            <h2 className="text-[69px] md:text-[101px] font-black italic leading-[0.9] tracking-tight uppercase">
+              sarlam
+              <br />
+              athletics
+            </h2>
+            <span className="text-sm text-gray-400 hidden md:block">© 2026</span>
           </div>
         </div>
 
         {/* Bottom Bar */}
         <div className="bg-[#0D0D0D] text-white">
           <div className="max-w-[1440px] mx-auto px-5 md:px-8 py-4 flex items-center justify-between text-xs">
-            <span>© 2026 Sarlam Athletics.</span>
-            <span>hello@sarlamathletics.com</span>
+            <span className="text-white/60">
+              © 2026 Sarlam Athletics. Private-label sports equipment manufacturer
+              for combat sports brands.
+            </span>
+            <span className="text-white/60 uppercase">USA (USD $) / English</span>
           </div>
         </div>
       </footer>

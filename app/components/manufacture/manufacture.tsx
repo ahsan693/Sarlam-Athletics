@@ -44,27 +44,24 @@ const HandshakeIcon = () => (
 // ─── Hero Section ───
 function HeroSection() {
   return (
-    <section className="pt-[42px] px-2">
-      <div className="relative bg-[#F0EDE9] rounded-xl overflow-hidden min-h-[500px] md:min-h-[558px] flex items-center">
-        {/* Background image */}
-        <div className="absolute inset-0">
-          <div className="w-full h-full bg-[#F0EDE9]">
-            <img
-              src="https://images.unsplash.com/photo-1591117207239-788bf8de6c3b?auto=format&fit=crop&q=80&w=2000"
-              alt="Manufacturing"
-              className="w-full h-full object-cover"
-            />
-            {/* Dark overlay for text readability */}
-            <div className="absolute inset-0 bg-black/40" />
-          </div>
-        </div>
+    <section className="relative w-full h-[620px] bg-[#0D0D0D] overflow-hidden">
+         {/* Background image */}
+      <img
+        src="https://images.unsplash.com/photo-1591117207239-788bf8de6c3b?auto=format&fit=crop&q=80&w=2000"
+        alt="Manufacturing"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+      
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-black/50" />
 
-        {/* Text overlay */}
-        <div className="relative z-10 px-8 md:px-12 py-20 md:py-[164px] max-w-[700px]">
+      {/* Text overlay */}
+      <div className="relative z-10 px-8 md:px-12 py-20 w-full max-w-[1440px] mx-auto">
+        <div className="max-w-[700px]">
           <p className="text-[15px] font-medium text-[#F0EDE9] tracking-wide mb-5">
             ABOUT SARLAM ATHLETICS
           </p>
-          <h1 className="text-3xl md:text-[47px] md:leading-[58px] font-medium text-white">
+          <h1 className="text-4xl md:text-[52px] md:leading-[1.1] font-medium text-white">
             Private Label Sports Equipment Manufacturing Built for Growing Brands
           </h1>
         </div>
