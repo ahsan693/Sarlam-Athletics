@@ -144,6 +144,75 @@ const FAQItem = ({
   );
 };
 
+// ─── Header Component ───────────────────────────────────────────────────────
+// Added "export" here so other pages can import it
+export function Header() {
+  return (
+    <header className="sticky top-0 z-50 bg-white border-b border-gray-100">
+      <div className="relative max-w-[1440px] mx-auto flex items-center justify-between px-4 h-[52px]">
+        {/* Left Nav */}
+        <div className="flex items-center gap-4">
+          <button>
+            <MenuIcon />
+          </button>
+          <div className="w-[2px] h-12 bg-gray-300" />
+          <nav className="flex items-center gap-4">
+            <a
+              href="#"
+              className="font-medium text-xs leading-[18px] uppercase text-black hover:opacity-70 transition"
+            >
+              Products
+            </a>
+            <a
+              href="#"
+              className="font-medium text-xs leading-[18px] uppercase text-black hover:opacity-70 transition"
+            >
+              Private Label
+            </a>
+            <a
+              href="#"
+              className="font-medium text-xs leading-[18px] uppercase text-black hover:opacity-70 transition"
+            >
+              Manufacturing
+            </a>
+          </nav>
+        </div>
+
+        {/* Logo — true center of header, independent of nav widths */}
+        <a
+          href="#"
+          className="absolute left-1/2 -translate-x-1/2 flex items-center"
+        >
+          <ImagePlaceholder
+            className="w-[267px] h-[34px] bg-transparent"
+            label="Logo"
+          />
+        </a>
+
+        {/* Right Nav */}
+        <div className="flex items-center gap-6">
+          <a
+            href="#"
+            className="font-medium text-xs leading-[18px] uppercase text-black hover:opacity-70 transition"
+          >
+            About
+          </a>
+          <a
+            href="#"
+            className="font-medium text-xs leading-[18px] uppercase text-black hover:opacity-70 transition"
+          >
+            Contact
+          </a>
+          <div className="w-[2px] h-12 bg-gray-300" />
+          <button className="hover:opacity-70 transition">
+            <SearchIcon />
+          </button>
+        </div>
+      </div>
+    </header>
+  );
+}
+
 // ─── Main Page Component ────────────────────────────────────────────────────
 export default function SarlamAthleticsPage() {
   const products = [
@@ -185,69 +254,9 @@ export default function SarlamAthleticsPage() {
 
   return (
     <div className="w-full bg-white text-black font-sans">
-   
-
+      
       {/* ───── Header / Navbar ───── */}
-      <header className="sticky top-0 z-50 bg-white border-b border-gray-100">
-        <div className="max-w-[1440px] mx-auto flex items-center justify-between px-10 h-[52px]">
-          {/* Left Nav */}
-          <div className="flex items-center gap-6">
-            <button className="lg:hidden">
-              <MenuIcon />
-            </button>
-            <nav className="hidden lg:flex items-center gap-6">
-              <a
-                href="#"
-                className="text-xs uppercase tracking-widest text-black hover:opacity-70 transition"
-              >
-                Products
-              </a>
-              <a
-                href="#"
-                className="text-xs uppercase tracking-widest text-black hover:opacity-70 transition"
-              >
-                Private Label
-              </a>
-              <a
-                href="#"
-                className="text-xs uppercase tracking-widest text-black hover:opacity-70 transition"
-              >
-                Manufacturing
-              </a>
-            </nav>
-          </div>
-
-          {/* Logo */}
-          <a href="#" className="flex items-center">
-            <ImagePlaceholder
-              className="w-[140px] h-[40px] bg-transparent"
-              label="Logo"
-            />
-          </a>
-
-          {/* Right Nav */}
-          <div className="flex items-center gap-5">
-            <a
-              href="#"
-              className="hidden lg:block text-xs uppercase tracking-widest text-black hover:opacity-70 transition"
-            >
-              About
-            </a>
-            <a
-              href="#"
-              className="hidden lg:block text-xs uppercase tracking-widest text-black hover:opacity-70 transition"
-            >
-              Contact
-            </a>
-            <button className="hover:opacity-70 transition">
-              <UserIcon />
-            </button>
-            <button className="hover:opacity-70 transition">
-              <SearchIcon />
-            </button>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* ───── Hero Section ───── */}
       <section className="relative w-full h-[620px] bg-[#0D0D0D] overflow-hidden">
@@ -278,7 +287,7 @@ export default function SarlamAthleticsPage() {
         </div>
       </section>
 
-         {/* ───── Announcement Bar ───── */}
+      {/* ───── Announcement Bar ───── */}
       <div className="w-full bg-[#0D0D0D] overflow-hidden">
         <div className="flex animate-marquee whitespace-nowrap py-2">
           {[...Array(6)].map((_, i) => (

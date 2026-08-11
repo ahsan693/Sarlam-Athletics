@@ -4,15 +4,10 @@ import { useState, useEffect, useRef } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
+// Import the Header correctly from the home.tsx file
+import { Header } from "../home/home";
 
 // ─── Icons (inline SVGs) ───
-const SearchIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <circle cx="11" cy="11" r="8" />
-    <path d="m21 21-4.3-4.3" />
-  </svg>
-);
-
 const ArrowUpRight = () => (
   <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5">
     <path d="M3 9L9 3M9 3H4M9 3v5" />
@@ -47,105 +42,6 @@ const HandshakeIcon = () => (
   </svg>
 );
 
-// ─── Header ───
-function Header() {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-shadow duration-300 bg-white ${
-        scrolled ? "shadow-sm" : ""
-      }`}
-    >
-      <div className="flex items-center justify-between h-[52px] px-0">
-        {/* Left nav */}
-        <div className="flex items-center h-12">
-          <Link href="/" className="flex items-center justify-center w-16 h-12">
-            <img src="/logo-icon.svg" alt="Sarlam" className="h-6" />
-          </Link>
-          <nav className="hidden md:flex items-center h-12 gap-0 pl-2">
-            <Link
-              href="/products"
-              className="text-xs font-medium text-[#0D0D0D] px-4 h-12 flex items-center hover:opacity-70 transition-opacity"
-            >
-              Products
-            </Link>
-            <Link
-              href="/private-label"
-              className="text-xs font-medium text-[#0D0D0D] px-4 h-12 flex items-center hover:opacity-70 transition-opacity"
-            >
-              Private Label
-            </Link>
-            <Link
-              href="/manufacturing"
-              className="text-xs font-medium text-[#0D0D0D] px-4 h-12 flex items-center hover:opacity-70 transition-opacity"
-            >
-              Manufacturing
-            </Link>
-          </nav>
-        </div>
-
-        {/* Center logo */}
-        <div className="flex items-center justify-center h-[52px] px-0">
-          <Link href="/">
-            <img src="/logo-text.svg" alt="SARLAM ATHLETICS" className="h-[34px]" />
-          </Link>
-        </div>
-
-        {/* Right nav */}
-        <div className="flex items-center h-12 gap-[11px] pr-0">
-          <div className="hidden md:flex items-center gap-[11px] pl-12">
-            <Link
-              href="/about"
-              className="text-xs font-medium text-black px-4 h-12 flex items-center hover:opacity-70 transition-opacity"
-            >
-              About
-            </Link>
-            <Link
-              href="/contact"
-              className="text-xs font-medium text-black px-4 h-12 flex items-center hover:opacity-70 transition-opacity"
-            >
-              Contact
-            </Link>
-          </div>
-          <button className="w-12 h-12 flex items-center justify-center text-black hover:opacity-70 transition-opacity">
-            <SearchIcon />
-          </button>
-
-          {/* Mobile menu toggle */}
-          <button
-            className="md:hidden w-12 h-12 flex items-center justify-center"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            <div className="space-y-1.5">
-              <span className={`block w-5 h-0.5 bg-black transition-transform ${mobileMenuOpen ? "rotate-45 translate-y-2" : ""}`} />
-              <span className={`block w-5 h-0.5 bg-black transition-opacity ${mobileMenuOpen ? "opacity-0" : ""}`} />
-              <span className={`block w-5 h-0.5 bg-black transition-transform ${mobileMenuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
-            </div>
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 py-4 px-6 space-y-4">
-          {["Products", "Private Label", "Manufacturing", "About", "Contact"].map((item) => (
-            <Link key={item} href={`/${item.toLowerCase().replace(" ", "-")}`} className="block text-sm text-[#0D0D0D]">
-              {item}
-            </Link>
-          ))}
-        </div>
-      )}
-    </header>
-  );
-}
 
 // ─── Hero Section ───
 function HeroSection() {

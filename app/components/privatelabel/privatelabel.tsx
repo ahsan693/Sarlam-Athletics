@@ -1,60 +1,16 @@
-
 "use client";
+
 // privatelabel.tsx
 import { useState } from "react";
+// Import the Header correctly from the home.tsx file
+import { Header } from "../home/home";
 
 export default function PrivateLabel() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   return (
     <div className="min-h-screen bg-white text-[#0D0D0D] font-sans">
+      
       {/* ─── HEADER ─── */}
-      <header className="sticky top-0 z-50 bg-white border-b border-gray-100">
-        <div className="max-w-[1440px] mx-auto flex items-center justify-between px-4 md:px-8 h-[52px]">
-          {/* Left Nav */}
-          <nav className="hidden md:flex items-center gap-6 text-xs tracking-wide">
-            <a href="/products" className="hover:opacity-60 transition">Products</a>
-            <a href="/private-label" className="hover:opacity-60 transition font-medium">Private Label</a>
-            <a href="/manufacturing" className="hover:opacity-60 transition">Manufacturing</a>
-          </nav>
-
-          {/* Mobile Hamburger */}
-          <button
-            className="md:hidden flex flex-col justify-center gap-[5px] w-8 h-8"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            <span className={`block h-[1.5px] w-6 bg-[#0D0D0D] transition-transform ${mobileMenuOpen ? "rotate-45 translate-y-[6.5px]" : ""}`} />
-            <span className={`block h-[1.5px] w-6 bg-[#0D0D0D] transition-opacity ${mobileMenuOpen ? "opacity-0" : ""}`} />
-            <span className={`block h-[1.5px] w-6 bg-[#0D0D0D] transition-transform ${mobileMenuOpen ? "-rotate-45 -translate-y-[6.5px]" : ""}`} />
-          </button>
-
-          {/* Logo */}
-          <a href="/" className="text-sm md:text-base font-semibold tracking-widest uppercase">
-            Sarlam Athletics
-          </a>
-
-          {/* Right Nav */}
-          <div className="hidden md:flex items-center gap-6 text-xs tracking-wide">
-            <a href="/contact" className="hover:opacity-60 transition">Contact</a>
-          </div>
-
-          {/* Mobile Cart/Search Icon */}
-          <div className="md:hidden w-8" />
-        </div>
-
-        {/* Mobile Menu Overlay */}
-        {mobileMenuOpen && (
-          <div className="md:hidden absolute top-[52px] left-0 w-full bg-white border-t border-gray-100 shadow-lg z-40">
-            <nav className="flex flex-col py-4 px-6 gap-4 text-sm">
-              <a href="/products" className="py-2 border-b border-gray-100">Products</a>
-              <a href="/private-label" className="py-2 border-b border-gray-100 font-medium">Private Label</a>
-              <a href="/manufacturing" className="py-2 border-b border-gray-100">Manufacturing</a>
-              <a href="/contact" className="py-2">Contact</a>
-            </nav>
-          </div>
-        )}
-      </header>
+      <Header />
 
       {/* ─── HERO SECTION ─── */}
       <section className="relative bg-[#0D0D0D] text-white overflow-hidden">

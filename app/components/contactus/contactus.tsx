@@ -1,78 +1,8 @@
 "use client";
 
 import { useState } from "react";
-
-// ─── HEADER ────────────────────────────────────────────────────────
-function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  return (
-    <header className="sticky top-0 z-50 bg-white border-b border-[#C9C9C9]">
-      <div className="flex items-center justify-between h-[52px] lg:h-[52px]">
-        {/* Left: hamburger + nav links (desktop) */}
-        <div className="flex items-center h-full">
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="w-16 h-full border-r border-[#C9C9C9] flex items-center justify-center lg:w-16"
-          >
-            <div className="flex flex-col gap-[5px]">
-              <span className="block w-[26px] h-[1.5px] bg-[#0D0D0D]"></span>
-              <span className="block w-[26px] h-[1.5px] bg-[#0D0D0D]"></span>
-              <span className="block w-[26px] h-[1.5px] bg-[#0D0D0D]"></span>
-            </div>
-          </button>
-          <nav className="hidden lg:flex items-center pl-2 h-full">
-            <ul className="flex items-center h-full">
-              {["Products", "Private Label", "Manufacturing"].map((link) => (
-                <li key={link}>
-                  <a
-                    href="#"
-                    className="px-4 h-full flex items-center text-[14px] font-normal text-[#0D0D0D] hover:opacity-70 transition-opacity"
-                  >
-                    {link}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
-
-        {/* Center: Logo */}
-        <a href="#" className="absolute left-1/2 -translate-x-1/2">
-          <span className="text-[22px] lg:text-[24px] font-bold italic tracking-tight text-black uppercase">
-            SARLAM ATHLETICS
-          </span>
-        </a>
-
-        {/* Right: actions */}
-        <div className="flex items-center h-full">
-          <div className="hidden lg:flex items-center h-full gap-3 pr-0">
-            <a href="#" className="text-[12px] text-[#0D0D0D] px-3">
-              Contact
-            </a>
-            <button className="text-[12px] text-[#0D0D0D] px-3">
-              USA (USD $)
-            </button>
-            <button className="w-12 h-full border-l border-[#C9C9C9] flex items-center justify-center">
-              <svg width="18" height="18" fill="none" stroke="#0D0D0D" strokeWidth="1.5" viewBox="0 0 24 24">
-                <circle cx="11" cy="11" r="7" />
-                <path d="M16 16l4.5 4.5" />
-              </svg>
-            </button>
-          </div>
-          {/* Mobile: hamburger is on left, logo centered, menu icon right */}
-          <button className="lg:hidden w-[30px] h-12 flex items-center justify-center mr-4">
-            <div className="flex flex-col gap-[5px]">
-              <span className="block w-[26px] h-[1.5px] bg-[#0D0D0D]"></span>
-              <span className="block w-[26px] h-[1.5px] bg-[#0D0D0D]"></span>
-              <span className="block w-[26px] h-[1.5px] bg-[#0D0D0D]"></span>
-            </div>
-          </button>
-        </div>
-      </div>
-    </header>
-  );
-}
+// Import the Header correctly from the home.tsx file
+import { Header } from "../home/home"; 
 
 // ─── HERO SECTION ──────────────────────────────────────────────────
 function HeroSection() {

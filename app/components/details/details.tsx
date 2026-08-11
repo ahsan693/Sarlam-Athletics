@@ -2,6 +2,8 @@
 
 // product-detail.tsx
 import { useState } from "react";
+// Import the Header correctly from the home.tsx file
+import { Header } from "../home/home"; 
 
 const finishes = [
   { name: "Black", color: "#000000", selected: true },
@@ -57,62 +59,9 @@ export default function DetailsComponent() {
 
   return (
     <div className="min-h-screen bg-white font-['FFF_Acid_Grotesk',sans-serif]">
+      
       {/* ── Header ── */}
-      <header className="sticky top-0 z-50 bg-white">
-        <div className="flex items-center justify-between h-[52px] px-0">
-          {/* Left Nav */}
-          <div className="flex items-center gap-0 flex-1">
-            <div className="flex items-center justify-center w-16 h-12">
-              <img src="/images/logo-icon.svg" alt="Sarlam" className="h-6" />
-            </div>
-            <nav className="flex items-center h-12">
-              <div className="relative group px-4">
-                <button className="text-xs font-medium text-[#0D0D0D] flex items-center gap-1">
-                  Products
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                    <path d="M2.5 4L5 6.5L7.5 4" stroke="currentColor" strokeWidth="1.2" />
-                  </svg>
-                </button>
-              </div>
-              <div className="relative group px-4">
-                <button className="text-xs font-medium text-[#0D0D0D] flex items-center gap-1">
-                  Private Label
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                    <path d="M2.5 4L5 6.5L7.5 4" stroke="currentColor" strokeWidth="1.2" />
-                  </svg>
-                </button>
-              </div>
-              <div className="relative group px-4">
-                <button className="text-xs font-medium text-[#0D0D0D] flex items-center gap-1">
-                  Manufacturing
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                    <path d="M2.5 4L5 6.5L7.5 4" stroke="currentColor" strokeWidth="1.2" />
-                  </svg>
-                </button>
-              </div>
-            </nav>
-          </div>
-
-          {/* Center Logo */}
-          <div className="flex items-center justify-center w-[140px] h-[52px]">
-            <img src="/images/logo-wordmark.svg" alt="Sarlam Athletics" className="h-8" />
-          </div>
-
-          {/* Right Nav */}
-          <div className="flex items-center justify-end flex-1">
-            <div className="flex items-center gap-6 pr-6">
-              <a href="#" className="text-xs font-medium text-black">About</a>
-              <a href="#" className="text-xs font-medium text-black">Contact</a>
-              <button className="w-5 h-5">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <circle cx="9" cy="9" r="6" />
-                  <path d="M13.5 13.5L17 17" />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* ── Announcement Banner ── */}
       <div className="bg-[#0D0D0D] h-[34px] flex items-center justify-center overflow-hidden">
