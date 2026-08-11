@@ -354,7 +354,7 @@ function FAQSection() {
             click the button below.
           </p>
           <a
-            href="#"
+            href="/contactus"
             className="inline-flex items-center justify-center px-5 py-3 border border-black rounded-md text-[15px] font-normal text-black hover:bg-black hover:text-white transition-colors w-full lg:w-auto"
           >
             Get in touch
@@ -369,27 +369,32 @@ function FAQSection() {
 function Footer() {
   const [openAccordion, setOpenAccordion] = useState<number | null>(null);
 
+  // Updated with explicit hrefs for routing
   const footerNavGroups = [
     {
       title: "Navigation",
       links: [
-        "Home",
-        "Products",
-        "Private Label",
-        "Manufacturing Process",
+        { label: "Home", href: "/" },
+        { label: "Products", href: "/products" },
+        { label: "Private Label", href: "/privatelabel" },
+        { label: "Manufacturing Process", href: "/manufacture" },
       ],
     },
     {
       title: "Company",
-      links: ["About", "Contact", "Request Quote"],
+      links: [
+        { label: "About", href: "/about" },
+        { label: "Contact", href: "/contactus" },
+        { label: "Request Quote", href: "/contactus" },
+      ],
     },
     {
       title: "Products",
       links: [
-        "Boxing Gloves",
-        "Martial Arts Uniforms",
-        "MMA Gear",
-        "Training Accessories",
+        { label: "Boxing Gloves", href: "/products" },
+        { label: "Martial Arts Uniforms", href: "/products" },
+        { label: "MMA Gear", href: "/products" },
+        { label: "Training Accessories", href: "/products" },
       ],
     },
   ];
@@ -423,10 +428,10 @@ function Footer() {
                 {group.links.map((link, j) => (
                   <a
                     key={j}
-                    href="#"
+                    href={link.href}
                     className="text-[14px] text-[#0D0D0D] hover:opacity-70 transition-opacity"
                   >
-                    {link}
+                    {link.label}
                   </a>
                 ))}
               </div>
@@ -515,10 +520,10 @@ function Footer() {
                   {group.links.map((link, j) => (
                     <a
                       key={j}
-                      href="#"
+                      href={link.href}
                       className="text-[14px] text-[#0D0D0D]"
                     >
-                      {link}
+                      {link.label}
                     </a>
                   ))}
                 </div>

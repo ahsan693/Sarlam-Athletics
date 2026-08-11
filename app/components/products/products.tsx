@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
+// Import the Header correctly from the home.tsx file
+import { Header } from "../home/home"; 
 
 // ─── Image Placeholder ──────────────────────────────────────────────────────
 const ImagePlaceholder = ({
@@ -18,28 +20,6 @@ const ImagePlaceholder = ({
 );
 
 // ─── Icons ──────────────────────────────────────────────────────────────────
-const SearchIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <circle cx="9" cy="9" r="7" stroke="currentColor" strokeWidth="2" />
-    <line x1="14" y1="14" x2="19" y2="19" stroke="currentColor" strokeWidth="2" />
-  </svg>
-);
-
-const UserIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <circle cx="10" cy="7" r="4" stroke="currentColor" strokeWidth="2" />
-    <path d="M2 19c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="currentColor" strokeWidth="2" />
-  </svg>
-);
-
-const MenuIcon = () => (
-  <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
-    <line y1="1" x2="20" y2="1" stroke="currentColor" strokeWidth="2" />
-    <line y1="7" x2="20" y2="7" stroke="currentColor" strokeWidth="2" />
-    <line y1="13" x2="20" y2="13" stroke="currentColor" strokeWidth="2" />
-  </svg>
-);
-
 const ChevronLeftIcon = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
     <path d="M10 3l-5 5 5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -181,66 +161,7 @@ export default function ProductPage() {
       </div>
 
       {/* ───── Header ───── */}
-      <header className="sticky top-0 z-50 bg-white border-b border-gray-100">
-        <div className="max-w-[1440px] mx-auto flex items-center justify-between px-10 h-[52px]">
-          {/* Left Nav */}
-          <div className="flex items-center gap-6">
-            <button className="lg:hidden">
-              <MenuIcon />
-            </button>
-            <nav className="hidden lg:flex items-center gap-6">
-              <a
-                href="#"
-                className="text-xs uppercase tracking-widest text-black hover:opacity-70 transition"
-              >
-                Products
-              </a>
-              <a
-                href="#"
-                className="text-xs uppercase tracking-widest text-black hover:opacity-70 transition"
-              >
-                Private Label
-              </a>
-              <a
-                href="#"
-                className="text-xs uppercase tracking-widest text-black hover:opacity-70 transition"
-              >
-                Manufacturing
-              </a>
-            </nav>
-          </div>
-
-          {/* Logo */}
-          <a href="#" className="flex items-center">
-            <ImagePlaceholder
-              className="w-[140px] h-[40px] bg-transparent"
-              label="Logo"
-            />
-          </a>
-
-          {/* Right */}
-          <div className="flex items-center gap-5">
-            <a
-              href="#"
-              className="hidden lg:block text-xs uppercase tracking-widest text-black hover:opacity-70 transition"
-            >
-              About
-            </a>
-            <a
-              href="#"
-              className="hidden lg:block text-xs uppercase tracking-widest text-black hover:opacity-70 transition"
-            >
-              Contact
-            </a>
-            <button className="hover:opacity-70 transition">
-              <UserIcon />
-            </button>
-            <button className="hover:opacity-70 transition">
-              <SearchIcon />
-            </button>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* ───── Hero Section ───── */}
       <section className="relative w-full h-[624px] overflow-hidden">

@@ -1,21 +1,36 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link"; // Added Next.js Link for proper routing
 
-// ─── Image Placeholder Component ────────────────────────────────────────────
+// ─── Image Placeholder Component (Updated to support src) ───────────────────
 const ImagePlaceholder = ({
   className = "",
   label = "Image",
+  src,
 }: {
   className?: string;
   label?: string;
-}) => (
-  <div
-    className={`bg-gray-200 flex items-center justify-center text-gray-400 text-sm ${className}`}
-  >
-    <span className="text-center px-4">[{label}]</span>
-  </div>
-);
+  src?: string;
+}) => {
+  if (src) {
+    return (
+      <img
+        src={src}
+        alt={label}
+        className={`object-cover ${className}`}
+      />
+    );
+  }
+
+  return (
+    <div
+      className={`bg-gray-200 flex items-center justify-center text-gray-400 text-sm ${className}`}
+    >
+      <span className="text-center px-4">[{label}]</span>
+    </div>
+  );
+};
 
 // ─── Icons ──────────────────────────────────────────────────────────────────
 const MenuIcon = () => (
@@ -145,7 +160,6 @@ const FAQItem = ({
 };
 
 // ─── Header Component ───────────────────────────────────────────────────────
-// Added "export" here so other pages can import it
 export function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-100">
@@ -157,52 +171,52 @@ export function Header() {
           </button>
           <div className="w-[2px] h-12 bg-gray-300" />
           <nav className="flex items-center gap-4">
-            <a
-              href="#"
+            <Link
+              href="/products"
               className="font-medium text-xs leading-[18px] uppercase text-black hover:opacity-70 transition"
             >
               Products
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              href="/privatelabel"
               className="font-medium text-xs leading-[18px] uppercase text-black hover:opacity-70 transition"
             >
               Private Label
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              href="/manufacture"
               className="font-medium text-xs leading-[18px] uppercase text-black hover:opacity-70 transition"
             >
               Manufacturing
-            </a>
+            </Link>
           </nav>
         </div>
 
         {/* Logo — true center of header, independent of nav widths */}
-        <a
-          href="#"
+        <Link
+          href="/"
           className="absolute left-1/2 -translate-x-1/2 flex items-center"
         >
           <ImagePlaceholder
             className="w-[267px] h-[34px] bg-transparent"
-            label="Logo"
+            label="SARLAM ATHLETICS"
           />
-        </a>
+        </Link>
 
         {/* Right Nav */}
         <div className="flex items-center gap-6">
-          <a
-            href="#"
+          <Link
+            href="/about"
             className="font-medium text-xs leading-[18px] uppercase text-black hover:opacity-70 transition"
           >
             About
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            href="/contactus"
             className="font-medium text-xs leading-[18px] uppercase text-black hover:opacity-70 transition"
           >
             Contact
-          </a>
+          </Link>
           <div className="w-[2px] h-12 bg-gray-300" />
           <button className="hover:opacity-70 transition">
             <SearchIcon />
@@ -216,11 +230,31 @@ export function Header() {
 // ─── Main Page Component ────────────────────────────────────────────────────
 export default function SarlamAthleticsPage() {
   const products = [
-    { name: "Private Label Boxing Gloves", cta: "View Product →" },
-    { name: "BJJ Gi & Martial Arts Uniforms", cta: "View Product →" },
-    { name: "Boxing Focus Mitts and Training Pads", cta: "View Product →" },
-    { name: "Jump Ropes & Training Accessories", cta: "Request Quote" },
-    { name: "MMA Gloves", cta: "Request Quote" },
+    {
+      name: "Private Label Boxing Gloves",
+      cta: "View Product →",
+      image: "https://images.unsplash.com/photo-1583473848882-f9a5bc7fd2ee?auto=format&fit=crop&q=80&w=600",
+    },
+    {
+      name: "BJJ Gi & Martial Arts Uniforms",
+      cta: "View Product →",
+      image: "https://images.unsplash.com/photo-1564415315949-26eb2a297e68?auto=format&fit=crop&q=80&w=600",
+    },
+    {
+      name: "Boxing Focus Mitts and Training Pads",
+      cta: "View Product →",
+      image: "https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&q=80&w=600",
+    },
+    {
+      name: "Jump Ropes & Training Accessories",
+      cta: "Request Quote",
+      image: "https://images.unsplash.com/photo-1515775538093-d2d95c5ee4f5?auto=format&fit=crop&q=80&w=600",
+    },
+    {
+      name: "MMA Gloves",
+      cta: "Request Quote",
+      image: "https://images.unsplash.com/photo-1615110461877-628d009b0b46?auto=format&fit=crop&q=80&w=600",
+    },
   ];
 
   const faqs = [
@@ -252,6 +286,12 @@ export default function SarlamAthleticsPage() {
     },
   ];
 
+  const testimonialAvatars = [
+    "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150",
+    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150",
+    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150",
+  ];
+
   return (
     <div className="w-full bg-white text-black font-sans">
       
@@ -264,6 +304,7 @@ export default function SarlamAthleticsPage() {
         <ImagePlaceholder
           className="absolute inset-0 w-full h-full object-cover opacity-40"
           label="Hero Background - Combat Sports Equipment"
+          src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&q=80&w=2000"
         />
         <div className="absolute inset-0 bg-black/50" />
 
@@ -278,12 +319,12 @@ export default function SarlamAthleticsPage() {
             accessories for gyms, retailers, distributors, and sports brands
             worldwide.
           </p>
-          <a
-            href="#"
+          <Link
+            href="/contactus"
             className="inline-flex items-center justify-center bg-white text-black text-xs uppercase tracking-[0.15em] px-10 py-3 hover:bg-gray-100 transition"
           >
             Request a Manufacturing Quote
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -331,6 +372,7 @@ export default function SarlamAthleticsPage() {
                   <ImagePlaceholder
                     className="w-full h-full"
                     label={product.name}
+                    src={product.image}
                   />
                   <button className="absolute top-4 right-4 bg-white text-black text-xs uppercase tracking-wider px-4 py-2 opacity-0 group-hover:opacity-100 transition">
                     Quick View
@@ -339,12 +381,12 @@ export default function SarlamAthleticsPage() {
                 {/* Product Info */}
                 <div className="flex items-center justify-between px-8 py-5">
                   <span className="text-sm font-normal">{product.name}</span>
-                  <a
-                    href="#"
+                  <Link
+                    href="/products"
                     className="text-sm text-black hover:opacity-70 transition"
                   >
                     {product.cta}
-                  </a>
+                  </Link>
                 </div>
               </div>
             ))}
@@ -353,12 +395,12 @@ export default function SarlamAthleticsPage() {
 
         {/* View All Button */}
         <div className="flex justify-center mt-10">
-          <a
-            href="#"
+          <Link
+            href="/products"
             className="inline-flex items-center justify-center bg-black text-white text-[15px] uppercase tracking-wider px-10 py-3.5 border border-black hover:bg-gray-900 transition"
           >
             View All Items
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -390,12 +432,12 @@ export default function SarlamAthleticsPage() {
               brand or expanding an existing product line, we deliver reliable
               manufacturing solutions designed for long-term growth.
             </p>
-            <a
-              href="#"
+            <Link
+              href="/contactus"
               className="inline-flex items-center justify-center border border-white text-white text-[15px] uppercase tracking-wider px-10 py-3.5 hover:bg-white hover:text-black transition"
             >
               Get a Free Manufacturing Quote
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -453,19 +495,19 @@ export default function SarlamAthleticsPage() {
                 num: "01",
                 title: "Factory-Direct Manufacturing",
                 desc: "Manufacture directly with our factory for better pricing, faster communication, consistent product quality, and complete control over branding, materials, and production timelines.",
-                image: "Factory manufacturing process",
+                imageSrc: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=600",
               },
               {
                 num: "02",
                 title: "Flexible MOQs for Growing Brands",
                 desc: "Start with sample runs or smaller wholesale orders before scaling into larger production batches for your sports brand or retail business.",
-                image: "Team discussing production",
+                imageSrc: "https://images.unsplash.com/photo-1552581234-26160f608093?auto=format&fit=crop&q=80&w=600",
               },
               {
                 num: "03",
                 title: "Private Label & OEM Customization",
                 desc: "Customize logos, colors, materials, sizing, stitching, labels, and packaging across boxing gloves, martial arts uniforms, belts, wraps, and training gear.",
-                image: "Product customization",
+                imageSrc: "https://images.unsplash.com/photo-1614210620247-49f3e9d89280?auto=format&fit=crop&q=80&w=600",
               },
             ].map((step, i) => (
               <div
@@ -483,7 +525,8 @@ export default function SarlamAthleticsPage() {
                 </p>
                 <ImagePlaceholder
                   className="w-full h-[303px] rounded-sm"
-                  label={step.image}
+                  label={step.title}
+                  src={step.imageSrc}
                 />
               </div>
             ))}
@@ -533,6 +576,7 @@ export default function SarlamAthleticsPage() {
         <ImagePlaceholder
           className="absolute inset-0 w-full h-full opacity-10"
           label="Testimonial Background"
+          src="https://images.unsplash.com/photo-1517838503506-3b561ebea8eb?auto=format&fit=crop&q=80&w=2000"
         />
 
         <div className="relative z-10 max-w-[720px] mx-auto px-10">
@@ -547,7 +591,7 @@ export default function SarlamAthleticsPage() {
 
           {/* Avatars */}
           <div className="flex items-center gap-3 mt-8">
-            {[1, 2, 3].map((_, i) => (
+            {testimonialAvatars.map((src, i) => (
               <div
                 key={i}
                 className="w-14 h-14 rounded-full overflow-hidden border-2 border-white"
@@ -555,6 +599,7 @@ export default function SarlamAthleticsPage() {
                 <ImagePlaceholder
                   className="w-full h-full"
                   label={`Avatar ${i + 1}`}
+                  src={src}
                 />
               </div>
             ))}
@@ -577,17 +622,25 @@ export default function SarlamAthleticsPage() {
                 num: "01",
                 title: "Consultation & Product Specs",
                 desc: "Tell us what you want to manufacture, including product type, materials, colors, logo placement, packaging, order quantity, and target price.",
+                imageSrc: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=600",
               },
               {
                 num: "02",
                 title: "Sampling & Prototype Development",
                 desc: "",
+                imageSrc: "https://images.unsplash.com/photo-1580983546522-8ce112ea00c9?auto=format&fit=crop&q=80&w=600",
               },
-              { num: "03", title: "Bulk Manufacturing", desc: "" },
+              { 
+                num: "03", 
+                title: "Bulk Manufacturing", 
+                desc: "",
+                imageSrc: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&q=80&w=600",
+              },
               {
                 num: "04",
                 title: "Private Label Packaging & Delivery",
                 desc: "",
+                imageSrc: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=600",
               },
             ].map((step, i) => (
               <div
@@ -598,6 +651,7 @@ export default function SarlamAthleticsPage() {
                 <ImagePlaceholder
                   className="w-full h-[457px]"
                   label={`Step ${step.num} - ${step.title}`}
+                  src={step.imageSrc}
                 />
                 {/* Step Info */}
                 <div className="p-6 bg-white">
@@ -635,12 +689,12 @@ export default function SarlamAthleticsPage() {
               If you have any further questions or just want to reach our team,
               click the button below.
             </p>
-            <a
-              href="#"
+            <Link
+              href="/contactus"
               className="inline-flex items-center justify-center border border-black text-black text-[15px] uppercase tracking-wider px-8 py-3 hover:bg-black hover:text-white transition"
             >
               Get in touch
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -652,6 +706,7 @@ export default function SarlamAthleticsPage() {
             <ImagePlaceholder
               className="absolute inset-0 w-full h-full"
               label="CTA Background - Sports Equipment"
+              src="https://images.unsplash.com/photo-1517438322307-e67111335449?auto=format&fit=crop&q=80&w=2000"
             />
             <div className="relative z-10 bg-black/60 py-24 px-12 md:px-20">
               <div className="max-w-[700px]">
@@ -664,12 +719,12 @@ export default function SarlamAthleticsPage() {
                   belts, wraps, and training accessories with flexible MOQs,
                   expert quality control, and worldwide delivery.
                 </p>
-                <a
-                  href="#"
+                <Link
+                  href="/contactus"
                   className="inline-flex items-center justify-center border border-white text-white text-[15px] uppercase tracking-wider px-10 py-3.5 hover:bg-white hover:text-black transition"
                 >
                   Get Your Free Manufacturing Quote
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -702,39 +757,39 @@ export default function SarlamAthleticsPage() {
             {/* Column 1 */}
             <div className="flex flex-col gap-3">
               {[
-                "Home",
-                "Products",
-                "Private Label",
-                "Manufacturing Process",
-                "About",
-                "Contact",
-                "Request Quote",
-              ].map((link) => (
-                <a
-                  key={link}
-                  href="#"
+                { label: "Home", href: "/" },
+                { label: "Products", href: "/products" },
+                { label: "Private Label", href: "/privatelabel" },
+                { label: "Manufacturing Process", href: "/manufacture" },
+                { label: "About", href: "/about" },
+                { label: "Contact", href: "/contactus" },
+                { label: "Request Quote", href: "/contactus" },
+              ].map((link, idx) => (
+                <Link
+                  key={idx}
+                  href={link.href}
                   className="text-sm text-gray-600 hover:text-black transition"
                 >
-                  {link}
-                </a>
+                  {link.label}
+                </Link>
               ))}
             </div>
 
             {/* Column 2 */}
             <div className="flex flex-col gap-3">
               {[
-                "Boxing Gloves",
-                "Martial Arts Uniforms",
-                "MMA Gear",
-                "Training Accessories",
-              ].map((link) => (
-                <a
-                  key={link}
-                  href="#"
+                { label: "Boxing Gloves", href: "/products" },
+                { label: "Martial Arts Uniforms", href: "/products" },
+                { label: "MMA Gear", href: "/products" },
+                { label: "Training Accessories", href: "/products" },
+              ].map((link, idx) => (
+                <Link
+                  key={idx}
+                  href={link.href}
                   className="text-sm text-gray-600 hover:text-black transition"
                 >
-                  {link}
-                </a>
+                  {link.label}
+                </Link>
               ))}
             </div>
           </div>

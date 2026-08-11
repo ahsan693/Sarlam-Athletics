@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from "react";
 import Head from "next/head";
 import Link from "next/link";
-import Image from "next/image";
 // Import the Header correctly from the home.tsx file
 import { Header } from "../home/home";
 
@@ -42,7 +41,6 @@ const HandshakeIcon = () => (
   </svg>
 );
 
-
 // ─── Hero Section ───
 function HeroSection() {
   return (
@@ -51,12 +49,13 @@ function HeroSection() {
         {/* Background image */}
         <div className="absolute inset-0">
           <div className="w-full h-full bg-[#F0EDE9]">
-            {/* Replace with actual image */}
             <img
-              src="/images/hero-about.jpg"
+              src="https://images.unsplash.com/photo-1591117207239-788bf8de6c3b?auto=format&fit=crop&q=80&w=2000"
               alt="Manufacturing"
               className="w-full h-full object-cover"
             />
+            {/* Dark overlay for text readability */}
+            <div className="absolute inset-0 bg-black/40" />
           </div>
         </div>
 
@@ -105,7 +104,7 @@ function VideoSection() {
         {/* Video placeholder */}
         <div className="relative w-full aspect-[1376/535] rounded-lg overflow-hidden bg-gray-200 group cursor-pointer">
           <img
-            src="/images/video-thumbnail.jpg"
+            src="https://images.unsplash.com/photo-1612423284934-2850a4ea6b0f?auto=format&fit=crop&q=80&w=1200"
             alt="Factory video"
             className="w-full h-full object-cover"
           />
@@ -255,7 +254,7 @@ function TimelineSection() {
                 Ready to Launch Your Private Label Sports Brand?
               </h2>
               <Link
-                href="/contact"
+                href="/contactus"
                 className="inline-block px-8 py-3.5 border border-white rounded-md text-[15px] text-black bg-white hover:bg-transparent hover:text-white transition-colors"
               >
                 Request Manufacturing Quote
@@ -285,19 +284,19 @@ const services = [
     title: "Private Label & OEM Manufacturing",
     description:
       "Manufacture custom boxing gloves, MMA gear, martial arts uniforms, belts, wraps, and training accessories under your own brand.",
-    image: "/images/service-private-label.jpg",
+    image: "https://images.unsplash.com/photo-1583473848882-f9a5bc7fd2ee?auto=format&fit=crop&q=80&w=800",
   },
   {
     title: "Wholesale Sports Equipment",
     description:
       "Factory-direct production for sports brands, gyms, wholesalers, distributors, and retailers with scalable manufacturing capacity.",
-    image: "/images/service-wholesale.jpg",
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800",
   },
   {
     title: "Product Development & Sampling",
     description:
       "Develop and refine your products through prototype sampling, material testing, branding, and packaging before production.",
-    image: "/images/service-sampling.jpg",
+    image: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=800",
   },
 ];
 
@@ -367,7 +366,7 @@ function ProductsSection() {
           {productTags.map((tag, i) => (
             <Link
               key={i}
-              href={`/products/${tag.toLowerCase().replace(/ /g, "-")}`}
+              href={`/products`}
               className="px-6 py-3.5 bg-[#F5F5F5] rounded text-base text-[#0D0D0D] hover:bg-[#E8E8E8] transition-colors"
             >
               {tag}
@@ -381,11 +380,11 @@ function ProductsSection() {
 
 // ─── Industries We Serve Section ───
 const industries = [
-  { title: "Sports Brands", image: "/images/industry-sports-brands.jpg" },
-  { title: "Gyms & Martial Arts Academies", image: "/images/industry-gyms.jpg" },
-  { title: "Retailers & eCommerce Brands", image: "/images/industry-retailers.jpg" },
-  { title: "Wholesale Distributors", image: "/images/industry-wholesale.jpg" },
-  { title: "Sports Equipment Companies", image: "/images/industry-equipment.jpg" },
+  { title: "Sports Brands", image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=600" },
+  { title: "Gyms & Martial Arts Academies", image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=600" },
+  { title: "Retailers & eCommerce Brands", image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=600" },
+  { title: "Wholesale Distributors", image: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&q=80&w=600" },
+  { title: "Sports Equipment Companies", image: "https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&q=80&w=600" },
 ];
 
 function IndustriesSection() {
@@ -407,7 +406,7 @@ function IndustriesSection() {
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
               {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               {/* Title */}
               <div className="absolute bottom-4 left-4 right-4">
                 <h3 className="text-xl md:text-[26px] md:leading-[26px] font-bold text-white">
@@ -428,19 +427,19 @@ function Footer() {
     pages: [
       { label: "Home", href: "/" },
       { label: "Products", href: "/products" },
-      { label: "Private Label", href: "/private-label" },
-      { label: "Manufacturing Process", href: "/manufacturing" },
+      { label: "Private Label", href: "/privatelabel" },
+      { label: "Manufacturing Process", href: "/manufacture" },
     ],
     company: [
       { label: "About", href: "/about" },
-      { label: "Contact", href: "/contact" },
-      { label: "Request Quote", href: "/quote" },
+      { label: "Contact", href: "/contactus" },
+      { label: "Request Quote", href: "/contactus" },
     ],
     products: [
-      { label: "Boxing Gloves", href: "/products/boxing-gloves" },
-      { label: "Martial Arts Uniforms", href: "/products/martial-arts-uniforms" },
-      { label: "MMA Gear", href: "/products/mma-gear" },
-      { label: "Training Accessories", href: "/products/training-accessories" },
+      { label: "Boxing Gloves", href: "/products" },
+      { label: "Martial Arts Uniforms", href: "/products" },
+      { label: "MMA Gear", href: "/products" },
+      { label: "Training Accessories", href: "/products" },
     ],
   };
 
