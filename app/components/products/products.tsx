@@ -242,7 +242,7 @@ export default function ProductPage() {
         {/* Hero Content */}
         <div className="relative z-10 flex items-center h-full px-10 max-w-[1440px] mx-auto">
           <div className="max-w-[640px] flex flex-col gap-6">
-            <h1 className="text-white text-4xl md:text-[56px] font-bold leading-[1.1]">
+            <h1 className="text-white text-4xl md:text-[56px] font-bold leading-[1.1] uppercase">
               Private Label Combat Sports Equipment Manufacturer
             </h1>
             <div className="flex flex-col gap-4">
@@ -415,20 +415,22 @@ export default function ProductPage() {
           </div>
 
           {/* Cards Carousel — horizontal scroll with a peeking next card and a
-              single floating "next" button overlaid on the edge, per the PDF */}
+              single floating "next" button overlaid on the edge, per the PDF.
+              Cards are white with a thin border (not filled gray), matching a
+              plain product-photo look, image on top and copy underneath. */}
           <div className="relative">
             <div
               ref={scrollerRef}
-              className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+              className="flex gap-0 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2 border-t border-gray-200 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
             >
               {customizationOptions.map((option, i) => (
                 <div
                   key={i}
                   data-card
-                  className="snap-start shrink-0 w-[280px] sm:w-[300px] bg-[#F5F5F5] rounded-sm overflow-hidden flex flex-col"
+                  className="snap-start shrink-0 w-[280px] sm:w-[320px] bg-white border-r border-b border-gray-200 overflow-hidden flex flex-col"
                 >
                   {/* Card Image */}
-                  <div className="relative w-full h-[400px]">
+                  <div className="relative w-full aspect-[4/5]">
                     <ImagePlaceholder
                       className="w-full h-full"
                       label={option.title}
@@ -438,7 +440,7 @@ export default function ProductPage() {
 
                   {/* Card Text */}
                   <div className="p-5 flex-1">
-                    <h3 className="text-lg font-medium mb-2">{option.title}</h3>
+                    <h3 className="text-lg font-semibold mb-2">{option.title}</h3>
                     <p className="text-[13px] text-gray-500 leading-relaxed">
                       {option.desc}
                     </p>
@@ -447,18 +449,19 @@ export default function ProductPage() {
               ))}
             </div>
 
-            {/* Floating next-card button, overlaid on the right edge */}
+            {/* Floating next-card button, overlaid on the right edge, vertically
+                centered on the image portion of the cards */}
             <button
               onClick={() => scrollByCard(1)}
               aria-label="Next customization option"
-              className="hidden sm:flex absolute right-4 top-[180px] w-11 h-11 bg-white rounded-xl shadow-lg items-center justify-center hover:bg-gray-50 transition"
+              className="hidden sm:flex absolute right-4 top-[140px] w-11 h-11 bg-white rounded-xl shadow-lg items-center justify-center hover:bg-gray-50 transition"
             >
               <ChevronRightIcon />
             </button>
             <button
               onClick={() => scrollByCard(-1)}
               aria-label="Previous customization option"
-              className="hidden sm:flex absolute left-4 top-[180px] w-11 h-11 bg-white rounded-xl shadow-lg items-center justify-center hover:bg-gray-50 transition rotate-180"
+              className="hidden sm:flex absolute left-4 top-[140px] w-11 h-11 bg-white rounded-xl shadow-lg items-center justify-center hover:bg-gray-50 transition rotate-180"
             >
               <ChevronRightIcon />
             </button>
@@ -493,7 +496,7 @@ export default function ProductPage() {
               >
                 {/* Text */}
                 <div className="p-8 pb-6">
-                  <h3 className="text-[22px] font-normal mb-3">{step.title}</h3>
+                  <h3 className="text-[22px] font-semibold mb-3">{step.title}</h3>
                   <p className="text-[15px] text-gray-500 leading-relaxed">
                     {step.desc}
                   </p>
@@ -532,7 +535,7 @@ export default function ProductPage() {
                   i < 3 ? "border-r border-gray-200" : ""
                 }`}
               >
-                <h3 className="text-[22px] font-normal mb-4 leading-snug">
+                <h3 className="text-[22px] font-semibold mb-4 leading-snug">
                   {reason.title}
                 </h3>
                 <p className="text-[15px] text-gray-500 leading-relaxed">
@@ -565,7 +568,8 @@ export default function ProductPage() {
             </a>
           </div>
 
-          {/* Right - Nav Columns (3 columns, matching the PDF grouping) */}
+          {/* Right - Nav Columns (3 columns, matching the PDF grouping, each
+              link has a persistent thin bottom border like the private-label page) */}
           <div className="lg:w-1/2 flex gap-16">
             {/* Column 1 */}
             <div className="flex flex-col gap-3">
@@ -578,7 +582,7 @@ export default function ProductPage() {
                 <a
                   key={link}
                   href="#"
-                  className="text-sm text-gray-500 hover:text-black transition"
+                  className="text-sm text-gray-500 hover:text-black transition border-b border-gray-200 pb-2"
                 >
                   {link}
                 </a>
@@ -591,7 +595,7 @@ export default function ProductPage() {
                 <a
                   key={link}
                   href="#"
-                  className="text-sm text-gray-500 hover:text-black transition"
+                  className="text-sm text-gray-500 hover:text-black transition border-b border-gray-200 pb-2"
                 >
                   {link}
                 </a>
@@ -609,7 +613,7 @@ export default function ProductPage() {
                 <a
                   key={link}
                   href="#"
-                  className="text-sm text-gray-500 hover:text-black transition"
+                  className="text-sm text-gray-500 hover:text-black transition border-b border-gray-200 pb-2"
                 >
                   {link}
                 </a>
