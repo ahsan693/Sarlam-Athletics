@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 // Import the Header correctly from the home.tsx file
 import { Header } from "../home/home";
 
@@ -255,8 +256,6 @@ function TrustBadgesSection() {
 }
 
 // ─── WHAT HAPPENS NEXT ─────────────────────────────────────────────
-// Reference: heading and the whole steps row are centered, and step 4 has
-// a second line of copy ("This reduces uncertainty.") that was missing.
 const steps = [
   { num: "1", text: "We review your requirements." },
   { num: "2", text: "Our manufacturing team prepares a quotation." },
@@ -271,8 +270,43 @@ const steps = [
 ];
 
 function WhatHappensNextSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 80%", "end 50%"]
+  });
+
+  // Seamless, sequential scroll mapping for circles and connecting lines
+  const bg1 = useTransform(scrollYProgress, [0, 0.15], ["rgba(255,255,255,0.2)", "rgba(255,255,255,1)"]);
+  const c1 = useTransform(scrollYProgress, [0, 0.15], ["rgba(255,255,255,0.5)", "rgba(13,13,13,1)"]);
+  const o1 = useTransform(scrollYProgress, [0, 0.15], [0.4, 1]);
+
+  const l1 = useTransform(scrollYProgress, [0.15, 0.35], ["0%", "100%"]);
+
+  const bg2 = useTransform(scrollYProgress, [0.35, 0.45], ["rgba(255,255,255,0.2)", "rgba(255,255,255,1)"]);
+  const c2 = useTransform(scrollYProgress, [0.35, 0.45], ["rgba(255,255,255,0.5)", "rgba(13,13,13,1)"]);
+  const o2 = useTransform(scrollYProgress, [0.35, 0.45], [0.4, 1]);
+
+  const l2 = useTransform(scrollYProgress, [0.45, 0.65], ["0%", "100%"]);
+
+  const bg3 = useTransform(scrollYProgress, [0.65, 0.75], ["rgba(255,255,255,0.2)", "rgba(255,255,255,1)"]);
+  const c3 = useTransform(scrollYProgress, [0.65, 0.75], ["rgba(255,255,255,0.5)", "rgba(13,13,13,1)"]);
+  const o3 = useTransform(scrollYProgress, [0.65, 0.75], [0.4, 1]);
+
+  const l3 = useTransform(scrollYProgress, [0.75, 0.90], ["0%", "100%"]);
+
+  const bg4 = useTransform(scrollYProgress, [0.90, 1.0], ["rgba(255,255,255,0.2)", "rgba(255,255,255,1)"]);
+  const c4 = useTransform(scrollYProgress, [0.90, 1.0], ["rgba(255,255,255,0.5)", "rgba(13,13,13,1)"]);
+  const o4 = useTransform(scrollYProgress, [0.90, 1.0], [0.4, 1]);
+
+  const bgs = [bg1, bg2, bg3, bg4];
+  const colors = [c1, c2, c3, c4];
+  const opacities = [o1, o2, o3, o4];
+  const lines = [l1, l2, l3];
+
   return (
-    <section className="w-full bg-[#232323] px-4 lg:px-20 py-12 lg:py-20">
+    <section className="w-full bg-[#232323] px-4 lg:px-20 py-12 lg:py-20" ref={containerRef}>
       <div className="max-w-[1280px] mx-auto text-center">
         <h2 
           className="mb-8 lg:mb-14"
@@ -291,24 +325,34 @@ function WhatHappensNextSection() {
         <div className="hidden lg:flex items-start relative">
           {steps.map((step, i) => (
             <div key={i} className="flex-1 relative flex flex-col items-center">
-              {/* Number circle */}
-              <div className="w-[48px] h-[48px] rounded-full bg-white flex items-center justify-center mb-6 z-[1]">
-                <span 
+              {/* Number circle (Animated Background) */}
+              <motion.div 
+                className="w-[48px] h-[48px] rounded-full flex items-center justify-center mb-6 z-[1]"
+                style={{ backgroundColor: bgs[i] }}
+              >
+                {/* Number Text (Animated Color) */}
+                <motion.span 
                   style={{
                     fontFamily: "'FFF Acid Grotesk', sans-serif",
                     fontWeight: 700,
                     fontSize: "24px",
-                    color: "#0D0D0D",
+                    color: colors[i],
                   }}
                 >
                   {step.num}
-                </span>
-              </div>
-              {/* Connecting line */}
+                </motion.span>
+              </motion.div>
+              {/* Connecting line (Animated Width) */}
               {i < steps.length - 1 && (
-                <div className="absolute top-[24px] left-1/2 w-full h-[1px] bg-white/60" />
+                <div className="absolute top-[24px] left-1/2 w-full h-[1px] bg-white/20">
+                  <motion.div 
+                    className="absolute top-0 left-0 h-full bg-white origin-left"
+                    style={{ width: lines[i] }}
+                  />
+                </div>
               )}
-              <p 
+              {/* Detail Text (Animated Opacity) */}
+              <motion.p 
                 className="max-w-[296px]"
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -316,10 +360,11 @@ function WhatHappensNextSection() {
                   fontSize: "15px",
                   lineHeight: "1.4",
                   color: "#FFFFFF",
+                  opacity: opacities[i],
                 }}
               >
                 {step.text}
-              </p>
+              </motion.p>
             </div>
           ))}
         </div>
