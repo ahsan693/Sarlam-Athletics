@@ -191,16 +191,21 @@ const FAQItem = ({
 
 // ─── Header Component ───────────────────────────────────────────────────────
 export function Header() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-100">
-      <div className="relative max-w-[1440px] mx-auto flex items-center justify-between px-4 h-[52px]">
-        {/* Left Nav */}
-        <div className="flex items-center gap-4">
+    <header className="sticky top-0 z-50 bg-white border-b border-gray-100 relative">
+      <div className="relative max-w-[1440px] mx-auto flex items-center justify-between px-6 md:px-4 h-[52px]">
+        
+        {/* ─── DESKTOP VIEW ─── */}
+        
+        {/* Desktop Left Nav */}
+        <div className="hidden lg:flex items-center gap-4">
           <button>
             <MenuIcon />
           </button>
-          <div className="hidden lg:block w-[2px] h-12 bg-gray-300" />
-          <nav className="hidden lg:flex items-center gap-4">
+          <div className="w-[2px] h-12 bg-gray-300" />
+          <nav className="flex items-center gap-4">
             <Link
               href="/products"
               className="hover:opacity-70 transition"
@@ -246,10 +251,10 @@ export function Header() {
           </nav>
         </div>
 
-        {/* Logo */}
+        {/* Desktop Center Logo */}
         <Link
           href="/"
-          className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2"
+          className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center gap-2"
           style={{
             fontFamily: "'FFF Acid Grotesk', sans-serif",
             fontWeight: 700,
@@ -265,44 +270,102 @@ export function Header() {
           </span>
         </Link>
 
-        {/* Right Nav */}
-        <div className="flex items-center gap-6">
-          <div className="hidden lg:flex items-center gap-6">
-            <Link
-              href="/about"
-              className="hover:opacity-70 transition"
-              style={{
-                fontFamily: "'FFF Acid Grotesk', sans-serif",
-                fontWeight: 500,
-                fontSize: "12px",
-                lineHeight: "18px",
-                textTransform: "uppercase",
-                color: "#0D0D0D",
-              }}
-            >
-              About
-            </Link>
-            <Link
-              href="/contact"
-              className="hover:opacity-70 transition"
-              style={{
-                fontFamily: "'FFF Acid Grotesk', sans-serif",
-                fontWeight: 500,
-                fontSize: "12px",
-                lineHeight: "18px",
-                textTransform: "uppercase",
-                color: "#0D0D0D",
-              }}
-            >
-              Contact
-            </Link>
-            <div className="w-[2px] h-12 bg-gray-300" />
-          </div>
+        {/* Desktop Right Nav */}
+        <div className="hidden lg:flex items-center gap-6">
+          <Link
+            href="/about"
+            className="hover:opacity-70 transition"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 500,
+              fontSize: "12px",
+              lineHeight: "18px",
+              textTransform: "uppercase",
+              color: "#0D0D0D",
+            }}
+          >
+            About
+          </Link>
+          <Link
+            href="/contact"
+            className="hover:opacity-70 transition"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 500,
+              fontSize: "12px",
+              lineHeight: "18px",
+              textTransform: "uppercase",
+              color: "#0D0D0D",
+            }}
+          >
+            Contact
+          </Link>
+          <div className="w-[2px] h-12 bg-gray-300" />
           <button className="hover:opacity-70 transition text-[#0D0D0D]">
             <SearchIcon />
           </button>
         </div>
+
+        {/* ─── MOBILE VIEW ─── */}
+        
+        {/* Mobile Logo (Left Side) */}
+        <Link
+          href="/"
+          className="flex lg:hidden items-center gap-2"
+          style={{
+            fontFamily: "'FFF Acid Grotesk', sans-serif",
+            fontWeight: 700,
+            fontStyle: "italic",
+            fontSize: "18px",
+            textTransform: "uppercase",
+            color: "#0D0D0D",
+          }}
+        >
+          <LogoMark className="w-[18px] h-[20px]" />
+          <span className="whitespace-nowrap tracking-tight">
+            Sarlam Athletics
+          </span>
+        </Link>
+
+        {/* Mobile Hamburger (Right Side) */}
+        <button 
+          className="flex lg:hidden items-center p-2 -mr-2 text-[#0D0D0D]"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle Menu"
+        >
+          <MenuIcon />
+        </button>
       </div>
+
+      {/* Mobile Dropdown Menu */}
+      {isMobileMenuOpen && (
+        <div className="lg:hidden absolute top-[52px] left-0 w-full bg-white border-b border-gray-100 shadow-lg flex flex-col py-6 px-6 gap-6 z-50">
+          {[
+            { label: "Products", href: "/products" },
+            { label: "Private Label", href: "/privatelabel" },
+            { label: "Manufacturing", href: "/manufacture" },
+            { label: "About", href: "/about" },
+            { label: "Contact", href: "/contact" },
+          ].map((link, idx) => (
+            <Link
+              key={idx}
+              href={link.href}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="hover:opacity-70 transition"
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 500,
+                fontSize: "14px",
+                lineHeight: "18px",
+                textTransform: "uppercase",
+                color: "#0D0D0D",
+              }}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
+      )}
     </header>
   );
 }
