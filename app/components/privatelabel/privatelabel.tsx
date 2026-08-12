@@ -1,7 +1,7 @@
 "use client";
 
-// privatelabel.tsx
 import { useState } from "react";
+import Link from "next/link";
 // Import the Header correctly from the home.tsx file
 import { Header } from "../home/home";
 
@@ -29,15 +29,15 @@ const testimonials = [
     quote:
       "Sarlam helped us launch our private label boxing equipment range on schedule. The product quality was consistent, communication was excellent, and the manufacturing process was transparent from sampling through delivery.",
     name: "Linnéa Moberg",
-    role: "CEO, IronHand Gym",
+    role: "CEO, Stackflow",
     avatar:
       "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=150",
   },
   {
     quote:
-      "Unlike many manufacturers, Sarlam worked closely with our team to refine materials, branding, and packaging before production. The finished products matched our specifications exactly.",
+      "Most advisors hand you a template and call it strategy. Delta actually sat in the room with us, rewrote the model, and prepped us for every question investors asked.",
     name: "Erik Sandell",
-    role: "Co-founder, Waypoint Athletics",
+    role: "Co-founder, Waypoint Health",
     avatar:
       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150",
   },
@@ -50,7 +50,7 @@ export default function PrivateLabel() {
       <Header />
 
       {/* ─── HERO SECTION ─── */}
-      <section className="relative h-[495px] bg-[#0D0D0D] overflow-hidden">
+      <section className="relative h-[600px] md:h-[495px] bg-[#0D0D0D] overflow-hidden -mt-[52px] pt-[52px] md:-mt-[0px] md:pt-[0px]">
         {/* Background Image */}
         <img
           src="https://images.unsplash.com/photo-1544717684-1243da23b545?auto=format&fit=crop&q=80&w=2000"
@@ -58,18 +58,27 @@ export default function PrivateLabel() {
           className="absolute inset-0 w-full h-full object-cover"
         />
         {/* Dark gradient — strongest on the left/bottom where the copy sits */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-black/10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-black/10 md:bg-gradient-to-r md:from-black md:via-black/60 md:to-black/10 bg-black/50" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/40 md:bg-gradient-to-t md:from-black/70 md:via-transparent md:to-black/40" />
 
-        <div className="relative z-20 max-w-[1440px] mx-auto px-5 md:px-8 py-16 md:py-24 h-full flex flex-col justify-center">
+        <div className="relative z-20 max-w-[1440px] mx-auto px-5 md:px-8 py-16 md:py-24 h-full flex flex-col justify-center mt-12 md:mt-0">
           <div>
+            <p 
+              className="uppercase mb-4 md:hidden text-[12px] leading-[18px]"
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 500,
+                letterSpacing: "0.15em",
+                color: "#FFFFFF",
+              }}
+            >
+              HOME / SERVICES
+            </p>
             <h1 
-              className="max-w-2xl uppercase"
+              className="max-w-2xl uppercase text-[36px] leading-[40px] md:text-[56px] md:leading-[105%]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 700,
-                fontSize: "56px",
-                lineHeight: "105%",
                 letterSpacing: "-2px",
                 color: "#FFFFFF",
               }}
@@ -79,13 +88,10 @@ export default function PrivateLabel() {
 
             {/* Subtitle - mobile only */}
             <p 
-              className="md:hidden mt-4 max-w-sm"
+              className="md:hidden mt-4 max-w-sm text-[14px] leading-[20px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 400,
-                fontSize: "16px",
-                lineHeight: "20px",
-                letterSpacing: "0px",
                 color: "rgba(255,255,255,0.7)",
               }}
             >
@@ -94,8 +100,8 @@ export default function PrivateLabel() {
           </div>
 
           {/* Meta Info */}
-          <div className="mt-8 md:mt-16 flex flex-col md:flex-row md:items-start gap-6 md:gap-16">
-            <div className="space-y-1">
+          <div className="mt-8 md:mt-16 flex flex-col md:flex-row md:items-start gap-4 md:gap-16">
+            <div className="space-y-1 border-t border-white/20 pt-4 md:border-t-0 md:pt-0">
               <p 
                 className="uppercase"
                 style={{
@@ -110,11 +116,10 @@ export default function PrivateLabel() {
                 Production Timeline
               </p>
               <p 
+                className="text-[14px] leading-[16px] md:text-[15px] md:leading-[16px]"
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
                   fontWeight: 400,
-                  fontSize: "15px",
-                  lineHeight: "16px",
                   letterSpacing: "0px",
                   color: "rgba(255,255,255,0.9)",
                 }}
@@ -122,7 +127,7 @@ export default function PrivateLabel() {
                 Production: 4–8 Weeks (After Sample Approval)
               </p>
             </div>
-            <div className="space-y-1">
+            <div className="space-y-1 border-t border-white/20 pt-4 md:border-t-0 md:pt-0">
               <p 
                 className="uppercase"
                 style={{
@@ -137,11 +142,10 @@ export default function PrivateLabel() {
                 Ideal For
               </p>
               <p 
+                className="text-[14px] leading-[16px] md:text-[15px] md:leading-[16px]"
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
                   fontWeight: 400,
-                  fontSize: "15px",
-                  lineHeight: "16px",
                   letterSpacing: "0px",
                   color: "rgba(255,255,255,0.9)",
                 }}
@@ -149,7 +153,7 @@ export default function PrivateLabel() {
                 Sports Brands, Gyms, Retailers & Distributors
               </p>
             </div>
-            <div className="space-y-1">
+            <div className="space-y-1 border-t border-white/20 pt-4 md:border-t-0 md:pt-0">
               <p 
                 className="uppercase"
                 style={{
@@ -164,11 +168,10 @@ export default function PrivateLabel() {
                 Manufacturing Model
               </p>
               <p 
+                className="text-[14px] leading-[16px] md:text-[15px] md:leading-[16px]"
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
                   fontWeight: 400,
-                  fontSize: "15px",
-                  lineHeight: "16px",
                   letterSpacing: "0px",
                   color: "rgba(255,255,255,0.9)",
                 }}
@@ -181,16 +184,14 @@ export default function PrivateLabel() {
       </section>
 
       {/* ─── PROCESS OVERVIEW ─── */}
-      <section className="pt-16 md:pt-24 bg-white">
+      <section className="pt-12 md:pt-24 bg-white">
         <div className="max-w-[1440px] mx-auto px-5 md:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-20">
             <h2 
-              className="max-w-xl"
+              className="max-w-xl text-[28px] leading-[32px] md:text-[37px] md:leading-[45.6px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 700,
-                fontSize: "37px",
-                lineHeight: "45.6px",
                 letterSpacing: "-1.52px",
                 color: "#000000",
               }}
@@ -199,13 +200,12 @@ export default function PrivateLabel() {
             </h2>
 
             {/* Text Content */}
-            <div className="space-y-6">
+            <div className="space-y-4 md:space-y-6">
               <p
+                className="text-[14px] leading-[22px] md:text-[16px] md:leading-[24px]"
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
                   fontWeight: 400,
-                  fontSize: "16px",
-                  lineHeight: "24px",
                   letterSpacing: "0px",
                   color: "#434343",
                 }}
@@ -216,11 +216,10 @@ export default function PrivateLabel() {
                 worldwide delivery, every stage is managed by our production team.
               </p>
               <p
+                className="text-[14px] leading-[22px] md:text-[16px] md:leading-[24px]"
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
                   fontWeight: 400,
-                  fontSize: "16px",
-                  lineHeight: "24px",
                   letterSpacing: "0px",
                   color: "#434343",
                 }}
@@ -230,11 +229,10 @@ export default function PrivateLabel() {
                 quality control, and scalable wholesale production.
               </p>
               <p
+                className="text-[14px] leading-[22px] md:text-[16px] md:leading-[24px]"
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
                   fontWeight: 400,
-                  fontSize: "16px",
-                  lineHeight: "24px",
                   letterSpacing: "0px",
                   color: "#434343",
                 }}
@@ -248,7 +246,7 @@ export default function PrivateLabel() {
         </div>
 
         {/* Full-bleed image */}
-        <div className="w-full h-[380px] md:h-[520px] mt-10 md:mt-14 overflow-hidden">
+        <div className="w-full h-[280px] md:h-[520px] mt-8 md:mt-14 overflow-hidden">
           <img
             src="https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&q=80&w=2000"
             alt="MMA training in the cage"
@@ -261,30 +259,27 @@ export default function PrivateLabel() {
       <section className="max-w-[1440px] mx-auto px-5 md:px-8 bg-white">
         <div className="divide-y divide-gray-200 border-b border-gray-200">
           {/* What's Included */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-20 py-16 md:py-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-20 py-12 md:py-20">
             <h2 
-              className="max-w-xl uppercase"
+              className="max-w-xl uppercase text-[22px] leading-[26px] md:text-[26px] md:leading-[26px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 700,
-                fontSize: "26px",
-                lineHeight: "26px",
                 letterSpacing: "-0.5px",
                 color: "#0D0D0D",
               }}
             >
               What's Included in Our Manufacturing Service
             </h2>
-            <ul className="space-y-4 max-w-xl">
+            <ul className="space-y-3 md:space-y-4 max-w-xl">
               {includedItems.map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
                   <span style={{ fontSize: "17px", color: "#0D0D0D" }}>•</span>
                   <span
+                    className="text-[14px] leading-[22px] md:text-[15px] md:leading-[24px]"
                     style={{
                       fontFamily: "'FFF Acid Grotesk', sans-serif",
                       fontWeight: 400,
-                      fontSize: "15px",
-                      lineHeight: "24px",
                       letterSpacing: "0px",
                       color: "#434343",
                     }}
@@ -297,14 +292,12 @@ export default function PrivateLabel() {
           </div>
 
           {/* Start Your Project */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-20 py-16 md:py-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-20 py-12 md:py-20">
             <h2 
-              className="max-w-xl uppercase"
+              className="max-w-xl uppercase text-[22px] leading-[26px] md:text-[26px] md:leading-[26px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 700,
-                fontSize: "26px",
-                lineHeight: "26px",
                 letterSpacing: "-0.5px",
                 color: "#0D0D0D",
               }}
@@ -312,12 +305,10 @@ export default function PrivateLabel() {
               Start Your Manufacturing Project
             </h2>
             <p 
-              className="max-w-xl"
+              className="max-w-xl text-[14px] leading-[22px] md:text-[15px] md:leading-[24px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 400,
-                fontSize: "15px",
-                lineHeight: "24px",
                 letterSpacing: "0px",
                 color: "#434343",
               }}
@@ -329,14 +320,12 @@ export default function PrivateLabel() {
           </div>
 
           {/* Industries We Serve */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-20 py-16 md:py-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-20 py-12 md:py-20">
             <h2 
-              className="max-w-xl uppercase"
+              className="max-w-xl uppercase text-[22px] leading-[26px] md:text-[26px] md:leading-[26px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 700,
-                fontSize: "26px",
-                lineHeight: "26px",
                 letterSpacing: "-0.5px",
                 color: "#0D0D0D",
               }}
@@ -348,11 +337,10 @@ export default function PrivateLabel() {
                 <li key={i} className="flex items-start gap-3">
                   <span style={{ fontSize: "17px", color: "#0D0D0D" }}>•</span>
                   <span
+                    className="text-[14px] leading-[22px] md:text-[15px] md:leading-[24px]"
                     style={{
                       fontFamily: "'FFF Acid Grotesk', sans-serif",
                       fontWeight: 400,
-                      fontSize: "15px",
-                      lineHeight: "24px",
                       letterSpacing: "0px",
                       color: "#434343",
                     }}
@@ -366,10 +354,10 @@ export default function PrivateLabel() {
         </div>
 
         {/* Request Quote Button */}
-        <div className="flex justify-center py-16 md:py-20">
+        <div className="flex justify-center py-12 md:py-20 w-full">
           <a
             href="/contact"
-            className="inline-flex items-center justify-center bg-[#0D0D0D] px-8 py-4 uppercase hover:bg-gray-800 transition-colors duration-300"
+            className="inline-flex items-center justify-center bg-[#0D0D0D] px-8 py-4 uppercase hover:bg-gray-800 transition-colors duration-300 w-full md:w-auto"
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
               fontWeight: 700,
@@ -378,19 +366,18 @@ export default function PrivateLabel() {
               color: "#FFFFFF",
             }}
           >
-            Request a Manufacturing Quote
+            Request A Quote
           </a>
         </div>
       </section>
 
       {/* ─── TESTIMONIALS ─── */}
-      <section className="max-w-[1440px] mx-auto px-5 md:px-8 pb-16 md:pb-24 bg-white">
+      <section className="max-w-[1440px] mx-auto px-5 md:px-8 pb-12 md:pb-24 bg-white">
         <h2 
+          className="text-[28px] leading-[32px] md:text-[37px] md:leading-[46px]"
           style={{
             fontFamily: "'FFF Acid Grotesk', sans-serif",
             fontWeight: 500,
-            fontSize: "37px",
-            lineHeight: "46px",
             letterSpacing: "-1.5px",
             color: "#000000",
           }}
@@ -398,47 +385,46 @@ export default function PrivateLabel() {
           Testimonials
         </h2>
 
-        <div className="mt-10 md:mt-16 grid grid-cols-1 md:grid-cols-2 border-t border-gray-200">
+        <div className="mt-8 md:mt-16 grid grid-cols-1 md:grid-cols-2 border-t border-gray-200">
           {testimonials.map((t, i) => (
             <div
               key={i}
-              className={`py-10 md:py-12 ${
-                i === 0 ? "md:pr-16 md:border-r border-gray-200" : "md:pl-16"
+              className={`py-8 md:py-12 ${
+                i === 0 ? "md:pr-16 md:border-r border-b md:border-b-0 border-gray-200" : "md:pl-16"
               }`}
             >
               <p 
+                className="text-[18px] leading-[22px] md:text-[22px] md:leading-[1.2]"
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
                   fontWeight: 500,
-                  fontSize: "22px",
-                  lineHeight: "1.2",
                   color: "#000000",
                 }}
               >
                 &ldquo;{t.quote}&rdquo;
               </p>
-              <div className="mt-8 flex items-center gap-4">
+              <div className="mt-6 md:mt-8 flex items-center gap-4">
                 <img
                   src={t.avatar}
                   alt={t.name}
-                  className="w-10 h-10 rounded-full object-cover"
+                  className="w-10 h-10 md:w-12 md:h-12 rounded-[16px] md:rounded-[20px] object-cover"
                 />
                 <div>
                   <p 
+                    className="text-[14px] leading-[18px] md:text-[15px] md:leading-[20px]"
                     style={{
                       fontFamily: "'FFF Acid Grotesk', sans-serif",
                       fontWeight: 700,
-                      fontSize: "15px",
                       color: "#000000",
                     }}
                   >
                     {t.name}
                   </p>
                   <p 
+                    className="text-[13px] leading-[16px] md:text-[15px] md:leading-[20px]"
                     style={{
                       fontFamily: "'FFF Acid Grotesk', sans-serif",
                       fontWeight: 400,
-                      fontSize: "15px",
                       color: "#757575",
                     }}
                   >
@@ -453,7 +439,7 @@ export default function PrivateLabel() {
 
       {/* ─── CTA SECTION ─── */}
       <section className="max-w-[1440px] mx-auto px-5 md:px-8 pb-16 md:pb-24 bg-white">
-        <div className="relative rounded-sm overflow-hidden">
+        <div className="relative rounded-[16px] md:rounded-sm overflow-hidden">
           <img
             src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=2000"
             alt="BJJ academy training session"
@@ -461,14 +447,12 @@ export default function PrivateLabel() {
           />
           <div className="absolute inset-0 bg-black/55" />
 
-          <div className="relative z-10 py-20 md:py-28 px-8 flex flex-col items-center text-center">
+          <div className="relative z-10 py-16 px-6 md:py-28 md:px-8 flex flex-col items-center text-center">
             <h2 
-              className="max-w-2xl"
+              className="max-w-2xl text-[28px] leading-[34px] md:text-[37px] md:leading-[46px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 500,
-                fontSize: "37px",
-                lineHeight: "46px",
                 letterSpacing: "-1.5px",
                 color: "#FFFFFF",
               }}
@@ -476,12 +460,10 @@ export default function PrivateLabel() {
               Ready to Start Your Private Label Manufacturing Project?
             </h2>
             <p 
-              className="mt-6 max-w-xl"
+              className="mt-4 md:mt-6 max-w-xl text-[14px] leading-[22px] md:text-[16px] md:leading-[24px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 400,
-                fontSize: "16px",
-                lineHeight: "24px",
                 letterSpacing: "0px",
                 color: "rgba(255,255,255,0.8)",
               }}
@@ -489,20 +471,20 @@ export default function PrivateLabel() {
               Tell us what you want to manufacture, and our team will prepare a production plan,
               pricing estimate, and recommended manufacturing approach.
             </p>
-            <div className="mt-8">
+            <div className="mt-8 w-full md:w-auto">
               <a
                 href="/contact"
-                className="inline-flex items-center gap-2 border border-white uppercase hover:bg-white transition-colors duration-300 hover:text-[#0D0D0D]"
+                className="inline-flex items-center justify-center gap-2 border border-white uppercase hover:bg-white transition-colors duration-300 hover:text-[#0D0D0D] w-full md:w-auto rounded-[4px] md:rounded-none"
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
                   fontWeight: 700,
                   fontSize: "14px",
                   letterSpacing: "5%",
                   color: "#FFFFFF",
-                  padding: "12px 24px",
+                  padding: "16px 24px",
                 }}
               >
-                Request a Manufacturing Quote
+                Request A Quote
               </a>
             </div>
           </div>
@@ -511,34 +493,30 @@ export default function PrivateLabel() {
 
       {/* ─── FOOTER ─── */}
       <footer className="bg-white border-t border-gray-100">
-        <div className="max-w-[1440px] mx-auto px-5 md:px-8 py-12">
+        <div className="max-w-[1440px] mx-auto px-5 md:px-8 py-10 md:py-12">
           {/* Top Footer */}
-          <div className="flex flex-col lg:flex-row justify-between gap-12">
+          <div className="flex flex-col lg:flex-row justify-between gap-10 md:gap-12">
             {/* Left */}
             <div className="lg:w-1/2">
               <h3 
-                className="mb-4"
+                className="mb-4 text-[32px] leading-[40px] md:text-[47px] md:leading-[58px]"
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
                   fontWeight: 500,
-                  fontSize: "47px",
-                  lineHeight: "58px",
                   letterSpacing: "-1.9px",
                   color: "#000000",
                 }}
               >
-                Ready to Build Your Sports
-                <br />
-                Equipment Brand?
+                Start Your Private Label
+                <br className="hidden md:block" />
+                <span className="md:hidden"> </span>Manufacturing Project
               </h3>
               <a
                 href="mailto:hello@sarlamathletics.com"
-                className="transition break-all hover:text-black"
+                className="transition break-all hover:text-black text-[24px] leading-[30px] md:text-[47px] md:leading-[58px]"
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
                   fontWeight: 500,
-                  fontSize: "47px",
-                  lineHeight: "58px",
                   letterSpacing: "-1.9px",
                   color: "#A5A5A5",
                 }}
@@ -574,12 +552,10 @@ export default function PrivateLabel() {
                     <a
                       key={link}
                       href="#"
-                      className="transition border-b border-gray-200 pb-2 hover:opacity-70"
+                      className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px]"
                       style={{
                         fontFamily: "'FFF Acid Grotesk', sans-serif",
                         fontWeight: 400,
-                        fontSize: "14px",
-                        lineHeight: "17px",
                         letterSpacing: "0px",
                         color: "#000000",
                       }}
@@ -594,12 +570,10 @@ export default function PrivateLabel() {
                   <a
                     key={link}
                     href="#"
-                    className="transition border-b border-gray-200 pb-2 hover:opacity-70"
+                    className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px]"
                     style={{
                       fontFamily: "'FFF Acid Grotesk', sans-serif",
                       fontWeight: 400,
-                      fontSize: "14px",
-                      lineHeight: "17px",
                       letterSpacing: "0px",
                       color: "#000000",
                     }}
@@ -618,12 +592,10 @@ export default function PrivateLabel() {
                   <a
                     key={link}
                     href="#"
-                    className="transition border-b border-gray-200 pb-2 hover:opacity-70"
+                    className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px]"
                     style={{
                       fontFamily: "'FFF Acid Grotesk', sans-serif",
                       fontWeight: 400,
-                      fontSize: "14px",
-                      lineHeight: "17px",
                       letterSpacing: "0px",
                       color: "#000000",
                     }}
@@ -635,50 +607,59 @@ export default function PrivateLabel() {
             </div>
           </div>
 
-          <div className="border-t border-gray-200 mt-12" />
+          <div className="border-t border-gray-200 mt-8 md:mt-12" />
 
           {/* Large Brand Name */}
-          <div className="pt-10 flex items-end justify-between">
+          <div className="pt-8 md:pt-10 flex flex-col md:flex-row items-start md:items-end justify-between gap-4 md:gap-0">
             <h2 
-              className="uppercase"
+              className="uppercase text-[56px] leading-[90%] md:text-[101px] md:leading-[85%]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 700,
                 fontStyle: "italic",
-                fontSize: "101px",
-                lineHeight: "85%",
                 letterSpacing: "-3%",
                 color: "#000000",
               }}
             >
               sarlam
-              <br />
-              athletics
+              <br className="hidden md:block" />
+              <span className="md:hidden"> </span>athletics
             </h2>
-            <span 
-              className="hidden md:block"
-              style={{
-                fontFamily: "'FFF Acid Grotesk', sans-serif",
-                fontWeight: 400,
-                fontSize: "12px",
-                lineHeight: "16px",
-                color: "#000000",
-              }}
-            >
-              © 2026
-            </span>
+            <div className="flex flex-col md:items-end gap-2 md:gap-0">
+              <span 
+                className="md:hidden block text-[12px] leading-[16px]"
+                style={{
+                  fontFamily: "'FFF Acid Grotesk', sans-serif",
+                  fontWeight: 400,
+                  color: "#000000",
+                }}
+              >
+                Website by Sanna Granqvist
+                <br />
+                © 2026
+              </span>
+              <span 
+                className="hidden md:block text-[12px] leading-[16px]"
+                style={{
+                  fontFamily: "'FFF Acid Grotesk', sans-serif",
+                  fontWeight: 400,
+                  color: "#000000",
+                }}
+              >
+                © 2026
+              </span>
+            </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
         <div className="bg-[#0D0D0D]">
-          <div className="max-w-[1440px] mx-auto px-5 md:px-8 py-4 flex items-center justify-between">
+          <div className="max-w-[1440px] mx-auto px-5 md:px-8 py-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-0">
             <span 
+              className="text-[12px] leading-[16px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 400,
-                fontSize: "12px",
-                lineHeight: "16px",
                 letterSpacing: "0px",
                 color: "#E3E2E2",
               }}
@@ -687,12 +668,10 @@ export default function PrivateLabel() {
               for combat sports brands.
             </span>
             <span 
-              className="uppercase"
+              className="uppercase text-[12px] leading-[18px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 500,
-                fontSize: "12px",
-                lineHeight: "18px",
                 letterSpacing: "0px",
                 color: "#FFFFFF",
               }}
@@ -719,7 +698,7 @@ function FooterAccordion({
   return (
     <div className="border-b border-gray-200">
       <button
-        className="w-full flex items-center justify-between py-3"
+        className="w-full flex items-center justify-between py-4 md:py-3 text-left"
         style={{
           fontFamily: "'FFF Acid Grotesk', sans-serif",
           fontWeight: 500,
@@ -740,7 +719,7 @@ function FooterAccordion({
         </svg>
       </button>
       {open && (
-        <div className="pb-4 flex flex-col gap-2">
+        <div className="pb-4 flex flex-col gap-3 md:gap-2">
           {children}
         </div>
       )}
@@ -753,7 +732,7 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
   return (
     <a 
       href={href} 
-      className="hover:text-[#0D0D0D] transition"
+      className="hover:text-[#0D0D0D] transition block"
       style={{
         fontFamily: "'FFF Acid Grotesk', sans-serif",
         fontWeight: 400,
