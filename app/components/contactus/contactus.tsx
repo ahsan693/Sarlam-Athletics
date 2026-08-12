@@ -23,10 +23,29 @@ function HeroSection() {
         />
 
         <div className="relative z-[2] max-w-[640px]">
-          <h1 className="text-[28px] lg:text-[47px] font-medium leading-[1.2] text-white">
+          <h1 
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 500,
+              fontSize: "47px",
+              lineHeight: "1.2",
+              color: "#FFFFFF",
+            }}
+          >
             Request a Private Label Manufacturing Quote
           </h1>
-          <p className="mt-4 lg:mt-6 text-[14px] lg:text-[15px] font-medium leading-[1.6] text-[#F0EDE9] lg:uppercase lg:tracking-wide">
+          <p 
+            className="mt-4 lg:mt-6"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 500,
+              fontSize: "15px",
+              lineHeight: "1.6",
+              color: "#F0EDE9",
+              textTransform: "uppercase",
+              letterSpacing: "0.05em",
+            }}
+          >
             Tell us what you want to manufacture, and our team will prepare a
             customized production plan, MOQ recommendation, material options,
             pricing estimate, and production timeline within 1–2 business days.
@@ -47,10 +66,25 @@ function QuoteFormSection() {
       <div className="max-w-[390px] mx-auto flex flex-col gap-[21px]">
         {/* Title Block */}
         <div className="flex flex-col gap-2">
-          <h2 className="text-[22px] lg:text-[20px] font-medium lg:font-normal text-[#0D0D0D]">
+          <h2 
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 500,
+              fontSize: "22px",
+              color: "#0D0D0D",
+            }}
+          >
             Tell Us About Your Project
           </h2>
-          <p className="text-[14px] lg:text-[16px] font-normal text-[#707070] leading-[1.5]">
+          <p 
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 400,
+              fontSize: "16px",
+              lineHeight: "1.5",
+              color: "#707070",
+            }}
+          >
             Complete the form below and we&apos;ll contact you with
             manufacturing recommendations, estimated pricing, production
             timelines, and the next steps for your project.
@@ -63,21 +97,39 @@ function QuoteFormSection() {
           <input
             type="text"
             placeholder="Full Name*"
-            className="border border-[#C9C9C9] rounded px-3 py-3.5 text-[14px] text-[#707070] font-normal bg-transparent outline-none placeholder:text-[#707070]"
+            className="border border-[#C9C9C9] rounded px-3 py-3.5 bg-transparent outline-none placeholder:text-[#707070]"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 400,
+              fontSize: "14px",
+              color: "#707070",
+            }}
           />
 
           {/* Business Email */}
           <input
             type="email"
             placeholder="Business Email*"
-            className="border border-[#C9C9C9] rounded px-3 py-3.5 text-[14px] text-[#707070] font-normal bg-transparent outline-none placeholder:text-[#707070]"
+            className="border border-[#C9C9C9] rounded px-3 py-3.5 bg-transparent outline-none placeholder:text-[#707070]"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 400,
+              fontSize: "14px",
+              color: "#707070",
+            }}
           />
 
           {/* Phone Number */}
           <input
             type="tel"
             placeholder="Phone Number (Optional)"
-            className="border border-[#C9C9C9] rounded px-3 py-3.5 text-[14px] text-[#707070] font-normal bg-transparent outline-none placeholder:text-[#707070]"
+            className="border border-[#C9C9C9] rounded px-3 py-3.5 bg-transparent outline-none placeholder:text-[#707070]"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 400,
+              fontSize: "14px",
+              color: "#707070",
+            }}
           />
 
           {/* Product Category + Estimated Order Quantity — side by side */}
@@ -85,12 +137,24 @@ function QuoteFormSection() {
             <input
               type="text"
               placeholder="Product Category*"
-              className="border border-[#C9C9C9] rounded px-3 py-3.5 text-[14px] text-[#707070] font-normal bg-transparent outline-none placeholder:text-[#707070] min-w-0"
+              className="border border-[#C9C9C9] rounded px-3 py-3.5 bg-transparent outline-none placeholder:text-[#707070] min-w-0"
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 400,
+                fontSize: "14px",
+                color: "#707070",
+              }}
             />
             <input
               type="text"
               placeholder="Estimated Order Quantity"
-              className="border border-[#C9C9C9] rounded px-3 py-3.5 text-[14px] text-[#707070] font-normal bg-transparent outline-none placeholder:text-[#707070] min-w-0"
+              className="border border-[#C9C9C9] rounded px-3 py-3.5 bg-transparent outline-none placeholder:text-[#707070] min-w-0"
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 400,
+                fontSize: "14px",
+                color: "#707070",
+              }}
             />
           </div>
 
@@ -98,13 +162,27 @@ function QuoteFormSection() {
           <textarea
             placeholder="Project Details*"
             rows={3}
-            className="border border-[#C9C9C9] rounded px-3 py-3.5 text-[14px] text-[#707070] font-normal bg-transparent outline-none resize-none placeholder:text-[#707070]"
+            className="border border-[#C9C9C9] rounded px-3 py-3.5 bg-transparent outline-none resize-none placeholder:text-[#707070]"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 400,
+              fontSize: "14px",
+              color: "#707070",
+            }}
           />
 
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-[#0D0D0D] text-white text-[12px] font-medium py-[7px] px-10 rounded hover:bg-[#2a2a2a] transition-colors uppercase tracking-wide"
+            className="w-full bg-[#0D0D0D] py-[7px] px-10 rounded hover:bg-[#2a2a2a] transition-colors"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 500,
+              fontSize: "12px",
+              textTransform: "uppercase",
+              letterSpacing: "0.05em",
+              color: "#FFFFFF",
+            }}
           >
             Request Manufacturing Quote
           </button>
@@ -135,7 +213,17 @@ function TrustBadgesSection() {
     <section className="w-full bg-white border-t border-[#C9C9C9] px-4 lg:px-10 py-10 lg:py-20">
       <div className="max-w-[1416px] mx-auto">
         {/* Title */}
-        <p className="text-center text-[15px] font-medium uppercase tracking-wide text-[#0D0D0D] mb-12">
+        <p 
+          className="text-center mb-12"
+          style={{
+            fontFamily: "'FFF Acid Grotesk', sans-serif",
+            fontWeight: 500,
+            fontSize: "15px",
+            textTransform: "uppercase",
+            letterSpacing: "0.05em",
+            color: "#0D0D0D",
+          }}
+        >
           Why Contact Sarlam Athletics?
         </p>
 
@@ -146,7 +234,16 @@ function TrustBadgesSection() {
               <div className="w-5 h-5 flex-shrink-0 mt-0.5">
                 <CheckIcon />
               </div>
-              <p className="text-[12px] lg:text-[15px] font-bold lg:font-medium uppercase text-[#0D0D0D] leading-tight">
+              <p 
+                style={{
+                  fontFamily: "'FFF Acid Grotesk', sans-serif",
+                  fontWeight: 500,
+                  fontSize: "15px",
+                  lineHeight: "1.2",
+                  textTransform: "uppercase",
+                  color: "#0D0D0D",
+                }}
+              >
                 {badge.label}
               </p>
             </div>
@@ -177,7 +274,16 @@ function WhatHappensNextSection() {
   return (
     <section className="w-full bg-[#232323] px-4 lg:px-20 py-12 lg:py-20">
       <div className="max-w-[1280px] mx-auto text-center">
-        <h2 className="text-[35px] lg:text-[47px] font-medium text-white leading-tight mb-8 lg:mb-14">
+        <h2 
+          className="mb-8 lg:mb-14"
+          style={{
+            fontFamily: "'FFF Acid Grotesk', sans-serif",
+            fontWeight: 500,
+            fontSize: "47px",
+            lineHeight: "1.2",
+            color: "#FFFFFF",
+          }}
+        >
           What Happens Next?
         </h2>
 
@@ -187,7 +293,14 @@ function WhatHappensNextSection() {
             <div key={i} className="flex-1 relative flex flex-col items-center">
               {/* Number circle */}
               <div className="w-[48px] h-[48px] rounded-full bg-white flex items-center justify-center mb-6 z-[1]">
-                <span className="text-[24px] font-bold text-[#0D0D0D]">
+                <span 
+                  style={{
+                    fontFamily: "'FFF Acid Grotesk', sans-serif",
+                    fontWeight: 700,
+                    fontSize: "24px",
+                    color: "#0D0D0D",
+                  }}
+                >
                   {step.num}
                 </span>
               </div>
@@ -195,7 +308,16 @@ function WhatHappensNextSection() {
               {i < steps.length - 1 && (
                 <div className="absolute top-[24px] left-1/2 w-full h-[1px] bg-white/60" />
               )}
-              <p className="text-[15px] font-medium text-white leading-[1.4] max-w-[296px]">
+              <p 
+                className="max-w-[296px]"
+                style={{
+                  fontFamily: "'FFF Acid Grotesk', sans-serif",
+                  fontWeight: 500,
+                  fontSize: "15px",
+                  lineHeight: "1.4",
+                  color: "#FFFFFF",
+                }}
+              >
                 {step.text}
               </p>
             </div>
@@ -207,11 +329,27 @@ function WhatHappensNextSection() {
           {steps.map((step, i) => (
             <div key={i} className="flex flex-col items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center">
-                <span className="text-[18px] font-bold text-[#0D0D0D]">
+                <span 
+                  style={{
+                    fontFamily: "'FFF Acid Grotesk', sans-serif",
+                    fontWeight: 700,
+                    fontSize: "24px",
+                    color: "#0D0D0D",
+                  }}
+                >
                   {step.num}
                 </span>
               </div>
-              <p className="text-[12px] font-normal text-white text-center leading-[1.4]">
+              <p 
+                className="text-center"
+                style={{
+                  fontFamily: "'FFF Acid Grotesk', sans-serif",
+                  fontWeight: 500,
+                  fontSize: "15px",
+                  lineHeight: "1.4",
+                  color: "#FFFFFF",
+                }}
+              >
                 {step.text}
               </p>
             </div>
@@ -258,7 +396,16 @@ function FAQSection() {
     <section className="w-full bg-white px-4 lg:px-20 py-12 lg:py-20">
       <div className="max-w-[640px] mx-auto flex flex-col gap-16">
         {/* Heading */}
-        <h2 className="text-[35px] font-medium text-black leading-tight text-center">
+        <h2 
+          className="text-center"
+          style={{
+            fontFamily: "'FFF Acid Grotesk', sans-serif",
+            fontWeight: 500,
+            fontSize: "37px",
+            lineHeight: "1.2",
+            color: "#000000",
+          }}
+        >
           Before You Request a Quote
         </h2>
 
@@ -270,7 +417,16 @@ function FAQSection() {
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
                 className="w-full flex items-center justify-between py-3 text-left"
               >
-                <span className="text-[20px] font-normal text-[#0D0D0D] leading-tight pr-4">
+                <span 
+                  className="pr-4"
+                  style={{
+                    fontFamily: "'FFF Acid Grotesk', sans-serif",
+                    fontWeight: 500,
+                    fontSize: "22px",
+                    lineHeight: "1.2",
+                    color: "#0D0D0D",
+                  }}
+                >
                   {faq.question}
                 </span>
                 <svg
@@ -292,7 +448,15 @@ function FAQSection() {
                   openIndex === i ? "max-h-[200px] pb-4" : "max-h-0"
                 }`}
               >
-                <p className="text-[16px] font-normal text-[#0D0D0D] leading-[1.5]">
+                <p 
+                  style={{
+                    fontFamily: "'FFF Acid Grotesk', sans-serif",
+                    fontWeight: 400,
+                    fontSize: "16px",
+                    lineHeight: "1.5",
+                    color: "#0D0D0D",
+                  }}
+                >
                   {faq.answer}
                 </p>
               </div>
@@ -302,13 +466,29 @@ function FAQSection() {
 
         {/* CTA — centered at every breakpoint per the PDF */}
         <div className="flex flex-col gap-4 items-center text-center">
-          <p className="text-[15px] font-normal text-[#434343] leading-[1.5]">
+          <p 
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 400,
+              fontSize: "15px",
+              lineHeight: "1.5",
+              color: "#434343",
+            }}
+          >
             If you have any further questions or just want to reach our team,
             click the button below.
           </p>
           <a
             href="/contactus"
-            className="inline-flex items-center justify-center px-5 py-3 border border-black rounded-md text-[15px] font-normal text-black hover:bg-black hover:text-white transition-colors w-full lg:w-auto"
+            className="inline-flex items-center justify-center px-5 py-3 border border-black rounded-md hover:bg-black hover:text-white transition-colors w-full lg:w-auto"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 700,
+              fontSize: "14px",
+              textTransform: "uppercase",
+              letterSpacing: "0.05em",
+              color: "#000000",
+            }}
           >
             Get in touch
           </a>
@@ -363,12 +543,29 @@ function Footer() {
         <div className="flex items-start justify-between px-8 py-16">
           {/* Left: Big heading + email (email is muted gray, no underline) */}
           <div className="max-w-[580px] flex flex-col gap-4">
-            <h3 className="text-[47px] font-medium text-black leading-tight">
+            <h3 
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 500,
+                fontSize: "47px",
+                lineHeight: "1.2",
+                letterSpacing: "-1.9px",
+                color: "#000000",
+              }}
+            >
               Ready to Manufacture Your Products?
             </h3>
             <a
               href="mailto:hello@sarlamathletics.com"
-              className="text-[47px] font-medium text-[#A5A5A5] leading-tight hover:text-black transition-colors"
+              className="transition-colors hover:text-black"
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 500,
+                fontSize: "47px",
+                lineHeight: "1.2",
+                letterSpacing: "-1.9px",
+                color: "#A5A5A5",
+              }}
             >
               hello@sarlamathletics.com
             </a>
@@ -382,7 +579,13 @@ function Footer() {
                   <a
                     key={j}
                     href={link.href}
-                    className="text-[14px] text-[#0D0D0D] hover:opacity-70 transition-opacity border-b border-gray-200 pb-2"
+                    className="hover:opacity-70 transition-opacity border-b border-gray-200 pb-2"
+                    style={{
+                      fontFamily: "'FFF Acid Grotesk', sans-serif",
+                      fontWeight: 400,
+                      fontSize: "14px",
+                      color: "#0D0D0D",
+                    }}
                   >
                     {link.label}
                   </a>
@@ -399,16 +602,45 @@ function Footer() {
         <div className="flex items-end justify-between px-8 py-8">
           {/* Large brand name */}
           <div className="flex flex-col">
-            <span className="text-[101px] font-bold italic text-black leading-[0.85] uppercase tracking-tight">
+            <span 
+              className="uppercase tracking-tight"
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 700,
+                fontStyle: "italic",
+                fontSize: "101px",
+                lineHeight: "0.85",
+                letterSpacing: "-3%",
+                color: "#000000",
+              }}
+            >
               sarlam
               <br />
               athletics
             </span>
-            <span className="text-[14px] text-[#0D0D0D] mt-2">© 2026</span>
+            <span 
+              className="mt-2"
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 400,
+                fontSize: "14px",
+                color: "#0D0D0D",
+              }}
+            >
+              © 2026
+            </span>
           </div>
 
           {/* Right side bottom info */}
-          <div className="flex flex-col items-end gap-1 text-[12px] text-[#434343]">
+          <div 
+            className="flex flex-col items-end gap-1"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 400,
+              fontSize: "12px",
+              color: "#434343",
+            }}
+          >
             <span>
               © 2026{" "}
               <span className="underline">Sarlam Athletics</span>.{" "}
@@ -417,7 +649,16 @@ function Footer() {
                 brands.
               </span>
             </span>
-            <span className="underline">USA (USD $) / ENGLISH</span>
+            <span 
+              className="underline uppercase"
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 500,
+                fontSize: "12px",
+              }}
+            >
+              USA (USD $) / ENGLISH
+            </span>
           </div>
         </div>
       </div>
@@ -426,12 +667,29 @@ function Footer() {
       <div className="lg:hidden">
         {/* Big heading + email */}
         <div className="px-5 pt-12 pb-10 flex flex-col gap-4">
-          <h3 className="text-[47px] font-medium text-black leading-tight">
+          <h3 
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 500,
+              fontSize: "47px",
+              lineHeight: "1.2",
+              letterSpacing: "-1.9px",
+              color: "#000000",
+            }}
+          >
             Start Your Private Label Manufacturing Project
           </h3>
           <a
             href="mailto:hello@sarlamathletics.com"
-            className="text-[47px] font-medium text-[#A5A5A5] leading-tight hover:text-black transition-colors break-all"
+            className="transition-colors hover:text-black break-all"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 500,
+              fontSize: "47px",
+              lineHeight: "1.2",
+              letterSpacing: "-1.9px",
+              color: "#A5A5A5",
+            }}
           >
             hello@sarlamathletics.com
           </a>
@@ -447,7 +705,14 @@ function Footer() {
                 }
                 className="w-full flex items-center justify-between py-3"
               >
-                <span className="text-[14px] font-medium text-[#0D0D0D]">
+                <span 
+                  style={{
+                    fontFamily: "'FFF Acid Grotesk', sans-serif",
+                    fontWeight: 500,
+                    fontSize: "14px",
+                    color: "#0D0D0D",
+                  }}
+                >
                   {group.title}
                 </span>
                 <svg
@@ -474,7 +739,12 @@ function Footer() {
                     <a
                       key={j}
                       href={link.href}
-                      className="text-[14px] text-[#0D0D0D]"
+                      style={{
+                        fontFamily: "'FFF Acid Grotesk', sans-serif",
+                        fontWeight: 400,
+                        fontSize: "14px",
+                        color: "#0D0D0D",
+                      }}
                     >
                       {link.label}
                     </a>
@@ -487,28 +757,71 @@ function Footer() {
 
         {/* Brand section */}
         <div className="px-5 pt-10 pb-10">
-          <span className="text-[69px] font-bold italic text-black leading-[0.85] uppercase tracking-tight block">
+          <span 
+            className="uppercase tracking-tight block"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 700,
+              fontStyle: "italic",
+              fontSize: "101px",
+              lineHeight: "0.85",
+              letterSpacing: "-3%",
+              color: "#000000",
+            }}
+          >
             sarlam
             <br />
             athletics
           </span>
           <div className="mt-8 flex flex-col gap-2">
-            <span className="text-[12px] text-[#434343]">
+            <span 
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 400,
+                fontSize: "12px",
+                color: "#434343",
+              }}
+            >
               Website by Sanna Granqvist
             </span>
-            <span className="text-[14px] text-[#434343]">© 2026</span>
+            <span 
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 400,
+                fontSize: "14px",
+                color: "#434343",
+              }}
+            >
+              © 2026
+            </span>
           </div>
         </div>
 
         {/* Bottom dark bar */}
         <div className="bg-[#0D0D0D] px-5 py-6 flex flex-col gap-4">
-          <div className="flex flex-col gap-1 text-[12px] text-white/70">
+          <div 
+            className="flex flex-col gap-1"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 400,
+              fontSize: "12px",
+              color: "rgba(255,255,255,0.7)",
+            }}
+          >
             <span>
               © 2026 Sarlam Athletics. Private-label sports equipment
               manufacturer for combat sports brands.
             </span>
           </div>
-          <span className="text-[12px] text-white/70">
+          <span 
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 500,
+              fontSize: "12px",
+              textTransform: "uppercase",
+              color: "rgba(255,255,255,0.7)",
+            }}
+          >
             USA (USD $) / ENGLISH
           </span>
         </div>
