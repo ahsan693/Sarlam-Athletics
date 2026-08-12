@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-// Import the Header correctly from the home.tsx file
-import { Header } from "../home/home";
+import Link from "next/link";
 
 // ─── Image Placeholder (supports a real src, falls back to a gray box) ─────
 const ImagePlaceholder = ({
@@ -46,7 +45,6 @@ const ChevronDownIcon = () => (
   </svg>
 );
 
-// Two-column view icon
 const ColumnsIcon = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
     <rect x="1" y="1" width="6" height="14" stroke="currentColor" strokeWidth="1.5" />
@@ -63,60 +61,190 @@ const GridIcon = () => (
   </svg>
 );
 
+const MenuIcon = () => (
+  <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
+    <line y1="1" x2="20" y2="1" stroke="currentColor" strokeWidth="2" />
+    <line y1="7" x2="20" y2="7" stroke="currentColor" strokeWidth="2" />
+    <line y1="13" x2="20" y2="13" stroke="currentColor" strokeWidth="2" />
+  </svg>
+);
+
+const SearchIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+    <circle cx="9" cy="9" r="7" stroke="currentColor" strokeWidth="2" />
+    <line x1="14" y1="14" x2="19" y2="19" stroke="currentColor" strokeWidth="2" />
+  </svg>
+);
+
+const LogoMark = ({ className = "" }: { className?: string }) => (
+  <svg viewBox="0 0 30 34" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M24 0L4 14h13L0 34l26-15H12L24 0z" fill="currentColor" />
+  </svg>
+);
+
+// ─── Header Component ───────────────────────────────────────────────────────
+function Header() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  return (
+    <header className="sticky top-0 z-50 bg-white border-b border-gray-100">
+      <div className="relative max-w-[1440px] mx-auto px-6 md:px-4 h-[52px]">
+        
+        {/* ─── DESKTOP VIEW ─── */}
+        <div className="hidden lg:flex items-center justify-between w-full h-full">
+          {/* Left Nav */}
+          <div className="flex items-center gap-4">
+            <button>
+              <MenuIcon />
+            </button>
+            <div className="w-[2px] h-12 bg-gray-300" />
+            <nav className="flex items-center gap-4">
+              <Link href="/products" className="hover:opacity-70 transition" style={navLinkStyle}>Products</Link>
+              <Link href="/privatelabel" className="hover:opacity-70 transition" style={navLinkStyle}>Private Label</Link>
+              <Link href="/manufacture" className="hover:opacity-70 transition" style={navLinkStyle}>Manufacturing</Link>
+            </nav>
+          </div>
+
+          {/* Logo */}
+          <Link href="/" className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2" style={logoStyle}>
+            <LogoMark className="w-[18px] h-[20px]" />
+            <span className="whitespace-nowrap tracking-tight">Sarlam Athletics</span>
+          </Link>
+
+          {/* Right Nav */}
+          <div className="flex items-center gap-6">
+            <Link href="/about" className="hover:opacity-70 transition" style={navLinkStyle}>About</Link>
+            <Link href="/contact" className="hover:opacity-70 transition" style={navLinkStyle}>Contact</Link>
+            <div className="w-[2px] h-12 bg-gray-300" />
+            <button className="hover:opacity-70 transition text-[#0D0D0D]">
+              <SearchIcon />
+            </button>
+          </div>
+        </div>
+
+        {/* ─── MOBILE VIEW ─── */}
+        <div className="flex lg:hidden items-center justify-between w-full h-full">
+          {/* Mobile Logo (Left Side) */}
+          <Link href="/" className="flex items-center gap-2" style={logoStyle}>
+            <LogoMark className="w-[18px] h-[20px]" />
+            <span className="whitespace-nowrap tracking-tight">Sarlam Athletics</span>
+          </Link>
+
+          {/* Mobile Hamburger (Right Side) - No Search Icon */}
+          <button 
+            className="flex items-center p-2 -mr-2 text-[#0D0D0D]"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle Menu"
+          >
+            <MenuIcon />
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Dropdown Menu */}
+      {isMobileMenuOpen && (
+        <div className="lg:hidden absolute top-[52px] left-0 w-full bg-white border-b border-gray-100 shadow-lg flex flex-col py-6 px-6 gap-6 z-50">
+          {[
+            { label: "Products", href: "/products" },
+            { label: "Private Label", href: "/privatelabel" },
+            { label: "Manufacturing", href: "/manufacture" },
+            { label: "About", href: "/about" },
+            { label: "Contact", href: "/contact" },
+          ].map((link, idx) => (
+            <Link
+              key={idx}
+              href={link.href}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="hover:opacity-70 transition text-[14px] leading-[18px]"
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 500,
+                textTransform: "uppercase",
+                color: "#0D0D0D",
+              }}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
+      )}
+    </header>
+  );
+}
+
+const navLinkStyle = {
+  fontFamily: "'FFF Acid Grotesk', sans-serif",
+  fontWeight: 500,
+  fontSize: "12px",
+  lineHeight: "18px",
+  textTransform: "uppercase" as const,
+  color: "#0D0D0D",
+};
+
+const logoStyle = {
+  fontFamily: "'FFF Acid Grotesk', sans-serif",
+  fontWeight: 700,
+  fontStyle: "italic",
+  fontSize: "18px",
+  textTransform: "uppercase" as const,
+  color: "#0D0D0D",
+};
+
+
 // ─── Product Data ──────────────────────────────────────────────────────────
 const products = [
   {
     name: "Private Label Boxing Gloves",
-    cta: "View Product",
+    cta: "View Product +",
     swatches: ["#B91C1C", "#0D0D0D"],
     image:
       "https://images.unsplash.com/photo-1517438476312-10d79c077509?auto=format&fit=crop&q=80&w=700",
   },
   {
     name: "BJJ Gis and Jiu-Jitsu Uniforms",
-    cta: "View Product",
+    cta: "View Product +",
     swatches: ["#0D0D0D", "#E5E5E5"],
     image:
       "https://images.unsplash.com/photo-1555597408-26bc8e548a46?auto=format&fit=crop&q=80&w=700",
   },
   {
     name: "MMA Fight Gloves",
-    cta: "View Product",
+    cta: "View Product +",
     swatches: ["#B91C1C", "#0D0D0D"],
     image:
       "https://images.unsplash.com/photo-1615117709930-4ee6c4b6a0f9?auto=format&fit=crop&q=80&w=700",
   },
   {
     name: "Professional MMA Training Gloves",
-    cta: "View Product",
+    cta: "View Product +",
     swatches: ["#B91C1C", "#0D0D0D"],
     image:
       "https://images.unsplash.com/photo-1583473848882-f9a5bc7fd2ee?auto=format&fit=crop&q=80&w=700",
   },
   {
     name: "Boxing Focus Mitts and Training Pads",
-    cta: "View Product",
+    cta: "View Product +",
     swatches: ["#B91C1C", "#0D0D0D"],
     image:
       "https://images.unsplash.com/photo-1544737151-6e4b999de2a5?auto=format&fit=crop&q=80&w=700",
   },
   {
     name: "Boxing Sparring Gloves",
-    cta: "View Product",
+    cta: "View Product +",
     swatches: ["#B91C1C", "#0D0D0D"],
     image:
       "https://images.unsplash.com/photo-1524594152303-9fd13543fe6e?auto=format&fit=crop&q=80&w=700",
   },
   {
     name: "Custom Boxing Headguards",
-    cta: "View Product",
+    cta: "View Product +",
     swatches: ["#B91C1C", "#0D0D0D"],
     image:
       "https://images.unsplash.com/photo-1517438476312-10d79c077509?auto=format&fit=crop&q=80&w=700",
   },
   {
     name: "Private Label Karate Uniforms",
-    cta: "View Product",
+    cta: "View Product +",
     swatches: ["#E5E5E5", "#0D0D0D"],
     image:
       "https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&q=80&w=700",
@@ -213,17 +341,14 @@ export default function ProductPage() {
       
       {/* ───── 1. Announcement Bar ───── */}
       <div className="w-full bg-[#0D0D0D] overflow-hidden">
-        <div className="flex animate-marquee whitespace-nowrap py-2">
+        <div className="flex animate-marquee whitespace-nowrap py-2.5">
           {[...Array(6)].map((_, i) => (
             <span
               key={i}
-              className="inline-block mx-8"
+              className="inline-block mx-8 text-[12px] leading-[16px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 400,
-                fontSize: "12px",
-                lineHeight: "16px",
-                letterSpacing: "0px",
                 color: "#FFFFFF",
               }}
             >
@@ -234,11 +359,10 @@ export default function ProductPage() {
       </div>
 
       {/* ───── 2. Header (Sticky Nav) ───── */}
-      {/* Assuming Header handles its own typography internally based on the global scale, keeping component standard */}
       <Header />
 
       {/* ───── 3. Hero Section ───── */}
-      <section className="relative w-full h-[624px] overflow-hidden bg-[#0D0D0D]">
+      <section className="relative w-full h-[540px] md:h-[624px] overflow-hidden bg-[#0D0D0D]">
         <ImagePlaceholder
           className="absolute inset-0 w-full h-full object-cover"
           label="Hero - Combat Sports Equipment Display"
@@ -246,15 +370,13 @@ export default function ProductPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-black/10" />
 
-        <div className="relative z-10 flex items-center h-full px-10 max-w-[1440px] mx-auto">
-          <div className="max-w-[640px] flex flex-col gap-6">
+        <div className="relative z-10 flex items-center h-full px-6 md:px-10 max-w-[1440px] mx-auto mt-4 md:mt-0">
+          <div className="max-w-[640px] flex flex-col gap-4 md:gap-6">
             <h1 
-              className="uppercase"
+              className="uppercase text-[36px] leading-[40px] md:text-[56px] md:leading-[105%]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 700,
-                fontSize: "56px",
-                lineHeight: "105%",
                 letterSpacing: "-2px",
                 color: "#FFFFFF",
               }}
@@ -263,11 +385,10 @@ export default function ProductPage() {
             </h1>
             <div className="flex flex-col gap-4">
               <p
+                className="text-[14px] leading-[20px] md:text-[16px] md:leading-[20px]"
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
                   fontWeight: 400,
-                  fontSize: "16px",
-                  lineHeight: "20px",
                   letterSpacing: "0px",
                   color: "#FFFFFF",
                 }}
@@ -278,11 +399,10 @@ export default function ProductPage() {
                 distributors.
               </p>
               <p
+                className="text-[14px] leading-[20px] md:text-[16px] md:leading-[20px]"
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
                   fontWeight: 400,
-                  fontSize: "16px",
-                  lineHeight: "20px",
                   letterSpacing: "0px",
                   color: "#FFFFFF",
                 }}
@@ -294,11 +414,10 @@ export default function ProductPage() {
             </div>
             <a
               href="#"
-              className="inline-flex items-center justify-center bg-white px-8 py-4 w-fit hover:bg-gray-100 transition"
+              className="mt-4 md:mt-0 inline-flex items-center justify-center bg-white px-10 py-3.5 w-full md:w-fit hover:bg-gray-100 transition text-[14px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 700,
-                fontSize: "14px",
                 letterSpacing: "0px",
                 color: "#0D0D0D",
               }}
@@ -310,17 +429,15 @@ export default function ProductPage() {
       </section>
 
       {/* ───── 4. Brand Statement Section ───── */}
-      <section className="w-full bg-white py-20">
-        <div className="max-w-[1440px] mx-auto px-10 flex flex-col lg:flex-row gap-12 lg:gap-20">
+      <section className="w-full bg-white py-16 md:py-20">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10 flex flex-col lg:flex-row gap-6 md:gap-12 lg:gap-20">
           <div className="lg:w-1/2">
             <h2>
               <span 
-                className="block"
+                className="block text-[28px] leading-[32px] md:text-[37px] md:leading-[45.6px]"
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
                   fontWeight: 700,
-                  fontSize: "37px",
-                  lineHeight: "45.6px",
                   letterSpacing: "-1.52px",
                   color: "#757575",
                 }}
@@ -328,12 +445,10 @@ export default function ProductPage() {
                 Why Brands Choose
               </span>
               <span 
-                className="block"
+                className="block text-[28px] leading-[32px] md:text-[37px] md:leading-[45.6px]"
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
                   fontWeight: 700,
-                  fontSize: "37px",
-                  lineHeight: "45.6px",
                   letterSpacing: "-1.52px",
                   color: "#000000",
                 }}
@@ -343,13 +458,12 @@ export default function ProductPage() {
             </h2>
           </div>
 
-          <div className="lg:w-1/2 flex flex-col gap-6">
+          <div className="lg:w-1/2 flex flex-col gap-4 md:gap-6">
             <p
+              className="text-[14px] leading-[22px] md:text-[16px] md:leading-[20px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 400,
-                fontSize: "16px",
-                lineHeight: "20px",
                 letterSpacing: "0px",
                 color: "#434343",
               }}
@@ -361,11 +475,10 @@ export default function ProductPage() {
               requirements.
             </p>
             <p
+              className="text-[14px] leading-[22px] md:text-[16px] md:leading-[20px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 400,
-                fontSize: "16px",
-                lineHeight: "20px",
                 letterSpacing: "0px",
                 color: "#434343",
               }}
@@ -380,15 +493,13 @@ export default function ProductPage() {
 
       {/* ───── 5. Product Grid Section ───── */}
       <section className="w-full bg-white">
-        <div className="max-w-[1440px] mx-auto px-10">
-          <div className="py-6 border-b border-gray-200">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10">
+          <div className="py-4 md:py-6 border-b border-gray-200">
             <h2 
-              className="uppercase"
+              className="uppercase text-[22px] leading-[26px] md:text-[26px] md:leading-[26px] max-w-[300px] md:max-w-none"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 700,
-                fontSize: "26px",
-                lineHeight: "26px",
                 letterSpacing: "-0.5px",
                 color: "#0D0D0D",
               }}
@@ -397,15 +508,13 @@ export default function ProductPage() {
             </h2>
           </div>
 
-          <div className="flex items-center justify-between py-4 border-b border-gray-200">
-            <div className="flex items-center gap-4">
+          <div className="flex flex-col md:flex-row md:items-center justify-between py-4 border-b border-gray-200 gap-4 md:gap-0">
+            <div className="flex items-center justify-between md:justify-start gap-4 w-full md:w-auto">
               <span 
-                className="uppercase"
+                className="uppercase text-[11px] md:text-[12px] leading-[18px]"
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
                   fontWeight: 500,
-                  fontSize: "12px",
-                  lineHeight: "18px",
                   letterSpacing: "0px",
                   color: "#707070",
                 }}
@@ -414,12 +523,10 @@ export default function ProductPage() {
               </span>
               <div className="flex items-center gap-1.5">
                 <span 
-                  className="uppercase"
+                  className="uppercase text-[11px] md:text-[12px] leading-[18px]"
                   style={{
                     fontFamily: "'FFF Acid Grotesk', sans-serif",
                     fontWeight: 500,
-                    fontSize: "12px",
-                    lineHeight: "18px",
                     letterSpacing: "0px",
                     color: "#707070",
                   }}
@@ -427,12 +534,10 @@ export default function ProductPage() {
                   Category:
                 </span>
                 <button 
-                  className="flex items-center gap-1 uppercase"
+                  className="flex items-center gap-1 uppercase text-[12px] leading-[18px]"
                   style={{
                     fontFamily: "'Inter', sans-serif",
                     fontWeight: 700,
-                    fontSize: "12px",
-                    lineHeight: "18px",
                     letterSpacing: "0px",
                     color: "#0D0D0D",
                   }}
@@ -442,14 +547,13 @@ export default function ProductPage() {
                 </button>
               </div>
             </div>
-            <div className="flex items-center gap-2">
+            
+            <div className="hidden md:flex items-center gap-2">
               <span 
-                className="uppercase"
+                className="uppercase text-[12px] leading-[18px]"
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
                   fontWeight: 500,
-                  fontSize: "12px",
-                  lineHeight: "18px",
                   letterSpacing: "0px",
                   color: "#707070",
                 }}
@@ -466,23 +570,21 @@ export default function ProductPage() {
           </div>
         </div>
 
-        <div className="max-w-[1440px] mx-auto px-10 py-0">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-l border-gray-200">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-l-0 md:border-l border-gray-200">
             {products.map((product, i) => (
-              <div key={i} className="border-r border-b border-gray-200 group">
-                <div className="relative aspect-square bg-gray-50 overflow-hidden flex items-center justify-center p-8">
+              <div key={i} className="border-r-0 md:border-r border-b border-gray-200 group">
+                <div className="relative aspect-[4/3] md:aspect-square bg-gray-50 overflow-hidden flex items-center justify-center p-6 md:p-8">
                   <ImagePlaceholder
                     className="w-full h-full object-contain"
                     label={product.name}
                     src={product.image}
                   />
                   <button 
-                    className="absolute top-3 right-3 bg-[#0D0D0D] uppercase opacity-0 group-hover:opacity-100 transition rounded-sm px-3 py-1.5"
+                    className="absolute top-3 right-3 bg-[#0D0D0D] uppercase opacity-0 group-hover:opacity-100 transition rounded-sm px-3 py-1.5 text-[6.5px] leading-[9.4px]"
                     style={{
                       fontFamily: "'FFF Acid Grotesk', sans-serif",
                       fontWeight: 500,
-                      fontSize: "6.5px",
-                      lineHeight: "9.4px",
                       letterSpacing: "0px",
                       color: "#FFFFFF",
                     }}
@@ -491,15 +593,13 @@ export default function ProductPage() {
                   </button>
                 </div>
 
-                <div className="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200">
-                  <div>
+                <div className="bg-white px-4 py-4 md:py-3 flex items-center justify-between border-t border-gray-200">
+                  <div className="flex flex-col gap-1 md:gap-0">
                     <span 
-                      className="block"
+                      className="block text-[10px] md:text-[12px] leading-[13px] md:leading-[14px]"
                       style={{
                         fontFamily: "'FFF Acid Grotesk', sans-serif",
                         fontWeight: 700,
-                        fontSize: "10px",
-                        lineHeight: "13px",
                         letterSpacing: "0.05px",
                         color: "#0D0D0D",
                       }}
@@ -508,12 +608,10 @@ export default function ProductPage() {
                     </span>
                     <a
                       href="#"
-                      className="underline hover:opacity-70 transition"
+                      className="underline hover:opacity-70 transition text-[10px] md:text-[11px] leading-[13px] md:leading-[14px]"
                       style={{
                         fontFamily: "'FFF Acid Grotesk', sans-serif",
                         fontWeight: 700,
-                        fontSize: "10px",
-                        lineHeight: "13px",
                         letterSpacing: "0px",
                         color: "#0D0D0D",
                       }}
@@ -525,7 +623,7 @@ export default function ProductPage() {
                     {product.swatches.map((color, si) => (
                       <span
                         key={si}
-                        className="w-2.5 h-2.5 inline-block border border-gray-200 rounded-sm"
+                        className="w-3 h-3 md:w-2.5 md:h-2.5 inline-block border border-gray-200 rounded-sm"
                         style={{ backgroundColor: color }}
                       />
                     ))}
@@ -536,16 +634,15 @@ export default function ProductPage() {
           </div>
         </div>
 
-        <div className="flex justify-center py-12">
+        <div className="flex justify-center py-8 md:py-12 px-6 md:px-0">
           <a
             href="#"
-            className="inline-flex items-center justify-center bg-white uppercase px-10 py-4 border border-black hover:bg-black hover:text-white transition"
+            className="inline-flex items-center justify-center bg-white w-full md:w-auto uppercase px-10 py-4 border border-black hover:bg-black hover:text-white transition text-[14px]"
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
               fontWeight: 700,
-              fontSize: "14px",
               letterSpacing: "5%",
-              color: "#000000",
+              color: "#0D0D0D",
             }}
           >
             Request a Manufacturing Quote
@@ -554,16 +651,14 @@ export default function ProductPage() {
       </section>
 
       {/* ───── 6. Customization Options Section ───── */}
-      <section className="w-full bg-white py-16">
-        <div className="max-w-[1392px] mx-auto px-10">
-          <div className="mb-10">
+      <section className="w-full bg-white py-16 md:py-16">
+        <div className="max-w-[1392px] mx-auto px-6 md:px-10">
+          <div className="mb-8 md:mb-10">
             <h2 
-              className="mb-4"
+              className="mb-4 text-[28px] leading-[32px] md:text-[37px] md:leading-[46px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 700,
-                fontSize: "37px",
-                lineHeight: "46px",
                 letterSpacing: "0px",
                 color: "#0D0D0D",
               }}
@@ -571,12 +666,10 @@ export default function ProductPage() {
               Private Label Customization Options
             </h2>
             <p 
-              className="max-w-[800px]"
+              className="max-w-[800px] text-[14px] leading-[22px] md:text-[16px] md:leading-[24px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 400,
-                fontSize: "16px",
-                lineHeight: "24px",
                 letterSpacing: "0px",
                 color: "#434343",
               }}
@@ -608,12 +701,10 @@ export default function ProductPage() {
 
                   <div className="p-5 flex-1">
                     <h3 
-                      className="mb-2"
+                      className="mb-2 text-[16px] leading-[22px] md:text-[18px] md:leading-[24px]"
                       style={{
                         fontFamily: "'FFF Acid Grotesk', sans-serif",
                         fontWeight: 700,
-                        fontSize: "18px",
-                        lineHeight: "24px",
                         letterSpacing: "0px",
                         color: "#0D0D0D",
                       }}
@@ -621,11 +712,10 @@ export default function ProductPage() {
                       {option.title}
                     </h3>
                     <p
+                      className="text-[14px] leading-[22px]"
                       style={{
                         fontFamily: "'FFF Acid Grotesk', sans-serif",
                         fontWeight: 400,
-                        fontSize: "14px",
-                        lineHeight: "22px",
                         letterSpacing: "0px",
                         color: "#434343",
                       }}
@@ -652,15 +742,14 @@ export default function ProductPage() {
               <ChevronRightIcon />
             </button>
           </div>
-
+          
           <div className="flex justify-center mt-10">
             <a
               href="#"
-              className="inline-flex items-center justify-center bg-[#0D0D0D] uppercase px-10 py-3.5 hover:bg-gray-900 transition"
+              className="inline-flex items-center justify-center bg-[#0D0D0D] w-full md:w-auto uppercase px-10 py-3.5 hover:bg-gray-900 transition text-[14px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 700,
-                fontSize: "14px",
                 letterSpacing: "5%",
                 color: "#FFFFFF",
               }}
@@ -672,15 +761,13 @@ export default function ProductPage() {
       </section>
 
       {/* ───── 7. Process / Pricing Section ───── */}
-      <section className="w-full bg-white py-20">
-        <div className="max-w-[1376px] mx-auto px-10">
+      <section className="w-full bg-white py-16 md:py-20">
+        <div className="max-w-[1376px] mx-auto px-6 md:px-10">
           <h2 
-            className="mb-16"
+            className="mb-8 md:mb-16 text-[28px] leading-[32px] md:text-[37px] md:leading-[46px]"
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
               fontWeight: 500,
-              fontSize: "37px",
-              lineHeight: "46px",
               letterSpacing: "-1.5px",
               color: "#000000",
             }}
@@ -692,18 +779,16 @@ export default function ProductPage() {
             {processSteps.map((step, i) => (
               <div
                 key={i}
-                className={`flex flex-col ${
-                  i < 2 ? "border-r border-gray-200" : ""
+                className={`flex flex-col border-b border-gray-200 md:border-b-0 ${
+                  i < 2 ? "md:border-r" : ""
                 }`}
               >
-                <div className="p-8 pb-6">
+                <div className="p-6 md:p-8 pb-4 md:pb-6">
                   <h3 
-                    className="mb-3"
+                    className="mb-3 text-[18px] leading-[22px] md:text-[22px] md:leading-[26px]"
                     style={{
                       fontFamily: "'FFF Acid Grotesk', sans-serif",
                       fontWeight: 500,
-                      fontSize: "22px",
-                      lineHeight: "26px",
                       letterSpacing: "-0.4px",
                       color: "#000000",
                     }}
@@ -711,11 +796,10 @@ export default function ProductPage() {
                     {step.title}
                   </h3>
                   <p
+                    className="text-[14px] leading-[22px] md:text-[15px] md:leading-[16px]"
                     style={{
                       fontFamily: "'FFF Acid Grotesk', sans-serif",
                       fontWeight: 400,
-                      fontSize: "15px",
-                      lineHeight: "16px",
                       letterSpacing: "0px",
                       color: "#434343",
                     }}
@@ -724,8 +808,8 @@ export default function ProductPage() {
                   </p>
                 </div>
 
-                <div className="px-8 pb-8 flex-1">
-                  <div className="rounded-sm overflow-hidden h-[400px]">
+                <div className="px-6 md:px-8 pb-6 md:pb-8 flex-1">
+                  <div className="rounded-sm overflow-hidden h-[240px] md:h-[400px]">
                     <ImagePlaceholder
                       className="w-full h-full"
                       label={step.title}
@@ -740,39 +824,35 @@ export default function ProductPage() {
       </section>
 
       {/* ───── 8. Why Section ───── */}
-      <section className="w-full bg-white py-20 border-t border-gray-200">
-        <div className="max-w-[1440px] mx-auto px-10">
+      <section className="w-full bg-white py-16 md:py-20 border-t border-gray-200">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10">
           <h2 
-            className="mb-16"
+            className="mb-10 md:mb-16 text-[28px] leading-[34px] md:text-[37px] md:leading-[46px]"
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
               fontWeight: 500,
-              fontSize: "37px",
-              lineHeight: "46px",
               letterSpacing: "-1.5px",
               color: "#000000",
             }}
           >
             Why Brands Manufacture With
-            <br />
-            Sarlam Athletics
+            <br className="hidden md:block" />
+            <span className="md:hidden"> </span>Sarlam Athletics
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border-t border-gray-200">
             {whyReasons.map((reason, i) => (
               <div
                 key={i}
-                className={`p-8 ${
-                  i < 3 ? "border-r border-gray-200" : ""
+                className={`py-8 border-b border-gray-200 md:border-b-0 md:p-8 ${
+                  i < 3 ? "md:border-r" : ""
                 }`}
               >
                 <h3 
-                  className="mb-4"
+                  className="mb-3 md:mb-4 text-[18px] leading-[24px] md:text-[21.7px] md:leading-[26.4px]"
                   style={{
                     fontFamily: "'Switzer', sans-serif",
                     fontWeight: 600,
-                    fontSize: "21.7px",
-                    lineHeight: "26.4px",
                     letterSpacing: "-0.44px",
                     color: "#000000",
                   }}
@@ -780,11 +860,10 @@ export default function ProductPage() {
                   {reason.title}
                 </h3>
                 <p
+                  className="text-[14px] leading-[22px] md:text-[15.1px] md:leading-[24px]"
                   style={{
                     fontFamily: "'FFF Acid Grotesk', sans-serif",
                     fontWeight: 400,
-                    fontSize: "15.1px",
-                    lineHeight: "24px",
                     letterSpacing: "0px",
                     color: "#47433B",
                   }}
@@ -801,32 +880,28 @@ export default function ProductPage() {
       <footer className="w-full bg-white">
         <div className="border-t border-gray-200" />
 
-        <div className="max-w-[1440px] mx-auto px-10 py-12 flex flex-col lg:flex-row justify-between gap-12">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-10 md:py-12 flex flex-col lg:flex-row justify-between gap-10 md:gap-12">
           <div className="lg:w-1/2">
             <h3 
-              className="mb-4"
+              className="mb-4 text-[32px] leading-[38px] md:text-[47px] md:leading-[58px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 500,
-                fontSize: "47px",
-                lineHeight: "58px",
                 letterSpacing: "-1.9px",
                 color: "#000000",
               }}
             >
               Start Your Private Label
-              <br />
-              Manufacturing Project
+              <br className="hidden md:block" />
+              <span className="md:hidden"> </span>Manufacturing Project
             </h3>
             <a
               href="mailto:hello@sarlamathletics.com"
-              className="transition break-all"
+              className="transition break-all text-[22px] leading-[30px] md:text-[47px] md:leading-[58px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 500,
-                fontSize: "47px",
-                lineHeight: "58px",
-                letterSpacing: "-1.9px",
+                letterSpacing: "-1px",
                 color: "#A5A5A5",
               }}
             >
@@ -834,7 +909,7 @@ export default function ProductPage() {
             </a>
           </div>
 
-          <div className="lg:w-1/2 flex gap-16">
+          <div className="lg:w-1/2 flex flex-col md:flex-row gap-8 md:gap-16">
             <div className="flex flex-col gap-3">
               {[
                 "Home",
@@ -845,12 +920,10 @@ export default function ProductPage() {
                 <a
                   key={link}
                   href="#"
-                  className="transition border-b border-gray-200 pb-2 hover:opacity-70"
+                  className="transition border-b border-gray-200 pb-2 md:border-b-0 md:pb-0 hover:opacity-70 text-[14px] leading-[17px]"
                   style={{
                     fontFamily: "'FFF Acid Grotesk', sans-serif",
                     fontWeight: 400,
-                    fontSize: "14px",
-                    lineHeight: "17px",
                     letterSpacing: "0px",
                     color: "#000000",
                   }}
@@ -865,12 +938,10 @@ export default function ProductPage() {
                 <a
                   key={link}
                   href="#"
-                  className="transition border-b border-gray-200 pb-2 hover:opacity-70"
+                  className="transition border-b border-gray-200 pb-2 md:border-b-0 md:pb-0 hover:opacity-70 text-[14px] leading-[17px]"
                   style={{
                     fontFamily: "'FFF Acid Grotesk', sans-serif",
                     fontWeight: 400,
-                    fontSize: "14px",
-                    lineHeight: "17px",
                     letterSpacing: "0px",
                     color: "#000000",
                   }}
@@ -890,12 +961,10 @@ export default function ProductPage() {
                 <a
                   key={link}
                   href="#"
-                  className="transition border-b border-gray-200 pb-2 hover:opacity-70"
+                  className="transition border-b border-gray-200 pb-2 md:border-b-0 md:pb-0 hover:opacity-70 text-[14px] leading-[17px]"
                   style={{
                     fontFamily: "'FFF Acid Grotesk', sans-serif",
                     fontWeight: 400,
-                    fontSize: "14px",
-                    lineHeight: "17px",
                     letterSpacing: "0px",
                     color: "#000000",
                   }}
@@ -909,36 +978,40 @@ export default function ProductPage() {
 
         <div className="border-t border-gray-200" />
 
-        <div className="max-w-[1440px] mx-auto px-10 py-10 flex items-end justify-between">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-8 md:py-10 flex flex-col md:flex-row items-start md:items-end justify-between gap-4 md:gap-0">
           <p 
-            className="uppercase"
+            className="uppercase text-[56px] leading-[85%] md:text-[101px] md:leading-[85%]"
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
               fontWeight: 700,
               fontStyle: "italic",
-              fontSize: "101px",
-              lineHeight: "85%",
               letterSpacing: "-3%",
               color: "#000000",
             }}
           >
             sarlam
-            <br />
-            athletics
+            <br className="hidden md:block" />
+            <span className="md:hidden"> </span>athletics
           </p>
-          <span className="hidden md:block" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "12px", lineHeight: "16px", color: "#000000" }}>
-            © 2026
-          </span>
+          <div className="flex flex-col md:items-end gap-2 md:gap-0">
+            <span className="md:hidden block text-[12px] leading-[16px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#000000" }}>
+              Website by Sanna Granqvist
+              <br />
+              © 2026
+            </span>
+            <span className="hidden md:block text-[12px] leading-[16px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#000000" }}>
+              © 2026
+            </span>
+          </div>
         </div>
 
         <div className="w-full bg-[#0D0D0D] py-4">
-          <div className="max-w-[1440px] mx-auto px-10 flex items-center justify-between">
+          <div className="max-w-[1440px] mx-auto px-6 md:px-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-0">
             <p 
+              className="text-[12px] leading-[16px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 400,
-                fontSize: "12px",
-                lineHeight: "16px",
                 letterSpacing: "0px",
                 color: "#E3E2E2",
               }}
@@ -947,12 +1020,10 @@ export default function ProductPage() {
               manufacturer for combat sports brands.
             </p>
             <span 
-              className="uppercase"
+              className="uppercase text-[12px] leading-[18px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 500,
-                fontSize: "12px",
-                lineHeight: "18px",
                 letterSpacing: "0px",
                 color: "#FFFFFF",
               }}
