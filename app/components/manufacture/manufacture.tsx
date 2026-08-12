@@ -60,10 +60,30 @@ function HeroSection() {
       {/* Text overlay — centered */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full px-8 md:px-12 text-center">
         <div className="max-w-[760px] flex flex-col items-center">
-          <p className="text-[15px] font-medium text-[#F0EDE9] tracking-wide mb-5">
+          <p 
+            className="mb-5"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 500,
+              fontSize: "15px",
+              letterSpacing: "0.15em",
+              textTransform: "uppercase",
+              color: "#F0EDE9",
+            }}
+          >
             ABOUT SARLAM ATHLETICS
           </p>
-          <h1 className="text-4xl md:text-[52px] md:leading-[1.1] font-medium text-white">
+          <h1 
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 700,
+              fontSize: "56px",
+              lineHeight: "105%",
+              letterSpacing: "-2px",
+              textTransform: "uppercase",
+              color: "#FFFFFF",
+            }}
+          >
             Private Label Sports Equipment Manufacturing Built for Growing Brands
           </h1>
         </div>
@@ -75,20 +95,47 @@ function HeroSection() {
 // ─── Video / Mission Section ───
 function VideoSection() {
   return (
-    <section className="py-[120px] px-8">
+    <section className="py-[120px] px-8 bg-white">
       <div className="max-w-[1376px] mx-auto space-y-12">
         {/* Heading row */}
         <div className="flex flex-col md:flex-row gap-8 md:gap-0">
           <div className="md:w-1/2 space-y-0">
-            <h2 className="text-2xl md:text-[37px] md:leading-[46px] font-medium text-black">
+            <h2 
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 700,
+                fontSize: "37px",
+                lineHeight: "45.6px",
+                letterSpacing: "-1.52px",
+                color: "#000000",
+              }}
+            >
               Why Sarlam Athletics Exists
             </h2>
-            <h2 className="text-2xl md:text-[37px] md:leading-[46px] font-medium text-black">
+            <h2 
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 700,
+                fontSize: "37px",
+                lineHeight: "45.6px",
+                letterSpacing: "-1.52px",
+                color: "#000000",
+              }}
+            >
               Our Mission
             </h2>
           </div>
           <div className="md:w-1/2">
-            <p className="text-[15px] leading-relaxed text-[#434343]">
+            <p 
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 400,
+                fontSize: "16px",
+                lineHeight: "24px",
+                letterSpacing: "0px",
+                color: "#434343",
+              }}
+            >
               Many sports brands struggle to find reliable manufacturing partners that deliver
               consistent quality, transparent communication, and dependable production timelines.
               Sarlam Athletics was built to simplify the manufacturing process through factory-direct
@@ -153,11 +200,22 @@ const values = [
 
 function ValuesSection() {
   return (
-    <section className="pb-12">
+    <section className="pb-12 bg-white">
       {/* Heading */}
       <div className="pt-[120px] pb-12 px-8">
         <div className="max-w-[1280px] mx-auto">
-          <h2 className="text-2xl md:text-[37px] font-medium text-black">Our Values</h2>
+          <h2 
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 700,
+              fontSize: "37px",
+              lineHeight: "46px",
+              letterSpacing: "-1.5px",
+              color: "#000000",
+            }}
+          >
+            Our Values
+          </h2>
         </div>
       </div>
 
@@ -171,8 +229,30 @@ function ValuesSection() {
             } border-b lg:border-b-0 border-gray-200`}
           >
             <div className="w-5 h-5 text-black">{value.icon}</div>
-            <h3 className="text-[22px] font-medium text-black">{value.title}</h3>
-            <p className="text-[15px] leading-relaxed text-[#434343]">{value.description}</p>
+            <h3 
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 500,
+                fontSize: "22px",
+                lineHeight: "26px",
+                letterSpacing: "-0.4px",
+                color: "#000000",
+              }}
+            >
+              {value.title}
+            </h3>
+            <p 
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 400,
+                fontSize: "15px",
+                lineHeight: "24px",
+                letterSpacing: "0px",
+                color: "#434343",
+              }}
+            >
+              {value.description}
+            </p>
           </div>
         ))}
       </div>
@@ -181,9 +261,6 @@ function ValuesSection() {
 }
 
 // ─── Manufacturing Process Timeline ───
-// Reference: fully centered layout — heading centered, a single vertical line
-// runs down the middle with a dot before each step, step title + copy centered
-// beneath each dot, ending with a centered CTA and button.
 const timelineSteps = [
   {
     title: "Consultation & Product Specs",
@@ -208,10 +285,28 @@ function TimelineSection() {
       <div className="max-w-[1000px] mx-auto flex flex-col items-center text-center">
         {/* Heading */}
         <div className="max-w-[820px] space-y-0 mb-12">
-          <h2 className="text-3xl md:text-[47px] md:leading-[58px] font-medium text-[#B2B2B2]">
+          <h2 
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 500,
+              fontSize: "37px",
+              lineHeight: "46px",
+              letterSpacing: "-1.5px",
+              color: "#B2B2B2",
+            }}
+          >
             Our Manufacturing Process
           </h2>
-          <h2 className="text-3xl md:text-[47px] md:leading-[58px] font-medium text-white">
+          <h2 
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 500,
+              fontSize: "37px",
+              lineHeight: "46px",
+              letterSpacing: "-1.5px",
+              color: "#FFFFFF",
+            }}
+          >
             From Product Development to Bulk Manufacturing
           </h2>
         </div>
@@ -224,10 +319,30 @@ function TimelineSection() {
           <div key={i} className="flex flex-col items-center">
             <div className="w-3 h-3 rounded-full bg-[#B2B2B2] my-6" />
             <div className="max-w-[600px] space-y-4">
-              <h3 className="text-2xl md:text-[33px] md:leading-[40px] font-medium text-white">
+              <h3 
+                style={{
+                  fontFamily: "'FFF Acid Grotesk', sans-serif",
+                  fontWeight: 500,
+                  fontSize: "33px",
+                  lineHeight: "40px",
+                  letterSpacing: "-0.4px",
+                  color: "#FFFFFF",
+                }}
+              >
                 {step.title}
               </h3>
-              <p className="text-[17px] leading-relaxed text-[#CBCBCB]">{step.description}</p>
+              <p 
+                style={{
+                  fontFamily: "'FFF Acid Grotesk', sans-serif",
+                  fontWeight: 400,
+                  fontSize: "17px",
+                  lineHeight: "26px",
+                  letterSpacing: "0px",
+                  color: "#CBCBCB",
+                }}
+              >
+                {step.description}
+              </p>
             </div>
             <div className="w-[3px] h-[220px] bg-white/20 mt-6" />
           </div>
@@ -235,12 +350,29 @@ function TimelineSection() {
 
         {/* CTA at bottom of timeline */}
         <div className="max-w-[600px] space-y-8 mt-2">
-          <h2 className="text-2xl md:text-[37px] md:leading-[44px] font-medium text-white">
+          <h2 
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 500,
+              fontSize: "37px",
+              lineHeight: "44px",
+              letterSpacing: "-1.5px",
+              color: "#FFFFFF",
+            }}
+          >
             Ready to Launch Your Private Label Sports Brand?
           </h2>
           <Link
             href="/contactus"
-            className="inline-block px-8 py-3.5 border border-white rounded-md text-[15px] text-black bg-white hover:bg-transparent hover:text-white transition-colors"
+            className="inline-block px-8 py-3.5 border border-white rounded-md bg-white hover:bg-transparent hover:text-white transition-colors"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 700,
+              fontSize: "14px",
+              letterSpacing: "5%",
+              textTransform: "uppercase",
+              color: "#000000",
+            }}
           >
             Request Manufacturing Quote
           </Link>
@@ -255,7 +387,7 @@ const services = [
   {
     title: "Private Label & OEM Manufacturing",
     description:
-      "Manufacture custom boxing gloves, MMA gear, martial arts uniforms, belts, wraps, and training accessories under your own brand.",
+      "Manufacture custom boxing gloves, MMA gear, martial arts uniforms, belts, wraps, and training accessories under your brand.",
     image: "https://images.unsplash.com/photo-1565992441121-4367c2967103?auto=format&fit=crop&q=80&w=800",
   },
   {
@@ -274,11 +406,20 @@ const services = [
 
 function ServicesSection() {
   return (
-    <section className="py-0">
+    <section className="py-0 bg-white">
       {/* Heading */}
       <div className="px-8 pt-0 pb-12">
         <div className="max-w-[1280px] mx-auto">
-          <h2 className="text-2xl md:text-[37px] font-bold text-black">
+          <h2 
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 700,
+              fontSize: "37px",
+              lineHeight: "46px",
+              letterSpacing: "-1.5px",
+              color: "#000000",
+            }}
+          >
             OEM & Private Label Manufacturing Services
           </h2>
         </div>
@@ -295,10 +436,31 @@ function ServicesSection() {
           >
             {/* Text */}
             <div className="space-y-4">
-              <h4 className="text-[22px] font-medium text-black group-hover:underline">
+              <h4 
+                className="group-hover:underline"
+                style={{
+                  fontFamily: "'FFF Acid Grotesk', sans-serif",
+                  fontWeight: 500,
+                  fontSize: "22px",
+                  lineHeight: "26px",
+                  letterSpacing: "-0.4px",
+                  color: "#000000",
+                }}
+              >
                 {service.title}
               </h4>
-              <p className="text-[15px] leading-relaxed text-[#434343]">{service.description}</p>
+              <p 
+                style={{
+                  fontFamily: "'FFF Acid Grotesk', sans-serif",
+                  fontWeight: 400,
+                  fontSize: "15px",
+                  lineHeight: "24px",
+                  letterSpacing: "0px",
+                  color: "#434343",
+                }}
+              >
+                {service.description}
+              </p>
             </div>
             {/* Image */}
             <div className="aspect-[4/3] rounded-lg overflow-hidden bg-gray-200">
@@ -329,9 +491,18 @@ const productTags = [
 
 function ProductsSection() {
   return (
-    <section className="py-20 px-8 md:px-20">
+    <section className="py-20 px-8 md:px-20 bg-white">
       <div className="max-w-[1280px] mx-auto space-y-8">
-        <h2 className="text-2xl md:text-[37px] font-bold text-[#0D0D0D]">
+        <h2 
+          style={{
+            fontFamily: "'FFF Acid Grotesk', sans-serif",
+            fontWeight: 700,
+            fontSize: "37px",
+            lineHeight: "46px",
+            letterSpacing: "-1.5px",
+            color: "#0D0D0D",
+          }}
+        >
           Combat Sports Equipment We Manufacture
         </h2>
         <div className="flex flex-wrap gap-4">
@@ -339,7 +510,14 @@ function ProductsSection() {
             <Link
               key={i}
               href={`/products`}
-              className="px-6 py-3.5 bg-[#F5F5F5] border border-[#DADADA] rounded-md text-base text-[#0D0D0D] hover:bg-[#E8E8E8] transition-colors"
+              className="px-6 py-3.5 bg-[#F5F5F5] border border-[#DADADA] rounded-md hover:bg-[#E8E8E8] transition-colors"
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 500,
+                fontSize: "15px",
+                lineHeight: "1.4",
+                color: "#0D0D0D",
+              }}
             >
               {tag}
             </Link>
@@ -361,9 +539,21 @@ const industries = [
 
 function IndustriesSection() {
   return (
-    <section className="py-12 px-3">
+    <section className="py-12 px-3 bg-white">
       <div className="max-w-[1416px] mx-auto space-y-10">
-        <p className="text-[15px] font-medium text-black text-center">Industries We Serve</p>
+        <p 
+          className="text-center text-uppercase"
+          style={{
+            fontFamily: "'FFF Acid Grotesk', sans-serif",
+            fontWeight: 500,
+            fontSize: "15px",
+            letterSpacing: "0.15em",
+            textTransform: "uppercase",
+            color: "#000000",
+          }}
+        >
+          Industries We Serve
+        </p>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 border-t border-gray-200 pt-6">
           {industries.map((industry, i) => (
@@ -381,7 +571,16 @@ function IndustriesSection() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               {/* Title */}
               <div className="absolute bottom-4 left-4 right-4">
-                <h3 className="text-xl md:text-[26px] md:leading-[26px] font-bold text-white">
+                <h3 
+                  style={{
+                    fontFamily: "'Switzer', sans-serif",
+                    fontWeight: 600,
+                    fontSize: "26px",
+                    lineHeight: "26px",
+                    letterSpacing: "-0.44px",
+                    color: "#FFFFFF",
+                  }}
+                >
                   {industry.title}
                 </h3>
               </div>
@@ -424,12 +623,30 @@ function Footer() {
       <div className="flex flex-col md:flex-row gap-8 py-10 px-8 md:px-20">
         {/* Left - CTA */}
         <div className="md:w-1/2 space-y-0">
-          <h2 className="text-3xl md:text-[47px] md:leading-[58px] font-medium text-black">
+          <h2 
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 500,
+              fontSize: "47px",
+              lineHeight: "58px",
+              letterSpacing: "-1.9px",
+              color: "#000000",
+            }}
+          >
             Let's Build Your Sports Equipment Brand
           </h2>
           <a
             href="mailto:hello@sarlamathletics.com"
-            className="text-3xl md:text-[47px] md:leading-[58px] font-medium text-[#A5A5A5] hover:text-[#0D0D0D] transition-colors"
+            className="hover:text-[#0D0D0D] transition-colors"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 500,
+              fontSize: "47px",
+              lineHeight: "58px",
+              letterSpacing: "-1.9px",
+              color: "#A5A5A5",
+              display: "block",
+            }}
           >
             hello@sarlamathletics.com
           </a>
@@ -446,7 +663,15 @@ function Footer() {
               >
                 <Link
                   href={link.href}
-                  className="text-sm text-black hover:opacity-70 transition-opacity"
+                  className="hover:opacity-70 transition-opacity"
+                  style={{
+                    fontFamily: "'FFF Acid Grotesk', sans-serif",
+                    fontWeight: 400,
+                    fontSize: "14px",
+                    lineHeight: "17px",
+                    letterSpacing: "0px",
+                    color: "#000000",
+                  }}
                 >
                   {link.label}
                 </Link>
@@ -466,7 +691,15 @@ function Footer() {
               >
                 <Link
                   href={link.href}
-                  className="text-sm text-black hover:opacity-70 transition-opacity"
+                  className="hover:opacity-70 transition-opacity"
+                  style={{
+                    fontFamily: "'FFF Acid Grotesk', sans-serif",
+                    fontWeight: 400,
+                    fontSize: "14px",
+                    lineHeight: "17px",
+                    letterSpacing: "0px",
+                    color: "#000000",
+                  }}
                 >
                   {link.label}
                 </Link>
@@ -486,7 +719,15 @@ function Footer() {
               >
                 <Link
                   href={link.href}
-                  className="text-sm text-black hover:opacity-70 transition-opacity"
+                  className="hover:opacity-70 transition-opacity"
+                  style={{
+                    fontFamily: "'FFF Acid Grotesk', sans-serif",
+                    fontWeight: 400,
+                    fontSize: "14px",
+                    lineHeight: "17px",
+                    letterSpacing: "0px",
+                    color: "#000000",
+                  }}
                 >
                   {link.label}
                 </Link>
@@ -506,21 +747,53 @@ function Footer() {
       <div className="flex flex-col md:flex-row items-end justify-between px-8 md:px-20 py-6">
         <div className="flex-1">
           <Link href="/" className="block">
-            <span className="text-6xl md:text-[101px] md:leading-[86px] font-bold italic text-black uppercase tracking-tight">
+            <span 
+              className="uppercase tracking-tight"
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 700,
+                fontStyle: "italic",
+                fontSize: "101px",
+                lineHeight: "85%",
+                letterSpacing: "-3%",
+                color: "#000000",
+                display: "block",
+              }}
+            >
               sarlam
               <br />
               athletics
             </span>
           </Link>
         </div>
-        <div className="flex items-center gap-2.5 text-sm text-[#434343]">
-          <span>© 2026</span>
+        <div className="flex items-center gap-2.5">
+          <span
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 400,
+              fontSize: "12px",
+              lineHeight: "16px",
+              color: "#434343",
+            }}
+          >
+            © 2026
+          </span>
         </div>
       </div>
 
       {/* Bottom bar */}
       <div className="bg-[#0D0D0D] py-4 px-3 flex flex-col md:flex-row items-center justify-between">
-        <div className="flex items-center gap-1 text-xs text-[#E3E2E2]">
+        <div 
+          className="flex items-center gap-1"
+          style={{
+            fontFamily: "'FFF Acid Grotesk', sans-serif",
+            fontWeight: 400,
+            fontSize: "12px",
+            lineHeight: "16px",
+            letterSpacing: "0px",
+            color: "#E3E2E2",
+          }}
+        >
           <span>© 2026 </span>
           <a href="/" className="hover:underline">
             Sarlam Athletics
@@ -528,7 +801,17 @@ function Footer() {
           <span>. </span>
           <span>Private-label sports equipment manufacturer for combat sports brands.</span>
         </div>
-        <div className="text-xs font-medium text-white uppercase">
+        <div 
+          className="uppercase"
+          style={{
+            fontFamily: "'FFF Acid Grotesk', sans-serif",
+            fontWeight: 500,
+            fontSize: "12px",
+            lineHeight: "18px",
+            letterSpacing: "0px",
+            color: "#FFFFFF",
+          }}
+        >
           usa(usd $) / ENGLISH
         </div>
       </div>
