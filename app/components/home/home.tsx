@@ -235,38 +235,24 @@ export function Header() {
 
 // ─── Main Page Component ────────────────────────────────────────────────────
 export default function SarlamAthleticsPage() {
-  const products = [
-    {
-      name: "Private Label Boxing Gloves",
-      cta: "View Product →",
-      image:
-        "https://images.unsplash.com/photo-1517438476312-10d79c077509?auto=format&fit=crop&q=80&w=700",
-    },
-    {
-      name: "BJJ Gi & Martial Arts Uniforms",
-      cta: "View Product →",
-      image:
-        "https://images.unsplash.com/photo-1555597408-26bc8e548a46?auto=format&fit=crop&q=80&w=700",
-    },
-    {
-      name: "Boxing Focus Mitts and Training Pads",
-      cta: "View Product →",
-      image:
-        "https://images.unsplash.com/photo-1583473848882-f9a5bc7fd2ee?auto=format&fit=crop&q=80&w=700",
-    },
-    {
-      name: "Jump Ropes & Training Accessories",
-      cta: "Request Quote",
-      image:
-        "https://images.unsplash.com/photo-1515775538093-d2d95c5ee4f5?auto=format&fit=crop&q=80&w=700",
-    },
-    {
-      name: "MMA Gloves",
-      cta: "Request Quote",
-      image:
-        "https://images.unsplash.com/photo-1615117709930-4ee6c4b6a0f9?auto=format&fit=crop&q=80&w=700",
-    },
-  ];
+ const products = [
+  {
+    name: "Private Label Boxing Gloves",
+    cta: "View Product →",
+    image: "...",
+    colors: ["#DC2626", "#000000"], // red, black — matches PDF swatches
+  },
+  {
+    name: "BJJ Gi & Martial Arts Uniforms",
+    cta: "View Product →",
+    image: "...",
+  },
+  {
+    name: "Boxing Focus Mitts and Training Pads",
+    cta: "View Product →",
+    image: "...",
+  },
+];
 
   const faqs = [
     {
@@ -384,68 +370,88 @@ export default function SarlamAthleticsPage() {
         </div>
       </div>
 
-      {/* ───── Products Carousel Section ───── */}
-      <section className="w-full bg-white py-16">
-        {/* Section Header */}
-        <div className="max-w-[1350px] mx-auto px-10 flex items-center justify-between mb-8">
-          <h2 className="text-3xl md:text-[37px] font-normal leading-tight">
-            Combat Sports Equipment We Manufacture
-          </h2>
-          <div className="flex items-center gap-2">
-            <button className="w-[30px] h-[30px] border border-gray-300 rounded-full flex items-center justify-center hover:bg-gray-50 transition">
-              <ChevronLeft />
-            </button>
-            <button className="w-[30px] h-[30px] border border-gray-300 rounded-full flex items-center justify-center hover:bg-gray-50 transition">
-              <ChevronRight />
+    {/* ───── Products Grid Section ───── */}
+<section className="w-full bg-white py-16">
+  {/* Section Header */}
+  <div className="max-w-[1350px] mx-auto px-10 flex items-center justify-between mb-8">
+    <h2
+      className="font-medium leading-[46px] tracking-[-1.5px] max-w-[800px]"
+      style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontSize: "37px" }}
+    >
+      Combat Sports Equipment We Manufacture
+    </h2>
+    <div className="flex items-center gap-5 shrink-0">
+      <button aria-label="Previous" className="text-gray-400 hover:text-black transition">
+        <ChevronLeft size={22} strokeWidth={1.5} />
+      </button>
+      <button aria-label="Next" className="text-black hover:opacity-70 transition">
+        <ChevronRight size={22} strokeWidth={1.5} />
+      </button>
+    </div>
+  </div>
+
+  {/* Product Grid */}
+  <div className="max-w-[1350px] mx-auto px-10">
+    <div className="grid grid-cols-3 divide-x divide-gray-200 border-t border-gray-200">
+      {products.map((product, i) => (
+        <div key={i} className="group">
+          {/* Product Image */}
+          <div className="relative w-full aspect-square bg-white overflow-hidden flex items-center justify-center p-10 border-b border-gray-200">
+            <ImagePlaceholder
+              className="w-full h-full object-contain"
+              label={product.name}
+              src={product.image}
+            />
+            <button className="absolute top-4 right-4 bg-white text-black text-xs uppercase tracking-wider px-4 py-2 opacity-0 group-hover:opacity-100 transition border border-gray-200">
+              Quick View
             </button>
           </div>
-        </div>
 
-        {/* Product Cards */}
-        <div className="overflow-x-auto">
-          <div className="flex gap-0 min-w-max">
-            {products.map((product, i) => (
-              <div
-                key={i}
-                className="w-[500px] border-r border-gray-200 last:border-r-0 group"
+          {/* Product Info */}
+          <div className="flex items-end justify-between px-6 py-4 border-b border-gray-200">
+            <div className="flex flex-col gap-1">
+              <span
+                className="font-bold leading-[18px] tracking-[0.1px] max-w-[449px]"
+                style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontSize: "14px" }}
               >
-                {/* Product Image */}
-                <div className="relative w-full aspect-square bg-white overflow-hidden flex items-center justify-center p-12">
-                  <ImagePlaceholder
-                    className="w-full h-full object-contain"
-                    label={product.name}
-                    src={product.image}
+                {product.name}
+              </span>
+              <Link
+                href="/products"
+                className="text-sm font-normal text-black hover:opacity-70 transition"
+              >
+                {product.cta}
+              </Link>
+            </div>
+
+            {/* Color swatches (only when product has colors) */}
+            {product.colors && (
+              <div className="flex items-center gap-1 pb-0.5">
+                {product.colors.map((color, ci) => (
+                  <span
+                    key={ci}
+                    className="w-2.5 h-2.5 rounded-full"
+                    style={{ backgroundColor: color }}
                   />
-                  <button className="absolute top-4 right-4 bg-white text-black text-xs uppercase tracking-wider px-4 py-2 opacity-0 group-hover:opacity-100 transition border border-gray-200">
-                    Quick View
-                  </button>
-                </div>
-                {/* Product Info */}
-                <div className="flex items-center justify-between px-8 py-5 border-t border-gray-200">
-                  <span className="text-sm font-normal">{product.name}</span>
-                  <Link
-                    href="/products"
-                    className="text-sm text-black hover:opacity-70 transition"
-                  >
-                    {product.cta}
-                  </Link>
-                </div>
+                ))}
               </div>
-            ))}
+            )}
           </div>
         </div>
+      ))}
+    </div>
+  </div>
 
-        {/* View All Button */}
-        <div className="flex justify-center mt-10">
-          <Link
-            href="/products"
-            className="inline-flex items-center justify-center bg-black text-white text-[15px] uppercase tracking-wider px-10 py-3.5 border border-black hover:bg-gray-900 transition"
-          >
-            View All Items
-          </Link>
-        </div>
-      </section>
-
+  {/* View All Button */}
+  <div className="flex justify-center mt-10">
+    <Link
+      href="/products"
+      className="inline-flex items-center justify-center bg-black text-white text-[15px] uppercase tracking-wider px-10 py-3.5 border border-black hover:bg-gray-900 transition"
+    >
+      View All Items
+    </Link>
+  </div>
+</section>
       {/* ───── About Section ───── */}
       <section className="w-full bg-black text-white py-24">
         <div className="max-w-[1360px] mx-auto px-10 flex flex-col lg:flex-row gap-16">
