@@ -89,7 +89,7 @@ function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-100">
       <div className="relative max-w-[1440px] mx-auto px-6 md:px-4 h-[52px]">
-        
+
         {/* ─── DESKTOP VIEW ─── */}
         <div className="hidden lg:flex items-center justify-between w-full h-full">
           {/* Left Nav */}
@@ -131,7 +131,7 @@ function Header() {
           </Link>
 
           {/* Mobile Hamburger (Right Side) - No Search Icon */}
-          <button 
+          <button
             className="flex items-center p-2 -mr-2 text-[#0D0D0D]"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle Menu"
@@ -190,64 +190,63 @@ const logoStyle = {
   color: "#0D0D0D",
 };
 
-
 // ─── Product Data ──────────────────────────────────────────────────────────
 const products = [
   {
     name: "Private Label Boxing Gloves",
     cta: "View Product +",
+    href: "/details",
     swatches: ["#B91C1C", "#0D0D0D"],
-    image:
-      "https://images.unsplash.com/photo-1517438476312-10d79c077509?auto=format&fit=crop&q=80&w=700",
+    image: "https://images.unsplash.com/photo-1517438476312-10d79c077509?auto=format&fit=crop&q=80&w=700",
   },
   {
     name: "BJJ Gis and Jiu-Jitsu Uniforms",
     cta: "View Product +",
+    href: "/jitsu-suit",
     swatches: ["#0D0D0D", "#E5E5E5"],
-    image:
-      "https://images.unsplash.com/photo-1555597408-26bc8e548a46?auto=format&fit=crop&q=80&w=700",
+    image: "https://images.unsplash.com/photo-1555597408-26bc8e548a46?auto=format&fit=crop&q=80&w=700",
   },
   {
     name: "MMA Fight Gloves",
     cta: "View Product +",
+    href: "/mma-gloves",
     swatches: ["#B91C1C", "#0D0D0D"],
-    image:
-      "https://images.unsplash.com/photo-1615117709930-4ee6c4b6a0f9?auto=format&fit=crop&q=80&w=700",
+    image: "https://images.unsplash.com/photo-1615117709930-4ee6c4b6a0f9?auto=format&fit=crop&q=80&w=700",
   },
   {
     name: "Professional MMA Training Gloves",
     cta: "View Product +",
+    href: "/ultimate-fightgloves",
     swatches: ["#B91C1C", "#0D0D0D"],
-    image:
-      "https://images.unsplash.com/photo-1583473848882-f9a5bc7fd2ee?auto=format&fit=crop&q=80&w=700",
+    image: "https://images.unsplash.com/photo-1583473848882-f9a5bc7fd2ee?auto=format&fit=crop&q=80&w=700",
   },
   {
     name: "Boxing Focus Mitts and Training Pads",
     cta: "View Product +",
+    href: "/trainingpads",
     swatches: ["#B91C1C", "#0D0D0D"],
-    image:
-      "https://images.unsplash.com/photo-1544737151-6e4b999de2a5?auto=format&fit=crop&q=80&w=700",
+    image: "https://images.unsplash.com/photo-1544737151-6e4b999de2a5?auto=format&fit=crop&q=80&w=700",
   },
   {
     name: "Boxing Sparring Gloves",
     cta: "View Product +",
+    href: "/sparinggloves",
     swatches: ["#B91C1C", "#0D0D0D"],
-    image:
-      "https://images.unsplash.com/photo-1524594152303-9fd13543fe6e?auto=format&fit=crop&q=80&w=700",
+    image: "https://images.unsplash.com/photo-1524594152303-9fd13543fe6e?auto=format&fit=crop&q=80&w=700",
   },
   {
     name: "Custom Boxing Headguards",
     cta: "View Product +",
+    href: "/Boxingguard",
     swatches: ["#B91C1C", "#0D0D0D"],
-    image:
-      "https://images.unsplash.com/photo-1517438476312-10d79c077509?auto=format&fit=crop&q=80&w=700",
+    image: "https://images.unsplash.com/photo-1517438476312-10d79c077509?auto=format&fit=crop&q=80&w=700",
   },
   {
     name: "Private Label Karate Uniforms",
     cta: "View Product +",
+    href: "/karate-suit",
     swatches: ["#E5E5E5", "#0D0D0D"],
-    image:
-      "https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&q=80&w=700",
+    image: "https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&q=80&w=700",
   },
 ];
 
@@ -338,7 +337,7 @@ export default function ProductPage() {
 
   return (
     <div className="w-full bg-white text-black font-sans">
-      
+
       {/* ───── 1. Announcement Bar ───── */}
       <div className="w-full bg-[#0D0D0D] overflow-hidden">
         <div className="flex animate-marquee whitespace-nowrap py-2.5">
@@ -372,7 +371,7 @@ export default function ProductPage() {
 
         <div className="relative z-10 flex items-center h-full px-6 md:px-10 max-w-[1440px] mx-auto mt-4 md:mt-0">
           <div className="max-w-[640px] flex flex-col gap-4 md:gap-6">
-            <h1 
+            <h1
               className="uppercase text-[36px] leading-[40px] md:text-[56px] md:leading-[105%]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -433,7 +432,7 @@ export default function ProductPage() {
         <div className="max-w-[1440px] mx-auto px-6 md:px-10 flex flex-col lg:flex-row gap-6 md:gap-12 lg:gap-20">
           <div className="lg:w-1/2">
             <h2>
-              <span 
+              <span
                 className="block text-[28px] leading-[32px] md:text-[37px] md:leading-[45.6px]"
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -444,7 +443,7 @@ export default function ProductPage() {
               >
                 Why Brands Choose
               </span>
-              <span 
+              <span
                 className="block text-[28px] leading-[32px] md:text-[37px] md:leading-[45.6px]"
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -495,7 +494,7 @@ export default function ProductPage() {
       <section className="w-full bg-white">
         <div className="max-w-[1440px] mx-auto px-6 md:px-10">
           <div className="py-4 md:py-6 border-b border-gray-200">
-            <h2 
+            <h2
               className="uppercase text-[22px] leading-[26px] md:text-[26px] md:leading-[26px] max-w-[300px] md:max-w-none"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -510,7 +509,7 @@ export default function ProductPage() {
 
           <div className="flex flex-col md:flex-row md:items-center justify-between py-4 border-b border-gray-200 gap-4 md:gap-0">
             <div className="flex items-center justify-between md:justify-start gap-4 w-full md:w-auto">
-              <span 
+              <span
                 className="uppercase text-[11px] md:text-[12px] leading-[18px]"
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -522,7 +521,7 @@ export default function ProductPage() {
                 Items: {products.length}
               </span>
               <div className="flex items-center gap-1.5">
-                <span 
+                <span
                   className="uppercase text-[11px] md:text-[12px] leading-[18px]"
                   style={{
                     fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -533,7 +532,7 @@ export default function ProductPage() {
                 >
                   Category:
                 </span>
-                <button 
+                <button
                   className="flex items-center gap-1 uppercase text-[12px] leading-[18px]"
                   style={{
                     fontFamily: "'Inter', sans-serif",
@@ -547,9 +546,9 @@ export default function ProductPage() {
                 </button>
               </div>
             </div>
-            
+
             <div className="hidden md:flex items-center gap-2">
-              <span 
+              <span
                 className="uppercase text-[12px] leading-[18px]"
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -574,13 +573,16 @@ export default function ProductPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-l-0 md:border-l border-gray-200">
             {products.map((product, i) => (
               <div key={i} className="border-r-0 md:border-r border-b border-gray-200 group">
-                <div className="relative aspect-[4/3] md:aspect-square bg-gray-50 overflow-hidden flex items-center justify-center p-6 md:p-8">
+                <Link
+                  href={product.href}
+                  className="relative aspect-[4/3] md:aspect-square bg-gray-50 overflow-hidden flex items-center justify-center p-6 md:p-8"
+                >
                   <ImagePlaceholder
                     className="w-full h-full object-contain"
                     label={product.name}
                     src={product.image}
                   />
-                  <button 
+                  <button
                     className="absolute top-3 right-3 bg-[#0D0D0D] uppercase opacity-0 group-hover:opacity-100 transition rounded-sm px-3 py-1.5 text-[6.5px] leading-[9.4px]"
                     style={{
                       fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -591,11 +593,11 @@ export default function ProductPage() {
                   >
                     Quick View
                   </button>
-                </div>
+                </Link>
 
                 <div className="bg-white px-4 py-4 md:py-3 flex items-center justify-between border-t border-gray-200">
                   <div className="flex flex-col gap-1 md:gap-0">
-                    <span 
+                    <span
                       className="block text-[10px] md:text-[12px] leading-[13px] md:leading-[14px]"
                       style={{
                         fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -606,8 +608,8 @@ export default function ProductPage() {
                     >
                       {product.name}
                     </span>
-                    <a
-                      href="#"
+                    <Link
+                      href={product.href}
                       className="underline hover:opacity-70 transition text-[10px] md:text-[11px] leading-[13px] md:leading-[14px]"
                       style={{
                         fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -617,7 +619,7 @@ export default function ProductPage() {
                       }}
                     >
                       {product.cta}
-                    </a>
+                    </Link>
                   </div>
                   <div className="flex items-center gap-1 shrink-0 ml-2">
                     {product.swatches.map((color, si) => (
@@ -654,7 +656,7 @@ export default function ProductPage() {
       <section className="w-full bg-white py-16 md:py-16">
         <div className="max-w-[1392px] mx-auto px-6 md:px-10">
           <div className="mb-8 md:mb-10">
-            <h2 
+            <h2
               className="mb-4 text-[28px] leading-[32px] md:text-[37px] md:leading-[46px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -665,7 +667,7 @@ export default function ProductPage() {
             >
               Private Label Customization Options
             </h2>
-            <p 
+            <p
               className="max-w-[800px] text-[14px] leading-[22px] md:text-[16px] md:leading-[24px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -700,7 +702,7 @@ export default function ProductPage() {
                   </div>
 
                   <div className="p-5 flex-1">
-                    <h3 
+                    <h3
                       className="mb-2 text-[16px] leading-[22px] md:text-[18px] md:leading-[24px]"
                       style={{
                         fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -742,7 +744,7 @@ export default function ProductPage() {
               <ChevronRightIcon />
             </button>
           </div>
-          
+
           <div className="flex justify-center mt-10">
             <a
               href="#"
@@ -763,7 +765,7 @@ export default function ProductPage() {
       {/* ───── 7. Process / Pricing Section ───── */}
       <section className="w-full bg-white py-16 md:py-20">
         <div className="max-w-[1376px] mx-auto px-6 md:px-10">
-          <h2 
+          <h2
             className="mb-8 md:mb-16 text-[28px] leading-[32px] md:text-[37px] md:leading-[46px]"
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -784,7 +786,7 @@ export default function ProductPage() {
                 }`}
               >
                 <div className="p-6 md:p-8 pb-4 md:pb-6">
-                  <h3 
+                  <h3
                     className="mb-3 text-[18px] leading-[22px] md:text-[22px] md:leading-[26px]"
                     style={{
                       fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -826,7 +828,7 @@ export default function ProductPage() {
       {/* ───── 8. Why Section ───── */}
       <section className="w-full bg-white py-16 md:py-20 border-t border-gray-200">
         <div className="max-w-[1440px] mx-auto px-6 md:px-10">
-          <h2 
+          <h2
             className="mb-10 md:mb-16 text-[28px] leading-[34px] md:text-[37px] md:leading-[46px]"
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -848,7 +850,7 @@ export default function ProductPage() {
                   i < 3 ? "md:border-r" : ""
                 }`}
               >
-                <h3 
+                <h3
                   className="mb-3 md:mb-4 text-[18px] leading-[24px] md:text-[21.7px] md:leading-[26.4px]"
                   style={{
                     fontFamily: "'Switzer', sans-serif",
@@ -882,7 +884,7 @@ export default function ProductPage() {
 
         <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-10 md:py-12 flex flex-col lg:flex-row justify-between gap-10 md:gap-12">
           <div className="lg:w-1/2">
-            <h3 
+            <h3
               className="mb-4 text-[32px] leading-[38px] md:text-[47px] md:leading-[58px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -979,7 +981,7 @@ export default function ProductPage() {
         <div className="border-t border-gray-200" />
 
         <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-8 md:py-10 flex flex-col md:flex-row items-start md:items-end justify-between gap-4 md:gap-0">
-          <p 
+          <p
             className="uppercase text-[56px] leading-[85%] md:text-[101px] md:leading-[85%]"
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -1007,7 +1009,7 @@ export default function ProductPage() {
 
         <div className="w-full bg-[#0D0D0D] py-4">
           <div className="max-w-[1440px] mx-auto px-6 md:px-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-0">
-            <p 
+            <p
               className="text-[12px] leading-[16px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -1019,7 +1021,7 @@ export default function ProductPage() {
               © 2026 Sarlam Athletics. Private-label sports equipment
               manufacturer for combat sports brands.
             </p>
-            <span 
+            <span
               className="uppercase text-[12px] leading-[18px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
