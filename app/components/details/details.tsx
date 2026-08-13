@@ -22,10 +22,10 @@ const logoOptions = [
 ];
 
 const relatedProducts = [
-  { name: "Jiu Jitsu Suit (Gi)", image: "/images/product-gi.jpg" },
-  { name: "Boxing Gloves", image: "/images/product-boxing.jpg" },
-  { name: "MMA Full Fight Gloves", image: "/images/product-mma.jpg" },
-  { name: "Boxing Head Guard", image: "/images/product-headguard.jpg" },
+  { name: "Jiu Jitsu Suit (Gi)", image: "https://images.unsplash.com/photo-1555597673-b21d5c935865?w=600&h=600&fit=crop" },
+  { name: "Boxing Gloves", image: "https://images.unsplash.com/photo-1517438476312-10d79c077509?w=600&h=600&fit=crop" },
+  { name: "MMA Full Fight Gloves", image: "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=600&h=600&fit=crop" },
+  { name: "Boxing Head Guard", image: "https://images.unsplash.com/photo-1544967919-44b6f0f5ba6c?w=600&h=600&fit=crop" },
 ];
 
 const moqCards = [
@@ -45,6 +45,27 @@ const moqCards = [
       "Samples help you review fit, stitching, fabric, branding, and packaging before approving bulk production.",
   },
 ];
+
+const features = [
+  { text: "Factory-Direct Manufacturing" },
+  { text: "OEM & Private Label Production" },
+  { text: "Flexible Minimum Order Quantities" },
+  { text: "Worldwide Shipping" },
+];
+
+function CheckIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <path
+        d="M3.5 9.5L7 13L14.5 5"
+        stroke="#0D0D0D"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 export default function DetailsComponent() {
   const [selectedFinish, setSelectedFinish] = useState(0);
@@ -79,7 +100,7 @@ export default function DetailsComponent() {
       <section className="relative h-[480px] overflow-hidden">
         <div className="absolute inset-0 bg-black">
           <img
-            src="/images/hero-boxing-gloves.jpg"
+            src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=1600&h=900&fit=crop"
             alt="Boxing Gloves"
             className="w-full h-full object-cover opacity-60"
           />
@@ -101,7 +122,7 @@ export default function DetailsComponent() {
           <div className="w-[616px] shrink-0">
             <div className="bg-[#F9F9F9] rounded-none p-2 aspect-square flex items-center justify-center sticky top-24">
               <img
-                src="/images/boxing-gloves-red.jpg"
+                src="https://images.unsplash.com/photo-1583473848882-f9a5bc7fd2ee?w=800&h=800&fit=crop"
                 alt="Boxing Gloves"
                 className="w-[600px] h-[600px] object-contain"
               />
@@ -297,15 +318,10 @@ export default function DetailsComponent() {
       <section className="px-16 pb-16">
         <hr className="border-t border-gray-200 mb-10" />
         <div className="flex items-start justify-between max-w-[1416px] mx-auto">
-          {[
-            { icon: "🏭", text: "Factory-Direct Manufacturing" },
-            { icon: "🏷️", text: "OEM & Private Label Production" },
-            { icon: "📦", text: "Flexible Minimum Order Quantities" },
-            { icon: "🌍", text: "Worldwide Shipping" },
-          ].map((feature, i) => (
+          {features.map((feature, i) => (
             <div key={i} className="flex items-center gap-3">
-              <div className="w-[30px] h-[30px] flex items-center justify-center">
-                <span className="text-lg">{feature.icon}</span>
+              <div className="w-[30px] h-[30px] flex items-center justify-center shrink-0">
+                <CheckIcon />
               </div>
               <p className="text-[15px] font-medium text-[#0D0D0D] max-w-[205px] leading-snug">
                 {feature.text}
@@ -367,7 +383,7 @@ export default function DetailsComponent() {
         <div className="relative rounded-none overflow-hidden max-w-[1380px] mx-auto">
           <div className="absolute inset-0 bg-black">
             <img
-              src="/images/quality-control-bg.jpg"
+              src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1600&h=800&fit=crop"
               alt="Quality Control"
               className="w-full h-full object-cover opacity-50"
             />
