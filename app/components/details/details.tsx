@@ -1,10 +1,172 @@
 "use client";
 
-// product-detail.tsx
 import { useState } from "react";
+import Link from "next/link";
 // Import the Header correctly from the home.tsx file
-import { Header } from "../home/home"; 
+// import { Header } from "../home/home";
 
+// ─── Image Placeholder ───
+const ImagePlaceholder = ({
+  className = "",
+  label = "Image",
+  src,
+}: {
+  className?: string;
+  label?: string;
+  src?: string;
+}) => {
+  if (src) {
+    return <img src={src} alt={label} className={`object-cover ${className}`} />;
+  }
+
+  return (
+    <div
+      className={`bg-gray-200 flex items-center justify-center text-gray-400 text-sm ${className}`}
+    >
+      <span className="text-center px-4">[{label}]</span>
+    </div>
+  );
+};
+
+// ─── Icons (inline SVGs) ───
+const ArrowUpRight = () => (
+  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <path d="M3 9L9 3M9 3H4M9 3v5" />
+  </svg>
+);
+
+const MenuIcon = () => (
+  <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
+    <line y1="1" x2="20" y2="1" stroke="currentColor" strokeWidth="2" />
+    <line y1="7" x2="20" y2="7" stroke="currentColor" strokeWidth="2" />
+    <line y1="13" x2="20" y2="13" stroke="currentColor" strokeWidth="2" />
+  </svg>
+);
+
+const SearchIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+    <circle cx="9" cy="9" r="7" stroke="currentColor" strokeWidth="2" />
+    <line x1="14" y1="14" x2="19" y2="19" stroke="currentColor" strokeWidth="2" />
+  </svg>
+);
+
+const ChevronDownIcon = () => (
+  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+    <path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+const ColumnsIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+    <rect x="1" y="1" width="6" height="14" stroke="currentColor" strokeWidth="1.5" />
+    <rect x="9" y="1" width="6" height="14" stroke="currentColor" strokeWidth="1.5" />
+  </svg>
+);
+
+const GridIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+    <rect x="1" y="1" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
+    <rect x="9" y="1" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
+    <rect x="1" y="9" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
+    <rect x="9" y="9" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
+  </svg>
+);
+
+const LogoMark = ({ className = "" }: { className?: string }) => (
+  <svg viewBox="0 0 30 34" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M24 0L4 14h13L0 34l26-15H12L24 0z" fill="currentColor" />
+  </svg>
+);
+
+function CheckIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <path
+        d="M3.5 9.5L7 13L14.5 5"
+        stroke="#0D0D0D"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+// ─── Header Component ───
+function Header() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  return (
+    <header className="sticky top-0 z-50 bg-white border-b border-gray-100">
+      <div className="relative max-w-[1440px] mx-auto px-6 md:px-4 h-[52px]">
+        {/* ─── DESKTOP VIEW ─── */}
+        <div className="hidden lg:flex items-center justify-between w-full h-full">
+          <div className="flex items-center gap-4">
+            <button>
+              <MenuIcon />
+            </button>
+            <div className="w-[2px] h-12 bg-gray-300" />
+            <nav className="flex items-center gap-4">
+              <Link href="/products" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">Products</Link>
+              <Link href="/privatelabel" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">Private Label</Link>
+              <Link href="/manufacture" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">Manufacturing</Link>
+            </nav>
+          </div>
+          <Link href="/" className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2 text-[18px] font-bold italic uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">
+            <LogoMark className="w-[18px] h-[20px]" />
+            <span className="whitespace-nowrap tracking-tight">Sarlam Athletics</span>
+          </Link>
+          <div className="flex items-center gap-6">
+            <Link href="/about" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">About</Link>
+            <Link href="/contact" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">Contact</Link>
+            <div className="w-[2px] h-12 bg-gray-300" />
+            <button className="hover:opacity-70 transition text-[#0D0D0D]">
+              <SearchIcon />
+            </button>
+          </div>
+        </div>
+
+        {/* ─── MOBILE VIEW ─── */}
+        <div className="flex lg:hidden items-center justify-between w-full h-full">
+          <Link href="/" className="flex items-center gap-2 text-[18px] font-bold italic uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">
+            <LogoMark className="w-[18px] h-[20px]" />
+            <span className="whitespace-nowrap tracking-tight">Sarlam Athletics</span>
+          </Link>
+          <button 
+            className="flex items-center p-2 -mr-2 text-[#0D0D0D]"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle Menu"
+          >
+            <MenuIcon />
+          </button>
+        </div>
+      </div>
+
+      {isMobileMenuOpen && (
+        <div className="lg:hidden absolute top-[52px] left-0 w-full bg-white border-b border-gray-100 shadow-lg flex flex-col py-6 px-6 gap-6 z-50">
+          {[
+            { label: "Products", href: "/products" },
+            { label: "Private Label", href: "/privatelabel" },
+            { label: "Manufacturing", href: "/manufacture" },
+            { label: "About", href: "/about" },
+            { label: "Contact", href: "/contact" },
+          ].map((link, idx) => (
+            <Link
+              key={idx}
+              href={link.href}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="hover:opacity-70 transition text-[14px] leading-[18px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
+      )}
+    </header>
+  );
+}
+
+// ─── Data ───
 const finishes = [
   { name: "Black", color: "#000000", selected: true },
   { name: "White", color: "#FFFFFF", selected: false },
@@ -53,20 +215,6 @@ const features = [
   { text: "Worldwide Shipping" },
 ];
 
-function CheckIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-      <path
-        d="M3.5 9.5L7 13L14.5 5"
-        stroke="#0D0D0D"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 export default function DetailsComponent() {
   const [selectedFinish, setSelectedFinish] = useState(0);
   const [selectedWeight, setSelectedWeight] = useState("8 oz");
@@ -81,23 +229,21 @@ export default function DetailsComponent() {
   return (
     <div className="min-h-screen bg-white font-['FFF_Acid_Grotesk',sans-serif]">
       
-      {/* ── Header ── */}
       <Header />
 
       {/* ── Announcement Banner ── */}
       <div className="bg-[#0D0D0D] h-[34px] flex items-center justify-center overflow-hidden">
-        <div className="animate-marquee whitespace-nowrap">
-          <span className="text-white text-xs font-medium mx-8">
-            Request samples, MOQs, and custom production options for your brand.
-          </span>
-          <span className="text-white text-xs font-medium mx-8">
-            Request samples, MOQs, and custom production options for your brand.
-          </span>
+        <div className="flex animate-marquee whitespace-nowrap">
+          {[...Array(4)].map((_, i) => (
+            <span key={i} className="text-white text-xs font-medium mx-8 tracking-widest md:tracking-normal">
+              Request samples, MOQs, and custom production options for your brand.
+            </span>
+          ))}
         </div>
       </div>
 
       {/* ── Hero Banner ── */}
-      <section className="relative h-[480px] overflow-hidden">
+      <section className="relative h-[320px] md:h-[480px] overflow-hidden">
         <div className="absolute inset-0 bg-black">
           <img
             src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=1600&h=900&fit=crop"
@@ -105,48 +251,48 @@ export default function DetailsComponent() {
             className="w-full h-full object-cover opacity-60"
           />
         </div>
-        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center">
-          <span className="text-[15px] font-medium text-[#CC_CC_CC] mb-4 tracking-wide" style={{ color: "#CCCCCC" }}>
+        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
+          <span className="text-[13px] md:text-[15px] font-medium mb-3 md:mb-4 tracking-wide text-[#CCCCCC] uppercase">
             Products
           </span>
-          <h1 className="text-[44px] font-bold text-white leading-tight max-w-[664px]">
+          <h1 className="text-[32px] leading-[36px] md:text-[44px] font-bold text-white md:leading-tight max-w-[664px] uppercase">
             Private Label Boxing Gloves Manufacturer
           </h1>
         </div>
       </section>
 
       {/* ── Product Presentation Grid ── */}
-      <section className="px-16 py-20">
-        <div className="flex gap-32 max-w-[1440px] mx-auto">
+      <section className="px-5 md:px-16 py-10 md:py-20">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-32 max-w-[1440px] mx-auto">
           {/* Left: Product Image */}
-          <div className="w-[616px] shrink-0">
-            <div className="bg-[#F9F9F9] rounded-none p-2 aspect-square flex items-center justify-center sticky top-24">
+          <div className="w-full lg:w-[616px] shrink-0">
+            <div className="bg-[#F9F9F9] rounded-none p-4 md:p-2 aspect-square flex items-center justify-center lg:sticky lg:top-24">
               <img
                 src="https://images.unsplash.com/photo-1583473848882-f9a5bc7fd2ee?w=800&h=800&fit=crop"
                 alt="Boxing Gloves"
-                className="w-[600px] h-[600px] object-contain"
+                className="w-[100%] h-[100%] md:w-[600px] md:h-[600px] object-contain"
               />
             </div>
           </div>
 
           {/* Right: Product Configuration Panel */}
-          <div className="flex-1 max-w-[616px]">
+          <div className="flex-1 max-w-full lg:max-w-[616px]">
             {/* Breadcrumbs */}
-            <nav className="flex items-center gap-2 text-xs text-[#6A72_82] mb-8" style={{ color: "#6A7282" }}>
+            <nav className="flex items-center gap-2 text-[10px] md:text-xs text-[#6A7282] mb-6 md:mb-8 font-medium">
               <a href="/" className="hover:underline">Home</a>
               <span>/</span>
               <a href="/products" className="hover:underline">Products</a>
               <span>/</span>
-              <span>Boxing Gloves</span>
+              <span className="text-[#0D0D0D]">Boxing Gloves</span>
             </nav>
 
             {/* Title */}
             <div className="mb-6">
-              <p className="text-sm font-bold text-[#666666]">Uniform Manufacturing</p>
-              <h2 className="text-[44px] font-bold text-[#0D0D0D] leading-tight mt-2">
+              <p className="text-[12px] md:text-sm font-bold text-[#666666] uppercase">Uniform Manufacturing</p>
+              <h2 className="text-[32px] leading-[36px] md:text-[44px] md:leading-tight font-bold text-[#0D0D0D] mt-2">
                 Private Label Boxing Gloves
               </h2>
-              <p className="text-xl text-[#0D0D0D] mt-3 leading-relaxed">
+              <p className="text-[15px] leading-[22px] md:text-xl text-[#0D0D0D] mt-3 md:mt-4 md:leading-relaxed font-normal">
                 Custom heavyweight and lightweight boxing gloves manufacturing for gyms, academies, retailers, and boxing brands.
               </p>
             </div>
@@ -155,28 +301,28 @@ export default function DetailsComponent() {
             <hr className="border-t border-gray-200 mb-6" />
 
             {/* Description */}
-            <div className="mb-6">
-              <p className="text-base text-[#666666] leading-relaxed">
+            <div className="mb-8 md:mb-6">
+              <p className="text-[14px] leading-[22px] md:text-base text-[#666666] md:leading-relaxed font-normal">
                 Sarlam Athletics manufactures premium private label boxing gloves for sports brands, gyms, retailers, distributors, and wholesalers. We offer OEM manufacturing, custom branding, premium materials, flexible minimum order quantities, and factory-direct production for training, sparring, fitness, and competition boxing gloves.
               </p>
-              <p className="text-base text-[#666666] leading-relaxed mt-4">
+              <p className="text-[14px] leading-[22px] md:text-base text-[#666666] md:leading-relaxed mt-4 font-normal">
                 Customize every aspect of your gloves, including leather type, padding density, wrist closure, stitching, logo placement, colors, labels, and retail packaging to match your brand requirements.
               </p>
             </div>
 
             {/* Customize Heading */}
-            <div className="mb-8">
-              <h3 className="text-[26px] font-bold text-[#101828]">
+            <div className="mb-6 md:mb-8">
+              <h3 className="text-[22px] leading-[26px] md:text-[26px] font-bold text-[#101828]">
                 Customize Your Boxing Gloves
               </h3>
-              <p className="text-xs font-medium text-[#99A1B0] mt-2">
+              <p className="text-[11px] md:text-xs font-medium text-[#99A1B0] mt-1 md:mt-2">
                 Select your requirements and we&apos;ll prepare a detailed quote.
               </p>
             </div>
 
             {/* Select Finish (Color Swatches) */}
-            <div className="mb-8">
-              <label className="text-sm font-bold text-[#0D0D0D] block mb-3">
+            <div className="mb-6 md:mb-8">
+              <label className="text-[13px] md:text-sm font-bold text-[#0D0D0D] block mb-3 uppercase">
                 Select Finish
               </label>
               <div className="flex gap-3">
@@ -184,14 +330,14 @@ export default function DetailsComponent() {
                   <button
                     key={finish.name}
                     onClick={() => setSelectedFinish(i)}
-                    className={`w-7 h-7 rounded-full flex items-center justify-center border-2 transition-all ${
+                    className={`w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center border-2 transition-all ${
                       selectedFinish === i
                         ? "border-[#0D0D0D]"
                         : "border-transparent"
                     }`}
                   >
                     <span
-                      className="w-5 h-5 rounded-full border border-[#0D0D0D]"
+                      className="w-5 h-5 md:w-6 md:h-6 rounded-full border border-[#0D0D0D]"
                       style={{ backgroundColor: finish.color }}
                     />
                   </button>
@@ -199,41 +345,25 @@ export default function DetailsComponent() {
               </div>
             </div>
 
-            {/* Materials Dropdown */}
-            <DropdownSelector
-              label="Materials"
-              guideLabel="Material Guide"
-              value="Genuine Leather"
-            />
-
-            {/* Padding Dropdown */}
-            <DropdownSelector
-              label="Padding"
-              guideLabel="Padding Guide"
-              value="IMF Foam"
-            />
-
-            {/* Closure Dropdown */}
-            <DropdownSelector
-              label="Closure"
-              guideLabel="Closure Guide"
-              value="Velcro"
-            />
+            {/* Dropdowns */}
+            <DropdownSelector label="Materials" guideLabel="Material Guide" value="Genuine Leather" />
+            <DropdownSelector label="Padding" guideLabel="Padding Guide" value="IMF Foam" />
+            <DropdownSelector label="Closure" guideLabel="Closure Guide" value="Velcro" />
 
             {/* Weight Selector */}
-            <div className="mb-8">
+            <div className="mb-6 md:mb-8">
               <div className="flex items-center justify-between mb-3">
-                <label className="text-sm font-bold text-[#0D0D0D]">Weight</label>
-                <button className="text-xs text-[#666666] hover:underline">
+                <label className="text-[13px] md:text-sm font-bold text-[#0D0D0D] uppercase">Weight</label>
+                <button className="text-[11px] md:text-xs text-[#666666] hover:underline font-medium">
                   Weight Guide
                 </button>
               </div>
-              <div className="flex gap-2">
+              <div className="flex flex-wrap gap-2 md:gap-3">
                 {weightOptions.map((weight) => (
                   <button
                     key={weight}
                     onClick={() => setSelectedWeight(weight)}
-                    className={`px-5 py-[15px] border text-[15px] font-medium transition-all ${
+                    className={`px-4 py-3 md:px-5 md:py-[15px] border text-[13px] md:text-[15px] font-medium transition-all ${
                       selectedWeight === weight
                         ? "border-[#0D0D0D] text-[#0D0D0D] bg-white"
                         : "border-gray-200 text-[#0D0D0D] hover:border-gray-400"
@@ -246,21 +376,21 @@ export default function DetailsComponent() {
             </div>
 
             {/* Logo Application */}
-            <div className="mb-8">
+            <div className="mb-6 md:mb-8">
               <div className="flex items-center justify-between mb-3">
-                <label className="text-sm font-bold text-[#0D0D0D]">
+                <label className="text-[13px] md:text-sm font-bold text-[#0D0D0D] uppercase">
                   Logo Application
                 </label>
-                <button className="text-xs text-[#666666] hover:underline">
+                <button className="text-[11px] md:text-xs text-[#666666] hover:underline font-medium">
                   Logo Guide
                 </button>
               </div>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 md:gap-3">
                 {logoOptions.map((logo) => (
                   <button
                     key={logo}
                     onClick={() => toggleLogo(logo)}
-                    className={`px-5 py-[15px] border text-[15px] font-medium transition-all ${
+                    className={`px-4 py-3 md:px-5 md:py-[15px] border text-[13px] md:text-[15px] font-medium transition-all ${
                       selectedLogos.includes(logo)
                         ? "border-[#0D0D0D] text-[#0D0D0D] bg-white"
                         : "border-gray-200 text-[#0D0D0D] hover:border-gray-400"
@@ -273,41 +403,37 @@ export default function DetailsComponent() {
             </div>
 
             {/* Packaging Dropdown */}
-            <DropdownSelector
-              label="Packaging"
-              guideLabel="Packaging Guide"
-              value="Poly Bag"
-            />
+            <DropdownSelector label="Packaging" guideLabel="Packaging Guide" value="Poly Bag" />
 
-            {/* MOQ Dropdown */}
-            <div className="mb-4">
+            {/* MOQ Display */}
+            <div className="mb-2 md:mb-4">
               <div className="flex items-center justify-between mb-3">
-                <label className="text-sm font-bold text-[#0D0D0D]">MOQ</label>
-                <button className="text-xs text-[#666666] hover:underline">
+                <label className="text-[13px] md:text-sm font-bold text-[#0D0D0D] uppercase">MOQ</label>
+                <button className="text-[11px] md:text-xs text-[#666666] hover:underline font-medium">
                   Quantity Guide
                 </button>
               </div>
-              <div className="border border-gray-200 px-4 py-[15px]">
-                <span className="text-[15px] font-medium text-[#0D0D0D]">
+              <div className="border border-gray-200 px-4 py-3 md:py-[15px]">
+                <span className="text-[14px] md:text-[15px] font-medium text-[#0D0D0D]">
                   100–300
                 </span>
               </div>
             </div>
 
-            <p className="text-xs text-[#666666] mb-10">
+            <p className="text-[11px] md:text-xs text-[#666666] mb-8 md:mb-10 font-normal">
               MOQ starts from 100 pairs
             </p>
 
             {/* CTA Buttons */}
-            <div className="space-y-3 mb-4">
-              <button className="w-full bg-[#0D0D0D] text-white text-sm font-bold py-[18px] hover:bg-black/90 transition-colors">
+            <div className="space-y-3 md:space-y-4 mb-4">
+              <button className="w-full bg-[#0D0D0D] text-white text-[13px] md:text-sm font-bold py-4 md:py-[18px] hover:bg-black/90 transition-colors uppercase tracking-wide">
                 Request Manufacturing Quote
               </button>
-              <button className="w-full border border-[#0D0D0D] text-[#0D0D0D] text-sm font-bold py-[18px] hover:bg-gray-50 transition-colors">
+              <button className="w-full border border-[#0D0D0D] text-[#0D0D0D] text-[13px] md:text-sm font-bold py-4 md:py-[18px] hover:bg-gray-50 transition-colors uppercase tracking-wide">
                 Ask About Samples
               </button>
             </div>
-            <p className="text-xs text-[#999999] text-center">
+            <p className="text-[11px] md:text-xs text-[#999999] text-center font-normal">
               Share your product specs and our team will respond with MOQ, sample, and wholesale production options.
             </p>
           </div>
@@ -315,15 +441,15 @@ export default function DetailsComponent() {
       </section>
 
       {/* ── Features Strip ── */}
-      <section className="px-16 pb-16">
-        <hr className="border-t border-gray-200 mb-10" />
-        <div className="flex items-start justify-between max-w-[1416px] mx-auto">
+      <section className="px-6 md:px-16 pb-12 md:pb-16">
+        <hr className="border-t border-gray-200 mb-8 md:mb-10 max-w-[1416px] mx-auto" />
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between max-w-[1416px] mx-auto gap-4 md:gap-0">
           {features.map((feature, i) => (
             <div key={i} className="flex items-center gap-3">
-              <div className="w-[30px] h-[30px] flex items-center justify-center shrink-0">
+              <div className="w-[24px] h-[24px] md:w-[30px] md:h-[30px] flex items-center justify-center shrink-0">
                 <CheckIcon />
               </div>
-              <p className="text-[15px] font-medium text-[#0D0D0D] max-w-[205px] leading-snug">
+              <p className="text-[14px] md:text-[15px] font-medium text-[#0D0D0D] md:max-w-[205px] leading-snug">
                 {feature.text}
               </p>
             </div>
@@ -332,54 +458,56 @@ export default function DetailsComponent() {
       </section>
 
       {/* ── You May Also Like ── */}
-      <section className="bg-white px-16 py-20">
-        <div className="flex items-center justify-between mb-12">
-          <h2 className="text-[26px] font-bold text-[#0D0D0D]">
-            Martial Arts Uniform Manufacturing Options
-          </h2>
-          <a
-            href="/products"
-            className="text-sm font-bold text-[#0D0D0D] hover:underline flex items-center gap-1"
-          >
-            View all options
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" />
-            </svg>
-          </a>
-        </div>
-        <div className="flex gap-0 overflow-x-auto">
-          {relatedProducts.map((product, i) => (
-            <div
-              key={i}
-              className="w-[360px] shrink-0 border border-[#C9C9C9] group cursor-pointer"
+      <section className="bg-white px-6 md:px-16 py-12 md:py-20 border-t border-gray-100">
+        <div className="max-w-[1440px] mx-auto">
+          <div className="flex items-center justify-between mb-8 md:mb-12">
+            <h2 className="text-[22px] leading-[28px] md:text-[26px] font-bold text-[#0D0D0D] max-w-[250px] md:max-w-none">
+              Martial Arts Uniform Manufacturing Options
+            </h2>
+            <a
+              href="/products"
+              className="text-[12px] md:text-sm font-bold text-[#0D0D0D] hover:underline flex items-center gap-1 uppercase"
             >
-              <div className="relative h-[280px] bg-gray-100 overflow-hidden">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-[#0D0D0D] text-white text-[6.5px] font-medium px-3 py-1.5 uppercase tracking-wider">
-                    Quick View
+              View all options
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" />
+              </svg>
+            </a>
+          </div>
+          <div className="flex gap-4 md:gap-0 overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+            {relatedProducts.map((product, i) => (
+              <div
+                key={i}
+                className="w-[280px] md:w-[360px] snap-start shrink-0 border border-[#C9C9C9] group cursor-pointer"
+              >
+                <div className="relative h-[220px] md:h-[280px] bg-gray-100 overflow-hidden">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                    <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-[#0D0D0D] text-white text-[6.5px] font-medium px-3 py-1.5 uppercase tracking-wider">
+                      Quick View
+                    </span>
+                  </div>
+                </div>
+                <div className="px-3 py-3 md:px-4 md:py-3 flex flex-col md:flex-row md:items-center justify-between gap-2 md:gap-0">
+                  <span className="text-[11px] md:text-[10px] font-bold text-[#0D0D0D] uppercase">
+                    {product.name}
                   </span>
+                  <button className="text-[10px] md:text-[8px] font-medium text-[#0D0D0D] border border-[#0D0D0D] px-2 py-1.5 md:py-1 hover:bg-[#0D0D0D] hover:text-white transition-colors uppercase self-start md:self-auto">
+                    Request Quote
+                  </button>
                 </div>
               </div>
-              <div className="px-4 py-3 flex items-center justify-between">
-                <span className="text-[10px] font-bold text-[#0D0D0D]">
-                  {product.name}
-                </span>
-                <button className="text-[8px] font-medium text-[#0D0D0D] border border-[#0D0D0D] px-2 py-1 hover:bg-[#0D0D0D] hover:text-white transition-colors">
-                  Request Quote
-                </button>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ── Quality Control Banner ── */}
-      <section className="px-6 py-0">
+      <section className="px-0 md:px-6 py-0">
         <div className="relative rounded-none overflow-hidden max-w-[1380px] mx-auto">
           <div className="absolute inset-0 bg-black">
             <img
@@ -388,11 +516,11 @@ export default function DetailsComponent() {
               className="w-full h-full object-cover opacity-50"
             />
           </div>
-          <div className="relative z-10 flex flex-col items-center justify-center text-center py-36 px-8">
-            <h2 className="text-[26px] font-bold text-white mb-4 max-w-[654px]">
+          <div className="relative z-10 flex flex-col items-center justify-center text-center py-20 px-6 md:py-36 md:px-8">
+            <h2 className="text-[24px] md:text-[26px] font-bold text-white mb-4 max-w-[654px] uppercase leading-tight">
               Quality Control for Every Production Run
             </h2>
-            <p className="text-base text-white/80 max-w-[654px] leading-relaxed">
+            <p className="text-[14px] md:text-base text-white/80 max-w-[654px] leading-relaxed font-normal">
               Every approved sample becomes the benchmark for bulk manufacturing. We check sizing, stitching, fabric finish, reinforcement points, logo placement, labeling, and packaging before production moves into final delivery.
             </p>
           </div>
@@ -400,20 +528,20 @@ export default function DetailsComponent() {
       </section>
 
       {/* ── MOQ, Pricing, and Samples ── */}
-      <section className="px-20 py-20">
-        <h2 className="text-[26px] font-bold text-[#0D0D0D] mb-6">
+      <section className="px-6 md:px-20 py-12 md:py-20 max-w-[1440px] mx-auto">
+        <h2 className="text-[26px] leading-[32px] md:text-[37px] md:leading-[46px] font-bold text-[#0D0D0D] mb-4 md:mb-6 tracking-tight">
           MOQ, Pricing, and Samples
         </h2>
-        <p className="text-base text-[#666666] leading-relaxed mb-10 max-w-[1280px]">
+        <p className="text-[14px] leading-[22px] md:text-base text-[#666666] md:leading-relaxed mb-8 md:mb-10 max-w-[1280px] font-normal">
           Minimum order quantities and pricing depend on fabric selection, customization level, branding method, packaging, and total order volume. Share your requirements and we&apos;ll recommend the best starting point for your martial arts uniform project.
         </p>
-        <div className="grid grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
           {moqCards.map((card, i) => (
-            <div key={i} className="bg-[#F5F5F5] p-8">
-              <h3 className="text-sm font-bold text-[#0D0D0D] mb-3">
+            <div key={i} className="bg-[#F5F5F5] p-6 md:p-8">
+              <h3 className="text-[16px] md:text-sm font-bold text-[#0D0D0D] mb-2 md:mb-3 uppercase tracking-wide">
                 {card.title}
               </h3>
-              <p className="text-sm text-[#666666] leading-relaxed">
+              <p className="text-[14px] md:text-sm text-[#666666] leading-relaxed font-normal">
                 {card.description}
               </p>
             </div>
@@ -422,14 +550,14 @@ export default function DetailsComponent() {
       </section>
 
       {/* ── CTA Section ── */}
-      <section className="bg-white px-16 py-20">
+      <section className="bg-white px-6 md:px-16 py-12 md:py-20 border-t border-gray-100">
         <div className="max-w-[1312px] mx-auto text-center">
-          <h2 className="text-[26px] font-bold text-[#0D0D0D] mb-4">
+          <h2 className="text-[26px] leading-[32px] md:text-[37px] md:leading-[46px] font-bold text-[#0D0D0D] mb-4 tracking-tight">
             Start Your Private Label Manufacturing Project
           </h2>
           <a
             href="mailto:hello@sarlamathletics.com"
-            className="text-sm text-[#0D0D0D] underline"
+            className="text-[16px] md:text-lg text-[#0D0D0D] underline font-medium hover:opacity-70 transition-opacity"
           >
             hello@sarlamathletics.com
           </a>
@@ -437,98 +565,140 @@ export default function DetailsComponent() {
       </section>
 
       {/* ── Footer ── */}
-      <footer className="border-t border-[#D7DADE]">
-        <div className="px-16 py-16">
-          <div className="flex justify-between">
-            {/* Footer Columns */}
-            <div>
-              <h4 className="text-xs font-bold text-[#0D0D0D] mb-4 uppercase tracking-wider">
-                Navigation
-              </h4>
-              <ul className="space-y-2">
-                {["Home", "Products", "Private Label", "Manufacturing Process"].map(
-                  (item) => (
-                    <li key={item}>
-                      <a
-                        href="#"
-                        className="text-xs text-[#666666] hover:text-[#0D0D0D] transition-colors"
-                      >
-                        {item}
-                      </a>
-                    </li>
-                  )
-                )}
-              </ul>
+      <footer className="bg-white border-t border-[#D7DADE]">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-10 md:py-12 flex flex-col lg:flex-row justify-between gap-10 md:gap-12">
+          {/* Left */}
+          <div className="lg:w-1/2">
+            <h3 
+              className="mb-4 text-[32px] leading-[38px] md:text-[47px] md:leading-[58px] font-medium tracking-tight text-[#0D0D0D]"
+            >
+              Start Your Private Label
+              <br className="hidden md:block" />
+              <span className="md:hidden"> </span>Manufacturing Project
+            </h3>
+            <a
+              href="mailto:hello@sarlamathletics.com"
+              className="transition break-all hover:text-black text-[22px] leading-[30px] md:text-[47px] md:leading-[58px] font-medium text-[#A5A5A5] tracking-tight"
+            >
+              hello@sarlamathletics.com
+            </a>
+          </div>
+
+          {/* Navigation Links - Mobile: Accordion style */}
+          <div className="md:hidden space-y-0">
+            <FooterAccordion title="Navigation">
+              <FooterLink href="/">Home</FooterLink>
+              <FooterLink href="/products">Products</FooterLink>
+              <FooterLink href="/private-label">Private Label</FooterLink>
+              <FooterLink href="/manufacturing">Manufacturing Process</FooterLink>
+              <FooterLink href="/about">About</FooterLink>
+              <FooterLink href="/contact">Contact</FooterLink>
+              <FooterLink href="/contact">Request Quote</FooterLink>
+            </FooterAccordion>
+            <FooterAccordion title="Products">
+              <FooterLink href="/products/boxing-gloves">Boxing Gloves</FooterLink>
+              <FooterLink href="/products/martial-arts">Martial Arts Uniforms</FooterLink>
+              <FooterLink href="/products/mma">MMA Gear</FooterLink>
+              <FooterLink href="/products/accessories">Training Accessories</FooterLink>
+            </FooterAccordion>
+          </div>
+
+          {/* Navigation Links - Desktop: 3 columns */}
+          <div className="hidden lg:flex gap-16">
+            <div className="flex flex-col gap-3">
+              {["Home", "Products", "Private Label", "Manufacturing Process"].map(
+                (link) => (
+                  <a
+                    key={link}
+                    href="#"
+                    className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px] font-normal text-[#000000]"
+                  >
+                    {link}
+                  </a>
+                )
+              )}
             </div>
-            <div>
-              <h4 className="text-xs font-bold text-[#0D0D0D] mb-4 uppercase tracking-wider">
-                Company
-              </h4>
-              <ul className="space-y-2">
-                {["About", "Contact", "Request Quote"].map((item) => (
-                  <li key={item}>
-                    <a
-                      href="#"
-                      className="text-xs text-[#666666] hover:text-[#0D0D0D] transition-colors"
-                    >
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+            <div className="flex flex-col gap-3">
+              {["About", "Contact", "Request Quote"].map((link) => (
+                <a
+                  key={link}
+                  href="#"
+                  className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px] font-normal text-[#000000]"
+                >
+                  {link}
+                </a>
+              ))}
             </div>
-            <div>
-              <h4 className="text-xs font-bold text-[#0D0D0D] mb-4 uppercase tracking-wider">
-                Products
-              </h4>
-              <ul className="space-y-2">
-                {[
-                  "Boxing Gloves",
-                  "Martial Arts Uniforms",
-                  "MMA Gear",
-                  "Training Accessories",
-                ].map((item) => (
-                  <li key={item}>
-                    <a
-                      href="#"
-                      className="text-xs text-[#666666] hover:text-[#0D0D0D] transition-colors"
-                    >
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="text-right">
-              <p className="text-[64px] font-bold text-[#0D0D0D] leading-none uppercase">
-                sarlam
-              </p>
-              <p className="text-[64px] font-bold text-[#0D0D0D] leading-none uppercase">
-                athletics
-              </p>
-              <p className="text-xs text-[#666666] mt-4">© 2026</p>
+            <div className="flex flex-col gap-3">
+              {[
+                "Boxing Gloves",
+                "Martial Arts Uniforms",
+                "MMA Gear",
+                "Training Accessories",
+              ].map((link) => (
+                <a
+                  key={link}
+                  href="#"
+                  className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px] font-normal text-[#000000]"
+                >
+                  {link}
+                </a>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-[#D7DADE] px-16 py-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-1 text-xs text-[#666666]">
-              <span>© 2026</span>
-              <span className="font-medium text-[#0D0D0D]">Sarlam Athletics</span>
-              <span>.</span>
-              <span>Private-label sports equipment manufacturer for combat sports brands.</span>
-            </div>
-            <span className="text-xs text-[#666666]">
-              usa(usd $) / ENGLISH
+        <div className="border-t border-gray-200 mt-0" />
+
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-8 md:py-10 flex flex-col md:flex-row items-start md:items-end justify-between gap-4 md:gap-0">
+          <Link href="/" className="block">
+            <span 
+              className="uppercase tracking-tight text-[56px] leading-[85%] md:text-[101px] md:leading-[85%] font-bold italic text-[#0D0D0D]"
+            >
+              sarlam
+              <br className="hidden md:block" />
+              <span className="md:hidden"> </span>athletics
+            </span>
+          </Link>
+          <div className="flex flex-col md:items-end gap-2 md:gap-0">
+            <span className="md:hidden block text-[12px] leading-[16px] font-normal text-[#0D0D0D]">
+              Website by Sanna Granqvist
+              <br />
+              © 2026
+            </span>
+            <span className="hidden md:block text-[12px] leading-[16px] font-normal text-[#0D0D0D]">
+              © 2026
             </span>
           </div>
         </div>
 
-        {/* Dark Bottom Strip */}
-        <div className="bg-[#0D0D0D] h-[50px]" />
+        <div className="bg-[#0D0D0D]">
+          <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-0">
+            <span className="text-[12px] leading-[16px] font-normal text-[#E3E2E2]">
+              © 2026 Sarlam Athletics. Private-label sports equipment manufacturer
+              for combat sports brands.
+            </span>
+            <span className="uppercase text-[12px] leading-[18px] font-medium text-[#FFFFFF]">
+              USA (USD $) / English
+            </span>
+          </div>
+        </div>
       </footer>
+
+      {/* ── CSS Animations ── */}
+      <style jsx>{`
+        @keyframes marquee {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        .animate-marquee {
+          animation: marquee 25s linear infinite;
+        }
+      `}</style>
     </div>
   );
 }
@@ -544,25 +714,65 @@ function DropdownSelector({
   value: string;
 }) {
   return (
-    <div className="mb-8">
+    <div className="mb-6 md:mb-8">
       <div className="flex items-center justify-between mb-3">
-        <label className="text-sm font-bold text-[#0D0D0D]">{label}</label>
-        <button className="text-xs text-[#666666] hover:underline">
+        <label className="text-[13px] md:text-sm font-bold text-[#0D0D0D] uppercase">{label}</label>
+        <button className="text-[11px] md:text-xs text-[#666666] hover:underline font-medium">
           {guideLabel}
         </button>
       </div>
-      <div className="border border-gray-200 px-4 py-[15px] flex items-center justify-between cursor-pointer hover:border-gray-400 transition-colors">
-        <span className="text-[15px] font-medium text-[#0D0D0D]">{value}</span>
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="none"
-          className="text-[#0D0D0D]"
-        >
-          <path d="M4 6L8 10L12 6" stroke="currentColor" strokeWidth="1.5" />
-        </svg>
+      <div className="border border-gray-200 px-4 py-3 md:py-[15px] flex items-center justify-between cursor-pointer hover:border-gray-400 transition-colors">
+        <span className="text-[14px] md:text-[15px] font-medium text-[#0D0D0D]">{value}</span>
+        <ChevronDownIcon />
       </div>
     </div>
+  );
+}
+
+/* ─── FOOTER ACCORDION (Mobile) ─── */
+function FooterAccordion({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="border-b border-gray-200">
+      <button
+        className="w-full flex items-center justify-between py-4 text-left text-[14px] font-medium text-[#0D0D0D]"
+        onClick={() => setOpen(!open)}
+      >
+        {title}
+        <svg
+          className={`w-4 h-4 transition-transform ${open ? "rotate-180" : ""}`}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={1.5}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      {open && (
+        <div className="pb-4 flex flex-col gap-3">
+          {children}
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ─── FOOTER LINK ─── */
+function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <a 
+      href={href} 
+      className="hover:text-[#0D0D0D] transition block text-[14px] leading-[17px] font-normal text-[#757575]"
+    >
+      {children}
+    </a>
   );
 }
