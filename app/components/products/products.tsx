@@ -191,71 +191,65 @@ const logoStyle = {
 };
 
 // ─── Product Data ──────────────────────────────────────────────────────────
-   const products = [
-  {
-    name: "Private Label Boxing Gloves",
-    cta: "View Product +",
-    href: "/details",
-    swatches: ["#B91C1C", "#0D0D0D"],
-    image: "https://images.unsplash.com/photo-1517438476312-10d79c077509?auto=format&fit=crop&q=80&w=700",
-  },
-  {
-    name: "BJJ Gis and Jiu-Jitsu Uniforms",
-    cta: "View Product +",
-    href: "/jitsu",
-    swatches: ["#0D0D0D", "#E5E5E5"],
-    image: "https://images.unsplash.com/photo-1555597408-26bc8e548a46?auto=format&fit=crop&q=80&w=700",
-  },
-  {
-    name: "MMA Fight Gloves",
-    cta: "View Product +",
-    href: "/mmagloves",
-    swatches: ["#B91C1C", "#0D0D0D"],
-    image: "https://images.unsplash.com/photo-1615117709930-4ee6c4b6a0f9?auto=format&fit=crop&q=80&w=700",
-  },
-  {
-    name: "Professional MMA Training Gloves", 
-    cta: "View Product +",   
-    href: "/ultimategloves",           
-    swatches: ["#B91C1C", "#0D0D0D"],
-    image: "https://images.unsplash.com/photo-1583473848882-f9a5bc7fd2ee?auto=format&fit=crop&q=80&w=700",
-  },
-  {
-    name: "Boxing Focus Mitts and Training Pads",
-    cta: "View Product +",
-    href: "/trainingpad",
-    swatches: ["#B91C1C", "#0D0D0D"],
-    image: "https://images.unsplash.com/photo-1544737151-6e4b999de2a5?auto=format&fit=crop&q=80&w=700",
-  },
-  {
-    name: "Boxing Sparring Gloves",
-    cta: "View Product +",
-    href: "/sparinggloves",
-    swatches: ["#B91C1C", "#0D0D0D"],
-    image: "https://images.unsplash.com/photo-1524594152303-9fd13543fe6e?auto=format&fit=crop&q=80&w=700",
-  },
-  {
-    name: "Custom Boxing Headguards",
-    cta: "View Product +",
-    href: "/Boxingguard",
-    swatches: ["#B91C1C", "#0D0D0D"],
-    image: "https://images.unsplash.com/photo-1517438476312-10d79c077509?auto=format&fit=crop&q=80&w=700",
-  },
-  {
-    name: "Private Label Karate Uniforms",
-    cta: "View Product +",
-    href: "/karatesuit",
-    swatches: ["#E5E5E5", "#0D0D0D"],
-    image: "https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&q=80&w=700",
-  },
-  {
-    name: "Kickboxing Equipment",
-    cta: "View Product +",
-    href: "/kickboxing",
-    swatches: ["#B91C1C", "#0D0D0D"],
-    image: "https://images.unsplash.com/photo-1544737151-6e4b999de2a5?auto=format&fit=crop&q=80&w=700",
-  },
-];
+  const products = [
+    {
+      name: "Private Label Boxing Gloves",
+      cta: "View Product +",
+      href: "/details",
+      swatches: ["#B91C1C", "#0D0D0D"],
+      image: "/Products/01 Private Label Boxing Gloves.png",
+    },
+    {
+      name: "BJJ Gis and Jiu-Jitsu Uniforms",
+      cta: "View Product +",
+      href: "/jitsu",
+      swatches: ["#0D0D0D", "#E5E5E5"],
+      image: "/Products/02 BJJ Gis and Jiu-Jitsu Uniforms.png",
+    },
+    {
+      name: "MMA Fight Gloves",
+      cta: "View Product +",
+      href: "/mmagloves",
+      swatches: ["#B91C1C", "#0D0D0D"],
+      image: "/Products/03 MMA Fight Gloves.png",
+    },
+   {
+      name: "Professional MMA Training Gloves", 
+      cta: "View Product +",   
+      href: "/ultimategloves",           
+      swatches: ["#B91C1C", "#0D0D0D"],
+      image: "/Products/04 Pro MMA  Training Gloves.png",
+    },
+    {
+      name: "Boxing Focus Mitts and Training Pads",
+      cta: "View Product +",
+      href: "/trainingpad",
+      swatches: ["#B91C1C", "#0D0D0D"],
+      image: "/Products/05 Boxing Mitts and Training Pads.png",
+    },
+    {
+      name: "Boxing Sparring Gloves",
+      cta: "View Product +",
+      href: "/sparinggloves",
+      swatches: ["#B91C1C", "#0D0D0D"],
+      image: "/Products/06 Boxing Sparring Gloves.png",
+    },
+    {
+      name: "Custom Boxing Headguards",
+      cta: "View Product +",
+      href: "/Boxingguard",
+      swatches: ["#B91C1C", "#0D0D0D"],
+      image: "/Products/07 Custom Boxing Headguards.png", // Note: 08 is also available for this in your folder
+    },
+   {
+      name: "Private Label Karate Uniforms",
+      cta: "View Product +",
+      href: "/karatesuit",
+      swatches: ["#E5E5E5", "#0D0D0D"],
+      image: "/Products/karateuniform.png",
+    },
+   
+  ];
 
 const customizationOptions = [
   {
