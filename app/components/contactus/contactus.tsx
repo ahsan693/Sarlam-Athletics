@@ -15,13 +15,13 @@ function HeroSection() {
       <div className="relative bg-[#F0EDE9] rounded-xl overflow-hidden px-5 py-20 lg:rounded-none lg:px-12 lg:pt-[164px] lg:pb-[180px]">
         {/* Background image + dark overlay — shown on every breakpoint */}
         <div className="absolute inset-0 bg-black/50 z-[1]" />
-        <div
-          className="absolute inset-0 bg-cover bg-center z-0"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=1600&q=80')",
-          }}
-        />
+      <div
+  className="absolute inset-0 bg-cover bg-center z-0"
+  style={{
+    backgroundImage:
+      "url('/Page 6/01.png')",
+  }}
+/>
 
         <div className="relative z-[2] max-w-[640px]">
           <h1 
