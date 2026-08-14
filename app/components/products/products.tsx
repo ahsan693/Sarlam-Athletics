@@ -363,11 +363,11 @@ export default function ProductPage() {
 
       {/* ───── 3. Hero Section ───── */}
       <section className="relative w-full h-[540px] md:h-[624px] overflow-hidden bg-[#0D0D0D]">
-        <ImagePlaceholder
-          className="absolute inset-0 w-full h-full object-cover"
-          label="Hero - Combat Sports Equipment Display"
-          src="https://images.unsplash.com/photo-1583473848882-f9a5bc7fd2ee?auto=format&fit=crop&q=80&w=2000"
-        />
+       <ImagePlaceholder
+  className="absolute inset-0 w-full h-full object-cover"
+  label="Hero - Combat Sports Equipment Display"
+  src="/Page 2/Images/01.png"
+/>
         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-black/10" />
 
         <div className="relative z-10 flex items-center h-full px-6 md:px-10 max-w-[1440px] mx-auto mt-4 md:mt-0">
