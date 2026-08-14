@@ -214,9 +214,9 @@ const logoStyle = {
     image: "https://images.unsplash.com/photo-1615117709930-4ee6c4b6a0f9?auto=format&fit=crop&q=80&w=700",
   },
   {
-    name: "Professional MMA Training Gloves",
-    cta: "View Product +",
-    href: "/ultimategloves",
+    name: "Professional MMA Training Gloves", 
+    cta: "View Product +",   
+    href: "/ultimategloves",           
     swatches: ["#B91C1C", "#0D0D0D"],
     image: "https://images.unsplash.com/photo-1583473848882-f9a5bc7fd2ee?auto=format&fit=crop&q=80&w=700",
   },

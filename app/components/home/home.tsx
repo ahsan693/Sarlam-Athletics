@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Link from "next/link"; 
 
 // ─── Image Placeholder Component ────────────────────────────────────────────
@@ -82,6 +82,27 @@ const ChevronRight = () => (
       strokeLinecap="round"
       strokeLinejoin="round"
     />
+  </svg>
+);
+
+const ArrowLeft = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="19" y1="12" x2="5" y2="12"></line>
+    <polyline points="12 19 5 12 12 5"></polyline>
+  </svg>
+);
+
+const ArrowRight = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="5" y1="12" x2="19" y2="12"></line>
+    <polyline points="12 5 19 12 12 19"></polyline>
+  </svg>
+);
+
+const SmallArrowRight = () => (
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="mt-[1px]">
+    <line x1="5" y1="12" x2="19" y2="12"></line>
+    <polyline points="12 5 19 12 12 19"></polyline>
   </svg>
 );
 
@@ -372,24 +393,81 @@ export function Header() {
 
 // ─── Main Page Component ────────────────────────────────────────────────────
 export default function SarlamAthleticsPage() {
- const products = [
-  {
-    name: "Private Label Boxing Gloves",
-    cta: "View Product →",
-    image: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=800&q=80",
-    colors: ["#DC2626", "#000000"], 
-  },
-  {
-    name: "BJJ Gi & Martial Arts Uniforms",
-    cta: "View Product →",
-    image: "https://images.unsplash.com/photo-1564415315949-7a0c4c73aab4?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    name: "Boxing Focus Mitts and Training Pads",
-    cta: "View Product →",
-    image: "https://images.unsplash.com/photo-1591117207239-788bf8de6c3b?auto=format&fit=crop&w=800&q=80",
-  },
-];
+  const scrollerRef = useRef<HTMLDivElement>(null);
+
+  const scrollByCard = (dir: 1 | -1) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const card = el.querySelector<HTMLElement>("[data-card]");
+    const cardWidth = card ? card.offsetWidth : 320;
+    el.scrollBy({ left: dir * cardWidth, behavior: "smooth" });
+  };
+
+  const products = [
+    {
+      name: "Private Label Boxing Gloves",
+      cta: "View Product +",
+      href: "/details",
+      swatches: ["#B91C1C", "#0D0D0D"],
+      image: "https://images.unsplash.com/photo-1517438476312-10d79c077509?auto=format&fit=crop&q=80&w=700",
+    },
+    {
+      name: "BJJ Gis and Jiu-Jitsu Uniforms",
+      cta: "View Product +",
+      href: "/jitsu",
+      swatches: ["#0D0D0D", "#E5E5E5"],
+      image: "https://images.unsplash.com/photo-1555597408-26bc8e548a46?auto=format&fit=crop&q=80&w=700",
+    },
+    {
+      name: "MMA Fight Gloves",
+      cta: "View Product +",
+      href: "/mmagloves",
+      swatches: ["#B91C1C", "#0D0D0D"],
+      image: "https://images.unsplash.com/photo-1615117709930-4ee6c4b6a0f9?auto=format&fit=crop&q=80&w=700",
+    },
+    {
+      name: "Professional MMA Training Gloves", 
+      cta: "View Product +",   
+      href: "/ultimategloves",           
+      swatches: ["#B91C1C", "#0D0D0D"],
+      image: "https://images.unsplash.com/photo-1583473848882-f9a5bc7fd2ee?auto=format&fit=crop&q=80&w=700",
+    },
+    {
+      name: "Boxing Focus Mitts and Training Pads",
+      cta: "View Product +",
+      href: "/trainingpad",
+      swatches: ["#B91C1C", "#0D0D0D"],
+      image: "https://images.unsplash.com/photo-1544737151-6e4b999de2a5?auto=format&fit=crop&q=80&w=700",
+    },
+    {
+      name: "Boxing Sparring Gloves",
+      cta: "View Product +",
+      href: "/sparinggloves",
+      swatches: ["#B91C1C", "#0D0D0D"],
+      image: "https://images.unsplash.com/photo-1524594152303-9fd13543fe6e?auto=format&fit=crop&q=80&w=700",
+    },
+    {
+      name: "Custom Boxing Headguards",
+      cta: "View Product +",
+      href: "/Boxingguard",
+      swatches: ["#B91C1C", "#0D0D0D"],
+      image: "https://images.unsplash.com/photo-1517438476312-10d79c077509?auto=format&fit=crop&q=80&w=700",
+    },
+    {
+      name: "Private Label Karate Uniforms",
+      cta: "View Product +",
+      href: "/karatesuit",
+      swatches: ["#E5E5E5", "#0D0D0D"],
+      image: "https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&q=80&w=700",
+    },
+    {
+      name: "Kickboxing Equipment",
+      cta: "View Product +",
+      href: "/kickboxing",
+      swatches: ["#B91C1C", "#0D0D0D"],
+      image: "https://images.unsplash.com/photo-1544737151-6e4b999de2a5?auto=format&fit=crop&q=80&w=700",
+    },
+  ];
 
   const faqs = [
     {
@@ -426,37 +504,37 @@ export default function SarlamAthleticsPage() {
     "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150",
   ];
 
-  const processSteps = [
+  const processSteps = 
+   [
     {
       num: "01",
       title: "Consultation & Product Specs",
       desc: "Tell us what you want to manufacture, including product type, materials, colors, logo placement, packaging, order quantity, and target price.",
       imageSrc:
-        "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=900",
+        "/Page 1/Img/Rectangle 1.png",
     },
     {
       num: "02",
       title: "Sampling & Prototype Development",
       desc: "",
       imageSrc:
-        "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&q=80&w=700",
+        "/Page 1/Img/Rectangle 11.png",
     },
     {
       num: "03",
       title: "Bulk Manufacturing",
       desc: "",
       imageSrc:
-        "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&q=80&w=700",
+        "/Page 1/Img/2.png",
     },
     {
       num: "04",
       title: "Private Label Packaging & Delivery",
       desc: "",
       imageSrc:
-        "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=700",
-    },
+        "/Page 1/Img/Rectangle 4.png",
+    }
   ];
-
   return (
     <div className="w-full bg-white font-sans">
       
@@ -465,11 +543,11 @@ export default function SarlamAthleticsPage() {
 
       {/* ───── Hero Section ───── */}
       <section className="relative w-full h-[540px] md:h-[620px] bg-[#0D0D0D] overflow-hidden">
-        <ImagePlaceholder
-          className="absolute inset-0 w-full h-full object-cover opacity-40"
-          label="Hero Background - Combat Sports Equipment"
-          src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&q=80&w=2000"
-        />
+       <img
+  className="absolute inset-0 w-full h-full object-cover opacity-40"
+  alt="Hero Background - Combat Sports Equipment"
+  src="/Page 1/Img/image 32.png"
+/>
         <div className="absolute inset-0 bg-black/50" />
 
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6 mt-4 md:mt-0">
@@ -537,120 +615,101 @@ export default function SarlamAthleticsPage() {
         </div>
       </div>
 
-    {/* ───── Products Grid Section ───── */}
-    <section className="w-full bg-white py-12 md:py-16 overflow-hidden">
-      <div className="max-w-[1350px] mx-auto px-6 md:px-10 flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4 md:gap-0">
-        <h2
-          className="uppercase max-w-[800px] text-[22px] md:text-[26px]"
-          style={{
-            fontFamily: "'FFF Acid Grotesk', sans-serif",
-            fontWeight: 700,
-            lineHeight: "26px",
-            letterSpacing: "-0.5px",
-            color: "#0D0D0D",
-          }}
-        >
-          Products We<br className="md:hidden" /> Manufacture
-        </h2>
-        <div className="flex items-center gap-5 shrink-0 self-end md:self-auto">
-          <button aria-label="Previous" className="text-gray-400 hover:text-black transition">
-            <ChevronLeft />
-          </button>
-          <button aria-label="Next" className="text-black hover:opacity-70 transition">
-            <ChevronRight />
-          </button>
+      {/* ───── Products Grid Section ───── */}
+      <section className="w-full bg-white py-12 md:py-16 overflow-hidden">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10 flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4 md:gap-0">
+          <h2
+            className="text-[26px] md:text-[34px] tracking-tight"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 600,
+              letterSpacing: "-0.5px",
+              color: "#000000",
+            }}
+          >
+            Combat Sports Equipment We Manufacture
+          </h2>
+          <div className="flex items-center gap-4 shrink-0 self-end md:self-auto">
+            <button onClick={() => scrollByCard(-1)} aria-label="Previous" className="text-gray-400 hover:text-black transition">
+              <ArrowLeft />
+            </button>
+            <button onClick={() => scrollByCard(1)} aria-label="Next" className="text-black hover:opacity-70 transition">
+              <ArrowRight />
+            </button>
+          </div>
         </div>
-      </div>
 
-      <div className="max-w-[1350px] mx-auto px-6 md:px-10">
-        <div className="flex md:grid md:grid-cols-3 overflow-x-auto snap-x snap-mandatory divide-x-0 md:divide-x divide-gray-200 border-t border-gray-200 hide-scrollbar gap-6 md:gap-0">
-          {products.map((product, i) => (
-            <div key={i} className="group min-w-[280px] w-full snap-start border md:border-0 border-gray-200 md:border-transparent">
-              <div className="relative w-full aspect-square bg-white overflow-hidden flex items-center justify-center p-6 md:p-10 border-b border-gray-200">
-                <ImagePlaceholder
-                  className="w-full h-full object-contain"
-                  label={product.name}
-                  src={product.image}
-                />
-                <button 
-                  className="absolute top-4 right-4 bg-[#0D0D0D] uppercase opacity-0 group-hover:opacity-100 transition rounded-sm px-3 py-1.5"
-                  style={{
-                    fontFamily: "'FFF Acid Grotesk', sans-serif",
-                    fontWeight: 500,
-                    fontSize: "6.5px",
-                    lineHeight: "9.4px",
-                    letterSpacing: "0px",
-                    color: "#FFFFFF",
-                  }}
-                >
-                  Quick View
-                </button>
-              </div>
+        <div className="max-w-[1440px] mx-auto">
+          <div 
+            ref={scrollerRef}
+            className="flex overflow-x-auto scroll-smooth snap-x snap-mandatory border-t border-b border-gray-200 hide-scrollbar"
+          >
+            {products.map((product, i) => (
+              <div 
+                key={i} 
+                data-card 
+                className="group relative min-w-[100%] md:min-w-[33.333333%] w-full md:w-[33.333333%] shrink-0 snap-start border-r border-gray-200 flex flex-col bg-white"
+              >
+                {/* Product Image */}
+                <Link href={product.href} className="relative block w-full aspect-square bg-white p-8 md:p-14">
+                  {/* Note: using !object-contain overrides the default object-cover in ImagePlaceholder */}
+                  <ImagePlaceholder
+                    className="w-full h-full !object-contain transition-transform duration-300 group-hover:scale-105"
+                    label={product.name}
+                    src={product.image}
+                  />
+                </Link>
 
-              <div className="flex items-end justify-between px-4 md:px-6 py-4 border-b md:border-b-0 border-gray-200">
-                <div className="flex flex-col gap-1">
-                  <span
-                    className="max-w-[449px]"
-                    style={{
-                      fontFamily: "'FFF Acid Grotesk', sans-serif",
-                      fontWeight: 700,
-                      fontSize: "10px",
-                      lineHeight: "13px",
-                      letterSpacing: "0.05px",
-                      color: "#0D0D0D",
-                    }}
-                  >
-                    {product.name}
-                  </span>
-                  <Link
-                    href="/products"
-                    className="hover:opacity-70 transition underline"
-                    style={{
-                      fontFamily: "'FFF Acid Grotesk', sans-serif",
-                      fontWeight: 700,
-                      fontSize: "10px",
-                      lineHeight: "13px",
-                      letterSpacing: "0px",
-                      color: "#0D0D0D",
-                    }}
-                  >
-                    {product.cta}
-                  </Link>
-                </div>
-
-                {product.colors && (
-                  <div className="flex items-center gap-1 pb-0.5">
-                    {product.colors.map((color, ci) => (
+                {/* Text Block */}
+                <div className="px-4 pb-4 mt-auto">
+                  <div className="border border-gray-200 p-4 flex items-end justify-between bg-white">
+                    <div className="flex flex-col gap-0.5">
                       <span
-                        key={ci}
-                        className="w-2.5 h-2.5 rounded-sm border border-gray-200"
-                        style={{ backgroundColor: color }}
-                      />
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+                        style={{
+                          fontFamily: "'FFF Acid Grotesk', sans-serif",
+                          fontWeight: 700,
+                          fontSize: "13px",
+                          lineHeight: "16px",
+                          color: "#000000",
+                        }}
+                      >
+                        {product.name}
+                      </span>
+                      
+                      <Link
+                        href={product.href}
+                        className="hover:opacity-70 transition flex items-center gap-1"
+                        style={{
+                          fontFamily: "'FFF Acid Grotesk', sans-serif",
+                          fontWeight: 700,
+                          fontSize: "12px",
+                          lineHeight: "16px",
+                          color: "#000000",
+                        }}
+                      >
+                        View Product <SmallArrowRight />
+                      </Link>
+                    </div>
 
-      <div className="flex justify-center mt-8 md:mt-10 px-6">
-        <Link
-          href="/products"
-          className="inline-flex items-center justify-center bg-black uppercase w-full md:w-auto px-10 py-3.5 hover:bg-gray-900 transition"
-          style={{
-            fontFamily: "'FFF Acid Grotesk', sans-serif",
-            fontWeight: 700,
-            fontSize: "14px",
-            letterSpacing: "5%",
-            color: "#FFFFFF",
-          }}
-        >
-          View All Items
-        </Link>
-      </div>
-    </section>
+                    {/* Color Swatches */}
+                    {product.swatches && (
+                      <div className="flex items-center gap-[3px] shrink-0 pb-[2px]">
+                        {product.swatches.map((color, ci) => (
+                          <span
+                            key={ci}
+                            className="w-3 h-3 border border-gray-300"
+                            style={{ backgroundColor: color }}
+                          />
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ───── About Section ───── */}
       <section className="w-full bg-[#000000] py-16 md:py-24">
@@ -805,26 +864,26 @@ export default function SarlamAthleticsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-gray-200">
             {[
-              {
+            {
                 num: "01",
                 title: "Factory-Direct Manufacturing",
                 desc: "Manufacture directly with our factory for better pricing, faster communication, consistent product quality, and complete control over branding, materials, and production timelines.",
                 imageSrc:
-                  "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=600",
+                  "/Page 1/Img/1.png",
               },
               {
                 num: "02",
                 title: "Flexible MOQs for Growing Brands",
                 desc: "Start with sample runs or smaller wholesale orders before scaling into larger production batches for your sports brand or retail business.",
                 imageSrc:
-                  "https://images.unsplash.com/photo-1552581234-26160f608093?auto=format&fit=crop&q=80&w=600",
+                  "/Page 1/Img/2.png",
               },
               {
                 num: "03",
                 title: "Private Label & OEM Customization",
                 desc: "Customize logos, colors, materials, sizing, stitching, labels, and packaging across boxing gloves, martial arts uniforms, belts, wraps, and training gear.",
                 imageSrc:
-                  "https://images.unsplash.com/photo-1614210620247-49f3e9d89280?auto=format&fit=crop&q=80&w=600",
+                  "/Page 1/Img/3.png",
               },
             ].map((step, i) => (
               <div
@@ -899,23 +958,23 @@ export default function SarlamAthleticsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-gray-200">
             {[
-              {
+             {
                 title: "OEM & ODM Manufacturing Solutions",
                 desc: "From product development and sampling to mass production, we manufacture custom boxing gloves, MMA gear, BJJ uniforms, karate apparel, belts, wraps, and training accessories according to your exact specifications.",
                 imageSrc:
-                  "https://images.unsplash.com/photo-1567696153798-9111f9cd3d0d?auto=format&fit=crop&q=80&w=600",
+                  "/Page 1/Img/Rectangle 1.png",
               },
               {
                 title: "Strict Quality Control Standards",
                 desc: "Every product undergoes detailed inspection for stitching, material quality, sizing, padding density, logo placement, and packaging before shipment.",
                 imageSrc:
-                  "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?auto=format&fit=crop&q=80&w=600",
+                  "/Page 1/Img/Rectangle 11.png",
               },
               {
                 title: "Premium Material Development",
                 desc: "Choose from genuine leather, microfiber leather, PU, cotton, EVA foam, reinforced stitching, custom fabrics, and premium trims tailored to your market.",
                 imageSrc:
-                  "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&q=80&w=600",
+                  "/Page 1/Img/2.png",
               },
             ].map((item, i) => (
               <div
