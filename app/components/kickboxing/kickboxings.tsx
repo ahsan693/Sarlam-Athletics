@@ -266,11 +266,11 @@ export default function KickBoxingGlovesPage() {
       {/* ── Hero Banner ── */}
       <section className="relative h-[320px] md:h-[480px] overflow-hidden">
         <div className="absolute inset-0 bg-black">
-          <img
-            src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=1600&h=900&fit=crop"
-            alt="Private Label Sports Equipment Manufacturing"
-            className="w-full h-full object-cover opacity-60"
-          />
+         <img
+  src="/Page 7/01-1.png"
+  alt="Private Label Sports Equipment Manufacturing"
+  className="w-full h-full object-cover opacity-60"
+/>
         </div>
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
           <span className="text-[13px] md:text-[15px] font-medium mb-3 md:mb-4 tracking-wide text-[#CCCCCC] uppercase">
