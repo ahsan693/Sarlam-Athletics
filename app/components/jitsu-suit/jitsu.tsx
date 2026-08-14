@@ -202,10 +202,22 @@ const sizeRanges = {
 };
 
 const relatedProducts = [
-  { name: "Jiu Jitsu Suit (Gi)", image: "https://images.unsplash.com/photo-1555597673-b21d5c935865?w=600&h=600&fit=crop" },
-  { name: "Boxing Gloves", image: "https://images.unsplash.com/photo-1517438476312-10d79c077509?w=600&h=600&fit=crop" },
-  { name: "MMA Full Fight Gloves", image: "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=600&h=600&fit=crop" },
-  { name: "Boxing Head Guard", image: "https://images.unsplash.com/photo-1544967919-44b6f0f5ba6c?w=600&h=600&fit=crop" },
+  { 
+    name: "Jiu Jitsu Suit (Gi)", 
+    image: "/Products/02 BJJ Gis and Jiu-Jitsu Uniforms.png" 
+  },
+  { 
+    name: "Boxing Gloves", 
+    image: "/Products/01 Private Label Boxing Gloves.png" 
+  },
+  { 
+    name: "MMA Full Fight Gloves", 
+    image: "/Products/03 MMA Fight Gloves.png" 
+  },
+  { 
+    name: "Boxing Head Guard", 
+    image: "/Products/07 Custom Boxing Headguards.png" 
+  },
 ];
 
 const moqCards = [
