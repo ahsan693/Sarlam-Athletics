@@ -276,24 +276,21 @@ const customizationOptions = [
 ];
 
 
-const processSteps = [
+ const processSteps = [
   {
     title: "Flexible Minimum Order Quantities",
     desc: "Minimum quantities vary by product, material, and customization level. We support smaller launch orders as well as high-volume wholesale production.",
-    image:
-      "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=700",
+    image: "/Page 2/Images/06.png",
   },
   {
     title: "Factory-Direct Wholesale Pricing",
     desc: "Pricing is based on product specifications, materials, order quantity, branding, and packaging. Request a tailored quotation for your product range.",
-    image:
-      "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&q=80&w=700",
+    image: "/Page 2/Images/07.png",
   },
   {
     title: "Prototype and Sample Development",
     desc: "Review materials, fit, construction, branding, and packaging before approving your order for bulk production.",
-    image:
-      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=700",
+    image: "/Page 2/Images/08.png",
   },
 ];
 
