@@ -425,12 +425,12 @@ export default function SarlamAthleticsPage() {
       swatches: ["#B91C1C", "#0D0D0D"],
       image: "/Products/03 MMA Fight Gloves.png",
     },
-    {
+   {
       name: "Professional MMA Training Gloves", 
       cta: "View Product +",   
       href: "/ultimategloves",           
       swatches: ["#B91C1C", "#0D0D0D"],
-      image: "/Products/04 Pro MMA Training Gloves.png",
+      image: "/Products/04 Pro MMA  Training Gloves.png",
     },
     {
       name: "Boxing Focus Mitts and Training Pads",
@@ -453,20 +453,14 @@ export default function SarlamAthleticsPage() {
       swatches: ["#B91C1C", "#0D0D0D"],
       image: "/Products/07 Custom Boxing Headguards.png", // Note: 08 is also available for this in your folder
     },
-    {
+   {
       name: "Private Label Karate Uniforms",
       cta: "View Product +",
       href: "/karatesuit",
       swatches: ["#E5E5E5", "#0D0D0D"],
-      image: "https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&q=80&w=700",
+      image: "/Products/karateuniform.png",
     },
-    {
-      name: "Kickboxing Equipment",
-      cta: "View Product +",
-      href: "/kickboxing",
-      swatches: ["#B91C1C", "#0D0D0D"],
-      image: "https://images.unsplash.com/photo-1544737151-6e4b999de2a5?auto=format&fit=crop&q=80&w=700",
-    },
+   
   ];
 
   const faqs = [
