@@ -255,34 +255,26 @@ const customizationOptions = [
   {
     title: "Custom Logo Branding",
     desc: "Add your logo using embroidery, screen printing, heat transfer, woven labels, rubber patches, embossing, or debossing",
-    image:
-      "https://images.unsplash.com/photo-1519861531473-9200262188bf?auto=format&fit=crop&q=80&w=600",
+    image: "/Page 2/Images/02.png",
   },
   {
     title: "Custom Materials and Colors",
     desc: "Choose genuine leather, microfiber leather, premium PU, cotton canvas, neoprene, EVA foam, custom fabrics, and branded color combinations.",
-    image:
-      "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&q=80&w=600",
+    image: "/Page 2/Images/03.png",
   },
   {
     title: "Labels, Tags and Packaging",
     desc: "Create woven labels, hang tags, barcode stickers, instruction cards, poly bags, retail boxes, and branded shipping cartons.",
-    image:
-      "https://images.unsplash.com/photo-1607344645866-009c320b63e0?auto=format&fit=crop&q=80&w=600",
+    image: "/Page 2/Images/04.png",
   },
   {
     title: "Sizing and Product Specifications",
     desc: "Customize dimensions, weight, fit, padding density, stitching, closures, and performance features before production.",
-    image:
-      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&q=80&w=600",
+    image: "/Page 2/Images/05.png",
   },
-  {
-    title: "Sampling Before Production",
-    desc: "Review samples before approving a larger order so your team can check fit, finish, materials, branding, and overall product quality.",
-    image:
-      "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&q=80&w=600",
-  },
+
 ];
+
 
 const processSteps = [
   {
