@@ -403,55 +403,55 @@ export default function SarlamAthleticsPage() {
     el.scrollBy({ left: dir * cardWidth, behavior: "smooth" });
   };
 
-  const products = [
+ const products = [
     {
       name: "Private Label Boxing Gloves",
       cta: "View Product +",
       href: "/details",
       swatches: ["#B91C1C", "#0D0D0D"],
-      image: "https://images.unsplash.com/photo-1517438476312-10d79c077509?auto=format&fit=crop&q=80&w=700",
+      image: "/Products/01 Private Label Boxing Gloves.png",
     },
     {
       name: "BJJ Gis and Jiu-Jitsu Uniforms",
       cta: "View Product +",
       href: "/jitsu",
       swatches: ["#0D0D0D", "#E5E5E5"],
-      image: "https://images.unsplash.com/photo-1555597408-26bc8e548a46?auto=format&fit=crop&q=80&w=700",
+      image: "/Products/02 BJJ Gis and Jiu-Jitsu Uniforms.png",
     },
     {
       name: "MMA Fight Gloves",
       cta: "View Product +",
       href: "/mmagloves",
       swatches: ["#B91C1C", "#0D0D0D"],
-      image: "https://images.unsplash.com/photo-1615117709930-4ee6c4b6a0f9?auto=format&fit=crop&q=80&w=700",
+      image: "/Products/03 MMA Fight Gloves.png",
     },
     {
       name: "Professional MMA Training Gloves", 
       cta: "View Product +",   
       href: "/ultimategloves",           
       swatches: ["#B91C1C", "#0D0D0D"],
-      image: "https://images.unsplash.com/photo-1583473848882-f9a5bc7fd2ee?auto=format&fit=crop&q=80&w=700",
+      image: "/Products/04 Pro MMA Training Gloves.png",
     },
     {
       name: "Boxing Focus Mitts and Training Pads",
       cta: "View Product +",
       href: "/trainingpad",
       swatches: ["#B91C1C", "#0D0D0D"],
-      image: "https://images.unsplash.com/photo-1544737151-6e4b999de2a5?auto=format&fit=crop&q=80&w=700",
+      image: "/Products/05 Boxing Mitts and Training Pads.png",
     },
     {
       name: "Boxing Sparring Gloves",
       cta: "View Product +",
       href: "/sparinggloves",
       swatches: ["#B91C1C", "#0D0D0D"],
-      image: "https://images.unsplash.com/photo-1524594152303-9fd13543fe6e?auto=format&fit=crop&q=80&w=700",
+      image: "/Products/06 Boxing Sparring Gloves.png",
     },
     {
       name: "Custom Boxing Headguards",
       cta: "View Product +",
       href: "/Boxingguard",
       swatches: ["#B91C1C", "#0D0D0D"],
-      image: "https://images.unsplash.com/photo-1517438476312-10d79c077509?auto=format&fit=crop&q=80&w=700",
+      image: "/Products/07 Custom Boxing Headguards.png", // Note: 08 is also available for this in your folder
     },
     {
       name: "Private Label Karate Uniforms",
@@ -1216,11 +1216,11 @@ export default function SarlamAthleticsPage() {
       <section className="w-full bg-white py-10 md:py-16">
         <div className="max-w-[1344px] mx-auto px-4 md:px-10">
           <div className="relative rounded-sm overflow-hidden">
-            <ImagePlaceholder
-              className="absolute inset-0 w-full h-full"
-              label="CTA Background - Sports Equipment"
-              src="https://images.unsplash.com/photo-1517438322307-e67111335449?auto=format&fit=crop&q=80&w=2000"
-            />
+           <ImagePlaceholder
+  className="absolute inset-0 w-full h-full"
+  label="CTA Background - Sports Equipment"
+  src="/Page 1/Img/Container.png"
+/>
             <div className="relative z-10 bg-black/60 py-16 px-6 md:py-24 md:px-20 flex flex-col items-center text-center">
               <div className="max-w-[700px]">
                 <h2 
