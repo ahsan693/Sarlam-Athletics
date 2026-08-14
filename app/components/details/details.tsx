@@ -257,11 +257,11 @@ export default function DetailsComponent() {
       {/* ── Hero Banner ── */}
       <section className="relative h-[320px] md:h-[480px] overflow-hidden">
         <div className="absolute inset-0 bg-black">
-          <img
-            src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=1600&h=900&fit=crop"
-            alt="Boxing Gloves"
-            className="w-full h-full object-cover opacity-60"
-          />
+         <img
+  src="/Page 3/Container.png"
+  alt="Boxing Gloves"
+  className="w-full h-full object-cover opacity-60"
+/>
         </div>
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
           <span className="text-[13px] md:text-[15px] font-medium mb-3 md:mb-4 tracking-wide text-[#CCCCCC] uppercase">
@@ -279,11 +279,11 @@ export default function DetailsComponent() {
           {/* Left: Product Image */}
           <div className="w-full lg:w-[616px] shrink-0">
             <div className="bg-[#F9F9F9] rounded-none p-4 md:p-2 aspect-square flex items-center justify-center lg:sticky lg:top-24">
-              <img
-                src="https://images.unsplash.com/photo-1583473848882-f9a5bc7fd2ee?w=800&h=800&fit=crop"
-                alt="Boxing Gloves"
-                className="w-[100%] h-[100%] md:w-[600px] md:h-[600px] object-contain"
-              />
+         <img
+  src="/Products/01 Private Label Boxing Gloves.png"
+  alt="Boxing Gloves"
+  className="w-[100%] h-[100%] md:w-[600px] md:h-[600px] object-contain"
+/>
             </div>
           </div>
 
@@ -522,11 +522,11 @@ export default function DetailsComponent() {
       <section className="px-0 md:px-6 py-0">
         <div className="relative rounded-none overflow-hidden max-w-[1380px] mx-auto">
           <div className="absolute inset-0 bg-black">
-            <img
-              src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1600&h=800&fit=crop"
-              alt="Quality Control"
-              className="w-full h-full object-cover opacity-50"
-            />
+           <img
+  src="/Page 3/Box.png"
+  alt="Quality Control"
+  className="w-full h-full object-cover opacity-50"
+/>
           </div>
           <div className="relative z-10 flex flex-col items-center justify-center text-center py-20 px-6 md:py-36 md:px-8">
             <h2 className="text-[24px] md:text-[26px] font-bold text-white mb-4 max-w-[654px] uppercase leading-tight">
