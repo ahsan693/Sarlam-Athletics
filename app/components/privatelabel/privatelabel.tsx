@@ -52,11 +52,11 @@ export default function PrivateLabel() {
       {/* ─── HERO SECTION ─── */}
       <section className="relative h-[600px] md:h-[495px] bg-[#0D0D0D] overflow-hidden -mt-[52px] pt-[52px] md:-mt-[0px] md:pt-[0px]">
         {/* Background Image */}
-        <img
-          src="https://images.unsplash.com/photo-1544717684-1243da23b545?auto=format&fit=crop&q=80&w=2000"
-          alt="Boxing training ring"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+      <img
+  src="/Page 5/01.png"
+  alt="Boxing training ring"
+  className="absolute inset-0 w-full h-full object-cover"
+/>
         {/* Dark gradient — strongest on the left/bottom where the copy sits */}
         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-black/10 md:bg-gradient-to-r md:from-black md:via-black/60 md:to-black/10 bg-black/50" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/40 md:bg-gradient-to-t md:from-black/70 md:via-transparent md:to-black/40" />
@@ -247,11 +247,11 @@ export default function PrivateLabel() {
 
         {/* Full-bleed image */}
         <div className="w-full h-[280px] md:h-[520px] mt-8 md:mt-14 overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&q=80&w=2000"
-            alt="MMA training in the cage"
-            className="w-full h-full object-cover"
-          />
+      <img
+  src="/Page 5/03.png"
+  alt="MMA training in the cage"
+  className="w-full h-full object-cover"
+/>
         </div>
       </section>
 
@@ -404,11 +404,11 @@ export default function PrivateLabel() {
                 &ldquo;{t.quote}&rdquo;
               </p>
               <div className="mt-6 md:mt-8 flex items-center gap-4">
-                <img
-                  src={t.avatar}
-                  alt={t.name}
-                  className="w-10 h-10 md:w-12 md:h-12 rounded-[16px] md:rounded-[20px] object-cover"
-                />
+              <img
+  src="/Page 5/02.png"
+  alt={t.name}
+  className="w-10 h-10 md:w-12 md:h-12 rounded-[16px] md:rounded-[20px] object-cover"
+/>
                 <div>
                   <p 
                     className="text-[14px] leading-[18px] md:text-[15px] md:leading-[20px]"
