@@ -404,11 +404,11 @@ export default function PrivateLabel() {
                 &ldquo;{t.quote}&rdquo;
               </p>
               <div className="mt-6 md:mt-8 flex items-center gap-4">
-              <img
-  src="/Page 5/02.png"
-  alt={t.name}
-  className="w-10 h-10 md:w-12 md:h-12 rounded-[16px] md:rounded-[20px] object-cover"
-/>
+                <img
+                  src={t.avatar}
+                  alt={t.name}
+                  className="w-10 h-10 md:w-12 md:h-12 rounded-[16px] md:rounded-[20px] object-cover"
+                />
                 <div>
                   <p 
                     className="text-[14px] leading-[18px] md:text-[15px] md:leading-[20px]"
@@ -440,11 +440,11 @@ export default function PrivateLabel() {
       {/* ─── CTA SECTION ─── */}
       <section className="max-w-[1440px] mx-auto px-5 md:px-8 pb-16 md:pb-24 bg-white">
         <div className="relative rounded-[16px] md:rounded-sm overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=2000"
-            alt="BJJ academy training session"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
+        <img
+  src="/Page 5/02.png"
+  alt="BJJ academy training session"
+  className="absolute inset-0 w-full h-full object-cover"
+/>
           <div className="absolute inset-0 bg-black/55" />
 
           <div className="relative z-10 py-16 px-6 md:py-28 md:px-8 flex flex-col items-center text-center">
