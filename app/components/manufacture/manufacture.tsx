@@ -384,25 +384,25 @@ function TimelineSection() {
   );
 }
 
-// ─── OEM & Private Label Services Section ───
-const services = [
+// ─── OEM & Private Label Services Section ─── 
+ const services = [
   {
     title: "Private Label & OEM Manufacturing",
     description:
       "Manufacture custom boxing gloves, MMA gear, martial arts uniforms, belts, wraps, and training accessories under your brand.",
-    image: "https://images.unsplash.com/photo-1565992441121-4367c2967103?auto=format&fit=crop&q=80&w=800",
+    image: "/Page 4/03.png",
   },
   {
     title: "Wholesale Sports Equipment",
     description:
       "Factory-direct production for sports brands, gyms, wholesalers, distributors, and retailers with scalable manufacturing capacity.",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800",
+    image: "/Page 4/04.png",
   },
   {
     title: "Product Development & Sampling",
     description:
       "Develop and refine your products through prototype sampling, material testing, branding, and packaging before production.",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800",
+    image: "/Page 4/05.png",
   },
 ];
 
@@ -526,7 +526,7 @@ function ProductsSection() {
 
 // ─── Industries We Serve Section ───
 const industries = [
-  { title: "Sports Brands", image: "https://images.unsplash.com/photo-1517438476312-10d79c077509?auto=format&fit=crop&q=80&w=600" },
+  { title: "Sports Brands", image: "https://images.unsplash.com/photo-1515523110800-9415d13b84a8?auto=format&fit=crop&q=80&w=600" },
   { title: "Gyms & Martial Arts Academies", image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=600" },
   { title: "Retailers & eCommerce Brands", image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=600" },
   { title: "Wholesale Distributors", image: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&q=80&w=600" },
