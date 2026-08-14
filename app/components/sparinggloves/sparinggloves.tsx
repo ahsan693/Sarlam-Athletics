@@ -526,11 +526,11 @@ export default function BoxingSparringGlovesPage() {
       <section className="px-0 md:px-6 py-0">
         <div className="relative rounded-none overflow-hidden max-w-[1380px] mx-auto">
           <div className="absolute inset-0 bg-black">
-            <img
-              src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1600&h=800&fit=crop"
-              alt="Quality Control"
-              className="w-full h-full object-cover opacity-50"
-            />
+          <img
+  src="/Page 7/01.png"
+  alt="Quality Control"
+  className="w-full h-full object-cover opacity-50"
+/>
           </div>
           <div className="relative z-10 flex flex-col items-center justify-center text-center py-20 px-6 md:py-36 md:px-8">
             <h2 className="text-[24px] md:text-[26px] font-bold text-white mb-4 max-w-[654px] uppercase leading-tight">
