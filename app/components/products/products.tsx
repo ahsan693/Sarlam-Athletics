@@ -191,7 +191,7 @@ const logoStyle = {
 };
 
 // ─── Product Data ──────────────────────────────────────────────────────────
-const products = [
+   const products = [
   {
     name: "Private Label Boxing Gloves",
     cta: "View Product +",
@@ -202,28 +202,28 @@ const products = [
   {
     name: "BJJ Gis and Jiu-Jitsu Uniforms",
     cta: "View Product +",
-    href: "/jitsu-suit",
+    href: "/jitsu",
     swatches: ["#0D0D0D", "#E5E5E5"],
     image: "https://images.unsplash.com/photo-1555597408-26bc8e548a46?auto=format&fit=crop&q=80&w=700",
   },
   {
     name: "MMA Fight Gloves",
     cta: "View Product +",
-    href: "/mma-gloves",
+    href: "/mmagloves",
     swatches: ["#B91C1C", "#0D0D0D"],
     image: "https://images.unsplash.com/photo-1615117709930-4ee6c4b6a0f9?auto=format&fit=crop&q=80&w=700",
   },
   {
     name: "Professional MMA Training Gloves",
     cta: "View Product +",
-    href: "/ultimate-fightgloves",
+    href: "/ultimategloves",
     swatches: ["#B91C1C", "#0D0D0D"],
     image: "https://images.unsplash.com/photo-1583473848882-f9a5bc7fd2ee?auto=format&fit=crop&q=80&w=700",
   },
   {
     name: "Boxing Focus Mitts and Training Pads",
     cta: "View Product +",
-    href: "/trainingpads",
+    href: "/trainingpad",
     swatches: ["#B91C1C", "#0D0D0D"],
     image: "https://images.unsplash.com/photo-1544737151-6e4b999de2a5?auto=format&fit=crop&q=80&w=700",
   },
@@ -244,9 +244,16 @@ const products = [
   {
     name: "Private Label Karate Uniforms",
     cta: "View Product +",
-    href: "/karate-suit",
+    href: "/karatesuit",
     swatches: ["#E5E5E5", "#0D0D0D"],
     image: "https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&q=80&w=700",
+  },
+  {
+    name: "Kickboxing Equipment",
+    cta: "View Product +",
+    href: "/kickboxing",
+    swatches: ["#B91C1C", "#0D0D0D"],
+    image: "https://images.unsplash.com/photo-1544737151-6e4b999de2a5?auto=format&fit=crop&q=80&w=700",
   },
 ];
 
@@ -567,6 +574,7 @@ export default function ProductPage() {
               </button>
             </div>
           </div>
+
         </div>
 
         <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-0">
@@ -582,8 +590,8 @@ export default function ProductPage() {
                     label={product.name}
                     src={product.image}
                   />
-                  <button
-                    className="absolute top-3 right-3 bg-[#0D0D0D] uppercase opacity-0 group-hover:opacity-100 transition rounded-sm px-3 py-1.5 text-[6.5px] leading-[9.4px]"
+                  <span
+                    className="pointer-events-none absolute top-3 right-3 bg-[#0D0D0D] uppercase opacity-0 group-hover:opacity-100 transition rounded-sm px-3 py-1.5 text-[6.5px] leading-[9.4px]"
                     style={{
                       fontFamily: "'FFF Acid Grotesk', sans-serif",
                       fontWeight: 500,
@@ -592,7 +600,7 @@ export default function ProductPage() {
                     }}
                   >
                     Quick View
-                  </button>
+                  </span>
                 </Link>
 
                 <div className="bg-white px-4 py-4 md:py-3 flex items-center justify-between border-t border-gray-200">

@@ -1,4 +1,4 @@
-import TrainingPads from "../components/trainingpads/page";
+import TrainingPads from "../components/trainingpads/trainingpads";
 
 export default function TrainingPadPage() {
   return (
