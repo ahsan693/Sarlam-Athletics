@@ -48,11 +48,11 @@ function HeroSection() {
   return (
     <section className="relative w-full h-[540px] md:h-[620px] bg-[#0D0D0D] overflow-hidden rounded-b-[16px] md:rounded-b-[24px]">
       {/* Background image */}
-      <img
-        src="https://images.unsplash.com/photo-1670768457987-f78bc97df50c?auto=format&fit=crop&q=80&w=2000"
-        alt="Boxing equipment manufacturing"
-        className="absolute inset-0 w-full h-full object-cover"
-      />
+     <img
+  src="/Page 4/01.png"
+  alt="Boxing equipment manufacturing"
+  className="absolute inset-0 w-full h-full object-cover"
+/>
 
       {/* Dark maroon overlay for text readability + mood */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-[#3a0f14]/60 to-black/70" />
@@ -154,11 +154,11 @@ function VideoSection() {
 
         {/* Video placeholder */}
         <div className="relative w-full aspect-[4/3] md:aspect-[1376/535] rounded-lg overflow-hidden bg-gray-200 group cursor-pointer">
-          <img
-            src="https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&q=80&w=1400"
-            alt="Martial arts training"
-            className="w-full h-full object-cover"
-          />
+        <img
+  src="/Page 4/02.png"
+  alt="Martial arts training"
+  className="w-full h-full object-cover"
+/>
           {/* Dark overlay */}
           <div className="absolute inset-0 bg-black/15 group-hover:bg-black/25 transition-colors" />
           {/* Play button */}
