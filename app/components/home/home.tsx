@@ -1019,11 +1019,11 @@ export default function SarlamAthleticsPage() {
 
       {/* ───── Testimonial Section ───── */}
       <section className="relative w-full py-16 md:py-24 bg-[#7A2E22] overflow-hidden">
-        <ImagePlaceholder
-          className="absolute inset-0 w-full h-full object-cover"
-          label="Testimonial Background"
-          src="https://images.unsplash.com/photo-1517838503506-3b561ebea8eb?auto=format&fit=crop&q=80&w=2000"
-        />
+       <ImagePlaceholder
+  className="absolute inset-0 w-full h-full object-cover"
+  label="Testimonial Background"
+  src="/Page 1/Img/Container.png"
+/>
         <div className="absolute inset-0 bg-gradient-to-b from-[#5c1c14]/70 via-[#7a2418]/60 to-[#3d0f0a]/80 mix-blend-multiply" />
         <div className="absolute inset-0 bg-black/25" />
 
