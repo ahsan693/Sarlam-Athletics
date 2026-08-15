@@ -404,6 +404,7 @@ export default function ProductPage() {
                   fontWeight: 700,
                   letterSpacing: "0px",
                   color: "#0D0D0D",
+                  borderRadius: "8px",
                 }}
               >
                 Request a Manufacturing Quote
@@ -496,64 +497,8 @@ export default function ProductPage() {
             </div>
 
             <div className="flex flex-col md:flex-row md:items-center justify-between py-4 border-b border-gray-200 gap-4 md:gap-0">
-              <div className="flex items-center justify-between md:justify-start gap-4 w-full md:w-auto">
-                <span
-                  className="uppercase text-[11px] md:text-[12px] leading-[18px]"
-                  style={{
-                    fontFamily: "'FFF Acid Grotesk', sans-serif",
-                    fontWeight: 500,
-                    letterSpacing: "0px",
-                    color: "#707070",
-                  }}
-                >
-                  Items: {products.length}
-                </span>
-                <div className="flex items-center gap-1.5">
-                  <span
-                    className="uppercase text-[11px] md:text-[12px] leading-[18px]"
-                    style={{
-                      fontFamily: "'FFF Acid Grotesk', sans-serif",
-                      fontWeight: 500,
-                      letterSpacing: "0px",
-                      color: "#707070",
-                    }}
-                  >
-                    Category:
-                  </span>
-                  <button
-                    className="flex items-center gap-1 uppercase text-[12px] leading-[18px]"
-                    style={{
-                      fontFamily: "'Inter', sans-serif",
-                      fontWeight: 700,
-                      letterSpacing: "0px",
-                      color: "#0D0D0D",
-                    }}
-                  >
-                    All
-                    <ChevronDownIcon />
-                  </button>
-                </div>
-              </div>
+             
 
-              <div className="hidden md:flex items-center gap-2">
-                <span
-                  className="uppercase text-[12px] leading-[18px]"
-                  style={{
-                    fontFamily: "'FFF Acid Grotesk', sans-serif",
-                    fontWeight: 500,
-                    letterSpacing: "0px",
-                    color: "#707070",
-                  }}
-                >
-                  View:
-                </span>
-                <button className="p-1 hover:opacity-70 transition text-[#707070]">
-                  <ColumnsIcon />
-                </button>
-                <button className="p-1 hover:opacity-70 transition text-[#707070]">
-                  <GridIcon />
-                </button>
-              </div>
             </div>
           </div>
 
