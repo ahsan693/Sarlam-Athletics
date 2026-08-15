@@ -241,20 +241,7 @@ export function Header() {
             >
               Products
             </Link>
-            <Link
-              href="/privatelabel"
-              className="hover:opacity-70 transition"
-              style={{
-                fontFamily: "'FFF Acid Grotesk', sans-serif",
-                fontWeight: 500,
-                fontSize: "12px",
-                lineHeight: "18px",
-                textTransform: "uppercase",
-                color: "#0D0D0D",
-              }}
-            >
-              Private Label
-            </Link>
+         
             <Link
               href="/manufacture"
               className="hover:opacity-70 transition"
@@ -294,7 +281,7 @@ export function Header() {
         {/* Desktop Right Nav */}
         <div className="hidden lg:flex items-center gap-6">
           <Link
-            href="/about"
+           href="/privatelabel"
             className="hover:opacity-70 transition"
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
