@@ -296,11 +296,11 @@ export default function BoxingSparringGlovesPage() {
           {/* Left: Product Image */}
           <div className="w-full lg:w-[616px] shrink-0">
             <div className="bg-[#F9F9F9] rounded-none p-4 md:p-2 aspect-[4/5] md:aspect-square flex items-center justify-center lg:sticky lg:top-24">
-              <img
-                src="https://images.unsplash.com/photo-1524594152303-9fd13543fe6e?w=800&h=800&fit=crop"
-                alt="Boxing Practice / Sparring Gloves"
-                className="w-[100%] h-[100%] md:w-[600px] md:h-[600px] object-cover md:object-contain mix-blend-multiply"
-              />
+            <img
+  src="/Products/01 Private Label Boxing Gloves.png"
+  alt="Boxing Practice / Sparring Gloves"
+  className="w-[100%] h-[100%] md:w-[600px] md:h-[600px] object-cover md:object-contain mix-blend-multiply"
+/>
             </div>
           </div>
 

@@ -264,7 +264,7 @@ export default function UltimateMmaFightGlovesPage() {
       {/* ── Hero Banner ── */}
       <section className="relative h-[320px] md:h-[480px] overflow-hidden">
         <div className="absolute inset-0 bg-black">
-       <img
+  <img
   src="/Page 7/01-1.png"
   alt="Private Label Sports Equipment Manufacturing"
   className="w-full h-full object-cover opacity-60"

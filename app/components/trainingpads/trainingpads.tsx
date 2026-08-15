@@ -298,11 +298,11 @@ export default function TrainingPadsPage() {
           {/* Left: Product Image */}
           <div className="w-full lg:w-[616px] shrink-0">
             <div className="bg-[#F9F9F9] rounded-none p-4 md:p-2 aspect-[4/5] md:aspect-square flex items-center justify-center lg:sticky lg:top-24">
-              <img
-                src="https://images.unsplash.com/photo-1591117207239-788bf8de6c3b?w=800&h=800&fit=crop"
-                alt="Training Pads"
-                className="w-[100%] h-[100%] md:w-[600px] md:h-[600px] object-cover md:object-contain mix-blend-multiply"
-              />
+             <img
+  src="/Products/trainingpads.png"
+  alt="Training Pads"
+  className="w-[100%] h-[100%] md:w-[600px] md:h-[600px] object-cover md:object-contain mix-blend-multiply"
+/>
             </div>
           </div>
 
