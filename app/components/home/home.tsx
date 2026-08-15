@@ -1196,15 +1196,15 @@ export default function SarlamAthleticsPage() {
               If you have any further questions or just want to reach our team,
               click the button below.
             </p>
-            <Link
+          <Link
               href="/contactus"
-              className="inline-flex items-center justify-center border border-black uppercase px-8 py-3 w-full md:w-auto hover:bg-black hover:text-white transition"
+              className="inline-flex items-center justify-center border border-black text-black uppercase px-8 py-3 w-full md:w-auto hover:bg-gray-100 transition duration-300"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 700,
                 fontSize: "14px",
                 letterSpacing: "5%",
-                color: "#000000",
+                borderRadius: "8px",
               }}
             >
               Get in touch
