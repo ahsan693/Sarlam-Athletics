@@ -116,8 +116,7 @@ function Header() {
             <div className="w-[2px] h-12 bg-gray-300" />
             <nav className="flex items-center gap-4">
               <Link href="/products" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">Products</Link>
-              <Link href="/privatelabel" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">Private Label</Link>
-              <Link href="/manufacture" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">Manufacturing</Link>
+                <Link href="/manufacture" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">Manufacturing</Link>
             </nav>
           </div>
           <Link href="/" className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2 text-[18px] font-bold italic uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">
@@ -125,7 +124,7 @@ function Header() {
             <span className="whitespace-nowrap tracking-tight">Sarlam Athletics</span>
           </Link>
           <div className="flex items-center gap-6">
-            <Link href="/about" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">About</Link>
+            <Link href="/privatelabel" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">About</Link>
             <Link href="/contact" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">Contact</Link>
             <div className="w-[2px] h-12 bg-gray-300" />
             <button className="hover:opacity-70 transition text-[#0D0D0D]">
@@ -154,9 +153,9 @@ function Header() {
         <div className="lg:hidden absolute top-[52px] left-0 w-full bg-white border-b border-gray-100 shadow-lg flex flex-col py-6 px-6 gap-6 z-50">
           {[
             { label: "Products", href: "/products" },
-            { label: "Private Label", href: "/privatelabel" },
+           
             { label: "Manufacturing", href: "/manufacture" },
-            { label: "About", href: "/about" },
+            { label: "About", href: "/privatelabel" },
             { label: "Contact", href: "/contact" },
           ].map((link, idx) => (
             <Link

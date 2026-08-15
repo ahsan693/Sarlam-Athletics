@@ -1,4 +1,4 @@
-import PrivateLabel from "../components/privatelabel/privatelabel";
+import PrivateLabel from "../components/about-us/about-us";
 
 export default function DetailsPage() {
   return (

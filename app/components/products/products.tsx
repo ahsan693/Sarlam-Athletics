@@ -100,8 +100,7 @@ function Header() {
             <div className="w-[2px] h-12 bg-gray-300" />
             <nav className="flex items-center gap-4">
               <Link href="/products" className="hover:opacity-70 transition" style={navLinkStyle}>Products</Link>
-              <Link href="/privatelabel" className="hover:opacity-70 transition" style={navLinkStyle}>Private Label</Link>
-              <Link href="/manufacture" className="hover:opacity-70 transition" style={navLinkStyle}>Manufacturing</Link>
+                  <Link href="/manufacture" className="hover:opacity-70 transition" style={navLinkStyle}>Manufacturing</Link>
             </nav>
           </div>
 
@@ -113,7 +112,7 @@ function Header() {
 
           {/* Right Nav */}
           <div className="flex items-center gap-6">
-            <Link href="/about" className="hover:opacity-70 transition" style={navLinkStyle}>About</Link>
+            <Link href="/privatelabel" className="hover:opacity-70 transition" style={navLinkStyle}>About</Link>
             <Link href="/contact" className="hover:opacity-70 transition" style={navLinkStyle}>Contact</Link>
             <div className="w-[2px] h-12 bg-gray-300" />
             <button className="hover:opacity-70 transition text-[#0D0D0D]">
