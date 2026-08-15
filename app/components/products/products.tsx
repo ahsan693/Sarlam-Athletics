@@ -569,18 +569,18 @@ export default function ProductPage() {
 
           {/* CTA Boxed */}
           <div className="flex justify-center py-8 md:py-12 px-6 md:px-0">
-            <a
-              href="#"
-              className="inline-flex items-center justify-center bg-white w-full md:w-auto uppercase px-10 py-4 border border-black hover:bg-black hover:text-white transition text-[14px]"
-              style={{
-                fontFamily: "'FFF Acid Grotesk', sans-serif",
-                fontWeight: 700,
-                letterSpacing: "5%",
-                color: "inherit", 
-              }}
-            >
-              Request a Manufacturing Quote
-            </a>
+           <a
+  href="#"
+  className="inline-flex items-center justify-center bg-white text-black w-full md:w-auto uppercase px-10 py-4 border border-black hover:bg-gray-100 transition text-[14px]"
+  style={{
+    fontFamily: "'FFF Acid Grotesk', sans-serif",
+    fontWeight: 700,
+    letterSpacing: "5%",
+    borderRadius: "8px",
+  }}
+>
+  Request a Manufacturing Quote
+</a>
           </div>
         </div>
       </section>
@@ -686,6 +686,7 @@ export default function ProductPage() {
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 700,
                 letterSpacing: "5%",
+                borderRadius: "8px",
               }}
             >
               Discuss Your Customization Requirements
