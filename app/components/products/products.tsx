@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 
 // ─── Image Placeholder ──────────────────────────────────────────────────────
@@ -14,7 +14,6 @@ const ImagePlaceholder = ({
   src?: string;
 }) => {
   if (src) {
-    // FIX: Removed hardcoded "object-cover" here to prevent class conflicts
     return <img src={src} alt={label} className={`${className}`} />;
   }
 
@@ -188,9 +187,10 @@ const logoStyle = {
 };
 
 // ─── Product Data ──────────────────────────────────────────────────────────
-const products = [
+const allProducts = [
   {
     name: "Private Label Boxing Gloves",
+    category: "Boxing Equipment",
     cta: "View Product +",
     href: "/details",
     swatches: ["#B91C1C", "#0D0D0D"],
@@ -198,6 +198,7 @@ const products = [
   },
   {
     name: "BJJ Gis and Jiu-Jitsu Uniforms",
+    category: "Martial Arts Uniforms",
     cta: "View Product +",
     href: "/jitsu",
     swatches: ["#0D0D0D", "#E5E5E5"],
@@ -205,13 +206,15 @@ const products = [
   },
   {
     name: "MMA Fight Gloves",
+    category: "MMA Equipment",
     cta: "View Product +",
     href: "/mmagloves",
     swatches: ["#B91C1C", "#0D0D0D"],
     image: "/Products/03 MMA Fight Gloves.png",
   },
   {
-    name: "Professional MMA Training Gloves", 
+    name: "Professional MMA Training Gloves",
+    category: "MMA Equipment", 
     cta: "View Product +",   
     href: "/ultimategloves",           
     swatches: ["#B91C1C", "#0D0D0D"],
@@ -219,6 +222,7 @@ const products = [
   },
   {
     name: "Boxing Focus Mitts and Training Pads",
+    category: "Training Equipment",
     cta: "View Product +",
     href: "/trainingpad",
     swatches: ["#B91C1C", "#0D0D0D"],
@@ -226,6 +230,7 @@ const products = [
   },
   {
     name: "Boxing Sparring Gloves",
+    category: "Boxing Equipment",
     cta: "View Product +",
     href: "/sparinggloves",
     swatches: ["#B91C1C", "#0D0D0D"],
@@ -233,6 +238,7 @@ const products = [
   },
   {
     name: "Custom Boxing Headguards",
+    category: "Protective Equipment",
     cta: "View Product +",
     href: "/Boxingguard",
     swatches: ["#B91C1C", "#0D0D0D"],
@@ -240,6 +246,7 @@ const products = [
   },
   {
     name: "Private Label Karate Uniforms",
+    category: "Martial Arts Uniforms",
     cta: "View Product +",
     href: "/karatesuit",
     swatches: ["#E5E5E5", "#0D0D0D"],
@@ -310,6 +317,33 @@ const whyReasons = [
 // ─── Main Product Page ──────────────────────────────────────────────────────
 export default function ProductPage() {
   const scrollerRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [selectedCategory, setSelectedCategory] = useState("All Products");
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
+  // Close dropdown if clicked outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsFilterOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const categories = [
+    "All Products",
+    "Boxing Equipment",
+    "MMA Equipment",
+    "Martial Arts Uniforms",
+    "Protective Equipment",
+    "Training Equipment"
+  ];
+
+  const filteredProducts = selectedCategory === "All Products" 
+    ? allProducts 
+    : allProducts.filter(p => p.category === selectedCategory);
 
   const scrollByCard = (dir: 1 | -1) => {
     const el = scrollerRef.current;
@@ -507,9 +541,11 @@ export default function ProductPage() {
                     color: "#707070",
                   }}
                 >
-                  Items: {products.length}
+                  Items: {filteredProducts.length}
                 </span>
-                <div className="flex items-center gap-1.5">
+                
+                {/* Custom Dropdown Filter */}
+                <div className="flex items-center gap-1.5 relative" ref={dropdownRef}>
                   <span
                     className="uppercase text-[11px] md:text-[12px] leading-[18px]"
                     style={{
@@ -522,7 +558,8 @@ export default function ProductPage() {
                     Category:
                   </span>
                   <button
-                    className="flex items-center gap-1 uppercase text-[12px] leading-[18px]"
+                    onClick={() => setIsFilterOpen(!isFilterOpen)}
+                    className="flex items-center gap-1 uppercase text-[12px] leading-[18px] hover:opacity-70 transition"
                     style={{
                       fontFamily: "'Inter', sans-serif",
                       fontWeight: 700,
@@ -530,9 +567,34 @@ export default function ProductPage() {
                       color: "#0D0D0D",
                     }}
                   >
-                    All
+                    {selectedCategory === "All Products" ? "All" : selectedCategory}
                     <ChevronDownIcon />
                   </button>
+
+                  {/* Dropdown Menu */}
+                  {isFilterOpen && (
+                    <div className="absolute top-full left-0 mt-2 w-[240px] bg-white shadow-[0_4px_24px_rgba(0,0,0,0.08)] border border-gray-100 z-50 flex flex-col py-2 rounded-sm">
+                      {categories.map((cat) => (
+                        <button
+                          key={cat}
+                          onClick={() => {
+                            setSelectedCategory(cat);
+                            setIsFilterOpen(false);
+                          }}
+                          className={`text-left px-5 py-3 hover:bg-gray-50 transition w-full ${
+                            selectedCategory === cat ? 'font-bold bg-gray-50' : 'font-medium'
+                          }`}
+                          style={{
+                            fontFamily: "'Inter', sans-serif",
+                            fontSize: "14px",
+                            color: "#000000",
+                          }}
+                        >
+                          {cat}
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
 
@@ -561,7 +623,7 @@ export default function ProductPage() {
           {/* Product Grid Boxed */}
           <div className="px-6 md:px-10 py-0">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-l-0 md:border-l border-gray-200">
-              {products.map((product, i) => (
+              {filteredProducts.map((product, i) => (
                 <div key={i} className="border-r-0 md:border-r border-b border-gray-200 group">
                   <Link
                     href={product.href}
@@ -611,35 +673,42 @@ export default function ProductPage() {
                         {product.cta}
                       </Link>
                     </div>
-                    <div className="flex items-center gap-1 shrink-0 ml-2">
-                      {product.swatches.map((color, si) => (
-                        <span
-                          key={si}
-                          className="w-3 h-3 md:w-2.5 md:h-2.5 inline-block border border-gray-200 rounded-sm"
-                          style={{ backgroundColor: color }}
-                        />
-                      ))}
-                    </div>
+                    {product.swatches && (
+                      <div className="flex items-center gap-1 shrink-0 ml-2">
+                        {product.swatches.map((color, si) => (
+                          <span
+                            key={si}
+                            className="w-3 h-3 md:w-2.5 md:h-2.5 inline-block border border-gray-200 rounded-sm"
+                            style={{ backgroundColor: color }}
+                          />
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
+              {filteredProducts.length === 0 && (
+                <div className="col-span-1 sm:col-span-2 lg:col-span-4 w-full py-20 flex justify-center items-center text-gray-500 font-medium">
+                  No products found in this category.
+                </div>
+              )}
             </div>
           </div>
 
           {/* CTA Boxed */}
           <div className="flex justify-center py-8 md:py-12 px-6 md:px-0">
            <a
-  href="#"
-  className="inline-flex items-center justify-center bg-white text-black w-full md:w-auto uppercase px-10 py-4 border border-black hover:bg-gray-100 transition text-[14px]"
-  style={{
-    fontFamily: "'FFF Acid Grotesk', sans-serif",
-    fontWeight: 700,
-    letterSpacing: "5%",
-    borderRadius: "8px",
-  }}
->
-  Request a Manufacturing Quote
-</a>
+              href="#"
+              className="inline-flex items-center justify-center bg-white text-black w-full md:w-auto uppercase px-10 py-4 border border-black hover:bg-gray-100 transition text-[14px]"
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 700,
+                letterSpacing: "5%",
+                borderRadius: "8px",
+              }}
+            >
+              Request a Manufacturing Quote
+            </a>
           </div>
         </div>
       </section>
@@ -805,7 +874,7 @@ export default function ProductPage() {
                 <div className="px-6 md:px-8 pb-6 md:pb-8 flex-1">
                   <div className="rounded-sm overflow-hidden h-[240px] md:h-[400px]">
                     <ImagePlaceholder
-                      className="w-full h-full object-cover" // Added object-cover here to keep these filling the box
+                      className="w-full h-full object-cover" 
                       label={step.title}
                       src={step.image}
                     />

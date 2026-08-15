@@ -792,7 +792,7 @@ export default function SarlamAthleticsPage() {
                       lineHeight: "24px",
                       color: "#0D0D0D",
                     }}
-                  >
+                  > 
                     {cap.title}
                   </h4>
                   <p 
