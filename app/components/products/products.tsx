@@ -597,26 +597,6 @@ export default function ProductPage() {
                   )}
                 </div>
               </div>
-
-              <div className="hidden md:flex items-center gap-2">
-                <span
-                  className="uppercase text-[12px] leading-[18px]"
-                  style={{
-                    fontFamily: "'FFF Acid Grotesk', sans-serif",
-                    fontWeight: 500,
-                    letterSpacing: "0px",
-                    color: "#707070",
-                  }}
-                >
-                  View:
-                </span>
-                <button className="p-1 hover:opacity-70 transition text-[#707070]">
-                  <ColumnsIcon />
-                </button>
-                <button className="p-1 hover:opacity-70 transition text-[#707070]">
-                  <GridIcon />
-                </button>
-              </div>
             </div>
           </div>
 
