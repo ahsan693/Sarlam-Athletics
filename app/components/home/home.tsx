@@ -1277,7 +1277,7 @@ export default function SarlamAthleticsPage() {
                 </p>
                <Link
   href="/contactus"
-  className="inline-flex w-full md:w-auto items-center justify-center border border-white text-white uppercase px-6 md:px-10 py-3.5 hover:bg-white/15 transition-all duration-300"
+  className="inline-flex w-full md:w-auto items-center justify-center border border-white text-white uppercase px-6 md:px-10 py-3.5 hover:bg-white hover:text-black transition-all duration-300"
   style={{
     fontFamily: "'FFF Acid Grotesk', sans-serif",
     fontWeight: 700,
