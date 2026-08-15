@@ -2,6 +2,7 @@
 
 import React, { useState, useRef } from "react";
 import Link from "next/link"; 
+import Image from "next/image";
 
 // ─── Image Placeholder Component ────────────────────────────────────────────
 const ImagePlaceholder = ({
@@ -259,25 +260,21 @@ export function Header() {
           </nav>
         </div>
 
-        {/* Desktop Center Logo */}
+    {/* Desktop Center Logo */}
         <Link
           href="/"
-          className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center gap-2"
-          style={{
-            fontFamily: "'FFF Acid Grotesk', sans-serif",
-            fontWeight: 700,
-            fontStyle: "italic",
-            fontSize: "18px",
-            textTransform: "uppercase",
-            color: "#0D0D0D",
-          }}
+          className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center"
         >
-          <LogoMark className="w-[18px] h-[20px]" />
-          <span className="whitespace-nowrap tracking-tight">
-            Sarlam Athletics
-          </span>
+          <Image 
+            src="/Page 1/Icons/Heading 1.png" 
+            alt="Sarlam Athletics Logo" 
+            width={267}
+            height={34}
+            quality={100}
+            priority
+            className="w-[267px] h-[34px] object-contain"
+          />
         </Link>
-
         {/* Desktop Right Nav */}
         <div className="hidden lg:flex items-center gap-6">
           <Link

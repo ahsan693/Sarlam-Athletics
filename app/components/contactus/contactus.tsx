@@ -2,29 +2,24 @@
 
 import { useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-// Import the Header correctly from the home.tsx file
 import { Header } from "../home/home";
 
 // ─── HERO SECTION ──────────────────────────────────────────────────
-// Reference: on desktop (1440w) the hero is a full-bleed, square-cornered
-// image section with a dark overlay — not just a mobile treatment. The
-// rounded, inset "card" look is mobile-only. Paragraph copy is uppercase.
 function HeroSection() {
   return (
     <section className="w-full bg-white px-2 pt-[42px] lg:px-0 lg:pt-0">
       <div className="relative bg-[#F0EDE9] rounded-xl overflow-hidden px-5 py-20 lg:rounded-none lg:px-12 lg:pt-[164px] lg:pb-[180px]">
         {/* Background image + dark overlay — shown on every breakpoint */}
         <div className="absolute inset-0 bg-black/50 z-[1]" />
-      <div
-  className="absolute inset-0 bg-cover bg-center z-0"
-  style={{
-    backgroundImage:
-      "url('/Page 6/01.png')",
-  }}
-/>
+        <div
+          className="absolute inset-0 bg-cover bg-center z-0"
+          style={{
+            backgroundImage: "url('/Page 6/01.png')",
+          }}
+        />
 
         <div className="relative z-[2] max-w-[640px]">
-          <h1 
+          <h1
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
               fontWeight: 500,
@@ -35,7 +30,7 @@ function HeroSection() {
           >
             Request a Private Label Manufacturing Quote
           </h1>
-          <p 
+          <p
             className="mt-4 lg:mt-6"
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -58,16 +53,13 @@ function HeroSection() {
 }
 
 // ─── QUOTE FORM SECTION ────────────────────────────────────────────
-// Reference: single-line fields identified only by their placeholder text
-// (no separate floating label), vertically centered, gray placeholder copy.
-// "Product Category" and "Estimated Order Quantity" sit side by side.
 function QuoteFormSection() {
   return (
     <section className="w-full bg-white px-4 lg:px-3 py-10 lg:py-20">
       <div className="max-w-[390px] mx-auto flex flex-col gap-[21px]">
         {/* Title Block */}
         <div className="flex flex-col gap-2">
-          <h2 
+          <h2
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
               fontWeight: 500,
@@ -77,7 +69,7 @@ function QuoteFormSection() {
           >
             Tell Us About Your Project
           </h2>
-          <p 
+          <p
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
               fontWeight: 400,
@@ -94,7 +86,6 @@ function QuoteFormSection() {
 
         {/* Form Fields */}
         <form className="flex flex-col gap-4">
-          {/* Full Name */}
           <input
             type="text"
             placeholder="Full Name*"
@@ -107,7 +98,6 @@ function QuoteFormSection() {
             }}
           />
 
-          {/* Business Email */}
           <input
             type="email"
             placeholder="Business Email*"
@@ -120,7 +110,6 @@ function QuoteFormSection() {
             }}
           />
 
-          {/* Phone Number */}
           <input
             type="tel"
             placeholder="Phone Number (Optional)"
@@ -133,7 +122,6 @@ function QuoteFormSection() {
             }}
           />
 
-          {/* Product Category + Estimated Order Quantity — side by side */}
           <div className="grid grid-cols-2 gap-3">
             <input
               type="text"
@@ -159,7 +147,6 @@ function QuoteFormSection() {
             />
           </div>
 
-          {/* Project Details (Textarea) */}
           <textarea
             placeholder="Project Details*"
             rows={3}
@@ -172,7 +159,6 @@ function QuoteFormSection() {
             }}
           />
 
-          {/* Submit Button */}
           <button
             type="submit"
             className="w-full bg-[#0D0D0D] py-[7px] px-10 rounded hover:bg-[#2a2a2a] transition-colors"
@@ -194,8 +180,6 @@ function QuoteFormSection() {
 }
 
 // ─── TRUST BADGES / WHY CONTACT ────────────────────────────────────
-// Reference: simple checkmark icons, uppercase heading + labels, spread
-// evenly across the full container width (not clustered to a narrower box).
 const CheckIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0D0D0D" strokeWidth="2">
     <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
@@ -213,8 +197,7 @@ function TrustBadgesSection() {
   return (
     <section className="w-full bg-white border-t border-[#C9C9C9] px-4 lg:px-10 py-10 lg:py-20">
       <div className="max-w-[1416px] mx-auto">
-        {/* Title */}
-        <p 
+        <p
           className="text-center mb-12"
           style={{
             fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -228,14 +211,13 @@ function TrustBadgesSection() {
           Why Contact Sarlam Athletics?
         </p>
 
-        {/* Badges row */}
         <div className="flex flex-wrap justify-between gap-6 lg:gap-4">
           {badges.map((badge, i) => (
             <div key={i} className="flex items-start gap-2 basis-[45%] lg:basis-auto">
               <div className="w-5 h-5 flex-shrink-0 mt-0.5">
                 <CheckIcon />
               </div>
-              <p 
+              <p
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
                   fontWeight: 500,
@@ -271,44 +253,57 @@ const steps = [
 
 function WhatHappensNextSection() {
   const containerRef = useRef<HTMLDivElement>(null);
-  
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start 80%", "end 50%"]
+    offset: ["start 75%", "end 50%"],
   });
 
-  // Seamless, sequential scroll mapping for circles and connecting lines
-  const bg1 = useTransform(scrollYProgress, [0, 0.15], ["rgba(255,255,255,0.2)", "rgba(255,255,255,1)"]);
-  const c1 = useTransform(scrollYProgress, [0, 0.15], ["rgba(255,255,255,0.5)", "rgba(13,13,13,1)"]);
-  const o1 = useTransform(scrollYProgress, [0, 0.15], [0.4, 1]);
+  // Seamless, perfectly sequential 7-part animation timeline mapped explicitly
+  // Phase 1 (0.0 - 0.1) -> Draw Circle 1
+  // Phase 2 (0.1 - 0.3) -> Draw Line 1
+  // Phase 3 (0.3 - 0.4) -> Draw Circle 2
+  // Phase 4 (0.4 - 0.6) -> Draw Line 2
+  // Phase 5 (0.6 - 0.7) -> Draw Circle 3
+  // Phase 6 (0.7 - 0.9) -> Draw Line 3
+  // Phase 7 (0.9 - 1.0) -> Draw Circle 4
 
-  const l1 = useTransform(scrollYProgress, [0.15, 0.35], ["0%", "100%"]);
+  const ring1 = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
+  const bg1 = useTransform(scrollYProgress, [0, 0.1], ["rgba(255,255,255,0)", "rgba(255,255,255,1)"]);
+  const c1Num = useTransform(scrollYProgress, [0, 0.1], ["rgba(255,255,255,0.5)", "rgba(13,13,13,1)"]);
+  const o1 = useTransform(scrollYProgress, [0, 0.1], [0.4, 1]);
 
-  const bg2 = useTransform(scrollYProgress, [0.35, 0.45], ["rgba(255,255,255,0.2)", "rgba(255,255,255,1)"]);
-  const c2 = useTransform(scrollYProgress, [0.35, 0.45], ["rgba(255,255,255,0.5)", "rgba(13,13,13,1)"]);
-  const o2 = useTransform(scrollYProgress, [0.35, 0.45], [0.4, 1]);
+  const l1 = useTransform(scrollYProgress, [0.1, 0.3], ["0%", "100%"]);
 
-  const l2 = useTransform(scrollYProgress, [0.45, 0.65], ["0%", "100%"]);
+  const ring2 = useTransform(scrollYProgress, [0.3, 0.4], [0, 1]);
+  const bg2 = useTransform(scrollYProgress, [0.3, 0.4], ["rgba(255,255,255,0)", "rgba(255,255,255,1)"]);
+  const c2Num = useTransform(scrollYProgress, [0.3, 0.4], ["rgba(255,255,255,0.5)", "rgba(13,13,13,1)"]);
+  const o2 = useTransform(scrollYProgress, [0.3, 0.4], [0.4, 1]);
 
-  const bg3 = useTransform(scrollYProgress, [0.65, 0.75], ["rgba(255,255,255,0.2)", "rgba(255,255,255,1)"]);
-  const c3 = useTransform(scrollYProgress, [0.65, 0.75], ["rgba(255,255,255,0.5)", "rgba(13,13,13,1)"]);
-  const o3 = useTransform(scrollYProgress, [0.65, 0.75], [0.4, 1]);
+  const l2 = useTransform(scrollYProgress, [0.4, 0.6], ["0%", "100%"]);
 
-  const l3 = useTransform(scrollYProgress, [0.75, 0.90], ["0%", "100%"]);
+  const ring3 = useTransform(scrollYProgress, [0.6, 0.7], [0, 1]);
+  const bg3 = useTransform(scrollYProgress, [0.6, 0.7], ["rgba(255,255,255,0)", "rgba(255,255,255,1)"]);
+  const c3Num = useTransform(scrollYProgress, [0.6, 0.7], ["rgba(255,255,255,0.5)", "rgba(13,13,13,1)"]);
+  const o3 = useTransform(scrollYProgress, [0.6, 0.7], [0.4, 1]);
 
-  const bg4 = useTransform(scrollYProgress, [0.90, 1.0], ["rgba(255,255,255,0.2)", "rgba(255,255,255,1)"]);
-  const c4 = useTransform(scrollYProgress, [0.90, 1.0], ["rgba(255,255,255,0.5)", "rgba(13,13,13,1)"]);
-  const o4 = useTransform(scrollYProgress, [0.90, 1.0], [0.4, 1]);
+  const l3 = useTransform(scrollYProgress, [0.7, 0.9], ["0%", "100%"]);
 
+  const ring4 = useTransform(scrollYProgress, [0.9, 1.0], [0, 1]);
+  const bg4 = useTransform(scrollYProgress, [0.9, 1.0], ["rgba(255,255,255,0)", "rgba(255,255,255,1)"]);
+  const c4Num = useTransform(scrollYProgress, [0.9, 1.0], ["rgba(255,255,255,0.5)", "rgba(13,13,13,1)"]);
+  const o4 = useTransform(scrollYProgress, [0.9, 1.0], [0.4, 1]);
+
+  const rings = [ring1, ring2, ring3, ring4];
   const bgs = [bg1, bg2, bg3, bg4];
-  const colors = [c1, c2, c3, c4];
+  const colors = [c1Num, c2Num, c3Num, c4Num];
   const opacities = [o1, o2, o3, o4];
   const lines = [l1, l2, l3];
 
   return (
     <section className="w-full bg-[#232323] px-4 lg:px-20 py-12 lg:py-20" ref={containerRef}>
       <div className="max-w-[1280px] mx-auto text-center">
-        <h2 
+        <h2
           className="mb-8 lg:mb-14"
           style={{
             fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -325,34 +320,55 @@ function WhatHappensNextSection() {
         <div className="hidden lg:flex items-start relative">
           {steps.map((step, i) => (
             <div key={i} className="flex-1 relative flex flex-col items-center">
-              {/* Number circle (Animated Background) */}
-              <motion.div 
-                className="w-[48px] h-[48px] rounded-full flex items-center justify-center mb-6 z-[1]"
-                style={{ backgroundColor: bgs[i] }}
-              >
-                {/* Number Text (Animated Color) */}
-                <motion.span 
-                  style={{
-                    fontFamily: "'FFF Acid Grotesk', sans-serif",
-                    fontWeight: 700,
-                    fontSize: "24px",
-                    color: colors[i],
-                  }}
-                >
-                  {step.num}
-                </motion.span>
-              </motion.div>
-              {/* Connecting line (Animated Width) */}
+              
+              {/* Connecting line (Animated Width) - Behind the circles z-[0] */}
               {i < steps.length - 1 && (
-                <div className="absolute top-[24px] left-1/2 w-full h-[1px] bg-white/20">
-                  <motion.div 
+                <div className="absolute top-[24px] left-[50%] right-[-50%] h-[1px] bg-white/20 z-[0]">
+                  <motion.div
                     className="absolute top-0 left-0 h-full bg-white origin-left"
                     style={{ width: lines[i] }}
                   />
                 </div>
               )}
+
+              {/* Number circle (Animated SVG Ring + Fill) z-[10] */}
+              <div className="w-[48px] h-[48px] rounded-full flex items-center justify-center mb-6 relative z-[10]">
+                {/* SVG Ring Draw Animation */}
+                <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {/* Faint base circle border */}
+                  <circle cx="24" cy="24" r="23" stroke="rgba(255,255,255,0.2)" strokeWidth="2" />
+                  {/* Drawing solid white border */}
+                  <motion.circle
+                    cx="24" cy="24" r="23"
+                    stroke="#FFFFFF"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    style={{ pathLength: rings[i] }}
+                  />
+                </svg>
+
+                {/* Animated Inner Fill Background */}
+                <motion.div 
+                  className="absolute inset-[2px] rounded-full"
+                  style={{ backgroundColor: bgs[i] }}
+                />
+
+                {/* Number Text (Animated Color) */}
+                <motion.span
+                  className="relative z-[20]"
+                  style={{
+                    fontFamily: "'FFF Acid Grotesk', sans-serif",
+                    fontWeight: 700,
+                    fontSize: "20px",
+                    color: colors[i],
+                  }}
+                >
+                  {step.num}
+                </motion.span>
+              </div>
+
               {/* Detail Text (Animated Opacity) */}
-              <motion.p 
+              <motion.p
                 className="max-w-[296px]"
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -374,7 +390,7 @@ function WhatHappensNextSection() {
           {steps.map((step, i) => (
             <div key={i} className="flex flex-col items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center">
-                <span 
+                <span
                   style={{
                     fontFamily: "'FFF Acid Grotesk', sans-serif",
                     fontWeight: 700,
@@ -385,7 +401,7 @@ function WhatHappensNextSection() {
                   {step.num}
                 </span>
               </div>
-              <p 
+              <p
                 className="text-center"
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -441,7 +457,7 @@ function FAQSection() {
     <section className="w-full bg-white px-4 lg:px-20 py-12 lg:py-20">
       <div className="max-w-[640px] mx-auto flex flex-col gap-16">
         {/* Heading */}
-        <h2 
+        <h2
           className="text-center"
           style={{
             fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -462,7 +478,7 @@ function FAQSection() {
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
                 className="w-full flex items-center justify-between py-3 text-left"
               >
-                <span 
+                <span
                   className="pr-4"
                   style={{
                     fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -493,7 +509,7 @@ function FAQSection() {
                   openIndex === i ? "max-h-[200px] pb-4" : "max-h-0"
                 }`}
               >
-                <p 
+                <p
                   style={{
                     fontFamily: "'FFF Acid Grotesk', sans-serif",
                     fontWeight: 400,
@@ -511,7 +527,7 @@ function FAQSection() {
 
         {/* CTA — centered at every breakpoint per the PDF */}
         <div className="flex flex-col gap-4 items-center text-center">
-          <p 
+          <p
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
               fontWeight: 400,
@@ -547,7 +563,6 @@ function FAQSection() {
 function Footer() {
   const [openAccordion, setOpenAccordion] = useState<number | null>(null);
 
-  // Updated with explicit hrefs for routing
   const footerNavGroups = [
     {
       title: "Navigation",
@@ -584,11 +599,9 @@ function Footer() {
 
       {/* Desktop Footer */}
       <div className="hidden lg:block">
-        {/* Top: CTA + Nav columns */}
         <div className="flex items-start justify-between px-8 py-16">
-          {/* Left: Big heading + email (email is muted gray, no underline) */}
           <div className="max-w-[580px] flex flex-col gap-4">
-            <h3 
+            <h3
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 500,
@@ -616,7 +629,6 @@ function Footer() {
             </a>
           </div>
 
-          {/* Right: Nav columns — each link has a persistent thin underline */}
           <div className="flex gap-16">
             {footerNavGroups.map((group, i) => (
               <div key={i} className="flex flex-col gap-3">
@@ -640,14 +652,11 @@ function Footer() {
           </div>
         </div>
 
-        {/* Divider */}
         <div className="w-full h-[1px] bg-[#D7DADF]" />
 
-        {/* Bottom: Logo + copyright */}
         <div className="flex items-end justify-between px-8 py-8">
-          {/* Large brand name */}
           <div className="flex flex-col">
-            <span 
+            <span
               className="uppercase tracking-tight"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -663,7 +672,7 @@ function Footer() {
               <br />
               athletics
             </span>
-            <span 
+            <span
               className="mt-2"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -676,8 +685,7 @@ function Footer() {
             </span>
           </div>
 
-          {/* Right side bottom info */}
-          <div 
+          <div
             className="flex flex-col items-end gap-1"
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -687,14 +695,13 @@ function Footer() {
             }}
           >
             <span>
-              © 2026{" "}
-              <span className="underline">Sarlam Athletics</span>.{" "}
+              © 2026 <span className="underline">Sarlam Athletics</span>.{" "}
               <span className="underline">
                 Private-label sports equipment manufacturer for combat sports
                 brands.
               </span>
             </span>
-            <span 
+            <span
               className="underline uppercase"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -710,9 +717,8 @@ function Footer() {
 
       {/* Mobile Footer */}
       <div className="lg:hidden">
-        {/* Big heading + email */}
         <div className="px-5 pt-12 pb-10 flex flex-col gap-4">
-          <h3 
+          <h3
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
               fontWeight: 500,
@@ -740,7 +746,6 @@ function Footer() {
           </a>
         </div>
 
-        {/* Accordion nav groups */}
         <div className="px-5 pb-12">
           {footerNavGroups.map((group, i) => (
             <div key={i} className="border-b border-[#D7DADF]">
@@ -750,7 +755,7 @@ function Footer() {
                 }
                 className="w-full flex items-center justify-between py-3"
               >
-                <span 
+                <span
                   style={{
                     fontFamily: "'FFF Acid Grotesk', sans-serif",
                     fontWeight: 500,
@@ -800,9 +805,8 @@ function Footer() {
           ))}
         </div>
 
-        {/* Brand section */}
         <div className="px-5 pt-10 pb-10">
-          <span 
+          <span
             className="uppercase tracking-tight block"
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -819,7 +823,7 @@ function Footer() {
             athletics
           </span>
           <div className="mt-8 flex flex-col gap-2">
-            <span 
+            <span
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 400,
@@ -829,7 +833,7 @@ function Footer() {
             >
               Website by Sanna Granqvist
             </span>
-            <span 
+            <span
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 400,
@@ -842,9 +846,8 @@ function Footer() {
           </div>
         </div>
 
-        {/* Bottom dark bar */}
         <div className="bg-[#0D0D0D] px-5 py-6 flex flex-col gap-4">
-          <div 
+          <div
             className="flex flex-col gap-1"
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -858,7 +861,7 @@ function Footer() {
               manufacturer for combat sports brands.
             </span>
           </div>
-          <span 
+          <span
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
               fontWeight: 500,
