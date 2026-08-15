@@ -364,6 +364,7 @@ export default function PrivateLabel() {
               fontSize: "14px",
               letterSpacing: "5%",
               color: "#FFFFFF",
+              borderRadius: "8px",
             }}
           >
             Request A Quote
@@ -472,20 +473,20 @@ export default function PrivateLabel() {
               pricing estimate, and recommended manufacturing approach.
             </p>
             <div className="mt-8 w-full md:w-auto">
-              <a
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 border border-white uppercase hover:bg-white transition-colors duration-300 hover:text-[#0D0D0D] w-full md:w-auto rounded-[4px] md:rounded-none"
-                style={{
-                  fontFamily: "'FFF Acid Grotesk', sans-serif",
-                  fontWeight: 700,
-                  fontSize: "14px",
-                  letterSpacing: "5%",
-                  color: "#FFFFFF",
-                  padding: "16px 24px",
-                }}
-              >
-                Request A Quote
-              </a>
+             <a
+  href="/contact"
+  className="inline-flex items-center justify-center gap-2 border border-white text-white uppercase hover:bg-black hover:border-black transition-colors duration-300 w-full md:w-auto rounded-[4px] md:rounded-none"
+  style={{
+    fontFamily: "'FFF Acid Grotesk', sans-serif",
+    fontWeight: 700,
+    fontSize: "14px",
+    letterSpacing: "5%",
+    padding: "16px 24px",
+    borderRadius: "8px",
+  }}
+>
+  Request A Quote
+</a>
             </div>
           </div>
         </div>
