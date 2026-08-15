@@ -62,30 +62,6 @@ const SearchIcon = () => (
   </svg>
 );
 
-const ChevronLeft = () => (
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <path
-      d="M13 4l-6 6 6 6"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const ChevronRight = () => (
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <path
-      d="M7 4l6 6-6 6"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
 const ArrowLeft = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
     <line x1="19" y1="12" x2="5" y2="12"></line>
@@ -378,12 +354,13 @@ export function Header() {
 // ─── Main Page Component ────────────────────────────────────────────────────
 export default function SarlamAthleticsPage() {
   const scrollerRef = useRef<HTMLDivElement>(null);
+  const [activeProcessStep, setActiveProcessStep] = useState<number | null>(null);
 
   const scrollByCard = (dir: 1 | -1) => {
     const el = scrollerRef.current;
     if (!el) return;
     const card = el.querySelector<HTMLElement>("[data-card]");
-    const cardWidth = card ? card.offsetWidth + 21 : 521; // updated to include gap
+    const cardWidth = card ? card.offsetWidth + 21 : 521;
     el.scrollBy({ left: dir * cardWidth, behavior: "smooth" });
   };
 
@@ -435,7 +412,7 @@ export default function SarlamAthleticsPage() {
       cta: "View Product +",
       href: "/Boxingguard",
       swatches: ["#B91C1C", "#0D0D0D"],
-      image: "/Products/07 Custom Boxing Headguards.png", // Note: 08 is also available for this in your folder
+      image: "/Products/07 Custom Boxing Headguards.png", 
     },
    {
       name: "Private Label Karate Uniforms",
@@ -444,7 +421,6 @@ export default function SarlamAthleticsPage() {
       swatches: ["#E5E5E5", "#0D0D0D"],
       image: "/Products/karateuniform.png",
     },
-   
   ];
 
   const faqs = [
@@ -482,37 +458,33 @@ export default function SarlamAthleticsPage() {
     "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150",
   ];
 
-  const processSteps = 
-   [
+  const processSteps = [
     {
       num: "01",
       title: "Consultation & Product Specs",
       desc: "Tell us what you want to manufacture, including product type, materials, colors, logo placement, packaging, order quantity, and target price.",
-      imageSrc:
-        "/Page 1/Img/Rectangle 1.png",
+      imageSrc: "/Page 1/Img/Rectangle 1.png",
     },
     {
       num: "02",
       title: "Sampling & Prototype Development",
       desc: "",
-      imageSrc:
-        "/Page 1/Img/Rectangle 11.png",
+      imageSrc: "/Page 1/Img/Rectangle 11.png",
     },
     {
       num: "03",
       title: "Bulk Manufacturing",
       desc: "",
-      imageSrc:
-        "/Page 1/Img/2.png",
+      imageSrc: "/Page 1/Img/2.png",
     },
     {
       num: "04",
       title: "Private Label Packaging & Delivery",
       desc: "",
-      imageSrc:
-        "/Page 1/Img/Rectangle 4.png",
+      imageSrc: "/Page 1/Img/Rectangle 4.png",
     }
   ];
+
   return (
     <div className="w-full bg-white font-sans overflow-x-hidden">
       
@@ -522,10 +494,10 @@ export default function SarlamAthleticsPage() {
       {/* ───── Hero Section ───── */}
       <section className="relative w-full h-[540px] md:h-[620px] bg-[#0D0D0D] overflow-hidden">
        <img
-  className="absolute inset-0 w-full h-full object-cover opacity-40"
-  alt="Hero Background - Combat Sports Equipment"
-  src="/Page 1/Img/image 32.png"
-/>
+        className="absolute inset-0 w-full h-full object-cover opacity-40"
+        alt="Hero Background - Combat Sports Equipment"
+        src="/Page 1/Img/image 32.png"
+      />
         <div className="absolute inset-0 bg-black/50" />
 
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6 mt-4 md:mt-0">
@@ -593,13 +565,12 @@ export default function SarlamAthleticsPage() {
         </div>
       </div>
 
-    {/* ───── Products Grid Section (EXACT SIZES & FULLY RESPONSIVE) ───── */}
+    {/* ───── Products Grid Section ───── */}
       <section className="w-full max-w-[1440px] mx-auto pb-[64px] bg-white flex flex-col gap-0 overflow-hidden">
         
         {/* Header Row */}
         <div className="w-full h-[131px] pt-[64px] pr-[12px] pb-[16px] pl-[12px] flex items-end justify-between">
           
-          {/* Title area */}
           <h2
             className="tracking-tight truncate mr-4"
             style={{
@@ -615,7 +586,6 @@ export default function SarlamAthleticsPage() {
             Combat Sports Equipment We Manufacture
           </h2>
 
-          {/* Navigation arrows */}
           <div className="flex items-center gap-[6px] shrink-0 mb-[6px] z-10 relative">
             <button 
               onClick={() => scrollByCard(-1)} 
@@ -640,13 +610,11 @@ export default function SarlamAthleticsPage() {
           className="w-full p-0 flex overflow-x-auto gap-[21px] scroll-smooth snap-x snap-mandatory hide-scrollbar border-t border-b border-gray-200"
         >
           {products.map((product, i) => (
-            /* Card wrapper */
             <div 
               key={i} 
               data-card 
               className="w-[500px] h-[619px] shrink-0 snap-start flex flex-col p-0 gap-0 group relative bg-white border-r border-gray-200 last:border-r-0"
             >
-              {/* Product Image Frame */}
               <Link 
                 href={product.href} 
                 className="w-[499px] h-[479px] flex items-center justify-center bg-white relative overflow-hidden"
@@ -658,12 +626,8 @@ export default function SarlamAthleticsPage() {
                 />
               </Link>
 
-              {/* Text Area (Margin) */}
               <div className="w-[499px] h-[84px] p-[12px]">
-                {/* Inner text box */}
                 <div className="w-[475px] h-[60px] pt-[10px] pr-[12px] pb-[10px] pl-[12px] border border-gray-200 flex items-end justify-between bg-white">
-                  
-                  {/* Text container (flex-1 min-w-0 pr-2 keeps the swatches inside the box) */}
                   <div className="flex-1 flex flex-col gap-[2px] min-w-0 pr-2">
                     <span
                       className="w-full h-[18px] truncate"
@@ -693,7 +657,6 @@ export default function SarlamAthleticsPage() {
                     </Link>
                   </div>
 
-                  {/* Color Swatches */}
                   {product.swatches && (
                     <div className="flex items-center gap-[4px] shrink-0 mb-[2px]">
                       {product.swatches.map((color, ci) => (
@@ -711,7 +674,6 @@ export default function SarlamAthleticsPage() {
           ))}
         </div>
 
-        {/* Bottom CTA Button */}
         <div className="w-full flex justify-center mt-[32px]">
           <Link href="/products" className="w-[138px] h-[48px] pt-[12px] pr-[20px] pb-[12px] pl-[20px] bg-black text-white hover:bg-gray-800 transition flex items-center justify-center">
             <span className="w-[98px] h-[16px] text-[13px] leading-[16px] font-bold text-center">
@@ -872,7 +834,6 @@ export default function SarlamAthleticsPage() {
             Why Brands Choose Sarlam Athletics
           </h2>
 
-          {/* Changed 'border-t' to 'border' here to enclose the entire grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-gray-200">
             {[
             {
@@ -951,6 +912,7 @@ export default function SarlamAthleticsPage() {
           </div>
         </div>
       </section>
+
     {/* ───── Why Partner With Us ───── */}
       <section className="w-full bg-white py-16 md:py-20 border-t border-gray-200">
         <div className="max-w-[1376px] mx-auto px-6 md:px-10">
@@ -966,7 +928,6 @@ export default function SarlamAthleticsPage() {
             Why Partner With Us?
           </h2>
 
-          {/* Changed 'border-t' to 'border' to add left, right, and bottom borders to the full grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-gray-200">
             {[
              {
@@ -1031,10 +992,10 @@ export default function SarlamAthleticsPage() {
       {/* ───── Testimonial Section ───── */}
       <section className="relative w-full py-16 md:py-24 bg-[#7A2E22] overflow-hidden">
        <ImagePlaceholder
-  className="absolute inset-0 w-full h-full object-cover"
-  label="Testimonial Background"
-  src="/Page 1/Img/Container.png"
-/>
+        className="absolute inset-0 w-full h-full object-cover"
+        label="Testimonial Background"
+        src="/Page 1/Img/Container.png"
+      />
         <div className="absolute inset-0 bg-gradient-to-b from-[#5c1c14]/70 via-[#7a2418]/60 to-[#3d0f0a]/80 mix-blend-multiply" />
         <div className="absolute inset-0 bg-black/25" />
 
@@ -1095,9 +1056,9 @@ export default function SarlamAthleticsPage() {
         </div>
       </section>
 
-      {/* ───── How Our Process Works ───── */}
+      {/* ───── How Our Process Works (Accordion/Expanding Hover Animation) ───── */}
       <section className="w-full bg-white py-16 md:py-20">
-        <div className="max-w-[1376px] mx-auto px-6 md:px-10">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10">
           <h2 
             className="mb-10 md:mb-16 text-[28px] md:text-[37px] leading-[36px] md:leading-[46px]"
             style={{
@@ -1113,61 +1074,90 @@ export default function SarlamAthleticsPage() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-[4fr_1fr_1fr_1fr] gap-4 md:gap-0 px-6 md:px-0">
-          {processSteps.map((step, i) => (
-            <div
-              key={i}
-              className={`relative rounded-sm md:rounded-none overflow-hidden h-[250px] md:h-[520px] ${
-                i < processSteps.length - 1
-                  ? "border-r-0 md:border-r border-white/10 md:border-gray-200"
-                  : ""
-              }`}
-            >
-              <ImagePlaceholder
-                className="absolute inset-0 w-full h-full"
-                label={`Step ${step.num} - ${step.title}`}
-                src={step.imageSrc}
-              />
-              <div className="absolute inset-0 bg-black/45 md:bg-black/45" />
+        <div className="flex flex-col md:flex-row w-full max-w-[1440px] mx-auto px-6 md:px-10 gap-4 md:gap-0">
+          {processSteps.map((step, i) => {
+            const isActive = activeProcessStep === i;
+            const isDefault = activeProcessStep === null;
+            
+            // Width applied securely for desktop (25% default, 55% active, 15% inactive)
+            const desktopWidthClass = isDefault ? "md:w-[25%]" : (isActive ? "md:w-[55%]" : "md:w-[15%]");
+            // Height applied securely for mobile (200px default, 350px active, 110px inactive)
+            const mobileHeightClass = isDefault ? "h-[200px]" : (isActive ? "h-[350px]" : "h-[110px]");
 
-              <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4 md:px-8">
-                <span 
-                  className="inline-flex items-center justify-center px-3 py-1 rounded-full border border-white/70 mb-3 md:mb-4"
-                  style={{
-                    fontFamily: "'FFF Acid Grotesk', sans-serif",
-                    fontWeight: 500,
-                    fontSize: "11px",
-                    letterSpacing: "2px",
-                    color: "#FFFFFF",
-                  }}
-                >
-                  {step.num}
-                </span>
-                <h3 
-                  className="uppercase max-w-[220px] mb-2 md:mb-3 text-[14px] md:text-[15px]"
-                  style={{
-                    fontFamily: "'FFF Acid Grotesk', sans-serif",
-                    fontWeight: 600,
-                    color: "#FFFFFF",
-                  }}
-                >
-                  {step.title}
-                </h3>
-                {step.desc && (
-                  <p 
-                    className="uppercase max-w-[260px] text-[12px] md:text-[13px] hidden md:block"
+            return (
+              <div
+                key={i}
+                onMouseEnter={() => setActiveProcessStep(i)}
+                onMouseLeave={() => setActiveProcessStep(null)}
+                onClick={() => setActiveProcessStep(isActive ? null : i)}
+                className={`group relative rounded-sm md:rounded-none overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer ${desktopWidthClass} ${mobileHeightClass} md:h-[520px] ${
+                  i < processSteps.length - 1
+                    ? "md:border-r border-white/10 md:border-gray-200"
+                    : ""
+                }`}
+              >
+                {/* Background Image Container */}
+                <div className="absolute inset-0 w-full h-full">
+                  <img
+                    src={step.imageSrc}
+                    alt={`Step ${step.num} - ${step.title}`}
+                    className={`w-full h-full object-cover transition-transform duration-1000 ${isActive ? 'scale-105' : 'scale-100'}`}
+                  />
+                </div>
+                
+                {/* Overlay darkening inactive cards and slightly lighting active ones */}
+                <div className={`absolute inset-0 transition-colors duration-700 ${isActive ? 'bg-black/30' : 'bg-black/60 md:bg-black/50'}`} />
+
+                {/* Content Overlay */}
+                <div className="relative z-10 h-full w-full flex flex-col items-center justify-center text-center px-4 md:px-8">
+                  
+                  {/* Number Badge */}
+                  <span 
+                    className="inline-flex items-center justify-center px-3 py-1 rounded-full border border-white/70 mb-3 md:mb-4 transition-all duration-500"
                     style={{
                       fontFamily: "'FFF Acid Grotesk', sans-serif",
-                      fontWeight: 400,
-                      color: "rgba(255,255,255,0.85)",
+                      fontWeight: 500,
+                      fontSize: "11px",
+                      letterSpacing: "2px",
+                      color: "#FFFFFF",
                     }}
                   >
-                    {step.desc}
-                  </p>
-                )}
+                    {step.num}
+                  </span>
+
+                  {/* Title */}
+                  <h3 
+                    className={`uppercase transition-all duration-500 delay-100 ${isActive ? 'text-[16px] md:text-[20px] max-w-[320px]' : 'text-[14px] md:text-[15px] max-w-[200px]'}`}
+                    style={{
+                      fontFamily: "'FFF Acid Grotesk', sans-serif",
+                      fontWeight: 600,
+                      color: "#FFFFFF",
+                    }}
+                  >
+                    {step.title}
+                  </h3>
+                  
+                  {/* Description Expanding Container */}
+                  <div 
+                    className={`overflow-hidden transition-all duration-700 ease-in-out ${isActive ? 'max-h-[200px] opacity-100 mt-3 md:mt-4' : 'max-h-0 opacity-0 mt-0'}`}
+                  >
+                    {step.desc && (
+                      <p 
+                        className="uppercase max-w-[320px] mx-auto text-[12px] md:text-[13px]"
+                        style={{
+                          fontFamily: "'FFF Acid Grotesk', sans-serif",
+                          fontWeight: 400,
+                          color: "rgba(255,255,255,0.9)",
+                        }}
+                      >
+                        {step.desc}
+                      </p>
+                    )}
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
@@ -1228,10 +1218,10 @@ export default function SarlamAthleticsPage() {
         <div className="max-w-[1344px] mx-auto px-4 md:px-10">
           <div className="relative rounded-sm overflow-hidden">
            <ImagePlaceholder
-  className="absolute inset-0 w-full h-full"
-  label="CTA Background - Sports Equipment"
-  src="/Page 1/Img/Container.png"
-/>
+              className="absolute inset-0 w-full h-full"
+              label="CTA Background - Sports Equipment"
+              src="/Page 1/Img/Container.png"
+            />
             <div className="relative z-10 bg-black/60 py-16 px-6 md:py-24 md:px-20 flex flex-col items-center text-center">
               <div className="max-w-[700px]">
                 <h2 
@@ -1260,17 +1250,17 @@ export default function SarlamAthleticsPage() {
                   expert quality control, and worldwide delivery.
                 </p>
                <Link
-  href="/contactus"
-  className="inline-flex w-full md:w-auto items-center justify-center border border-white text-white uppercase px-6 md:px-10 py-3.5 hover:bg-white hover:text-black transition-all duration-300"
-  style={{
-    fontFamily: "'FFF Acid Grotesk', sans-serif",
-    fontWeight: 700,
-    fontSize: "14px",
-    letterSpacing: "5%",
-  }}
->
-  Get Your Free Manufacturing Quote
-</Link>
+                  href="/contactus"
+                  className="inline-flex w-full md:w-auto items-center justify-center border border-white text-white uppercase px-6 md:px-10 py-3.5 hover:bg-white hover:text-black transition-all duration-300"
+                  style={{
+                    fontFamily: "'FFF Acid Grotesk', sans-serif",
+                    fontWeight: 700,
+                    fontSize: "14px",
+                    letterSpacing: "5%",
+                  }}
+                >
+                  Get Your Free Manufacturing Quote
+                </Link>
               </div>
             </div>
           </div>
