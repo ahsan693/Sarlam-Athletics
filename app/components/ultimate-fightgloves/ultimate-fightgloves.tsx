@@ -197,22 +197,10 @@ const sizeOptionsWeight = ["4OZ (PROFESSIONAL FIGHT WEIGHT)", "6-7OZ (AMATEUR/SP
 const sizeOptionsStandard = ["S", "M", "L", "XL"];
 
 const relatedProducts = [
-  { 
-    name: "Jiu Jitsu Suit (Gi)", 
-    image: "/Products/02 BJJ Gis and Jiu-Jitsu Uniforms.png" 
-  },
-  { 
-    name: "Boxing Gloves", 
-    image: "/Products/01 Private Label Boxing Gloves.png" 
-  },
-  { 
-    name: "MMA Full Fight Gloves", 
-    image: "/Products/03 MMA Fight Gloves.png" 
-  },
-  { 
-    name: "Boxing Head Guard", 
-    image: "/Products/07 Custom Boxing Headguards.png" 
-  },
+  { name: "Jiu Jitsu Suit (Gi)", image: "https://images.unsplash.com/photo-1555597673-b21d5c935865?w=600&h=600&fit=crop" },
+  { name: "Boxing Gloves", image: "https://images.unsplash.com/photo-1517438476312-10d79c077509?w=600&h=600&fit=crop" },
+  { name: "MMA Full Fight Gloves", image: "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=600&h=600&fit=crop" },
+  { name: "Boxing Head Guard", image: "https://images.unsplash.com/photo-1544967919-44b6f0f5ba6c?w=600&h=600&fit=crop" },
 ];
 
 const moqCards = [
@@ -292,189 +280,195 @@ export default function UltimateMmaFightGlovesPage() {
           </h1>
         </div>
       </section>
-{/* ── Product Carousel / Grid Section ── */}
-<section 
-  className="flex flex-col mx-auto overflow-hidden relative"
-  style={{ 
-    width: '1440px', 
-    height: '633px', 
-    paddingTop: '0px',
-    paddingRight: '0px',
-    paddingBottom: '64px',
-    paddingLeft: '0px',
-    gap: '0px'
-  }}
->
-  {/* Header Row */}
-  <div 
-    className="flex justify-between items-start"
-    style={{ 
-      width: '1440px', 
-      height: '131px', 
-      paddingTop: '10px',
-      paddingRight: '12px',
-      paddingBottom: '10px',
-      paddingLeft: '12px'
-    }}
-  >
-    {/* Title Area */}
-    <div style={{ width: '1286px', height: '110px', paddingTop: '64px' }}>
-      <h2 
-        className="font-bold text-[#0D0D0D] flex items-center tracking-tight"
-        style={{ width: '800px', height: '46px', fontSize: '32px', lineHeight: '46px' }}
-      >
-        Featured Products
-      </h2>
-    </div>
 
-    {/* Navigation arrows */}
-    <div 
-      className="flex items-center"
-      style={{ width: '66px', height: '30px', gap: '6px', marginTop: '64px' }}
-    >
-      <button 
-        className="flex items-center justify-center border border-gray-300 rounded-full hover:bg-gray-100 transition-colors" 
-        style={{ width: '30px', height: '30px' }}
-        aria-label="Previous"
-      >
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-      </button>
-      <button 
-        className="flex items-center justify-center border border-gray-300 rounded-full hover:bg-gray-100 transition-colors" 
-        style={{ width: '30px', height: '30px' }}
-        aria-label="Next"
-      >
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-      </button>
-    </div>
-  </div>
-
-  {/* Products Area (Overflows the section intentionally) */}
-  <div 
-    className="flex"
-    style={{ 
-      width: '1440px', 
-      height: '688px', 
-      gap: '21px',
-      padding: '0px'
-    }}
-  >
-    {/* Product Card 1 */}
-    <div 
-      className="flex flex-col shrink-0"
-      style={{ width: '500px', height: '619px' }}
-    >
-      {/* Image Container */}
-      <div 
-        className="bg-[#F9F9F9] flex items-center justify-center"
-        style={{ width: '499px', height: '479px' }}
-      >
-        <div style={{ width: '479px', height: '479px', position: 'relative', top: '-1px', left: '2px' }}>
-          <img
-            src="https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=800&h=800&fit=crop"
-            alt="Ultimate MMA Fight Gloves"
-            className="w-full h-full object-contain mix-blend-multiply"
-          />
-        </div>
-      </div>
-
-      {/* Text Area Below Each Card */}
-      <div style={{ width: '499px', height: '84px', padding: '12px' }}>
-        <div 
-          className="flex justify-between items-start"
-          style={{ width: '475px', height: '60px', padding: '10px 12px 10px 12px' }}
-        >
-          {/* Text Container */}
-          <div className="flex flex-col" style={{ width: '449px', height: '38px', gap: '2px' }}>
-            <h3 
-              className="text-[#0D0D0D] font-bold"
-              style={{ width: '449px', height: '18px', fontSize: '14px', lineHeight: '18px' }}
-            >
-              Ultimate MMA Fight Gloves
-            </h3>
-            <a 
-              href="#" 
-              className="text-[#666666] hover:text-[#0D0D0D] font-medium transition-colors"
-              style={{ width: '104px', height: '18px', fontSize: '12px', lineHeight: '18px' }}
-            >
-              View Product &rarr;
-            </a>
+      {/* ── Product Presentation Grid ── */}
+      <section className="px-5 md:px-16 py-10 md:py-20">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-32 max-w-[1440px] mx-auto">
+          {/* Left: Product Image */}
+          <div className="w-full lg:w-[616px] shrink-0">
+            <div className="bg-[#F9F9F9] rounded-none p-4 md:p-2 aspect-[4/5] md:aspect-square flex items-center justify-center lg:sticky lg:top-24">
+              <img
+                src="https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=800&h=800&fit=crop"
+                alt="Ultimate MMA Fight Gloves"
+                className="w-[100%] h-[100%] md:w-[600px] md:h-[600px] object-cover md:object-contain mix-blend-multiply"
+              />
+            </div>
           </div>
 
-          {/* Color dot indicators */}
-          <div className="flex shrink-0 mt-6" style={{ gap: '4px' }}>
-            <span className="block bg-[#0D0D0D] rounded-full" style={{ width: '8px', height: '8px' }}></span>
-            <span className="block bg-[#D92D20] rounded-full" style={{ width: '8px', height: '8px' }}></span>
-          </div>
-        </div>
-      </div>
-    </div>
+          {/* Right: Product Configuration Panel */}
+          <div className="flex-1 max-w-full lg:max-w-[616px]">
+            {/* Breadcrumbs */}
+            <nav className="flex items-center flex-wrap gap-2 text-[10px] md:text-xs text-[#6A7282] mb-6 md:mb-8 font-medium uppercase tracking-wide">
+              <a href="/" className="hover:underline">Home</a>
+              <span>/</span>
+              <a href="/products" className="hover:underline">Boxing Gloves</a>
+              <span>/</span>
+              <span className="text-[#0D0D0D]">Ultimate MMA Fight Gloves</span>
+            </nav>
 
-    {/* Product Card 2 (Duplicate for visual layout testing) */}
-    <div 
-      className="flex flex-col shrink-0"
-      style={{ width: '500px', height: '619px' }}
-    >
-      <div 
-        className="bg-[#F9F9F9] flex items-center justify-center"
-        style={{ width: '499px', height: '479px' }}
-      >
-        <div style={{ width: '479px', height: '479px', position: 'relative', top: '-1px', left: '2px' }}>
-          <img
-            src="https://images.unsplash.com/photo-1552089123-2d26226fc2b7?w=800&h=800&fit=crop"
-            alt="Pro Training Gloves"
-            className="w-full h-full object-contain mix-blend-multiply"
-          />
-        </div>
-      </div>
-      <div style={{ width: '499px', height: '84px', padding: '12px' }}>
-        <div 
-          className="flex justify-between items-start"
-          style={{ width: '475px', height: '60px', padding: '10px 12px 10px 12px' }}
-        >
-          <div className="flex flex-col" style={{ width: '449px', height: '38px', gap: '2px' }}>
-            <h3 
-              className="text-[#0D0D0D] font-bold"
-              style={{ width: '449px', height: '18px', fontSize: '14px', lineHeight: '18px' }}
-            >
-              Pro Training Gloves
-            </h3>
-            <a 
-              href="#" 
-              className="text-[#666666] hover:text-[#0D0D0D] font-medium transition-colors"
-              style={{ width: '104px', height: '18px', fontSize: '12px', lineHeight: '18px' }}
-            >
-              View Product &rarr;
-            </a>
-          </div>
-          <div className="flex shrink-0 mt-6" style={{ gap: '4px' }}>
-            <span className="block bg-[#1B365D] rounded-full" style={{ width: '8px', height: '8px' }}></span>
-            <span className="block bg-[#E5E7EB] border border-gray-300 rounded-full" style={{ width: '8px', height: '8px' }}></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+            {/* Title */}
+            <div className="mb-6">
+              <p className="text-[12px] md:text-sm font-bold text-[#666666] uppercase">
+                Martial Arts Equipment Manufacturing
+              </p>
+              <h2 className="text-[32px] leading-[36px] md:text-[44px] md:leading-tight font-bold text-[#0D0D0D] mt-2">
+                Ultimate MMA Fight Gloves
+              </h2>
+              <p className="text-[15px] leading-[22px] md:text-xl text-[#0D0D0D] mt-3 md:mt-4 md:leading-relaxed font-normal">
+                Tailored MMA fight and grappling gloves crafted for elite promotions, training facilities, and sports brands.
+              </p>
+            </div>
 
-  {/* Bottom CTA (Positioned absolutely at bottom or can be placed in standard document flow if outer container is enlarged) */}
-  <div className="absolute bottom-[20px] left-1/2 -translate-x-1/2 z-10">
-    <button 
-      className="bg-[#0D0D0D] text-white hover:bg-black/90 transition-colors font-medium flex items-center justify-center"
-      style={{ 
-        width: '138px', 
-        height: '48px', 
-        paddingTop: '12px', 
-        paddingRight: '20px', 
-        paddingBottom: '12px', 
-        paddingLeft: '20px'
-      }}
-    >
-      <span style={{ width: '98px', height: '16px', fontSize: '14px', lineHeight: '16px', textAlign: 'center' }}>
-        View All
-      </span>
-    </button>
-  </div>
-</section>
+            {/* Divider */}
+            <hr className="border-t border-gray-200 mb-6" />
+
+            {/* Description */}
+            <div className="mb-8 md:mb-6">
+              <p className="text-[14px] leading-[22px] md:text-base text-[#666666] md:leading-relaxed font-normal">
+                Sarlam Athletics manufactures custom MMA boxing gloves for combat sports brands, martial arts academies, gyms, retailers, and distributors. We support custom materials, sizing, colorways, padding, wrist closures, labels, packaging, and branding details for wholesale production.
+              </p>
+              <p className="text-[14px] leading-[22px] md:text-base text-[#666666] md:leading-relaxed mt-4 font-normal">
+                Samples can be developed before bulk manufacturing so your team can review fit, sizing, padding, wrist support, material feel, logo placement, and final presentation before approving a larger order.
+              </p>
+            </div>
+
+            {/* Customize Heading */}
+            <div className="mb-6 md:mb-8">
+              <h3 className="text-[22px] leading-[26px] md:text-[26px] font-bold text-[#101828]">
+                Customise Your Order
+              </h3>
+            </div>
+
+            {/* Option Groups */}
+            <OptionGroup
+              label="Select Finish"
+              options={finishOptions}
+              selectedOptions={selectedFinish}
+              onSelect={(val) => toggleOption(val, selectedFinish, setSelectedFinish)}
+            />
+
+            <OptionGroup
+              label="Fit/Gender"
+              guideLabel="Gender Guide"
+              options={fitOptions}
+              selectedOptions={selectedFit}
+              onSelect={(val) => toggleOption(val, selectedFit, setSelectedFit)}
+            />
+
+            <OptionGroup
+              label="Material/Fabric"
+              guideLabel="Fabric Guide"
+              options={materialOptions}
+              selectedOptions={selectedMaterial}
+              onSelect={(val) => toggleOption(val, selectedMaterial, setSelectedMaterial)}
+            />
+
+            <OptionGroup
+              label="Branding Method"
+              options={brandingOptions}
+              selectedOptions={selectedBranding}
+              onSelect={(val) => toggleOption(val, selectedBranding, setSelectedBranding)}
+            />
+
+            {/* Size/Weight Selector - Grouped layout */}
+            <div className="mb-6 md:mb-8">
+              <div className="flex items-center justify-between mb-3">
+                <label className="text-[13px] md:text-sm font-bold text-[#0D0D0D] uppercase">Size/Weight Options</label>
+                <button className="text-[11px] md:text-xs text-[#666666] hover:underline font-medium">
+                  Weight Guide
+                </button>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="flex flex-wrap gap-2 md:gap-3">
+                  {sizeOptionsWeight.map((size) => (
+                    <button
+                      key={size}
+                      onClick={() => toggleOption(size, selectedSize, setSelectedSize)}
+                      className={`px-4 py-3 md:px-5 md:py-[15px] border text-[13px] md:text-[15px] font-medium transition-all ${
+                        selectedSize.includes(size)
+                          ? "border-[#0D0D0D] text-[#0D0D0D] bg-white"
+                          : "border-gray-200 text-[#0D0D0D] hover:border-gray-400"
+                      }`}
+                    >
+                      {size}
+                    </button>
+                  ))}
+                </div>
+                <div className="flex flex-wrap gap-2 md:gap-3">
+                  {sizeOptionsStandard.map((size) => (
+                    <button
+                      key={size}
+                      onClick={() => toggleOption(size, selectedSize, setSelectedSize)}
+                      className={`px-4 py-3 md:px-5 md:py-[15px] border text-[13px] md:text-[15px] font-medium transition-all ${
+                        selectedSize.includes(size)
+                          ? "border-[#0D0D0D] text-[#0D0D0D] bg-white"
+                          : "border-gray-200 text-[#0D0D0D] hover:border-gray-400"
+                      }`}
+                    >
+                      {size}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Other Input Field */}
+                <div>
+                  <span className="block text-[11px] md:text-xs font-medium text-[#666666] mb-2 uppercase">
+                    Other
+                  </span>
+                  <input 
+                    type="text" 
+                    placeholder="Any other" 
+                    className="border border-gray-200 px-4 py-3 md:py-[15px] w-full text-[13px] md:text-[15px] focus:outline-none focus:border-[#0D0D0D] font-medium"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <OptionGroup
+              label="Packaging Method"
+              options={packagingOptions}
+              selectedOptions={selectedPackaging}
+              onSelect={(val) => toggleOption(val, selectedPackaging, setSelectedPackaging)}
+            />
+
+            {/* Quantity Input */}
+            <div className="mb-6 md:mb-8">
+              <div className="flex items-center justify-between mb-3">
+                <label className="text-[13px] md:text-sm font-bold text-[#0D0D0D] uppercase">
+                  Quantity
+                </label>
+              </div>
+              <input 
+                type="number" 
+                placeholder="Enter quantity" 
+                className="border border-gray-200 px-4 py-3 md:py-[15px] w-full text-[13px] md:text-[15px] focus:outline-none focus:border-[#0D0D0D] font-medium"
+              />
+              <div className="flex items-center gap-2 mt-3">
+                <span className="text-[#D92D20] shrink-0">
+                  <InfoIcon />
+                </span>
+                <span className="text-[#D92D20] text-[11px] md:text-[12px] font-medium tracking-wide">
+                  Please ensure your order meets our Minimum Quantity
+                </span>
+              </div>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="space-y-3 md:space-y-4 mb-4 mt-8 md:mt-12">
+              <button className="w-full bg-[#0D0D0D] text-white text-[13px] md:text-sm font-bold py-4 md:py-[18px] hover:bg-black/90 transition-colors uppercase tracking-wide">
+                Request Manufacturing Quote
+              </button>
+              <button className="w-full border border-[#0D0D0D] text-[#0D0D0D] text-[13px] md:text-sm font-bold py-4 md:py-[18px] hover:bg-gray-50 transition-colors uppercase tracking-wide">
+                Ask About Samples
+              </button>
+            </div>
+            <p className="text-[11px] md:text-xs text-[#999999] text-center font-normal">
+              Share your product specs and our team will respond with MOQ, sample, and wholesale production options.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* ── Features Strip ── */}
       <section className="px-6 md:px-16 pb-12 md:pb-16">

@@ -873,7 +873,7 @@ export default function SarlamAthleticsPage() {
         </div>
       </section>
 
-      {/* ───── Why Brands Choose Sarlam Athletics ───── */}
+     {/* ───── Why Brands Choose Sarlam Athletics ───── */}
       <section className="w-full bg-white py-16 md:py-20">
         <div className="max-w-[1376px] mx-auto px-6 md:px-10">
           <h2 
@@ -888,12 +888,13 @@ export default function SarlamAthleticsPage() {
             Why Brands Choose Sarlam Athletics
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-gray-200">
+          {/* Changed 'border-t' to 'border' here to enclose the entire grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-gray-200">
             {[
             {
                 num: "01",
                 title: "Factory-Direct Manufacturing",
-                desc: "Manufacture directly with our factory for better pricing, faster communication, consistent product quality, and complete control over branding, materials, and production timelines.",
+                desc: "Manufacture directly with our factory for better pricing, faster communication, consistent product quality, and complete control over branding.",
                 imageSrc:
                   "/Page 1/Img/1.png",
               },
@@ -966,8 +967,7 @@ export default function SarlamAthleticsPage() {
           </div>
         </div>
       </section>
-
-      {/* ───── Why Partner With Us ───── */}
+    {/* ───── Why Partner With Us ───── */}
       <section className="w-full bg-white py-16 md:py-20 border-t border-gray-200">
         <div className="max-w-[1376px] mx-auto px-6 md:px-10">
           <h2 
@@ -982,7 +982,8 @@ export default function SarlamAthleticsPage() {
             Why Partner With Us?
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-gray-200">
+          {/* Changed 'border-t' to 'border' to add left, right, and bottom borders to the full grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-gray-200">
             {[
              {
                 title: "OEM & ODM Manufacturing Solutions",
@@ -1274,19 +1275,18 @@ export default function SarlamAthleticsPage() {
                   belts, wraps, and training accessories with flexible MOQs,
                   expert quality control, and worldwide delivery.
                 </p>
-                <Link
-                  href="/contactus"
-                  className="inline-flex w-full md:w-auto items-center justify-center border border-white uppercase px-6 md:px-10 py-3.5 hover:bg-white hover:text-black transition"
-                  style={{
-                    fontFamily: "'FFF Acid Grotesk', sans-serif",
-                    fontWeight: 700,
-                    fontSize: "14px",
-                    letterSpacing: "5%",
-                    color: "#FFFFFF",
-                  }}
-                >
-                  Get Your Free Manufacturing Quote
-                </Link>
+               <Link
+  href="/contactus"
+  className="inline-flex w-full md:w-auto items-center justify-center border border-white text-white uppercase px-6 md:px-10 py-3.5 hover:bg-white/15 transition-all duration-300"
+  style={{
+    fontFamily: "'FFF Acid Grotesk', sans-serif",
+    fontWeight: 700,
+    fontSize: "14px",
+    letterSpacing: "5%",
+  }}
+>
+  Get Your Free Manufacturing Quote
+</Link>
               </div>
             </div>
           </div>

@@ -275,7 +275,6 @@ const customizationOptions = [
 
 ];
 
-
  const processSteps = [
   {
     title: "Flexible Minimum Order Quantities",
@@ -643,7 +642,7 @@ export default function ProductPage() {
         </div>
       </section>
 
-      {/* ───── 6. Customization Options Section ───── */}
+    {/* ───── 6. Customization Options Section ───── */}
       <section className="w-full bg-white py-16 md:py-16">
         <div className="max-w-[1392px] mx-auto px-6 md:px-10">
           <div className="mb-8 md:mb-10">
@@ -682,17 +681,19 @@ export default function ProductPage() {
                 <div
                   key={i}
                   data-card
-                  className="snap-start shrink-0 w-[280px] sm:w-[320px] bg-white border-r border-b border-gray-200 overflow-hidden flex flex-col"
+                  className="snap-start shrink-0 w-[280px] sm:w-[320px] lg:w-1/4 bg-white border-r border-b border-gray-200 overflow-hidden flex flex-col"
                 >
-                  <div className="relative w-full aspect-[4/5]">
+                  
+                  {/* BULLETPROOF SQUARE FIX: pb-[100%] strictly forces a 1:1 ratio. The image is taken out of flow via absolute. */}
+                  <div className="relative w-full pb-[100%] shrink-0 flex-none bg-gray-100 overflow-hidden">
                     <ImagePlaceholder
-                      className="w-full h-full"
+                      className="absolute inset-0 w-full h-full object-cover"
                       label={option.title}
                       src={option.image}
                     />
                   </div>
 
-                  <div className="p-5 flex-1">
+                  <div className="p-5 flex-1 flex flex-col">
                     <h3
                       className="mb-2 text-[16px] leading-[22px] md:text-[18px] md:leading-[24px]"
                       style={{
@@ -723,14 +724,14 @@ export default function ProductPage() {
             <button
               onClick={() => scrollByCard(1)}
               aria-label="Next customization option"
-              className="hidden sm:flex absolute right-4 top-[140px] w-11 h-11 bg-white rounded-xl shadow-lg items-center justify-center hover:bg-gray-50 transition text-black"
+              className="hidden sm:flex absolute right-4 top-[140px] w-11 h-11 bg-white rounded-xl shadow-lg items-center justify-center hover:bg-gray-50 transition text-black z-10"
             >
               <ChevronRightIcon />
             </button>
             <button
               onClick={() => scrollByCard(-1)}
               aria-label="Previous customization option"
-              className="hidden sm:flex absolute left-4 top-[140px] w-11 h-11 bg-white rounded-xl shadow-lg items-center justify-center hover:bg-gray-50 transition rotate-180 text-black"
+              className="hidden sm:flex absolute left-4 top-[140px] w-11 h-11 bg-white rounded-xl shadow-lg items-center justify-center hover:bg-gray-50 transition rotate-180 text-black z-10"
             >
               <ChevronRightIcon />
             </button>
@@ -739,12 +740,11 @@ export default function ProductPage() {
           <div className="flex justify-center mt-10">
             <a
               href="#"
-              className="inline-flex items-center justify-center bg-[#0D0D0D] w-full md:w-auto uppercase px-10 py-3.5 hover:bg-gray-900 transition text-[14px]"
+              className="inline-flex items-center justify-center bg-[#0D0D0D] text-white w-full md:w-auto uppercase px-10 py-3.5 hover:bg-gray-800 transition-all duration-300 text-[14px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 700,
                 letterSpacing: "5%",
-                color: "#FFFFFF",
               }}
             >
               Discuss Your Customization Requirements
@@ -768,7 +768,8 @@ export default function ProductPage() {
             Minimum Orders, Pricing and Samples
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-gray-200">
+          {/* Full outer border applied to grid wrapper */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-gray-200">
             {processSteps.map((step, i) => (
               <div
                 key={i}
@@ -833,7 +834,8 @@ export default function ProductPage() {
             <span className="md:hidden"> </span>Sarlam Athletics
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border-t border-gray-200">
+          {/* Full outer border applied to grid wrapper */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border border-gray-200">
             {whyReasons.map((reason, i) => (
               <div
                 key={i}
@@ -890,7 +892,7 @@ export default function ProductPage() {
             </h3>
             <a
               href="mailto:hello@sarlamathletics.com"
-              className="transition break-all text-[22px] leading-[30px] md:text-[47px] md:leading-[58px]"
+              className="transition break-all text-[22px] leading-[30px] md:text-[47px] md:leading-[58px] hover:text-black"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 500,
@@ -1039,6 +1041,13 @@ export default function ProductPage() {
         }
         .animate-marquee {
           animation: marquee 25s linear infinite;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
         }
       `}</style>
     </div>
