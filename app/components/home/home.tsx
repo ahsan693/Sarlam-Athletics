@@ -86,14 +86,14 @@ const ChevronRight = () => (
 );
 
 const ArrowLeft = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
     <line x1="19" y1="12" x2="5" y2="12"></line>
     <polyline points="12 19 5 12 12 5"></polyline>
   </svg>
 );
 
 const ArrowRight = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
     <line x1="5" y1="12" x2="19" y2="12"></line>
     <polyline points="12 5 19 12 12 19"></polyline>
   </svg>
@@ -399,7 +399,7 @@ export default function SarlamAthleticsPage() {
     const el = scrollerRef.current;
     if (!el) return;
     const card = el.querySelector<HTMLElement>("[data-card]");
-    const cardWidth = card ? card.offsetWidth : 320;
+    const cardWidth = card ? card.offsetWidth + 21 : 521; // updated to include gap
     el.scrollBy({ left: dir * cardWidth, behavior: "smooth" });
   };
 
@@ -530,7 +530,7 @@ export default function SarlamAthleticsPage() {
     }
   ];
   return (
-    <div className="w-full bg-white font-sans">
+    <div className="w-full bg-white font-sans overflow-x-hidden">
       
       {/* ───── Header / Navbar ───── */}
       <Header />
@@ -609,99 +609,131 @@ export default function SarlamAthleticsPage() {
         </div>
       </div>
 
-      {/* ───── Products Grid Section ───── */}
-      <section className="w-full bg-white py-12 md:py-16 overflow-hidden">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-10 flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4 md:gap-0">
+    {/* ───── Products Grid Section (EXACT SIZES & FULLY RESPONSIVE) ───── */}
+      <section className="w-full max-w-[1440px] mx-auto pb-[64px] bg-white flex flex-col gap-0 overflow-hidden">
+        
+        {/* Header Row */}
+        <div className="w-full h-[131px] pt-[64px] pr-[12px] pb-[16px] pl-[12px] flex items-end justify-between">
+          
+          {/* Title area */}
           <h2
-            className="text-[26px] md:text-[34px] tracking-tight"
+            className="tracking-tight truncate mr-4"
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
               fontWeight: 600,
+              fontSize: "34px",
               letterSpacing: "-0.5px",
               color: "#000000",
+              lineHeight: "46px",
+              margin: 0
             }}
           >
             Combat Sports Equipment We Manufacture
           </h2>
-          <div className="flex items-center gap-4 shrink-0 self-end md:self-auto">
-            <button onClick={() => scrollByCard(-1)} aria-label="Previous" className="text-gray-400 hover:text-black transition">
+
+          {/* Navigation arrows */}
+          <div className="flex items-center gap-[6px] shrink-0 mb-[6px] z-10 relative">
+            <button 
+              onClick={() => scrollByCard(-1)} 
+              aria-label="Previous" 
+              className="w-[30px] h-[30px] flex items-center justify-center text-gray-400 hover:text-black transition"
+            >
               <ArrowLeft />
             </button>
-            <button onClick={() => scrollByCard(1)} aria-label="Next" className="text-black hover:opacity-70 transition">
+            <button 
+              onClick={() => scrollByCard(1)} 
+              aria-label="Next" 
+              className="w-[30px] h-[30px] flex items-center justify-center text-black hover:opacity-70 transition"
+            >
               <ArrowRight />
             </button>
           </div>
         </div>
 
-        <div className="max-w-[1440px] mx-auto">
-          <div 
-            ref={scrollerRef}
-            className="flex overflow-x-auto scroll-smooth snap-x snap-mandatory border-t border-b border-gray-200 hide-scrollbar"
-          >
-            {products.map((product, i) => (
-              <div 
-                key={i} 
-                data-card 
-                className="group relative min-w-[100%] md:min-w-[33.333333%] w-full md:w-[33.333333%] shrink-0 snap-start border-r border-gray-200 flex flex-col bg-white"
+        {/* Products Area */}
+        <div 
+          ref={scrollerRef}
+          className="w-full p-0 flex overflow-x-auto gap-[21px] scroll-smooth snap-x snap-mandatory hide-scrollbar border-t border-b border-gray-200"
+        >
+          {products.map((product, i) => (
+            /* Card wrapper */
+            <div 
+              key={i} 
+              data-card 
+              className="w-[500px] h-[619px] shrink-0 snap-start flex flex-col p-0 gap-0 group relative bg-white border-r border-gray-200 last:border-r-0"
+            >
+              {/* Product Image Frame */}
+              <Link 
+                href={product.href} 
+                className="w-[499px] h-[479px] flex items-center justify-center bg-white relative overflow-hidden"
               >
-                {/* Product Image */}
-                <Link href={product.href} className="relative block w-full aspect-square bg-white p-8 md:p-14">
-                  {/* Note: using !object-contain overrides the default object-cover in ImagePlaceholder */}
-                  <ImagePlaceholder
-                    className="w-full h-full !object-contain transition-transform duration-300 group-hover:scale-105"
-                    label={product.name}
-                    src={product.image}
-                  />
-                </Link>
+                <ImagePlaceholder
+                  className="w-full h-full !object-contain transition-transform duration-300 group-hover:scale-105"
+                  label={product.name}
+                  src={product.image}
+                />
+              </Link>
 
-                {/* Text Block */}
-                <div className="px-4 pb-4 mt-auto">
-                  <div className="border border-gray-200 p-4 flex items-end justify-between bg-white">
-                    <div className="flex flex-col gap-0.5">
-                      <span
-                        style={{
-                          fontFamily: "'FFF Acid Grotesk', sans-serif",
-                          fontWeight: 700,
-                          fontSize: "13px",
-                          lineHeight: "16px",
-                          color: "#000000",
-                        }}
-                      >
-                        {product.name}
-                      </span>
-                      
-                      <Link
-                        href={product.href}
-                        className="hover:opacity-70 transition flex items-center gap-1"
-                        style={{
-                          fontFamily: "'FFF Acid Grotesk', sans-serif",
-                          fontWeight: 700,
-                          fontSize: "12px",
-                          lineHeight: "16px",
-                          color: "#000000",
-                        }}
-                      >
-                        View Product <SmallArrowRight />
-                      </Link>
-                    </div>
-
-                    {/* Color Swatches */}
-                    {product.swatches && (
-                      <div className="flex items-center gap-[3px] shrink-0 pb-[2px]">
-                        {product.swatches.map((color, ci) => (
-                          <span
-                            key={ci}
-                            className="w-3 h-3 border border-gray-300"
-                            style={{ backgroundColor: color }}
-                          />
-                        ))}
-                      </div>
-                    )}
+              {/* Text Area (Margin) */}
+              <div className="w-[499px] h-[84px] p-[12px]">
+                {/* Inner text box */}
+                <div className="w-[475px] h-[60px] pt-[10px] pr-[12px] pb-[10px] pl-[12px] border border-gray-200 flex items-end justify-between bg-white">
+                  
+                  {/* Text container (flex-1 min-w-0 pr-2 keeps the swatches inside the box) */}
+                  <div className="flex-1 flex flex-col gap-[2px] min-w-0 pr-2">
+                    <span
+                      className="w-full h-[18px] truncate"
+                      style={{
+                        fontFamily: "'FFF Acid Grotesk', sans-serif",
+                        fontWeight: 700,
+                        fontSize: "13px",
+                        lineHeight: "18px",
+                        color: "#000000",
+                      }}
+                    >
+                      {product.name}
+                    </span>
+                    
+                    <Link
+                      href={product.href}
+                      className="w-fit h-[18px] hover:opacity-70 transition flex items-center gap-1"
+                      style={{
+                        fontFamily: "'FFF Acid Grotesk', sans-serif",
+                        fontWeight: 700,
+                        fontSize: "12px",
+                        lineHeight: "18px",
+                        color: "#000000",
+                      }}
+                    >
+                      View Product <SmallArrowRight />
+                    </Link>
                   </div>
+
+                  {/* Color Swatches */}
+                  {product.swatches && (
+                    <div className="flex items-center gap-[4px] shrink-0 mb-[2px]">
+                      {product.swatches.map((color, ci) => (
+                        <span
+                          key={ci}
+                          className="w-[8px] h-[8px] border border-gray-300 rounded-full"
+                          style={{ backgroundColor: color }}
+                        />
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom CTA Button */}
+        <div className="w-full flex justify-center mt-[32px]">
+          <Link href="/products" className="w-[138px] h-[48px] pt-[12px] pr-[20px] pb-[12px] pl-[20px] bg-black text-white hover:bg-gray-800 transition flex items-center justify-center">
+            <span className="w-[98px] h-[16px] text-[13px] leading-[16px] font-bold text-center">
+              View All
+            </span>
+          </Link>
         </div>
       </section>
 
