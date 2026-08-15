@@ -531,11 +531,12 @@ export default function SarlamAthleticsPage() {
             className="inline-flex items-center justify-center bg-white uppercase px-10 py-3 hover:bg-gray-100 transition"
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
-              fontWeight: 500,
+              fontWeight: 800,
               fontSize: "12px",
               lineHeight: "18px",
               letterSpacing: "0px",
               color: "#000000",
+              borderRadius: "8px",
             }}
           >
             Request a Manufacturing Quote
@@ -673,14 +674,6 @@ export default function SarlamAthleticsPage() {
             </div>
           ))}
         </div>
-
-        <div className="w-full flex justify-center mt-[32px]">
-          <Link href="/products" className="w-[138px] h-[48px] pt-[12px] pr-[20px] pb-[12px] pl-[20px] bg-black text-white hover:bg-gray-800 transition flex items-center justify-center">
-            <span className="w-[98px] h-[16px] text-[13px] leading-[16px] font-bold text-center">
-              View All
-            </span>
-          </Link>
-        </div>
       </section>
 
       {/* ───── About Section ───── */}
@@ -743,6 +736,7 @@ export default function SarlamAthleticsPage() {
                 fontSize: "14px",
                 letterSpacing: "5%",
                 color: "#FFFFFF",
+                borderRadius: "8px",
               }}
             >
               Get a Free Manufacturing Quote
@@ -1257,6 +1251,7 @@ export default function SarlamAthleticsPage() {
                     fontWeight: 700,
                     fontSize: "14px",
                     letterSpacing: "5%",
+                    borderRadius: "8px",
                   }}
                 >
                   Get Your Free Manufacturing Quote
