@@ -3,7 +3,7 @@
 import React, { useRef, useState } from "react";
 import Link from "next/link";
 
-// ─── Image Placeholder (supports a real src, falls back to a gray box) ─────
+// ─── Image Placeholder ──────────────────────────────────────────────────────
 const ImagePlaceholder = ({
   className = "",
   label = "Image",
@@ -14,7 +14,8 @@ const ImagePlaceholder = ({
   src?: string;
 }) => {
   if (src) {
-    return <img src={src} alt={label} className={`object-cover ${className}`} />;
+    // FIX: Removed hardcoded "object-cover" here to prevent class conflicts
+    return <img src={src} alt={label} className={`${className}`} />;
   }
 
   return (
@@ -87,8 +88,8 @@ function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-100">
-      <div className="relative max-w-[1440px] mx-auto px-6 md:px-4 h-[52px]">
+    <header className="sticky top-0 z-50 w-full bg-white border-b border-gray-100 flex justify-center">
+      <div className="relative w-full max-w-[1440px] px-6 md:px-10 h-[52px]">
 
         {/* ─── DESKTOP VIEW ─── */}
         <div className="hidden lg:flex items-center justify-between w-full h-full">
@@ -100,7 +101,7 @@ function Header() {
             <div className="w-[2px] h-12 bg-gray-300" />
             <nav className="flex items-center gap-4">
               <Link href="/products" className="hover:opacity-70 transition" style={navLinkStyle}>Products</Link>
-                  <Link href="/manufacture" className="hover:opacity-70 transition" style={navLinkStyle}>Manufacturing</Link>
+              <Link href="/manufacture" className="hover:opacity-70 transition" style={navLinkStyle}>Manufacturing</Link>
             </nav>
           </div>
 
@@ -123,13 +124,11 @@ function Header() {
 
         {/* ─── MOBILE VIEW ─── */}
         <div className="flex lg:hidden items-center justify-between w-full h-full">
-          {/* Mobile Logo (Left Side) */}
           <Link href="/" className="flex items-center gap-2" style={logoStyle}>
             <LogoMark className="w-[18px] h-[20px]" />
             <span className="whitespace-nowrap tracking-tight">Sarlam Athletics</span>
           </Link>
 
-          {/* Mobile Hamburger (Right Side) - No Search Icon */}
           <button
             className="flex items-center p-2 -mr-2 text-[#0D0D0D]"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -140,7 +139,6 @@ function Header() {
         </div>
       </div>
 
-      {/* Mobile Dropdown Menu */}
       {isMobileMenuOpen && (
         <div className="lg:hidden absolute top-[52px] left-0 w-full bg-white border-b border-gray-100 shadow-lg flex flex-col py-6 px-6 gap-6 z-50">
           {[
@@ -190,65 +188,64 @@ const logoStyle = {
 };
 
 // ─── Product Data ──────────────────────────────────────────────────────────
-  const products = [
-    {
-      name: "Private Label Boxing Gloves",
-      cta: "View Product +",
-      href: "/details",
-      swatches: ["#B91C1C", "#0D0D0D"],
-      image: "/Products/01 Private Label Boxing Gloves.png",
-    },
-    {
-      name: "BJJ Gis and Jiu-Jitsu Uniforms",
-      cta: "View Product +",
-      href: "/jitsu",
-      swatches: ["#0D0D0D", "#E5E5E5"],
-      image: "/Products/02 BJJ Gis and Jiu-Jitsu Uniforms.png",
-    },
-    {
-      name: "MMA Fight Gloves",
-      cta: "View Product +",
-      href: "/mmagloves",
-      swatches: ["#B91C1C", "#0D0D0D"],
-      image: "/Products/03 MMA Fight Gloves.png",
-    },
-   {
-      name: "Professional MMA Training Gloves", 
-      cta: "View Product +",   
-      href: "/ultimategloves",           
-      swatches: ["#B91C1C", "#0D0D0D"],
-      image: "/Products/04 Pro MMA  Training Gloves.png",
-    },
-    {
-      name: "Boxing Focus Mitts and Training Pads",
-      cta: "View Product +",
-      href: "/trainingpad",
-      swatches: ["#B91C1C", "#0D0D0D"],
-      image: "/Products/05 Boxing Mitts and Training Pads.png",
-    },
-    {
-      name: "Boxing Sparring Gloves",
-      cta: "View Product +",
-      href: "/sparinggloves",
-      swatches: ["#B91C1C", "#0D0D0D"],
-      image: "/Products/06 Boxing Sparring Gloves.png",
-    },
-    {
-      name: "Custom Boxing Headguards",
-      cta: "View Product +",
-      href: "/Boxingguard",
-      swatches: ["#B91C1C", "#0D0D0D"],
-      image: "/Products/07 Custom Boxing Headguards.png", // Note: 08 is also available for this in your folder
-    },
-   {
-      name: "Private Label Karate Uniforms",
-      cta: "View Product +",
-      href: "/karatesuit",
-      swatches: ["#E5E5E5", "#0D0D0D"],
-      image: "/Products/karateuniform.png",
-    },
-   
-  ];
+const products = [
+  {
+    name: "Private Label Boxing Gloves",
+    cta: "View Product +",
+    href: "/details",
+    swatches: ["#B91C1C", "#0D0D0D"],
+    image: "/Products/01 Private Label Boxing Gloves.png",
+  },
+  {
+    name: "BJJ Gis and Jiu-Jitsu Uniforms",
+    cta: "View Product +",
+    href: "/jitsu",
+    swatches: ["#0D0D0D", "#E5E5E5"],
+    image: "/Products/02 BJJ Gis and Jiu-Jitsu Uniforms.png",
+  },
+  {
+    name: "MMA Fight Gloves",
+    cta: "View Product +",
+    href: "/mmagloves",
+    swatches: ["#B91C1C", "#0D0D0D"],
+    image: "/Products/03 MMA Fight Gloves.png",
+  },
+  {
+    name: "Professional MMA Training Gloves", 
+    cta: "View Product +",   
+    href: "/ultimategloves",           
+    swatches: ["#B91C1C", "#0D0D0D"],
+    image: "/Products/04 Pro MMA  Training Gloves.png",
+  },
+  {
+    name: "Boxing Focus Mitts and Training Pads",
+    cta: "View Product +",
+    href: "/trainingpad",
+    swatches: ["#B91C1C", "#0D0D0D"],
+    image: "/Products/05 Boxing Mitts and Training Pads.png",
+  },
+  {
+    name: "Boxing Sparring Gloves",
+    cta: "View Product +",
+    href: "/sparinggloves",
+    swatches: ["#B91C1C", "#0D0D0D"],
+    image: "/Products/06 Boxing Sparring Gloves.png",
+  },
+  {
+    name: "Custom Boxing Headguards",
+    cta: "View Product +",
+    href: "/Boxingguard",
+    swatches: ["#B91C1C", "#0D0D0D"],
+    image: "/Products/07 Custom Boxing Headguards.png",
+  },
+  {
+    name: "Private Label Karate Uniforms",
+    cta: "View Product +",
+    href: "/karatesuit",
+    swatches: ["#E5E5E5", "#0D0D0D"],
+    image: "/Products/karateuniform.png",
+  },
+];
 
 const customizationOptions = [
   {
@@ -271,10 +268,9 @@ const customizationOptions = [
     desc: "Customize dimensions, weight, fit, padding density, stitching, closures, and performance features before production.",
     image: "/Page 2/Images/05.png",
   },
-
 ];
 
- const processSteps = [
+const processSteps = [
   {
     title: "Flexible Minimum Order Quantities",
     desc: "Minimum quantities vary by product, material, and customization level. We support smaller launch orders as well as high-volume wholesale production.",
@@ -324,7 +320,7 @@ export default function ProductPage() {
   };
 
   return (
-    <div className="w-full bg-white text-black font-sans">
+    <div className="w-full bg-white text-black font-sans flex flex-col items-center overflow-x-hidden">
 
       {/* ───── 1. Announcement Bar ───── */}
       <div className="w-full bg-[#0D0D0D] overflow-hidden">
@@ -349,75 +345,77 @@ export default function ProductPage() {
       <Header />
 
       {/* ───── 3. Hero Section ───── */}
-      <section className="relative w-full h-[540px] md:h-[624px] overflow-hidden bg-[#0D0D0D]">
-       <ImagePlaceholder
-  className="absolute inset-0 w-full h-full object-cover"
-  label="Hero - Combat Sports Equipment Display"
-  src="/Page 2/Images/01.png"
-/>
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-black/10" />
+      <section className="relative w-full bg-[#0D0D0D] overflow-hidden flex justify-center">
+        <div className="relative w-full max-w-[1440px] h-[540px] md:h-[624px]">
+          <ImagePlaceholder
+            className="absolute inset-0 w-full h-full object-cover"
+            label="Hero - Combat Sports Equipment Display"
+            src="/Page 2/Images/01.png"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-black/10" />
 
-        <div className="relative z-10 flex items-center h-full px-6 md:px-10 max-w-[1440px] mx-auto mt-4 md:mt-0">
-          <div className="max-w-[640px] flex flex-col gap-4 md:gap-6">
-            <h1
-              className="uppercase text-[36px] leading-[40px] md:text-[56px] md:leading-[105%]"
-              style={{
-                fontFamily: "'FFF Acid Grotesk', sans-serif",
-                fontWeight: 700,
-                letterSpacing: "-2px",
-                color: "#FFFFFF",
-              }}
-            >
-              Private Label Combat Sports Equipment Manufacturer
-            </h1>
-            <div className="flex flex-col gap-4">
-              <p
-                className="text-[14px] leading-[20px] md:text-[16px] md:leading-[20px]"
+          <div className="relative z-10 flex items-center h-full px-6 md:px-10 mt-4 md:mt-0">
+            <div className="max-w-[640px] flex flex-col gap-4 md:gap-6">
+              <h1
+                className="uppercase text-[36px] leading-[40px] md:text-[56px] md:leading-[105%]"
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
-                  fontWeight: 400,
-                  letterSpacing: "0px",
+                  fontWeight: 700,
+                  letterSpacing: "-2px",
                   color: "#FFFFFF",
                 }}
               >
-                Sarlam Athletics manufactures custom boxing gloves, MMA gear, BJJ
-                gis, karate uniforms, protective equipment, and training
-                accessories for sports brands, gyms, retailers, wholesalers, and
-                distributors.
-              </p>
-              <p
-                className="text-[14px] leading-[20px] md:text-[16px] md:leading-[20px]"
+                Private Label Combat Sports Equipment Manufacturer
+              </h1>
+              <div className="flex flex-col gap-4">
+                <p
+                  className="text-[14px] leading-[20px] md:text-[16px] md:leading-[20px]"
+                  style={{
+                    fontFamily: "'FFF Acid Grotesk', sans-serif",
+                    fontWeight: 400,
+                    letterSpacing: "0px",
+                    color: "#FFFFFF",
+                  }}
+                >
+                  Sarlam Athletics manufactures custom boxing gloves, MMA gear, BJJ
+                  gis, karate uniforms, protective equipment, and training
+                  accessories for sports brands, gyms, retailers, wholesalers, and
+                  distributors.
+                </p>
+                <p
+                  className="text-[14px] leading-[20px] md:text-[16px] md:leading-[20px]"
+                  style={{
+                    fontFamily: "'FFF Acid Grotesk', sans-serif",
+                    fontWeight: 400,
+                    letterSpacing: "0px",
+                    color: "#FFFFFF",
+                  }}
+                >
+                  Get OEM manufacturing, custom materials, logo branding, product
+                  sampling, private label packaging, and scalable bulk production
+                  from one manufacturing partner.
+                </p>
+              </div>
+              <a
+                href="#"
+                className="mt-4 md:mt-0 inline-flex items-center justify-center bg-white px-10 py-3.5 w-full md:w-fit hover:bg-gray-100 transition text-[14px]"
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
-                  fontWeight: 400,
+                  fontWeight: 700,
                   letterSpacing: "0px",
-                  color: "#FFFFFF",
+                  color: "#0D0D0D",
                 }}
               >
-                Get OEM manufacturing, custom materials, logo branding, product
-                sampling, private label packaging, and scalable bulk production
-                from one manufacturing partner.
-              </p>
+                Request a Manufacturing Quote
+              </a>
             </div>
-            <a
-              href="#"
-              className="mt-4 md:mt-0 inline-flex items-center justify-center bg-white px-10 py-3.5 w-full md:w-fit hover:bg-gray-100 transition text-[14px]"
-              style={{
-                fontFamily: "'FFF Acid Grotesk', sans-serif",
-                fontWeight: 700,
-                letterSpacing: "0px",
-                color: "#0D0D0D",
-              }}
-            >
-              Request a Manufacturing Quote
-            </a>
           </div>
         </div>
       </section>
 
       {/* ───── 4. Brand Statement Section ───── */}
-      <section className="w-full bg-white py-16 md:py-20">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-10 flex flex-col lg:flex-row gap-6 md:gap-12 lg:gap-20">
+      <section className="w-full bg-white py-16 md:py-20 flex justify-center">
+        <div className="w-full max-w-[1440px] px-6 md:px-10 flex flex-col lg:flex-row gap-6 md:gap-12 lg:gap-20">
           <div className="lg:w-1/2">
             <h2>
               <span
@@ -479,36 +477,26 @@ export default function ProductPage() {
       </section>
 
       {/* ───── 5. Product Grid Section ───── */}
-      <section className="w-full bg-white">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-10">
-          <div className="py-4 md:py-6 border-b border-gray-200">
-            <h2
-              className="uppercase text-[22px] leading-[26px] md:text-[26px] md:leading-[26px] max-w-[300px] md:max-w-none"
-              style={{
-                fontFamily: "'FFF Acid Grotesk', sans-serif",
-                fontWeight: 700,
-                letterSpacing: "-0.5px",
-                color: "#0D0D0D",
-              }}
-            >
-              Combat Sports Equipment We Manufacture
-            </h2>
-          </div>
-
-          <div className="flex flex-col md:flex-row md:items-center justify-between py-4 border-b border-gray-200 gap-4 md:gap-0">
-            <div className="flex items-center justify-between md:justify-start gap-4 w-full md:w-auto">
-              <span
-                className="uppercase text-[11px] md:text-[12px] leading-[18px]"
+      <section className="w-full bg-white flex justify-center">
+        <div className="w-full max-w-[1440px]">
+          {/* Header & Filters Boxed */}
+          <div className="px-6 md:px-10">
+            <div className="py-4 md:py-6 border-b border-gray-200">
+              <h2
+                className="uppercase text-[22px] leading-[26px] md:text-[26px] md:leading-[26px] max-w-[300px] md:max-w-none"
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
-                  fontWeight: 500,
-                  letterSpacing: "0px",
-                  color: "#707070",
+                  fontWeight: 700,
+                  letterSpacing: "-0.5px",
+                  color: "#0D0D0D",
                 }}
               >
-                Items: {products.length}
-              </span>
-              <div className="flex items-center gap-1.5">
+                Combat Sports Equipment We Manufacture
+              </h2>
+            </div>
+
+            <div className="flex flex-col md:flex-row md:items-center justify-between py-4 border-b border-gray-200 gap-4 md:gap-0">
+              <div className="flex items-center justify-between md:justify-start gap-4 w-full md:w-auto">
                 <span
                   className="uppercase text-[11px] md:text-[12px] leading-[18px]"
                   style={{
@@ -518,132 +506,146 @@ export default function ProductPage() {
                     color: "#707070",
                   }}
                 >
-                  Category:
+                  Items: {products.length}
                 </span>
-                <button
-                  className="flex items-center gap-1 uppercase text-[12px] leading-[18px]"
-                  style={{
-                    fontFamily: "'Inter', sans-serif",
-                    fontWeight: 700,
-                    letterSpacing: "0px",
-                    color: "#0D0D0D",
-                  }}
-                >
-                  All
-                  <ChevronDownIcon />
-                </button>
-              </div>
-            </div>
-
-            <div className="hidden md:flex items-center gap-2">
-              <span
-                className="uppercase text-[12px] leading-[18px]"
-                style={{
-                  fontFamily: "'FFF Acid Grotesk', sans-serif",
-                  fontWeight: 500,
-                  letterSpacing: "0px",
-                  color: "#707070",
-                }}
-              >
-                View:
-              </span>
-              <button className="p-1 hover:opacity-70 transition text-[#707070]">
-                <ColumnsIcon />
-              </button>
-              <button className="p-1 hover:opacity-70 transition text-[#707070]">
-                <GridIcon />
-              </button>
-            </div>
-          </div>
-
-        </div>
-
-        <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-0">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-l-0 md:border-l border-gray-200">
-            {products.map((product, i) => (
-              <div key={i} className="border-r-0 md:border-r border-b border-gray-200 group">
-                <Link
-                  href={product.href}
-                  className="relative aspect-[4/3] md:aspect-square bg-gray-50 overflow-hidden flex items-center justify-center p-6 md:p-8"
-                >
-                  <ImagePlaceholder
-                    className="w-full h-full object-contain"
-                    label={product.name}
-                    src={product.image}
-                  />
+                <div className="flex items-center gap-1.5">
                   <span
-                    className="pointer-events-none absolute top-3 right-3 bg-[#0D0D0D] uppercase opacity-0 group-hover:opacity-100 transition rounded-sm px-3 py-1.5 text-[6.5px] leading-[9.4px]"
+                    className="uppercase text-[11px] md:text-[12px] leading-[18px]"
                     style={{
                       fontFamily: "'FFF Acid Grotesk', sans-serif",
                       fontWeight: 500,
                       letterSpacing: "0px",
-                      color: "#FFFFFF",
+                      color: "#707070",
                     }}
                   >
-                    Quick View
+                    Category:
                   </span>
-                </Link>
-
-                <div className="bg-white px-4 py-4 md:py-3 flex items-center justify-between border-t border-gray-200">
-                  <div className="flex flex-col gap-1 md:gap-0">
-                    <span
-                      className="block text-[10px] md:text-[12px] leading-[13px] md:leading-[14px]"
-                      style={{
-                        fontFamily: "'FFF Acid Grotesk', sans-serif",
-                        fontWeight: 700,
-                        letterSpacing: "0.05px",
-                        color: "#0D0D0D",
-                      }}
-                    >
-                      {product.name}
-                    </span>
-                    <Link
-                      href={product.href}
-                      className="underline hover:opacity-70 transition text-[10px] md:text-[11px] leading-[13px] md:leading-[14px]"
-                      style={{
-                        fontFamily: "'FFF Acid Grotesk', sans-serif",
-                        fontWeight: 700,
-                        letterSpacing: "0px",
-                        color: "#0D0D0D",
-                      }}
-                    >
-                      {product.cta}
-                    </Link>
-                  </div>
-                  <div className="flex items-center gap-1 shrink-0 ml-2">
-                    {product.swatches.map((color, si) => (
-                      <span
-                        key={si}
-                        className="w-3 h-3 md:w-2.5 md:h-2.5 inline-block border border-gray-200 rounded-sm"
-                        style={{ backgroundColor: color }}
-                      />
-                    ))}
-                  </div>
+                  <button
+                    className="flex items-center gap-1 uppercase text-[12px] leading-[18px]"
+                    style={{
+                      fontFamily: "'Inter', sans-serif",
+                      fontWeight: 700,
+                      letterSpacing: "0px",
+                      color: "#0D0D0D",
+                    }}
+                  >
+                    All
+                    <ChevronDownIcon />
+                  </button>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
 
-        <div className="flex justify-center py-8 md:py-12 px-6 md:px-0">
-          <a
-            href="#"
-            className="inline-flex items-center justify-center bg-white w-full md:w-auto uppercase px-10 py-4 border border-black hover:bg-black hover:text-white transition text-[14px]"
-            style={{
-              fontFamily: "'FFF Acid Grotesk', sans-serif",
-              fontWeight: 700,
-              letterSpacing: "5%",
-              color: "#0D0D0D",
-            }}
-          >
-            Request a Manufacturing Quote
-          </a>
+              <div className="hidden md:flex items-center gap-2">
+                <span
+                  className="uppercase text-[12px] leading-[18px]"
+                  style={{
+                    fontFamily: "'FFF Acid Grotesk', sans-serif",
+                    fontWeight: 500,
+                    letterSpacing: "0px",
+                    color: "#707070",
+                  }}
+                >
+                  View:
+                </span>
+                <button className="p-1 hover:opacity-70 transition text-[#707070]">
+                  <ColumnsIcon />
+                </button>
+                <button className="p-1 hover:opacity-70 transition text-[#707070]">
+                  <GridIcon />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Product Grid Boxed */}
+          <div className="px-6 md:px-10 py-0">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-l-0 md:border-l border-gray-200">
+              {products.map((product, i) => (
+                <div key={i} className="border-r-0 md:border-r border-b border-gray-200 group">
+                  <Link
+                    href={product.href}
+                    className="relative aspect-[4/3] md:aspect-square bg-gray-50 overflow-hidden flex items-center justify-center p-6 md:p-8"
+                  >
+                    <ImagePlaceholder
+                      className="w-full h-full object-contain"
+                      label={product.name}
+                      src={product.image}
+                    />
+                    <span
+                      className="pointer-events-none absolute top-3 right-3 bg-[#0D0D0D] uppercase opacity-0 group-hover:opacity-100 transition rounded-sm px-3 py-1.5 text-[6.5px] leading-[9.4px]"
+                      style={{
+                        fontFamily: "'FFF Acid Grotesk', sans-serif",
+                        fontWeight: 500,
+                        letterSpacing: "0px",
+                        color: "#FFFFFF",
+                      }}
+                    >
+                      Quick View
+                    </span>
+                  </Link>
+
+                  <div className="bg-white px-4 py-4 md:py-3 flex items-center justify-between border-t border-gray-200">
+                    <div className="flex flex-col gap-1 md:gap-0">
+                      <span
+                        className="block text-[10px] md:text-[12px] leading-[13px] md:leading-[14px]"
+                        style={{
+                          fontFamily: "'FFF Acid Grotesk', sans-serif",
+                          fontWeight: 700,
+                          letterSpacing: "0.05px",
+                          color: "#0D0D0D",
+                        }}
+                      >
+                        {product.name}
+                      </span>
+                      <Link
+                        href={product.href}
+                        className="underline hover:opacity-70 transition text-[10px] md:text-[11px] leading-[13px] md:leading-[14px]"
+                        style={{
+                          fontFamily: "'FFF Acid Grotesk', sans-serif",
+                          fontWeight: 700,
+                          letterSpacing: "0px",
+                          color: "#0D0D0D",
+                        }}
+                      >
+                        {product.cta}
+                      </Link>
+                    </div>
+                    <div className="flex items-center gap-1 shrink-0 ml-2">
+                      {product.swatches.map((color, si) => (
+                        <span
+                          key={si}
+                          className="w-3 h-3 md:w-2.5 md:h-2.5 inline-block border border-gray-200 rounded-sm"
+                          style={{ backgroundColor: color }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA Boxed */}
+          <div className="flex justify-center py-8 md:py-12 px-6 md:px-0">
+            <a
+              href="#"
+              className="inline-flex items-center justify-center bg-white w-full md:w-auto uppercase px-10 py-4 border border-black hover:bg-black hover:text-white transition text-[14px]"
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 700,
+                letterSpacing: "5%",
+                color: "inherit", 
+              }}
+            >
+              Request a Manufacturing Quote
+            </a>
+          </div>
         </div>
       </section>
 
-    {/* ───── 6. Customization Options Section ───── */}
-      <section className="w-full bg-white py-16 md:py-16">
-        <div className="max-w-[1392px] mx-auto px-6 md:px-10">
+      {/* ───── 6. Customization Options Section ───── */}
+      <section className="w-full bg-white py-16 md:py-16 flex justify-center">
+        <div className="w-full max-w-[1440px] px-6 md:px-10">
           <div className="mb-8 md:mb-10">
             <h2
               className="mb-4 text-[28px] leading-[32px] md:text-[37px] md:leading-[46px]"
@@ -682,8 +684,6 @@ export default function ProductPage() {
                   data-card
                   className="snap-start shrink-0 w-[280px] sm:w-[320px] lg:w-1/4 bg-white border-r border-b border-gray-200 overflow-hidden flex flex-col"
                 >
-                  
-                  {/* BULLETPROOF SQUARE FIX: pb-[100%] strictly forces a 1:1 ratio. The image is taken out of flow via absolute. */}
                   <div className="relative w-full pb-[100%] shrink-0 flex-none bg-gray-100 overflow-hidden">
                     <ImagePlaceholder
                       className="absolute inset-0 w-full h-full object-cover"
@@ -753,8 +753,8 @@ export default function ProductPage() {
       </section>
 
       {/* ───── 7. Process / Pricing Section ───── */}
-      <section className="w-full bg-white py-16 md:py-20">
-        <div className="max-w-[1376px] mx-auto px-6 md:px-10">
+      <section className="w-full bg-white py-16 md:py-20 flex justify-center">
+        <div className="w-full max-w-[1440px] px-6 md:px-10">
           <h2
             className="mb-8 md:mb-16 text-[28px] leading-[32px] md:text-[37px] md:leading-[46px]"
             style={{
@@ -767,7 +767,6 @@ export default function ProductPage() {
             Minimum Orders, Pricing and Samples
           </h2>
 
-          {/* Full outer border applied to grid wrapper */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-gray-200">
             {processSteps.map((step, i) => (
               <div
@@ -804,7 +803,7 @@ export default function ProductPage() {
                 <div className="px-6 md:px-8 pb-6 md:pb-8 flex-1">
                   <div className="rounded-sm overflow-hidden h-[240px] md:h-[400px]">
                     <ImagePlaceholder
-                      className="w-full h-full"
+                      className="w-full h-full object-cover" // Added object-cover here to keep these filling the box
                       label={step.title}
                       src={step.image}
                     />
@@ -817,8 +816,8 @@ export default function ProductPage() {
       </section>
 
       {/* ───── 8. Why Section ───── */}
-      <section className="w-full bg-white py-16 md:py-20 border-t border-gray-200">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-10">
+      <section className="w-full bg-white py-16 md:py-20 border-t border-gray-200 flex justify-center">
+        <div className="w-full max-w-[1440px] px-6 md:px-10">
           <h2
             className="mb-10 md:mb-16 text-[28px] leading-[34px] md:text-[37px] md:leading-[46px]"
             style={{
@@ -833,7 +832,6 @@ export default function ProductPage() {
             <span className="md:hidden"> </span>Sarlam Athletics
           </h2>
 
-          {/* Full outer border applied to grid wrapper */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border border-gray-200">
             {whyReasons.map((reason, i) => (
               <div
@@ -871,10 +869,10 @@ export default function ProductPage() {
       </section>
 
       {/* ───── 9. Footer ───── */}
-      <footer className="w-full bg-white">
-        <div className="border-t border-gray-200" />
+      <footer className="w-full bg-white flex flex-col items-center">
+        <div className="w-full border-t border-gray-200" />
 
-        <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-10 md:py-12 flex flex-col lg:flex-row justify-between gap-10 md:gap-12">
+        <div className="w-full max-w-[1440px] px-6 md:px-10 py-10 md:py-12 flex flex-col lg:flex-row justify-between gap-10 md:gap-12">
           <div className="lg:w-1/2">
             <h3
               className="mb-4 text-[32px] leading-[38px] md:text-[47px] md:leading-[58px]"
@@ -970,9 +968,9 @@ export default function ProductPage() {
           </div>
         </div>
 
-        <div className="border-t border-gray-200" />
+        <div className="w-full border-t border-gray-200" />
 
-        <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-8 md:py-10 flex flex-col md:flex-row items-start md:items-end justify-between gap-4 md:gap-0">
+        <div className="w-full max-w-[1440px] px-6 md:px-10 py-8 md:py-10 flex flex-col md:flex-row items-start md:items-end justify-between gap-4 md:gap-0">
           <p
             className="uppercase text-[56px] leading-[85%] md:text-[101px] md:leading-[85%]"
             style={{
@@ -999,8 +997,8 @@ export default function ProductPage() {
           </div>
         </div>
 
-        <div className="w-full bg-[#0D0D0D] py-4">
-          <div className="max-w-[1440px] mx-auto px-6 md:px-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-0">
+        <div className="w-full bg-[#0D0D0D] py-4 flex justify-center">
+          <div className="w-full max-w-[1440px] px-6 md:px-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-0">
             <p
               className="text-[12px] leading-[16px]"
               style={{
