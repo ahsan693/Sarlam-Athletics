@@ -496,10 +496,7 @@ export default function ProductPage() {
               </h2>
             </div>
 
-            <div className="flex flex-col md:flex-row md:items-center justify-between py-4 border-b border-gray-200 gap-4 md:gap-0">
-             
-
-            </div>
+      
           </div>
 
           {/* Product Grid Boxed */}
