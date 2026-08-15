@@ -539,20 +539,19 @@ function FAQSection() {
             If you have any further questions or just want to reach our team,
             click the button below.
           </p>
-          <a
-            href="/contactus"
-            className="inline-flex items-center justify-center px-5 py-3 border border-black rounded-md hover:bg-black hover:text-white transition-colors w-full lg:w-auto"
-            style={{
-              fontFamily: "'FFF Acid Grotesk', sans-serif",
-              fontWeight: 700,
-              fontSize: "14px",
-              textTransform: "uppercase",
-              letterSpacing: "0.05em",
-              color: "#000000",
-            }}
-          >
-            Get in touch
-          </a>
+         <a
+  href="/contactus"
+  className="inline-flex items-center justify-center px-5 py-3 border border-black rounded-md text-black hover:bg-gray-100 transition-colors w-full lg:w-auto"
+  style={{
+    fontFamily: "'FFF Acid Grotesk', sans-serif",
+    fontWeight: 700,
+    fontSize: "14px",
+    textTransform: "uppercase",
+    letterSpacing: "0.05em",
+  }}
+>
+  Get in touch
+</a>
         </div>
       </div>
     </section>
