@@ -391,7 +391,7 @@ export default function SarlamAthleticsPage() {
       cta: "View Product +",   
       href: "/ultimategloves",           
       swatches: ["#B91C1C", "#0D0D0D"],
-      image: "/Products/04 Pro MMA  Training Gloves.png",
+      image: "/Products/MMATrainingGloves.png",
     },
     {
       name: "Boxing Focus Mitts and Training Pads",
