@@ -4,7 +4,7 @@ import React, { useState, useRef } from "react";
 import Link from "next/link"; 
 import Image from "next/image";
 
-// ─── Image Placeholder Component ────────────────────────────────────────────
+// --- Image Placeholder Component ---
 const ImagePlaceholder = ({
   className = "",
   label = "Image",
@@ -39,7 +39,7 @@ const ImagePlaceholder = ({
   );
 };
 
-// ─── Icons ──────────────────────────────────────────────────────────────────
+// --- Icons ---
 const MenuIcon = () => (
   <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
     <line y1="1" x2="20" y2="1" stroke="currentColor" strokeWidth="2" />
@@ -134,7 +134,7 @@ const LogoMark = ({ className = "" }: { className?: string }) => (
   </svg>
 );
 
-// ─── FAQ Accordion Item ─────────────────────────────────────────────────────
+// --- FAQ Accordion Item ---
 const FAQItem = ({
   question,
   answer,
@@ -187,15 +187,16 @@ const FAQItem = ({
   );
 };
 
+// --- Header Component ---
 // ─── Header Component ───────────────────────────────────────────────────────
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-100 relative">
-      <div className="relative max-w-[1440px] mx-auto flex items-center justify-between px-6 md:px-4 h-[52px]">
+    <header className="sticky top-0 z-50 w-full bg-white border-b border-gray-100 relative">
+      <div className="relative w-full max-w-[1440px] mx-auto flex items-center justify-between px-6 md:px-10 h-[52px]">
         
-        {/* ─── DESKTOP VIEW ─── */}
+        {/* --- DESKTOP VIEW --- */}
         
         {/* Desktop Left Nav */}
         <div className="hidden lg:flex items-center gap-4">
@@ -218,7 +219,7 @@ export function Header() {
             >
               Products
             </Link>
-         
+          
             <Link
               href="/manufacture"
               className="hover:opacity-70 transition"
@@ -236,7 +237,7 @@ export function Header() {
           </nav>
         </div>
 
-    {/* Desktop Center Logo */}
+        {/* Desktop Center Logo */}
         <Link
           href="/"
           className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center"
@@ -251,10 +252,11 @@ export function Header() {
             className="w-[267px] h-[34px] object-contain"
           />
         </Link>
+
         {/* Desktop Right Nav */}
         <div className="hidden lg:flex items-center gap-6">
           <Link
-           href="/privatelabel"
+            href="/privatelabel"
             className="hover:opacity-70 transition"
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -287,7 +289,7 @@ export function Header() {
           </button>
         </div>
 
-        {/* ─── MOBILE VIEW ─── */}
+        {/* --- MOBILE VIEW --- */}
         
         {/* Mobile Logo (Left Side) */}
         <Link
@@ -318,40 +320,63 @@ export function Header() {
         </button>
       </div>
 
-      {/* Mobile Dropdown Menu */}
+      {/* --- MOBILE DROPDOWN MENU (CARD STYLE) --- */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden absolute top-[52px] left-0 w-full bg-white border-b border-gray-100 shadow-lg flex flex-col py-6 px-6 gap-6 z-50">
-          {[
-            { label: "Products", href: "/products" },
-            { label: "Private Label", href: "/privatelabel" },
-            { label: "Manufacturing", href: "/manufacture" },
-            { label: "About", href: "/about" },
-            { label: "Contact", href: "/contact" },
-          ].map((link, idx) => (
-            <Link
-              key={idx}
-              href={link.href}
+        <>
+          {/* Invisible overlay to close menu when clicking outside */}
+          <div 
+            className="fixed inset-0 z-40 lg:hidden" 
+            onClick={() => setIsMobileMenuOpen(false)} 
+          />
+          
+          <div className="lg:hidden absolute top-[60px] right-4 w-[200px] bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-100 flex flex-col p-2 z-50">
+            <Link 
+              href="/products" 
               onClick={() => setIsMobileMenuOpen(false)}
-              className="hover:opacity-70 transition"
-              style={{
-                fontFamily: "'FFF Acid Grotesk', sans-serif",
-                fontWeight: 500,
-                fontSize: "14px",
-                lineHeight: "18px",
-                textTransform: "uppercase",
-                color: "#0D0D0D",
-              }}
+              className="block w-full text-[#0D0D0D] text-[14px] font-medium px-4 py-2.5 rounded-lg hover:bg-gray-100 transition-colors font-['FFF_Acid_Grotesk',sans-serif] uppercase tracking-wide"
             >
-              {link.label}
+              Products
             </Link>
-          ))}
-        </div>
+            
+            <Link 
+              href="/privatelabel" 
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block w-full text-[#0D0D0D] text-[14px] font-medium px-4 py-2.5 rounded-lg hover:bg-gray-100 transition-colors font-['FFF_Acid_Grotesk',sans-serif] uppercase tracking-wide"
+            >
+              Private Label
+            </Link>
+
+            <Link 
+              href="/manufacture" 
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block w-full text-[#0D0D0D] text-[14px] font-medium px-4 py-2.5 rounded-lg hover:bg-gray-100 transition-colors font-['FFF_Acid_Grotesk',sans-serif] uppercase tracking-wide"
+            >
+              Manufacturing
+            </Link>
+            
+            <Link 
+              href="/about" 
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block w-full text-[#0D0D0D] text-[14px] font-medium px-4 py-2.5 rounded-lg hover:bg-gray-100 transition-colors font-['FFF_Acid_Grotesk',sans-serif] uppercase tracking-wide"
+            >
+              About
+            </Link>
+            
+            <Link 
+              href="/contact" 
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block w-full text-[#0D0D0D] text-[14px] font-medium px-4 py-2.5 rounded-lg hover:bg-gray-100 transition-colors font-['FFF_Acid_Grotesk',sans-serif] uppercase tracking-wide"
+            >
+              Contact
+            </Link>
+          </div>
+        </>
       )}
     </header>
   );
 }
 
-// ─── Main Page Component ────────────────────────────────────────────────────
+// --- Main Page Component ---
 export default function SarlamAthleticsPage() {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const [activeProcessStep, setActiveProcessStep] = useState<number | null>(null);
@@ -364,7 +389,7 @@ export default function SarlamAthleticsPage() {
     el.scrollBy({ left: dir * cardWidth, behavior: "smooth" });
   };
 
- const products = [
+  const products = [
     {
       name: "Private Label Boxing Gloves",
       cta: "View Product +",
@@ -386,10 +411,10 @@ export default function SarlamAthleticsPage() {
       swatches: ["#B91C1C", "#0D0D0D"],
       image: "/Products/03 MMA Fight Gloves.png",
     },
-   {
+    {
       name: "Professional MMA Training Gloves", 
       cta: "View Product +",   
-      href: "/ultimategloves",           
+      href: "/ultimategloves",          
       swatches: ["#B91C1C", "#0D0D0D"],
       image: "/Products/MMATrainingGloves.png",
     },
@@ -414,7 +439,7 @@ export default function SarlamAthleticsPage() {
       swatches: ["#B91C1C", "#0D0D0D"],
       image: "/Products/07 Custom Boxing Headguards.png", 
     },
-   {
+    {
       name: "Private Label Karate Uniforms",
       cta: "View Product +",
       href: "/karatesuit",
@@ -488,10 +513,10 @@ export default function SarlamAthleticsPage() {
   return (
     <div className="w-full bg-white font-sans overflow-x-hidden">
       
-      {/* ───── Header / Navbar ───── */}
+      {/* --- Header / Navbar --- */}
       <Header />
 
-      {/* ───── Hero Section ───── */}
+      {/* --- Hero Section --- */}
       <section className="relative w-full h-[540px] md:h-[620px] bg-[#0D0D0D] overflow-hidden">
        <img
         className="absolute inset-0 w-full h-full object-cover opacity-40"
@@ -544,7 +569,7 @@ export default function SarlamAthleticsPage() {
         </div>
       </section>
 
-      {/* ───── Announcement Bar ───── */}
+      {/* --- Announcement Bar --- */}
       <div className="w-full bg-[#0D0D0D] overflow-hidden border-t border-white/20">
         <div className="flex animate-marquee whitespace-nowrap py-2">
           {[...Array(6)].map((_, i) => (
@@ -566,7 +591,7 @@ export default function SarlamAthleticsPage() {
         </div>
       </div>
 
-    {/* ───── Products Grid Section ───── */}
+    {/* --- Products Grid Section --- */}
       <section className="w-full max-w-[1440px] mx-auto pb-[64px] bg-white flex flex-col gap-0 overflow-hidden">
         
         {/* Header Row */}
@@ -676,7 +701,7 @@ export default function SarlamAthleticsPage() {
         </div>
       </section>
 
-      {/* ───── About Section ───── */}
+      {/* --- About Section --- */}
       <section className="w-full bg-[#000000] py-16 md:py-24">
         <div className="max-w-[1360px] mx-auto px-6 md:px-10 flex flex-col lg:flex-row gap-8 md:gap-16">
           <div className="lg:w-1/3">
@@ -745,7 +770,7 @@ export default function SarlamAthleticsPage() {
         </div>
       </section>
 
-      {/* ───── Manufacturing Capabilities ───── */}
+      {/* --- Manufacturing Capabilities --- */}
       <section className="w-full bg-white py-12 md:py-14">
         <div className="max-w-[1416px] mx-auto px-6 md:px-10">
           <p 
@@ -813,7 +838,7 @@ export default function SarlamAthleticsPage() {
         </div>
       </section>
 
-     {/* ───── Why Brands Choose Sarlam Athletics ───── */}
+     {/* --- Why Brands Choose Sarlam Athletics --- */}
       <section className="w-full bg-white py-16 md:py-20">
         <div className="max-w-[1376px] mx-auto px-6 md:px-10">
           <h2 
@@ -907,7 +932,7 @@ export default function SarlamAthleticsPage() {
         </div>
       </section>
 
-    {/* ───── Why Partner With Us ───── */}
+    {/* --- Why Partner With Us --- */}
       <section className="w-full bg-white py-16 md:py-20 border-t border-gray-200">
         <div className="max-w-[1376px] mx-auto px-6 md:px-10">
           <h2 
@@ -924,7 +949,7 @@ export default function SarlamAthleticsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-gray-200">
             {[
-             {
+              {
                 title: "OEM & ODM Manufacturing Solutions",
                 desc: "From product development and sampling to mass production, we manufacture custom boxing gloves, MMA gear, BJJ uniforms, karate apparel, belts, wraps, and training accessories according to your exact specifications.",
                 imageSrc:
@@ -983,7 +1008,7 @@ export default function SarlamAthleticsPage() {
         </div>
       </section>
 
-      {/* ───── Testimonial Section ───── */}
+      {/* --- Testimonial Section --- */}
       <section className="relative w-full py-16 md:py-24 bg-[#7A2E22] overflow-hidden">
        <ImagePlaceholder
         className="absolute inset-0 w-full h-full object-cover"
@@ -1050,7 +1075,7 @@ export default function SarlamAthleticsPage() {
         </div>
       </section>
 
-      {/* ───── How Our Process Works (Accordion/Expanding Hover Animation) ───── */}
+      {/* --- How Our Process Works (Accordion/Expanding Hover Animation) --- */}
       <section className="w-full bg-white py-16 md:py-20">
         <div className="max-w-[1440px] mx-auto px-6 md:px-10">
           <h2 
@@ -1155,7 +1180,7 @@ export default function SarlamAthleticsPage() {
         </div>
       </section>
 
-      {/* ───── FAQ Section ───── */}
+      {/* --- FAQ Section --- */}
       <section className="w-full bg-white py-16 md:py-20">
         <div className="max-w-[800px] mx-auto px-6 md:px-10">
           <h2 
@@ -1207,7 +1232,7 @@ export default function SarlamAthleticsPage() {
         </div>
       </section>
 
-      {/* ───── CTA Section ───── */}
+      {/* --- CTA Section --- */}
       <section className="w-full bg-white py-10 md:py-16">
         <div className="max-w-[1344px] mx-auto px-4 md:px-10">
           <div className="relative rounded-sm overflow-hidden">
@@ -1262,7 +1287,7 @@ export default function SarlamAthleticsPage() {
         </div>
       </section>
 
-    {/* ───── Footer ───── */}
+    {/* --- Footer --- */}
     <footer className="w-full bg-white">
       <div className="border-t border-gray-200" />
 
@@ -1453,27 +1478,25 @@ export default function SarlamAthleticsPage() {
       </div>
     </footer>
 
-      {/* ───── CSS Styles ───── */}
-      <style jsx>{`
-        @keyframes marquee {
-          0% {
-            transform: translateX(0);
+      {/* --- CSS Styles --- */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
           }
-          100% {
-            transform: translateX(-50%);
+          .animate-marquee {
+            animation: marquee 20s linear infinite;
           }
-        }
-        .animate-marquee {
-          animation: marquee 20s linear infinite;
-        }
-        .hide-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-        .hide-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}</style>
+          .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+          }
+          .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+        `
+      }} />
     </div>
   );
 }

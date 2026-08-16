@@ -3,6 +3,9 @@
 import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 
+// ─── Import Centralized Header ──────────────────────────────────────────────
+import { Header } from "../home/home";
+
 // ─── Image Placeholder ──────────────────────────────────────────────────────
 const ImagePlaceholder = ({
   className = "",
@@ -60,131 +63,6 @@ const GridIcon = () => (
     <rect x="9" y="9" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
   </svg>
 );
-
-const MenuIcon = () => (
-  <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
-    <line y1="1" x2="20" y2="1" stroke="currentColor" strokeWidth="2" />
-    <line y1="7" x2="20" y2="7" stroke="currentColor" strokeWidth="2" />
-    <line y1="13" x2="20" y2="13" stroke="currentColor" strokeWidth="2" />
-  </svg>
-);
-
-const SearchIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <circle cx="9" cy="9" r="7" stroke="currentColor" strokeWidth="2" />
-    <line x1="14" y1="14" x2="19" y2="19" stroke="currentColor" strokeWidth="2" />
-  </svg>
-);
-
-const LogoMark = ({ className = "" }: { className?: string }) => (
-  <svg viewBox="0 0 30 34" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M24 0L4 14h13L0 34l26-15H12L24 0z" fill="currentColor" />
-  </svg>
-);
-
-// ─── Header Component ───────────────────────────────────────────────────────
-function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  return (
-    <header className="sticky top-0 z-50 w-full bg-white border-b border-gray-100 flex justify-center">
-      <div className="relative w-full max-w-[1440px] px-6 md:px-10 h-[52px]">
-
-        {/* ─── DESKTOP VIEW ─── */}
-        <div className="hidden lg:flex items-center justify-between w-full h-full">
-          {/* Left Nav */}
-          <div className="flex items-center gap-4">
-            <button>
-              <MenuIcon />
-            </button>
-            <div className="w-[2px] h-12 bg-gray-300" />
-            <nav className="flex items-center gap-4">
-              <Link href="/products" className="hover:opacity-70 transition" style={navLinkStyle}>Products</Link>
-              <Link href="/manufacture" className="hover:opacity-70 transition" style={navLinkStyle}>Manufacturing</Link>
-            </nav>
-          </div>
-
-          {/* Logo */}
-          <Link href="/" className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2" style={logoStyle}>
-            <LogoMark className="w-[18px] h-[20px]" />
-            <span className="whitespace-nowrap tracking-tight">Sarlam Athletics</span>
-          </Link>
-
-          {/* Right Nav */}
-          <div className="flex items-center gap-6">
-            <Link href="/privatelabel" className="hover:opacity-70 transition" style={navLinkStyle}>About</Link>
-            <Link href="/contact" className="hover:opacity-70 transition" style={navLinkStyle}>Contact</Link>
-            <div className="w-[2px] h-12 bg-gray-300" />
-            <button className="hover:opacity-70 transition text-[#0D0D0D]">
-              <SearchIcon />
-            </button>
-          </div>
-        </div>
-
-        {/* ─── MOBILE VIEW ─── */}
-        <div className="flex lg:hidden items-center justify-between w-full h-full">
-          <Link href="/" className="flex items-center gap-2" style={logoStyle}>
-            <LogoMark className="w-[18px] h-[20px]" />
-            <span className="whitespace-nowrap tracking-tight">Sarlam Athletics</span>
-          </Link>
-
-          <button
-            className="flex items-center p-2 -mr-2 text-[#0D0D0D]"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle Menu"
-          >
-            <MenuIcon />
-          </button>
-        </div>
-      </div>
-
-      {isMobileMenuOpen && (
-        <div className="lg:hidden absolute top-[52px] left-0 w-full bg-white border-b border-gray-100 shadow-lg flex flex-col py-6 px-6 gap-6 z-50">
-          {[
-            { label: "Products", href: "/products" },
-            { label: "Private Label", href: "/privatelabel" },
-            { label: "Manufacturing", href: "/manufacture" },
-            { label: "About", href: "/about" },
-            { label: "Contact", href: "/contact" },
-          ].map((link, idx) => (
-            <Link
-              key={idx}
-              href={link.href}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="hover:opacity-70 transition text-[14px] leading-[18px]"
-              style={{
-                fontFamily: "'FFF Acid Grotesk', sans-serif",
-                fontWeight: 500,
-                textTransform: "uppercase",
-                color: "#0D0D0D",
-              }}
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
-      )}
-    </header>
-  );
-}
-
-const navLinkStyle = {
-  fontFamily: "'FFF Acid Grotesk', sans-serif",
-  fontWeight: 500,
-  fontSize: "12px",
-  lineHeight: "18px",
-  textTransform: "uppercase" as const,
-  color: "#0D0D0D",
-};
-
-const logoStyle = {
-  fontFamily: "'FFF Acid Grotesk', sans-serif",
-  fontWeight: 700,
-  fontStyle: "italic",
-  fontSize: "18px",
-  textTransform: "uppercase" as const,
-  color: "#0D0D0D",
-};
 
 // ─── Product Data ──────────────────────────────────────────────────────────
 const allProducts = [
@@ -375,7 +253,7 @@ export default function ProductPage() {
         </div>
       </div>
 
-      {/* ───── 2. Header (Sticky Nav) ───── */}
+      {/* ───── 2. Header (Sticky Nav imported from home.tsx) ───── */}
       <Header />
 
       {/* ───── 3. Hero Section ───── */}
@@ -511,7 +389,7 @@ export default function ProductPage() {
         </div>
       </section>
 
-     {/* ───── 5. Product Grid Section ───── */}
+      {/* ───── 5. Product Grid Section ───── */}
       <section className="w-full bg-white flex justify-center">
         <div className="w-full max-w-[1440px]">
           {/* Header & Filters Boxed */}
@@ -677,7 +555,7 @@ export default function ProductPage() {
 
           {/* CTA Boxed */}
           <div className="flex justify-center py-8 md:py-12 px-6 md:px-0">
-           <a
+            <a
               href="#"
               className="inline-flex items-center justify-center bg-white text-black w-full md:w-auto uppercase px-10 py-4 border border-black hover:bg-gray-100 transition text-[14px]"
               style={{
@@ -1078,26 +956,24 @@ export default function ProductPage() {
       </footer>
 
       {/* ───── Marquee Animation ───── */}
-      <style jsx>{`
-        @keyframes marquee {
-          0% {
-            transform: translateX(0);
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
           }
-          100% {
-            transform: translateX(-50%);
+          .animate-marquee {
+            animation: marquee 25s linear infinite;
           }
-        }
-        .animate-marquee {
-          animation: marquee 25s linear infinite;
-        }
-        .hide-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-        .hide-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}</style>
+          .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+          }
+          .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+        `
+      }} />
     </div>
   );
 }
