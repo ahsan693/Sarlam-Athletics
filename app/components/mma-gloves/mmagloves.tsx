@@ -1,30 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import Head from "next/head";
 import Link from "next/link";
 
-// ─── Image Placeholder ───
-const ImagePlaceholder = ({
-  className = "",
-  label = "Image",
-  src,
-}: {
-  className?: string;
-  label?: string;
-  src?: string;
-}) => {
-  if (src) {
-    return <img src={src} alt={label} className={`object-cover ${className}`} />;
-  }
-
-  return (
-    <div
-      className={`bg-gray-200 flex items-center justify-center text-gray-400 text-sm ${className}`}
-    >
-      <span className="text-center px-4">[{label}]</span>
-    </div>
-  );
-};
+// ─── Import Centralized Header ──────────────────────────────────────────────
+import { Header } from "../home/home";
 
 // ─── Icons (inline SVGs) ───
 const ArrowUpRight = () => (
@@ -33,790 +14,837 @@ const ArrowUpRight = () => (
   </svg>
 );
 
-const MenuIcon = () => (
-  <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
-    <line y1="1" x2="20" y2="1" stroke="currentColor" strokeWidth="2" />
-    <line y1="7" x2="20" y2="7" stroke="currentColor" strokeWidth="2" />
-    <line y1="13" x2="20" y2="13" stroke="currentColor" strokeWidth="2" />
+const SearchOutline = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <circle cx="11" cy="11" r="8" />
+    <path d="m21 21-4.3-4.3" />
   </svg>
 );
 
-const SearchIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <circle cx="9" cy="9" r="7" stroke="currentColor" strokeWidth="2" />
-    <line x1="14" y1="14" x2="19" y2="19" stroke="currentColor" strokeWidth="2" />
+const LinkIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
   </svg>
 );
 
-const ChevronDownIcon = () => (
-  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-    <path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+const TargetIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <circle cx="12" cy="12" r="10" />
+    <circle cx="12" cy="12" r="6" />
+    <circle cx="12" cy="12" r="2" />
   </svg>
 );
 
-const ColumnsIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <rect x="1" y="1" width="6" height="14" stroke="currentColor" strokeWidth="1.5" />
-    <rect x="9" y="1" width="6" height="14" stroke="currentColor" strokeWidth="1.5" />
+const HandshakeIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z" />
   </svg>
 );
 
-const GridIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <rect x="1" y="1" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
-    <rect x="9" y="1" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
-    <rect x="1" y="9" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
-    <rect x="9" y="9" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
+const ChevronDown = ({ className = "" }: { className?: string }) => (
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 18 18"
+    fill="none"
+    className={className}
+  >
+    <path
+      d="M4 7l5 5 5-5"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
-const LogoMark = ({ className = "" }: { className?: string }) => (
-  <svg viewBox="0 0 30 34" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M24 0L4 14h13L0 34l26-15H12L24 0z" fill="currentColor" />
-  </svg>
-);
-
-function CheckIcon() {
+// ─── Hero Section ───
+function HeroSection() {
   return (
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-      <path
-        d="M3.5 9.5L7 13L14.5 5"
-        stroke="#0D0D0D"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+    <section className="relative w-full h-[540px] md:h-[620px] bg-[#0D0D0D] overflow-hidden rounded-b-[16px] md:rounded-b-[24px]">
+      {/* Background image */}
+      <img
+        src="/Page 4/01.png"
+        alt="Boxing equipment manufacturing"
+        className="absolute inset-0 w-full h-full object-cover"
       />
-    </svg>
+
+      {/* Dark maroon overlay for text readability + mood */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-[#3a0f14]/60 to-black/70" />
+
+      {/* Text overlay — centered */}
+      <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 md:px-12 text-center mt-4 md:mt-0">
+        <div className="max-w-[760px] flex flex-col items-center">
+          <p 
+            className="mb-4 md:mb-5 text-[13px] md:text-[15px]"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 500,
+              letterSpacing: "0.15em",
+              textTransform: "uppercase",
+              color: "#F0EDE9",
+            }}
+          >
+            ABOUT SARLAM ATHLETICS
+          </p>
+          <h1 
+            className="text-[36px] leading-[40px] md:text-[56px] md:leading-[105%]"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 700,
+              letterSpacing: "-2px",
+              textTransform: "uppercase",
+              color: "#FFFFFF",
+            }}
+          >
+            Private Label Sports Equipment Manufacturing Built for Growing Brands
+          </h1>
+          <p
+            className="mt-4 md:mt-6 text-[14px] leading-[20px] md:hidden block"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 400,
+              color: "#FFFFFF",
+            }}
+          >
+            Simplifying production from prototype to worldwide delivery.
+          </p>
+        </div>
+      </div>
+    </section>
   );
 }
 
-function InfoIcon() {
+// ─── Video / Mission Section ───
+function VideoSection() {
   return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" />
-      <line x1="8" y1="11" x2="8" y2="7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      <circle cx="8" cy="4.5" r="1" fill="currentColor" />
-    </svg>
-  );
-}
-
-// ─── Header Component ───
-function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  return (
-  <header className="sticky top-0 z-50 bg-white border-b border-gray-100">
-      <div className="relative max-w-[1440px] mx-auto px-6 md:px-4 h-[52px]">
-        {/* ─── DESKTOP VIEW ─── */}
-        <div className="hidden lg:flex items-center justify-between w-full h-full">
-          <div className="flex items-center gap-4">
-            <button>
-              <MenuIcon />
-            </button>
-            <div className="w-[2px] h-12 bg-gray-300" />
-            <nav className="flex items-center gap-4">
-              <Link href="/products" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">Products</Link>
-                <Link href="/manufacture" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">Manufacturing</Link>
-            </nav>
+    <section className="py-16 md:py-[120px] px-6 md:px-8 bg-white">
+      <div className="max-w-[1376px] mx-auto space-y-8 md:space-y-12">
+        {/* Heading row */}
+        <div className="flex flex-col md:flex-row gap-4 md:gap-0">
+          <div className="md:w-1/2 space-y-0">
+            <h2 
+              className="text-[28px] leading-[32px] md:text-[37px] md:leading-[45.6px]"
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 700,
+                letterSpacing: "-1.52px",
+                color: "#000000",
+              }}
+            >
+              Why Sarlam Athletics Exists
+            </h2>
+            <h2 
+              className="text-[28px] leading-[32px] md:text-[37px] md:leading-[45.6px]"
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 700,
+                letterSpacing: "-1.52px",
+                color: "#000000",
+              }}
+            >
+              Our Mission
+            </h2>
           </div>
-          <Link href="/" className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2 text-[18px] font-bold italic uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">
-            <LogoMark className="w-[18px] h-[20px]" />
-            <span className="whitespace-nowrap tracking-tight">Sarlam Athletics</span>
-          </Link>
-          <div className="flex items-center gap-6">
-            <Link href="/privatelabel" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">About</Link>
-            <Link href="/contact" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">Contact</Link>
-            <div className="w-[2px] h-12 bg-gray-300" />
-            <button className="hover:opacity-70 transition text-[#0D0D0D]">
-              <SearchIcon />
-            </button>
+          <div className="md:w-1/2 mt-2 md:mt-0">
+            <p 
+              className="text-[14px] leading-[22px] md:text-[16px] md:leading-[24px]"
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 400,
+                letterSpacing: "0px",
+                color: "#434343",
+              }}
+            >
+              Many sports brands struggle to find reliable manufacturing partners that deliver
+              consistent quality, transparent communication, and dependable production timelines.
+              Sarlam Athletics was built to simplify the manufacturing process through factory-direct
+              production, custom development, and long-term OEM partnerships. We work with boxing
+              brands, MMA companies, martial arts academies, fitness businesses, wholesalers, and
+              retailers to manufacture high-quality private label sports equipment with flexible
+              production options and strict quality control.
+            </p>
           </div>
         </div>
 
-        {/* ─── MOBILE VIEW ─── */}
-        <div className="flex lg:hidden items-center justify-between w-full h-full">
-          <Link href="/" className="flex items-center gap-2 text-[18px] font-bold italic uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">
-            <LogoMark className="w-[18px] h-[20px]" />
-            <span className="whitespace-nowrap tracking-tight">Sarlam Athletics</span>
-          </Link>
-          <button 
-            className="flex items-center p-2 -mr-2 text-[#0D0D0D]"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle Menu"
+        {/* Video placeholder */}
+        <div className="relative w-full aspect-[4/3] md:aspect-[1376/535] rounded-lg overflow-hidden bg-gray-200 group cursor-pointer">
+          <img
+            src="/Page 4/02.png"
+            alt="Martial arts training"
+            className="w-full h-full object-cover"
+          />
+          {/* Dark overlay */}
+          <div className="absolute inset-0 bg-black/15 group-hover:bg-black/25 transition-colors" />
+          {/* Play button */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/90 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#0D0D0D" className="md:w-6 md:h-6">
+                <polygon points="8,5 20,12 8,19" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Our Values Section ───
+const values = [
+  {
+    icon: <SearchOutline />,
+    title: "Honest Product Assessment",
+    description:
+      "Every project begins with a practical review of your product requirements, materials, branding, production feasibility, and budget to ensure successful manufacturing.",
+  },
+  {
+    icon: <LinkIcon />,
+    title: "Material Sourcing Expertise",
+    description:
+      "We source premium leather, PU, microfiber, EVA foam, cotton, and performance fabrics based on your product category, quality requirements, and target price.",
+  },
+  {
+    icon: <TargetIcon />,
+    title: "Manufacturing Precision",
+    description:
+      "Every production run follows detailed quality inspections covering stitching, materials, padding, sizing, branding, finishing, and packaging.",
+  },
+  {
+    icon: <HandshakeIcon />,
+    title: "End-to-End Partnership",
+    description:
+      "From concept development and sampling to production, packaging, and worldwide shipping, we support every stage of your manufacturing journey.",
+  },
+];
+
+function ValuesSection() {
+  return (
+    <section className="pb-12 bg-white">
+      {/* Heading */}
+      <div className="pt-16 pb-8 md:pt-[120px] md:pb-12 px-6 md:px-8">
+        <div className="max-w-[1280px] mx-auto">
+          <h2 
+            className="text-[28px] leading-[32px] md:text-[37px] md:leading-[46px]"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 700,
+              letterSpacing: "-1.5px",
+              color: "#000000",
+            }}
           >
-            <MenuIcon />
-          </button>
+            Values
+          </h2>
         </div>
       </div>
 
-      {isMobileMenuOpen && (
-        <div className="lg:hidden absolute top-[52px] left-0 w-full bg-white border-b border-gray-100 shadow-lg flex flex-col py-6 px-6 gap-6 z-50">
-          {[
-            { label: "Products", href: "/products" },
-           
-            { label: "Manufacturing", href: "/manufacture" },
-            { label: "About", href: "/privatelabel" },
-            { label: "Contact", href: "/contact" },
-          ].map((link, idx) => (
-            <Link
-              key={idx}
-              href={link.href}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="hover:opacity-70 transition text-[14px] leading-[18px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]"
+      {/* Values grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-t border-gray-200">
+        {values.map((value, i) => (
+          <div
+            key={i}
+            className={`py-8 md:p-10 space-y-4 md:space-y-6 px-6 md:px-8 border-b md:border-b-0 lg:border-r border-gray-200`}
+          >
+            <div className="w-5 h-5 text-black">{value.icon}</div>
+            <h3 
+              className="text-[18px] leading-[24px] md:text-[22px] md:leading-[26px]"
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 500,
+                letterSpacing: "-0.4px",
+                color: "#000000",
+              }}
             >
-              {link.label}
+              {value.title}
+            </h3>
+            <p 
+              className="text-[14px] leading-[22px] md:text-[15px] md:leading-[24px]"
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 400,
+                letterSpacing: "0px",
+                color: "#434343",
+              }}
+            >
+              {value.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ─── Manufacturing Process Timeline ───
+const timelineSteps = [
+  {
+    title: "Consultation & Product Specs",
+    description:
+      "Tell us about your product, branding, materials, colors, packaging, order quantity, and target market so we can prepare detailed manufacturing specifications.",
+  },
+  {
+    title: "Sampling & Prototyping",
+    description:
+      "We produce development samples so you can review product quality, fit, construction, branding, and packaging before approving production.",
+  },
+  {
+    title: "Bulk Production & Quality Control",
+    description:
+      "After sample approval, production begins with continuous quality inspections covering materials, stitching, sizing, padding, logos, and packaging before shipment.",
+  },
+];
+
+function TimelineSection() {
+  return (
+    <section className="bg-black py-16 md:py-[200px] px-6 md:px-20">
+      <div className="max-w-[1000px] mx-auto flex flex-col items-start md:items-center text-left md:text-center">
+        {/* Heading */}
+        <div className="max-w-[820px] space-y-2 md:space-y-0 mb-10 md:mb-12">
+          <h2 
+            className="text-[24px] leading-[30px] md:text-[37px] md:leading-[46px]"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 500,
+              letterSpacing: "-1.5px",
+              color: "#B2B2B2",
+            }}
+          >
+            Our Manufacturing Process
+          </h2>
+          <h2 
+            className="text-[24px] leading-[30px] md:text-[37px] md:leading-[46px]"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 500,
+              letterSpacing: "-1.5px",
+              color: "#FFFFFF",
+            }}
+          >
+            From Product Development to Bulk Manufacturing
+          </h2>
+        </div>
+
+        {/* Timeline Wrapper */}
+        <div className="relative w-full flex flex-col items-start md:items-center pl-[5px] md:pl-0">
+          {/* Mobile vertical line */}
+          <div className="absolute top-2 bottom-0 left-[10px] w-[2px] bg-white/20 md:hidden" />
+          
+          {/* Desktop lead-in line before first dot */}
+          <div className="hidden md:block w-[3px] h-[100px] bg-gradient-to-b from-transparent to-white/30" />
+
+          {/* Steps */}
+          {timelineSteps.map((step, i) => (
+            <div key={i} className="relative flex flex-col md:items-center w-full mb-8 md:mb-0">
+              <div className="flex flex-row md:flex-col items-start md:items-center relative z-10 w-full">
+                <div className="shrink-0 w-3 h-3 rounded-full bg-[#B2B2B2] mt-[6px] md:mt-0 md:my-6 relative z-10" />
+                <div className="ml-6 md:ml-0 md:text-center max-w-[600px] space-y-2 md:space-y-4">
+                  <h3 
+                    className="text-[22px] leading-[28px] md:text-[33px] md:leading-[40px]"
+                    style={{
+                      fontFamily: "'FFF Acid Grotesk', sans-serif",
+                      fontWeight: 500,
+                      letterSpacing: "-0.4px",
+                      color: "#FFFFFF",
+                    }}
+                  >
+                    {step.title}
+                  </h3>
+                  <p 
+                    className="text-[15px] leading-[22px] md:text-[17px] md:leading-[26px]"
+                    style={{
+                      fontFamily: "'FFF Acid Grotesk', sans-serif",
+                      fontWeight: 400,
+                      letterSpacing: "0px",
+                      color: "#CBCBCB",
+                    }}
+                  >
+                    {step.description}
+                  </p>
+                </div>
+              </div>
+              <div className="hidden md:block w-[3px] h-[220px] bg-white/20 mt-6" />
+            </div>
+          ))}
+        </div>
+
+        {/* CTA at bottom of timeline */}
+        <div className="max-w-[600px] space-y-6 md:space-y-8 mt-12 md:mt-2 w-full md:text-center">
+          <h2 
+            className="text-[28px] leading-[34px] md:text-[37px] md:leading-[44px]"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 500,
+              letterSpacing: "-1.5px",
+              color: "#FFFFFF",
+            }}
+          >
+            Ready to Launch Your Private Label Sports Brand?
+          </h2>
+          <Link
+            href="/contactus"
+            className="inline-block px-8 py-3.5 border border-white rounded-md w-full md:w-auto text-center bg-white hover:bg-transparent hover:text-white transition-colors text-[14px]"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 700,
+              letterSpacing: "5%",
+              textTransform: "uppercase",
+              color: "#000000",
+            }}
+          >
+            Get in Touch
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── OEM & Private Label Services Section ─── 
+const services = [
+  {
+    title: "Private Label & OEM Manufacturing",
+    description:
+      "Manufacture custom boxing gloves, MMA gear, martial arts uniforms, belts, wraps, and training accessories under your brand.",
+    image: "/Page 4/03.png",
+  },
+  {
+    title: "Wholesale Sports Equipment",
+    description:
+      "Factory-direct production for sports brands, gyms, wholesalers, distributors, and retailers with scalable manufacturing capacity.",
+    image: "/Page 4/04.png",
+  },
+  {
+    title: "Product Development & Sampling",
+    description:
+      "Develop and refine your products through prototype sampling, material testing, branding, and packaging before production.",
+    image: "/Page 4/05.png",
+  },
+];
+
+function ServicesSection() {
+  return (
+    <section className="py-0 bg-white">
+      {/* Heading */}
+      <div className="px-6 md:px-8 pt-12 md:pt-0 pb-8 md:pb-12">
+        <div className="max-w-[1280px] mx-auto">
+          <h2 
+            className="text-[28px] leading-[32px] md:text-[37px] md:leading-[46px]"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 700,
+              letterSpacing: "-1.5px",
+              color: "#000000",
+            }}
+          >
+            OEM & Private Label Manufacturing Services
+          </h2>
+        </div>
+      </div>
+
+      {/* Services grid - 3 columns */}
+      <div className="grid grid-cols-1 md:grid-cols-3 border-t border-gray-200">
+        {services.map((service, i) => (
+          <div
+            key={i}
+            className={`py-8 md:p-8 px-6 md:px-8 space-y-6 group cursor-pointer hover:bg-gray-50 transition-colors ${
+              i < services.length - 1 ? "md:border-r border-gray-200" : ""
+            } border-b md:border-b-0`}
+          >
+            {/* Text */}
+            <div className="space-y-3 md:space-y-4">
+              <h4 
+                className="group-hover:underline text-[20px] leading-[24px] md:text-[22px] md:leading-[26px]"
+                style={{
+                  fontFamily: "'FFF Acid Grotesk', sans-serif",
+                  fontWeight: 500,
+                  letterSpacing: "-0.4px",
+                  color: "#000000",
+                }}
+              >
+                {service.title}
+              </h4>
+              <p 
+                className="text-[14px] leading-[22px] md:text-[15px] md:leading-[24px]"
+                style={{
+                  fontFamily: "'FFF Acid Grotesk', sans-serif",
+                  fontWeight: 400,
+                  letterSpacing: "0px",
+                  color: "#434343",
+                }}
+              >
+                {service.description}
+              </p>
+            </div>
+            {/* Image */}
+            <div className="aspect-[4/3] rounded-lg overflow-hidden bg-gray-200 mt-6">
+              <img
+                src={service.image}
+                alt={service.title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ─── Products We Manufacture Section ───
+const productTags = [
+  "Private Label Boxing Gloves",
+  "BJJ Uniforms",
+  "Karate Gis",
+  "Martial Arts Belts",
+  "Boxing Hand Wraps",
+  "Protective Equipment",
+  "Training Jump Ropes",
+  "Combat Accessories",
+];
+
+function ProductsSection() {
+  return (
+    <section className="py-12 md:py-20 px-6 md:px-20 bg-white">
+      <div className="max-w-[1280px] mx-auto space-y-6 md:space-y-8">
+        <h2 
+          className="text-[28px] leading-[32px] md:text-[37px] md:leading-[46px]"
+          style={{
+            fontFamily: "'FFF Acid Grotesk', sans-serif",
+            fontWeight: 700,
+            letterSpacing: "-1.5px",
+            color: "#0D0D0D",
+          }}
+        >
+          Combat Sports Equipment We Manufacture
+        </h2>
+        <div className="flex flex-wrap gap-2 md:gap-4">
+          {productTags.map((tag, i) => (
+            <Link
+              key={i}
+              href={`/products`}
+              className="px-4 py-2 md:px-6 md:py-3.5 bg-[#F5F5F5] border border-[#DADADA] rounded-md hover:bg-[#E8E8E8] transition-colors text-[13px] md:text-[15px]"
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 500,
+                lineHeight: "1.4",
+                color: "#0D0D0D",
+              }}
+            >
+              {tag}
             </Link>
           ))}
         </div>
-      )}
-    </header>
+      </div>
+    </section>
   );
 }
 
-// ─── Data ───
-const finishOptions = ["MATTE", "GLOSSY", "STANDARD"];
-const fitOptions = ["MEN", "WOMEN", "UNISEX", "KIDS"];
-const materialOptions = [
-  "GENUINE LEATHER",
-  "PREMIUM MICROFIBER (VEGAN LEATHER)",
-  "SYNTHETIC LEATHER",
-  "HIGH-GRADE PU",
-];
-const brandingOptions = [
-  "SCREEN PRINT (BACK OF HAND)",
-  "EMBROIDERY (WRIST STRAP)",
-  "WOVEN LABEL (WRIST STRAP)",
-  "3D RUBBER PATCH (WRIST STRAP)"
-];
-const packagingOptions = [
-  "POLY BAG",
-  "CUSTOM DRAWSTRING BAG",
-  "ZIP PE BAG"
+// ─── Industries We Serve Section ───
+const industries = [
+  { title: "Sports Brands", image: "https://images.unsplash.com/photo-1515523110800-9415d13b84a8?auto=format&fit=crop&q=80&w=600" },
+  { title: "Gyms & Martial Arts Academies", image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=600" },
+  { title: "Retailers & eCommerce Brands", image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=600" },
+  { title: "Wholesale Distributors", image: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&q=80&w=600" },
+  { title: "Sports Equipment Companies", image: "https://images.unsplash.com/photo-1515523110800-9415d13b84a8?auto=format&fit=crop&q=80&w=600" },
 ];
 
-const sizeOptions = ["10OZ", "12OZ", "14OZ", "16OZ"];
-
-const relatedProducts = [
-  { 
-    name: "Jiu Jitsu Suit (Gi)", 
-    image: "/Products/02 BJJ Gis and Jiu-Jitsu Uniforms.png" 
-  },
-  { 
-    name: "Boxing Gloves", 
-    image: "/Products/01 Private Label Boxing Gloves.png" 
-  },
-  { 
-    name: "MMA Full Fight Gloves", 
-    image: "/Products/03 MMA Fight Gloves.png" 
-  },
-  { 
-    name: "Boxing Head Guard", 
-    image: "/Products/07 Custom Boxing Headguards.png" 
-  },
-];
-
-const moqCards = [
-  {
-    title: "Minimum Order Quantity",
-    description:
-      "MOQs vary based on product specifications, fabric choice, colors, labels, and packaging requirements.",
-  },
-  {
-    title: "Wholesale Pricing",
-    description:
-      "Pricing is quoted based on materials, construction, branding method, order size, and delivery requirements.",
-  },
-  {
-    title: "Sample Development",
-    description:
-      "Samples help you review fit, stitching, fabric, branding, and packaging before approving bulk production.",
-  },
-];
-
-const features = [
-  { text: "Factory-Direct Manufacturing" },
-  { text: "OEM & Private Label Production" },
-  { text: "Flexible Minimum Order Quantities" },
-  { text: "Worldwide Shipping" },
-];
-
-export default function MMAFullFightGlovesPage() {
-  const [selectedFinish, setSelectedFinish] = useState<string[]>(["MATTE"]);
-  const [selectedFit, setSelectedFit] = useState<string[]>(["UNISEX"]);
-  const [selectedMaterial, setSelectedMaterial] = useState<string[]>(["GENUINE LEATHER"]);
-  const [selectedBranding, setSelectedBranding] = useState<string[]>(["SCREEN PRINT (BACK OF HAND)"]);
-  const [selectedSize, setSelectedSize] = useState<string[]>(["12OZ"]);
-  const [selectedPackaging, setSelectedPackaging] = useState<string[]>(["POLY BAG"]);
-
-  const toggleOption = (
-    option: string,
-    state: string[],
-    setState: React.Dispatch<React.SetStateAction<string[]>>
-  ) => {
-    setState((prev) =>
-      prev.includes(option) ? prev.filter((o) => o !== option) : [...prev, option]
-    );
-  };
-
+function IndustriesSection() {
   return (
-    <div className="min-h-screen bg-white font-['FFF_Acid_Grotesk',sans-serif]">
-      
-      <Header />
+    <section className="py-12 px-6 md:px-3 bg-white">
+      <div className="max-w-[1416px] mx-auto space-y-8 md:space-y-10">
+        <p 
+          className="text-left md:text-center text-[13px] md:text-[15px]"
+          style={{
+            fontFamily: "'FFF Acid Grotesk', sans-serif",
+            fontWeight: 500,
+            letterSpacing: "0.15em",
+            textTransform: "uppercase",
+            color: "#000000",
+          }}
+        >
+          Industries We Serve
+        </p>
 
-      {/* ── Announcement Banner ── */}
-      <div className="bg-[#0D0D0D] h-[34px] flex items-center justify-center overflow-hidden">
-        <div className="flex animate-marquee whitespace-nowrap">
-          {[...Array(6)].map((_, i) => (
-            <span key={i} className="text-white text-xs font-medium mx-8 tracking-widest md:tracking-normal uppercase">
-              SAMPLES, MOQS, AND CUSTOM PRODUCTION OPTIONS FOR YOUR BRAND.
-            </span>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-6 border-t border-gray-200 pt-6">
+          {industries.map((industry, i) => (
+            <div
+              key={i}
+              className="relative aspect-[251/284] overflow-hidden rounded-md group cursor-pointer"
+            >
+              {/* Background image */}
+              <img
+                src={industry.image}
+                alt={industry.title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              {/* Title */}
+              <div className="absolute bottom-4 left-4 right-4">
+                <h3 
+                  className="text-[16px] leading-[20px] md:text-[26px] md:leading-[26px]"
+                  style={{
+                    fontFamily: "'Switzer', sans-serif",
+                    fontWeight: 600,
+                    letterSpacing: "-0.44px",
+                    color: "#FFFFFF",
+                  }}
+                >
+                  {industry.title}
+                </h3>
+              </div>
+            </div>
           ))}
         </div>
       </div>
+    </section>
+  );
+}
 
-      {/* ── Hero Banner ── */}
-      <section className="relative h-[320px] md:h-[480px] overflow-hidden">
-        <div className="absolute inset-0 bg-black">
-       <img
-  src="/Page 7/01-1.png"
-  alt="Private Label Sports Equipment Manufacturing"
-  className="w-full h-full object-cover opacity-60"
-/>
-        </div>
-        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
-          <span className="text-[13px] md:text-[15px] font-medium mb-3 md:mb-4 tracking-wide text-[#CCCCCC] uppercase">
-            PRODUCTS
-          </span>
-          <h1 className="text-[32px] leading-[36px] md:text-[44px] font-bold text-white md:leading-tight max-w-[800px] uppercase">
-            Private Label Sports Equipment Manufacturing
-          </h1>
-        </div>
-      </section>
+// ─── Footer ───
+function Footer() {
+  const footerNav = {
+    pages: [
+      { label: "Home", href: "/" },
+      { label: "Products", href: "/products" },
+      { label: "Private Label", href: "/privatelabel" },
+      { label: "Manufacturing Process", href: "/manufacture" },
+    ],
+    company: [
+      { label: "About", href: "/about" },
+      { label: "Contact", href: "/contactus" },
+      { label: "Request Quote", href: "/contactus" },
+    ],
+    products: [
+      { label: "Boxing Gloves", href: "/products" },
+      { label: "Martial Arts Uniforms", href: "/products" },
+      { label: "MMA Gear", href: "/products" },
+      { label: "Training Accessories", href: "/products" },
+    ],
+  };
 
-      {/* ── Product Presentation Grid ── */}
-      <section className="px-5 md:px-16 py-10 md:py-20">
-        <div className="flex flex-col lg:flex-row gap-10 lg:gap-32 max-w-[1440px] mx-auto">
-          {/* Left: Product Image */}
-          <div className="w-full lg:w-[616px] shrink-0">
-            <div className="bg-[#F9F9F9] rounded-none p-4 md:p-2 aspect-[4/5] md:aspect-square flex items-center justify-center lg:sticky lg:top-24">
-            <img
-  src="/Products/03 MMA Fight Gloves.png"
-  alt="MMA Full Fight Gloves"
-  className="w-[100%] h-[100%] md:w-[600px] md:h-[600px] object-cover md:object-contain mix-blend-multiply"
-/>
-            </div>
-          </div>
+  return (
+    <footer className="bg-white">
+      {/* Divider */}
+      <div className="h-px bg-[#D7DADE]" />
 
-          {/* Right: Product Configuration Panel */}
-          <div className="flex-1 max-w-full lg:max-w-[616px]">
-            {/* Breadcrumbs */}
-            <nav className="flex items-center flex-wrap gap-2 text-[10px] md:text-xs text-[#6A7282] mb-6 md:mb-8 font-medium uppercase tracking-wide">
-              <a href="/" className="hover:underline">Home</a>
-              <span>/</span>
-              <a href="/products" className="hover:underline">MMA Gear</a>
-              <span>/</span>
-              <span className="text-[#0D0D0D]">MMA Full Fight Gloves</span>
-            </nav>
-
-            {/* Title */}
-            <div className="mb-6">
-              <p className="text-[12px] md:text-sm font-bold text-[#666666] uppercase">
-                Martial Arts Equipment Manufacturing
-              </p>
-              <h2 className="text-[32px] leading-[36px] md:text-[44px] md:leading-tight font-bold text-[#0D0D0D] mt-2">
-                MMA Full Fight Gloves
-              </h2>
-              <p className="text-[15px] leading-[22px] md:text-xl text-[#0D0D0D] mt-3 md:mt-4 md:leading-relaxed font-normal">
-                Custom MMA boxing glove manufacturing designed for heavy bag work, padwork, and sparring.
-              </p>
-            </div>
-
-            {/* Divider */}
-            <hr className="border-t border-gray-200 mb-6" />
-
-            {/* Description */}
-            <div className="mb-8 md:mb-6">
-              <p className="text-[14px] leading-[22px] md:text-base text-[#666666] md:leading-relaxed font-normal">
-                Sarlam Athletics manufactures custom MMA boxing gloves for combat sports brands, martial arts academies, gyms, retailers, and distributors. We support custom materials, sizing, colorways, padding, wrist closures, labels, packaging, and branding details for wholesale production.
-              </p>
-              <p className="text-[14px] leading-[22px] md:text-base text-[#666666] md:leading-relaxed mt-4 font-normal">
-                Samples can be developed before bulk manufacturing so your team can review fit, sizing, padding, wrist support, material feel, logo placement, and final presentation before approving a larger order.
-              </p>
-            </div>
-
-            {/* Customize Heading */}
-            <div className="mb-6 md:mb-8">
-              <h3 className="text-[22px] leading-[26px] md:text-[26px] font-bold text-[#101828]">
-                Customise Your Order
-              </h3>
-            </div>
-
-            {/* Option Groups */}
-            <OptionGroup
-              label="Select Finish"
-              options={finishOptions}
-              selectedOptions={selectedFinish}
-              onSelect={(val) => toggleOption(val, selectedFinish, setSelectedFinish)}
-            />
-
-            <OptionGroup
-              label="Fit/Gender"
-              guideLabel="Gender Guide"
-              options={fitOptions}
-              selectedOptions={selectedFit}
-              onSelect={(val) => toggleOption(val, selectedFit, setSelectedFit)}
-            />
-
-            <OptionGroup
-              label="Material/Fabric"
-              guideLabel="Fabric Guide"
-              options={materialOptions}
-              selectedOptions={selectedMaterial}
-              onSelect={(val) => toggleOption(val, selectedMaterial, setSelectedMaterial)}
-            />
-
-            <OptionGroup
-              label="Branding Method"
-              options={brandingOptions}
-              selectedOptions={selectedBranding}
-              onSelect={(val) => toggleOption(val, selectedBranding, setSelectedBranding)}
-            />
-
-            {/* Size/Weight Selector - Grouped layout */}
-            <div className="mb-6 md:mb-8">
-              <div className="flex items-center justify-between mb-3">
-                <label className="text-[13px] md:text-sm font-bold text-[#0D0D0D] uppercase">Size/Weight Options</label>
-                <button className="text-[11px] md:text-xs text-[#666666] hover:underline font-medium">
-                  Weight Guide
-                </button>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="flex flex-wrap gap-2 md:gap-3">
-                  {sizeOptions.map((size) => (
-                    <button
-                      key={size}
-                      onClick={() => toggleOption(size, selectedSize, setSelectedSize)}
-                      className={`px-4 py-3 md:px-5 md:py-[15px] border text-[13px] md:text-[15px] font-medium transition-all ${
-                        selectedSize.includes(size)
-                          ? "border-[#0D0D0D] text-[#0D0D0D] bg-white"
-                          : "border-gray-200 text-[#0D0D0D] hover:border-gray-400"
-                      }`}
-                    >
-                      {size}
-                    </button>
-                  ))}
-                </div>
-
-                {/* Other Input Field */}
-                <div>
-                  <span className="block text-[11px] md:text-xs font-medium text-[#666666] mb-2 uppercase">
-                    Other
-                  </span>
-                  <input 
-                    type="text" 
-                    placeholder="Any other" 
-                    className="border border-gray-200 px-4 py-3 md:py-[15px] w-full text-[13px] md:text-[15px] focus:outline-none focus:border-[#0D0D0D] font-medium"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <OptionGroup
-              label="Packaging Method"
-              options={packagingOptions}
-              selectedOptions={selectedPackaging}
-              onSelect={(val) => toggleOption(val, selectedPackaging, setSelectedPackaging)}
-            />
-
-            {/* Quantity Input */}
-            <div className="mb-6 md:mb-8">
-              <div className="flex items-center justify-between mb-3">
-                <label className="text-[13px] md:text-sm font-bold text-[#0D0D0D] uppercase">
-                  Quantity
-                </label>
-              </div>
-              <input 
-                type="number" 
-                placeholder="Enter quantity" 
-                className="border border-gray-200 px-4 py-3 md:py-[15px] w-full text-[13px] md:text-[15px] focus:outline-none focus:border-[#0D0D0D] font-medium"
-              />
-              <div className="flex items-center gap-2 mt-3">
-                <span className="text-[#D92D20] shrink-0">
-                  <InfoIcon />
-                </span>
-                <span className="text-[#D92D20] text-[11px] md:text-[12px] font-medium tracking-wide">
-                  Please ensure your order meets our Minimum Quantity
-                </span>
-              </div>
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="space-y-3 md:space-y-4 mb-4 mt-8 md:mt-12">
-              <button className="w-full bg-[#0D0D0D] text-white text-[13px] md:text-sm font-bold py-4 md:py-[18px] hover:bg-black/90 transition-colors uppercase tracking-wide">
-                Request Manufacturing Quote
-              </button>
-              <button className="w-full border border-[#0D0D0D] text-[#0D0D0D] text-[13px] md:text-sm font-bold py-4 md:py-[18px] hover:bg-gray-50 transition-colors uppercase tracking-wide">
-                Ask About Samples
-              </button>
-            </div>
-            <p className="text-[11px] md:text-xs text-[#999999] text-center font-normal">
-              Share your product specs and our team will respond with MOQ, sample, and wholesale production options.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Features Strip ── */}
-      <section className="px-6 md:px-16 pb-12 md:pb-16">
-        <hr className="border-t border-gray-200 mb-8 md:mb-10 max-w-[1416px] mx-auto" />
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between max-w-[1416px] mx-auto gap-4 md:gap-0">
-          {features.map((feature, i) => (
-            <div key={i} className="flex items-center gap-3">
-              <div className="w-[24px] h-[24px] md:w-[30px] md:h-[30px] flex items-center justify-center shrink-0">
-                <CheckIcon />
-              </div>
-              <p className="text-[14px] md:text-[15px] font-medium text-[#0D0D0D] md:max-w-[205px] leading-snug">
-                {feature.text}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── You May Also Like ── */}
-      <section className="bg-white px-6 md:px-16 py-12 md:py-20 border-t border-gray-100">
-        <div className="max-w-[1440px] mx-auto">
-          <div className="flex items-center justify-between mb-8 md:mb-12">
-            <h2 className="text-[22px] leading-[28px] md:text-[26px] font-bold text-[#0D0D0D] max-w-[250px] md:max-w-none uppercase">
-              Martial Arts Uniform Manufacturing Options
-            </h2>
-            <a
-              href="/products"
-              className="text-[12px] md:text-sm font-bold text-[#0D0D0D] hover:underline flex items-center gap-1 uppercase shrink-0 text-right"
-            >
-              View all options
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" />
-              </svg>
-            </a>
-          </div>
-          <div className="flex gap-4 md:gap-0 overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-            {relatedProducts.map((product, i) => (
-              <div
-                key={i}
-                className="w-[280px] md:w-[360px] snap-start shrink-0 border border-[#C9C9C9] group cursor-pointer"
-              >
-                <div className="relative h-[220px] md:h-[280px] bg-gray-100 overflow-hidden">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                    <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-[#0D0D0D] text-white text-[6.5px] font-medium px-3 py-1.5 uppercase tracking-wider">
-                      Quick View
-                    </span>
-                  </div>
-                </div>
-                <div className="px-3 py-3 md:px-4 md:py-3 flex flex-col md:flex-row md:items-center justify-between gap-2 md:gap-0">
-                  <span className="text-[11px] md:text-[10px] font-bold text-[#0D0D0D] uppercase">
-                    {product.name}
-                  </span>
-                  <button className="text-[10px] md:text-[8px] font-medium text-[#0D0D0D] border border-[#0D0D0D] px-2 py-1.5 md:py-1 hover:bg-[#0D0D0D] hover:text-white transition-colors uppercase self-start md:self-auto">
-                    Request Quote
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Quality Control Banner ── */}
-      <section className="px-0 md:px-6 py-0">
-        <div className="relative rounded-none overflow-hidden max-w-[1380px] mx-auto">
-          <div className="absolute inset-0 bg-black">
-         <img
-  src="/Page 7/01.png"
-  alt="Quality Control"
-  className="w-full h-full object-cover opacity-50"
-/>
-          </div>
-          <div className="relative z-10 flex flex-col items-center justify-center text-center py-20 px-6 md:py-36 md:px-8">
-            <h2 className="text-[24px] md:text-[26px] font-bold text-white mb-4 max-w-[654px] uppercase leading-tight">
-              Quality Control for Every Production Run
-            </h2>
-            <p className="text-[14px] md:text-base text-white/80 max-w-[654px] leading-relaxed font-normal">
-              Every approved sample becomes the benchmark for bulk manufacturing. We check sizing, stitching, fabric finish, reinforcement points, logo placement, labeling, and packaging before production moves into final delivery.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ── MOQ, Pricing, and Samples ── */}
-      <section className="px-6 md:px-20 py-12 md:py-20 max-w-[1440px] mx-auto border-t border-gray-100">
-        <h2 className="text-[26px] leading-[32px] md:text-[37px] md:leading-[46px] font-bold text-[#0D0D0D] mb-4 md:mb-6 tracking-tight">
-          MOQ, Pricing, and Samples
-        </h2>
-        <p className="text-[14px] leading-[22px] md:text-base text-[#666666] md:leading-relaxed mb-8 md:mb-10 max-w-[1280px] font-normal">
-          Minimum order quantities and pricing depend on fabric selection, customization level, branding method, packaging, and total order volume. Share your requirements and we'll recommend the best starting point for your martial arts uniform project.
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
-          {moqCards.map((card, i) => (
-            <div key={i} className="bg-[#F5F5F5] p-6 md:p-8">
-              <h3 className="text-[16px] md:text-sm font-bold text-[#0D0D0D] mb-2 md:mb-3 uppercase tracking-wide">
-                {card.title}
-              </h3>
-              <p className="text-[14px] md:text-sm text-[#666666] leading-relaxed font-normal">
-                {card.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── CTA Section ── */}
-      <section className="bg-white px-6 md:px-16 py-12 md:py-20 border-t border-gray-100">
-        <div className="max-w-[1312px] mx-auto text-center">
-          <h2 className="text-[26px] leading-[32px] md:text-[37px] md:leading-[46px] font-bold text-[#0D0D0D] mb-4 tracking-tight">
+      {/* Top section */}
+      <div className="flex flex-col lg:flex-row gap-10 md:gap-8 py-10 px-6 md:px-20">
+        {/* Left - CTA */}
+        <div className="lg:w-1/2 space-y-4 md:space-y-0">
+          <h2 
+            className="text-[32px] leading-[38px] md:text-[47px] md:leading-[58px]"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 500,
+              letterSpacing: "-1.9px",
+              color: "#000000",
+            }}
+          >
             Start Your Private Label Manufacturing Project
           </h2>
           <a
             href="mailto:hello@sarlamathletics.com"
-            className="text-[16px] md:text-lg text-[#0D0D0D] underline font-medium hover:opacity-70 transition-opacity"
+            className="hover:text-[#0D0D0D] transition-colors block text-[22px] leading-[30px] md:text-[47px] md:leading-[58px]"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 500,
+              letterSpacing: "-1px",
+              color: "#A5A5A5",
+            }}
           >
             hello@sarlamathletics.com
           </a>
         </div>
-      </section>
 
-      {/* ── Footer ── */}
-      <footer className="bg-white border-t border-[#D7DADE]">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-10 md:py-12 flex flex-col lg:flex-row justify-between gap-10 md:gap-12">
-          {/* Left */}
-          <div className="lg:w-1/2">
-            <h3 
-              className="mb-4 text-[32px] leading-[38px] md:text-[47px] md:leading-[58px] font-medium tracking-tight text-[#0D0D0D]"
-            >
-              Start Your Private Label
-              <br className="hidden md:block" />
-              <span className="md:hidden"> </span>Manufacturing Project
-            </h3>
-            <a
-              href="mailto:hello@sarlamathletics.com"
-              className="transition break-all hover:text-black text-[22px] leading-[30px] md:text-[47px] md:leading-[58px] font-medium text-[#A5A5A5] tracking-tight"
-            >
-              hello@sarlamathletics.com
-            </a>
+        {/* Right - Nav columns */}
+        <div className="lg:w-1/2 flex flex-col md:grid md:grid-cols-3 gap-8">
+          {/* Pages */}
+          <div className="space-y-3">
+            {footerNav.pages.map((link) => (
+              <div
+                key={link.label}
+                className="flex items-center justify-between group border-b border-gray-200 pb-2 md:border-b-0 md:pb-0"
+              >
+                <Link
+                  href={link.href}
+                  className="hover:opacity-70 transition-opacity text-[14px] leading-[17px]"
+                  style={{
+                    fontFamily: "'FFF Acid Grotesk', sans-serif",
+                    fontWeight: 400,
+                    letterSpacing: "0px",
+                    color: "#000000",
+                  }}
+                >
+                  {link.label}
+                </Link>
+                <span className="text-black opacity-0 group-hover:opacity-100 transition-opacity hidden md:block">
+                  <ArrowUpRight />
+                </span>
+              </div>
+            ))}
           </div>
 
-          {/* Navigation Links - Mobile: Accordion style */}
-          <div className="md:hidden space-y-0">
-            <FooterAccordion title="Navigation">
-              <FooterLink href="/">Home</FooterLink>
-              <FooterLink href="/products">Products</FooterLink>
-              <FooterLink href="/private-label">Private Label</FooterLink>
-              <FooterLink href="/manufacturing">Manufacturing Process</FooterLink>
-              <FooterLink href="/about">About</FooterLink>
-              <FooterLink href="/contact">Contact</FooterLink>
-              <FooterLink href="/contact">Request Quote</FooterLink>
-            </FooterAccordion>
-            <FooterAccordion title="Products">
-              <FooterLink href="/products/boxing-gloves">Boxing Gloves</FooterLink>
-              <FooterLink href="/products/martial-arts">Martial Arts Uniforms</FooterLink>
-              <FooterLink href="/products/mma">MMA Gear</FooterLink>
-              <FooterLink href="/products/accessories">Training Accessories</FooterLink>
-            </FooterAccordion>
+          {/* Company */}
+          <div className="space-y-3">
+            {footerNav.company.map((link) => (
+              <div
+                key={link.label}
+                className="flex items-center justify-between group border-b border-gray-200 pb-2 md:border-b-0 md:pb-0"
+              >
+                <Link
+                  href={link.href}
+                  className="hover:opacity-70 transition-opacity text-[14px] leading-[17px]"
+                  style={{
+                    fontFamily: "'FFF Acid Grotesk', sans-serif",
+                    fontWeight: 400,
+                    letterSpacing: "0px",
+                    color: "#000000",
+                  }}
+                >
+                  {link.label}
+                </Link>
+                <span className="text-black opacity-0 group-hover:opacity-100 transition-opacity hidden md:block">
+                  <ArrowUpRight />
+                </span>
+              </div>
+            ))}
           </div>
 
-          {/* Navigation Links - Desktop: 3 columns */}
-          <div className="hidden lg:flex gap-16">
-            <div className="flex flex-col gap-3">
-              {["Home", "Products", "Private Label", "Manufacturing Process"].map(
-                (link) => (
-                  <a
-                    key={link}
-                    href="#"
-                    className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px] font-normal text-[#000000]"
-                  >
-                    {link}
-                  </a>
-                )
-              )}
-            </div>
-            <div className="flex flex-col gap-3">
-              {["About", "Contact", "Request Quote"].map((link) => (
-                <a
-                  key={link}
-                  href="#"
-                  className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px] font-normal text-[#000000]"
+          {/* Products */}
+          <div className="space-y-3">
+            {footerNav.products.map((link) => (
+              <div
+                key={link.label}
+                className="flex items-center justify-between group border-b border-gray-200 pb-2 md:border-b-0 md:pb-0"
+              >
+                <Link
+                  href={link.href}
+                  className="hover:opacity-70 transition-opacity text-[14px] leading-[17px]"
+                  style={{
+                    fontFamily: "'FFF Acid Grotesk', sans-serif",
+                    fontWeight: 400,
+                    letterSpacing: "0px",
+                    color: "#000000",
+                  }}
                 >
-                  {link}
-                </a>
-              ))}
-            </div>
-            <div className="flex flex-col gap-3">
-              {[
-                "Boxing Gloves",
-                "Martial Arts Uniforms",
-                "MMA Gear",
-                "Training Accessories",
-              ].map((link) => (
-                <a
-                  key={link}
-                  href="#"
-                  className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px] font-normal text-[#000000]"
-                >
-                  {link}
-                </a>
-              ))}
-            </div>
+                  {link.label}
+                </Link>
+                <span className="text-black opacity-0 group-hover:opacity-100 transition-opacity hidden md:block">
+                  <ArrowUpRight />
+                </span>
+              </div>
+            ))}
           </div>
         </div>
+      </div>
 
-        <div className="border-t border-gray-200 mt-0" />
+      {/* Divider */}
+      <div className="h-px bg-[#D7DADE]" />
 
-        <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-8 md:py-10 flex flex-col md:flex-row items-start md:items-end justify-between gap-4 md:gap-0">
+      {/* Bottom section - Large logo + year */}
+      <div className="flex flex-col md:flex-row items-start md:items-end justify-between px-6 md:px-20 py-8 md:py-6 gap-4 md:gap-0">
+        <div className="flex-1">
           <Link href="/" className="block">
             <span 
-              className="uppercase tracking-tight text-[56px] leading-[85%] md:text-[101px] md:leading-[85%] font-bold italic text-[#0D0D0D]"
+              className="uppercase tracking-tight text-[56px] leading-[85%] md:text-[101px] md:leading-[85%]"
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 700,
+                fontStyle: "italic",
+                letterSpacing: "-3%",
+                color: "#000000",
+                display: "block",
+              }}
             >
               sarlam
               <br className="hidden md:block" />
               <span className="md:hidden"> </span>athletics
             </span>
           </Link>
-          <div className="flex flex-col md:items-end gap-2 md:gap-0">
-            <span className="md:hidden block text-[12px] leading-[16px] font-normal text-[#0D0D0D]">
-              Website by Sanna Granqvist
-              <br />
-              © 2026
-            </span>
-            <span className="hidden md:block text-[12px] leading-[16px] font-normal text-[#0D0D0D]">
-              © 2026
-            </span>
-          </div>
         </div>
-
-        <div className="bg-[#0D0D0D]">
-          <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-0">
-            <span className="text-[12px] leading-[16px] font-normal text-[#E3E2E2]">
-              © 2026 Sarlam Athletics. Private-label sports equipment manufacturer
-              for combat sports brands.
-            </span>
-            <span className="uppercase text-[12px] leading-[18px] font-medium text-[#FFFFFF]">
-              USA (USD $) / English
-            </span>
-          </div>
-        </div>
-      </footer>
-
-      {/* ── CSS Animations ── */}
-      <style jsx>{`
-        @keyframes marquee {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        .animate-marquee {
-          animation: marquee 25s linear infinite;
-        }
-      `}</style>
-    </div>
-  );
-}
-
-/* ── Reusable Option Group Selector ── */
-function OptionGroup({
-  label,
-  guideLabel,
-  options,
-  selectedOptions,
-  onSelect,
-}: {
-  label: string;
-  guideLabel?: string;
-  options: string[];
-  selectedOptions: string[];
-  onSelect: (val: string) => void;
-}) {
-  return (
-    <div className="mb-6 md:mb-8">
-      <div className="flex items-center justify-between mb-3">
-        <label className="text-[13px] md:text-sm font-bold text-[#0D0D0D] uppercase">{label}</label>
-        {guideLabel && (
-          <button className="text-[11px] md:text-xs text-[#666666] hover:underline font-medium">
-            {guideLabel}
-          </button>
-        )}
-      </div>
-      <div className="flex flex-wrap gap-2 md:gap-3">
-        {options.map((opt) => (
-          <button
-            key={opt}
-            onClick={() => onSelect(opt)}
-            className={`px-4 py-3 md:px-5 md:py-[15px] border text-[13px] md:text-[15px] font-medium transition-all ${
-              selectedOptions.includes(opt)
-                ? "border-[#0D0D0D] text-[#0D0D0D] bg-white"
-                : "border-gray-200 text-[#0D0D0D] hover:border-gray-400"
-            }`}
+        <div className="flex flex-col md:items-end gap-2 md:gap-0">
+          <span 
+            className="block md:hidden text-[12px] leading-[16px]"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 400,
+              color: "#000000",
+            }}
           >
-            {opt}
-          </button>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-/* ─── FOOTER ACCORDION (Mobile) ─── */
-function FooterAccordion({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <div className="border-b border-gray-200">
-      <button
-        className="w-full flex items-center justify-between py-4 text-left text-[14px] font-medium text-[#0D0D0D]"
-        onClick={() => setOpen(!open)}
-      >
-        {title}
-        <svg
-          className={`w-4 h-4 transition-transform ${open ? "rotate-180" : ""}`}
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={1.5}
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-        </svg>
-      </button>
-      {open && (
-        <div className="pb-4 flex flex-col gap-3">
-          {children}
+            Website by Sanna Granqvist
+            <br />
+            © 2026
+          </span>
+          <span
+            className="hidden md:block text-[12px] leading-[16px]"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 400,
+              color: "#434343",
+            }}
+          >
+            © 2026
+          </span>
         </div>
-      )}
-    </div>
+      </div>
+
+      {/* Bottom bar */}
+      <div className="bg-[#0D0D0D] py-4 px-6 md:px-3 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-0">
+        <div 
+          className="flex flex-col md:flex-row md:items-center gap-1 text-[12px] leading-[16px]"
+          style={{
+            fontFamily: "'FFF Acid Grotesk', sans-serif",
+            fontWeight: 400,
+            letterSpacing: "0px",
+            color: "#E3E2E2",
+          }}
+        >
+          <span>© 2026 Sarlam Athletics. Private-label sports equipment manufacturer for combat sports brands.</span>
+        </div>
+        <div 
+          className="uppercase text-[12px] leading-[18px]"
+          style={{
+            fontFamily: "'FFF Acid Grotesk', sans-serif",
+            fontWeight: 500,
+            letterSpacing: "0px",
+            color: "#FFFFFF",
+          }}
+        >
+          USA (USD $) / ENGLISH
+        </div>
+      </div>
+    </footer>
   );
 }
 
-/* ─── FOOTER LINK ─── */
-function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
+// ─── Main Page ───
+export default function PrivateLabelPage() {
   return (
-    <a 
-      href={href} 
-      className="hover:text-[#0D0D0D] transition block text-[14px] leading-[17px] font-normal text-[#757575]"
-    >
-      {children}
-    </a>
+    <>
+      <Head>
+        <title>Private Label Manufacturing | Sarlam Athletics</title>
+        <meta
+          name="description"
+          content="Private label sports equipment manufacturing for boxing, MMA, martial arts, and combat sports brands. Factory-direct OEM production."
+        />
+      </Head>
+
+      <Header />
+
+      <main className="pt-[0px] md:pt-[52px] -mt-[52px] md:-mt-[0px]">
+        <HeroSection />
+        <VideoSection />
+        <ValuesSection />
+        <TimelineSection />
+        <ServicesSection />
+        <ProductsSection />
+        <IndustriesSection />
+      </main>
+
+      <Footer />
+    </>
   );
 }

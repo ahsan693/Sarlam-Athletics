@@ -3,6 +3,9 @@
 import { useState } from "react";
 import Link from "next/link";
 
+// ─── Import Centralized Header ──────────────────────────────────────────────
+import { Header } from "../home/home";
+
 // ─── Image Placeholder ───
 const ImagePlaceholder = ({
   className = "",
@@ -26,56 +29,7 @@ const ImagePlaceholder = ({
   );
 };
 
-// ─── Icons (inline SVGs) ───
-const ArrowUpRight = () => (
-  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5">
-    <path d="M3 9L9 3M9 3H4M9 3v5" />
-  </svg>
-);
-
-const MenuIcon = () => (
-  <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
-    <line y1="1" x2="20" y2="1" stroke="currentColor" strokeWidth="2" />
-    <line y1="7" x2="20" y2="7" stroke="currentColor" strokeWidth="2" />
-    <line y1="13" x2="20" y2="13" stroke="currentColor" strokeWidth="2" />
-  </svg>
-);
-
-const SearchIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <circle cx="9" cy="9" r="7" stroke="currentColor" strokeWidth="2" />
-    <line x1="14" y1="14" x2="19" y2="19" stroke="currentColor" strokeWidth="2" />
-  </svg>
-);
-
-const ChevronDownIcon = () => (
-  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-    <path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
-const ColumnsIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <rect x="1" y="1" width="6" height="14" stroke="currentColor" strokeWidth="1.5" />
-    <rect x="9" y="1" width="6" height="14" stroke="currentColor" strokeWidth="1.5" />
-  </svg>
-);
-
-const GridIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <rect x="1" y="1" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
-    <rect x="9" y="1" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
-    <rect x="1" y="9" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
-    <rect x="9" y="9" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
-  </svg>
-);
-
-const LogoMark = ({ className = "" }: { className?: string }) => (
-  <svg viewBox="0 0 30 34" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M24 0L4 14h13L0 34l26-15H12L24 0z" fill="currentColor" />
-  </svg>
-);
-
+// ─── Icons (Used in Page) ───
 function CheckIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -97,79 +51,6 @@ function InfoIcon() {
       <line x1="8" y1="11" x2="8" y2="7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
       <circle cx="8" cy="4.5" r="1" fill="currentColor" />
     </svg>
-  );
-}
-
-// ─── Header Component ───
-function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  return (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-100">
-      <div className="relative max-w-[1440px] mx-auto px-6 md:px-4 h-[52px]">
-        {/* ─── DESKTOP VIEW ─── */}
-        <div className="hidden lg:flex items-center justify-between w-full h-full">
-          <div className="flex items-center gap-4">
-            <button>
-              <MenuIcon />
-            </button>
-            <div className="w-[2px] h-12 bg-gray-300" />
-            <nav className="flex items-center gap-4">
-              <Link href="/products" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">Products</Link>
-                <Link href="/manufacture" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">Manufacturing</Link>
-            </nav>
-          </div>
-          <Link href="/" className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2 text-[18px] font-bold italic uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">
-            <LogoMark className="w-[18px] h-[20px]" />
-            <span className="whitespace-nowrap tracking-tight">Sarlam Athletics</span>
-          </Link>
-          <div className="flex items-center gap-6">
-            <Link href="/privatelabel" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">About</Link>
-            <Link href="/contact" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">Contact</Link>
-            <div className="w-[2px] h-12 bg-gray-300" />
-            <button className="hover:opacity-70 transition text-[#0D0D0D]">
-              <SearchIcon />
-            </button>
-          </div>
-        </div>
-
-        {/* ─── MOBILE VIEW ─── */}
-        <div className="flex lg:hidden items-center justify-between w-full h-full">
-          <Link href="/" className="flex items-center gap-2 text-[18px] font-bold italic uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">
-            <LogoMark className="w-[18px] h-[20px]" />
-            <span className="whitespace-nowrap tracking-tight">Sarlam Athletics</span>
-          </Link>
-          <button 
-            className="flex items-center p-2 -mr-2 text-[#0D0D0D]"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle Menu"
-          >
-            <MenuIcon />
-          </button>
-        </div>
-      </div>
-
-      {isMobileMenuOpen && (
-        <div className="lg:hidden absolute top-[52px] left-0 w-full bg-white border-b border-gray-100 shadow-lg flex flex-col py-6 px-6 gap-6 z-50">
-          {[
-            { label: "Products", href: "/products" },
-           
-            { label: "Manufacturing", href: "/manufacture" },
-            { label: "About", href: "/privatelabel" },
-            { label: "Contact", href: "/contact" },
-          ].map((link, idx) => (
-            <Link
-              key={idx}
-              href={link.href}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="hover:opacity-70 transition text-[14px] leading-[18px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
-      )}
-    </header>
   );
 }
 
@@ -196,10 +77,22 @@ const sizeOptionsWeight = ["4OZ (PROFESSIONAL FIGHT WEIGHT)", "6-7OZ (AMATEUR/SP
 const sizeOptionsStandard = ["S", "M", "L", "XL"];
 
 const relatedProducts = [
-  { name: "Jiu Jitsu Suit (Gi)", image: "https://images.unsplash.com/photo-1555597673-b21d5c935865?w=600&h=600&fit=crop" },
-  { name: "Boxing Gloves", image: "https://images.unsplash.com/photo-1517438476312-10d79c077509?w=600&h=600&fit=crop" },
-  { name: "MMA Full Fight Gloves", image: "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=600&h=600&fit=crop" },
-  { name: "Boxing Head Guard", image: "https://images.unsplash.com/photo-1544967919-44b6f0f5ba6c?w=600&h=600&fit=crop" },
+  { 
+    name: "Jiu Jitsu Suit (Gi)", 
+    image: "/Products/02 BJJ Gis and Jiu-Jitsu Uniforms.png" 
+  },
+  { 
+    name: "Boxing Gloves", 
+    image: "/Products/01 Private Label Boxing Gloves.png" 
+  },
+  { 
+    name: "MMA Full Fight Gloves", 
+    image: "/Products/03 MMA Fight Gloves.png" 
+  },
+  { 
+    name: "Boxing Head Guard", 
+    image: "/Products/07 Custom Boxing Headguards.png" 
+  },
 ];
 
 const moqCards = [
@@ -248,6 +141,7 @@ export default function UltimateMmaFightGlovesPage() {
   return (
     <div className="min-h-screen bg-white font-['FFF_Acid_Grotesk',sans-serif]">
       
+      {/* ── Centralized Header ── */}
       <Header />
 
       {/* ── Announcement Banner ── */}
@@ -264,11 +158,11 @@ export default function UltimateMmaFightGlovesPage() {
       {/* ── Hero Banner ── */}
       <section className="relative h-[320px] md:h-[480px] overflow-hidden">
         <div className="absolute inset-0 bg-black">
-  <img
-  src="/Page 7/01-1.png"
-  alt="Private Label Sports Equipment Manufacturing"
-  className="w-full h-full object-cover opacity-60"
-/>
+          <img
+            src="/Page 7/01-1.png"
+            alt="Private Label Sports Equipment Manufacturing"
+            className="w-full h-full object-cover opacity-60"
+          />
         </div>
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
           <span className="text-[13px] md:text-[15px] font-medium mb-3 md:mb-4 tracking-wide text-[#CCCCCC] uppercase">
@@ -286,11 +180,11 @@ export default function UltimateMmaFightGlovesPage() {
           {/* Left: Product Image */}
           <div className="w-full lg:w-[616px] shrink-0">
             <div className="bg-[#F9F9F9] rounded-none p-4 md:p-2 aspect-[4/5] md:aspect-square flex items-center justify-center lg:sticky lg:top-24">
-   <img
-  src="/Products/MMATrainingGloves.png"
-  alt="Ultimate MMA Fight Gloves"
-  className="w-[100%] h-[100%] md:w-[600px] md:h-[600px] object-cover md:object-contain mix-blend-multiply"
-/>
+              <img
+                src="/Products/03 MMA Fight Gloves.png"
+                alt="Ultimate MMA Fight Gloves"
+                className="w-[100%] h-[100%] md:w-[600px] md:h-[600px] object-cover md:object-contain mix-blend-multiply"
+              />
             </div>
           </div>
 
@@ -300,9 +194,9 @@ export default function UltimateMmaFightGlovesPage() {
             <nav className="flex items-center flex-wrap gap-2 text-[10px] md:text-xs text-[#6A7282] mb-6 md:mb-8 font-medium uppercase tracking-wide">
               <a href="/" className="hover:underline">Home</a>
               <span>/</span>
-              <a href="/products" className="hover:underline">Boxing Gloves</a>
+              <a href="/products" className="hover:underline">MMA Gear</a>
               <span>/</span>
-              <span className="text-[#0D0D0D]">Ultimate MMA Fight Gloves</span>
+              <span className="text-[#0D0D0D]">MMA Full Fight Gloves</span>
             </nav>
 
             {/* Title */}
@@ -539,14 +433,14 @@ export default function UltimateMmaFightGlovesPage() {
       <section className="px-0 md:px-6 py-0">
         <div className="relative rounded-none overflow-hidden max-w-[1380px] mx-auto">
           <div className="absolute inset-0 bg-black">
-         <img
-  src="/Page 7/01.png"
-  alt="Quality Control"
-  className="w-full h-full object-cover opacity-50"
-/>
+            <img
+              src="/Page 7/01.png"
+              alt="Quality Control"
+              className="w-full h-full object-cover opacity-50"
+            />
           </div>
           <div className="relative z-10 flex flex-col items-center justify-center text-center py-20 px-6 md:py-36 md:px-8">
-            <h2 className="text-[24px] md:text-[26px] font-bold text-white mb-4 max-w-[654px] uppercase leading-tight">
+            <h2 className="font-['Switzer',sans-serif] text-[24px] md:text-[26px] font-bold text-white mb-4 max-w-[654px] uppercase leading-tight">
               Quality Control for Every Production Run
             </h2>
             <p className="text-[14px] md:text-base text-white/80 max-w-[654px] leading-relaxed font-normal">
@@ -714,20 +608,18 @@ export default function UltimateMmaFightGlovesPage() {
         </div>
       </footer>
 
-      {/* ── CSS Animations ── */}
-      <style jsx>{`
-        @keyframes marquee {
-          0% {
-            transform: translateX(0);
+      {/* ── CSS Animations (React/TSX Safe) ── */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
           }
-          100% {
-            transform: translateX(-50%);
+          .animate-marquee {
+            animation: marquee 25s linear infinite;
           }
-        }
-        .animate-marquee {
-          animation: marquee 25s linear infinite;
-        }
-      `}</style>
+        `
+      }} />
     </div>
   );
 }
