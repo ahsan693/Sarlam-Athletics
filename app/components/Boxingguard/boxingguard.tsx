@@ -153,7 +153,7 @@ function Header() {
         <div className="lg:hidden absolute top-[52px] left-0 w-full bg-white border-b border-gray-100 shadow-lg flex flex-col py-6 px-6 gap-6 z-50">
           {[
             { label: "Products", href: "/products" },
-           
+            
             { label: "Manufacturing", href: "/manufacture" },
             { label: "About", href: "/privatelabel" },
             { label: "Contact", href: "/contact" },
@@ -288,10 +288,10 @@ export default function BoxingHeadGuardPage() {
 />
         </div>
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
-          <span className="text-[13px] md:text-[15px] font-medium mb-3 md:mb-4 tracking-wide text-[#CCCCCC] uppercase">
+          <span className="text-[15px] leading-[17px] tracking-[0.4px] text-[#CBCBCB] font-medium md:tracking-wide md:text-[#CCCCCC] mb-3 md:mb-4 uppercase text-center md:text-left">
             PRODUCTS
           </span>
-          <h1 className="text-[32px] leading-[36px] md:text-[44px] font-bold text-white md:leading-tight max-w-[800px] uppercase">
+          <h1 className="text-[37px] leading-[46px] tracking-[-1.5px] font-medium text-white md:text-[44px] md:leading-tight md:font-bold md:tracking-normal max-w-[800px] uppercase text-center">
             Private Label Sports Equipment Manufacturing
           </h1>
         </div>
@@ -314,7 +314,7 @@ export default function BoxingHeadGuardPage() {
           {/* Right: Product Configuration Panel */}
           <div className="flex-1 max-w-full lg:max-w-[616px]">
             {/* Breadcrumbs */}
-            <nav className="flex items-center flex-wrap gap-2 text-[10px] md:text-xs text-[#6A7282] mb-6 md:mb-8 font-medium uppercase tracking-wide">
+            <nav className="flex items-center flex-wrap gap-2 font-['PP_Mori',sans-serif] text-[12px] leading-[16px] tracking-[0px] text-[#6A7282] font-normal md:font-['FFF_Acid_Grotesk',sans-serif] md:text-xs md:font-medium mb-6 md:mb-8 text-left uppercase md:tracking-wide">
               <a href="/" className="hover:underline">Home</a>
               <span>/</span>
               <span className="text-[#0D0D0D]">Boxing Head Guard</span>
@@ -322,13 +322,13 @@ export default function BoxingHeadGuardPage() {
 
             {/* Title */}
             <div className="mb-6">
-              <p className="text-[12px] md:text-sm font-bold text-[#666666] uppercase">
+              <p className="text-[14px] leading-[18px] tracking-[0.1px] font-bold text-[#666666] uppercase text-left md:text-sm md:tracking-normal">
                 Martial Arts Equipment Manufacturing
               </p>
-              <h2 className="text-[32px] leading-[36px] md:text-[44px] md:leading-tight font-bold text-[#0D0D0D] mt-2">
+              <h2 className="text-[37px] leading-[46px] tracking-[-1.5px] font-medium text-[#0D0D0D] mt-2 text-left md:text-[44px] md:leading-tight md:font-bold md:tracking-normal">
                 Boxing Head Guard
               </h2>
-              <p className="text-[15px] leading-[22px] md:text-xl text-[#0D0D0D] mt-3 md:mt-4 md:leading-relaxed font-normal">
+              <p className="text-[20px] leading-[26px] tracking-[-0.6px] font-normal text-[#0D0D0D] mt-3 md:mt-4 text-left md:text-xl md:leading-relaxed md:tracking-normal">
                 Custom boxing and MMA head guard manufacturing, for ultimate sparring protection.
               </p>
             </div>
@@ -338,17 +338,17 @@ export default function BoxingHeadGuardPage() {
 
             {/* Description */}
             <div className="mb-8 md:mb-6">
-              <p className="text-[14px] leading-[22px] md:text-base text-[#666666] md:leading-relaxed font-normal">
+              <p className="text-[16px] leading-[20px] tracking-[0px] font-normal text-[#666666] text-left md:text-base md:leading-relaxed">
                 Sarlam Athletics manufactures custom boxing head guards for combat sports brands, martial arts academies, gyms, retailers, and distributors. We support custom materials, sizing, colorways, padding, closures, labels, packaging, and branding details for wholesale production.
               </p>
-              <p className="text-[14px] leading-[22px] md:text-base text-[#666666] md:leading-relaxed mt-4 font-normal">
+              <p className="text-[16px] leading-[20px] tracking-[0px] font-normal text-[#666666] text-left md:text-base md:leading-relaxed mt-4">
                 Samples can be developed before bulk manufacturing so your team can review fit, sizing, padding, visibility, material feel, logo placement, and final presentation before approving a larger order.
               </p>
             </div>
 
             {/* Customize Heading */}
             <div className="mb-6 md:mb-8">
-              <h3 className="text-[22px] leading-[26px] md:text-[26px] font-bold text-[#101828]">
+              <h3 className="text-[26px] leading-[26px] tracking-[-0.5px] font-bold text-[#101828] text-left md:tracking-normal">
                 Customise Your Order
               </h3>
             </div>
@@ -395,8 +395,8 @@ export default function BoxingHeadGuardPage() {
             {/* Size/Weight Selector - Grouped layout */}
             <div className="mb-6 md:mb-8">
               <div className="flex items-center justify-between mb-3">
-                <label className="text-[13px] md:text-sm font-bold text-[#0D0D0D] uppercase">Size Range</label>
-                <button className="text-[11px] md:text-xs text-[#666666] hover:underline font-medium">
+                <label className="text-[14px] leading-[18px] tracking-[0.1px] font-bold text-[#0D0D0D] uppercase text-left md:text-sm md:tracking-normal">Size Range</label>
+                <button className="text-[12px] leading-[16px] tracking-[0px] font-normal text-[#666666] hover:underline text-left md:font-medium md:text-xs">
                   Size Guide
                 </button>
               </div>
@@ -407,7 +407,7 @@ export default function BoxingHeadGuardPage() {
                     <button
                       key={size}
                       onClick={() => toggleOption(size, selectedSize, setSelectedSize)}
-                      className={`px-4 py-3 md:px-5 md:py-[15px] border text-[13px] md:text-[15px] font-medium transition-all ${
+                      className={`px-4 py-3 md:px-5 md:py-[15px] border text-[15px] leading-[17px] tracking-[0.4px] font-medium text-left transition-all md:tracking-normal ${
                         selectedSize.includes(size)
                           ? "border-[#0D0D0D] text-[#0D0D0D] bg-white"
                           : "border-gray-200 text-[#0D0D0D] hover:border-gray-400"
@@ -420,13 +420,13 @@ export default function BoxingHeadGuardPage() {
 
                 {/* Other Input Field */}
                 <div>
-                  <span className="block text-[11px] md:text-xs font-medium text-[#666666] mb-2 uppercase">
+                  <span className="block text-[12px] leading-[16px] tracking-[0px] font-normal text-[#666666] mb-2 uppercase text-left md:font-medium md:text-xs">
                     Other
                   </span>
                   <input 
                     type="text" 
                     placeholder="Any other" 
-                    className="border border-gray-200 px-4 py-3 md:py-[15px] w-full text-[13px] md:text-[15px] focus:outline-none focus:border-[#0D0D0D] font-medium"
+                    className="border border-gray-200 px-4 py-3 md:py-[15px] w-full text-[15px] leading-[17px] tracking-[0.4px] font-medium focus:outline-none focus:border-[#0D0D0D] md:text-[15px] md:tracking-normal"
                   />
                 </div>
               </div>
@@ -442,20 +442,20 @@ export default function BoxingHeadGuardPage() {
             {/* Quantity Input */}
             <div className="mb-6 md:mb-8">
               <div className="flex items-center justify-between mb-3">
-                <label className="text-[13px] md:text-sm font-bold text-[#0D0D0D] uppercase">
+                <label className="text-[14px] leading-[18px] tracking-[0.1px] font-bold text-[#0D0D0D] uppercase text-left md:text-sm md:tracking-normal">
                   Quantity
                 </label>
               </div>
               <input 
                 type="number" 
                 placeholder="Enter quantity" 
-                className="border border-gray-200 px-4 py-3 md:py-[15px] w-full text-[13px] md:text-[15px] focus:outline-none focus:border-[#0D0D0D] font-medium"
+                className="border border-gray-200 px-4 py-3 md:py-[15px] w-full text-[15px] leading-[17px] tracking-[0.4px] font-medium focus:outline-none focus:border-[#0D0D0D] md:text-[15px] md:tracking-normal"
               />
               <div className="flex items-center gap-2 mt-3">
                 <span className="text-[#D92D20] shrink-0">
                   <InfoIcon />
                 </span>
-                <span className="text-[#D92D20] text-[11px] md:text-[12px] font-medium tracking-wide">
+                <span className="text-[#D92D20] text-[12px] leading-[16px] font-medium tracking-wide md:text-[12px]">
                   Please ensure your order meets our Minimum Quantity
                 </span>
               </div>
@@ -463,14 +463,14 @@ export default function BoxingHeadGuardPage() {
 
             {/* CTA Buttons */}
             <div className="space-y-3 md:space-y-4 mb-4 mt-8 md:mt-12">
-              <button className="w-full bg-[#0D0D0D] text-white text-[13px] md:text-sm font-bold py-4 md:py-[18px] hover:bg-black/90 transition-colors uppercase tracking-wide">
+              <button className="w-full bg-[#0D0D0D] text-white text-[14px] leading-[18px] tracking-[0.1px] font-bold py-4 md:py-[18px] hover:bg-black/90 transition-colors uppercase md:tracking-wide text-left md:text-center">
                 Request Manufacturing Quote
               </button>
-              <button className="w-full border border-[#0D0D0D] text-[#0D0D0D] text-[13px] md:text-sm font-bold py-4 md:py-[18px] hover:bg-gray-50 transition-colors uppercase tracking-wide">
+              <button className="w-full border border-[#0D0D0D] text-[#0D0D0D] text-[13px] tracking-[0px] font-bold py-4 md:py-[18px] hover:bg-gray-50 transition-colors uppercase text-center md:text-sm md:tracking-wide">
                 Ask About Samples
               </button>
             </div>
-            <p className="text-[11px] md:text-xs text-[#999999] text-center font-normal">
+            <p className="text-[12px] leading-[16px] tracking-[0px] font-normal text-[#999999] text-center md:text-xs">
               Share your product specs and our team will respond with MOQ, sample, and wholesale production options.
             </p>
           </div>
@@ -486,7 +486,7 @@ export default function BoxingHeadGuardPage() {
               <div className="w-[24px] h-[24px] md:w-[30px] md:h-[30px] flex items-center justify-center shrink-0">
                 <CheckIcon />
               </div>
-              <p className="text-[14px] md:text-[15px] font-medium text-[#0D0D0D] md:max-w-[205px] leading-snug">
+              <p className="text-[15px] leading-[21px] tracking-[0.45px] font-medium text-[#0D0D0D] text-left md:text-[15px] md:leading-snug md:tracking-normal md:max-w-[205px]">
                 {feature.text}
               </p>
             </div>
@@ -498,12 +498,12 @@ export default function BoxingHeadGuardPage() {
       <section className="bg-white px-6 md:px-16 py-12 md:py-20 border-t border-gray-100">
         <div className="max-w-[1440px] mx-auto">
           <div className="flex items-center justify-between mb-8 md:mb-12">
-            <h2 className="text-[22px] leading-[28px] md:text-[26px] font-bold text-[#0D0D0D] max-w-[250px] md:max-w-none uppercase">
+            <h2 className="text-[26px] leading-[26px] tracking-[-0.5px] font-bold text-[#0D0D0D] text-left max-w-[250px] md:max-w-none md:leading-[28px] md:tracking-normal uppercase">
               Martial Arts Uniform Manufacturing Options
             </h2>
             <a
               href="/products"
-              className="text-[12px] md:text-sm font-bold text-[#0D0D0D] hover:underline flex items-center gap-1 uppercase shrink-0 text-right"
+              className="text-[14px] leading-[18px] tracking-[0.1px] font-bold text-[#0D0D0D] text-left uppercase hover:underline flex items-center gap-1 md:text-sm md:tracking-normal shrink-0"
             >
               View all options
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -530,10 +530,10 @@ export default function BoxingHeadGuardPage() {
                   </div>
                 </div>
                 <div className="px-3 py-3 md:px-4 md:py-3 flex flex-col md:flex-row md:items-center justify-between gap-2 md:gap-0">
-                  <span className="text-[11px] md:text-[10px] font-bold text-[#0D0D0D] uppercase">
+                  <span className="text-[12px] leading-[15px] tracking-[0px] font-bold text-[#0D0D0D] text-left uppercase md:text-[10px]">
                     {product.name}
                   </span>
-                  <button className="text-[10px] md:text-[8px] font-medium text-[#0D0D0D] border border-[#0D0D0D] px-2 py-1.5 md:py-1 hover:bg-[#0D0D0D] hover:text-white transition-colors uppercase self-start md:self-auto">
+                  <button className="text-[10px] leading-[12px] tracking-[0px] font-bold text-[#0D0D0D] text-left uppercase border border-[#0D0D0D] px-2 py-1.5 md:py-1 hover:bg-[#0D0D0D] hover:text-white transition-colors self-start md:self-auto md:text-[8px] md:font-medium">
                     Request Quote
                   </button>
                 </div>
@@ -554,10 +554,10 @@ export default function BoxingHeadGuardPage() {
 />
           </div>
           <div className="relative z-10 flex flex-col items-center justify-center text-center py-20 px-6 md:py-36 md:px-8">
-            <h2 className="text-[24px] md:text-[26px] font-bold text-white mb-4 max-w-[654px] uppercase leading-tight">
+            <h2 className="font-['Switzer',sans-serif] text-[32px] leading-[38.4px] tracking-[-0.32px] font-semibold text-[#FFFFFF] text-center mb-4 max-w-[654px] uppercase md:font-['FFF_Acid_Grotesk',sans-serif] md:text-[26px] md:font-bold md:leading-tight md:tracking-normal">
               Quality Control for Every Production Run
             </h2>
-            <p className="text-[14px] md:text-base text-white/80 max-w-[654px] leading-relaxed font-normal">
+            <p className="text-[15px] leading-[18px] tracking-[0px] font-normal text-[#FFFFFF] text-center max-w-[654px] md:text-base md:text-white/80 md:leading-relaxed">
               Every approved sample becomes the benchmark for bulk manufacturing. We check sizing, stitching, fabric finish, reinforcement points, logo placement, labeling, and packaging before production moves into final delivery.
             </p>
           </div>
@@ -566,19 +566,19 @@ export default function BoxingHeadGuardPage() {
 
       {/* ── MOQ, Pricing, and Samples ── */}
       <section className="px-6 md:px-20 py-12 md:py-20 max-w-[1440px] mx-auto border-t border-gray-100">
-        <h2 className="text-[26px] leading-[32px] md:text-[37px] md:leading-[46px] font-bold text-[#0D0D0D] mb-4 md:mb-6 tracking-tight">
+        <h2 className="text-[22px] leading-[28px] tracking-[0px] font-bold text-[#0D0D0D] text-left mb-4 md:mb-6 md:text-[37px] md:leading-[46px] md:tracking-tight">
           MOQ, Pricing, and Samples
         </h2>
-        <p className="text-[14px] leading-[22px] md:text-base text-[#666666] md:leading-relaxed mb-8 md:mb-10 max-w-[1280px] font-normal">
+        <p className="text-[13px] leading-[20px] tracking-[0px] font-normal text-[#434343] text-left mb-8 md:mb-10 max-w-[1280px] md:text-base md:text-[#666666] md:leading-relaxed">
           Minimum order quantities and pricing depend on fabric selection, customization level, branding method, packaging, and total order volume. Share your requirements and we'll recommend the best starting point for your martial arts uniform project.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
           {moqCards.map((card, i) => (
             <div key={i} className="bg-[#F5F5F5] p-6 md:p-8">
-              <h3 className="text-[16px] md:text-sm font-bold text-[#0D0D0D] mb-2 md:mb-3 uppercase tracking-wide">
+              <h3 className="text-[15px] leading-[20px] tracking-[0px] font-bold text-[#0D0D0D] text-left mb-2 md:mb-3 uppercase md:text-sm md:tracking-wide">
                 {card.title}
               </h3>
-              <p className="text-[14px] md:text-sm text-[#666666] leading-relaxed font-normal">
+              <p className="text-[12px] leading-[18px] tracking-[0px] font-normal text-[#434343] text-left md:text-sm md:text-[#666666] md:leading-relaxed">
                 {card.description}
               </p>
             </div>
@@ -607,7 +607,7 @@ export default function BoxingHeadGuardPage() {
           {/* Left */}
           <div className="lg:w-1/2">
             <h3 
-              className="mb-4 text-[32px] leading-[38px] md:text-[47px] md:leading-[58px] font-medium tracking-tight text-[#0D0D0D]"
+              className="mb-4 text-[47px] leading-[58px] tracking-[-1.9px] font-medium text-[#000000] text-left md:text-[#0D0D0D] md:tracking-tight"
             >
               Start Your Private Label
               <br className="hidden md:block" />
@@ -615,7 +615,7 @@ export default function BoxingHeadGuardPage() {
             </h3>
             <a
               href="mailto:hello@sarlamathletics.com"
-              className="transition break-all hover:text-black text-[22px] leading-[30px] md:text-[47px] md:leading-[58px] font-medium text-[#A5A5A5] tracking-tight"
+              className="text-[47px] leading-[58px] tracking-[-1.9px] font-medium text-[#A5A5A5] text-left transition break-all hover:text-[#000000] md:tracking-tight block"
             >
               hello@sarlamathletics.com
             </a>
@@ -690,7 +690,7 @@ export default function BoxingHeadGuardPage() {
         <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-8 md:py-10 flex flex-col md:flex-row items-start md:items-end justify-between gap-4 md:gap-0">
           <Link href="/" className="block">
             <span 
-              className="uppercase tracking-tight text-[56px] leading-[85%] md:text-[101px] md:leading-[85%] font-bold italic text-[#0D0D0D]"
+              className="text-[69px] leading-[85%] tracking-[-0.03em] font-bold italic text-[#000000] text-left uppercase md:text-[101px] md:tracking-tight md:text-[#0D0D0D]"
             >
               sarlam
               <br className="hidden md:block" />
@@ -698,7 +698,7 @@ export default function BoxingHeadGuardPage() {
             </span>
           </Link>
           <div className="flex flex-col md:items-end gap-2 md:gap-0">
-            <span className="md:hidden block text-[12px] leading-[16px] font-normal text-[#0D0D0D]">
+            <span className="md:hidden block text-[12px] leading-[16.8px] tracking-[0px] font-normal text-[#A5A5A5] text-left">
               Website by Sanna Granqvist
               <br />
               © 2026
@@ -711,11 +711,11 @@ export default function BoxingHeadGuardPage() {
 
         <div className="bg-[#0D0D0D]">
           <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-0">
-            <span className="text-[12px] leading-[16px] font-normal text-[#E3E2E2]">
+            <span className="text-[12px] leading-[16px] tracking-[0px] font-normal text-[#E3E2E2] text-left">
               © 2026 Sarlam Athletics. Private-label sports equipment manufacturer
               for combat sports brands.
             </span>
-            <span className="uppercase text-[12px] leading-[18px] font-medium text-[#FFFFFF]">
+            <span className="text-[12px] leading-[18px] tracking-[0px] font-medium text-[#FFFFFF] text-center md:text-left uppercase">
               USA (USD $) / English
             </span>
           </div>
@@ -757,9 +757,9 @@ function OptionGroup({
   return (
     <div className="mb-6 md:mb-8">
       <div className="flex items-center justify-between mb-3">
-        <label className="text-[13px] md:text-sm font-bold text-[#0D0D0D] uppercase">{label}</label>
+        <label className="text-[14px] leading-[18px] tracking-[0.1px] font-bold text-[#0D0D0D] uppercase text-left md:text-sm md:tracking-normal">{label}</label>
         {guideLabel && (
-          <button className="text-[11px] md:text-xs text-[#666666] hover:underline font-medium">
+          <button className="text-[12px] leading-[16px] tracking-[0px] font-normal text-[#666666] hover:underline text-left md:font-medium md:text-xs">
             {guideLabel}
           </button>
         )}
@@ -769,7 +769,7 @@ function OptionGroup({
           <button
             key={opt}
             onClick={() => onSelect(opt)}
-            className={`px-4 py-3 md:px-5 md:py-[15px] border text-[13px] md:text-[15px] font-medium transition-all ${
+            className={`px-4 py-3 md:px-5 md:py-[15px] border text-[15px] leading-[17px] tracking-[0.4px] font-medium text-left transition-all md:tracking-normal ${
               selectedOptions.includes(opt)
                 ? "border-[#0D0D0D] text-[#0D0D0D] bg-white"
                 : "border-gray-200 text-[#0D0D0D] hover:border-gray-400"
@@ -796,7 +796,7 @@ function FooterAccordion({
   return (
     <div className="border-b border-gray-200">
       <button
-        className="w-full flex items-center justify-between py-4 text-left text-[14px] font-medium text-[#0D0D0D]"
+        className="w-full flex items-center justify-between py-4 text-left text-[14px] leading-[17px] tracking-[0px] font-normal text-[#0D0D0D] md:font-medium"
         onClick={() => setOpen(!open)}
       >
         {title}
@@ -824,7 +824,7 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
   return (
     <a 
       href={href} 
-      className="hover:text-[#0D0D0D] transition block text-[14px] leading-[17px] font-normal text-[#757575]"
+      className="hover:text-[#0D0D0D] transition block text-[14px] leading-[17px] tracking-[0px] font-normal text-[#434343] text-left md:text-[#757575]"
     >
       {children}
     </a>
