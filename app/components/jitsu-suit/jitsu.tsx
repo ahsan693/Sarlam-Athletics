@@ -3,6 +3,9 @@
 import { useState } from "react";
 import Link from "next/link";
 
+// ─── Import Centralized Header ──────────────────────────────────────────────
+import { Header } from "../home/home";
+
 // --- Image Placeholder ---
 const ImagePlaceholder = ({
   className = "",
@@ -33,21 +36,6 @@ const ArrowUpRight = () => (
   </svg>
 );
 
-const MenuIcon = () => (
-  <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
-    <line y1="1" x2="20" y2="1" stroke="currentColor" strokeWidth="2" />
-    <line y1="7" x2="20" y2="7" stroke="currentColor" strokeWidth="2" />
-    <line y1="13" x2="20" y2="13" stroke="currentColor" strokeWidth="2" />
-  </svg>
-);
-
-const SearchIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <circle cx="9" cy="9" r="7" stroke="currentColor" strokeWidth="2" />
-    <line x1="14" y1="14" x2="19" y2="19" stroke="currentColor" strokeWidth="2" />
-  </svg>
-);
-
 const ChevronDownIcon = () => (
   <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
     <path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -67,12 +55,6 @@ const GridIcon = () => (
     <rect x="9" y="1" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
     <rect x="1" y="9" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
     <rect x="9" y="9" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
-  </svg>
-);
-
-const LogoMark = ({ className = "" }: { className?: string }) => (
-  <svg viewBox="0 0 30 34" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M24 0L4 14h13L0 34l26-15H12L24 0z" fill="currentColor" />
   </svg>
 );
 
@@ -97,103 +79,6 @@ function InfoIcon() {
       <line x1="8" y1="11" x2="8" y2="7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
       <circle cx="8" cy="4.5" r="1" fill="currentColor" />
     </svg>
-  );
-}
-
-// --- Header Component ---
-function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  return (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-100">
-      <div className="relative max-w-[1440px] mx-auto px-6 md:px-4 h-[52px]">
-        {/* --- DESKTOP VIEW --- */}
-        <div className="hidden lg:flex items-center justify-between w-full h-full">
-          <div className="flex items-center gap-4">
-            <button>
-              <MenuIcon />
-            </button>
-            <div className="w-[2px] h-12 bg-gray-300" />
-            <nav className="flex items-center gap-4">
-              <Link href="/products" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">Products</Link>
-              <Link href="/manufacture" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">Manufacturing</Link>
-            </nav>
-          </div>
-          <Link href="/" className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2 text-[18px] font-bold italic uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">
-            <LogoMark className="w-[18px] h-[20px]" />
-            <span className="whitespace-nowrap tracking-tight">Sarlam Athletics</span>
-          </Link>
-          <div className="flex items-center gap-6">
-            <Link href="/privatelabel" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">About</Link>
-            <Link href="/contact" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">Contact</Link>
-            <div className="w-[2px] h-12 bg-gray-300" />
-            <button className="hover:opacity-70 transition text-[#0D0D0D]">
-              <SearchIcon />
-            </button>
-          </div>
-        </div>
-
-        {/* --- MOBILE VIEW --- */}
-        <div className="flex lg:hidden items-center justify-between w-full h-full">
-          <Link href="/" className="flex items-center gap-2 text-[18px] font-bold italic uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">
-            <LogoMark className="w-[18px] h-[20px]" />
-            <span className="whitespace-nowrap tracking-tight">Sarlam Athletics</span>
-          </Link>
-          <button 
-            className="flex items-center p-2 -mr-2 text-[#0D0D0D]"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle Menu"
-          >
-            <MenuIcon />
-          </button>
-        </div>
-      </div>
-
-      {/* ─── MOBILE DROPDOWN MENU (CARD STYLE) ─── */}
-      {isMobileMenuOpen && (
-        <>
-          {/* Invisible overlay to close menu when clicking outside */}
-          <div 
-            className="fixed inset-0 z-40 lg:hidden" 
-            onClick={() => setIsMobileMenuOpen(false)} 
-          />
-          
-          <div className="lg:hidden absolute top-[60px] right-4 w-[200px] bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-100 flex flex-col p-2 z-50">
-            <Link 
-              href="/products" 
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="block w-full text-[#0D0D0D] text-[14px] font-medium px-4 py-2.5 rounded-lg hover:bg-gray-100 transition-colors font-['FFF_Acid_Grotesk',sans-serif] uppercase tracking-wide"
-            >
-              Products
-            </Link>
-            
-            <Link 
-              href="/manufacture" 
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="block w-full text-[#0D0D0D] text-[14px] font-medium px-4 py-2.5 rounded-lg hover:bg-gray-100 transition-colors font-['FFF_Acid_Grotesk',sans-serif] uppercase tracking-wide"
-            >
-              Manufacturing
-            </Link>
-            
-            <Link 
-              href="/privatelabel" 
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="block w-full text-[#0D0D0D] text-[14px] font-medium px-4 py-2.5 rounded-lg hover:bg-gray-100 transition-colors font-['FFF_Acid_Grotesk',sans-serif] uppercase tracking-wide"
-            >
-              About
-            </Link>
-            
-            <Link 
-              href="/contact" 
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="block w-full text-[#0D0D0D] text-[14px] font-medium px-4 py-2.5 rounded-lg hover:bg-gray-100 transition-colors font-['FFF_Acid_Grotesk',sans-serif] uppercase tracking-wide"
-            >
-              Contact
-            </Link>
-          </div>
-        </>
-      )}
-    </header>
   );
 }
 
@@ -289,6 +174,7 @@ export default function KarateSuitDetailsPage() {
   return (
     <div className="min-h-screen bg-white font-['FFF_Acid_Grotesk',sans-serif]">
       
+      {/* --- Centralized Header --- */}
       <Header />
 
       {/* --- Announcement Banner --- */}
@@ -773,7 +659,7 @@ export default function KarateSuitDetailsPage() {
         </div>
       </footer>
 
-      {/* --- CSS Animations (React/TSX Safe) --- */}
+      {/* --- CSS Animations --- */}
       <style dangerouslySetInnerHTML={{
         __html: `
           @keyframes marquee {
