@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Header from "@/components/Header";
+import { Header } from "../home/home";
 
 // ─── Image Placeholder ───
 const ImagePlaceholder = ({
