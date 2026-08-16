@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
-// Import the Header correctly from the home.tsx file
+
+// ─── Import Centralized Header ──────────────────────────────────────────────
 import { Header } from "../home/home";
 
 // ─── Icons (inline SVGs) ───
@@ -41,18 +42,34 @@ const HandshakeIcon = () => (
   </svg>
 );
 
+const ChevronDown = ({ className = "" }: { className?: string }) => (
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 18 18"
+    fill="none"
+    className={className}
+  >
+    <path
+      d="M4 7l5 5 5-5"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 // ─── Hero Section ───
-// Reference: centered eyebrow + heading over a dark, red-toned athletic image,
-// section has rounded bottom corners.
 function HeroSection() {
   return (
     <section className="relative w-full h-[540px] md:h-[620px] bg-[#0D0D0D] overflow-hidden rounded-b-[16px] md:rounded-b-[24px]">
       {/* Background image */}
-     <img
-  src="/Page 4/01.png"
-  alt="Boxing equipment manufacturing"
-  className="absolute inset-0 w-full h-full object-cover"
-/>
+      <img
+        src="/Page 4/01.png"
+        alt="Boxing equipment manufacturing"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
 
       {/* Dark maroon overlay for text readability + mood */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-[#3a0f14]/60 to-black/70" />
@@ -154,11 +171,11 @@ function VideoSection() {
 
         {/* Video placeholder */}
         <div className="relative w-full aspect-[4/3] md:aspect-[1376/535] rounded-lg overflow-hidden bg-gray-200 group cursor-pointer">
-        <img
-  src="/Page 4/02.png"
-  alt="Martial arts training"
-  className="w-full h-full object-cover"
-/>
+          <img
+            src="/Page 4/02.png"
+            alt="Martial arts training"
+            className="w-full h-full object-cover"
+          />
           {/* Dark overlay */}
           <div className="absolute inset-0 bg-black/15 group-hover:bg-black/25 transition-colors" />
           {/* Play button */}
@@ -385,7 +402,7 @@ function TimelineSection() {
 }
 
 // ─── OEM & Private Label Services Section ─── 
- const services = [
+const services = [
   {
     title: "Private Label & OEM Manufacturing",
     description:
@@ -815,6 +832,7 @@ export default function PrivateLabelPage() {
         />
       </Head>
 
+      {/* ── Centralized Header ── */}
       <Header />
 
       <main className="pt-[0px] md:pt-[52px] -mt-[52px] md:-mt-[0px]">
@@ -829,5 +847,53 @@ export default function PrivateLabelPage() {
 
       <Footer />
     </>
+  );
+}
+
+/* ─── FOOTER ACCORDION (Mobile) ─── */
+function FooterAccordion({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="border-b border-gray-200">
+      <button
+        className="w-full flex items-center justify-between py-4 text-left text-[14px] font-medium text-[#0D0D0D]"
+        onClick={() => setOpen(!open)}
+      >
+        {title}
+        <svg
+          className={`w-4 h-4 transition-transform ${open ? "rotate-180" : ""}`}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={1.5}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      {open && (
+        <div className="pb-4 flex flex-col gap-3">
+          {children}
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ─── FOOTER LINK ─── */
+function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <a 
+      href={href} 
+      className="hover:text-[#0D0D0D] transition block text-[14px] leading-[17px] font-normal text-[#757575]"
+    >
+      {children}
+    </a>
   );
 }
