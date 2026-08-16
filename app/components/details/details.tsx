@@ -467,54 +467,72 @@ export default function DetailsComponent() {
         </div>
       </section>
 
-      {/* ── You May Also Like ── */}
-      <section className="bg-white px-6 md:px-16 py-12 md:py-20 border-t border-gray-100">
-        <div className="max-w-[1440px] mx-auto">
-          <div className="flex items-center justify-between mb-8 md:mb-12">
-            <h2 className="text-[26px] leading-[26px] tracking-[-0.5px] font-bold text-[#0D0D0D] text-left max-w-[250px] md:max-w-none md:leading-[28px] md:tracking-normal">
-              Martial Arts Uniform Manufacturing Options
-            </h2>
+    {/* ── You May Also Like ── */}
+<section className="bg-white px-4 md:px-16 py-10 md:py-20 border-t border-[#C9C9C9] md:border-gray-100">
+  <div className="max-w-[1440px] mx-auto">
+    {/* Header */}
+    <div className="flex items-end justify-between mb-6 md:mb-12">
+      <h2 className="text-[26px] leading-[26px] tracking-[-0.5px] font-bold text-[#0D0D0D] uppercase max-w-[302px] md:max-w-none md:text-[26px] md:leading-[28px] md:tracking-normal md:normal-case">
+        Martial Arts Uniform Manufacturing Options
+      </h2>
+      <a
+        href="/products"
+        className="text-[14px] leading-[18px] tracking-[0.1px] font-bold text-[#0D0D0D] hover:underline shrink-0 md:uppercase md:flex md:items-center md:gap-1 md:text-sm md:tracking-normal"
+      >
+        View all
+        <svg
+          className="hidden md:inline-block"
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+        >
+          <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" />
+        </svg>
+      </a>
+    </div>
+
+    {/* Grid - 2x2 on mobile, horizontal scroll on desktop */}
+    <div className="grid grid-cols-2 gap-3 md:flex md:gap-0 md:overflow-x-auto md:snap-x md:snap-mandatory md:[scrollbar-width:none] md:[-ms-overflow-style:none] md:[&::-webkit-scrollbar]:hidden">
+      {relatedProducts.map((product, i) => (
+        <div
+          key={i}
+          className="border border-[#C9C9C9] rounded md:rounded-none md:w-[360px] md:snap-start md:shrink-0 group cursor-pointer bg-white"
+        >
+          {/* Image */}
+          <div className="relative p-2 md:p-0">
+            <div className="relative aspect-square md:aspect-auto md:h-[280px] bg-gray-100 overflow-hidden rounded-sm md:rounded-none">
+              <img
+                src={product.image}
+                alt={product.name}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-[#0D0D0D] text-white text-[6.5px] font-medium px-3 py-1.5 uppercase tracking-wider">
+                  Quick View
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Info */}
+          <div className="px-2 pb-2 pt-2 flex flex-col gap-2 md:px-4 md:py-3 md:flex-row md:items-center md:justify-between md:gap-0">
+            <span className="text-[12px] leading-[15px] tracking-[0px] font-bold text-[#0D0D0D] text-left">
+              {product.name}
+            </span>
             <a
-              href="/products"
-              className="text-[14px] leading-[18px] tracking-[0.1px] font-bold text-[#0D0D0D] text-left uppercase hover:underline flex items-center gap-1 md:text-sm md:tracking-normal"
+              href="#"
+              className="text-[10px] leading-[12px] tracking-[0px] font-bold text-[#0D0D0D] text-left underline md:no-underline md:border md:border-[#0D0D0D] md:px-2 md:py-1 md:uppercase md:hover:bg-[#0D0D0D] md:hover:text-white md:transition-colors md:text-[8px] md:font-medium"
             >
-              View all options
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" />
-              </svg>
+              Request Quote
             </a>
           </div>
-          <div className="flex gap-4 md:gap-0 overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-            {relatedProducts.map((product, i) => (
-              <div
-                key={i}
-                className="w-[280px] md:w-[360px] snap-start shrink-0 border border-[#C9C9C9] group cursor-pointer"
-              >
-                <div className="relative h-[220px] md:h-[280px] bg-gray-100 overflow-hidden">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                    <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-[#0D0D0D] text-white text-[6.5px] font-medium px-3 py-1.5 uppercase tracking-wider">
-                      Quick View
-                    </span>
-                  </div>
-                </div>
-                <div className="px-3 py-3 md:px-4 md:py-3 flex flex-col md:flex-row md:items-center justify-between gap-2 md:gap-0">
-                  <span className="text-[12px] leading-[15px] tracking-[0px] font-bold text-[#0D0D0D] text-left uppercase md:text-[10px]">
-                    {product.name}
-                  </span>
-                  <button className="text-[10px] leading-[12px] tracking-[0px] font-bold text-[#0D0D0D] text-left uppercase border border-[#0D0D0D] px-2 py-1.5 md:py-1 hover:bg-[#0D0D0D] hover:text-white transition-colors self-start md:self-auto md:text-[8px] md:font-medium">
-                    Request Quote
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* ── Quality Control Banner ── */}
       <section className="px-0 md:px-6 py-0">
