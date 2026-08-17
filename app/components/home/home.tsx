@@ -3,6 +3,7 @@
 import React, { useState, useRef } from "react";
 import Link from "next/link"; 
 import Image from "next/image";
+import { motion, useScroll } from "framer-motion";
 
 // --- Image Placeholder Component ---
 const ImagePlaceholder = ({
@@ -188,7 +189,6 @@ const FAQItem = ({
 };
 
 // --- Header Component ---
-// ─── Header Component ───────────────────────────────────────────────────────
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -385,7 +385,7 @@ export default function SarlamAthleticsPage() {
     const el = scrollerRef.current;
     if (!el) return;
     const card = el.querySelector<HTMLElement>("[data-card]");
-    const cardWidth = card ? card.offsetWidth + 21 : 521;
+    const cardWidth = card ? card.offsetWidth + 24 : 524;
     el.scrollBy({ left: dir * cardWidth, behavior: "smooth" });
   };
 
@@ -525,7 +525,7 @@ export default function SarlamAthleticsPage() {
       />
         <div className="absolute inset-0 bg-black/50" />
 
-        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6 mt-4 md:mt-0">
+        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
           <h1 
             className="max-w-[1100px] mb-6 md:mb-8 uppercase text-[36px] leading-[40px] md:text-[72px] md:leading-[64px]"
             style={{
@@ -538,7 +538,7 @@ export default function SarlamAthleticsPage() {
             Private Label Combat Sports Equipment Manufacturer for U.S. Brands
           </h1>
           <p 
-            className="max-w-[700px] mb-8 text-[14px] leading-[20px] md:text-[16px]"
+            className="max-w-[700px] mb-8 md:mb-10 text-[14px] leading-[20px] md:text-[16px]"
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
               fontWeight: 400,
@@ -591,28 +591,26 @@ export default function SarlamAthleticsPage() {
         </div>
       </div>
 
-    {/* --- Products Grid Section --- */}
-      <section className="w-full max-w-[1440px] mx-auto pb-[64px] bg-white flex flex-col gap-0 overflow-hidden">
+  {/* --- Products Grid Section --- */}
+      <section className="w-full max-w-[1440px] mx-auto py-16 md:py-24 bg-white flex flex-col gap-0 overflow-hidden">
         
         {/* Header Row */}
-        <div className="w-full h-[131px] pt-[64px] pr-[12px] pb-[16px] pl-[12px] flex items-end justify-between">
+        <div className="w-full px-6 md:px-10 mb-8 md:mb-12 flex items-end justify-between gap-4">
           
           <h2
-            className="tracking-tight truncate mr-4"
+            className="tracking-tight text-[24px] leading-[30px] md:text-[34px] md:leading-[46px]"
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
               fontWeight: 600,
-              fontSize: "34px",
               letterSpacing: "-0.5px",
               color: "#000000",
-              lineHeight: "46px",
               margin: 0
             }}
           >
             Combat Sports Equipment We Manufacture
           </h2>
 
-          <div className="flex items-center gap-[6px] shrink-0 mb-[6px] z-10 relative">
+          <div className="flex items-center gap-[6px] shrink-0 z-10 relative pb-1 md:pb-2">
             <button 
               onClick={() => scrollByCard(-1)} 
               aria-label="Previous" 
@@ -633,7 +631,7 @@ export default function SarlamAthleticsPage() {
         {/* Products Area */}
         <div 
           ref={scrollerRef}
-          className="w-full p-0 flex overflow-x-auto gap-[21px] scroll-smooth snap-x snap-mandatory hide-scrollbar border-t border-b border-gray-200"
+          className="w-full pb-4 flex overflow-x-auto gap-6 px-6 md:px-10 scroll-smooth snap-x snap-mandatory hide-scrollbar border-t border-b border-gray-200"
         >
           {products.map((product, i) => (
             <div 
@@ -652,7 +650,7 @@ export default function SarlamAthleticsPage() {
                 />
               </Link>
 
-              <div className="w-[499px] h-[84px] p-[12px]">
+              <div className="w-[499px] h-[84px] py-[12px] pr-[12px]">
                 <div className="w-[475px] h-[60px] pt-[10px] pr-[12px] pb-[10px] pl-[12px] border border-gray-200 flex items-end justify-between bg-white">
                   <div className="flex-1 flex flex-col gap-[2px] min-w-0 pr-2">
                     <span
@@ -700,7 +698,6 @@ export default function SarlamAthleticsPage() {
           ))}
         </div>
       </section>
-
       {/* --- About Section --- */}
       <section className="w-full bg-[#000000] py-16 md:py-24">
         <div className="max-w-[1360px] mx-auto px-6 md:px-10 flex flex-col lg:flex-row gap-8 md:gap-16">
@@ -722,7 +719,7 @@ export default function SarlamAthleticsPage() {
 
           <div className="lg:w-2/3">
             <p 
-              className="mb-6 text-[18px] md:text-[22px]"
+              className="mb-6 md:mb-8 text-[18px] md:text-[22px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 400,
@@ -770,11 +767,11 @@ export default function SarlamAthleticsPage() {
         </div>
       </section>
 
-     {/* --- Manufacturing Capabilities --- */}
-      <section className="w-full bg-white py-12 md:py-14">
+      {/* --- Manufacturing Capabilities --- */}
+      <section className="w-full bg-white py-16 md:py-24">
         <div className="max-w-[1416px] mx-auto px-6 md:px-10">
-          <p 
-            className="uppercase md:text-center mb-8 md:mb-10"
+          <h2 
+            className="uppercase md:text-center mb-10 md:mb-16"
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
               fontWeight: 700,
@@ -784,9 +781,9 @@ export default function SarlamAthleticsPage() {
             }}
           >
             Manufacturing Capabilities
-          </p>
+          </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
             {[
               {
                 title: "OEM Production",
@@ -806,15 +803,13 @@ export default function SarlamAthleticsPage() {
               },
             ].map((cap, i) => (
               <div key={i} className="flex items-start gap-4">
-                {/* Replaced CheckIcon SVG with requested image file */}
                 <img 
                   src="/Page 1/Icons/Vector-4.png" 
                   alt="Capability Icon" 
                   className="shrink-0 w-[30px] h-[30px] object-contain" 
                 />
-                <div>
+                <div className="flex flex-col gap-2 md:gap-3">
                   <h4 
-                    className="mb-1"
                     style={{
                       fontFamily: "'FFF Acid Grotesk', sans-serif",
                       fontWeight: 700,
@@ -842,8 +837,9 @@ export default function SarlamAthleticsPage() {
           </div>
         </div>
       </section>
+
      {/* --- Why Brands Choose Sarlam Athletics --- */}
-      <section className="w-full bg-white py-16 md:py-20">
+      <section className="w-full bg-white py-16 md:py-24">
         <div className="max-w-[1376px] mx-auto px-6 md:px-10">
           <h2 
             className="mb-10 md:mb-16 text-[28px] md:text-[37px] leading-[36px] md:leading-[46px]"
@@ -883,7 +879,7 @@ export default function SarlamAthleticsPage() {
             ].map((step, i) => (
               <div
                 key={i}
-                className={`py-8 md:p-8 ${i < 2 ? "border-b md:border-b-0 md:border-r border-gray-200" : ""}`}
+                className={`py-10 md:p-12 ${i < 2 ? "border-b md:border-b-0 md:border-r border-gray-200" : ""}`}
               >
                 <div className="mb-4">
                   <span 
@@ -900,7 +896,7 @@ export default function SarlamAthleticsPage() {
                   </span>
                 </div>
                 <h3 
-                  className="mb-3"
+                  className="mb-3 md:mb-4"
                   style={{
                     fontFamily: "'Switzer', sans-serif",
                     fontWeight: 600,
@@ -925,11 +921,13 @@ export default function SarlamAthleticsPage() {
                 >
                   {step.desc}
                 </p>
-                <ImagePlaceholder
-                  className="w-full h-[240px] md:h-[303px] rounded-sm"
-                  label={step.title}
-                  src={step.imageSrc}
-                />
+                <div className="w-full aspect-[4/3] rounded-sm overflow-hidden bg-gray-100">
+                  <ImagePlaceholder
+                    className="w-full h-full object-cover"
+                    label={step.title}
+                    src={step.imageSrc}
+                  />
+                </div>
               </div>
             ))}
           </div>
@@ -937,7 +935,7 @@ export default function SarlamAthleticsPage() {
       </section>
 
     {/* --- Why Partner With Us --- */}
-      <section className="w-full bg-white py-16 md:py-20 border-t border-gray-200">
+      <section className="w-full bg-white py-16 md:py-24 border-t border-gray-200">
         <div className="max-w-[1376px] mx-auto px-6 md:px-10">
           <h2 
             className="mb-10 md:mb-16 text-[28px] md:text-[37px] leading-[36px] md:leading-[46px]"
@@ -974,15 +972,17 @@ export default function SarlamAthleticsPage() {
             ].map((item, i) => (
               <div
                 key={i}
-                className={`py-8 md:p-8 ${i < 2 ? "border-b md:border-b-0 md:border-r border-gray-200" : ""}`}
+                className={`py-10 md:p-12 ${i < 2 ? "border-b md:border-b-0 md:border-r border-gray-200" : ""}`}
               >
-                <ImagePlaceholder
-                   className="w-full h-[240px] md:hidden mb-6 rounded-sm"
-                   label={item.title}
-                   src={item.imageSrc}
-                 />
+                <div className="w-full aspect-[4/3] md:hidden mb-6 md:mb-8 rounded-sm overflow-hidden bg-gray-100">
+                   <ImagePlaceholder
+                     className="w-full h-full object-cover"
+                     label={item.title}
+                     src={item.imageSrc}
+                   />
+                </div>
                 <h3 
-                  className="mb-4"
+                  className="mb-3 md:mb-4"
                   style={{
                     fontFamily: "'Switzer', sans-serif",
                     fontWeight: 600,
@@ -1049,7 +1049,7 @@ export default function SarlamAthleticsPage() {
           </blockquote>
 
           <p 
-            className="mb-8 text-[14px] md:text-[16px]"
+            className="mb-8 md:mb-10 text-[14px] md:text-[16px]"
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
               fontWeight: 400,
@@ -1080,7 +1080,7 @@ export default function SarlamAthleticsPage() {
       </section>
 
       {/* --- How Our Process Works (Accordion/Expanding Hover Animation) --- */}
-      <section className="w-full bg-white py-16 md:py-20">
+      <section className="w-full bg-white py-16 md:py-24">
         <div className="max-w-[1440px] mx-auto px-6 md:px-10">
           <h2 
             className="mb-10 md:mb-16 text-[28px] md:text-[37px] leading-[36px] md:leading-[46px]"
@@ -1102,9 +1102,7 @@ export default function SarlamAthleticsPage() {
             const isActive = activeProcessStep === i;
             const isDefault = activeProcessStep === null;
             
-            // Width applied securely for desktop (25% default, 55% active, 15% inactive)
             const desktopWidthClass = isDefault ? "md:w-[25%]" : (isActive ? "md:w-[55%]" : "md:w-[15%]");
-            // Height applied securely for mobile (200px default, 350px active, 110px inactive)
             const mobileHeightClass = isDefault ? "h-[200px]" : (isActive ? "h-[350px]" : "h-[110px]");
 
             return (
@@ -1185,10 +1183,10 @@ export default function SarlamAthleticsPage() {
       </section>
 
       {/* --- FAQ Section --- */}
-      <section className="w-full bg-white py-16 md:py-20">
+      <section className="w-full bg-white py-16 md:py-24">
         <div className="max-w-[800px] mx-auto px-6 md:px-10">
           <h2 
-            className="mb-8 md:mb-12 text-[28px] md:text-[37px] leading-[36px] md:leading-[46px]"
+            className="mb-10 md:mb-16 text-[28px] md:text-[37px] leading-[36px] md:leading-[46px]"
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
               fontWeight: 500,
@@ -1205,9 +1203,9 @@ export default function SarlamAthleticsPage() {
             ))}
           </div>
 
-          <div className="mt-8 md:mt-10 text-center">
+          <div className="mt-10 md:mt-16 text-center">
             <p 
-              className="mb-4"
+              className="mb-6 md:mb-8"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 400,
@@ -1237,7 +1235,7 @@ export default function SarlamAthleticsPage() {
       </section>
 
       {/* --- CTA Section --- */}
-      <section className="w-full bg-white py-10 md:py-16">
+      <section className="w-full bg-white py-16 md:py-24">
         <div className="max-w-[1344px] mx-auto px-4 md:px-10">
           <div className="relative rounded-sm overflow-hidden">
            <ImagePlaceholder
@@ -1248,7 +1246,7 @@ export default function SarlamAthleticsPage() {
             <div className="relative z-10 bg-black/60 py-16 px-6 md:py-24 md:px-20 flex flex-col items-center text-center">
               <div className="max-w-[700px]">
                 <h2 
-                  className="mb-4 md:mb-6 text-[28px] md:text-[37px] leading-[36px] md:leading-[46px]"
+                  className="mb-6 md:mb-8 text-[28px] md:text-[37px] leading-[36px] md:leading-[46px]"
                   style={{
                     fontFamily: "'FFF Acid Grotesk', sans-serif",
                     fontWeight: 500,
@@ -1259,7 +1257,7 @@ export default function SarlamAthleticsPage() {
                   Start Manufacturing Your Custom Sports Equipment Today
                 </h2>
                 <p 
-                  className="mb-6 md:mb-8 text-[14px] md:text-[16px]"
+                  className="mb-8 md:mb-10 text-[14px] md:text-[16px]"
                   style={{
                     fontFamily: "'FFF Acid Grotesk', sans-serif",
                     fontWeight: 400,
@@ -1296,7 +1294,7 @@ export default function SarlamAthleticsPage() {
       <div className="border-t border-gray-200" />
 
       {/* Top Footer */}
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-10 md:py-12 flex flex-col lg:flex-row justify-between gap-10 md:gap-12">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-12 md:py-16 flex flex-col lg:flex-row justify-between gap-10 md:gap-12">
         {/* Left - CTA */}
         <div className="lg:w-1/2">
           <h3
@@ -1409,7 +1407,7 @@ export default function SarlamAthleticsPage() {
       <div className="border-t border-gray-200" />
 
       {/* Brand Name */}
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-8 md:py-10 flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-0">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-10 md:py-12 flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-0">
         <p
           className="uppercase text-[56px] leading-[90%] md:text-[101px] md:leading-[85%]"
           style={{
@@ -1450,7 +1448,7 @@ export default function SarlamAthleticsPage() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="w-full bg-[#0D0D0D] py-4">
+      <div className="w-full bg-[#0D0D0D] py-4 md:py-6">
         <div className="max-w-[1440px] mx-auto px-6 md:px-10 flex flex-col md:flex-row md:items-center justify-between gap-3 md:gap-0">
           <p 
             style={{

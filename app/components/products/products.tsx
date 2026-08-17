@@ -2,6 +2,7 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 // ─── Import Centralized Header ──────────────────────────────────────────────
 import { Header } from "../home/home";
@@ -48,19 +49,60 @@ const ChevronDownIcon = () => (
   </svg>
 );
 
-const ColumnsIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <rect x="1" y="1" width="6" height="14" stroke="currentColor" strokeWidth="1.5" />
-    <rect x="9" y="1" width="6" height="14" stroke="currentColor" strokeWidth="1.5" />
+const SmallArrowRight = () => (
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="mt-[1px]">
+    <line x1="5" y1="12" x2="19" y2="12"></line>
+    <polyline points="12 5 19 12 12 19"></polyline>
   </svg>
 );
 
-const GridIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <rect x="1" y="1" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
-    <rect x="9" y="1" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
-    <rect x="1" y="9" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
-    <rect x="9" y="9" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
+const MenuIcon = () => (
+  <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
+    <line y1="1" x2="20" y2="1" stroke="currentColor" strokeWidth="2" />
+    <line y1="7" x2="20" y2="7" stroke="currentColor" strokeWidth="2" />
+    <line y1="13" x2="20" y2="13" stroke="currentColor" strokeWidth="2" />
+  </svg>
+);
+
+const SearchIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+    <circle cx="9" cy="9" r="7" stroke="currentColor" strokeWidth="2" />
+    <line
+      x1="14"
+      y1="14"
+      x2="19"
+      y2="19"
+      stroke="currentColor"
+      strokeWidth="2"
+    />
+  </svg>
+);
+
+const ArrowLeft = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="19" y1="12" x2="5" y2="12"></line>
+    <polyline points="12 19 5 12 12 5"></polyline>
+  </svg>
+);
+
+const ArrowRight = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="5" y1="12" x2="19" y2="12"></line>
+    <polyline points="12 5 19 12 12 19"></polyline>
+  </svg>
+);
+
+const LogoMark = ({ className = "" }: { className?: string }) => (
+  <svg
+    viewBox="0 0 30 34"
+    className={className}
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M24 0L4 14h13L0 34l26-15H12L24 0z"
+      fill="currentColor"
+    />
   </svg>
 );
 
@@ -94,7 +136,7 @@ const allProducts = [
     name: "Professional MMA Training Gloves",
     category: "MMA Equipment", 
     cta: "View Product +",   
-    href: "/ultimategloves",           
+    href: "/ultimategloves",          
     swatches: ["#B91C1C", "#0D0D0D"],
     image: "/Products/MMATrainingGloves.png",
   },
@@ -327,12 +369,12 @@ export default function ProductPage() {
       </section>
 
       {/* ───── 4. Brand Statement Section ───── */}
-      <section className="w-full bg-white py-16 md:py-20 flex justify-center">
-        <div className="w-full max-w-[1440px] px-6 md:px-10 flex flex-col lg:flex-row gap-6 md:gap-12 lg:gap-20">
+      <section className="w-full bg-white py-16 md:py-24 flex justify-center">
+        <div className="w-full max-w-[1440px] px-6 md:px-10 flex flex-col lg:flex-row gap-8 md:gap-12 lg:gap-20">
           <div className="lg:w-1/2">
             <h2>
               <span
-                className="block text-[28px] leading-[32px] md:text-[37px] md:leading-[45.6px]"
+                className="block text-[28px] leading-[32px] md:text-[37px] md:leading-[46px]"
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
                   fontWeight: 700,
@@ -343,7 +385,7 @@ export default function ProductPage() {
                 Why Brands Choose
               </span>
               <span
-                className="block text-[28px] leading-[32px] md:text-[37px] md:leading-[45.6px]"
+                className="block text-[28px] leading-[32px] md:text-[37px] md:leading-[46px]"
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
                   fontWeight: 700,
@@ -358,7 +400,7 @@ export default function ProductPage() {
 
           <div className="lg:w-1/2 flex flex-col gap-4 md:gap-6">
             <p
-              className="text-[14px] leading-[22px] md:text-[16px] md:leading-[20px]"
+              className="text-[14px] leading-[22px] md:text-[16px] md:leading-[24px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 400,
@@ -373,7 +415,7 @@ export default function ProductPage() {
               requirements.
             </p>
             <p
-              className="text-[14px] leading-[22px] md:text-[16px] md:leading-[20px]"
+              className="text-[14px] leading-[22px] md:text-[16px] md:leading-[24px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 400,
@@ -390,18 +432,19 @@ export default function ProductPage() {
       </section>
 
       {/* ───── 5. Product Grid Section ───── */}
-      <section className="w-full bg-white flex justify-center">
+      <section className="w-full bg-white flex justify-center py-16 md:py-24">
         <div className="w-full max-w-[1440px]">
           {/* Header & Filters Boxed */}
           <div className="px-6 md:px-10">
             <div className="py-4 md:py-6 border-b border-gray-200">
               <h2
-                className="uppercase text-[22px] leading-[26px] md:text-[26px] md:leading-[26px] max-w-[300px] md:max-w-none"
+                className="tracking-tight text-[24px] leading-[30px] md:text-[34px] md:leading-[46px]"
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
-                  fontWeight: 700,
+                  fontWeight: 600,
                   letterSpacing: "-0.5px",
                   color: "#0D0D0D",
+                  margin: 0
                 }}
               >
                 Combat Sports Equipment We Manufacture
@@ -554,7 +597,7 @@ export default function ProductPage() {
           </div>
 
           {/* CTA Boxed */}
-          <div className="flex justify-center py-8 md:py-12 px-6 md:px-0">
+          <div className="flex justify-center py-10 md:py-16 px-6 md:px-0">
             <a
               href="#"
               className="inline-flex items-center justify-center bg-white text-black w-full md:w-auto uppercase px-10 py-4 border border-black hover:bg-gray-100 transition text-[14px]"
@@ -572,11 +615,11 @@ export default function ProductPage() {
       </section>
 
       {/* ───── 6. Customization Options Section ───── */}
-      <section className="w-full bg-white py-16 md:py-16 flex justify-center">
+      <section className="w-full bg-white py-16 md:py-24 flex justify-center">
         <div className="w-full max-w-[1440px] px-6 md:px-10">
-          <div className="mb-8 md:mb-10">
+          <div className="mb-10 md:mb-16">
             <h2
-              className="mb-4 text-[28px] leading-[32px] md:text-[37px] md:leading-[46px]"
+              className="mb-4 md:mb-6 text-[28px] leading-[32px] md:text-[37px] md:leading-[46px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 700,
@@ -620,9 +663,9 @@ export default function ProductPage() {
                     />
                   </div>
 
-                  <div className="p-5 flex-1 flex flex-col">
+                  <div className="p-6 md:p-8 flex-1 flex flex-col">
                     <h3
-                      className="mb-2 text-[16px] leading-[22px] md:text-[18px] md:leading-[24px]"
+                      className="mb-3 md:mb-4 text-[18px] leading-[22px] md:text-[22px] md:leading-[26px]"
                       style={{
                         fontFamily: "'FFF Acid Grotesk', sans-serif",
                         fontWeight: 700,
@@ -664,10 +707,10 @@ export default function ProductPage() {
             </button>
           </div>
 
-          <div className="flex justify-center mt-10">
+          <div className="flex justify-center mt-10 md:mt-16">
             <a
               href="#"
-              className="inline-flex items-center justify-center bg-[#0D0D0D] text-white w-full md:w-auto uppercase px-10 py-3.5 hover:bg-gray-800 transition-all duration-300 text-[14px]"
+              className="inline-flex items-center justify-center bg-[#0D0D0D] text-white w-full md:w-auto uppercase px-10 py-4 hover:bg-gray-800 transition-all duration-300 text-[14px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 700,
@@ -682,10 +725,10 @@ export default function ProductPage() {
       </section>
 
       {/* ───── 7. Process / Pricing Section ───── */}
-      <section className="w-full bg-white py-16 md:py-20 flex justify-center">
+      <section className="w-full bg-white py-16 md:py-24 flex justify-center">
         <div className="w-full max-w-[1440px] px-6 md:px-10">
           <h2
-            className="mb-8 md:mb-16 text-[28px] leading-[32px] md:text-[37px] md:leading-[46px]"
+            className="mb-10 md:mb-16 text-[28px] leading-[32px] md:text-[37px] md:leading-[46px]"
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
               fontWeight: 500,
@@ -706,7 +749,7 @@ export default function ProductPage() {
               >
                 <div className="p-6 md:p-8 pb-4 md:pb-6">
                   <h3
-                    className="mb-3 text-[18px] leading-[22px] md:text-[22px] md:leading-[26px]"
+                    className="mb-3 md:mb-4 text-[18px] leading-[22px] md:text-[22px] md:leading-[26px]"
                     style={{
                       fontFamily: "'FFF Acid Grotesk', sans-serif",
                       fontWeight: 500,
@@ -717,7 +760,7 @@ export default function ProductPage() {
                     {step.title}
                   </h3>
                   <p
-                    className="text-[14px] leading-[22px] md:text-[15px] md:leading-[16px]"
+                    className="text-[14px] leading-[22px] md:text-[15px] md:leading-[24px]"
                     style={{
                       fontFamily: "'FFF Acid Grotesk', sans-serif",
                       fontWeight: 400,
@@ -745,7 +788,7 @@ export default function ProductPage() {
       </section>
 
       {/* ───── 8. Why Section ───── */}
-      <section className="w-full bg-white py-16 md:py-20 border-t border-gray-200 flex justify-center">
+      <section className="w-full bg-white py-16 md:py-24 border-t border-gray-200 flex justify-center">
         <div className="w-full max-w-[1440px] px-6 md:px-10">
           <h2
             className="mb-10 md:mb-16 text-[28px] leading-[34px] md:text-[37px] md:leading-[46px]"
@@ -765,12 +808,12 @@ export default function ProductPage() {
             {whyReasons.map((reason, i) => (
               <div
                 key={i}
-                className={`py-8 border-b border-gray-200 md:border-b-0 md:p-8 ${
+                className={`py-8 md:py-12 border-b border-gray-200 md:border-b-0 px-6 md:px-8 ${
                   i < 3 ? "md:border-r" : ""
                 }`}
               >
                 <h3
-                  className="mb-3 md:mb-4 text-[18px] leading-[24px] md:text-[21.7px] md:leading-[26.4px]"
+                  className="mb-3 md:mb-4 text-[18px] leading-[24px] md:text-[22px] md:leading-[26px]"
                   style={{
                     fontFamily: "'Switzer', sans-serif",
                     fontWeight: 600,
@@ -781,7 +824,7 @@ export default function ProductPage() {
                   {reason.title}
                 </h3>
                 <p
-                  className="text-[14px] leading-[22px] md:text-[15.1px] md:leading-[24px]"
+                  className="text-[14px] leading-[22px] md:text-[15px] md:leading-[24px]"
                   style={{
                     fontFamily: "'FFF Acid Grotesk', sans-serif",
                     fontWeight: 400,
@@ -801,7 +844,7 @@ export default function ProductPage() {
       <footer className="w-full bg-white flex flex-col items-center">
         <div className="w-full border-t border-gray-200" />
 
-        <div className="w-full max-w-[1440px] px-6 md:px-10 py-10 md:py-12 flex flex-col lg:flex-row justify-between gap-10 md:gap-12">
+        <div className="w-full max-w-[1440px] px-6 md:px-10 py-12 md:py-16 flex flex-col lg:flex-row justify-between gap-10 md:gap-12">
           <div className="lg:w-1/2">
             <h3
               className="mb-4 text-[32px] leading-[38px] md:text-[47px] md:leading-[58px]"
@@ -831,7 +874,7 @@ export default function ProductPage() {
           </div>
 
           <div className="lg:w-1/2 flex flex-col md:flex-row gap-8 md:gap-16">
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3 md:gap-4">
               {[
                 "Home",
                 "Products",
@@ -854,7 +897,7 @@ export default function ProductPage() {
               ))}
             </div>
 
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3 md:gap-4">
               {["About", "Contact", "Request Quote"].map((link) => (
                 <a
                   key={link}
@@ -872,7 +915,7 @@ export default function ProductPage() {
               ))}
             </div>
 
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3 md:gap-4">
               {[
                 "Boxing Gloves",
                 "Martial Arts Uniforms",
@@ -911,23 +954,36 @@ export default function ProductPage() {
             }}
           >
             sarlam
-            <br className="hidden md:block" />
+            <br className="md:block hidden" />
             <span className="md:hidden"> </span>athletics
           </p>
-          <div className="flex flex-col md:items-end gap-2 md:gap-0">
-            <span className="md:hidden block text-[12px] leading-[16px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#000000" }}>
+          <div className="flex flex-col md:flex-row md:items-center justify-between">
+            <span 
+              className="block text-[12px] md:text-[12px] mb-2 md:mb-0 md:hidden"
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 400,
+                color: "#000000",
+              }}
+            >
               Website by Sanna Granqvist
-              <br />
-              © 2026
             </span>
-            <span className="hidden md:block text-[12px] leading-[16px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#000000" }}>
+            <span 
+              className="hidden md:block text-[12px]"
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 400,
+                lineHeight: "16px",
+                color: "#000000",
+              }}
+            >
               © 2026
             </span>
           </div>
         </div>
 
-        <div className="w-full bg-[#0D0D0D] py-4 flex justify-center">
-          <div className="w-full max-w-[1440px] px-6 md:px-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-0">
+        <div className="w-full bg-[#0D0D0D] py-4">
+          <div className="w-full max-w-[1440px] mx-auto px-6 md:px-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-0">
             <p
               className="text-[12px] leading-[16px]"
               style={{
