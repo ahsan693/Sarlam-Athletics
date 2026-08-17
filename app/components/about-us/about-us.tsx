@@ -52,11 +52,11 @@ export default function PrivateLabel() {
       {/* ─── HERO SECTION ─── */}
       <section className="relative h-[600px] md:h-[495px] bg-[#0D0D0D] overflow-hidden -mt-[52px] pt-[52px] md:-mt-[0px] md:pt-[0px]">
         {/* Background Image */}
-      <img
-  src="/Page 5/01.png"
-  alt="Boxing training ring"
-  className="absolute inset-0 w-full h-full object-cover"
-/>
+        <img
+          src="/Page 5/01.png"
+          alt="Boxing training ring"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
         {/* Dark gradient — strongest on the left/bottom where the copy sits */}
         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-black/10 md:bg-gradient-to-r md:from-black md:via-black/60 md:to-black/10 bg-black/50" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/40 md:bg-gradient-to-t md:from-black/70 md:via-transparent md:to-black/40" />
@@ -100,7 +100,7 @@ export default function PrivateLabel() {
           </div>
 
           {/* Meta Info */}
-          <div className="mt-8 md:mt-16 flex flex-col md:flex-row md:items-start gap-4 md:gap-16">
+          <div className="mt-10 md:mt-16 flex flex-col md:flex-row md:items-start gap-6 md:gap-16">
             <div className="space-y-1 border-t border-white/20 pt-4 md:border-t-0 md:pt-0">
               <p 
                 className="uppercase"
@@ -184,11 +184,11 @@ export default function PrivateLabel() {
       </section>
 
       {/* ─── PROCESS OVERVIEW ─── */}
-      <section className="pt-12 md:pt-24 bg-white">
+      <section className="py-16 md:py-24 bg-white">
         <div className="max-w-[1440px] mx-auto px-5 md:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
             <h2 
-              className="max-w-xl text-[28px] leading-[32px] md:text-[37px] md:leading-[45.6px]"
+              className="max-w-xl text-[28px] leading-[32px] md:text-[37px] md:leading-[45.6px] mb-6 md:mb-0"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 700,
@@ -246,22 +246,23 @@ export default function PrivateLabel() {
         </div>
 
         {/* Full-bleed image */}
-        <div className="w-full h-[280px] md:h-[520px] mt-8 md:mt-14 overflow-hidden">
-      <img
-  src="/Page 5/03.png"
-  alt="MMA training in the cage"
-  className="w-full h-full object-cover"
-/>
+        <div className="w-full h-[280px] md:h-[520px] mt-10 md:mt-16 overflow-hidden">
+          <img
+            src="/Page 5/03.png"
+            alt="MMA training in the cage"
+            className="w-full h-full object-cover"
+          />
         </div>
       </section>
 
       {/* ─── DETAIL LIST SECTIONS (2-col: heading left, content right) ─── */}
       <section className="max-w-[1440px] mx-auto px-5 md:px-8 bg-white">
         <div className="divide-y divide-gray-200 border-b border-gray-200">
+          
           {/* What's Included */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-20 py-12 md:py-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 py-16 md:py-24">
             <h2 
-              className="max-w-xl uppercase text-[22px] leading-[26px] md:text-[26px] md:leading-[26px]"
+              className="max-w-xl uppercase text-[22px] leading-[26px] md:text-[26px] md:leading-[26px] mb-4 md:mb-0"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 700,
@@ -292,9 +293,9 @@ export default function PrivateLabel() {
           </div>
 
           {/* Start Your Project */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-20 py-12 md:py-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 py-16 md:py-24">
             <h2 
-              className="max-w-xl uppercase text-[22px] leading-[26px] md:text-[26px] md:leading-[26px]"
+              className="max-w-xl uppercase text-[22px] leading-[26px] md:text-[26px] md:leading-[26px] mb-4 md:mb-0"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 700,
@@ -320,9 +321,9 @@ export default function PrivateLabel() {
           </div>
 
           {/* Industries We Serve */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-20 py-12 md:py-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 py-16 md:py-24">
             <h2 
-              className="max-w-xl uppercase text-[22px] leading-[26px] md:text-[26px] md:leading-[26px]"
+              className="max-w-xl uppercase text-[22px] leading-[26px] md:text-[26px] md:leading-[26px] mb-4 md:mb-0"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 700,
@@ -332,7 +333,7 @@ export default function PrivateLabel() {
             >
               Industries We Serve
             </h2>
-            <ul className="space-y-3 max-w-xl">
+            <ul className="space-y-3 md:space-y-4 max-w-xl">
               {industries.map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
                   <span style={{ fontSize: "17px", color: "#0D0D0D" }}>•</span>
@@ -354,7 +355,7 @@ export default function PrivateLabel() {
         </div>
 
         {/* Request Quote Button */}
-        <div className="flex justify-center py-12 md:py-20 w-full">
+        <div className="flex justify-center pb-16 md:pb-24 pt-12 md:pt-16 w-full">
           <a
             href="/contact"
             className="inline-flex items-center justify-center bg-[#0D0D0D] px-8 py-4 uppercase hover:bg-gray-800 transition-colors duration-300 w-full md:w-auto"
@@ -373,9 +374,9 @@ export default function PrivateLabel() {
       </section>
 
       {/* ─── TESTIMONIALS ─── */}
-      <section className="max-w-[1440px] mx-auto px-5 md:px-8 pb-12 md:pb-24 bg-white">
+      <section className="max-w-[1440px] mx-auto px-5 md:px-8 py-16 md:py-24 bg-white">
         <h2 
-          className="text-[28px] leading-[32px] md:text-[37px] md:leading-[46px]"
+          className="mb-10 md:mb-16 text-[28px] leading-[32px] md:text-[37px] md:leading-[46px]"
           style={{
             fontFamily: "'FFF Acid Grotesk', sans-serif",
             fontWeight: 500,
@@ -386,16 +387,16 @@ export default function PrivateLabel() {
           Testimonials
         </h2>
 
-        <div className="mt-8 md:mt-16 grid grid-cols-1 md:grid-cols-2 border-t border-gray-200">
+        <div className="grid grid-cols-1 md:grid-cols-2 border-t border-gray-200">
           {testimonials.map((t, i) => (
             <div
               key={i}
-              className={`py-8 md:py-12 ${
+              className={`py-10 md:py-12 flex flex-col justify-between ${
                 i === 0 ? "md:pr-16 md:border-r border-b md:border-b-0 border-gray-200" : "md:pl-16"
               }`}
             >
               <p 
-                className="text-[18px] leading-[22px] md:text-[22px] md:leading-[1.2]"
+                className="mb-6 md:mb-8 text-[18px] leading-[22px] md:text-[22px] md:leading-[1.2]"
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
                   fontWeight: 500,
@@ -404,7 +405,7 @@ export default function PrivateLabel() {
               >
                 &ldquo;{t.quote}&rdquo;
               </p>
-              <div className="mt-6 md:mt-8 flex items-center gap-4">
+              <div className="flex items-center gap-4">
                 <img
                   src={t.avatar}
                   alt={t.name}
@@ -439,18 +440,18 @@ export default function PrivateLabel() {
       </section>
 
       {/* ─── CTA SECTION ─── */}
-      <section className="max-w-[1440px] mx-auto px-5 md:px-8 pb-16 md:pb-24 bg-white">
+      <section className="max-w-[1440px] mx-auto px-5 md:px-8 py-16 md:py-24 bg-white">
         <div className="relative rounded-[16px] md:rounded-sm overflow-hidden">
-        <img
-  src="/Page 5/02.png"
-  alt="BJJ academy training session"
-  className="absolute inset-0 w-full h-full object-cover"
-/>
+          <img
+            src="/Page 5/02.png"
+            alt="BJJ academy training session"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
           <div className="absolute inset-0 bg-black/55" />
 
-          <div className="relative z-10 py-16 px-6 md:py-28 md:px-8 flex flex-col items-center text-center">
+          <div className="relative z-10 py-16 px-6 md:py-24 md:px-12 flex flex-col items-center text-center">
             <h2 
-              className="max-w-2xl text-[28px] leading-[34px] md:text-[37px] md:leading-[46px]"
+              className="mb-4 md:mb-6 max-w-2xl text-[28px] leading-[34px] md:text-[37px] md:leading-[46px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 500,
@@ -461,7 +462,7 @@ export default function PrivateLabel() {
               Ready to Start Your Private Label Manufacturing Project?
             </h2>
             <p 
-              className="mt-4 md:mt-6 max-w-xl text-[14px] leading-[22px] md:text-[16px] md:leading-[24px]"
+              className="mb-8 md:mb-10 max-w-xl text-[14px] leading-[22px] md:text-[16px] md:leading-[24px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 400,
@@ -472,21 +473,20 @@ export default function PrivateLabel() {
               Tell us what you want to manufacture, and our team will prepare a production plan,
               pricing estimate, and recommended manufacturing approach.
             </p>
-            <div className="mt-8 w-full md:w-auto">
-             <a
-  href="/contact"
-  className="inline-flex items-center justify-center gap-2 border border-white text-white uppercase hover:bg-black hover:border-black transition-colors duration-300 w-full md:w-auto rounded-[4px] md:rounded-none"
-  style={{
-    fontFamily: "'FFF Acid Grotesk', sans-serif",
-    fontWeight: 700,
-    fontSize: "14px",
-    letterSpacing: "5%",
-    padding: "16px 24px",
-    borderRadius: "8px",
-  }}
->
-  Request A Quote
-</a>
+            <div className="w-full md:w-auto">
+              <a
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 border border-white text-white uppercase hover:bg-black hover:border-black transition-colors duration-300 w-full md:w-auto rounded-[8px]"
+                style={{
+                  fontFamily: "'FFF Acid Grotesk', sans-serif",
+                  fontWeight: 700,
+                  fontSize: "14px",
+                  letterSpacing: "5%",
+                  padding: "16px 24px",
+                }}
+              >
+                Request A Quote
+              </a>
             </div>
           </div>
         </div>
@@ -494,13 +494,13 @@ export default function PrivateLabel() {
 
       {/* ─── FOOTER ─── */}
       <footer className="bg-white border-t border-gray-100">
-        <div className="max-w-[1440px] mx-auto px-5 md:px-8 py-10 md:py-12">
+        <div className="max-w-[1440px] mx-auto px-5 md:px-8 py-12 md:py-16">
           {/* Top Footer */}
           <div className="flex flex-col lg:flex-row justify-between gap-10 md:gap-12">
             {/* Left */}
             <div className="lg:w-1/2">
               <h3 
-                className="mb-4 text-[32px] leading-[40px] md:text-[47px] md:leading-[58px]"
+                className="mb-4 md:mb-6 text-[32px] leading-[40px] md:text-[47px] md:leading-[58px]"
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
                   fontWeight: 500,
@@ -608,10 +608,10 @@ export default function PrivateLabel() {
             </div>
           </div>
 
-          <div className="border-t border-gray-200 mt-8 md:mt-12" />
+          <div className="w-full h-[1px] bg-[#D7DADF] my-8 md:my-12" />
 
           {/* Large Brand Name */}
-          <div className="pt-8 md:pt-10 flex flex-col md:flex-row items-start md:items-end justify-between gap-4 md:gap-0">
+          <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-4 md:gap-0">
             <h2 
               className="uppercase text-[56px] leading-[90%] md:text-[101px] md:leading-[85%]"
               style={{
@@ -655,7 +655,7 @@ export default function PrivateLabel() {
 
         {/* Bottom Bar */}
         <div className="bg-[#0D0D0D]">
-          <div className="max-w-[1440px] mx-auto px-5 md:px-8 py-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-0">
+          <div className="max-w-[1440px] mx-auto px-5 md:px-8 py-4 md:py-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-0">
             <span 
               className="text-[12px] leading-[16px]"
               style={{
@@ -699,7 +699,7 @@ function FooterAccordion({
   return (
     <div className="border-b border-gray-200">
       <button
-        className="w-full flex items-center justify-between py-4 md:py-3 text-left"
+        className="w-full flex items-center justify-between py-4 md:py-6 text-left"
         style={{
           fontFamily: "'FFF Acid Grotesk', sans-serif",
           fontWeight: 500,
@@ -720,7 +720,7 @@ function FooterAccordion({
         </svg>
       </button>
       {open && (
-        <div className="pb-4 flex flex-col gap-3 md:gap-2">
+        <div className="pb-4 md:pb-6 flex flex-col gap-3 md:gap-4">
           {children}
         </div>
       )}
