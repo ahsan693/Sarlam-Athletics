@@ -139,7 +139,7 @@ function HeroSection() {
   );
 }
 
-// ─── Video / Mission Section ───
+// ─── image  / Mission Section ───
 function VideoSection() {
   return (
     <section className="py-16 md:py-[120px] px-6 md:px-8 bg-white">
@@ -191,7 +191,7 @@ function VideoSection() {
           </div>
         </div>
 
-        {/* Video placeholder */}
+        {/* image placeholder */}
         <div className="relative w-full aspect-[4/3] md:aspect-[1376/535] rounded-lg overflow-hidden bg-gray-200 group cursor-pointer">
           <img
             src="/Page 4/02.png"
@@ -200,14 +200,6 @@ function VideoSection() {
           />
           {/* Dark overlay */}
           <div className="absolute inset-0 bg-black/15 group-hover:bg-black/25 transition-colors" />
-          {/* Play button */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/90 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="#0D0D0D" className="md:w-6 md:h-6">
-                <polygon points="8,5 20,12 8,19" />
-              </svg>
-            </div>
-          </div>
         </div>
       </div>
     </section>
