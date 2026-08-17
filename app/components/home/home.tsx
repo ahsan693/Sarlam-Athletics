@@ -770,17 +770,17 @@ export default function SarlamAthleticsPage() {
         </div>
       </section>
 
-      {/* --- Manufacturing Capabilities --- */}
+     {/* --- Manufacturing Capabilities --- */}
       <section className="w-full bg-white py-12 md:py-14">
         <div className="max-w-[1416px] mx-auto px-6 md:px-10">
           <p 
             className="uppercase md:text-center mb-8 md:mb-10"
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
-              fontWeight: 500,
-              fontSize: "12px",
+              fontWeight: 700,
+              fontSize: "20px",
               letterSpacing: "0.15em",
-              color: "#707070",
+              color: "#000000",
             }}
           >
             Manufacturing Capabilities
@@ -806,7 +806,12 @@ export default function SarlamAthleticsPage() {
               },
             ].map((cap, i) => (
               <div key={i} className="flex items-start gap-4">
-                <CheckIcon />
+                {/* Replaced CheckIcon SVG with requested image file */}
+                <img 
+                  src="/Page 1/Icons/Vector-4.png" 
+                  alt="Capability Icon" 
+                  className="shrink-0 w-[30px] h-[30px] object-contain" 
+                />
                 <div>
                   <h4 
                     className="mb-1"
@@ -837,7 +842,6 @@ export default function SarlamAthleticsPage() {
           </div>
         </div>
       </section>
-
      {/* --- Why Brands Choose Sarlam Athletics --- */}
       <section className="w-full bg-white py-16 md:py-20">
         <div className="max-w-[1376px] mx-auto px-6 md:px-10">

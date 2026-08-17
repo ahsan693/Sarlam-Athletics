@@ -61,7 +61,6 @@ const ChevronDown = ({ className = "" }: { className?: string }) => (
 );
 
 // ─── Hero Section ───
-// ─── Hero Section ───
 function HeroSection() {
   return (
     <section className="relative w-full h-[540px] md:h-[620px] bg-[#0D0D0D] overflow-hidden">
@@ -129,7 +128,7 @@ function HeroSection() {
             lineHeight: "18px",
             letterSpacing: "0px",
             color: "#000000",
-            // Removed borderRadius: "8px" to keep edges completely straight
+            borderRadius: "8px",
           }}
         >
           Request a Manufacturing Quote
@@ -139,6 +138,7 @@ function HeroSection() {
     </section>
   );
 }
+
 // ─── Video / Mission Section ───
 function VideoSection() {
   return (
@@ -857,7 +857,8 @@ export default function PrivateLabelPage() {
       {/* ── Centralized Header ── */}
       <Header />
 
-      <main className="pt-[0px] md:pt-[52px] -mt-[52px] md:-mt-[0px]">
+      {/* FIXED: Removed the top padding and margin so there is NO gap below the header */}
+      <main className="w-full pt-0 mt-0">
         <HeroSection />
         <VideoSection />
         <ValuesSection />
