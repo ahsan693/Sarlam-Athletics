@@ -1,8 +1,63 @@
 "use client";
 
 import { useState, useRef } from "react";
+import Head from "next/head";
+import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Header } from "../home/home";
+
+// ─── Icons (inline SVGs) ───
+const ArrowUpRight = () => (
+  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <path d="M3 9L9 3M9 3H4M9 3v5" />
+  </svg>
+);
+
+const SearchOutline = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <circle cx="11" cy="11" r="8" />
+    <path d="m21 21-4.3-4.3" />
+  </svg>
+);
+
+const LinkIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+  </svg>
+);
+
+const TargetIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <circle cx="12" cy="12" r="10" />
+    <circle cx="12" cy="12" r="6" />
+    <circle cx="12" cy="12" r="2" />
+  </svg>
+);
+
+const HandshakeIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z" />
+  </svg>
+);
+
+const ChevronDown = ({ className = "" }: { className?: string }) => (
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 18 18"
+    fill="none"
+    className={className}
+  >
+    <path
+      d="M4 7l5 5 5-5"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
 
 // ─── HERO SECTION ──────────────────────────────────────────────────
 function HeroSection() {
@@ -260,14 +315,6 @@ function WhatHappensNextSection() {
   });
 
   // Seamless, perfectly sequential 7-part animation timeline mapped explicitly
-  // Phase 1 (0.0 - 0.1) -> Draw Circle 1
-  // Phase 2 (0.1 - 0.3) -> Draw Line 1
-  // Phase 3 (0.3 - 0.4) -> Draw Circle 2
-  // Phase 4 (0.4 - 0.6) -> Draw Line 2
-  // Phase 5 (0.6 - 0.7) -> Draw Circle 3
-  // Phase 6 (0.7 - 0.9) -> Draw Line 3
-  // Phase 7 (0.9 - 1.0) -> Draw Circle 4
-
   const ring1 = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
   const bg1 = useTransform(scrollYProgress, [0, 0.1], ["rgba(255,255,255,0)", "rgba(255,255,255,1)"]);
   const c1Num = useTransform(scrollYProgress, [0, 0.1], ["rgba(255,255,255,0.5)", "rgba(13,13,13,1)"]);
@@ -539,205 +586,74 @@ function FAQSection() {
             If you have any further questions or just want to reach our team,
             click the button below.
           </p>
-         <a
-  href="/contactus"
-  className="inline-flex items-center justify-center px-5 py-3 border border-black rounded-md text-black hover:bg-gray-100 transition-colors w-full lg:w-auto"
-  style={{
-    fontFamily: "'FFF Acid Grotesk', sans-serif",
-    fontWeight: 700,
-    fontSize: "14px",
-    textTransform: "uppercase",
-    letterSpacing: "0.05em",
-  }}
->
-  Get in touch
-</a>
+          <a
+            href="/contactus"
+            className="inline-flex items-center justify-center px-5 py-3 border border-black rounded-md text-black hover:bg-gray-100 transition-colors w-full lg:w-auto"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 700,
+              fontSize: "14px",
+              textTransform: "uppercase",
+              letterSpacing: "0.05em",
+            }}
+          >
+            Get in touch
+          </a>
         </div>
       </div>
     </section>
   );
 }
 
-// ─── FOOTER ────────────────────────────────────────────────────────
+// ─── NEW FOOTER COMPONENT ─────────────────────────────────────────
 function Footer() {
-  const [openAccordion, setOpenAccordion] = useState<number | null>(null);
-
-  const footerNavGroups = [
-    {
-      title: "Navigation",
-      links: [
-        { label: "Home", href: "/" },
-        { label: "Products", href: "/products" },
-        { label: "Private Label", href: "/privatelabel" },
-        { label: "Manufacturing Process", href: "/manufacture" },
-      ],
-    },
-    {
-      title: "Company",
-      links: [
-        { label: "About", href: "/about" },
-        { label: "Contact", href: "/contactus" },
-        { label: "Request Quote", href: "/contactus" },
-      ],
-    },
-    {
-      title: "Products",
-      links: [
-        { label: "Boxing Gloves", href: "/products" },
-        { label: "Martial Arts Uniforms", href: "/products" },
-        { label: "MMA Gear", href: "/products" },
-        { label: "Training Accessories", href: "/products" },
-      ],
-    },
-  ];
+  const footerNav = {
+    pages: [
+      { label: "Home", href: "/" },
+      { label: "Products", href: "/products" },
+      { label: "Private Label", href: "/privatelabel" },
+      { label: "Manufacturing Process", href: "/manufacture" },
+    ],
+    company: [
+      { label: "About", href: "/about" },
+      { label: "Contact", href: "/contactus" },
+      { label: "Request Quote", href: "/contactus" },
+    ],
+    products: [
+      { label: "Boxing Gloves", href: "/products" },
+      { label: "Martial Arts Uniforms", href: "/products" },
+      { label: "MMA Gear", href: "/products" },
+      { label: "Training Accessories", href: "/products" },
+    ],
+  };
 
   return (
-    <footer className="w-full bg-white">
+    <footer className="bg-white">
       {/* Divider */}
-      <div className="w-full h-[1px] bg-[#D7DADF]" />
+      <div className="h-px bg-[#D7DADE]" />
 
-      {/* Desktop Footer */}
-      <div className="hidden lg:block">
-        <div className="flex items-start justify-between px-8 py-16">
-          <div className="max-w-[580px] flex flex-col gap-4">
-            <h3
-              style={{
-                fontFamily: "'FFF Acid Grotesk', sans-serif",
-                fontWeight: 500,
-                fontSize: "47px",
-                lineHeight: "1.2",
-                letterSpacing: "-1.9px",
-                color: "#000000",
-              }}
-            >
-              Ready to Manufacture Your Products?
-            </h3>
-            <a
-              href="mailto:hello@sarlamathletics.com"
-              className="transition-colors hover:text-black"
-              style={{
-                fontFamily: "'FFF Acid Grotesk', sans-serif",
-                fontWeight: 500,
-                fontSize: "47px",
-                lineHeight: "1.2",
-                letterSpacing: "-1.9px",
-                color: "#A5A5A5",
-              }}
-            >
-              hello@sarlamathletics.com
-            </a>
-          </div>
-
-          <div className="flex gap-16">
-            {footerNavGroups.map((group, i) => (
-              <div key={i} className="flex flex-col gap-3">
-                {group.links.map((link, j) => (
-                  <a
-                    key={j}
-                    href={link.href}
-                    className="hover:opacity-70 transition-opacity border-b border-gray-200 pb-2"
-                    style={{
-                      fontFamily: "'FFF Acid Grotesk', sans-serif",
-                      fontWeight: 400,
-                      fontSize: "14px",
-                      color: "#0D0D0D",
-                    }}
-                  >
-                    {link.label}
-                  </a>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="w-full h-[1px] bg-[#D7DADF]" />
-
-        <div className="flex items-end justify-between px-8 py-8">
-          <div className="flex flex-col">
-            <span
-              className="uppercase tracking-tight"
-              style={{
-                fontFamily: "'FFF Acid Grotesk', sans-serif",
-                fontWeight: 700,
-                fontStyle: "italic",
-                fontSize: "101px",
-                lineHeight: "0.85",
-                letterSpacing: "-3%",
-                color: "#000000",
-              }}
-            >
-              sarlam
-              <br />
-              athletics
-            </span>
-            <span
-              className="mt-2"
-              style={{
-                fontFamily: "'FFF Acid Grotesk', sans-serif",
-                fontWeight: 400,
-                fontSize: "14px",
-                color: "#0D0D0D",
-              }}
-            >
-              © 2026
-            </span>
-          </div>
-
-          <div
-            className="flex flex-col items-end gap-1"
-            style={{
-              fontFamily: "'FFF Acid Grotesk', sans-serif",
-              fontWeight: 400,
-              fontSize: "12px",
-              color: "#434343",
-            }}
-          >
-            <span>
-              © 2026 <span className="underline">Sarlam Athletics</span>.{" "}
-              <span className="underline">
-                Private-label sports equipment manufacturer for combat sports
-                brands.
-              </span>
-            </span>
-            <span
-              className="underline uppercase"
-              style={{
-                fontFamily: "'FFF Acid Grotesk', sans-serif",
-                fontWeight: 500,
-                fontSize: "12px",
-              }}
-            >
-              USA (USD $) / ENGLISH
-            </span>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Footer */}
-      <div className="lg:hidden">
-        <div className="px-5 pt-12 pb-10 flex flex-col gap-4">
-          <h3
+      {/* Top section */}
+      <div className="flex flex-col lg:flex-row gap-10 md:gap-8 py-12 md:py-16 px-6 md:px-12">
+        {/* Left - CTA */}
+        <div className="lg:w-1/2 space-y-4 md:space-y-6">
+          <h2 
+            className="text-[32px] leading-[38px] md:text-[47px] md:leading-[58px]"
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
               fontWeight: 500,
-              fontSize: "47px",
-              lineHeight: "1.2",
               letterSpacing: "-1.9px",
               color: "#000000",
             }}
           >
             Start Your Private Label Manufacturing Project
-          </h3>
+          </h2>
           <a
             href="mailto:hello@sarlamathletics.com"
-            className="transition-colors hover:text-black break-all"
+            className="hover:text-[#0D0D0D] transition-colors block text-[22px] leading-[30px] md:text-[47px] md:leading-[58px]"
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
               fontWeight: 500,
-              fontSize: "47px",
-              lineHeight: "1.2",
-              letterSpacing: "-1.9px",
+              letterSpacing: "-1px",
               color: "#A5A5A5",
             }}
           >
@@ -745,135 +661,169 @@ function Footer() {
           </a>
         </div>
 
-        <div className="px-5 pb-12">
-          {footerNavGroups.map((group, i) => (
-            <div key={i} className="border-b border-[#D7DADF]">
-              <button
-                onClick={() =>
-                  setOpenAccordion(openAccordion === i ? null : i)
-                }
-                className="w-full flex items-center justify-between py-3"
+        {/* Right - Nav columns */}
+        <div className="lg:w-1/2 flex flex-col md:grid md:grid-cols-3 gap-8">
+          {/* Pages */}
+          <div className="space-y-3 md:space-y-4">
+            {footerNav.pages.map((link) => (
+              <div
+                key={link.label}
+                className="flex items-center justify-between group border-b border-gray-200 pb-2 md:border-b-0 md:pb-0"
               >
-                <span
+                <Link
+                  href={link.href}
+                  className="hover:opacity-70 transition-opacity text-[14px] leading-[17px]"
                   style={{
                     fontFamily: "'FFF Acid Grotesk', sans-serif",
-                    fontWeight: 500,
-                    fontSize: "14px",
-                    color: "#0D0D0D",
+                    fontWeight: 400,
+                    letterSpacing: "0px",
+                    color: "#000000",
                   }}
                 >
-                  {group.title}
+                  {link.label}
+                </Link>
+                <span className="text-black opacity-0 group-hover:opacity-100 transition-opacity hidden md:block">
+                  <ArrowUpRight />
                 </span>
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#0D0D0D"
-                  strokeWidth="1.5"
-                  className={`transition-transform duration-300 ${
-                    openAccordion === i ? "rotate-180" : ""
-                  }`}
-                >
-                  <path d="M6 9l6 6 6-6" />
-                </svg>
-              </button>
-              <div
-                className={`overflow-hidden transition-all duration-300 ${
-                  openAccordion === i ? "max-h-[200px] pb-3" : "max-h-0"
-                }`}
-              >
-                <div className="flex flex-col gap-3">
-                  {group.links.map((link, j) => (
-                    <a
-                      key={j}
-                      href={link.href}
-                      style={{
-                        fontFamily: "'FFF Acid Grotesk', sans-serif",
-                        fontWeight: 400,
-                        fontSize: "14px",
-                        color: "#0D0D0D",
-                      }}
-                    >
-                      {link.label}
-                    </a>
-                  ))}
-                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        <div className="px-5 pt-10 pb-10">
-          <span
-            className="uppercase tracking-tight block"
-            style={{
-              fontFamily: "'FFF Acid Grotesk', sans-serif",
-              fontWeight: 700,
-              fontStyle: "italic",
-              fontSize: "101px",
-              lineHeight: "0.85",
-              letterSpacing: "-3%",
-              color: "#000000",
-            }}
-          >
-            sarlam
-            <br />
-            athletics
-          </span>
-          <div className="mt-8 flex flex-col gap-2">
-            <span
-              style={{
-                fontFamily: "'FFF Acid Grotesk', sans-serif",
-                fontWeight: 400,
-                fontSize: "12px",
-                color: "#434343",
-              }}
-            >
-              Website by Sanna Granqvist
-            </span>
-            <span
-              style={{
-                fontFamily: "'FFF Acid Grotesk', sans-serif",
-                fontWeight: 400,
-                fontSize: "14px",
-                color: "#434343",
-              }}
-            >
-              © 2026
-            </span>
+          {/* Company */}
+          <div className="space-y-3 md:space-y-4">
+            {footerNav.company.map((link) => (
+              <div
+                key={link.label}
+                className="flex items-center justify-between group border-b border-gray-200 pb-2 md:border-b-0 md:pb-0"
+              >
+                <Link
+                  href={link.href}
+                  className="hover:opacity-70 transition-opacity text-[14px] leading-[17px]"
+                  style={{
+                    fontFamily: "'FFF Acid Grotesk', sans-serif",
+                    fontWeight: 400,
+                    letterSpacing: "0px",
+                    color: "#000000",
+                  }}
+                >
+                  {link.label}
+                </Link>
+                <span className="text-black opacity-0 group-hover:opacity-100 transition-opacity hidden md:block">
+                  <ArrowUpRight />
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Products */}
+          <div className="space-y-3 md:space-y-4">
+            {footerNav.products.map((link) => (
+              <div
+                key={link.label}
+                className="flex items-center justify-between group border-b border-gray-200 pb-2 md:border-b-0 md:pb-0"
+              >
+                <Link
+                  href={link.href}
+                  className="hover:opacity-70 transition-opacity text-[14px] leading-[17px]"
+                  style={{
+                    fontFamily: "'FFF Acid Grotesk', sans-serif",
+                    fontWeight: 400,
+                    letterSpacing: "0px",
+                    color: "#000000",
+                  }}
+                >
+                  {link.label}
+                </Link>
+                <span className="text-black opacity-0 group-hover:opacity-100 transition-opacity hidden md:block">
+                  <ArrowUpRight />
+                </span>
+              </div>
+            ))}
           </div>
         </div>
+      </div>
 
-        <div className="bg-[#0D0D0D] px-5 py-6 flex flex-col gap-4">
-          <div
-            className="flex flex-col gap-1"
+      {/* Divider */}
+      <div className="h-px bg-[#D7DADE]" />
+
+      {/* Bottom section - Large logo + year */}
+      <div className="flex flex-col md:flex-row items-start md:items-end justify-between px-6 md:px-12 py-8 md:py-10 gap-4 md:gap-0">
+        <div className="flex-1">
+          <Link href="/" className="block">
+            <span 
+              className="uppercase tracking-tight text-[56px] leading-[85%] md:text-[101px] md:leading-[85%]"
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 700,
+                fontStyle: "italic",
+                letterSpacing: "-3%",
+                color: "#000000",
+                display: "block",
+              }}
+            >
+              sarlam
+              <br className="hidden md:block" />
+              <span className="md:hidden"> </span>athletics
+            </span>
+          </Link>
+        </div>
+        <div className="flex flex-col md:items-end gap-2 md:gap-0">
+          <span 
+            className="block md:hidden text-[12px] leading-[16px]"
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
               fontWeight: 400,
-              fontSize: "12px",
-              color: "rgba(255,255,255,0.7)",
+              color: "#000000",
             }}
           >
-            <span>
-              © 2026 Sarlam Athletics. Private-label sports equipment
-              manufacturer for combat sports brands.
-            </span>
-          </div>
+            Website by Sanna Granqvist
+            <br />
+            © 2026
+          </span>
           <span
+            className="hidden md:block text-[12px] leading-[16px]"
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
-              fontWeight: 500,
-              fontSize: "12px",
-              textTransform: "uppercase",
-              color: "rgba(255,255,255,0.7)",
+              fontWeight: 400,
+              color: "#434343",
             }}
           >
-            USA (USD $) / ENGLISH
+            © 2026
           </span>
         </div>
       </div>
     </footer>
+  );
+}
+
+// ─── NEW BOTTOM BAR COMPONENT ─────────────────────────────────────
+ // ─── NEW BOTTOM BAR COMPONENT ─────────────────────────────────────
+function BottomBar() {
+  return (
+    <div className="bg-black py-4 px-6 md:px-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-0">
+      <div 
+        className="flex flex-col md:flex-row md:items-center gap-1 text-[12px] leading-[16px]"
+        style={{
+          fontFamily: "'FFF Acid Grotesk', sans-serif",
+          fontWeight: 400,
+          letterSpacing: "0px",
+          color: "#E3E2E2",
+        }}
+      >
+        <span>© 2026 Sarlam Athletics. Private-label sports equipment manufacturer for combat sports brands.</span>
+      </div>
+      <div 
+        className="uppercase text-[12px] leading-[18px]"
+        style={{
+          fontFamily: "'FFF Acid Grotesk', sans-serif",
+          fontWeight: 500,
+          letterSpacing: "0px",
+          color: "#FFFFFF",
+        }}
+      >
+        USA (USD $) / ENGLISH
+      </div>
+    </div>
   );
 }
 
@@ -889,7 +839,10 @@ export default function ContactPage() {
         <WhatHappensNextSection />
         <FAQSection />
       </main>
+      
+      {/* Replaced old mobile-accordion footer with the new layout */}
       <Footer />
+      <BottomBar />
     </div>
   );
 }
