@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Head from "next/head";
 import Link from "next/link";
+import { motion, useScroll } from "framer-motion";
 
 // ─── Import Centralized Header ──────────────────────────────────────────────
 import { Header } from "../home/home";
@@ -39,24 +40,6 @@ const TargetIcon = () => (
 const HandshakeIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
     <path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z" />
-  </svg>
-);
-
-const ChevronDown = ({ className = "" }: { className?: string }) => (
-  <svg
-    width="18"
-    height="18"
-    viewBox="0 0 18 18"
-    fill="none"
-    className={className}
-  >
-    <path
-      d="M4 7l5 5 5-5"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
   </svg>
 );
 
@@ -139,7 +122,7 @@ function HeroSection() {
   );
 }
 
-// ─── image  / Mission Section ───
+// ─── Video / Mission Section ───
 function VideoSection() {
   return (
     <section className="py-16 md:py-[120px] px-6 md:px-8 bg-white">
@@ -291,7 +274,7 @@ function ValuesSection() {
   );
 }
 
-// ─── Manufacturing Process Timeline ───
+// ─── Manufacturing Process Timeline (With Framer Motion Scrolling Highlights) ───
 const timelineSteps = [
   {
     title: "Consultation & Product Specs",
@@ -311,11 +294,26 @@ const timelineSteps = [
 ];
 
 function TimelineSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  
+  // Custom hook from framer-motion to map container scroll progress for mobile line
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"]
+  });
+
   return (
-    <section className="bg-black py-16 md:py-[200px] px-6 md:px-20">
+    <section ref={containerRef} className="bg-black py-16 md:py-[200px] px-6 md:px-20 overflow-hidden">
       <div className="max-w-[1000px] mx-auto flex flex-col items-start md:items-center text-left md:text-center">
-        {/* Heading */}
-        <div className="max-w-[820px] space-y-2 md:space-y-0 mb-10 md:mb-12">
+        
+        {/* Highlighted Heading */}
+        <motion.div 
+          initial={{ opacity: 0.2, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, margin: "-25% 0px -25% 0px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="max-w-[820px] space-y-2 md:space-y-0 mb-10 md:mb-12"
+        >
           <h2 
             className="text-[24px] leading-[30px] md:text-[37px] md:leading-[46px]"
             style={{
@@ -338,21 +336,52 @@ function TimelineSection() {
           >
             From Product Development to Bulk Manufacturing
           </h2>
-        </div>
+        </motion.div>
 
         {/* Timeline Wrapper */}
         <div className="relative w-full flex flex-col items-start md:items-center pl-[5px] md:pl-0">
-          {/* Mobile vertical line */}
-          <div className="absolute top-2 bottom-0 left-[10px] w-[2px] bg-white/20 md:hidden" />
+          
+          {/* Mobile vertical scroll line */}
+          <div className="absolute top-2 bottom-0 left-[10px] w-[2px] bg-white/10 md:hidden z-0">
+            <motion.div
+              className="w-full bg-white origin-top"
+              style={{ scaleY: scrollYProgress, height: "100%" }}
+            />
+          </div>
           
           {/* Desktop lead-in line before first dot */}
-          <div className="hidden md:block w-[3px] h-[100px] bg-gradient-to-b from-transparent to-white/30" />
+          <div className="hidden md:block w-[3px] h-[100px] bg-white/10 relative overflow-hidden mb-6 md:mb-0">
+            <motion.div
+               initial={{ height: "0%" }}
+               whileInView={{ height: "100%" }}
+               viewport={{ once: false, margin: "-25% 0px -25% 0px" }}
+               transition={{ duration: 0.6, ease: "easeInOut" }}
+               className="w-full bg-gradient-to-b from-transparent to-white absolute top-0 left-0"
+            />
+          </div>
 
-          {/* Steps */}
+          {/* Individual Steps */}
           {timelineSteps.map((step, i) => (
             <div key={i} className="relative flex flex-col md:items-center w-full mb-8 md:mb-0">
-              <div className="flex flex-row md:flex-col items-start md:items-center relative z-10 w-full">
-                <div className="shrink-0 w-3 h-3 rounded-full bg-[#B2B2B2] mt-[6px] md:mt-0 md:my-6 relative z-10" />
+              
+              {/* Highlight Triggered Text and Dot Container */}
+              <motion.div
+                initial={{ opacity: 0.2, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: false, margin: "-25% 0px -25% 0px" }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className="flex flex-row md:flex-col items-start md:items-center relative z-10 w-full"
+              >
+                {/* Dot */}
+                <motion.div 
+                  initial={{ backgroundColor: "#333333", boxShadow: "0 0 0px rgba(255,255,255,0)" }}
+                  whileInView={{ backgroundColor: "#FFFFFF", boxShadow: "0 0 12px rgba(255,255,255,0.8)" }}
+                  viewport={{ once: false, margin: "-25% 0px -25% 0px" }}
+                  transition={{ duration: 0.4 }}
+                  className="shrink-0 w-3 h-3 rounded-full mt-[6px] md:mt-0 md:my-6 relative z-10" 
+                />
+                
+                {/* Text Content */}
                 <div className="ml-6 md:ml-0 md:text-center max-w-[600px] space-y-2 md:space-y-4">
                   <h3 
                     className="text-[22px] leading-[28px] md:text-[33px] md:leading-[40px]"
@@ -377,14 +406,30 @@ function TimelineSection() {
                     {step.description}
                   </p>
                 </div>
+              </motion.div>
+              
+              {/* Connective line after step drawing downwards (only on desktop) */}
+              <div className="hidden md:block w-[3px] h-[220px] bg-white/10 mt-6 relative overflow-hidden">
+                 <motion.div
+                   initial={{ height: "0%" }}
+                   whileInView={{ height: "100%" }}
+                   viewport={{ once: false, margin: "-25% 0px -25% 0px" }}
+                   transition={{ duration: 0.6, ease: "easeInOut" }}
+                   className="w-full bg-white absolute top-0 left-0"
+                 />
               </div>
-              <div className="hidden md:block w-[3px] h-[220px] bg-white/20 mt-6" />
             </div>
           ))}
         </div>
 
         {/* CTA at bottom of timeline */}
-        <div className="max-w-[600px] space-y-6 md:space-y-8 mt-12 md:mt-2 w-full md:text-center">
+        <motion.div 
+          initial={{ opacity: 0.2, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, margin: "-25% 0px -25% 0px" }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+          className="max-w-[600px] space-y-6 md:space-y-8 mt-12 md:mt-2 w-full md:text-center relative z-10"
+        >
           <h2 
             className="text-[28px] leading-[34px] md:text-[37px] md:leading-[44px]"
             style={{
@@ -409,7 +454,7 @@ function TimelineSection() {
           >
             Get in Touch
           </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -538,7 +583,7 @@ function ProductsSection() {
             <Link
               key={i}
               href={`/products`}
-              className="px-4 py-2 md:px-6 md:py-3.5 bg-[#F5F5F5] border border-[#DADADA] rounded-md hover:bg-[#E8E8E8] transition-colors text-[13px] md:text-[15px]"
+              className="px-4 py-2 md:px-6 md:py-3.5 bg-[#F5F5F5] border border-[#000000] rounded-md hover:bg-[#E8E8E8] transition-colors text-[13px] md:text-[15px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 500,
@@ -572,7 +617,7 @@ function IndustriesSection() {
           className="text-left md:text-center text-[13px] md:text-[15px]"
           style={{
             fontFamily: "'FFF Acid Grotesk', sans-serif",
-            fontWeight: 500,
+            fontWeight: 700,
             letterSpacing: "0.15em",
             textTransform: "uppercase",
             color: "#000000",
@@ -862,53 +907,5 @@ export default function PrivateLabelPage() {
 
       <Footer />
     </>
-  );
-}
-
-/* ─── FOOTER ACCORDION (Mobile) ─── */
-function FooterAccordion({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <div className="border-b border-gray-200">
-      <button
-        className="w-full flex items-center justify-between py-4 text-left text-[14px] font-medium text-[#0D0D0D]"
-        onClick={() => setOpen(!open)}
-      >
-        {title}
-        <svg
-          className={`w-4 h-4 transition-transform ${open ? "rotate-180" : ""}`}
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={1.5}
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-        </svg>
-      </button>
-      {open && (
-        <div className="pb-4 flex flex-col gap-3">
-          {children}
-        </div>
-      )}
-    </div>
-  );
-}
-
-/* ─── FOOTER LINK ─── */
-function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
-  return (
-    <a 
-      href={href} 
-      className="hover:text-[#0D0D0D] transition block text-[14px] leading-[17px] font-normal text-[#757575]"
-    >
-      {children}
-    </a>
   );
 }
