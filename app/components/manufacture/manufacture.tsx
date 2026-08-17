@@ -43,6 +43,24 @@ const HandshakeIcon = () => (
   </svg>
 );
 
+const ChevronDown = ({ className = "" }: { className?: string }) => (
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 18 18"
+    fill="none"
+    className={className}
+  >
+    <path
+      d="M4 7l5 5 5-5"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 // ─── Hero Section ───
 function HeroSection() {
   return (
@@ -111,7 +129,6 @@ function HeroSection() {
             lineHeight: "18px",
             letterSpacing: "0px",
             color: "#000000",
-            borderRadius: "8px",
           }}
         >
           Request a Manufacturing Quote
@@ -125,28 +142,28 @@ function HeroSection() {
 // ─── Video / Mission Section ───
 function VideoSection() {
   return (
-    <section className="py-16 md:py-[120px] px-6 md:px-8 bg-white">
+    <section className="py-16 md:py-24 px-6 md:px-8 bg-white">
       <div className="max-w-[1376px] mx-auto space-y-8 md:space-y-12">
         {/* Heading row */}
-        <div className="flex flex-col md:flex-row gap-4 md:gap-0">
-          <div className="md:w-1/2 space-y-0">
+        <div className="flex flex-col md:flex-row gap-4 md:gap-8">
+          <div className="md:w-1/2 space-y-2 md:space-y-4">
             <h2 
-              className="text-[28px] leading-[32px] md:text-[37px] md:leading-[45.6px]"
+              className="text-[28px] leading-[32px] md:text-[37px] md:leading-[46px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 700,
-                letterSpacing: "-1.52px",
+                letterSpacing: "-1.5px",
                 color: "#000000",
               }}
             >
               Why Sarlam Athletics Exists
             </h2>
             <h2 
-              className="text-[28px] leading-[32px] md:text-[37px] md:leading-[45.6px]"
+              className="text-[28px] leading-[32px] md:text-[37px] md:leading-[46px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 700,
-                letterSpacing: "-1.52px",
+                letterSpacing: "-1.5px",
                 color: "#000000",
               }}
             >
@@ -219,9 +236,9 @@ const values = [
 
 function ValuesSection() {
   return (
-    <section className="pb-12 bg-white">
+    <section className="py-16 md:py-24 bg-white">
       {/* Heading */}
-      <div className="pt-16 pb-8 md:pt-[120px] md:pb-12 px-6 md:px-8">
+      <div className="mb-8 md:mb-12 px-6 md:px-8">
         <div className="max-w-[1280px] mx-auto">
           <h2 
             className="text-[28px] leading-[32px] md:text-[37px] md:leading-[46px]"
@@ -242,7 +259,7 @@ function ValuesSection() {
         {values.map((value, i) => (
           <div
             key={i}
-            className={`py-8 md:p-10 space-y-4 md:space-y-6 px-6 md:px-8 border-b md:border-b-0 lg:border-r border-gray-200`}
+            className={`py-8 md:py-12 px-6 md:px-8 space-y-3 md:space-y-4 border-b md:border-b-0 lg:border-r border-gray-200`}
           >
             <div className="w-5 h-5 text-black">{value.icon}</div>
             <h3 
@@ -303,7 +320,7 @@ function TimelineSection() {
   });
 
   return (
-    <section ref={containerRef} className="bg-black py-16 md:py-[200px] px-6 md:px-20 overflow-hidden">
+    <section ref={containerRef} className="bg-black py-16 md:py-24 px-6 md:px-8 overflow-hidden">
       <div className="max-w-[1000px] mx-auto flex flex-col items-start md:items-center text-left md:text-center">
         
         {/* Highlighted Heading */}
@@ -312,7 +329,7 @@ function TimelineSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, margin: "-25% 0px -25% 0px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="max-w-[820px] space-y-2 md:space-y-0 mb-10 md:mb-12"
+          className="max-w-[820px] space-y-2 md:space-y-4 mb-12 md:mb-16"
         >
           <h2 
             className="text-[24px] leading-[30px] md:text-[37px] md:leading-[46px]"
@@ -428,10 +445,10 @@ function TimelineSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, margin: "-25% 0px -25% 0px" }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-          className="max-w-[600px] space-y-6 md:space-y-8 mt-12 md:mt-2 w-full md:text-center relative z-10"
+          className="max-w-[600px] space-y-6 md:space-y-8 mt-12 w-full md:text-center relative z-10"
         >
           <h2 
-            className="text-[28px] leading-[34px] md:text-[37px] md:leading-[44px]"
+            className="text-[28px] leading-[34px] md:text-[37px] md:leading-[46px]"
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
               fontWeight: 500,
@@ -484,9 +501,9 @@ const services = [
 
 function ServicesSection() {
   return (
-    <section className="py-0 bg-white">
+    <section className="py-16 md:py-24 bg-white">
       {/* Heading */}
-      <div className="px-6 md:px-8 pt-12 md:pt-0 pb-8 md:pb-12">
+      <div className="mb-8 md:mb-12 px-6 md:px-8">
         <div className="max-w-[1280px] mx-auto">
           <h2 
             className="text-[28px] leading-[32px] md:text-[37px] md:leading-[46px]"
@@ -507,7 +524,7 @@ function ServicesSection() {
         {services.map((service, i) => (
           <div
             key={i}
-            className={`py-8 md:p-8 px-6 md:px-8 space-y-6 group cursor-pointer hover:bg-gray-50 transition-colors ${
+            className={`py-8 md:py-12 px-6 md:px-8 space-y-4 md:space-y-6 group cursor-pointer hover:bg-gray-50 transition-colors ${
               i < services.length - 1 ? "md:border-r border-gray-200" : ""
             } border-b md:border-b-0`}
           >
@@ -565,7 +582,7 @@ const productTags = [
 
 function ProductsSection() {
   return (
-    <section className="py-12 md:py-20 px-6 md:px-20 bg-white">
+    <section className="py-16 md:py-24 px-6 md:px-8 bg-white">
       <div className="max-w-[1280px] mx-auto space-y-6 md:space-y-8">
         <h2 
           className="text-[28px] leading-[32px] md:text-[37px] md:leading-[46px]"
@@ -578,12 +595,12 @@ function ProductsSection() {
         >
           Combat Sports Equipment We Manufacture
         </h2>
-        <div className="flex flex-wrap gap-2 md:gap-4">
+        <div className="flex flex-wrap gap-3 md:gap-4">
           {productTags.map((tag, i) => (
             <Link
               key={i}
               href={`/products`}
-              className="px-4 py-2 md:px-6 md:py-3.5 bg-[#F5F5F5] border border-[#000000] rounded-md hover:bg-[#E8E8E8] transition-colors text-[13px] md:text-[15px]"
+              className="px-4 py-2 md:px-6 md:py-3.5 bg-[#F5F5F5] border border-[#DADADA] rounded-md hover:bg-[#E8E8E8] transition-colors text-[13px] md:text-[15px]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 500,
@@ -611,13 +628,13 @@ const industries = [
 
 function IndustriesSection() {
   return (
-    <section className="py-12 px-6 md:px-3 bg-white">
-      <div className="max-w-[1416px] mx-auto space-y-8 md:space-y-10">
+    <section className="py-16 md:py-24 px-6 md:px-8 bg-white">
+      <div className="max-w-[1416px] mx-auto space-y-8 md:space-y-12">
         <p 
           className="text-left md:text-center text-[13px] md:text-[15px]"
           style={{
             fontFamily: "'FFF Acid Grotesk', sans-serif",
-            fontWeight: 700,
+            fontWeight: 500,
             letterSpacing: "0.15em",
             textTransform: "uppercase",
             color: "#000000",
@@ -626,7 +643,7 @@ function IndustriesSection() {
           Industries We Serve
         </p>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-6 border-t border-gray-200 pt-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 border-t border-gray-200 pt-8 md:pt-12">
           {industries.map((industry, i) => (
             <div
               key={i}
@@ -643,7 +660,7 @@ function IndustriesSection() {
               {/* Title */}
               <div className="absolute bottom-4 left-4 right-4">
                 <h3 
-                  className="text-[16px] leading-[20px] md:text-[26px] md:leading-[26px]"
+                  className="text-[16px] leading-[20px] md:text-[22px] md:leading-[26px]"
                   style={{
                     fontFamily: "'Switzer', sans-serif",
                     fontWeight: 600,
@@ -690,9 +707,9 @@ function Footer() {
       <div className="h-px bg-[#D7DADE]" />
 
       {/* Top section */}
-      <div className="flex flex-col lg:flex-row gap-10 md:gap-8 py-10 px-6 md:px-20">
+      <div className="flex flex-col lg:flex-row gap-10 md:gap-8 py-12 md:py-16 px-6 md:px-12">
         {/* Left - CTA */}
-        <div className="lg:w-1/2 space-y-4 md:space-y-0">
+        <div className="lg:w-1/2 space-y-4 md:space-y-6">
           <h2 
             className="text-[32px] leading-[38px] md:text-[47px] md:leading-[58px]"
             style={{
@@ -721,7 +738,7 @@ function Footer() {
         {/* Right - Nav columns */}
         <div className="lg:w-1/2 flex flex-col md:grid md:grid-cols-3 gap-8">
           {/* Pages */}
-          <div className="space-y-3">
+          <div className="space-y-3 md:space-y-4">
             {footerNav.pages.map((link) => (
               <div
                 key={link.label}
@@ -747,7 +764,7 @@ function Footer() {
           </div>
 
           {/* Company */}
-          <div className="space-y-3">
+          <div className="space-y-3 md:space-y-4">
             {footerNav.company.map((link) => (
               <div
                 key={link.label}
@@ -773,7 +790,7 @@ function Footer() {
           </div>
 
           {/* Products */}
-          <div className="space-y-3">
+          <div className="space-y-3 md:space-y-4">
             {footerNav.products.map((link) => (
               <div
                 key={link.label}
@@ -804,7 +821,7 @@ function Footer() {
       <div className="h-px bg-[#D7DADE]" />
 
       {/* Bottom section - Large logo + year */}
-      <div className="flex flex-col md:flex-row items-start md:items-end justify-between px-6 md:px-20 py-8 md:py-6 gap-4 md:gap-0">
+      <div className="flex flex-col md:flex-row items-start md:items-end justify-between px-6 md:px-12 py-8 md:py-10 gap-4 md:gap-0">
         <div className="flex-1">
           <Link href="/" className="block">
             <span 
@@ -851,7 +868,7 @@ function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="bg-[#0D0D0D] py-4 px-6 md:px-3 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-0">
+      <div className="bg-[#0D0D0D] py-4 px-6 md:px-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-0">
         <div 
           className="flex flex-col md:flex-row md:items-center gap-1 text-[12px] leading-[16px]"
           style={{
