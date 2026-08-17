@@ -86,7 +86,7 @@ function HeroSection() {
             Request a Private Label Manufacturing Quote
           </h1>
           <p
-            className="mt-4 lg:mt-6"
+            className="mt-4 md:mt-6"
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
               fontWeight: 500,
@@ -110,10 +110,10 @@ function HeroSection() {
 // ─── QUOTE FORM SECTION ────────────────────────────────────────────
 function QuoteFormSection() {
   return (
-    <section className="w-full bg-white px-4 lg:px-3 py-10 lg:py-20">
-      <div className="max-w-[390px] mx-auto flex flex-col gap-[21px]">
+    <section className="w-full bg-white px-4 lg:px-3 py-16 md:py-24">
+      <div className="max-w-[390px] mx-auto flex flex-col gap-8 md:gap-10">
         {/* Title Block */}
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-3 md:gap-4">
           <h2
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -216,7 +216,7 @@ function QuoteFormSection() {
 
           <button
             type="submit"
-            className="w-full bg-[#0D0D0D] py-[7px] px-10 rounded hover:bg-[#2a2a2a] transition-colors"
+            className="w-full bg-[#0D0D0D] py-[7px] px-10 mt-2 rounded hover:bg-[#2a2a2a] transition-colors"
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
               fontWeight: 500,
@@ -250,10 +250,10 @@ const badges = [
 
 function TrustBadgesSection() {
   return (
-    <section className="w-full bg-white border-t border-[#C9C9C9] px-4 lg:px-10 py-10 lg:py-20">
+    <section className="w-full bg-white border-t border-[#C9C9C9] px-4 lg:px-10 py-16 md:py-24">
       <div className="max-w-[1416px] mx-auto">
         <p
-          className="text-center mb-12"
+          className="text-center mb-10 md:mb-16"
           style={{
             fontFamily: "'FFF Acid Grotesk', sans-serif",
             fontWeight: 500,
@@ -266,7 +266,7 @@ function TrustBadgesSection() {
           Why Contact Sarlam Athletics?
         </p>
 
-        <div className="flex flex-wrap justify-between gap-6 lg:gap-4">
+        <div className="flex flex-wrap justify-between gap-6 md:gap-8 lg:gap-4">
           {badges.map((badge, i) => (
             <div key={i} className="flex items-start gap-2 basis-[45%] lg:basis-auto">
               <div className="w-5 h-5 flex-shrink-0 mt-0.5">
@@ -348,10 +348,10 @@ function WhatHappensNextSection() {
   const lines = [l1, l2, l3];
 
   return (
-    <section className="w-full bg-[#232323] px-4 lg:px-20 py-12 lg:py-20" ref={containerRef}>
+    <section className="w-full bg-[#232323] px-4 lg:px-20 py-16 md:py-24" ref={containerRef}>
       <div className="max-w-[1280px] mx-auto text-center">
         <h2
-          className="mb-8 lg:mb-14"
+          className="mb-10 md:mb-16"
           style={{
             fontFamily: "'FFF Acid Grotesk', sans-serif",
             fontWeight: 500,
@@ -379,7 +379,7 @@ function WhatHappensNextSection() {
               )}
 
               {/* Number circle (Animated SVG Ring + Fill) z-[10] */}
-              <div className="w-[48px] h-[48px] rounded-full flex items-center justify-center mb-6 relative z-[10]">
+              <div className="w-[48px] h-[48px] rounded-full flex items-center justify-center mb-6 md:mb-8 relative z-[10]">
                 {/* SVG Ring Draw Animation */}
                 <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                   {/* Faint base circle border */}
@@ -433,9 +433,9 @@ function WhatHappensNextSection() {
         </div>
 
         {/* Mobile: 2x2 grid */}
-        <div className="grid grid-cols-2 gap-3 lg:hidden">
+        <div className="grid grid-cols-2 gap-6 md:gap-8 lg:hidden">
           {steps.map((step, i) => (
-            <div key={i} className="flex flex-col items-center gap-3">
+            <div key={i} className="flex flex-col items-center gap-3 md:gap-4">
               <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center">
                 <span
                   style={{
@@ -501,8 +501,8 @@ function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="w-full bg-white px-4 lg:px-20 py-12 lg:py-20">
-      <div className="max-w-[640px] mx-auto flex flex-col gap-16">
+    <section className="w-full bg-white px-4 lg:px-20 py-16 md:py-24">
+      <div className="max-w-[640px] mx-auto flex flex-col gap-10 md:gap-16">
         {/* Heading */}
         <h2
           className="text-center"
@@ -523,7 +523,7 @@ function FAQSection() {
             <div key={i} className="border-b border-[#C9C9C9]">
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full flex items-center justify-between py-3 text-left"
+                className="w-full flex items-center justify-between py-4 text-left"
               >
                 <span
                   className="pr-4"
@@ -553,7 +553,7 @@ function FAQSection() {
               </button>
               <div
                 className={`overflow-hidden transition-all duration-300 ${
-                  openIndex === i ? "max-h-[200px] pb-4" : "max-h-0"
+                  openIndex === i ? "max-h-[200px] pb-4 md:pb-6" : "max-h-0"
                 }`}
               >
                 <p
@@ -573,7 +573,7 @@ function FAQSection() {
         </div>
 
         {/* CTA — centered at every breakpoint per the PDF */}
-        <div className="flex flex-col gap-4 items-center text-center">
+        <div className="flex flex-col gap-6 md:gap-8 items-center text-center mt-4">
           <p
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -588,7 +588,7 @@ function FAQSection() {
           </p>
           <a
             href="/contactus"
-            className="inline-flex items-center justify-center px-5 py-3 border border-black rounded-md text-black hover:bg-gray-100 transition-colors w-full lg:w-auto"
+            className="inline-flex items-center justify-center px-8 py-3 border border-black rounded-md text-black hover:bg-gray-100 transition-colors w-full lg:w-auto"
             style={{
               fontFamily: "'FFF Acid Grotesk', sans-serif",
               fontWeight: 700,
@@ -633,7 +633,7 @@ function Footer() {
       <div className="h-px bg-[#D7DADE]" />
 
       {/* Top section */}
-      <div className="flex flex-col lg:flex-row gap-10 md:gap-8 py-12 md:py-16 px-6 md:px-12">
+      <div className="flex flex-col lg:flex-row gap-10 md:gap-12 py-12 md:py-16 px-6 md:px-12">
         {/* Left - CTA */}
         <div className="lg:w-1/2 space-y-4 md:space-y-6">
           <h2 
@@ -797,7 +797,6 @@ function Footer() {
 }
 
 // ─── NEW BOTTOM BAR COMPONENT ─────────────────────────────────────
- // ─── NEW BOTTOM BAR COMPONENT ─────────────────────────────────────
 function BottomBar() {
   return (
     <div className="bg-black py-4 px-6 md:px-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-0">
