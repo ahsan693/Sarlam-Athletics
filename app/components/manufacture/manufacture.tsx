@@ -61,9 +61,10 @@ const ChevronDown = ({ className = "" }: { className?: string }) => (
 );
 
 // ─── Hero Section ───
+// ─── Hero Section ───
 function HeroSection() {
   return (
-    <section className="relative w-full h-[540px] md:h-[620px] bg-[#0D0D0D] overflow-hidden rounded-b-[16px] md:rounded-b-[24px]">
+    <section className="relative w-full h-[540px] md:h-[620px] bg-[#0D0D0D] overflow-hidden">
       {/* Background image */}
       <img
         src="/Page 4/01.png"
@@ -74,49 +75,70 @@ function HeroSection() {
       {/* Dark maroon overlay for text readability + mood */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-[#3a0f14]/60 to-black/70" />
 
-      {/* Text overlay — centered */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 md:px-12 text-center mt-4 md:mt-0">
-        <div className="max-w-[760px] flex flex-col items-center">
-          <p 
-            className="mb-4 md:mb-5 text-[13px] md:text-[15px]"
-            style={{
-              fontFamily: "'FFF Acid Grotesk', sans-serif",
-              fontWeight: 500,
-              letterSpacing: "0.15em",
-              textTransform: "uppercase",
-              color: "#F0EDE9",
-            }}
-          >
-            ABOUT SARLAM ATHLETICS
-          </p>
-          <h1 
-            className="text-[36px] leading-[40px] md:text-[56px] md:leading-[105%]"
-            style={{
-              fontFamily: "'FFF Acid Grotesk', sans-serif",
-              fontWeight: 700,
-              letterSpacing: "-2px",
-              textTransform: "uppercase",
-              color: "#FFFFFF",
-            }}
-          >
-            Private Label Sports Equipment Manufacturing Built for Growing Brands
-          </h1>
-          <p
-            className="mt-4 md:mt-6 text-[14px] leading-[20px] md:hidden block"
-            style={{
-              fontFamily: "'FFF Acid Grotesk', sans-serif",
-              fontWeight: 400,
-              color: "#FFFFFF",
-            }}
-          >
-            Simplifying production from prototype to worldwide delivery.
-          </p>
-        </div>
+      {/* Text overlay — perfectly centered */}
+      <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 md:px-12 text-center">
+        
+        {/* Subheading */}
+        <p 
+          className="mb-4 md:mb-5 text-[13px] md:text-[15px]"
+          style={{
+            fontFamily: "'FFF Acid Grotesk', sans-serif",
+            fontWeight: 500,
+            letterSpacing: "0.15em",
+            textTransform: "uppercase",
+            color: "#F0EDE9",
+          }}
+        >
+          ABOUT SARLAM ATHLETICS
+        </p>
+
+        {/* Main Heading */}
+        <h1 
+          className="max-w-[1100px] mb-6 md:mb-8 uppercase text-[36px] leading-[40px] md:text-[72px] md:leading-[64px]"
+          style={{
+            fontFamily: "'FFF Acid Grotesk', sans-serif",
+            fontWeight: 500,
+            letterSpacing: "-1.01px",
+            color: "#FFFFFF",
+          }}
+        >
+          Private Label Sports Equipment Manufacturing Built for Growing Brands
+        </h1>
+
+        {/* Description */}
+        <p
+          className="max-w-[700px] mb-8 text-[14px] leading-[20px] md:text-[16px] md:hidden block"
+          style={{
+            fontFamily: "'FFF Acid Grotesk', sans-serif",
+            fontWeight: 400,
+            letterSpacing: "0px",
+            color: "#FFFFFF",
+          }}
+        >
+          Simplifying production from prototype to worldwide delivery.
+        </p>
+
+        {/* Button - Straight edges (no border radius) */}
+        <Link
+          href="/contactus"
+          className="inline-flex items-center justify-center bg-white uppercase px-10 py-3 hover:bg-gray-100 transition rounded-none"
+          style={{
+            fontFamily: "'FFF Acid Grotesk', sans-serif",
+            fontWeight: 800,
+            fontSize: "12px",
+            lineHeight: "18px",
+            letterSpacing: "0px",
+            color: "#000000",
+            // Removed borderRadius: "8px" to keep edges completely straight
+          }}
+        >
+          Request a Manufacturing Quote
+        </Link>
+        
       </div>
     </section>
   );
 }
-
 // ─── Video / Mission Section ───
 function VideoSection() {
   return (

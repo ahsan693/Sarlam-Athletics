@@ -78,7 +78,7 @@ export default function PrivateLabel() {
               className="max-w-2xl uppercase text-[36px] leading-[40px] md:text-[56px] md:leading-[105%]"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
-                fontWeight: 700,
+                fontWeight: 500,
                 letterSpacing: "-2px",
                 color: "#FFFFFF",
               }}
