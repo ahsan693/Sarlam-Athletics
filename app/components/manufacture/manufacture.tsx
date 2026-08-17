@@ -107,7 +107,7 @@ function HeroSection() {
 
         {/* Description */}
         <p
-          className="max-w-[700px] mb-8 text-[14px] leading-[20px] md:text-[16px] md:hidden block"
+          className="max-w-[700px] mb-8 md:mb-10 text-[14px] leading-[20px] md:text-[16px] md:hidden block"
           style={{
             fontFamily: "'FFF Acid Grotesk', sans-serif",
             fontWeight: 400,
@@ -142,7 +142,7 @@ function HeroSection() {
 // ─── Video / Mission Section ───
 function VideoSection() {
   return (
-    <section className="py-16 md:py-24 px-6 md:px-8 bg-white">
+    <section className="py-16 md:py-24 px-6 md:px-10 bg-white">
       <div className="max-w-[1376px] mx-auto space-y-8 md:space-y-12">
         {/* Heading row */}
         <div className="flex flex-col md:flex-row gap-4 md:gap-8">
@@ -238,7 +238,7 @@ function ValuesSection() {
   return (
     <section className="py-16 md:py-24 bg-white">
       {/* Heading */}
-      <div className="mb-8 md:mb-12 px-6 md:px-8">
+      <div className="mb-10 md:mb-16 px-6 md:px-10">
         <div className="max-w-[1280px] mx-auto">
           <h2 
             className="text-[28px] leading-[32px] md:text-[37px] md:leading-[46px]"
@@ -259,7 +259,7 @@ function ValuesSection() {
         {values.map((value, i) => (
           <div
             key={i}
-            className={`py-8 md:py-12 px-6 md:px-8 space-y-3 md:space-y-4 border-b md:border-b-0 lg:border-r border-gray-200`}
+            className={`py-8 md:py-12 px-6 md:px-10 space-y-3 md:space-y-4 border-b md:border-b-0 lg:border-r border-gray-200`}
           >
             <div className="w-5 h-5 text-black">{value.icon}</div>
             <h3 
@@ -320,7 +320,7 @@ function TimelineSection() {
   });
 
   return (
-    <section ref={containerRef} className="bg-black py-16 md:py-24 px-6 md:px-8 overflow-hidden">
+    <section ref={containerRef} className="bg-black py-16 md:py-24 px-6 md:px-10 overflow-hidden">
       <div className="max-w-[1000px] mx-auto flex flex-col items-start md:items-center text-left md:text-center">
         
         {/* Highlighted Heading */}
@@ -329,7 +329,7 @@ function TimelineSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, margin: "-25% 0px -25% 0px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="max-w-[820px] space-y-2 md:space-y-4 mb-12 md:mb-16"
+          className="max-w-[820px] space-y-3 md:space-y-4 mb-12 md:mb-16"
         >
           <h2 
             className="text-[24px] leading-[30px] md:text-[37px] md:leading-[46px]"
@@ -445,7 +445,7 @@ function TimelineSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, margin: "-25% 0px -25% 0px" }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-          className="max-w-[600px] space-y-6 md:space-y-8 mt-12 w-full md:text-center relative z-10"
+          className="max-w-[600px] space-y-6 md:space-y-8 mt-12 md:mt-16 w-full md:text-center relative z-10"
         >
           <h2 
             className="text-[28px] leading-[34px] md:text-[37px] md:leading-[46px]"
@@ -503,7 +503,7 @@ function ServicesSection() {
   return (
     <section className="py-16 md:py-24 bg-white">
       {/* Heading */}
-      <div className="mb-8 md:mb-12 px-6 md:px-8">
+      <div className="mb-10 md:mb-16 px-6 md:px-10">
         <div className="max-w-[1280px] mx-auto">
           <h2 
             className="text-[28px] leading-[32px] md:text-[37px] md:leading-[46px]"
@@ -524,7 +524,7 @@ function ServicesSection() {
         {services.map((service, i) => (
           <div
             key={i}
-            className={`py-8 md:py-12 px-6 md:px-8 space-y-4 md:space-y-6 group cursor-pointer hover:bg-gray-50 transition-colors ${
+            className={`py-8 md:py-12 px-6 md:px-10 space-y-4 md:space-y-6 group cursor-pointer hover:bg-gray-50 transition-colors ${
               i < services.length - 1 ? "md:border-r border-gray-200" : ""
             } border-b md:border-b-0`}
           >
@@ -554,7 +554,7 @@ function ServicesSection() {
               </p>
             </div>
             {/* Image */}
-            <div className="aspect-[4/3] rounded-lg overflow-hidden bg-gray-200 mt-6">
+            <div className="aspect-[4/3] rounded-lg overflow-hidden bg-gray-200 mt-6 md:mt-8">
               <img
                 src={service.image}
                 alt={service.title}
@@ -582,7 +582,7 @@ const productTags = [
 
 function ProductsSection() {
   return (
-    <section className="py-16 md:py-24 px-6 md:px-8 bg-white">
+    <section className="py-16 md:py-24 px-6 md:px-10 bg-white">
       <div className="max-w-[1280px] mx-auto space-y-6 md:space-y-8">
         <h2 
           className="text-[28px] leading-[32px] md:text-[37px] md:leading-[46px]"
@@ -628,7 +628,7 @@ const industries = [
 
 function IndustriesSection() {
   return (
-    <section className="py-16 md:py-24 px-6 md:px-8 bg-white">
+    <section className="py-16 md:py-24 px-6 md:px-10 bg-white">
       <div className="max-w-[1416px] mx-auto space-y-8 md:space-y-12">
         <p 
           className="text-left md:text-center text-[13px] md:text-[15px]"
@@ -707,7 +707,7 @@ function Footer() {
       <div className="h-px bg-[#D7DADE]" />
 
       {/* Top section */}
-      <div className="flex flex-col lg:flex-row gap-10 md:gap-8 py-12 md:py-16 px-6 md:px-12">
+      <div className="flex flex-col lg:flex-row gap-10 md:gap-12 py-12 md:py-16 px-6 md:px-12">
         {/* Left - CTA */}
         <div className="lg:w-1/2 space-y-4 md:space-y-6">
           <h2 
@@ -868,7 +868,7 @@ function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="bg-[#0D0D0D] py-4 px-6 md:px-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-0">
+      <div className="bg-[#0D0D0D] py-4 md:py-6 px-6 md:px-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-0">
         <div 
           className="flex flex-col md:flex-row md:items-center gap-1 text-[12px] leading-[16px]"
           style={{
