@@ -180,7 +180,7 @@ export default function ProductPage() {
               <RollingButton
                 href="/contactus"
                 className="mt-4 md:mt-0 w-full md:w-fit bg-white px-10 py-3.5 text-[14px]"
-                style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, letterSpacing: "0px", color: "#0D0D0D", borderRadius: "8px" }}
+                style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 800, letterSpacing: "0px", color: "#0D0D0D", borderRadius: "8px" }}
               >
                 Request a Manufacturing Quote
               </RollingButton>
@@ -304,7 +304,7 @@ export default function ProductPage() {
             <RollingButton
               href="/contactus"
               className="w-full md:w-auto bg-white text-black uppercase px-10 py-4 border border-black text-[14px]"
-              style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, letterSpacing: "5%", borderRadius: "8px" }}
+              style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 800, letterSpacing: "5%", borderRadius: "8px" }}
             >
               Request a Manufacturing Quote
             </RollingButton>
@@ -355,7 +355,7 @@ export default function ProductPage() {
             <RollingButton
               href="/contactus"
               className="w-full md:w-auto bg-[#0D0D0D] text-white uppercase px-10 py-4 text-[14px]"
-              style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, letterSpacing: "5%", borderRadius: "8px" }}
+              style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 800, letterSpacing: "5%", borderRadius: "8px" }}
             >
               Discuss Your Customization Requirements
             </RollingButton>
