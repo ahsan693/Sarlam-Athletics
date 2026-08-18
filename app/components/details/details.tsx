@@ -144,7 +144,7 @@ export default function DetailsComponent() {
           <span className="text-[15px] leading-[17px] tracking-[0.4px] text-[#CBCBCB] font-medium md:tracking-wide md:text-[#CCCCCC] mb-3 md:mb-4 uppercase text-center md:text-left">
             Products
           </span>
-          <h1 className="text-[37px] leading-[46px] tracking-[-1.5px] font-medium text-white md:text-[44px] md:leading-tight md:font-bold md:tracking-normal max-w-[664px] uppercase text-center">
+          <h1 className="text-[37px] leading-[46px] tracking-[-1.5px] font-medium text-white md:text-[44px] md:leading-tight md:font-normal md:tracking-normal max-w-[664px] uppercase text-center">
             Private Label Boxing Gloves Manufacturer
           </h1>
         </div>
