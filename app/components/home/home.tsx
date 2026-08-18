@@ -396,7 +396,7 @@ export default function SarlamAthleticsPage() {
             <RollingButton
               href="/contactus"
               className="w-full md:w-auto text-center border border-white uppercase px-10 py-3.5 rounded-[8px]"
-              style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, fontSize: "14px", letterSpacing: "5%", color: "#FFFFFF" }}
+              style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "14px", letterSpacing: "5%", color: "#FFFFFF" }}
             >
               Get a Free Manufacturing Quote
             </RollingButton>
