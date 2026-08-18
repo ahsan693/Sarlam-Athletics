@@ -593,13 +593,6 @@ export default function ProductPage() {
                 </div>
               ))}
             </div>
-
-            <button onClick={() => scrollByCard(1)} aria-label="Next customization option" className="hidden sm:flex absolute right-4 top-[140px] w-11 h-11 bg-white rounded-xl shadow-lg items-center justify-center hover:bg-gray-50 transition text-black z-10">
-              <ChevronRightIcon />
-            </button>
-            <button onClick={() => scrollByCard(-1)} aria-label="Previous customization option" className="hidden sm:flex absolute left-4 top-[140px] w-11 h-11 bg-white rounded-xl shadow-lg items-center justify-center hover:bg-gray-50 transition rotate-180 text-black z-10">
-              <ChevronRightIcon />
-            </button>
           </div>
 
           <div className="hidden md:flex justify-center mt-10 md:mt-16">
