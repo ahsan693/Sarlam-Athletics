@@ -236,157 +236,310 @@ export default function ProductPage() {
         </div>
       </section>
 
-      {/* ───── 5. Product Grid Section ───── */}
-      <section className="w-full bg-white flex justify-center py-16 md:py-24">
-        <div className="w-full max-w-[2560px]">
+    {/* ───── 5. Product Grid Section ───── */}
+<section
+  className="w-full bg-white flex justify-center pt-[40px] pb-[40px] md:py-24"
+  style={{ borderTop: "1px solid #C9C9C9" }}
+>
+  <div className="w-full max-w-[2560px]">
 
-          {/* ── Mobile: Horizontal Product Scroller ── */}
-          <div className="md:hidden">
-            <div className="flex items-end justify-between px-4 py-4 border-b border-gray-200">
-              <h2 className="text-[26px] leading-[27px] max-w-[300px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, letterSpacing: "-0.5px", color: "#0D0D0D" }}>
-                Combat Sports Equipment We Manufacture
-              </h2>
-              <div className="flex gap-[6px] shrink-0 ml-4">
-                <button onClick={() => scrollProductByCard(-1)} aria-label="Previous product" className="w-[30px] h-[30px] rounded-full border border-gray-300 flex items-center justify-center text-black">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-                </button>
-                <button onClick={() => scrollProductByCard(1)} aria-label="Next product" className="w-[30px] h-[30px] rounded-full border border-gray-300 flex items-center justify-center text-black">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </button>
-              </div>
-            </div>
+    {/* ── Mobile: Horizontal Product Scroller ── */}
+    <div className="md:hidden">
+      {/* Header row with title and arrows */}
+      <div
+        className="flex items-center justify-between"
+        style={{
+          padding: "10px 12px 9px 12px",
+          borderBottom: "1px solid #C9C9C9",
+        }}
+      >
+        <h2
+          className="max-w-[300px]"
+          style={{
+            fontFamily: "'FFF Acid Grotesk', sans-serif",
+            fontWeight: 700,
+            fontSize: "26px",
+            lineHeight: "27px",
+            letterSpacing: "-0.6px",
+            color: "#0D0D0D",
+            margin: 0,
+          }}
+        >
+          Combat Sports Equipment We Manufacture
+        </h2>
+        <div className="flex items-end shrink-0 ml-2" style={{ gap: "6px" }}>
+          <button
+            onClick={() => scrollProductByCard(-1)}
+            aria-label="Previous product"
+            className="flex items-center justify-center"
+            style={{ width: "30px", height: "30px" }}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0D0D0D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="19" y1="12" x2="5" y2="12" />
+              <polyline points="12 19 5 12 12 5" />
+            </svg>
+          </button>
+          <button
+            onClick={() => scrollProductByCard(1)}
+            aria-label="Next product"
+            className="flex items-center justify-center"
+            style={{ width: "30px", height: "30px" }}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0D0D0D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </button>
+        </div>
+      </div>
 
-            <div ref={productScrollerRef} className="flex overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-              {allProducts.map((product, i) => (
-                <Link href={product.href} key={i} data-product-card className="snap-start shrink-0 w-full flex flex-col">
-                  <div className="relative w-full h-[258px] bg-gray-50 flex items-center justify-center overflow-hidden">
-                    <ImagePlaceholder className="w-full h-full object-contain p-6" label={product.name} src={product.image} />
-                    <span className="absolute top-3 right-3 w-[36px] h-[36px] bg-[#0D0D0D] rounded-full flex items-center justify-center">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                    </span>
-                  </div>
-                  <div className="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200">
-                    <div className="flex flex-col gap-1">
-                      <span className="block text-[15px] leading-[16px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }}>
-                        {product.name}
-                      </span>
-                      <span className="block underline text-[14px] leading-[18px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, color: "#0D0D0D" }}>
-                        View Product →
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-
-            <div className="flex justify-center py-10 px-4">
-              <RollingButton
-                href="/contactus"
-                className="w-full bg-white text-black uppercase px-10 py-4 border border-black text-[14px]"
-                style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, letterSpacing: "5%", borderRadius: "8px" }}
+      {/* Horizontal product scroller */}
+      <div
+        ref={productScrollerRef}
+        className="flex overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+      >
+        {allProducts.map((product, i) => (
+          <Link
+            href={product.href}
+            key={i}
+            data-product-card
+            className="snap-start shrink-0 w-full flex flex-col"
+          >
+            {/* Card wrapper */}
+            <div className="relative w-full" style={{ height: "310px" }}>
+              {/* Quick view eye icon - top right */}
+              <span
+                className="absolute z-10 flex items-center justify-center"
+                style={{
+                  top: "8px",
+                  right: "1px",
+                  width: "52px",
+                  height: "52px",
+                }}
               >
-                Request a Manufacturing Quote
-              </RollingButton>
-            </div>
-          </div>
+                <span
+                  className="flex items-center justify-center"
+                  style={{
+                    width: "36px",
+                    height: "36px",
+                    backgroundColor: "#0D0D0D",
+                    borderRadius: "4px",
+                  }}
+                >
+                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                    <path
+                      d="M1 11C1 11 4.5 4 11 4C17.5 4 21 11 21 11C21 11 17.5 18 11 18C4.5 18 1 11 1 11Z"
+                      stroke="#FFFFFF"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <circle
+                      cx="11"
+                      cy="11"
+                      r="3"
+                      stroke="#FFFFFF"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+              </span>
 
-          {/* ── Desktop: Full Product Grid (unchanged) ── */}
-          <div className="hidden md:block">
-            <div className="px-6 md:px-10">
-              <div className="py-4 md:py-6 border-b border-gray-200">
-                <h2 className="tracking-tight text-[24px] leading-[30px] md:text-[34px] md:leading-[46px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 600, letterSpacing: "-0.5px", color: "#0D0D0D", margin: 0 }}>
-                  Combat Sports Equipment We Manufacture
-                </h2>
+              {/* Product image */}
+              <div
+                className="w-full flex items-center justify-center overflow-hidden"
+                style={{ height: "258px", marginTop: "52px" }}
+              >
+                <ImagePlaceholder
+                  className="w-full h-full object-contain p-6"
+                  label={product.name}
+                  src={product.image}
+                />
               </div>
+            </div>
 
-              <div className="flex flex-col md:flex-row md:items-center justify-between py-4 border-b border-gray-200 gap-4 md:gap-0">
-                <div className="flex items-center justify-between md:justify-start gap-4 w-full md:w-auto">
-                  <span className="uppercase text-[11px] md:text-[12px] leading-[18px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "0px", color: "#707070" }}>
-                    Items: {filteredProducts.length}
+            {/* Product info bar with border */}
+            <div style={{ padding: "12px" }}>
+              <div
+                className="flex items-center justify-between"
+                style={{
+                  backgroundColor: "#FFFFFF",
+                  border: "1px solid #C9C9C9",
+                  borderRadius: "2px",
+                  padding: "10px 12px",
+                }}
+              >
+                <div className="flex flex-col" style={{ gap: "2px" }}>
+                  <span
+                    className="block"
+                    style={{
+                      fontFamily: "'FFF Acid Grotesk', sans-serif",
+                      fontWeight: 400,
+                      fontSize: "15px",
+                      lineHeight: "16px",
+                      color: "#0D0D0D",
+                    }}
+                  >
+                    {product.name}
                   </span>
-
-                  <div className="flex items-center gap-1.5 relative" ref={dropdownRef}>
-                    <span className="uppercase text-[11px] md:text-[12px] leading-[18px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "0px", color: "#707070" }}>
-                      Category:
-                    </span>
-                    <button onClick={() => setIsFilterOpen(!isFilterOpen)} className="flex items-center gap-1 uppercase text-[12px] leading-[18px] hover:opacity-70 transition" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 700, letterSpacing: "0px", color: "#0D0D0D" }}>
-                      {selectedCategory === "All Products" ? "All" : selectedCategory}
-                      <ChevronDownIcon />
-                    </button>
-
-                    {isFilterOpen && (
-                      <div className="absolute top-full left-0 mt-2 w-[240px] bg-white shadow-[0_4px_24px_rgba(0,0,0,0.08)] border border-gray-100 z-50 flex flex-col py-2 rounded-sm">
-                        {categories.map((cat) => (
-                          <button
-                            key={cat}
-                            onClick={() => { setSelectedCategory(cat); setIsFilterOpen(false); }}
-                            className={`text-left px-5 py-3 hover:bg-gray-50 transition w-full ${selectedCategory === cat ? 'font-bold bg-gray-50' : 'font-medium'}`}
-                            style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: "#000000" }}
-                          >
-                            {cat}
-                          </button>
-                        ))}
-                      </div>
-                    )}
-                  </div>
+                  <span
+                    className="block"
+                    style={{
+                      fontFamily: "'FFF Acid Grotesk', sans-serif",
+                      fontWeight: 700,
+                      fontSize: "14px",
+                      lineHeight: "18px",
+                      color: "#0D0D0D",
+                    }}
+                  >
+                    View Product →
+                  </span>
                 </div>
-              </div>
-            </div>
-
-            <div className="px-6 md:px-10 py-0">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-l-0 md:border-l border-gray-200">
-                {filteredProducts.map((product, i) => (
-                  <div key={i} className="border-r-0 md:border-r border-b border-gray-200 group">
-                    <Link href={product.href} className="relative aspect-[4/3] md:aspect-square bg-gray-50 overflow-hidden flex items-center justify-center p-6 md:p-8">
-                      <ImagePlaceholder className="w-full h-full object-contain" label={product.name} src={product.image} />
-                      <span className="pointer-events-none absolute top-3 right-3 bg-[#0D0D0D] uppercase opacity-0 group-hover:opacity-100 transition rounded-sm px-3 py-1.5 text-[6.5px] leading-[9.4px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "0px", color: "#FFFFFF" }}>
-                        Quick View
-                      </span>
-                    </Link>
-
-                    <div className="bg-white px-4 py-4 md:py-3 flex items-center justify-between border-t border-gray-200">
-                      <div className="flex flex-col gap-1 md:gap-0">
-                        <span className="block text-[10px] md:text-[12px] leading-[13px] md:leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, letterSpacing: "0.05px", color: "#0D0D0D" }}>
-                          {product.name}
-                        </span>
-                        <RollingButton
-                          href={product.href}
-                          className="underline text-left text-[10px] md:text-[11px] leading-[13px] md:leading-[14px]"
-                          style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, letterSpacing: "0px", color: "#0D0D0D" }}
-                        >
-                          {product.cta}
-                        </RollingButton>
-                      </div>
-                      {product.swatches && (
-                        <div className="flex items-center gap-1 shrink-0 ml-2">
-                          {product.swatches.map((color, si) => (
-                            <span key={si} className="w-3 h-3 md:w-2.5 md:h-2.5 inline-block border border-gray-200 rounded-sm" style={{ backgroundColor: color }} />
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                ))}
-                {filteredProducts.length === 0 && (
-                  <div className="col-span-1 sm:col-span-2 lg:col-span-4 w-full py-20 flex justify-center items-center text-gray-500 font-medium">
-                    No products found in this category.
+                {product.swatches && (
+                  <div className="flex items-center shrink-0 ml-2" style={{ gap: "4px" }}>
+                    {product.swatches.map((color, si) => (
+                      <span
+                        key={si}
+                        className="inline-block"
+                        style={{
+                          width: "8px",
+                          height: "8px",
+                          backgroundColor: color,
+                        }}
+                      />
+                    ))}
                   </div>
                 )}
               </div>
             </div>
+          </Link>
+        ))}
+      </div>
 
-            <div className="flex justify-center py-10 md:py-16 px-6 md:px-0">
-              <RollingButton
-                href="/contactus"
-                className="w-full md:w-auto bg-white text-black uppercase px-10 py-4 border border-black text-[14px]"
-                style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "5%", borderRadius: "8px" }}
-              >
-                Request a Manufacturing Quote
-              </RollingButton>
+      {/* CTA Button */}
+      <div
+        className="flex justify-center"
+        style={{ paddingTop: "8px", paddingLeft: "21px", paddingRight: "20px" }}
+      >
+        <RollingButton
+          href="/contactus"
+          className="w-full bg-white text-black uppercase flex items-center justify-center"
+          style={{
+            fontFamily: "'FFF Acid Grotesk', sans-serif",
+            fontWeight: 700,
+            fontSize: "14px",
+            letterSpacing: "5%",
+            borderRadius: "0px",
+            border: "2px solid #000000",
+            padding: "16px 40px",
+            height: "50px",
+          }}
+        >
+          REQUEST A MANUFACTURING QUOTE
+        </RollingButton>
+      </div>
+    </div>
+
+    {/* ── Desktop: Full Product Grid (unchanged) ── */}
+    <div className="hidden md:block">
+      <div className="px-6 md:px-10">
+        <div className="py-4 md:py-6 border-b border-gray-200">
+          <h2 className="tracking-tight text-[24px] leading-[30px] md:text-[34px] md:leading-[46px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 600, letterSpacing: "-0.5px", color: "#0D0D0D", margin: 0 }}>
+            Combat Sports Equipment We Manufacture
+          </h2>
+        </div>
+
+        <div className="flex flex-col md:flex-row md:items-center justify-between py-4 border-b border-gray-200 gap-4 md:gap-0">
+          <div className="flex items-center justify-between md:justify-start gap-4 w-full md:w-auto">
+            <span className="uppercase text-[11px] md:text-[12px] leading-[18px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "0px", color: "#707070" }}>
+              Items: {filteredProducts.length}
+            </span>
+
+            <div className="flex items-center gap-1.5 relative" ref={dropdownRef}>
+              <span className="uppercase text-[11px] md:text-[12px] leading-[18px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "0px", color: "#707070" }}>
+                Category:
+              </span>
+              <button onClick={() => setIsFilterOpen(!isFilterOpen)} className="flex items-center gap-1 uppercase text-[12px] leading-[18px] hover:opacity-70 transition" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 700, letterSpacing: "0px", color: "#0D0D0D" }}>
+                {selectedCategory === "All Products" ? "All" : selectedCategory}
+                <ChevronDownIcon />
+              </button>
+
+              {isFilterOpen && (
+                <div className="absolute top-full left-0 mt-2 w-[240px] bg-white shadow-[0_4px_24px_rgba(0,0,0,0.08)] border border-gray-100 z-50 flex flex-col py-2 rounded-sm">
+                  {categories.map((cat) => (
+                    <button
+                      key={cat}
+                      onClick={() => { setSelectedCategory(cat); setIsFilterOpen(false); }}
+                      className={`text-left px-5 py-3 hover:bg-gray-50 transition w-full ${selectedCategory === cat ? 'font-bold bg-gray-50' : 'font-medium'}`}
+                      style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: "#000000" }}
+                    >
+                      {cat}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
-      </section>
+      </div>
+
+      <div className="px-6 md:px-10 py-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-l-0 md:border-l border-gray-200">
+          {filteredProducts.map((product, i) => (
+            <div key={i} className="border-r-0 md:border-r border-b border-gray-200 group">
+              <Link href={product.href} className="relative aspect-[4/3] md:aspect-square bg-gray-50 overflow-hidden flex items-center justify-center p-6 md:p-8">
+                <ImagePlaceholder className="w-full h-full object-contain" label={product.name} src={product.image} />
+                <span className="pointer-events-none absolute top-3 right-3 bg-[#0D0D0D] uppercase opacity-0 group-hover:opacity-100 transition rounded-sm px-3 py-1.5 text-[6.5px] leading-[9.4px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "0px", color: "#FFFFFF" }}>
+                  Quick View
+                </span>
+              </Link>
+
+              <div className="bg-white px-4 py-4 md:py-3 flex items-center justify-between border-t border-gray-200">
+                <div className="flex flex-col gap-1 md:gap-0">
+                  <span className="block text-[10px] md:text-[12px] leading-[13px] md:leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, letterSpacing: "0.05px", color: "#0D0D0D" }}>
+                    {product.name}
+                  </span>
+                  <RollingButton
+                    href={product.href}
+                    className="underline text-left text-[10px] md:text-[11px] leading-[13px] md:leading-[14px]"
+                    style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, letterSpacing: "0px", color: "#0D0D0D" }}
+                  >
+                    {product.cta}
+                  </RollingButton>
+                </div>
+                {product.swatches && (
+                  <div className="flex items-center gap-1 shrink-0 ml-2">
+                    {product.swatches.map((color, si) => (
+                      <span key={si} className="w-3 h-3 md:w-2.5 md:h-2.5 inline-block border border-gray-200 rounded-sm" style={{ backgroundColor: color }} />
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+          {filteredProducts.length === 0 && (
+            <div className="col-span-1 sm:col-span-2 lg:col-span-4 w-full py-20 flex justify-center items-center text-gray-500 font-medium">
+              No products found in this category.
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div className="flex justify-center py-10 md:py-16 px-6 md:px-0">
+        <RollingButton
+          href="/contactus"
+          className="w-full md:w-auto bg-white text-black uppercase px-10 py-4 border border-black text-[14px]"
+          style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "5%", borderRadius: "8px" }}
+        >
+          Request a Manufacturing Quote
+        </RollingButton>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* ───── 6. Customization Options Section ───── */}
       <section className="w-full bg-white py-10 md:py-24 flex justify-center">
