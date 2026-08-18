@@ -209,7 +209,7 @@ export default function UltimateMmaFightGlovesPage() {
           <span className="text-[13px] md:text-[15px] font-medium mb-3 md:mb-4 tracking-wide text-[#CCCCCC] uppercase">
             PRODUCTS
           </span>
-          <h1 className="text-[32px] leading-[36px] md:text-[44px] font-bold text-white md:leading-tight max-w-[800px] uppercase">
+          <h1 className="text-[32px] leading-[36px] md:text-[44px] font-normal text-white md:leading-tight max-w-[800px] uppercase">
             Private Label Sports Equipment Manufacturing
           </h1>
         </div>
@@ -390,10 +390,10 @@ export default function UltimateMmaFightGlovesPage() {
 
             {/* CTA Buttons */}
             <div className="space-y-3 md:space-y-4 mb-4 mt-8 md:mt-12">
-              <button className="w-full bg-[#0D0D0D] text-white text-[13px] md:text-sm font-bold py-4 md:py-[18px] hover:bg-black/90 transition-colors uppercase tracking-wide">
+              <button className="w-full bg-[#0D0D0D] text-white text-[13px] md:text-sm font-normal py-4 md:py-[18px] hover:bg-black/90 transition-colors uppercase tracking-wide">
                 Request Manufacturing Quote
               </button>
-              <button className="w-full border border-[#0D0D0D] text-[#0D0D0D] text-[13px] md:text-sm font-bold py-4 md:py-[18px] hover:bg-gray-50 transition-colors uppercase tracking-wide">
+              <button className="w-full border border-[#0D0D0D] text-[#0D0D0D] text-[13px] md:text-sm font-normal py-4 md:py-[18px] hover:bg-gray-50 transition-colors uppercase tracking-wide">
                 Ask About Samples
               </button>
             </div>

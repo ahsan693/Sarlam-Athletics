@@ -143,10 +143,10 @@ export default function KarateSuitDetailsPage() {
          <img src="/Page 7/01-1.png" alt="Private Label Sports Equipment Manufacturing" className="w-full h-full object-cover opacity-60" />
         </div>
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6 max-w-[2560px] mx-auto">
-          <span className="text-[15px] leading-[17px] tracking-[0.4px] text-[#CBCBCB] font-medium md:tracking-wide md:text-[#CCCCCC] mb-3 md:mb-4 uppercase text-center md:text-left">
+          <span className="text-[15px] leading-[17px] tracking-[0.4px] text-[#CBCBCB] font-normal md:tracking-wide md:text-[#CCCCCC] mb-3 md:mb-4 uppercase text-center md:text-left">
             PRODUCTS / PRIVATE LABEL MANUFACTURING
           </span>
-          <h1 className="text-[37px] leading-[46px] tracking-[-1.5px] font-medium text-white md:text-[44px] md:leading-tight md:font-bold md:tracking-normal max-w-[800px] uppercase text-center">
+          <h1 className="text-[37px] leading-[46px] tracking-[-1.5px] font-normal text-white md:text-[44px] md:leading-tight md:font-bold md:tracking-normal max-w-[800px] uppercase text-center">
             Private Label Sports Equipment Manufacturing
           </h1>
         </div>
@@ -252,10 +252,10 @@ export default function KarateSuitDetailsPage() {
 
             {/* CTA Buttons */}
             <div className="space-y-3 md:space-y-4 mb-4 mt-8 md:mt-12">
-              <RollingButton className="w-full bg-[#0D0D0D] text-white text-[14px] leading-[18px] tracking-[0.1px] font-bold py-4 md:py-[18px] uppercase md:tracking-wide rounded-[4px]">
+              <RollingButton className="w-full bg-[#0D0D0D] text-white text-[14px] leading-[18px] tracking-[0.1px] font-normal  py-4 md:py-[18px] uppercase md:tracking-wide rounded-[4px]">
                 Request Manufacturing Quote
               </RollingButton>
-              <RollingButton className="w-full border border-[#0D0D0D] text-[#0D0D0D] text-[13px] tracking-[0px] font-bold py-4 md:py-[18px] uppercase md:text-sm md:tracking-wide rounded-[4px]">
+              <RollingButton className="w-full border border-[#0D0D0D] text-[#0D0D0D] text-[13px] tracking-[0px] font-normal py-4 md:py-[18px] uppercase md:text-sm md:tracking-wide rounded-[4px]">
                 Ask About Samples
               </RollingButton>
             </div>
