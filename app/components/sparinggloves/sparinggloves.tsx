@@ -147,27 +147,27 @@ export default function TrainingPadsPage() {
           {/* Left: Product Image */}
           <div className="w-full lg:w-[616px] shrink-0">
             <div className="bg-[#F9F9F9] rounded-none p-4 md:p-2 aspect-[4/5] md:aspect-square flex items-center justify-center lg:sticky lg:top-24 max-w-[800px] mx-auto">
-              <img src="/Products/05 Boxing Mitts and Training Pads.png" alt="Training Pads" className="w-[100%] h-[100%] md:w-[600px] md:h-[600px] object-cover md:object-contain mix-blend-multiply" />
+              <img src="\Products\06 Boxing Sparring Gloves.png" alt="Training Pads" className="w-[100%] h-[100%] md:w-[600px] md:h-[600px] object-cover md:object-contain mix-blend-multiply" />
             </div>
           </div>
 
-          {/* Right: Product Configuration Panel */}
+                  {/* Right: Product Configuration Panel */}
           <div className="flex-1 max-w-full lg:max-w-[616px] mx-auto lg:mx-0">
             <nav className="flex items-center flex-wrap gap-2 text-[10px] md:text-xs text-[#6A7282] mb-6 md:mb-8 font-medium uppercase tracking-wide">
               <a href="/" className="hover:underline">Home</a><span>/</span>
               <a href="/products" className="hover:underline">Boxing Equipment</a><span>/</span>
-              <span className="text-[#0D0D0D]">Training Pads</span>
+              <span className="text-[#0D0D0D]">Boxing Gloves</span>
             </nav>
 
             <div className="mb-6">
               <p className="text-[12px] md:text-sm font-bold text-[#666666] uppercase">
-                Martial Arts Equipment Manufacturing
+                Hand Protection Equipment Manufacturing
               </p>
               <h2 className="text-[32px] leading-[36px] md:text-[44px] md:leading-tight font-bold text-[#0D0D0D] mt-2">
-                Training Pads (Focus Mitts & Thai Pads)
+                Boxing Practice / Sparring Gloves
               </h2>
               <p className="text-[15px] leading-[22px] md:text-xl text-[#0D0D0D] mt-3 md:mt-4 md:leading-relaxed font-normal">
-                Custom athletic pad manufacturing, including focus mitts and Thai pads for coaches and academy brands.
+                Custom heavily padded practice glove manufacturing optimized for safe partner sparring and daily training.
               </p>
             </div>
 
@@ -175,10 +175,10 @@ export default function TrainingPadsPage() {
 
             <div className="mb-8 md:mb-6">
               <p className="text-[14px] leading-[22px] md:text-base text-[#666666] md:leading-relaxed font-normal">
-                Sarlam Athletics manufactures custom athletic pads and shields (focus mitts, Thai pads, kick shields, belly pads) for combat sports brands, martial arts academies, gyms, retailers, and distributors. We support custom materials, padding, wrist/arm straps, labels, packaging, and branding details for wholesale production.
+                Sarlam Athletics manufactures private-label boxing gloves and platforms for gyms, academies, combat sports brands, retailers, and distributor wholesale partners. We support custom materials, construction, sizing, padding, reinforcement, branding (labels, embroidery, digital), packaging, and branding details for wholesale production.
               </p>
               <p className="text-[14px] leading-[22px] md:text-base text-[#666666] md:leading-relaxed mt-4 font-normal">
-                Samples can be developed before bulk manufacturing so your team can review fit, shock absorption, material feel, logo placement, and final presentation before approving a larger order.
+                Samples can be developed before bulk manufacturing so your team can review fit, impact absorption, material feel, and presentation before approving a larger order.
               </p>
             </div>
 
@@ -190,13 +190,13 @@ export default function TrainingPadsPage() {
 
             <OptionGroup label="Select Finish" options={finishOptions} selectedOptions={selectedFinish} onSelect={(val) => toggleOption(val, selectedFinish, setSelectedFinish)} />
             <OptionGroup label="Fit/Gender" guideLabel="Gender Guide" options={fitOptions} selectedOptions={selectedFit} onSelect={(val) => toggleOption(val, selectedFit, setSelectedFit)} />
-            <OptionGroup label="Material/Fabric" guideLabel="Fabric Guide" options={materialOptions} selectedOptions={selectedMaterial} onSelect={(val) => toggleOption(val, selectedMaterial, setSelectedMaterial)} />
+            <OptionGroup label="Materials/Fabric" guideLabel="Fabric Guide" options={materialOptions} selectedOptions={selectedMaterial} onSelect={(val) => toggleOption(val, selectedMaterial, setSelectedMaterial)} />
             <OptionGroup label="Branding Method" options={brandingOptions} selectedOptions={selectedBranding} onSelect={(val) => toggleOption(val, selectedBranding, setSelectedBranding)} />
 
             <div className="mb-6 md:mb-8">
               <div className="flex items-center justify-between mb-3">
-                <label className="text-[13px] md:text-sm font-bold text-[#0D0D0D] uppercase">Size/Style Options</label>
-                <button className="text-[11px] md:text-xs text-[#666666] hover:underline font-medium">Style Guide</button>
+                <label className="text-[13px] md:text-sm font-bold text-[#0D0D0D] uppercase">Size/Weight Range</label>
+                <button className="text-[11px] md:text-xs text-[#666666] hover:underline font-medium">Fitting Guide</button>
               </div>
               <div className="space-y-4">
                 <div className="flex flex-wrap gap-2 md:gap-3">
@@ -207,8 +207,8 @@ export default function TrainingPadsPage() {
                   ))}
                 </div>
                 <div>
-                  <span className="block text-[11px] md:text-xs font-medium text-[#666666] mb-2 uppercase">Other</span>
-                  <input type="text" placeholder="Any other" className="border border-gray-200 px-4 py-3 md:py-[15px] w-full text-[13px] md:text-[15px] focus:outline-none focus:border-[#0D0D0D] font-medium" />
+                  <span className="block text-[11px] md:text-xs font-medium text-[#666666] mb-2 uppercase">Custom</span>
+                  <input type="text" placeholder="Any other size" className="border border-gray-200 px-4 py-3 md:py-[15px] w-full text-[13px] md:text-[15px] focus:outline-none focus:border-[#0D0D0D] font-medium" />
                 </div>
               </div>
             </div>
@@ -218,11 +218,12 @@ export default function TrainingPadsPage() {
             <div className="mb-6 md:mb-8">
               <div className="flex items-center justify-between mb-3">
                 <label className="text-[13px] md:text-sm font-bold text-[#0D0D0D] uppercase">Quantity</label>
+                <span className="text-[11px] md:text-xs text-[#666666] font-medium">Quantity Guide</span>
               </div>
               <input type="number" placeholder="Enter quantity" className="border border-gray-200 px-4 py-3 md:py-[15px] w-full text-[13px] md:text-[15px] focus:outline-none focus:border-[#0D0D0D] font-medium" />
               <div className="flex items-center gap-2 mt-3">
                 <span className="text-[#D92D20] shrink-0"><InfoIcon /></span>
-                <span className="text-[#D92D20] text-[11px] md:text-[12px] font-medium tracking-wide">Please ensure your order meets our Minimum Quantity</span>
+                <span className="text-[#D92D20] text-[11px] md:text-[12px] font-medium tracking-wide">Please select: Glove Finish, Branding Method, Size Range, Quantity</span>
               </div>
             </div>
 
