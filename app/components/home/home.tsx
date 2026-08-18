@@ -692,78 +692,88 @@ export default function SarlamAthleticsPage() {
         </div>
       </section>
 
-      {/* --- How Our Process Works --- */}
-      <section className="w-full bg-white py-16 md:py-0 md:pb-[120px]">
-        <div className="max-w-[2560px] mx-auto px-4 md:px-0">
-          {/* Desktop heading */}
-          <div className="hidden md:block md:pt-[120px] md:pb-12 md:pl-[64px]">
-            <h2 style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "37px", lineHeight: "46px", letterSpacing: "-1.5px", color: "#0D0D0D" }}>
-              How Our Private Label Manufacturing<br /> Process Works
-            </h2>
+     {/* --- How Our Process Works --- */}
+<section className="w-full bg-white py-16 md:py-0 md:pb-[120px]">
+  <div className="max-w-[2560px] mx-auto px-4 md:px-0">
+    {/* Desktop heading */}
+    <div className="hidden md:block md:pt-[120px] md:pb-12 md:pl-[64px]">
+      <h2 style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "37px", lineHeight: "46px", letterSpacing: "-1.5px", color: "#0D0D0D" }}>
+        How Our Private Label Manufacturing<br /> Process Works
+      </h2>
+    </div>
+    {/* Mobile heading */}
+    <h2 className="md:hidden mb-6 text-[26px] leading-[32px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1.5px", color: "#0D0D0D" }}>
+      How Our Private Label Manufacturing Process Works
+    </h2>
+  </div>
+
+  {/* Mobile: Image-backed dark cards */}
+  <div className="flex flex-col md:hidden px-4 gap-6">
+    {processSteps.map((step, i) => (
+      <div
+        key={i}
+        className="relative w-full h-[200px] rounded-[8px] overflow-hidden"
+      >
+        {/* Background image */}
+        <img
+          src={step.imageSrc}
+          alt={`Step ${step.num} - ${step.title}`}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/40" />
+
+        {/* Content */}
+        <div className="relative z-10 p-5 flex flex-col justify-start h-full">
+          {/* Badge */}
+          <div className="inline-flex items-center justify-center px-2 py-[2px] rounded-full border border-white/70 w-fit mb-3 mt-5">
+            <span style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "9px", lineHeight: "13px", color: "#FFFFFF" }}>{step.num}</span>
           </div>
-          {/* Mobile heading */}
-          <h2 className="md:hidden mb-6 text-[26px] leading-[32px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1.5px", color: "#0D0D0D" }}>
-            How Our Private Label Manufacturing Process Works
-          </h2>
+          <h3 className="mb-3" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "15px", lineHeight: "15px", color: "#FFFFFF" }}>{step.title}</h3>
+          <p style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "15px", lineHeight: "16px", color: "#FFFFFF" }}>{step.desc}</p>
         </div>
+      </div>
+    ))}
+  </div>
 
-        {/* Mobile: Flat dark cards */}
-        <div className="flex flex-col md:hidden px-4 gap-6">
-          {processSteps.map((step, i) => (
-            <div
-              key={i}
-              className="relative w-full h-[200px] rounded-[8px] overflow-hidden bg-[#0D0D0D] p-5 flex flex-col justify-start"
-            >
-              {/* Badge */}
-              <div className="inline-flex items-center justify-center px-2 py-[2px] rounded-full border border-white/70 w-fit mb-3 mt-5">
-                <span style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "9px", lineHeight: "13px", color: "#FFFFFF" }}>{step.num}</span>
-              </div>
-              <h3 className="mb-3" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "15px", lineHeight: "15px", color: "#FFFFFF" }}>{step.title}</h3>
-              <p style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "15px", lineHeight: "16px", color: "#FFFFFF" }}>{step.desc}</p>
+  {/* Desktop: Unique image-panel layout */}
+  <div className="hidden md:flex w-full max-w-[2560px] mx-auto h-[575px] overflow-hidden">
+    {processSteps.map((step, i) => {
+      const isFirst = i === 0;
+      return (
+        <div
+          key={i}
+          className="relative h-full overflow-hidden group"
+          style={{ width: isFirst ? '56%' : '14.67%', flexShrink: 0 }}
+        >
+          <img
+            src={step.imageSrc}
+            alt={`Step ${step.num} - ${step.title}`}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/40" />
+
+          {/* Step number badge */}
+          <div className="absolute top-[202px] left-1/2 -translate-x-1/2 z-10">
+            <div className="inline-flex items-center justify-center px-[10px] py-[4px] rounded-full bg-black/50 min-w-[30px] h-[21px]">
+              <span style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "9px", lineHeight: "13px", color: "#FFFFFF" }}>{step.num}</span>
             </div>
-          ))}
+          </div>
+
+          {/* Title */}
+          <div className="absolute top-[246px] left-0 right-0 text-center px-4 z-10">
+            <h3 style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "15px", lineHeight: "15px", letterSpacing: "-0.2px", color: "#FFFFFF" }}>{step.title}</h3>
+          </div>
+
+          {/* Description (on ALL panels) */}
+          <div className="absolute top-[295px] left-0 right-0 text-center px-6 z-10">
+            <p className="max-w-[236px] mx-auto" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "15px", lineHeight: "17px", letterSpacing: "0.4px", color: "#FFFFFF" }}>{step.desc}</p>
+          </div>
         </div>
-
-        {/* Desktop: Unique image-panel layout */}
-        <div className="hidden md:flex w-full max-w-[2560px] mx-auto h-[575px] overflow-hidden">
-          {processSteps.map((step, i) => {
-            const isFirst = i === 0;
-            return (
-              <div
-                key={i}
-                className="relative h-full overflow-hidden group"
-                style={{ width: isFirst ? '56%' : '14.67%', flexShrink: 0 }}
-              >
-                <img
-                  src={step.imageSrc}
-                  alt={`Step ${step.num} - ${step.title}`}
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black/40" />
-
-                {/* Step number badge */}
-                <div className="absolute top-[202px] left-1/2 -translate-x-1/2 z-10">
-                  <div className="inline-flex items-center justify-center px-[10px] py-[4px] rounded-full bg-black/50 min-w-[30px] h-[21px]">
-                    <span style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "9px", lineHeight: "13px", color: "#FFFFFF" }}>{step.num}</span>
-                  </div>
-                </div>
-
-                {/* Title */}
-                <div className="absolute top-[246px] left-0 right-0 text-center px-4 z-10">
-                  <h3 style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "15px", lineHeight: "15px", letterSpacing: "-0.2px", color: "#FFFFFF" }}>{step.title}</h3>
-                </div>
-
-                {/* Description (only on first/active panel) */}
-                {isFirst && (
-                  <div className="absolute top-[295px] left-0 right-0 text-center px-6 z-10">
-                    <p className="max-w-[236px] mx-auto" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "15px", lineHeight: "17px", letterSpacing: "0.4px", color: "#FFFFFF" }}>{step.desc}</p>
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-      </section>
+      );
+    })}
+  </div>
+</section>
 
       {/* --- FAQ Section --- */}
       <section className="w-full bg-white py-16 md:py-20">
