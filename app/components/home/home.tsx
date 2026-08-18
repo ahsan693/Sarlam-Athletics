@@ -169,7 +169,7 @@ export function Header() {
         {/* Desktop Center Logo */}
         <Link href="/" className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center">
           <Image 
-            src="/Page 1/Icons/Heading 1.png" 
+            src="/Page 1/Icons/Vector-1.svg" 
             alt="Sarlam Athletics Logo" 
             width={267} height={34} quality={100} priority
             className="w-[267px] h-[34px] object-contain"
