@@ -1,9 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState, useRef } from "react";
 import Link from "next/link";
-
-// ─── Import Centralized Header ──────────────────────────────────────────────
+// Import the Header correctly from the home.tsx file
 import { Header } from "../home/home";
 
 // --- Image Placeholder ---
@@ -36,6 +35,21 @@ const ArrowUpRight = () => (
   </svg>
 );
 
+const MenuIcon = () => (
+  <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
+    <line y1="1" x2="20" y2="1" stroke="currentColor" strokeWidth="2" />
+    <line y1="7" x2="20" y2="7" stroke="currentColor" strokeWidth="2" />
+    <line y1="13" x2="20" y2="13" stroke="currentColor" strokeWidth="2" />
+  </svg>
+);
+
+const SearchIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+    <circle cx="9" cy="9" r="7" stroke="currentColor" strokeWidth="2" />
+    <line x1="14" y1="14" x2="19" y2="19" stroke="currentColor" strokeWidth="2" />
+  </svg>
+);
+
 const ChevronDownIcon = () => (
   <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
     <path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -55,6 +69,26 @@ const GridIcon = () => (
     <rect x="9" y="1" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
     <rect x="1" y="9" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
     <rect x="9" y="9" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
+  </svg>
+);
+
+const ArrowLeft = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="19" y1="12" x2="5" y2="12"></line>
+    <polyline points="12 19 5 12 12 5"></polyline>
+  </svg>
+);
+
+const ArrowRight = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="5" y1="12" x2="19" y2="12"></line>
+    <polyline points="12 5 19 12 12 19"></polyline>
+  </svg>
+);
+
+const LogoMark = ({ className = "" }: { className?: string }) => (
+  <svg viewBox="0 0 30 34" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M24 0L4 14h13L0 34l26-15H12L24 0z" fill="currentColor" />
   </svg>
 );
 
@@ -112,18 +146,26 @@ const sizeRanges = {
 const relatedProducts = [
   { 
     name: "Jiu Jitsu Suit (Gi)", 
+    href: "/jitsu",
+    cta: "View Product",
     image: "/Products/02 BJJ Gis and Jiu-Jitsu Uniforms.png" 
   },
   { 
     name: "Boxing Gloves", 
+    href: "/details",
+    cta: "View Product",
     image: "/Products/01 Private Label Boxing Gloves.png" 
   },
   { 
     name: "MMA Full Fight Gloves", 
+    href: "/mmagloves",
+    cta: "View Product",
     image: "/Products/03 MMA Fight Gloves.png" 
   },
   { 
     name: "Boxing Head Guard", 
+    href: "/Boxingguard",
+    cta: "View Product",
     image: "/Products/07 Custom Boxing Headguards.png" 
   },
 ];
@@ -154,6 +196,8 @@ const features = [
 ];
 
 export default function KarateSuitDetailsPage() {
+  const relatedScrollerRef = useRef<HTMLDivElement>(null);
+  
   const [selectedFinish, setSelectedFinish] = useState<string[]>(["STANDARD"]);
   const [selectedFit, setSelectedFit] = useState<string[]>(["UNISEX"]);
   const [selectedMaterial, setSelectedMaterial] = useState<string[]>(["100% COTTON CANVAS"]);
@@ -169,6 +213,14 @@ export default function KarateSuitDetailsPage() {
     setState((prev) =>
       prev.includes(option) ? prev.filter((o) => o !== option) : [...prev, option]
     );
+  };
+
+  const scrollRelated = (dir: 1 | -1) => {
+    const el = relatedScrollerRef.current;
+    if (!el) return;
+    const card = el.querySelector<HTMLElement>("[data-related-card]");
+    const cardWidth = card ? card.offsetWidth + 24 : 360; 
+    el.scrollBy({ left: dir * cardWidth, behavior: "smooth" });
   };
 
   return (
@@ -208,7 +260,7 @@ export default function KarateSuitDetailsPage() {
       </section>
 
       {/* --- Product Presentation Grid --- */}
-      <section className="px-5 md:px-16 py-10 md:py-20">
+      <section className="px-5 md:px-16 py-16 md:py-24">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-32 max-w-[1440px] mx-auto">
           {/* Left: Product Image */}
           <div className="w-full lg:w-[616px] shrink-0">
@@ -235,7 +287,7 @@ export default function KarateSuitDetailsPage() {
             </nav>
 
             {/* Title */}
-            <div className="mb-6">
+            <div className="mb-6 md:mb-8">
               <p className="text-[14px] leading-[18px] tracking-[0.1px] font-bold text-[#666666] uppercase text-left md:text-sm md:tracking-normal">
                 Martial Arts Uniform Manufacturing
               </p>
@@ -248,10 +300,10 @@ export default function KarateSuitDetailsPage() {
             </div>
 
             {/* Divider */}
-            <hr className="border-t border-gray-200 mb-6" />
+            <hr className="border-t border-gray-200 mb-6 md:mb-8" />
 
             {/* Description */}
-            <div className="mb-8 md:mb-6">
+            <div className="mb-8 md:mb-10">
               <p className="text-[16px] leading-[20px] tracking-[0px] font-normal text-[#666666] text-left md:text-base md:leading-relaxed">
                 Sarlam Athletics manufactures private-label martial arts uniforms for gyms, academies, combat sports brands, retailers, and distributors. We support custom fabric options, sizing, colorways, patches, embroidery, woven labels, packaging, and branding details for wholesale production.
               </p>
@@ -391,7 +443,7 @@ export default function KarateSuitDetailsPage() {
       </section>
 
       {/* --- Features Strip --- */}
-      <section className="px-6 md:px-16 pb-12 md:pb-16">
+      <section className="px-6 md:px-16 pb-16 md:pb-24">
         <hr className="border-t border-gray-200 mb-8 md:mb-10 max-w-[1416px] mx-auto" />
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between max-w-[1416px] mx-auto gap-4 md:gap-0">
           {features.map((feature, i) => (
@@ -407,43 +459,62 @@ export default function KarateSuitDetailsPage() {
         </div>
       </section>
 
-      {/* --- You May Also Like --- */}
-      <section className="bg-white px-4 md:px-16 py-10 md:py-20 border-y border-[#C9C9C9] md:border-y-0 md:border-t md:border-gray-100">
-        <div className="max-w-[1440px] mx-auto">
-          {/* Header */}
-          <div className="flex items-end justify-between mb-6 md:mb-12">
-            <h2 className="text-[26px] leading-[26px] tracking-[-0.5px] font-bold text-[#0D0D0D] uppercase max-w-[302px] md:max-w-none md:leading-[28px] md:tracking-normal md:normal-case">
+      {/* --- You May Also Like (Proper Functioning Horizontal Scroll) --- */}
+      <section className="bg-white px-4 md:px-16 py-16 md:py-24 border-y border-[#C9C9C9] md:border-y-0 md:border-t md:border-gray-100">
+        <div className="max-w-[1440px] mx-auto overflow-hidden">
+          
+          {/* Header Row */}
+          <div className="flex items-end justify-between mb-10 md:mb-16 gap-4">
+            <h2 className="text-[26px] leading-[32px] md:text-[37px] md:leading-[46px] tracking-[-0.5px] font-bold text-[#0D0D0D] uppercase max-w-[302px] md:max-w-none md:tracking-normal md:normal-case">
               Martial Arts Uniform Manufacturing Options
             </h2>
-            <a
-              href="/products"
-              className="text-[14px] leading-[18px] tracking-[0.1px] font-bold text-[#0D0D0D] shrink-0 hover:underline md:uppercase md:flex md:items-center md:gap-1 md:text-sm md:tracking-normal"
-            >
-              View all
-              <svg
-                className="hidden md:inline-block"
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
+            
+            {/* Desktop & Mobile Arrows */}
+            <div className="flex items-center gap-[6px] shrink-0 z-10 relative pb-1 md:pb-2">
+              <Link
+                href="/products"
+                className="text-[14px] leading-[18px] tracking-[0.1px] font-bold text-[#0D0D0D] shrink-0 hover:underline md:uppercase md:flex md:items-center md:gap-1 md:text-sm md:tracking-normal mr-2 md:mr-4"
               >
-                <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" />
-              </svg>
-            </a>
+                View all
+                <svg
+                  className="hidden md:inline-block"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                >
+                  <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" />
+                </svg>
+              </Link>
+              <button 
+                onClick={() => scrollRelated(-1)} 
+                aria-label="Previous" 
+                className="w-[30px] h-[30px] hidden md:flex items-center justify-center text-gray-400 hover:text-black transition"
+              >
+                <ArrowLeft />
+              </button>
+              <button 
+                onClick={() => scrollRelated(1)} 
+                aria-label="Next" 
+                className="w-[30px] h-[30px] hidden md:flex items-center justify-center text-black hover:opacity-70 transition"
+              >
+                <ArrowRight />
+              </button>
+            </div>
           </div>
 
-          {/* Mobile: 2x2 grid | Desktop: horizontal scroll */}
-          <div className="grid grid-cols-2 gap-3 md:flex md:gap-0 md:overflow-x-auto md:snap-x md:snap-mandatory md:[scrollbar-width:none] md:[-ms-overflow-style:none] md:[&::-webkit-scrollbar]:hidden">
+          {/* Horizontal Flex Scrolling Container (Mobile & Desktop) */}
+          <div 
+            ref={relatedScrollerRef}
+            className="flex overflow-x-auto gap-4 md:gap-6 snap-x snap-mandatory hide-scrollbar pb-4"
+          >
             {relatedProducts.map((product, i) => (
               <div
                 key={i}
-                className="
-                  border border-[#C9C9C9] rounded bg-white
-                  md:rounded-none md:w-[360px] md:snap-start md:shrink-0
-                  group cursor-pointer
-                "
+                data-related-card
+                className="border border-[#C9C9C9] rounded bg-white w-[260px] md:w-[360px] snap-start shrink-0 group flex flex-col md:rounded-none"
               >
-                <div className="p-2 md:p-0">
+                <Link href={product.href} className="block p-2 md:p-0">
                   <div className="relative aspect-square md:aspect-auto md:h-[280px] bg-gray-100 overflow-hidden rounded-sm md:rounded-none">
                     <img
                       src={product.image}
@@ -451,47 +522,65 @@ export default function KarateSuitDetailsPage() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                     <div className="hidden md:flex absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors items-center justify-center">
-                      <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-[#0D0D0D] text-white text-[6.5px] font-medium px-3 py-1.5 uppercase tracking-wider">
+                      <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-[#0D0D0D] text-white text-[10px] font-medium px-4 py-2 uppercase tracking-wider">
                         Quick View
                       </span>
                     </div>
                   </div>
-                </div>
+                </Link>
 
-                <div className="px-2 pb-2 flex flex-col gap-2 md:px-4 md:py-3 md:flex-row md:items-center md:justify-between md:gap-0">
-                  <span className="text-[12px] leading-[15px] tracking-[0px] font-bold text-[#0D0D0D] text-left md:text-[10px] md:uppercase">
+                <div className="px-3 pb-3 flex flex-col gap-2 md:px-5 md:py-4 md:flex-row md:items-center md:justify-between md:gap-0 mt-auto border-t border-transparent md:border-gray-200">
+                  <span className="text-[14px] leading-[18px] tracking-[0px] font-bold text-[#0D0D0D] text-left md:uppercase">
                     {product.name}
                   </span>
-                  <a
-                    href="#"
+                  <Link
+                    href={product.href}
                     className="
-                      text-[10px] leading-[12px] tracking-[0px] font-bold text-[#0D0D0D] underline
-                      md:no-underline md:border md:border-[#0D0D0D] md:px-2 md:py-1
+                      text-[12px] leading-[14px] tracking-[0px] font-bold text-[#0D0D0D] underline
+                      md:no-underline md:border md:border-[#0D0D0D] md:px-3 md:py-1.5
                       md:uppercase md:hover:bg-[#0D0D0D] md:hover:text-white md:transition-colors
-                      md:text-[8px] md:font-medium
+                      md:text-[10px] md:font-medium text-center
                     "
                   >
-                    Request Quote
-                  </a>
+                    {product.cta}
+                  </Link>
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Mobile Only: Below-Grid Arrow Buttons */}
+          <div className="flex md:hidden items-center justify-center gap-4 mt-6">
+            <button 
+              onClick={() => scrollRelated(-1)} 
+              aria-label="Previous" 
+              className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-black hover:bg-gray-50 transition"
+            >
+              <ArrowLeft />
+            </button>
+            <button 
+              onClick={() => scrollRelated(1)} 
+              aria-label="Next" 
+              className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-black hover:bg-gray-50 transition"
+            >
+              <ArrowRight />
+            </button>
           </div>
         </div>
       </section>
 
       {/* --- Quality Control Banner --- */}
-      <section className="px-0 md:px-6 py-0">
+      <section className="px-0 md:px-6 py-16 md:py-24">
         <div className="relative rounded-none overflow-hidden max-w-[1380px] mx-auto">
           <div className="absolute inset-0 bg-black">
-          <img
-            src="/Page 7/01.png"
-            alt="Quality Control"
-            className="w-full h-full object-cover opacity-50"
-          />
+            <img
+              src="/Page 7/01.png"
+              alt="Quality Control"
+              className="w-full h-full object-cover opacity-50"
+            />
           </div>
           <div className="relative z-10 flex flex-col items-center justify-center text-center py-20 px-6 md:py-36 md:px-8">
-            <h2 className="font-['Switzer',sans-serif] text-[32px] leading-[38.4px] tracking-[-0.32px] font-semibold text-[#FFFFFF] text-center mb-4 max-w-[654px] uppercase md:font-['FFF_Acid_Grotesk',sans-serif] md:text-[26px] md:font-bold md:leading-tight md:tracking-normal">
+            <h2 className="font-['Switzer',sans-serif] text-[32px] leading-[38.4px] tracking-[-0.32px] font-semibold text-[#FFFFFF] text-center mb-6 md:mb-8 max-w-[654px] uppercase md:font-['FFF_Acid_Grotesk',sans-serif] md:text-[26px] md:font-bold md:leading-tight md:tracking-normal">
               Quality Control for Every Production Run
             </h2>
             <p className="text-[15px] leading-[18px] tracking-[0px] font-normal text-[#FFFFFF] text-center max-w-[654px] md:text-base md:text-white/80 md:leading-relaxed">
@@ -502,17 +591,17 @@ export default function KarateSuitDetailsPage() {
       </section>
 
       {/* --- MOQ, Pricing, and Samples --- */}
-      <section className="px-6 md:px-20 py-12 md:py-20 max-w-[1440px] mx-auto border-t border-gray-100">
-        <h2 className="text-[22px] leading-[28px] tracking-[0px] font-bold text-[#0D0D0D] text-left mb-4 md:mb-6 md:text-[37px] md:leading-[46px] md:tracking-tight">
+      <section className="px-6 md:px-20 py-16 md:py-24 max-w-[1440px] mx-auto border-t border-gray-100">
+        <h2 className="text-[22px] leading-[28px] tracking-[0px] font-bold text-[#0D0D0D] text-left mb-6 md:mb-8 md:text-[37px] md:leading-[46px] md:tracking-tight">
           MOQ, Pricing, and Samples
         </h2>
-        <p className="text-[13px] leading-[20px] tracking-[0px] font-normal text-[#434343] text-left mb-8 md:mb-10 max-w-[1280px] md:text-base md:text-[#666666] md:leading-relaxed">
-          Minimum order quantities and pricing depend on fabric selection, customization level, branding method, packaging, and total order volume. Share your requirements and we'll recommend the best starting point for your martial arts uniform project.
+        <p className="text-[13px] leading-[20px] tracking-[0px] font-normal text-[#434343] text-left mb-10 md:mb-16 max-w-[1280px] md:text-base md:text-[#666666] md:leading-relaxed">
+          Minimum order quantities and pricing depend on fabric selection, customization level, branding method, packaging, and total order volume. Share your requirements and we&apos;ll recommend the best starting point for your martial arts uniform project.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           {moqCards.map((card, i) => (
             <div key={i} className="bg-[#F5F5F5] p-6 md:p-8">
-              <h3 className="text-[15px] leading-[20px] tracking-[0px] font-bold text-[#0D0D0D] text-left mb-2 md:mb-3 uppercase md:text-sm md:tracking-wide">
+              <h3 className="text-[15px] leading-[20px] tracking-[0px] font-bold text-[#0D0D0D] text-left mb-3 md:mb-4 uppercase md:text-sm md:tracking-wide">
                 {card.title}
               </h3>
               <p className="text-[12px] leading-[18px] tracking-[0px] font-normal text-[#434343] text-left md:text-sm md:text-[#666666] md:leading-relaxed">
@@ -524,9 +613,9 @@ export default function KarateSuitDetailsPage() {
       </section>
 
       {/* --- CTA Section --- */}
-      <section className="bg-white px-6 md:px-16 py-12 md:py-20 border-t border-gray-100">
+      <section className="bg-white px-6 md:px-16 py-16 md:py-24 border-t border-gray-100">
         <div className="max-w-[1312px] mx-auto text-center">
-          <h2 className="text-[26px] leading-[32px] md:text-[37px] md:leading-[46px] font-bold text-[#0D0D0D] mb-4 tracking-tight">
+          <h2 className="text-[26px] leading-[32px] md:text-[37px] md:leading-[46px] font-bold text-[#0D0D0D] mb-6 md:mb-8 tracking-tight">
             Start Your Private Label Manufacturing Project
           </h2>
           <a
@@ -540,11 +629,11 @@ export default function KarateSuitDetailsPage() {
 
       {/* --- Footer --- */}
       <footer className="bg-white border-t border-[#D7DADE]">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-10 md:py-12 flex flex-col lg:flex-row justify-between gap-10 md:gap-12">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-12 md:py-16 flex flex-col lg:flex-row justify-between gap-10 md:gap-12">
           {/* Left */}
           <div className="lg:w-1/2">
             <h3 
-              className="mb-4 text-[47px] leading-[58px] tracking-[-1.9px] font-medium text-[#000000] text-left md:text-[#0D0D0D] md:tracking-tight"
+              className="mb-4 md:mb-6 text-[47px] leading-[58px] tracking-[-1.9px] font-medium text-[#000000] text-left md:text-[#0D0D0D] md:tracking-tight"
             >
               Start Your Private Label
               <br className="hidden md:block" />
@@ -579,7 +668,7 @@ export default function KarateSuitDetailsPage() {
 
           {/* Navigation Links - Desktop: 3 columns */}
           <div className="hidden lg:flex gap-16">
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3 md:gap-4">
               {["Home", "Products", "Private Label", "Manufacturing Process"].map(
                 (link) => (
                   <a
@@ -592,7 +681,7 @@ export default function KarateSuitDetailsPage() {
                 )
               )}
             </div>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3 md:gap-4">
               {["About", "Contact", "Request Quote"].map((link) => (
                 <a
                   key={link}
@@ -603,7 +692,7 @@ export default function KarateSuitDetailsPage() {
                 </a>
               ))}
             </div>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3 md:gap-4">
               {[
                 "Boxing Gloves",
                 "Martial Arts Uniforms",
@@ -626,9 +715,7 @@ export default function KarateSuitDetailsPage() {
 
         <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-8 md:py-10 flex flex-col md:flex-row items-start md:items-end justify-between gap-4 md:gap-0">
           <Link href="/" className="block">
-            <span 
-              className="text-[69px] leading-[85%] tracking-[-0.03em] font-bold italic text-[#000000] text-left uppercase md:text-[101px] md:tracking-tight md:text-[#0D0D0D]"
-            >
+            <span className="text-[69px] leading-[85%] tracking-[-0.03em] font-bold italic text-[#000000] text-left uppercase md:text-[101px] md:tracking-tight md:text-[#0D0D0D]">
               sarlam
               <br className="hidden md:block" />
               <span className="md:hidden"> </span>athletics
@@ -646,8 +733,8 @@ export default function KarateSuitDetailsPage() {
           </div>
         </div>
 
-        <div className="bg-[#0D0D0D]">
-          <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-0">
+        <div className="bg-black">
+          <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-4 md:py-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-0">
             <span className="text-[12px] leading-[16px] tracking-[0px] font-normal text-[#E3E2E2] text-left">
               © 2026 Sarlam Athletics. Private-label sports equipment manufacturer
               for combat sports brands.
@@ -668,6 +755,13 @@ export default function KarateSuitDetailsPage() {
           }
           .animate-marquee {
             animation: marquee 25s linear infinite;
+          }
+          .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+          }
+          .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
           }
         `
       }} />
@@ -731,7 +825,13 @@ function FooterAccordion({
   return (
     <div className="border-b border-gray-200">
       <button
-        className="w-full flex items-center justify-between py-4 text-left text-[14px] leading-[17px] tracking-[0px] font-normal text-[#0D0D0D] md:font-medium"
+        className="w-full flex items-center justify-between py-4 md:py-6 text-left"
+        style={{
+          fontFamily: "'FFF Acid Grotesk', sans-serif",
+          fontWeight: 500,
+          fontSize: "14px",
+          color: "#000000",
+        }}
         onClick={() => setOpen(!open)}
       >
         {title}
@@ -746,7 +846,7 @@ function FooterAccordion({
         </svg>
       </button>
       {open && (
-        <div className="pb-4 flex flex-col gap-3">
+        <div className="pb-4 md:pb-6 flex flex-col gap-3 md:gap-4">
           {children}
         </div>
       )}
@@ -759,7 +859,14 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
   return (
     <a 
       href={href} 
-      className="hover:text-[#0D0D0D] transition block text-[14px] leading-[17px] tracking-[0px] font-normal text-[#434343] text-left md:text-[#757575]"
+      className="hover:text-[#0D0D0D] transition block"
+      style={{
+        fontFamily: "'FFF Acid Grotesk', sans-serif",
+        fontWeight: 400,
+        fontSize: "14px",
+        lineHeight: "17px",
+        color: "#757575",
+      }}
     >
       {children}
     </a>

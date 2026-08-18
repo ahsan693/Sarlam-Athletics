@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
+import { Header } from "../home/home";
 
-// --- Image Placeholder ---
+// ─── Image Placeholder ──────────────────────────────────────────────────────
 const ImagePlaceholder = ({
   className = "",
   label = "Image",
@@ -26,25 +27,10 @@ const ImagePlaceholder = ({
   );
 };
 
-// --- Icons (inline SVGs) ---
-const ArrowUpRight = () => (
-  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5">
-    <path d="M3 9L9 3M9 3H4M9 3v5" />
-  </svg>
-);
-
-const MenuIcon = () => (
-  <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
-    <line y1="1" x2="20" y2="1" stroke="currentColor" strokeWidth="2" />
-    <line y1="7" x2="20" y2="7" stroke="currentColor" strokeWidth="2" />
-    <line y1="13" x2="20" y2="13" stroke="currentColor" strokeWidth="2" />
-  </svg>
-);
-
-const SearchIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <circle cx="9" cy="9" r="7" stroke="currentColor" strokeWidth="2" />
-    <line x1="14" y1="14" x2="19" y2="19" stroke="currentColor" strokeWidth="2" />
+// ─── Icons ──────────────────────────────────────────────────────────────────
+const ChevronRightIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
+    <path d="M6 3l5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
@@ -54,35 +40,33 @@ const ChevronDownIcon = () => (
   </svg>
 );
 
-const ColumnsIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <rect x="1" y="1" width="6" height="14" stroke="currentColor" strokeWidth="1.5" />
-    <rect x="9" y="1" width="6" height="14" stroke="currentColor" strokeWidth="1.5" />
+const ArrowLeft = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="19" y1="12" x2="5" y2="12"></line>
+    <polyline points="12 19 5 12 12 5"></polyline>
   </svg>
 );
 
-const GridIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <rect x="1" y="1" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
-    <rect x="9" y="1" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
-    <rect x="1" y="9" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
-    <rect x="9" y="9" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
+const ArrowRight = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="5" y1="12" x2="19" y2="12"></line>
+    <polyline points="12 5 19 12 12 19"></polyline>
   </svg>
 );
 
-const LogoMark = ({ className = "" }: { className?: string }) => (
-  <svg viewBox="0 0 30 34" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M24 0L4 14h13L0 34l26-15H12L24 0z" fill="currentColor" />
+const ArrowUpRight = () => (
+  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <path d="M3 9L9 3M9 3H4M9 3v5" />
   </svg>
 );
 
 function CheckIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
       <path
-        d="M3.5 9.5L7 13L14.5 5"
+        d="M5 12l5 5L20 7"
         stroke="#0D0D0D"
-        strokeWidth="1.8"
+        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
@@ -90,79 +74,7 @@ function CheckIcon() {
   );
 }
 
-// --- Header Component ---
-function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  return (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-100">
-      <div className="relative max-w-[1440px] mx-auto px-6 md:px-4 h-[52px]">
-        {/* --- DESKTOP VIEW --- */}
-        <div className="hidden lg:flex items-center justify-between w-full h-full">
-          <div className="flex items-center gap-4">
-            <button>
-              <MenuIcon />
-            </button>
-            <div className="w-[2px] h-12 bg-gray-300" />
-            <nav className="flex items-center gap-4">
-              <Link href="/products" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">Products</Link>
-              <Link href="/manufacture" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">Manufacturing</Link>
-            </nav>
-          </div>
-          <Link href="/" className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2 text-[18px] font-bold italic uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">
-            <LogoMark className="w-[18px] h-[20px]" />
-            <span className="whitespace-nowrap tracking-tight">Sarlam Athletics</span>
-          </Link>
-          <div className="flex items-center gap-6">
-            <Link href="/privatelabel" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">About</Link>
-            <Link href="/contact" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">Contact</Link>
-            <div className="w-[2px] h-12 bg-gray-300" />
-            <button className="hover:opacity-70 transition text-[#0D0D0D]">
-              <SearchIcon />
-            </button>
-          </div>
-        </div>
-
-        {/* --- MOBILE VIEW --- */}
-        <div className="flex lg:hidden items-center justify-between w-full h-full">
-          <Link href="/" className="flex items-center gap-2 text-[18px] font-bold italic uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">
-            <LogoMark className="w-[18px] h-[20px]" />
-            <span className="whitespace-nowrap tracking-tight">Sarlam Athletics</span>
-          </Link>
-          <button
-            className="flex items-center p-2 -mr-2 text-[#0D0D0D]"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle Menu"
-          >
-            <MenuIcon />
-          </button>
-        </div>
-      </div>
-
-      {isMobileMenuOpen && (
-        <div className="lg:hidden absolute top-[52px] left-0 w-full bg-white border-b border-gray-100 shadow-lg flex flex-col py-6 px-6 gap-6 z-50">
-          {[
-            { label: "Products", href: "/products" },
-            { label: "Manufacturing", href: "/manufacture" },
-            { label: "About", href: "/privatelabel" },
-            { label: "Contact", href: "/contact" },
-          ].map((link, idx) => (
-            <Link
-              key={idx}
-              href={link.href}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="hover:opacity-70 transition text-[14px] leading-[18px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
-      )}
-    </header>
-  );
-}
-
-// --- Data ---
+// ─── Data Arrays (Fixed: Restored all missing data) ───────────────────────
 const finishes = [
   { name: "Black", color: "#000000", selected: true },
   { name: "White", color: "#FFFFFF", selected: false },
@@ -179,21 +91,52 @@ const logoOptions = [
   "Debossed Logo",
 ];
 
+const customizationOptions = [
+  {
+    title: "Custom Logo Branding",
+    desc: "Add your logo using embroidery, screen printing, heat transfer, woven labels, rubber patches, embossing, or debossing",
+    image: "/Page 2/Images/02.png",
+  },
+  {
+    title: "Custom Materials and Colors",
+    desc: "Choose genuine leather, microfiber leather, premium PU, cotton canvas, neoprene, EVA foam, custom fabrics, and branded color combinations.",
+    image: "/Page 2/Images/03.png",
+  },
+  {
+    title: "Labels, Tags and Packaging",
+    desc: "Create woven labels, hang tags, barcode stickers, instruction cards, poly bags, retail boxes, and branded shipping cartons.",
+    image: "/Page 2/Images/04.png",
+  },
+  {
+    title: "Sizing and Product Specifications",
+    desc: "Customize dimensions, weight, fit, padding density, stitching, closures, and performance features before production.",
+    image: "/Page 2/Images/05.png",
+  },
+];
+
 const relatedProducts = [
   {
     name: "Jiu Jitsu Suit (Gi)",
+    href: "/jitsu",
+    cta: "View Product",
     image: "/Products/02 BJJ Gis and Jiu-Jitsu Uniforms.png",
   },
   {
     name: "Boxing Gloves",
+    href: "/details",
+    cta: "View Product",
     image: "/Products/01 Private Label Boxing Gloves.png",
   },
   {
     name: "MMA Full Fight Gloves",
+    href: "/mmagloves",
+    cta: "View Product",
     image: "/Products/03 MMA Fight Gloves.png",
   },
   {
     name: "Boxing Head Guard",
+    href: "/Boxingguard",
+    cta: "View Product",
     image: "/Products/07 Custom Boxing Headguards.png",
   },
 ];
@@ -223,7 +166,11 @@ const features = [
   { text: "Worldwide Shipping" },
 ];
 
+// ─── Main Details Page Component ────────────────────────────────────────────
 export default function DetailsComponent() {
+  const customizationScrollerRef = useRef<HTMLDivElement>(null);
+  const relatedScrollerRef = useRef<HTMLDivElement>(null);
+
   const [selectedFinish, setSelectedFinish] = useState<number>(0);
   const [selectedWeight, setSelectedWeight] = useState<string>("8 oz");
   const [selectedLogos, setSelectedLogos] = useState<string[]>(["Screen Print"]);
@@ -234,6 +181,22 @@ export default function DetailsComponent() {
     );
   };
 
+  const scrollCustomization = (dir: 1 | -1) => {
+    const el = customizationScrollerRef.current;
+    if (!el) return;
+    const card = el.querySelector<HTMLElement>("[data-card]");
+    const cardWidth = card ? card.offsetWidth + 16 : 320;
+    el.scrollBy({ left: dir * cardWidth, behavior: "smooth" });
+  };
+
+  const scrollRelated = (dir: 1 | -1) => {
+    const el = relatedScrollerRef.current;
+    if (!el) return;
+    const card = el.querySelector<HTMLElement>("[data-related-card]");
+    const cardWidth = card ? card.offsetWidth + 16 : 360; 
+    el.scrollBy({ left: dir * cardWidth, behavior: "smooth" });
+  };
+
   return (
     <div className="min-h-screen bg-white font-['FFF_Acid_Grotesk',sans-serif]">
       <Header />
@@ -242,7 +205,7 @@ export default function DetailsComponent() {
       <div className="bg-[#0D0D0D] h-[34px] flex items-center justify-center overflow-hidden">
         <div className="flex animate-marquee whitespace-nowrap">
           {[...Array(4)].map((_, i) => (
-            <span key={i} className="text-white text-xs font-medium mx-8 tracking-widest md:tracking-normal">
+            <span key={i} className="text-white text-[12px] font-medium mx-8 tracking-widest md:tracking-normal">
               Request samples, MOQs, and custom production options for your brand.
             </span>
           ))}
@@ -269,7 +232,7 @@ export default function DetailsComponent() {
       </section>
 
       {/* --- Product Presentation Grid --- */}
-      <section className="px-5 md:px-16 py-10 md:py-20">
+      <section className="px-5 md:px-16 py-16 md:py-24">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-32 max-w-[1440px] mx-auto">
           {/* Left: Product Image */}
           <div className="w-full lg:w-[616px] shrink-0">
@@ -294,7 +257,7 @@ export default function DetailsComponent() {
             </nav>
 
             {/* Title */}
-            <div className="mb-6">
+            <div className="mb-6 md:mb-8">
               <p className="text-[14px] leading-[18px] tracking-[0.1px] font-bold text-[#666666] uppercase text-left md:text-sm md:tracking-normal">Uniform Manufacturing</p>
               <h2 className="text-[37px] leading-[46px] tracking-[-1.5px] font-medium text-[#0D0D0D] mt-2 text-left md:text-[44px] md:leading-tight md:font-bold md:tracking-normal">
                 Private Label Boxing Gloves
@@ -305,10 +268,10 @@ export default function DetailsComponent() {
             </div>
 
             {/* Divider */}
-            <hr className="border-t border-gray-200 mb-6" />
+            <hr className="border-t border-gray-200 mb-6 md:mb-8" />
 
             {/* Description */}
-            <div className="mb-8 md:mb-6">
+            <div className="mb-8 md:mb-10">
               <p className="text-[16px] leading-[20px] tracking-[0px] font-normal text-[#666666] text-left md:text-base md:leading-relaxed">
                 Sarlam Athletics manufactures premium private label boxing gloves for sports brands, gyms, retailers, distributors, and wholesalers. We offer OEM manufacturing, custom branding, premium materials, flexible minimum order quantities, and factory-direct production for training, sparring, fitness, and competition boxing gloves.
               </p>
@@ -448,7 +411,7 @@ export default function DetailsComponent() {
       </section>
 
       {/* --- Features Strip --- */}
-      <section className="px-6 md:px-16 pb-12 md:pb-16">
+      <section className="px-6 md:px-16 pb-16 md:pb-24">
         <hr className="border-t border-gray-200 mb-8 md:mb-10 max-w-[1416px] mx-auto" />
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between max-w-[1416px] mx-auto gap-4 md:gap-0">
           {features.map((feature, i) => (
@@ -464,43 +427,47 @@ export default function DetailsComponent() {
         </div>
       </section>
 
-      {/* --- You May Also Like --- */}
-      <section className="bg-white px-4 md:px-16 py-10 md:py-20 border-y border-[#C9C9C9] md:border-y-0 md:border-t md:border-gray-100">
-        <div className="max-w-[1440px] mx-auto">
-          {/* Header */}
-          <div className="flex items-end justify-between mb-6 md:mb-12">
-            <h2 className="text-[26px] leading-[26px] tracking-[-0.5px] font-bold text-[#0D0D0D] uppercase max-w-[302px] md:max-w-none md:leading-[28px] md:tracking-normal md:normal-case">
+      {/* --- You May Also Like (Proper Functioning Horizontal Scroll) --- */}
+      <section className="bg-white px-4 md:px-16 py-16 md:py-24 border-y border-[#C9C9C9] md:border-y-0 md:border-t md:border-gray-100">
+        <div className="max-w-[1440px] mx-auto overflow-hidden">
+          
+          {/* Header Row */}
+          <div className="flex items-end justify-between mb-10 md:mb-16 gap-4">
+            <h2 className="text-[26px] leading-[32px] md:text-[37px] md:leading-[46px] tracking-[-0.5px] font-bold text-[#0D0D0D] uppercase max-w-[302px] md:max-w-none md:tracking-normal md:normal-case">
               Martial Arts Uniform Manufacturing Options
             </h2>
-            <a
-              href="/products"
-              className="text-[14px] leading-[18px] tracking-[0.1px] font-bold text-[#0D0D0D] shrink-0 hover:underline md:uppercase md:flex md:items-center md:gap-1 md:text-sm md:tracking-normal"
-            >
-              View all
-              <svg
-                className="hidden md:inline-block"
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
+            
+            {/* Desktop & Mobile Arrows */}
+            <div className="flex items-center gap-[6px] shrink-0 z-10 relative pb-1 md:pb-2">
+              <button 
+                onClick={() => scrollRelated(-1)} 
+                aria-label="Previous" 
+                className="w-[30px] h-[30px] flex items-center justify-center text-gray-400 hover:text-black transition"
               >
-                <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" />
-              </svg>
-            </a>
+                <ArrowLeft />
+              </button>
+              <button 
+                onClick={() => scrollRelated(1)} 
+                aria-label="Next" 
+                className="w-[30px] h-[30px] flex items-center justify-center text-black hover:opacity-70 transition"
+              >
+                <ArrowRight />
+              </button>
+            </div>
           </div>
 
-          {/* Mobile: 2x2 grid | Desktop: horizontal scroll */}
-          <div className="grid grid-cols-2 gap-3 md:flex md:gap-0 md:overflow-x-auto md:snap-x md:snap-mandatory md:[scrollbar-width:none] md:[-ms-overflow-style:none] md:[&::-webkit-scrollbar]:hidden">
+          {/* Horizontal Flex Scrolling Container (Mobile & Desktop) */}
+          <div 
+            ref={relatedScrollerRef}
+            className="flex overflow-x-auto gap-4 md:gap-6 snap-x snap-mandatory hide-scrollbar pb-4"
+          >
             {relatedProducts.map((product, i) => (
               <div
                 key={i}
-                className="
-                  border border-[#C9C9C9] rounded bg-white
-                  md:rounded-none md:w-[360px] md:snap-start md:shrink-0
-                  group cursor-pointer
-                "
+                data-related-card
+                className="border border-[#C9C9C9] rounded bg-white w-[260px] md:w-[360px] snap-start shrink-0 group flex flex-col md:rounded-none"
               >
-                <div className="p-2 md:p-0">
+                <Link href={product.href} className="block p-2 md:p-0">
                   <div className="relative aspect-square md:aspect-auto md:h-[280px] bg-gray-100 overflow-hidden rounded-sm md:rounded-none">
                     <img
                       src={product.image}
@@ -508,28 +475,28 @@ export default function DetailsComponent() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                     <div className="hidden md:flex absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors items-center justify-center">
-                      <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-[#0D0D0D] text-white text-[6.5px] font-medium px-3 py-1.5 uppercase tracking-wider">
+                      <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-[#0D0D0D] text-white text-[10px] font-medium px-4 py-2 uppercase tracking-wider">
                         Quick View
                       </span>
                     </div>
                   </div>
-                </div>
+                </Link>
 
-                <div className="px-2 pb-2 flex flex-col gap-2 md:px-4 md:py-3 md:flex-row md:items-center md:justify-between md:gap-0">
-                  <span className="text-[12px] leading-[15px] tracking-[0px] font-bold text-[#0D0D0D] text-left md:text-[10px] md:uppercase">
+                <div className="px-3 pb-3 flex flex-col gap-2 md:px-5 md:py-4 md:flex-row md:items-center md:justify-between md:gap-0 mt-auto border-t border-transparent md:border-gray-200">
+                  <span className="text-[14px] leading-[18px] tracking-[0px] font-bold text-[#0D0D0D] text-left md:uppercase">
                     {product.name}
                   </span>
-                  <a
-                    href="#"
+                  <Link
+                    href={product.href}
                     className="
-                      text-[10px] leading-[12px] tracking-[0px] font-bold text-[#0D0D0D] underline
-                      md:no-underline md:border md:border-[#0D0D0D] md:px-2 md:py-1
+                      text-[12px] leading-[14px] tracking-[0px] font-bold text-[#0D0D0D] underline
+                      md:no-underline md:border md:border-[#0D0D0D] md:px-3 md:py-1.5
                       md:uppercase md:hover:bg-[#0D0D0D] md:hover:text-white md:transition-colors
-                      md:text-[8px] md:font-medium
+                      md:text-[10px] md:font-medium text-center
                     "
                   >
-                    Request Quote
-                  </a>
+                    {product.cta}
+                  </Link>
                 </div>
               </div>
             ))}
@@ -538,7 +505,7 @@ export default function DetailsComponent() {
       </section>
 
       {/* --- Quality Control Banner --- */}
-      <section className="px-0 md:px-6 py-0">
+      <section className="px-0 md:px-6 py-16 md:py-24">
         <div className="relative rounded-none overflow-hidden max-w-[1380px] mx-auto">
           <div className="absolute inset-0 bg-black">
             <img
@@ -548,7 +515,7 @@ export default function DetailsComponent() {
             />
           </div>
           <div className="relative z-10 flex flex-col items-center justify-center text-center py-20 px-6 md:py-36 md:px-8">
-            <h2 className="font-['Switzer',sans-serif] text-[32px] leading-[38.4px] tracking-[-0.32px] font-semibold text-[#FFFFFF] text-center mb-4 max-w-[654px] uppercase md:font-['FFF_Acid_Grotesk',sans-serif] md:text-[26px] md:font-bold md:leading-tight md:tracking-normal">
+            <h2 className="font-['Switzer',sans-serif] text-[32px] leading-[38.4px] tracking-[-0.32px] font-semibold text-[#FFFFFF] text-center mb-6 md:mb-8 max-w-[654px] uppercase md:font-['FFF_Acid_Grotesk',sans-serif] md:text-[26px] md:font-bold md:leading-tight md:tracking-normal">
               Quality Control for Every Production Run
             </h2>
             <p className="text-[15px] leading-[18px] tracking-[0px] font-normal text-[#FFFFFF] text-center max-w-[654px] md:text-base md:text-white/80 md:leading-relaxed">
@@ -559,17 +526,17 @@ export default function DetailsComponent() {
       </section>
 
       {/* --- MOQ, Pricing, and Samples --- */}
-      <section className="px-6 md:px-20 py-12 md:py-20 max-w-[1440px] mx-auto">
-        <h2 className="text-[22px] leading-[28px] tracking-[0px] font-bold text-[#0D0D0D] text-left mb-4 md:mb-6 md:text-[37px] md:leading-[46px] md:tracking-tight">
+      <section className="px-6 md:px-20 py-16 md:py-24 max-w-[1440px] mx-auto">
+        <h2 className="text-[22px] leading-[28px] tracking-[0px] font-bold text-[#0D0D0D] text-left mb-6 md:mb-8 md:text-[37px] md:leading-[46px] md:tracking-tight">
           MOQ, Pricing, and Samples
         </h2>
-        <p className="text-[13px] leading-[20px] tracking-[0px] font-normal text-[#434343] text-left mb-8 md:mb-10 max-w-[1280px] md:text-base md:text-[#666666] md:leading-relaxed">
+        <p className="text-[13px] leading-[20px] tracking-[0px] font-normal text-[#434343] text-left mb-10 md:mb-16 max-w-[1280px] md:text-base md:text-[#666666] md:leading-relaxed">
           Minimum order quantities and pricing depend on fabric selection, customization level, branding method, packaging, and total order volume. Share your requirements and we&apos;ll recommend the best starting point for your martial arts uniform project.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           {moqCards.map((card, i) => (
             <div key={i} className="bg-[#F5F5F5] p-6 md:p-8">
-              <h3 className="text-[15px] leading-[20px] tracking-[0px] font-bold text-[#0D0D0D] text-left mb-2 md:mb-3 uppercase md:text-sm md:tracking-wide">
+              <h3 className="text-[15px] leading-[20px] tracking-[0px] font-bold text-[#0D0D0D] text-left mb-3 md:mb-4 uppercase md:text-sm md:tracking-wide">
                 {card.title}
               </h3>
               <p className="text-[12px] leading-[18px] tracking-[0px] font-normal text-[#434343] text-left md:text-sm md:text-[#666666] md:leading-relaxed">
@@ -581,9 +548,9 @@ export default function DetailsComponent() {
       </section>
 
       {/* --- CTA Section --- */}
-      <section className="bg-white px-6 md:px-16 py-12 md:py-20 border-t border-gray-100">
+      <section className="bg-white px-6 md:px-16 py-16 md:py-24 border-t border-gray-100">
         <div className="max-w-[1312px] mx-auto text-center">
-          <h2 className="text-[26px] leading-[32px] md:text-[37px] md:leading-[46px] font-bold text-[#0D0D0D] mb-4 tracking-tight">
+          <h2 className="text-[26px] leading-[32px] md:text-[37px] md:leading-[46px] font-bold text-[#0D0D0D] mb-6 md:mb-8 tracking-tight">
             Start Your Private Label Manufacturing Project
           </h2>
           <a
@@ -595,12 +562,127 @@ export default function DetailsComponent() {
         </div>
       </section>
 
+      {/* --- Customization Options Section --- */}
+      <section className="w-full bg-white py-16 md:py-24 flex justify-center">
+        <div className="w-full max-w-[1440px] px-6 md:px-10">
+          <div className="mb-10 md:mb-16 flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-0">
+            <div className="max-w-[800px]">
+              <h2
+                className="mb-4 md:mb-6 text-[28px] leading-[32px] md:text-[37px] md:leading-[46px]"
+                style={{
+                  fontFamily: "'FFF Acid Grotesk', sans-serif",
+                  fontWeight: 700,
+                  letterSpacing: "0px",
+                  color: "#0D0D0D",
+                }}
+              >
+                Private Label Customization Options
+              </h2>
+              <p
+                className="text-[14px] leading-[22px] md:text-[16px] md:leading-[24px]"
+                style={{
+                  fontFamily: "'FFF Acid Grotesk', sans-serif",
+                  fontWeight: 400,
+                  letterSpacing: "0px",
+                  color: "#434343",
+                }}
+              >
+                Customize your products with branded logos, materials, colors,
+                sizing, labels, retail packaging, and performance specifications
+                that match your market and brand identity.
+              </p>
+            </div>
+            
+            {/* Desktop & Mobile Arrows for Customization */}
+            <div className="flex items-center gap-[6px] shrink-0 z-10 relative pb-1 md:pb-2">
+              <button 
+                onClick={() => scrollCustomization(-1)} 
+                aria-label="Previous" 
+                className="w-[30px] h-[30px] flex items-center justify-center text-gray-400 hover:text-black transition"
+              >
+                <ArrowLeft />
+              </button>
+              <button 
+                onClick={() => scrollCustomization(1)} 
+                aria-label="Next" 
+                className="w-[30px] h-[30px] flex items-center justify-center text-black hover:opacity-70 transition"
+              >
+                <ArrowRight />
+              </button>
+            </div>
+          </div>
+
+          <div className="relative">
+            <div
+              ref={customizationScrollerRef}
+              className="flex gap-4 md:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 border-t border-gray-200 hide-scrollbar pt-6 md:pt-8"
+            >
+              {customizationOptions.map((option, i) => (
+                <div
+                  key={i}
+                  data-card
+                  className="snap-start shrink-0 w-[280px] sm:w-[320px] lg:w-[calc(25%-18px)] bg-white border border-gray-200 md:border-t-0 md:border-l-0 md:border-b md:border-r overflow-hidden flex flex-col"
+                >
+                  <div className="relative w-full pb-[100%] shrink-0 flex-none bg-gray-100 overflow-hidden">
+                    <ImagePlaceholder
+                      className="absolute inset-0 w-full h-full object-cover"
+                      label={option.title}
+                      src={option.image}
+                    />
+                  </div>
+
+                  <div className="p-6 md:p-8 flex-1 flex flex-col">
+                    <h3
+                      className="mb-3 md:mb-4 text-[18px] leading-[22px] md:text-[22px] md:leading-[26px]"
+                      style={{
+                        fontFamily: "'FFF Acid Grotesk', sans-serif",
+                        fontWeight: 700,
+                        letterSpacing: "0px",
+                        color: "#0D0D0D",
+                      }}
+                    >
+                      {option.title}
+                    </h3>
+                    <p
+                      className="text-[14px] leading-[22px]"
+                      style={{
+                        fontFamily: "'FFF Acid Grotesk', sans-serif",
+                        fontWeight: 400,
+                        letterSpacing: "0px",
+                        color: "#434343",
+                      }}
+                    >
+                      {option.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex justify-center mt-10 md:mt-16">
+            <a
+              href="/contactus"
+              className="inline-flex items-center justify-center bg-[#0D0D0D] text-white w-full md:w-auto uppercase px-10 py-4 hover:bg-gray-800 transition-all duration-300 text-[14px]"
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 700,
+                letterSpacing: "5%",
+                borderRadius: "8px",
+              }}
+            >
+              Discuss Your Customization Requirements
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* --- Footer --- */}
       <footer className="bg-white border-t border-[#D7DADE]">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-10 md:py-12 flex flex-col lg:flex-row justify-between gap-10 md:gap-12">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-12 md:py-16 flex flex-col lg:flex-row justify-between gap-10 md:gap-12">
           {/* Left */}
           <div className="lg:w-1/2">
-            <h3 className="mb-4 text-[47px] leading-[58px] tracking-[-1.9px] font-medium text-[#000000] text-left md:text-[#0D0D0D] md:tracking-tight">
+            <h3 className="mb-4 md:mb-6 text-[47px] leading-[58px] tracking-[-1.9px] font-medium text-[#000000] text-left md:text-[#0D0D0D] md:tracking-tight">
               Start Your Private Label
               <br className="hidden md:block" />
               <span className="md:hidden"> </span>Manufacturing Project
@@ -699,7 +781,7 @@ export default function DetailsComponent() {
           </div>
         </div>
 
-        <div className="bg-[#0D0D0D]">
+        <div className="bg-black">
           <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-0">
             <span className="text-[12px] leading-[16px] tracking-[0px] font-normal text-[#E3E2E2] text-left">
               © 2026 Sarlam Athletics. Private-label sports equipment manufacturer
@@ -712,7 +794,7 @@ export default function DetailsComponent() {
         </div>
       </footer>
 
-      {/* --- CSS Animations (React/TSX Safe) --- */}
+      {/* --- CSS Animations --- */}
       <style dangerouslySetInnerHTML={{
         __html: `
           @keyframes marquee {
@@ -721,6 +803,13 @@ export default function DetailsComponent() {
           }
           .animate-marquee {
             animation: marquee 25s linear infinite;
+          }
+          .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+          }
+          .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
           }
         `
       }} />
@@ -767,7 +856,13 @@ function FooterAccordion({
   return (
     <div className="border-b border-gray-200">
       <button
-        className="w-full flex items-center justify-between py-4 text-left text-[14px] leading-[17px] tracking-[0px] font-normal text-[#0D0D0D] md:font-medium"
+        className="w-full flex items-center justify-between py-4 md:py-6 text-left"
+        style={{
+          fontFamily: "'FFF Acid Grotesk', sans-serif",
+          fontWeight: 500,
+          fontSize: "14px",
+          color: "#000000",
+        }}
         onClick={() => setOpen(!open)}
       >
         {title}
@@ -782,7 +877,7 @@ function FooterAccordion({
         </svg>
       </button>
       {open && (
-        <div className="pb-4 flex flex-col gap-3">
+        <div className="pb-4 md:pb-6 flex flex-col gap-3 md:gap-4">
           {children}
         </div>
       )}
@@ -799,9 +894,16 @@ function FooterLink({
   children: React.ReactNode;
 }) {
   return (
-    <a
-      href={href}
-      className="hover:text-[#0D0D0D] transition block text-[14px] leading-[17px] tracking-[0px] font-normal text-[#434343] text-left md:text-[#757575]"
+    <a 
+      href={href} 
+      className="hover:text-[#0D0D0D] transition block"
+      style={{
+        fontFamily: "'FFF Acid Grotesk', sans-serif",
+        fontWeight: 400,
+        fontSize: "14px",
+        lineHeight: "17px",
+        color: "#757575",
+      }}
     >
       {children}
     </a>

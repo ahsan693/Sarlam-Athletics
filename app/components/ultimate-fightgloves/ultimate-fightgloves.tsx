@@ -1,9 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
-
-// ─── Import Centralized Header ──────────────────────────────────────────────
 import { Header } from "../home/home";
 
 // ─── Image Placeholder ───
@@ -29,7 +27,33 @@ const ImagePlaceholder = ({
   );
 };
 
-// ─── Icons (Used in Page) ───
+// ─── Icons (inline SVGs) ───
+const ArrowLeft = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="19" y1="12" x2="5" y2="12"></line>
+    <polyline points="12 19 5 12 12 5"></polyline>
+  </svg>
+);
+
+const ArrowRight = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="5" y1="12" x2="19" y2="12"></line>
+    <polyline points="12 5 19 12 12 19"></polyline>
+  </svg>
+);
+
+const ArrowUpRight = () => (
+  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <path d="M3 9L9 3M9 3H4M9 3v5" />
+  </svg>
+);
+
+const ChevronDownIcon = () => (
+  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+    <path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
 function CheckIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -77,21 +101,29 @@ const sizeOptionsWeight = ["4OZ (PROFESSIONAL FIGHT WEIGHT)", "6-7OZ (AMATEUR/SP
 const sizeOptionsStandard = ["S", "M", "L", "XL"];
 
 const relatedProducts = [
-  { 
-    name: "Jiu Jitsu Suit (Gi)", 
-    image: "/Products/02 BJJ Gis and Jiu-Jitsu Uniforms.png" 
+  {
+    name: "Jiu Jitsu Suit (Gi)",
+    href: "/jitsu",
+    cta: "View Product",
+    image: "/Products/02 BJJ Gis and Jiu-Jitsu Uniforms.png",
   },
-  { 
-    name: "Boxing Gloves", 
-    image: "/Products/01 Private Label Boxing Gloves.png" 
+  {
+    name: "Boxing Gloves",
+    href: "/details",
+    cta: "View Product",
+    image: "/Products/01 Private Label Boxing Gloves.png",
   },
-  { 
-    name: "MMA Full Fight Gloves", 
-    image: "/Products/03 MMA Fight Gloves.png" 
+  {
+    name: "MMA Full Fight Gloves",
+    href: "/mmagloves",
+    cta: "View Product",
+    image: "/Products/03 MMA Fight Gloves.png",
   },
-  { 
-    name: "Boxing Head Guard", 
-    image: "/Products/07 Custom Boxing Headguards.png" 
+  {
+    name: "Boxing Head Guard",
+    href: "/Boxingguard",
+    cta: "View Product",
+    image: "/Products/07 Custom Boxing Headguards.png",
   },
 ];
 
@@ -128,6 +160,16 @@ export default function UltimateMmaFightGlovesPage() {
   const [selectedSize, setSelectedSize] = useState<string[]>(["4OZ (PROFESSIONAL FIGHT WEIGHT)"]);
   const [selectedPackaging, setSelectedPackaging] = useState<string[]>(["ZIP PE BAG"]);
 
+  const relatedScrollerRef = useRef<HTMLDivElement>(null);
+
+  const scrollRelated = (dir: 1 | -1) => {
+    const el = relatedScrollerRef.current;
+    if (!el) return;
+    const card = el.querySelector<HTMLElement>("[data-related-card]");
+    const cardWidth = card ? card.offsetWidth + 16 : 360; 
+    el.scrollBy({ left: dir * cardWidth, behavior: "smooth" });
+  };
+
   const toggleOption = (
     option: string,
     state: string[],
@@ -141,7 +183,6 @@ export default function UltimateMmaFightGlovesPage() {
   return (
     <div className="min-h-screen bg-white font-['FFF_Acid_Grotesk',sans-serif]">
       
-      {/* ── Centralized Header ── */}
       <Header />
 
       {/* ── Announcement Banner ── */}
@@ -158,11 +199,11 @@ export default function UltimateMmaFightGlovesPage() {
       {/* ── Hero Banner ── */}
       <section className="relative h-[320px] md:h-[480px] overflow-hidden">
         <div className="absolute inset-0 bg-black">
-          <img
-            src="/Page 7/01-1.png"
-            alt="Private Label Sports Equipment Manufacturing"
-            className="w-full h-full object-cover opacity-60"
-          />
+  <img
+  src="/Page 7/01-1.png"
+  alt="Private Label Sports Equipment Manufacturing"
+  className="w-full h-full object-cover opacity-60"
+/>
         </div>
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
           <span className="text-[13px] md:text-[15px] font-medium mb-3 md:mb-4 tracking-wide text-[#CCCCCC] uppercase">
@@ -180,11 +221,11 @@ export default function UltimateMmaFightGlovesPage() {
           {/* Left: Product Image */}
           <div className="w-full lg:w-[616px] shrink-0">
             <div className="bg-[#F9F9F9] rounded-none p-4 md:p-2 aspect-[4/5] md:aspect-square flex items-center justify-center lg:sticky lg:top-24">
-              <img
-                src="/Products/03 MMA Fight Gloves.png"
-                alt="Ultimate MMA Fight Gloves"
-                className="w-[100%] h-[100%] md:w-[600px] md:h-[600px] object-cover md:object-contain mix-blend-multiply"
-              />
+   <img
+  src="/Products/MMATrainingGloves.png"
+  alt="Ultimate MMA Fight Gloves"
+  className="w-[100%] h-[100%] md:w-[600px] md:h-[600px] object-cover md:object-contain mix-blend-multiply"
+/>
             </div>
           </div>
 
@@ -194,9 +235,9 @@ export default function UltimateMmaFightGlovesPage() {
             <nav className="flex items-center flex-wrap gap-2 text-[10px] md:text-xs text-[#6A7282] mb-6 md:mb-8 font-medium uppercase tracking-wide">
               <a href="/" className="hover:underline">Home</a>
               <span>/</span>
-              <a href="/products" className="hover:underline">MMA Gear</a>
+              <a href="/products" className="hover:underline">Boxing Gloves</a>
               <span>/</span>
-              <span className="text-[#0D0D0D]">MMA Full Fight Gloves</span>
+              <span className="text-[#0D0D0D]">Ultimate MMA Fight Gloves</span>
             </nav>
 
             {/* Title */}
@@ -380,48 +421,76 @@ export default function UltimateMmaFightGlovesPage() {
         </div>
       </section>
 
-      {/* ── You May Also Like ── */}
-      <section className="bg-white px-6 md:px-16 py-12 md:py-20 border-t border-gray-100">
-        <div className="max-w-[1440px] mx-auto">
-          <div className="flex items-center justify-between mb-8 md:mb-12">
-            <h2 className="text-[22px] leading-[28px] md:text-[26px] font-bold text-[#0D0D0D] max-w-[250px] md:max-w-none uppercase">
+      {/* --- You May Also Like (Proper Functioning Horizontal Scroll) --- */}
+      <section className="bg-white px-4 md:px-16 py-16 md:py-24 border-y border-[#C9C9C9] md:border-y-0 md:border-t md:border-gray-100">
+        <div className="max-w-[1440px] mx-auto overflow-hidden">
+          
+          {/* Header Row */}
+          <div className="flex items-end justify-between mb-10 md:mb-16 gap-4">
+            <h2 className="text-[26px] leading-[32px] md:text-[37px] md:leading-[46px] tracking-[-0.5px] font-bold text-[#0D0D0D] uppercase max-w-[302px] md:max-w-none md:tracking-normal md:normal-case">
               Martial Arts Uniform Manufacturing Options
             </h2>
-            <a
-              href="/products"
-              className="text-[12px] md:text-sm font-bold text-[#0D0D0D] hover:underline flex items-center gap-1 uppercase shrink-0 text-right"
-            >
-              View all options
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" />
-              </svg>
-            </a>
+            
+            {/* Desktop & Mobile Arrows */}
+            <div className="flex items-center gap-[6px] shrink-0 z-10 relative pb-1 md:pb-2">
+              <button 
+                onClick={() => scrollRelated(-1)} 
+                aria-label="Previous" 
+                className="w-[30px] h-[30px] flex items-center justify-center text-gray-400 hover:text-black transition"
+              >
+                <ArrowLeft />
+              </button>
+              <button 
+                onClick={() => scrollRelated(1)} 
+                aria-label="Next" 
+                className="w-[30px] h-[30px] flex items-center justify-center text-black hover:opacity-70 transition"
+              >
+                <ArrowRight />
+              </button>
+            </div>
           </div>
-          <div className="flex gap-4 md:gap-0 overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+
+          {/* Horizontal Flex Scrolling Container (Mobile & Desktop) */}
+          <div 
+            ref={relatedScrollerRef}
+            className="flex overflow-x-auto gap-4 md:gap-6 snap-x snap-mandatory hide-scrollbar pb-4"
+          >
             {relatedProducts.map((product, i) => (
               <div
                 key={i}
-                className="w-[280px] md:w-[360px] snap-start shrink-0 border border-[#C9C9C9] group cursor-pointer"
+                data-related-card
+                className="border border-[#C9C9C9] rounded bg-white w-[260px] md:w-[360px] snap-start shrink-0 group flex flex-col md:rounded-none"
               >
-                <div className="relative h-[220px] md:h-[280px] bg-gray-100 overflow-hidden">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                    <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-[#0D0D0D] text-white text-[6.5px] font-medium px-3 py-1.5 uppercase tracking-wider">
-                      Quick View
-                    </span>
+                <Link href={product.href} className="block p-2 md:p-0">
+                  <div className="relative aspect-square md:aspect-auto md:h-[280px] bg-gray-100 overflow-hidden rounded-sm md:rounded-none">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="hidden md:flex absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors items-center justify-center">
+                      <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-[#0D0D0D] text-white text-[10px] font-medium px-4 py-2 uppercase tracking-wider">
+                        Quick View
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <div className="px-3 py-3 md:px-4 md:py-3 flex flex-col md:flex-row md:items-center justify-between gap-2 md:gap-0">
-                  <span className="text-[11px] md:text-[10px] font-bold text-[#0D0D0D] uppercase">
+                </Link>
+
+                <div className="px-3 pb-3 flex flex-col gap-2 md:px-5 md:py-4 md:flex-row md:items-center md:justify-between md:gap-0 mt-auto border-t border-transparent md:border-gray-200">
+                  <span className="text-[14px] leading-[18px] tracking-[0px] font-bold text-[#0D0D0D] text-left md:uppercase">
                     {product.name}
                   </span>
-                  <button className="text-[10px] md:text-[8px] font-medium text-[#0D0D0D] border border-[#0D0D0D] px-2 py-1.5 md:py-1 hover:bg-[#0D0D0D] hover:text-white transition-colors uppercase self-start md:self-auto">
-                    Request Quote
-                  </button>
+                  <Link
+                    href={product.href}
+                    className="
+                      text-[12px] leading-[14px] tracking-[0px] font-bold text-[#0D0D0D] underline
+                      md:no-underline md:border md:border-[#0D0D0D] md:px-3 md:py-1.5
+                      md:uppercase md:hover:bg-[#0D0D0D] md:hover:text-white md:transition-colors
+                      md:text-[10px] md:font-medium text-center
+                    "
+                  >
+                    {product.cta}
+                  </Link>
                 </div>
               </div>
             ))}
@@ -433,14 +502,14 @@ export default function UltimateMmaFightGlovesPage() {
       <section className="px-0 md:px-6 py-0">
         <div className="relative rounded-none overflow-hidden max-w-[1380px] mx-auto">
           <div className="absolute inset-0 bg-black">
-            <img
-              src="/Page 7/01.png"
-              alt="Quality Control"
-              className="w-full h-full object-cover opacity-50"
-            />
+         <img
+  src="/Page 7/01.png"
+  alt="Quality Control"
+  className="w-full h-full object-cover opacity-50"
+/>
           </div>
           <div className="relative z-10 flex flex-col items-center justify-center text-center py-20 px-6 md:py-36 md:px-8">
-            <h2 className="font-['Switzer',sans-serif] text-[24px] md:text-[26px] font-bold text-white mb-4 max-w-[654px] uppercase leading-tight">
+            <h2 className="text-[24px] md:text-[26px] font-bold text-white mb-4 max-w-[654px] uppercase leading-tight">
               Quality Control for Every Production Run
             </h2>
             <p className="text-[14px] md:text-base text-white/80 max-w-[654px] leading-relaxed font-normal">
@@ -608,18 +677,23 @@ export default function UltimateMmaFightGlovesPage() {
         </div>
       </footer>
 
-      {/* ── CSS Animations (React/TSX Safe) ── */}
-      <style dangerouslySetInnerHTML={{
-        __html: `
-          @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-          .animate-marquee {
-            animation: marquee 25s linear infinite;
-          }
-        `
-      }} />
+      {/* ── CSS Animations ── */}
+      <style jsx>{`
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+          animation: marquee 25s linear infinite;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </div>
   );
 }

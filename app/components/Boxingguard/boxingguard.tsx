@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 
-// --- Image Placeholder ---
+// ─── Image Placeholder ───
 const ImagePlaceholder = ({
   className = "",
   label = "Image",
@@ -26,7 +26,7 @@ const ImagePlaceholder = ({
   );
 };
 
-// --- Icons (inline SVGs) ---
+// ─── Icons (inline SVGs) ───
 const ArrowUpRight = () => (
   <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5">
     <path d="M3 9L9 3M9 3H4M9 3v5" />
@@ -100,14 +100,14 @@ function InfoIcon() {
   );
 }
 
-// --- Header Component ---
+// ─── Header Component ───
 function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-100">
+   <header className="sticky top-0 z-50 bg-white border-b border-gray-100">
       <div className="relative max-w-[1440px] mx-auto px-6 md:px-4 h-[52px]">
-        {/* --- DESKTOP VIEW --- */}
+        {/* ─── DESKTOP VIEW ─── */}
         <div className="hidden lg:flex items-center justify-between w-full h-full">
           <div className="flex items-center gap-4">
             <button>
@@ -116,7 +116,7 @@ function Header() {
             <div className="w-[2px] h-12 bg-gray-300" />
             <nav className="flex items-center gap-4">
               <Link href="/products" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">Products</Link>
-              <Link href="/manufacture" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">Manufacturing</Link>
+                <Link href="/manufacture" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">Manufacturing</Link>
             </nav>
           </div>
           <Link href="/" className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2 text-[18px] font-bold italic uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">
@@ -133,7 +133,7 @@ function Header() {
           </div>
         </div>
 
-        {/* --- MOBILE VIEW --- */}
+        {/* ─── MOBILE VIEW ─── */}
         <div className="flex lg:hidden items-center justify-between w-full h-full">
           <Link href="/" className="flex items-center gap-2 text-[18px] font-bold italic uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">
             <LogoMark className="w-[18px] h-[20px]" />
@@ -153,6 +153,7 @@ function Header() {
         <div className="lg:hidden absolute top-[52px] left-0 w-full bg-white border-b border-gray-100 shadow-lg flex flex-col py-6 px-6 gap-6 z-50">
           {[
             { label: "Products", href: "/products" },
+            
             { label: "Manufacturing", href: "/manufacture" },
             { label: "About", href: "/privatelabel" },
             { label: "Contact", href: "/contact" },
@@ -172,7 +173,7 @@ function Header() {
   );
 }
 
-// --- Data ---
+// ─── Data ───
 const finishOptions = ["STANDARD", "METALLIC FINISHING"];
 const fitOptions = ["UNISEX", "KIDS"];
 const materialOptions = [
@@ -263,9 +264,10 @@ export default function BoxingHeadGuardPage() {
 
   return (
     <div className="min-h-screen bg-white font-['FFF_Acid_Grotesk',sans-serif]">
+      
       <Header />
 
-      {/* --- Announcement Banner --- */}
+      {/* ── Announcement Banner ── */}
       <div className="bg-[#0D0D0D] h-[34px] flex items-center justify-center overflow-hidden">
         <div className="flex animate-marquee whitespace-nowrap">
           {[...Array(6)].map((_, i) => (
@@ -276,14 +278,14 @@ export default function BoxingHeadGuardPage() {
         </div>
       </div>
 
-      {/* --- Hero Banner --- */}
+      {/* ── Hero Banner ── */}
       <section className="relative h-[320px] md:h-[480px] overflow-hidden">
         <div className="absolute inset-0 bg-black">
           <img
-            src="/Page 7/01-1.png"
-            alt="Private Label Sports Equipment Manufacturing"
-            className="w-full h-full object-cover opacity-60"
-          />
+  src="/Page 7/01-1.png"
+  alt="Private Label Sports Equipment Manufacturing"
+  className="w-full h-full object-cover opacity-60"
+/>
         </div>
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
           <span className="text-[15px] leading-[17px] tracking-[0.4px] text-[#CBCBCB] font-medium md:tracking-wide md:text-[#CCCCCC] mb-3 md:mb-4 uppercase text-center md:text-left">
@@ -295,17 +297,17 @@ export default function BoxingHeadGuardPage() {
         </div>
       </section>
 
-      {/* --- Product Presentation Grid --- */}
+      {/* ── Product Presentation Grid ── */}
       <section className="px-5 md:px-16 py-10 md:py-20">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-32 max-w-[1440px] mx-auto">
           {/* Left: Product Image */}
           <div className="w-full lg:w-[616px] shrink-0">
             <div className="bg-[#F9F9F9] rounded-none p-4 md:p-2 aspect-[4/5] md:aspect-square flex items-center justify-center lg:sticky lg:top-24">
-              <img
-                src="/Products/07 Custom Boxing Headguards.png"
-                alt="Boxing Head Guard"
-                className="w-[100%] h-[100%] md:w-[600px] md:h-[600px] object-cover md:object-contain mix-blend-multiply"
-              />
+          <img
+  src="/Products/07 Custom Boxing Headguards.png"
+  alt="Boxing Head Guard"
+  className="w-[100%] h-[100%] md:w-[600px] md:h-[600px] object-cover md:object-contain mix-blend-multiply"
+/>
             </div>
           </div>
 
@@ -475,7 +477,7 @@ export default function BoxingHeadGuardPage() {
         </div>
       </section>
 
-      {/* --- Features Strip --- */}
+      {/* ── Features Strip ── */}
       <section className="px-6 md:px-16 pb-12 md:pb-16">
         <hr className="border-t border-gray-200 mb-8 md:mb-10 max-w-[1416px] mx-auto" />
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between max-w-[1416px] mx-auto gap-4 md:gap-0">
@@ -492,72 +494,48 @@ export default function BoxingHeadGuardPage() {
         </div>
       </section>
 
-      {/* --- You May Also Like --- */}
-      <section className="bg-white px-4 md:px-16 py-10 md:py-20 border-y border-[#C9C9C9] md:border-y-0 md:border-t md:border-gray-100">
+      {/* ── You May Also Like ── */}
+      <section className="bg-white px-6 md:px-16 py-12 md:py-20 border-t border-gray-100">
         <div className="max-w-[1440px] mx-auto">
-          {/* Header */}
-          <div className="flex items-end justify-between mb-6 md:mb-12">
-            <h2 className="text-[26px] leading-[26px] tracking-[-0.5px] font-bold text-[#0D0D0D] uppercase max-w-[302px] md:max-w-none md:leading-[28px] md:tracking-normal md:normal-case">
+          <div className="flex items-center justify-between mb-8 md:mb-12">
+            <h2 className="text-[26px] leading-[26px] tracking-[-0.5px] font-bold text-[#0D0D0D] text-left max-w-[250px] md:max-w-none md:leading-[28px] md:tracking-normal uppercase">
               Martial Arts Uniform Manufacturing Options
             </h2>
             <a
               href="/products"
-              className="text-[14px] leading-[18px] tracking-[0.1px] font-bold text-[#0D0D0D] shrink-0 hover:underline md:uppercase md:flex md:items-center md:gap-1 md:text-sm md:tracking-normal"
+              className="text-[14px] leading-[18px] tracking-[0.1px] font-bold text-[#0D0D0D] text-left uppercase hover:underline flex items-center gap-1 md:text-sm md:tracking-normal shrink-0"
             >
-              View all
-              <svg
-                className="hidden md:inline-block"
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-              >
+              View all options
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" />
               </svg>
             </a>
           </div>
-
-          {/* Mobile: 2x2 grid | Desktop: horizontal scroll */}
-          <div className="grid grid-cols-2 gap-3 md:flex md:gap-0 md:overflow-x-auto md:snap-x md:snap-mandatory md:[scrollbar-width:none] md:[-ms-overflow-style:none] md:[&::-webkit-scrollbar]:hidden">
+          <div className="flex gap-4 md:gap-0 overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
             {relatedProducts.map((product, i) => (
               <div
                 key={i}
-                className="
-                  border border-[#C9C9C9] rounded bg-white
-                  md:rounded-none md:w-[360px] md:snap-start md:shrink-0
-                  group cursor-pointer
-                "
+                className="w-[280px] md:w-[360px] snap-start shrink-0 border border-[#C9C9C9] group cursor-pointer"
               >
-                <div className="p-2 md:p-0">
-                  <div className="relative aspect-square md:aspect-auto md:h-[280px] bg-gray-100 overflow-hidden rounded-sm md:rounded-none">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="hidden md:flex absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors items-center justify-center">
-                      <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-[#0D0D0D] text-white text-[6.5px] font-medium px-3 py-1.5 uppercase tracking-wider">
-                        Quick View
-                      </span>
-                    </div>
+                <div className="relative h-[220px] md:h-[280px] bg-gray-100 overflow-hidden">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                    <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-[#0D0D0D] text-white text-[6.5px] font-medium px-3 py-1.5 uppercase tracking-wider">
+                      Quick View
+                    </span>
                   </div>
                 </div>
-
-                <div className="px-2 pb-2 flex flex-col gap-2 md:px-4 md:py-3 md:flex-row md:items-center md:justify-between md:gap-0">
-                  <span className="text-[12px] leading-[15px] tracking-[0px] font-bold text-[#0D0D0D] text-left md:text-[10px] md:uppercase">
+                <div className="px-3 py-3 md:px-4 md:py-3 flex flex-col md:flex-row md:items-center justify-between gap-2 md:gap-0">
+                  <span className="text-[12px] leading-[15px] tracking-[0px] font-bold text-[#0D0D0D] text-left uppercase md:text-[10px]">
                     {product.name}
                   </span>
-                  <a
-                    href="#"
-                    className="
-                      text-[10px] leading-[12px] tracking-[0px] font-bold text-[#0D0D0D] underline
-                      md:no-underline md:border md:border-[#0D0D0D] md:px-2 md:py-1
-                      md:uppercase md:hover:bg-[#0D0D0D] md:hover:text-white md:transition-colors
-                      md:text-[8px] md:font-medium
-                    "
-                  >
+                  <button className="text-[10px] leading-[12px] tracking-[0px] font-bold text-[#0D0D0D] text-left uppercase border border-[#0D0D0D] px-2 py-1.5 md:py-1 hover:bg-[#0D0D0D] hover:text-white transition-colors self-start md:self-auto md:text-[8px] md:font-medium">
                     Request Quote
-                  </a>
+                  </button>
                 </div>
               </div>
             ))}
@@ -565,15 +543,15 @@ export default function BoxingHeadGuardPage() {
         </div>
       </section>
 
-      {/* --- Quality Control Banner --- */}
+      {/* ── Quality Control Banner ── */}
       <section className="px-0 md:px-6 py-0">
         <div className="relative rounded-none overflow-hidden max-w-[1380px] mx-auto">
           <div className="absolute inset-0 bg-black">
-            <img
-              src="/Page 7/01.png"
-              alt="Quality Control"
-              className="w-full h-full object-cover opacity-50"
-            />
+         <img
+  src="/Page 7/01.png"
+  alt="Quality Control"
+  className="w-full h-full object-cover opacity-50"
+/>
           </div>
           <div className="relative z-10 flex flex-col items-center justify-center text-center py-20 px-6 md:py-36 md:px-8">
             <h2 className="font-['Switzer',sans-serif] text-[32px] leading-[38.4px] tracking-[-0.32px] font-semibold text-[#FFFFFF] text-center mb-4 max-w-[654px] uppercase md:font-['FFF_Acid_Grotesk',sans-serif] md:text-[26px] md:font-bold md:leading-tight md:tracking-normal">
@@ -586,13 +564,13 @@ export default function BoxingHeadGuardPage() {
         </div>
       </section>
 
-      {/* --- MOQ, Pricing, and Samples --- */}
+      {/* ── MOQ, Pricing, and Samples ── */}
       <section className="px-6 md:px-20 py-12 md:py-20 max-w-[1440px] mx-auto border-t border-gray-100">
         <h2 className="text-[22px] leading-[28px] tracking-[0px] font-bold text-[#0D0D0D] text-left mb-4 md:mb-6 md:text-[37px] md:leading-[46px] md:tracking-tight">
           MOQ, Pricing, and Samples
         </h2>
         <p className="text-[13px] leading-[20px] tracking-[0px] font-normal text-[#434343] text-left mb-8 md:mb-10 max-w-[1280px] md:text-base md:text-[#666666] md:leading-relaxed">
-          Minimum order quantities and pricing depend on fabric selection, customization level, branding method, packaging, and total order volume. Share your requirements and we&apos;ll recommend the best starting point for your martial arts uniform project.
+          Minimum order quantities and pricing depend on fabric selection, customization level, branding method, packaging, and total order volume. Share your requirements and we'll recommend the best starting point for your martial arts uniform project.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
           {moqCards.map((card, i) => (
@@ -608,7 +586,7 @@ export default function BoxingHeadGuardPage() {
         </div>
       </section>
 
-      {/* --- CTA Section --- */}
+      {/* ── CTA Section ── */}
       <section className="bg-white px-6 md:px-16 py-12 md:py-20 border-t border-gray-100">
         <div className="max-w-[1312px] mx-auto text-center">
           <h2 className="text-[26px] leading-[32px] md:text-[37px] md:leading-[46px] font-bold text-[#0D0D0D] mb-4 tracking-tight">
@@ -623,7 +601,7 @@ export default function BoxingHeadGuardPage() {
         </div>
       </section>
 
-      {/* --- Footer --- */}
+      {/* ── Footer ── */}
       <footer className="bg-white border-t border-[#D7DADE]">
         <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-10 md:py-12 flex flex-col lg:flex-row justify-between gap-10 md:gap-12">
           {/* Left */}
@@ -744,23 +722,25 @@ export default function BoxingHeadGuardPage() {
         </div>
       </footer>
 
-      {/* --- CSS Animations --- */}
-      <style dangerouslySetInnerHTML={{
-        __html: `
-          @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+      {/* ── CSS Animations ── */}
+      <style jsx>{`
+        @keyframes marquee {
+          0% {
+            transform: translateX(0);
           }
-          .animate-marquee {
-            animation: marquee 25s linear infinite;
+          100% {
+            transform: translateX(-50%);
           }
-        `
-      }} />
+        }
+        .animate-marquee {
+          animation: marquee 25s linear infinite;
+        }
+      `}</style>
     </div>
   );
 }
 
-/* --- Reusable Option Group Selector --- */
+/* ── Reusable Option Group Selector ── */
 function OptionGroup({
   label,
   guideLabel,
@@ -803,7 +783,7 @@ function OptionGroup({
   );
 }
 
-/* --- FOOTER ACCORDION (Mobile) --- */
+/* ─── FOOTER ACCORDION (Mobile) ─── */
 function FooterAccordion({
   title,
   children,
@@ -839,7 +819,7 @@ function FooterAccordion({
   );
 }
 
-/* --- FOOTER LINK --- */
+/* ─── FOOTER LINK ─── */
 function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <a 
