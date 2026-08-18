@@ -439,30 +439,133 @@ export default function SarlamAthleticsPage() {
         </div>
       </section>
 
-      {/* --- Manufacturing Capabilities --- */}
-      <section className="w-full bg-white py-10 md:py-12">
-        <div className="max-w-[2560px] mx-auto px-4 md:px-0">
-          <h2 className="uppercase md:text-center mb-8 md:mb-12 md:px-8" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "15px", lineHeight: "17px", letterSpacing: "0.4px", color: "#000000" }}>
-            Manufacturing Capabilities
-          </h2>
-          <div className="flex flex-col md:flex-row md:justify-center gap-4 md:gap-[117px] md:px-12">
-            {[
-              { title: "OEM Production", desc: "End-to-end manufacturing\nfor your brand" },
-              { title: "Private Label Packaging", desc: "Custom branded packaging\nsolutions" },
-              { title: "Premium Material Sourcing", desc: "Leather, PU, microfiber, cotton, EVA foam, and custom material options." },
-              { title: "Low MOQ & Bulk Manufacturing", desc: "Flexible minimum order quantities with scalable wholesale production." },
-            ].map((cap, i) => (
-              <div key={i} className="flex items-start gap-[6px]">
-                <img src="/Page 1/Icons/Vector-4.png" alt="Capability Icon" className="shrink-0 w-[30px] h-[30px] object-contain mt-[3px]" />
-                <div className="flex flex-col gap-[2px] max-w-[205px]">
-                  <h4 className="uppercase" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "15px", lineHeight: "21px", letterSpacing: "0.45px", color: "#0D0D0D" }}>{cap.title}</h4>
-                  <p style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "14px", lineHeight: "17px", color: "#0D0D0D", whiteSpace: "pre-line" }}>{cap.desc}</p>
-                </div>
-              </div>
-            ))}
+  {/* --- Manufacturing Capabilities --- */}
+<section className="w-full bg-white">
+  <div className="max-w-[2560px] mx-auto" style={{ padding: '40px 16px' }}>
+    {/* Mobile Title */}
+    <h2
+      className="uppercase md:hidden mb-8"
+      style={{
+        fontFamily: "'FFF Acid Grotesk', sans-serif",
+        fontWeight: 500,
+        fontSize: '13px',
+        lineHeight: '17px',
+        letterSpacing: '0.4px',
+        color: '#000000',
+      }}
+    >
+      Manufacturing Capabilities
+    </h2>
+
+    {/* Desktop Title */}
+    <h2
+      className="hidden md:block uppercase text-center"
+      style={{
+        fontFamily: "'FFF Acid Grotesk', sans-serif",
+        fontWeight: 500,
+        fontSize: '15px',
+        lineHeight: '17px',
+        letterSpacing: '0.4px',
+        color: '#000000',
+        padding: '0 32px',
+      }}
+    >
+      Manufacturing Capabilities
+    </h2>
+
+    {/* Mobile Items List */}
+    <div className="flex flex-col gap-4 md:hidden">
+      {[
+        { title: 'OEM Production', desc: 'End-to-end manufacturing for your brand' },
+        { title: 'Private Label Packaging', desc: 'Custom branded packaging solutions' },
+        { title: 'Premium Material Sourcing', desc: 'Leather, PU, microfiber, cotton, and custom foam options' },
+        { title: 'Low MOQ & Bulk', desc: 'Flexible minimum order quantities with scalable wholesale production' },
+      ].map((cap, i) => (
+        <div key={i} className="flex items-center gap-3">
+          <img
+            src="/Page 1/Icons/Vector-4.png"
+            alt=""
+            className="shrink-0 w-[30px] h-[30px] object-contain"
+          />
+          <div className="flex flex-col gap-[2px]">
+            <h4
+              className="uppercase"
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 500,
+                fontSize: '14px',
+                lineHeight: '18px',
+                color: '#0D0D0D',
+              }}
+            >
+              {cap.title}
+            </h4>
+            <p
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 400,
+                fontSize: '12px',
+                lineHeight: '130%',
+                color: '#0D0D0D',
+              }}
+            >
+              {cap.desc}
+            </p>
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+
+    {/* Desktop Items Row */}
+    <div
+      className="hidden md:flex justify-center items-center"
+      style={{ gap: '117px', padding: '48px 0' }}
+    >
+      {[
+        { title: 'OEM Production', desc: 'End-to-end manufacturing\nfor your brand' },
+        { title: 'Private Label Packaging', desc: 'Custom branded packaging\nsolutions' },
+        { title: 'Premium Material Sourcing', desc: 'Leather, PU, microfiber, cotton, EVA foam, and custom material options.' },
+        { title: 'Low MOQ & Bulk Manufacturing', desc: 'Flexible minimum order quantities with scalable wholesale production.' },
+      ].map((cap, i) => (
+        <div key={i} className="flex items-center" style={{ width: '240px', gap: '6px' }}>
+          <img
+            src="/Page 1/Icons/Vector-4.png"
+            alt=""
+            className="shrink-0 w-[30px] h-[30px] object-contain"
+          />
+          <div className="flex flex-col" style={{ maxWidth: '205px', gap: '0px' }}>
+            <h4
+              className="uppercase"
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 500,
+                fontSize: '15px',
+                lineHeight: '21px',
+                letterSpacing: '0.45px',
+                color: '#0D0D0D',
+              }}
+            >
+              {cap.title}
+            </h4>
+            <p
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 400,
+                fontSize: '14px',
+                lineHeight: '17px',
+                color: '#0D0D0D',
+                whiteSpace: 'pre-line',
+              }}
+            >
+              {cap.desc}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* --- Why Brands Choose Sarlam Athletics --- */}
       <section className="w-full bg-black md:bg-white py-14 md:py-0 md:pb-16">
