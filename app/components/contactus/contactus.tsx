@@ -102,7 +102,7 @@ function QuoteFormSection() {
           <RollingButton
             type="submit"
             className="w-full bg-[#0D0D0D] py-[12px] px-10 mt-2 rounded-[4px]"
-            style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 800, fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.05em", color: "#FFFFFF" }}
+            style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.05em", color: "#FFFFFF" }}
           >
             Request Manufacturing Quote
           </RollingButton>

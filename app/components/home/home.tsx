@@ -291,7 +291,7 @@ export default function SarlamAthleticsPage() {
           <RollingButton
             href="/contactus"
             className="bg-white uppercase px-10 py-3 rounded-[8px]"
-            style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 800, fontSize: "12px", lineHeight: "18px", color: "#000000" }}
+            style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", lineHeight: "18px", color: "#000000" }}
           >
             Request a Manufacturing Quote
           </RollingButton>
@@ -567,7 +567,7 @@ export default function SarlamAthleticsPage() {
             <RollingButton
               href="/contactus"
               className="border border-black text-black uppercase px-8 py-3 w-full md:w-auto rounded-[8px]"
-              style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, fontSize: "14px", letterSpacing: "5%" }}
+              style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "14px", letterSpacing: "5%" }}
             >
               Get in touch
             </RollingButton>
@@ -591,7 +591,7 @@ export default function SarlamAthleticsPage() {
                <RollingButton
                   href="/contactus"
                   className="w-full md:w-auto border border-white text-white uppercase px-6 md:px-10 py-3.5 rounded-[8px]"
-                  style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, fontSize: "14px", letterSpacing: "5%" }}
+                  style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", letterSpacing: "5%" }}
                 >
                   Get Your Free Manufacturing Quote
                 </RollingButton>
