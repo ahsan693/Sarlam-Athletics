@@ -427,82 +427,91 @@ export default function DetailsComponent() {
         </div>
       </section>
 
-      {/* --- You May Also Like (Proper Functioning Horizontal Scroll) --- */}
-      <section className="bg-white px-4 md:px-16 py-16 md:py-24 border-y border-[#C9C9C9] md:border-y-0 md:border-t md:border-gray-100">
-        <div className="max-w-[1440px] mx-auto overflow-hidden">
-          
-          {/* Header Row */}
-          <div className="flex items-end justify-between mb-10 md:mb-16 gap-4">
-            <h2 className="text-[26px] leading-[32px] md:text-[37px] md:leading-[46px] tracking-[-0.5px] font-bold text-[#0D0D0D] uppercase max-w-[302px] md:max-w-none md:tracking-normal md:normal-case">
-              Martial Arts Uniform Manufacturing Options
-            </h2>
-            
-            {/* Desktop & Mobile Arrows */}
-            <div className="flex items-center gap-[6px] shrink-0 z-10 relative pb-1 md:pb-2">
-              <button 
-                onClick={() => scrollRelated(-1)} 
-                aria-label="Previous" 
-                className="w-[30px] h-[30px] flex items-center justify-center text-gray-400 hover:text-black transition"
-              >
-                <ArrowLeft />
-              </button>
-              <button 
-                onClick={() => scrollRelated(1)} 
-                aria-label="Next" 
-                className="w-[30px] h-[30px] flex items-center justify-center text-black hover:opacity-70 transition"
-              >
-                <ArrowRight />
-              </button>
-            </div>
-          </div>
+     {/* --- Product Options Grid --- */}
+<section className="bg-white px-4 md:px-16 py-10 md:py-24 border-y border-[#C9C9C9] md:border-y-0 md:border-t md:border-gray-100">
+  <div className="max-w-[1440px] mx-auto overflow-hidden">
+    
+    {/* Header Row */}
+    <div className="flex items-end justify-between mb-6 md:mb-16 gap-4">
+      <h2 className="text-[26px] leading-[26px] md:text-[37px] md:leading-[46px] tracking-[-0.5px] font-bold text-[#0D0D0D] uppercase max-w-[302px] md:max-w-none md:tracking-normal md:normal-case">
+        Martial Arts Uniform Manufacturing Options
+      </h2>
+      
+      {/* Mobile: "View all" link */}
+      <a
+        href="#"
+        className="text-[14px] leading-[18px] font-bold text-[#0D0D0D] whitespace-nowrap shrink-0 md:hidden"
+      >
+        View all
+      </a>
 
-          {/* Horizontal Flex Scrolling Container (Mobile & Desktop) */}
-          <div 
-            ref={relatedScrollerRef}
-            className="flex overflow-x-auto gap-4 md:gap-6 snap-x snap-mandatory hide-scrollbar pb-4"
-          >
-            {relatedProducts.map((product, i) => (
-              <div
-                key={i}
-                data-related-card
-                className="border border-[#C9C9C9] rounded bg-white w-[260px] md:w-[360px] snap-start shrink-0 group flex flex-col md:rounded-none"
-              >
-                <Link href={product.href} className="block p-2 md:p-0">
-                  <div className="relative aspect-square md:aspect-auto md:h-[280px] bg-gray-100 overflow-hidden rounded-sm md:rounded-none">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="hidden md:flex absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors items-center justify-center">
-                      <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-[#0D0D0D] text-white text-[10px] font-medium px-4 py-2 uppercase tracking-wider">
-                        Quick View
-                      </span>
-                    </div>
-                  </div>
-                </Link>
+      {/* Desktop: Arrows */}
+      <div className="hidden md:flex items-center gap-[6px] shrink-0 z-10 relative pb-2">
+        <button 
+          onClick={() => scrollRelated(-1)} 
+          aria-label="Previous" 
+          className="w-[30px] h-[30px] flex items-center justify-center text-gray-400 hover:text-black transition"
+        >
+          <ArrowLeft />
+        </button>
+        <button 
+          onClick={() => scrollRelated(1)} 
+          aria-label="Next" 
+          className="w-[30px] h-[30px] flex items-center justify-center text-black hover:opacity-70 transition"
+        >
+          <ArrowRight />
+        </button>
+      </div>
+    </div>
 
-                <div className="px-3 pb-3 flex flex-col gap-2 md:px-5 md:py-4 md:flex-row md:items-center md:justify-between md:gap-0 mt-auto border-t border-transparent md:border-gray-200">
-                  <span className="text-[14px] leading-[18px] tracking-[0px] font-bold text-[#0D0D0D] text-left md:uppercase">
-                    {product.name}
-                  </span>
-                  <Link
-                    href={product.href}
-                    className="
-                      text-[12px] leading-[14px] tracking-[0px] font-bold text-[#0D0D0D] underline
-                      md:no-underline md:border md:border-[#0D0D0D] md:px-3 md:py-1.5
-                      md:uppercase md:hover:bg-[#0D0D0D] md:hover:text-white md:transition-colors
-                      md:text-[10px] md:font-medium text-center
-                    "
-                  >
-                    {product.cta}
-                  </Link>
-                </div>
+    {/* Mobile: 2-col wrap grid | Desktop: Horizontal scroll */}
+    <div 
+      ref={relatedScrollerRef}
+      className="grid grid-cols-2 gap-3 md:flex md:overflow-x-auto md:gap-6 md:snap-x md:snap-mandatory hide-scrollbar md:pb-4"
+    >
+      {relatedProducts.map((product, i) => (
+        <div
+          key={i}
+          data-related-card
+          className="border border-[#C9C9C9] rounded bg-white flex flex-col md:w-[360px] md:snap-start md:shrink-0 md:rounded-none group"
+        >
+          <Link href={product.href} className="block p-2 md:p-0">
+            <div className="relative aspect-square md:aspect-auto md:h-[280px] bg-gray-100 overflow-hidden rounded-sm md:rounded-none">
+              <img
+                src={product.image}
+                alt={product.name}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="hidden md:flex absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors items-center justify-center">
+                <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-[#0D0D0D] text-white text-[10px] font-medium px-4 py-2 uppercase tracking-wider">
+                  Quick View
+                </span>
               </div>
-            ))}
+            </div>
+          </Link>
+
+          <div className="px-2 pb-2 flex flex-col gap-2 md:px-5 md:py-4 md:flex-row md:items-center md:justify-between md:gap-0 mt-auto border-t border-transparent md:border-gray-200">
+            <span className="text-[12px] leading-[15px] font-bold text-[#0D0D0D] text-left md:text-[14px] md:leading-[18px] md:uppercase">
+              {product.name}
+            </span>
+            <Link
+              href={product.href}
+              className="
+                text-[10px] leading-[12px] font-bold text-[#0D0D0D] underline
+                md:no-underline md:border md:border-[#0D0D0D] md:px-3 md:py-1.5
+                md:uppercase md:hover:bg-[#0D0D0D] md:hover:text-white md:transition-colors
+                md:text-[10px] md:font-medium text-left
+              "
+            >
+              {product.cta}
+            </Link>
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* --- Quality Control Banner --- */}
       <section className="px-0 md:px-6 py-16 md:py-24">
