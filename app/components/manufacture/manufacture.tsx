@@ -81,7 +81,7 @@ function HeroSection() {
         <RollingButton
           href="/contactus"
           className="bg-white uppercase px-10 py-3 rounded-none"
-          style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 800, fontSize: "12px", lineHeight: "18px", color: "#000000" ,borderRadius: "8px"}}
+          style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", lineHeight: "18px", color: "#000000" ,borderRadius: "8px"}}
         >
           Request a Manufacturing Quote
         </RollingButton>
