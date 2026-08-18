@@ -260,10 +260,10 @@ export default function DetailsComponent() {
             </p>
 
             <div className="space-y-3 md:space-y-4 mb-4">
-              <RollingButton className="w-full bg-[#0D0D0D] text-white text-[14px] leading-[18px] tracking-[0.1px] font-bold py-4 md:py-[18px] uppercase md:tracking-wide rounded-[4px]">
+              <RollingButton className="w-full bg-[#0D0D0D] text-white text-[14px] leading-[18px] tracking-[0.1px] font-normal py-4 md:py-[18px] uppercase md:tracking-wide rounded-[4px]">
                 Request Manufacturing Quote
               </RollingButton>
-              <RollingButton className="w-full border border-[#0D0D0D] text-[#0D0D0D] text-[13px] tracking-[0px] font-bold py-4 md:py-[18px] uppercase md:text-sm md:tracking-wide rounded-[4px]">
+              <RollingButton className="w-full border border-[#0D0D0D] text-[#0D0D0D] text-[13px] tracking-[0px] font-normal py-4 md:py-[18px] uppercase md:text-sm md:tracking-wide rounded-[4px]">
                 Ask About Samples
               </RollingButton>
             </div>
@@ -417,7 +417,7 @@ export default function DetailsComponent() {
             <RollingButton
               href="/contactus"
               className="bg-[#0D0D0D] text-white w-full md:w-auto uppercase px-10 py-4 text-[14px] rounded-[8px]"
-              style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, letterSpacing: "5%" }}
+              style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "5%" }}
             >
               Discuss Your Customization Requirements
             </RollingButton>
