@@ -3,7 +3,6 @@
 import React, { useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, useScroll } from "framer-motion";
 
 // --- Rolling Text Button Component ---
 const RollingButton = ({ href, children, className = "", style = {}, onClick }: any) => {
@@ -110,12 +109,6 @@ const ChevronDown = ({ className = "" }: { className?: string }) => (
   </svg>
 );
 
-const LogoMark = ({ className = "" }: { className?: string }) => (
-  <svg viewBox="0 0 30 34" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M24 0L4 14h13L0 34l26-15H12L24 0z" fill="currentColor" />
-  </svg>
-);
-
 // --- FAQ Accordion Item ---
 const FAQItem = ({ question, answer }: { question: string; answer: string }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -127,7 +120,7 @@ const FAQItem = ({ question, answer }: { question: string; answer: string }) => 
         className="w-full flex items-center justify-between py-4 text-left"
       >
         <span
-          className="pr-8 text-[20px] leading-[26px] md:text-[22px] md:leading-[26px]"
+          className="pr-8 text-[20px] leading-[26px]"
           style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, letterSpacing: "-0.4px", color: "#0D0D0D" }}
         >
           {question}
@@ -137,7 +130,7 @@ const FAQItem = ({ question, answer }: { question: string; answer: string }) => 
       {isOpen && (
         <div className="pb-4">
           <p
-            style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "15px", lineHeight: "16px", color: "#434343" }}
+            style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "16px", lineHeight: "20px", color: "#434343" }}
           >
             {answer}
           </p>
@@ -153,37 +146,39 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white border-b border-gray-100 relative">
-      <div className="relative w-full max-w-[2560px] mx-auto flex items-center justify-between px-4 md:px-10 h-[76px] md:h-[52px]">
+      <div className="relative w-full max-w-[2560px] mx-auto flex items-center justify-between px-4 lg:px-0 h-[76px] lg:h-[52px]">
 
         {/* Desktop Left Nav */}
-        <div className="hidden lg:flex items-center gap-4">
-          <button><MenuIcon /></button>
-          <div className="w-[2px] h-12 bg-gray-300" />
-          <nav className="flex items-center gap-4">
-            <Link href="/products" className="hover:opacity-70 transition" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", textTransform: "uppercase", color: "#0D0D0D" }}>Products</Link>
-            <Link href="/manufacture" className="hover:opacity-70 transition" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", textTransform: "uppercase", color: "#0D0D0D" }}>Manufacturing</Link>
+        <div className="hidden lg:flex items-center gap-0 h-[48px]">
+          <button className="w-[64px] h-[48px] flex items-center justify-center">
+            <MenuIcon />
+          </button>
+          <nav className="flex items-center h-[48px]">
+            <Link href="/products" className="h-[48px] flex items-center px-2 hover:opacity-70 transition" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", lineHeight: "18px", textTransform: "uppercase", color: "#0D0D0D" }}>Products</Link>
+            <Link href="/privatelabel" className="h-[48px] flex items-center px-2 hover:opacity-70 transition" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", lineHeight: "18px", textTransform: "uppercase", color: "#0D0D0D" }}>Private Label</Link>
+            <Link href="/manufacture" className="h-[48px] flex items-center px-2 hover:opacity-70 transition" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", lineHeight: "18px", textTransform: "uppercase", color: "#0D0D0D" }}>Manufacturing</Link>
           </nav>
         </div>
 
         {/* Desktop Center Logo */}
-        <Link href="/" className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center">
+        <Link href="/" className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center h-[52px]">
           <Image
             src="/Page 1/Icons/Vector-1.svg"
             alt="Sarlam Athletics Logo"
             width={267} height={34} quality={100} priority
-            className="w-[267px] h-[34px] object-contain"
+            className="w-[140px] h-auto object-contain"
           />
         </Link>
 
         {/* Desktop Right Nav */}
-        <div className="hidden lg:flex items-center gap-6">
-          <Link href="/privatelabel" className="hover:opacity-70 transition" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", textTransform: "uppercase", color: "#0D0D0D" }}>About</Link>
-          <Link href="/contact" className="hover:opacity-70 transition" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", textTransform: "uppercase", color: "#0D0D0D" }}>Contact</Link>
-          <div className="w-[2px] h-12 bg-gray-300" />
-          <button className="hover:opacity-70 transition text-[#0D0D0D]"><SearchIcon /></button>
+        <div className="hidden lg:flex items-center gap-0 h-[48px]">
+          <Link href="/privatelabel" className="h-[48px] flex items-center px-6 hover:opacity-70 transition" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", lineHeight: "18px", textTransform: "uppercase", color: "#0D0D0D" }}>About</Link>
+          <Link href="/contact" className="h-[48px] flex items-center hover:opacity-70 transition" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", lineHeight: "18px", textTransform: "uppercase", color: "#0D0D0D" }}>Contact</Link>
+          <div className="w-[12px]" />
+          <button className="w-[48px] h-[48px] flex items-center justify-center hover:opacity-70 transition text-[#0D0D0D]"><SearchIcon /></button>
         </div>
 
-        {/* Mobile Logo - Full SVG Logo */}
+        {/* Mobile Logo */}
         <Link href="/" className="flex lg:hidden items-center">
           <Image
             src="/Page 1/Icons/Vector-1.svg"
@@ -228,7 +223,7 @@ export default function SarlamAthleticsPage() {
     const el = scrollerRef.current;
     if (!el) return;
     const card = el.querySelector<HTMLElement>("[data-card]");
-    const cardWidth = card ? card.offsetWidth + 24 : 524;
+    const cardWidth = card ? card.offsetWidth : 500;
     el.scrollBy({ left: dir * cardWidth, behavior: "smooth" });
   };
 
@@ -283,20 +278,20 @@ export default function SarlamAthleticsPage() {
 
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6 max-w-[2560px] mx-auto">
           <h1
-            className="max-w-[1600px] mb-6 md:mb-8 uppercase text-[32px] leading-[32px] md:text-[72px] md:leading-[64px]"
-            style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, letterSpacing: "-1.01px", color: "#FFFFFF" }}
+            className="max-w-[1109px] mb-6 md:mb-8 uppercase text-[32px] leading-[32px] md:text-[72px] md:leading-[64px]"
+            style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1.01px", color: "#FFFFFF" }}
           >
             Private Label Combat Sports Equipment Manufacturer for U.S. Brands
           </h1>
           <p
-            className="max-w-[1000px] mb-8 md:mb-10 text-[16px] leading-[20px] md:text-[18px]"
+            className="max-w-[683px] mb-8 md:mb-5 text-[16px] leading-[20px] md:text-[16px] md:leading-[20px]"
             style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#FFFFFF" }}
           >
             Sarlam Athletics manufactures premium private label boxing gloves, MMA equipment, BJJ gis, karate uniforms, belts, wraps, and training accessories for gyms, retailers, distributors, and sports brands worldwide.
           </p>
           <RollingButton
             href="/contactus"
-            className="bg-white uppercase px-10 py-3 rounded-[8px]"
+            className="bg-white uppercase px-6 py-3 rounded-[8px]"
             style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", lineHeight: "18px", color: "#000000" }}
           >
             Request a Manufacturing Quote
@@ -319,91 +314,124 @@ export default function SarlamAthleticsPage() {
         </div>
       </div>
 
-      {/* --- Products Grid Section --- */}
-      <section className="w-full max-w-[2560px] mx-auto py-10 md:py-24 bg-white flex flex-col gap-0 overflow-hidden">
-        <div className="w-full px-3 md:px-10 mb-0 md:mb-12 flex items-end justify-between gap-4 border-b border-gray-200 pb-[10px]">
-          <h2
-            className="tracking-tight text-[26px] leading-[27px] md:text-[34px] md:leading-[46px]"
-            style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-0.5px", color: "#0D0D0D", margin: 0 }}
-          >
-            Products We Manufacture
-          </h2>
+    {/* --- Products Grid Section --- */}
+<section className="w-full max-w-[2560px] mx-auto py-10 md:py-0 md:pb-[64px] bg-white flex flex-col gap-0 overflow-hidden">
+  {/* Header row with title and arrows */}
+  <div className="w-full px-3 md:px-[12px] mb-0 flex items-end justify-between gap-4 border-b border-[#C9C9C9]"
+    style={{ paddingTop: '10px', paddingBottom: '10px' }}
+  >
+    <div className="md:pt-[64px] md:pb-[0px] md:pl-[32px]">
+      <h2
+        className="tracking-tight text-[26px] leading-[27px] md:text-[37px] md:leading-[46px]"
+        style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1.5px", color: "#0D0D0D", margin: 0 }}
+      >
+        Combat Sports Equipment We Manufacture
+      </h2>
+    </div>
 
-          {/* Desktop only arrows */}
-          <div className="hidden md:flex items-center gap-[6px] shrink-0 z-10 relative pb-2">
-            <button onClick={() => scrollByCard(-1)} aria-label="Previous" className="w-[30px] h-[30px] flex items-center justify-center text-gray-400 hover:text-black transition">
-              <ArrowLeft />
-            </button>
-            <button onClick={() => scrollByCard(1)} aria-label="Next" className="w-[30px] h-[30px] flex items-center justify-center text-black hover:opacity-70 transition">
-              <ArrowRight />
-            </button>
+    {/* Arrows - visible on both mobile and desktop */}
+    <div className="flex items-center gap-[6px] shrink-0 z-10 relative pb-2 pr-[12px]">
+      <button onClick={() => scrollByCard(-1)} aria-label="Previous" className="w-[30px] h-[30px] flex items-center justify-center text-gray-400 hover:text-black transition">
+        <ArrowLeft />
+      </button>
+      <button onClick={() => scrollByCard(1)} aria-label="Next" className="w-[30px] h-[30px] flex items-center justify-center text-black hover:opacity-70 transition">
+        <ArrowRight />
+      </button>
+    </div>
+  </div>
+
+  {/* Product cards scroller */}
+  <div
+    ref={scrollerRef}
+    className="w-full pb-4 md:pb-0 flex overflow-x-auto gap-0 scroll-smooth snap-x snap-mandatory hide-scrollbar border-b border-[#C9C9C9]"
+  >
+    {products.map((product, i) => (
+      <div
+        key={i}
+        data-card
+        className="w-[100vw] md:w-[500px] h-[392px] md:h-[619px] shrink-0 snap-start flex flex-col p-0 gap-0 group relative bg-white border-r border-[#C9C9C9] last:border-r-0"
+      >
+        {/* Image area */}
+        <Link href={product.href} className="w-full h-[258px] md:h-[479px] flex items-center justify-center bg-white relative overflow-hidden">
+          <ImagePlaceholder className="w-full h-full !object-contain transition-transform duration-300 group-hover:scale-105" label={product.name} src={product.image} />
+
+          {/* Quick View button overlay - desktop only */}
+          <div className="hidden md:block absolute bottom-[12px] right-[12px]">
+            <div
+              className="px-[12px] py-[7px] rounded-sm"
+              style={{
+                backgroundColor: "#0D0D0D",
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 500,
+                fontSize: "12px",
+                lineHeight: "18px",
+                color: "#FFFFFF",
+              }}
+            >
+              Quick View
+            </div>
+          </div>
+        </Link>
+
+        {/* Card info area */}
+        <div className="w-full p-[12px]">
+          <div
+            className="w-full flex items-end justify-between bg-white"
+            style={{
+              border: "1px solid #C9C9C9",
+              borderRadius: "2px",
+              padding: "10px 12px",
+            }}
+          >
+            <div className="flex-1 flex flex-col gap-[2px] min-w-0 pr-2">
+              <span className="w-full truncate" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, fontSize: "14px", lineHeight: "18px", letterSpacing: "0.1px", color: "#0D0D0D" }}>
+                {product.name}
+              </span>
+
+              <RollingButton
+                href={product.href}
+                className="w-fit h-[18px] flex items-center gap-1"
+                style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, fontSize: "14px", lineHeight: "18px", letterSpacing: "0.1px", color: "#0D0D0D" }}
+              >
+                <span className="flex items-center gap-1">View Product <SmallArrowRight /></span>
+              </RollingButton>
+            </div>
+
+            {product.swatches && (
+              <div className="flex items-center gap-[4px] shrink-0 mb-[2px]">
+                {product.swatches.map((color, ci) => (
+                  <span key={ci} className="w-[8px] h-[8px] border border-gray-300 rounded-full" style={{ backgroundColor: color }} />
+                ))}
+              </div>
+            )}
           </div>
         </div>
+      </div>
+    ))}
+  </div>
+</section>
 
-        <div
-          ref={scrollerRef}
-          className="w-full pb-4 flex overflow-x-auto gap-0 md:gap-6 md:px-10 scroll-smooth snap-x snap-mandatory hide-scrollbar border-b border-gray-200"
-        >
-          {products.map((product, i) => (
-            <div
-              key={i}
-              data-card
-              className="w-[100vw] md:w-[500px] h-[392px] md:h-[619px] shrink-0 snap-start flex flex-col p-0 gap-0 group relative bg-white border-r border-gray-200 last:border-r-0"
-            >
-              <Link href={product.href} className="w-full h-[258px] md:h-[479px] flex items-center justify-center bg-white relative overflow-hidden">
-                <ImagePlaceholder className="w-full h-full !object-contain transition-transform duration-300 group-hover:scale-105" label={product.name} src={product.image} />
-              </Link>
-
-              <div className="w-full h-[82px] md:h-[84px] py-[12px] pr-[12px] pl-[12px] md:pl-0">
-                <div className="w-full h-[58px] md:h-[60px] pt-[10px] pr-[12px] pb-[10px] pl-[12px] border border-gray-200 rounded-sm flex items-end justify-between bg-white">
-                  <div className="flex-1 flex flex-col gap-[2px] min-w-0 pr-2">
-                    <span className="w-full h-[16px] md:h-[18px] truncate" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, fontSize: "13px", lineHeight: "16px", color: "#000000" }}>
-                      {product.name}
-                    </span>
-
-                    <RollingButton
-                      href={product.href}
-                      className="w-fit h-[18px] flex items-center gap-1"
-                      style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, fontSize: "12px", lineHeight: "18px", color: "#000000" }}
-                    >
-                      <span className="flex items-center gap-1">View Product <SmallArrowRight /></span>
-                    </RollingButton>
-                  </div>
-
-                  {product.swatches && (
-                    <div className="flex items-center gap-[4px] shrink-0 mb-[2px]">
-                      {product.swatches.map((color, ci) => (
-                        <span key={ci} className="w-[8px] h-[8px] border border-gray-300 rounded-full" style={{ backgroundColor: color }} />
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* --- About Section --- */}
-      <section className="w-full bg-[#000000] py-16 md:py-24">
-        <div className="max-w-[2560px] mx-auto px-4 md:px-10 flex flex-col lg:flex-row gap-6 md:gap-16">
-          <div className="lg:w-1/3">
-            <p className="uppercase" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "15px", lineHeight: "17px", letterSpacing: "0.15em", color: "rgba(255,255,255,0.7)" }}>
+      <section className="w-full bg-[#000000] py-16 md:py-[140px]">
+        <div className="max-w-[2560px] mx-auto px-4 md:px-10 flex flex-col lg:flex-row gap-6 md:gap-8">
+          <div className="lg:w-[449px] shrink-0">
+            <p className="uppercase" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "15px", lineHeight: "17px", letterSpacing: "0.4px", color: "rgba(255,255,255,0.7)" }}>
               Trusted Private Label Sports Equipment Manufacturing for Growing Brands
             </p>
           </div>
 
-          <div className="lg:w-2/3 max-w-[1200px]">
-            <p className="mb-6 md:mb-8 text-[18px] md:text-[22px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, lineHeight: "22px", color: "rgba(255,255,255,0.9)" }}>
+          <div className="flex-1 max-w-[879px]">
+            <p className="mb-6 md:mb-0" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "22px", lineHeight: "26px", color: "#FFFFFF" }}>
               Sarlam Athletics is a trusted OEM and private label manufacturer specializing in boxing gloves, MMA equipment, BJJ uniforms, karate apparel, martial arts belts, hand wraps, and training accessories. We help sports brands launch high-quality custom products with flexible MOQs, premium materials, strict quality control, and global shipping.
             </p>
-            <p className="mb-8 md:mb-10 text-[18px] md:text-[22px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, lineHeight: "22px", color: "rgba(255,255,255,0.9)" }}>
+            <p className="mb-8 md:mb-10" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "22px", lineHeight: "26px", color: "#FFFFFF" }}>
               From concept development and sampling to mass production and packaging, our experienced manufacturing team supports every stage of your product launch. Whether you&apos;re building a new sports brand or expanding an existing product line, we deliver reliable manufacturing solutions designed for long-term growth.
             </p>
             <RollingButton
               href="/contactus"
-              className="w-full md:w-auto text-center border border-white uppercase px-10 py-3 rounded-[4px] md:rounded-[8px]"
-              style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "15px", lineHeight: "16px", letterSpacing: "5%", color: "#FFFFFF" }}
+              className="w-full md:w-auto text-center border border-white uppercase px-5 py-3 rounded-[4px] md:rounded-sm"
+              style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "15px", lineHeight: "16px", color: "#FFFFFF" }}
             >
               Get a Free Manufacturing Quote
             </RollingButton>
@@ -412,23 +440,23 @@ export default function SarlamAthleticsPage() {
       </section>
 
       {/* --- Manufacturing Capabilities --- */}
-      <section className="w-full bg-white py-10 md:py-24">
-        <div className="max-w-[2560px] mx-auto px-4 md:px-10">
-          <h2 className="uppercase md:text-center mb-8 md:mb-16" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "13px", lineHeight: "17px", letterSpacing: "0.15em", color: "#000000" }}>
+      <section className="w-full bg-white py-10 md:py-12">
+        <div className="max-w-[2560px] mx-auto px-4 md:px-0">
+          <h2 className="uppercase md:text-center mb-8 md:mb-12 md:px-8" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "15px", lineHeight: "17px", letterSpacing: "0.4px", color: "#000000" }}>
             Manufacturing Capabilities
           </h2>
-          <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-12">
+          <div className="flex flex-col md:flex-row md:justify-center gap-4 md:gap-[117px] md:px-12">
             {[
-              { title: "OEM Production", desc: "End-to-end manufacturing for your brand" },
-              { title: "Private Label Packaging", desc: "Custom branded packaging solutions" },
-              { title: "Premium Material Sourcing", desc: "Leather, PU, microfiber, cotton, and custom foam options" },
-              { title: "Low MOQ & Bulk", desc: "Flexible minimum order quantities with scalable wholesale production" },
+              { title: "OEM Production", desc: "End-to-end manufacturing\nfor your brand" },
+              { title: "Private Label Packaging", desc: "Custom branded packaging\nsolutions" },
+              { title: "Premium Material Sourcing", desc: "Leather, PU, microfiber, cotton, EVA foam, and custom material options." },
+              { title: "Low MOQ & Bulk Manufacturing", desc: "Flexible minimum order quantities with scalable wholesale production." },
             ].map((cap, i) => (
-              <div key={i} className="flex items-start gap-3">
+              <div key={i} className="flex items-start gap-[6px]">
                 <img src="/Page 1/Icons/Vector-4.png" alt="Capability Icon" className="shrink-0 w-[30px] h-[30px] object-contain mt-[3px]" />
-                <div className="flex flex-col gap-[2px]">
-                  <h4 style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "14px", lineHeight: "18px", color: "#000000" }}>{cap.title}</h4>
-                  <p style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "12px", lineHeight: "130%", color: "#0D0D0D" }}>{cap.desc}</p>
+                <div className="flex flex-col gap-[2px] max-w-[205px]">
+                  <h4 className="uppercase" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "15px", lineHeight: "21px", letterSpacing: "0.45px", color: "#0D0D0D" }}>{cap.title}</h4>
+                  <p style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "14px", lineHeight: "17px", color: "#0D0D0D", whiteSpace: "pre-line" }}>{cap.desc}</p>
                 </div>
               </div>
             ))}
@@ -437,11 +465,17 @@ export default function SarlamAthleticsPage() {
       </section>
 
       {/* --- Why Brands Choose Sarlam Athletics --- */}
-      <section className="w-full bg-black md:bg-white py-14 md:py-24">
-        <div className="max-w-[2560px] mx-auto px-4 md:px-10">
-          <h2 className="mb-8 md:mb-16 text-[37px] leading-[46px] md:text-[37px] md:leading-[46px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1.5px", color: "white" }}>
-            <span className="md:hidden">Why Brands Choose Sarlam Athletics</span>
-            <span className="hidden md:inline text-black">Why Brands Choose Sarlam Athletics</span>
+      <section className="w-full bg-black md:bg-white py-14 md:py-0 md:pb-16">
+        <div className="max-w-[2560px] mx-auto px-4 md:px-8">
+          {/* Desktop: top padding + heading */}
+          <div className="hidden md:block md:pt-[120px] md:pb-12 md:pl-[24px]">
+            <h2 style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "37px", lineHeight: "46px", letterSpacing: "-1.5px", color: "#000000" }}>
+              Why Brands Choose Sarlam Athletics
+            </h2>
+          </div>
+          {/* Mobile heading */}
+          <h2 className="md:hidden mb-8 text-[37px] leading-[46px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1.5px", color: "white" }}>
+            Why Brands Choose Sarlam Athletics
           </h2>
 
           {/* Mobile: dark stacked cards */}
@@ -462,20 +496,20 @@ export default function SarlamAthleticsPage() {
             ))}
           </div>
 
-          {/* Desktop: bordered grid */}
-          <div className="hidden md:grid grid-cols-3 gap-0 border border-gray-200">
+          {/* Desktop: 3-column bordered grid with images */}
+          <div className="hidden md:grid grid-cols-3 border border-[#D7DADE]">
             {[
               { num: "01", title: "Factory-Direct Manufacturing", desc: "Manufacture directly with our factory for better pricing, faster communication, consistent product quality, and complete control over branding.", imageSrc: "/Page 1/Img/1.png" },
               { num: "02", title: "Flexible MOQs for Growing Brands", desc: "Start with sample runs or smaller wholesale orders before scaling into larger production batches for your sports brand or retail business.", imageSrc: "/Page 1/Img/2.png" },
               { num: "03", title: "Private Label & OEM Customization", desc: "Customize logos, colors, materials, sizing, stitching, labels, and packaging across boxing gloves, martial arts uniforms, belts, wraps, and training gear.", imageSrc: "/Page 1/Img/3.png" },
             ].map((step, i) => (
-              <div key={i} className={`p-12 ${i < 2 ? "border-r border-gray-200" : ""}`}>
-                <div className="mb-4">
-                  <span className="uppercase" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "15px", letterSpacing: "2px", color: "#A5A5A5" }}>{step.num}</span>
+              <div key={i} className={`p-8 flex flex-col gap-8 ${i < 2 ? "border-r border-[#D7DADE]" : ""}`}>
+                <div className="flex flex-col gap-4">
+                  <span style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "15px", lineHeight: "17px", letterSpacing: "2px", color: "#8F8778" }}>{step.num}</span>
+                  <h3 style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "22px", lineHeight: "26px", color: "#000000" }}>{step.title}</h3>
+                  <p style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "15px", lineHeight: "16px", color: "#434343" }}>{step.desc}</p>
                 </div>
-                <h3 className="mb-4" style={{ fontFamily: "'Switzer', sans-serif", fontWeight: 600, fontSize: "21.7px", lineHeight: "26.4px", letterSpacing: "-0.44px", color: "#000000" }}>{step.title}</h3>
-                <p className="mb-8" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "15.1px", lineHeight: "24px", color: "#47433B" }}>{step.desc}</p>
-                <div className="w-full aspect-[4/3] rounded-sm overflow-hidden bg-gray-100">
+                <div className="w-full aspect-[416/303] rounded-[8px] overflow-hidden bg-gray-100">
                   <ImagePlaceholder className="w-full h-full object-cover" label={step.title} src={step.imageSrc} />
                 </div>
               </div>
@@ -485,9 +519,16 @@ export default function SarlamAthleticsPage() {
       </section>
 
       {/* --- Why Partner With Us --- */}
-      <section className="w-full bg-white py-16 md:py-24 border-t border-gray-200">
-        <div className="max-w-[2560px] mx-auto px-0 md:px-10">
-          <h2 className="mb-10 md:mb-16 px-8 md:px-0 text-[37px] leading-[46px] md:text-[37px] md:leading-[46px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1.5px", color: "#000000" }}>
+      <section className="w-full bg-white py-16 md:py-0 md:pb-0 border-t border-gray-200 md:border-t-0">
+        <div className="max-w-[2560px] mx-auto px-0 md:px-8">
+          {/* Desktop heading */}
+          <div className="hidden md:block md:pt-16 md:pb-12 md:pl-[24px]">
+            <h2 style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "37px", lineHeight: "46px", letterSpacing: "-1.5px", color: "#000000" }}>
+              Why Partner With Us?
+            </h2>
+          </div>
+          {/* Mobile heading */}
+          <h2 className="md:hidden mb-10 px-8 text-[37px] leading-[46px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1.5px", color: "#000000" }}>
             Why Partner{"\n"}With Us?
           </h2>
 
@@ -505,16 +546,16 @@ export default function SarlamAthleticsPage() {
             ))}
           </div>
 
-          {/* Desktop: 3-column grid */}
-          <div className="hidden md:grid grid-cols-3 gap-0 border border-gray-200">
+          {/* Desktop: 3-column bordered grid */}
+          <div className="hidden md:grid grid-cols-3 border border-[#D7DADE]">
             {[
-              { title: "OEM & ODM Manufacturing Solutions", desc: "From product development and sampling to mass production, we manufacture custom boxing gloves, MMA gear, BJJ uniforms, karate apparel, belts, wraps, and training accessories according to your exact specifications.", imageSrc: "/Page 1/Img/Rectangle 1.png" },
-              { title: "Strict Quality Control Standards", desc: "Every product undergoes detailed inspection for stitching, material quality, sizing, padding density, logo placement, and packaging before shipment.", imageSrc: "/Page 1/Img/Rectangle 11.png" },
-              { title: "Premium Material Development", desc: "Choose from genuine leather, microfiber leather, PU, cotton, EVA foam, reinforced stitching, custom fabrics, and premium trims tailored to your market.", imageSrc: "/Page 1/Img/2.png" },
+              { title: "OEM & ODM Manufacturing Solutions", desc: "From product development and sampling to mass production, we manufacture custom boxing gloves, MMA gear, BJJ uniforms, karate apparel, belts, wraps, and training accessories according to your exact specifications." },
+              { title: "Strict Quality Control Standards", desc: "Every product undergoes detailed inspection for stitching, material quality, sizing, padding density, logo placement, and packaging before shipment." },
+              { title: "Premium Material Development", desc: "Choose from genuine leather, microfiber leather, PU, cotton, EVA foam, reinforced stitching, custom fabrics, and premium trims tailored to your market." },
             ].map((item, i) => (
-              <div key={i} className={`p-12 ${i < 2 ? "border-r border-gray-200" : ""}`}>
-                <h3 className="mb-4" style={{ fontFamily: "'Switzer', sans-serif", fontWeight: 600, fontSize: "21.7px", lineHeight: "26.4px", letterSpacing: "-0.44px", color: "#000000" }}>{item.title}</h3>
-                <p style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "15.1px", lineHeight: "24px", color: "#47433B" }}>{item.desc}</p>
+              <div key={i} className={`p-8 ${i < 2 ? "border-r border-[#D7DADE]" : ""}`}>
+                <h3 className="mb-4" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "22px", lineHeight: "26px", letterSpacing: "-0.44px", color: "#000000" }}>{item.title}</h3>
+                <p style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "16px", lineHeight: "20px", color: "#000000" }}>{item.desc}</p>
               </div>
             ))}
           </div>
@@ -522,23 +563,25 @@ export default function SarlamAthleticsPage() {
       </section>
 
       {/* --- Testimonial Section --- */}
-      <section className="relative w-full py-16 md:py-24 bg-[#7A2E22] overflow-hidden">
+      <section className="relative w-full py-16 md:py-[180px] bg-[#7A2E22] overflow-hidden">
         <ImagePlaceholder className="absolute inset-0 w-full h-full object-cover" label="Testimonial Background" src="/Page 1/Img/Container.png" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#5c1c14]/70 via-[#7a2418]/60 to-[#3d0f0a]/80 mix-blend-multiply" />
         <div className="absolute inset-0 bg-black/25" />
 
-        <div className="relative z-10 max-w-[900px] mx-auto px-4 md:px-10 text-center">
-          <p className="uppercase mb-8" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "15px", lineHeight: "17px", letterSpacing: "0.15em", color: "rgba(255,255,255,0.8)" }}>Testimonials</p>
-          <blockquote className="mb-8 text-[33px] leading-[40px] md:text-[33px] md:leading-[40px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, color: "#FFFFFF" }}>
+        <div className="relative z-10 max-w-[720px] mx-auto px-4 md:px-10 text-center">
+          <p className="uppercase mb-8" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "15px", lineHeight: "17px", letterSpacing: "0.4px", color: "#F0EDE9" }}>Testimonials</p>
+          <blockquote className="mb-8 text-[33px] leading-[40px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1.3px", color: "#FFFFFF" }}>
             &ldquo;Sarlam helped us move from sample boxing gloves to a full private-label production run with custom packaging and consistent quality checks.&rdquo;
           </blockquote>
-          <p className="mb-8 text-[15px] leading-[16px] md:text-[16px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "rgba(255,255,255,0.9)" }}>
-            Marcus Vance <span className="mx-2 text-white/50">/</span> Founder, Apex Strike Gear
-          </p>
+          <div className="flex items-center justify-center gap-2 mb-8">
+            <span style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "15px", lineHeight: "16px", color: "#FFFFFF" }}>Marcus Vance</span>
+            <span style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "17px", lineHeight: "25px", color: "#C9BFB5" }}>/</span>
+            <span style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "15px", lineHeight: "16px", color: "#F0EDE9" }}>Founder, Apex Strike Gear</span>
+          </div>
 
-          <div className="flex items-center justify-center gap-2">
+          <div className="flex items-center justify-center gap-3">
             {testimonialAvatars.map((src, i) => (
-              <div key={i} className={`w-[44px] h-[44px] md:w-14 md:h-14 rounded-xl md:rounded-2xl overflow-hidden border-2 ${i === 1 ? "border-white" : "border-white/30"}`}>
+              <div key={i} className={`w-[44px] h-[44px] md:w-[56px] md:h-[56px] rounded-xl md:rounded-[12px] overflow-hidden border-2 ${i === 1 ? "border-white" : "border-white/30"}`}>
                 <ImagePlaceholder className="w-full h-full" label={`Avatar ${i + 1}`} src={src} />
               </div>
             ))}
@@ -547,10 +590,17 @@ export default function SarlamAthleticsPage() {
       </section>
 
       {/* --- How Our Process Works --- */}
-      <section className="w-full bg-white py-16 md:py-24">
-        <div className="max-w-[2560px] mx-auto px-4 md:px-10">
-          <h2 className="mb-6 md:mb-16 text-[26px] leading-[32px] md:text-[37px] md:leading-[46px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1.5px", color: "#0D0D0D" }}>
-            How Our Private Label Manufacturing<br className="hidden md:block" /> Process Works
+      <section className="w-full bg-white py-16 md:py-0 md:pb-[120px]">
+        <div className="max-w-[2560px] mx-auto px-4 md:px-0">
+          {/* Desktop heading */}
+          <div className="hidden md:block md:pt-[120px] md:pb-12 md:pl-[64px]">
+            <h2 style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "37px", lineHeight: "46px", letterSpacing: "-1.5px", color: "#0D0D0D" }}>
+              How Our Private Label Manufacturing<br /> Process Works
+            </h2>
+          </div>
+          {/* Mobile heading */}
+          <h2 className="md:hidden mb-6 text-[26px] leading-[32px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1.5px", color: "#0D0D0D" }}>
+            How Our Private Label Manufacturing Process Works
           </h2>
         </div>
 
@@ -571,36 +621,41 @@ export default function SarlamAthleticsPage() {
           ))}
         </div>
 
-        {/* Desktop: Expandable panels with images */}
-        <div className="hidden md:flex flex-row w-full max-w-[2560px] mx-auto px-10 gap-0">
+        {/* Desktop: Unique image-panel layout */}
+        <div className="hidden md:flex w-full max-w-[2560px] mx-auto h-[575px] overflow-hidden">
           {processSteps.map((step, i) => {
-            const isActive = activeProcessStep === i;
-            const isDefault = activeProcessStep === null;
-            const desktopWidthClass = isDefault ? "md:w-[25%]" : (isActive ? "md:w-[55%]" : "md:w-[15%]");
-
+            const isFirst = i === 0;
             return (
               <div
                 key={i}
-                onMouseEnter={() => setActiveProcessStep(i)}
-                onMouseLeave={() => setActiveProcessStep(null)}
-                onClick={() => setActiveProcessStep(isActive ? null : i)}
-                className={`group relative overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer ${desktopWidthClass} h-[600px] ${
-                  i < processSteps.length - 1 ? "border-r border-gray-200" : ""
-                }`}
+                className="relative h-full overflow-hidden group"
+                style={{ width: isFirst ? '56%' : '14.67%', flexShrink: 0 }}
               >
-                <div className="absolute inset-0 w-full h-full">
-                  <img src={step.imageSrc} alt={`Step ${step.num} - ${step.title}`} className={`w-full h-full object-cover transition-transform duration-1000 ${isActive ? 'scale-105' : 'scale-100'}`} />
-                </div>
-                <div className={`absolute inset-0 transition-colors duration-700 ${isActive ? 'bg-black/30' : 'bg-black/50'}`} />
-                <div className="relative z-10 h-full w-full flex flex-col items-center justify-center text-center px-8">
-                  <span className="inline-flex items-center justify-center px-3 py-1 rounded-full border border-white/70 mb-4 transition-all duration-500" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "11px", letterSpacing: "2px", color: "#FFFFFF" }}>{step.num}</span>
-                  <h3 className={`uppercase transition-all duration-500 delay-100 ${isActive ? 'text-[20px] max-w-[320px]' : 'text-[15px] max-w-[200px]'}`} style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 600, color: "#FFFFFF" }}>{step.title}</h3>
-                  <div className={`overflow-hidden transition-all duration-700 ease-in-out ${isActive ? 'max-h-[200px] opacity-100 mt-4' : 'max-h-0 opacity-0 mt-0'}`}>
-                    {step.desc && (
-                      <p className="uppercase max-w-[320px] mx-auto text-[13px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "rgba(255,255,255,0.9)" }}>{step.desc}</p>
-                    )}
+                <img
+                  src={step.imageSrc}
+                  alt={`Step ${step.num} - ${step.title}`}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/40" />
+
+                {/* Step number badge */}
+                <div className="absolute top-[202px] left-1/2 -translate-x-1/2 z-10">
+                  <div className="inline-flex items-center justify-center px-[10px] py-[4px] rounded-full bg-black/50 min-w-[30px] h-[21px]">
+                    <span style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "9px", lineHeight: "13px", color: "#FFFFFF" }}>{step.num}</span>
                   </div>
                 </div>
+
+                {/* Title */}
+                <div className="absolute top-[246px] left-0 right-0 text-center px-4 z-10">
+                  <h3 style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "15px", lineHeight: "15px", letterSpacing: "-0.2px", color: "#FFFFFF" }}>{step.title}</h3>
+                </div>
+
+                {/* Description (only on first/active panel) */}
+                {isFirst && (
+                  <div className="absolute top-[295px] left-0 right-0 text-center px-6 z-10">
+                    <p className="max-w-[236px] mx-auto" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "15px", lineHeight: "17px", letterSpacing: "0.4px", color: "#FFFFFF" }}>{step.desc}</p>
+                  </div>
+                )}
               </div>
             );
           })}
@@ -608,9 +663,9 @@ export default function SarlamAthleticsPage() {
       </section>
 
       {/* --- FAQ Section --- */}
-      <section className="w-full bg-white py-16 md:py-24">
-        <div className="max-w-[1200px] mx-auto px-4 md:px-10">
-          <h2 className="mb-6 md:mb-16 text-[26px] leading-[32px] md:text-[37px] md:leading-[46px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1.5px", color: "#000000" }}>
+      <section className="w-full bg-white py-16 md:py-20">
+        <div className="max-w-[640px] mx-auto px-4 md:px-0">
+          <h2 className="mb-6 md:mb-16 text-center text-[26px] leading-[32px] md:text-[35px] md:leading-[42px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-0.7px", color: "#000000" }}>
             Frequently asked questions
           </h2>
           <div className="divide-y divide-gray-200 border-t border-gray-200">
@@ -618,14 +673,14 @@ export default function SarlamAthleticsPage() {
               <FAQItem key={i} question={faq.question} answer={faq.answer} />
             ))}
           </div>
-          <div className="mt-10 md:mt-16">
-            <p className="mb-4 md:mb-8" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "15px", lineHeight: "16px", color: "#434343" }}>
+          <div className="mt-10 md:mt-16 text-center">
+            <p className="mb-4 md:mb-6" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "15px", lineHeight: "16px", color: "#434343" }}>
               If you have any further questions or just want to reach our team, click the button below.
             </p>
             <RollingButton
               href="/contactus"
-              className="border border-black text-black uppercase px-8 py-3 w-full md:w-auto rounded-[6px]"
-              style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "15px", lineHeight: "16px", letterSpacing: "5%" }}
+              className="border border-black text-black uppercase px-5 py-3 rounded-[6px] inline-flex"
+              style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "15px", lineHeight: "16px" }}
             >
               Get in touch
             </RollingButton>
@@ -634,22 +689,22 @@ export default function SarlamAthleticsPage() {
       </section>
 
       {/* --- CTA Section --- */}
-      <section className="w-full bg-white py-16 md:py-24">
-        <div className="max-w-[2560px] mx-auto px-4 md:px-10">
-          <div className="relative rounded-[12px] md:rounded-sm overflow-hidden">
+      <section className="w-full bg-white py-16 md:py-16">
+        <div className="max-w-[2560px] mx-auto px-4 md:px-12">
+          <div className="relative rounded-[12px] overflow-hidden">
             <ImagePlaceholder className="absolute inset-0 w-full h-full" label="CTA Background - Sports Equipment" src="/Page 1/Img/Container.png" />
-            <div className="relative z-10 bg-black/60 py-[100px] px-4 md:py-24 md:px-20 flex flex-col items-center text-center">
-              <div className="max-w-[900px]">
-                <h2 className="mb-5 md:mb-8 text-[24px] leading-[30px] md:text-[37px] md:leading-[46px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1.5px", color: "#FFFFFF" }}>
+            <div className="relative z-10 bg-black/60 py-[100px] px-4 md:py-20 md:px-12 flex flex-col items-center text-center">
+              <div className="max-w-[700px]">
+                <h2 className="mb-5 md:mb-3 text-[24px] leading-[30px] md:text-[37px] md:leading-[46px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1.5px", color: "#FFFFFF" }}>
                   Start Manufacturing Your Custom Sports Equipment Today
                 </h2>
-                <p className="mb-12 md:mb-10 text-[14px] md:text-[18px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, lineHeight: "24px", color: "rgba(255,255,255,0.8)" }}>
+                <p className="mb-12 md:mb-8 text-[14px] md:text-[16px] md:leading-[20px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#D3D3D3" }}>
                   Partner with Sarlam Athletics to manufacture premium private label boxing gloves, MMA gear, BJJ uniforms, karate apparel, belts, wraps, and training accessories with flexible MOQs, expert quality control, and worldwide delivery.
                 </p>
                 <RollingButton
                   href="/contactus"
-                  className="w-full md:w-auto border border-white text-white uppercase px-6 md:px-10 py-3.5 rounded-[6px] md:rounded-[8px]"
-                  style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "15px", lineHeight: "16px", letterSpacing: "5%" }}
+                  className="w-full md:w-auto border border-white text-white uppercase px-6 md:px-5 py-3.5 rounded-[6px]"
+                  style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "15px", lineHeight: "16px" }}
                 >
                   Get Your Free Manufacturing Quote
                 </RollingButton>
@@ -661,24 +716,23 @@ export default function SarlamAthleticsPage() {
 
       {/* --- Footer --- */}
       <footer className="w-full bg-white">
-        <div className="border-t border-gray-200" />
+        <div className="border-t border-[#D7DADE]" />
 
         {/* Footer Top Content */}
-        <div className="max-w-[2560px] mx-auto px-5 md:px-10 py-12 md:py-16">
-          {/* Mobile: stacked, Desktop: side by side */}
-          <div className="flex flex-col lg:flex-row justify-between gap-4 md:gap-12">
+        <div className="max-w-[2560px] mx-auto px-5 md:px-8 py-12 md:py-[71px]">
+          <div className="flex flex-col lg:flex-row justify-between gap-4 md:gap-8">
             <div className="lg:w-1/2">
-              <h3 className="max-w-[672px] mb-4 text-[47px] leading-[58px] md:text-[47px] md:leading-[58px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1.9px", color: "#000000" }}>
-                Start Your Private Label Manufacturing Project
+              <h3 className="max-w-[672px] mb-0 text-[47px] leading-[58px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1.9px", color: "#000000" }}>
+                Let&apos;s Build Your Sports{"\n"}Brand Together
               </h3>
-              <a href="mailto:hello@sarlamathletics.com" className="block hover:text-black transition break-all text-[47px] leading-[58px] md:text-[47px] md:leading-[58px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1.9px", color: "#A5A5A5" }}>
+              <a href="mailto:hello@sarlamathletics.com" className="block hover:text-black transition break-all text-[47px] leading-[58px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1.9px", color: "#A5A5A5" }}>
                 hello@sarlamathletics.com
               </a>
             </div>
 
             {/* Desktop nav columns */}
-            <div className="hidden lg:flex lg:w-1/2 flex-row gap-16">
-              <div className="flex flex-col gap-3">
+            <div className="hidden lg:flex lg:w-1/2 flex-row gap-8">
+              <div className="flex flex-col gap-[10px] w-[203px]">
                 {[
                   { label: "Home", href: "/" },
                   { label: "Products", href: "/products" },
@@ -688,7 +742,7 @@ export default function SarlamAthleticsPage() {
                   <Link key={idx} href={link.href} className="hover:opacity-70 transition" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "14px", lineHeight: "17px", color: "#000000" }}>{link.label}</Link>
                 ))}
               </div>
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-[10px] w-[203px]">
                 {[
                   { label: "About", href: "/about" },
                   { label: "Contact", href: "/contactus" },
@@ -697,7 +751,7 @@ export default function SarlamAthleticsPage() {
                   <Link key={idx} href={link.href} className="hover:opacity-70 transition" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "14px", lineHeight: "17px", color: "#000000" }}>{link.label}</Link>
                 ))}
               </div>
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-[10px] w-[203px]">
                 {[
                   { label: "Boxing Gloves", href: "/products" },
                   { label: "Martial Arts Uniforms", href: "/products" },
@@ -711,10 +765,9 @@ export default function SarlamAthleticsPage() {
           </div>
         </div>
 
-        {/* Mobile Navigation Links (accordion-style with dividers) */}
+        {/* Mobile Navigation Links */}
         <div className="lg:hidden px-5 pb-12">
           <div className="flex flex-col gap-10">
-            {/* Group 1 */}
             <div className="flex flex-col gap-3">
               {[
                 { label: "Home", href: "/" },
@@ -728,8 +781,6 @@ export default function SarlamAthleticsPage() {
                 </div>
               ))}
             </div>
-
-            {/* Group 2 */}
             <div className="flex flex-col gap-3">
               {[
                 { label: "About", href: "/about" },
@@ -742,8 +793,6 @@ export default function SarlamAthleticsPage() {
                 </div>
               ))}
             </div>
-
-            {/* Group 3 */}
             <div className="flex flex-col gap-3">
               {[
                 { label: "Boxing Gloves", href: "/products" },
@@ -760,19 +809,23 @@ export default function SarlamAthleticsPage() {
           </div>
         </div>
 
+        {/* Divider line - desktop */}
+        <div className="hidden md:block border-t border-[#D7DADE] mx-0" />
+
         {/* Brand Section */}
-        <div className="max-w-[2560px] mx-auto px-5 md:px-10 py-10 md:py-12 flex flex-col md:flex-row md:items-end justify-between gap-8 md:gap-0">
+        <div className="max-w-[2560px] mx-auto px-5 md:px-8 py-10 md:py-12 flex flex-col md:flex-row md:items-end justify-between gap-8 md:gap-0">
           <p className="uppercase text-[69px] leading-[85%] md:text-[101px] md:leading-[85%]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, fontStyle: "italic", letterSpacing: "-3%", color: "#000000" }}>
             sarlam<br />athletics
           </p>
-          <div className="flex flex-col md:flex-row md:items-center justify-between">
-            <span className="block text-[12px] mb-2 md:mb-0" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#A5A5A5" }}>Website by Sanna Granqvist</span>
+          <div className="flex flex-col md:flex-row md:items-end gap-[10px]">
+            <span className="block text-[12px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#A5A5A5" }}>Website by Sanna Granqvist</span>
             <span className="block text-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, lineHeight: "17px", color: "#434343" }}>© 2026</span>
           </div>
         </div>
 
-        <div className="w-full bg-[#0D0D0D] py-6">
-          <div className="max-w-[2560px] mx-auto px-5 md:px-10 flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-0">
+        {/* Bottom bar */}
+        <div className="w-full bg-[#0D0D0D] py-4">
+          <div className="max-w-[2560px] mx-auto px-3 md:px-3 flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-0">
             <p style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "12px", lineHeight: "16px", color: "#E3E2E2" }}>
               © 2026 Sarlam Athletics. Private-label sports equipment manufacturer for combat sports brands.
             </p>
