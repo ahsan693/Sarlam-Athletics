@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
+import { Header } from "../home/home";
 
 // ─── Image Placeholder ───
 const ImagePlaceholder = ({
@@ -27,52 +28,17 @@ const ImagePlaceholder = ({
 };
 
 // ─── Icons (inline SVGs) ───
-const ArrowUpRight = () => (
-  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5">
-    <path d="M3 9L9 3M9 3H4M9 3v5" />
+const ArrowLeft = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="19" y1="12" x2="5" y2="12"></line>
+    <polyline points="12 19 5 12 12 5"></polyline>
   </svg>
 );
 
-const MenuIcon = () => (
-  <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
-    <line y1="1" x2="20" y2="1" stroke="currentColor" strokeWidth="2" />
-    <line y1="7" x2="20" y2="7" stroke="currentColor" strokeWidth="2" />
-    <line y1="13" x2="20" y2="13" stroke="currentColor" strokeWidth="2" />
-  </svg>
-);
-
-const SearchIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <circle cx="9" cy="9" r="7" stroke="currentColor" strokeWidth="2" />
-    <line x1="14" y1="14" x2="19" y2="19" stroke="currentColor" strokeWidth="2" />
-  </svg>
-);
-
-const ChevronDownIcon = () => (
-  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-    <path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
-const ColumnsIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <rect x="1" y="1" width="6" height="14" stroke="currentColor" strokeWidth="1.5" />
-    <rect x="9" y="1" width="6" height="14" stroke="currentColor" strokeWidth="1.5" />
-  </svg>
-);
-
-const GridIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <rect x="1" y="1" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
-    <rect x="9" y="1" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
-    <rect x="1" y="9" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
-    <rect x="9" y="9" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
-  </svg>
-);
-
-const LogoMark = ({ className = "" }: { className?: string }) => (
-  <svg viewBox="0 0 30 34" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M24 0L4 14h13L0 34l26-15H12L24 0z" fill="currentColor" />
+const ArrowRight = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="5" y1="12" x2="19" y2="12"></line>
+    <polyline points="12 5 19 12 12 19"></polyline>
   </svg>
 );
 
@@ -97,79 +63,6 @@ function InfoIcon() {
       <line x1="8" y1="11" x2="8" y2="7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
       <circle cx="8" cy="4.5" r="1" fill="currentColor" />
     </svg>
-  );
-}
-
-// ─── Header Component ───
-function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  return (
-   <header className="sticky top-0 z-50 bg-white border-b border-gray-100">
-      <div className="relative max-w-[1440px] mx-auto px-6 md:px-4 h-[52px]">
-        {/* ─── DESKTOP VIEW ─── */}
-        <div className="hidden lg:flex items-center justify-between w-full h-full">
-          <div className="flex items-center gap-4">
-            <button>
-              <MenuIcon />
-            </button>
-            <div className="w-[2px] h-12 bg-gray-300" />
-            <nav className="flex items-center gap-4">
-              <Link href="/products" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">Products</Link>
-                <Link href="/manufacture" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">Manufacturing</Link>
-            </nav>
-          </div>
-          <Link href="/" className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2 text-[18px] font-bold italic uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">
-            <LogoMark className="w-[18px] h-[20px]" />
-            <span className="whitespace-nowrap tracking-tight">Sarlam Athletics</span>
-          </Link>
-          <div className="flex items-center gap-6">
-            <Link href="/privatelabel" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">About</Link>
-            <Link href="/contact" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">Contact</Link>
-            <div className="w-[2px] h-12 bg-gray-300" />
-            <button className="hover:opacity-70 transition text-[#0D0D0D]">
-              <SearchIcon />
-            </button>
-          </div>
-        </div>
-
-        {/* ─── MOBILE VIEW ─── */}
-        <div className="flex lg:hidden items-center justify-between w-full h-full">
-          <Link href="/" className="flex items-center gap-2 text-[18px] font-bold italic uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">
-            <LogoMark className="w-[18px] h-[20px]" />
-            <span className="whitespace-nowrap tracking-tight">Sarlam Athletics</span>
-          </Link>
-          <button 
-            className="flex items-center p-2 -mr-2 text-[#0D0D0D]"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle Menu"
-          >
-            <MenuIcon />
-          </button>
-        </div>
-      </div>
-
-      {isMobileMenuOpen && (
-        <div className="lg:hidden absolute top-[52px] left-0 w-full bg-white border-b border-gray-100 shadow-lg flex flex-col py-6 px-6 gap-6 z-50">
-          {[
-            { label: "Products", href: "/products" },
-            
-            { label: "Manufacturing", href: "/manufacture" },
-            { label: "About", href: "/privatelabel" },
-            { label: "Contact", href: "/contact" },
-          ].map((link, idx) => (
-            <Link
-              key={idx}
-              href={link.href}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="hover:opacity-70 transition text-[14px] leading-[18px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
-      )}
-    </header>
   );
 }
 
@@ -200,21 +93,29 @@ const packagingOptions = [
 const sizeOptions = ["S", "M", "L", "XL", "CUSTOM (ANY SIZE)"];
 
 const relatedProducts = [
-  { 
-    name: "Jiu Jitsu Suit (Gi)", 
-    image: "/Products/02 BJJ Gis and Jiu-Jitsu Uniforms.png" 
+  {
+    name: "Jiu Jitsu Suit (Gi)",
+    href: "/jitsu",
+    cta: "View Product",
+    image: "/Products/02 BJJ Gis and Jiu-Jitsu Uniforms.png",
   },
-  { 
-    name: "Boxing Gloves", 
-    image: "/Products/01 Private Label Boxing Gloves.png" 
+  {
+    name: "Boxing Gloves",
+    href: "/details",
+    cta: "View Product",
+    image: "/Products/01 Private Label Boxing Gloves.png",
   },
-  { 
-    name: "MMA Full Fight Gloves", 
-    image: "/Products/03 MMA Fight Gloves.png" 
+  {
+    name: "MMA Full Fight Gloves",
+    href: "/mmagloves",
+    cta: "View Product",
+    image: "/Products/03 MMA Fight Gloves.png",
   },
-  { 
-    name: "Boxing Head Guard", 
-    image: "/Products/07 Custom Boxing Headguards.png" 
+  {
+    name: "Boxing Head Guard",
+    href: "/Boxingguard",
+    cta: "View Product",
+    image: "/Products/07 Custom Boxing Headguards.png",
   },
 ];
 
@@ -252,6 +153,16 @@ export default function BoxingHeadGuardPage() {
   const [selectedSize, setSelectedSize] = useState<string[]>(["L"]);
   const [selectedPackaging, setSelectedPackaging] = useState<string[]>(["POLY BAG"]);
 
+  const relatedScrollerRef = useRef<HTMLDivElement>(null);
+
+  const scrollRelated = (dir: 1 | -1) => {
+    const el = relatedScrollerRef.current;
+    if (!el) return;
+    const card = el.querySelector<HTMLElement>("[data-related-card]");
+    const cardWidth = card ? card.offsetWidth + 16 : 360; 
+    el.scrollBy({ left: dir * cardWidth, behavior: "smooth" });
+  };
+
   const toggleOption = (
     option: string,
     state: string[],
@@ -282,10 +193,10 @@ export default function BoxingHeadGuardPage() {
       <section className="relative h-[320px] md:h-[480px] overflow-hidden">
         <div className="absolute inset-0 bg-black">
           <img
-  src="/Page 7/01-1.png"
-  alt="Private Label Sports Equipment Manufacturing"
-  className="w-full h-full object-cover opacity-60"
-/>
+            src="/Page 7/01-1.png"
+            alt="Private Label Sports Equipment Manufacturing"
+            className="w-full h-full object-cover opacity-60"
+          />
         </div>
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
           <span className="text-[15px] leading-[17px] tracking-[0.4px] text-[#CBCBCB] font-medium md:tracking-wide md:text-[#CCCCCC] mb-3 md:mb-4 uppercase text-center md:text-left">
@@ -304,10 +215,10 @@ export default function BoxingHeadGuardPage() {
           <div className="w-full lg:w-[616px] shrink-0">
             <div className="bg-[#F9F9F9] rounded-none p-4 md:p-2 aspect-[4/5] md:aspect-square flex items-center justify-center lg:sticky lg:top-24">
           <img
-  src="/Products/07 Custom Boxing Headguards.png"
-  alt="Boxing Head Guard"
-  className="w-[100%] h-[100%] md:w-[600px] md:h-[600px] object-cover md:object-contain mix-blend-multiply"
-/>
+            src="/Products/07 Custom Boxing Headguards.png"
+            alt="Boxing Head Guard"
+            className="w-[100%] h-[100%] md:w-[600px] md:h-[600px] object-cover md:object-contain mix-blend-multiply"
+          />
             </div>
           </div>
 
@@ -494,48 +405,76 @@ export default function BoxingHeadGuardPage() {
         </div>
       </section>
 
-      {/* ── You May Also Like ── */}
-      <section className="bg-white px-6 md:px-16 py-12 md:py-20 border-t border-gray-100">
-        <div className="max-w-[1440px] mx-auto">
-          <div className="flex items-center justify-between mb-8 md:mb-12">
-            <h2 className="text-[26px] leading-[26px] tracking-[-0.5px] font-bold text-[#0D0D0D] text-left max-w-[250px] md:max-w-none md:leading-[28px] md:tracking-normal uppercase">
+      {/* --- You May Also Like (Proper Functioning Horizontal Scroll) --- */}
+      <section className="bg-white px-4 md:px-16 py-16 md:py-24 border-y border-[#C9C9C9] md:border-y-0 md:border-t md:border-gray-100">
+        <div className="max-w-[1440px] mx-auto overflow-hidden">
+          
+          {/* Header Row */}
+          <div className="flex items-end justify-between mb-10 md:mb-16 gap-4">
+            <h2 className="text-[26px] leading-[32px] md:text-[37px] md:leading-[46px] tracking-[-0.5px] font-bold text-[#0D0D0D] uppercase max-w-[302px] md:max-w-none md:tracking-normal md:normal-case">
               Martial Arts Uniform Manufacturing Options
             </h2>
-            <a
-              href="/products"
-              className="text-[14px] leading-[18px] tracking-[0.1px] font-bold text-[#0D0D0D] text-left uppercase hover:underline flex items-center gap-1 md:text-sm md:tracking-normal shrink-0"
-            >
-              View all options
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" />
-              </svg>
-            </a>
+            
+            {/* Desktop & Mobile Arrows */}
+            <div className="flex items-center gap-[6px] shrink-0 z-10 relative pb-1 md:pb-2">
+              <button 
+                onClick={() => scrollRelated(-1)} 
+                aria-label="Previous" 
+                className="w-[30px] h-[30px] flex items-center justify-center text-gray-400 hover:text-black transition"
+              >
+                <ArrowLeft />
+              </button>
+              <button 
+                onClick={() => scrollRelated(1)} 
+                aria-label="Next" 
+                className="w-[30px] h-[30px] flex items-center justify-center text-black hover:opacity-70 transition"
+              >
+                <ArrowRight />
+              </button>
+            </div>
           </div>
-          <div className="flex gap-4 md:gap-0 overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+
+          {/* Horizontal Flex Scrolling Container (Mobile & Desktop) */}
+          <div 
+            ref={relatedScrollerRef}
+            className="flex overflow-x-auto gap-4 md:gap-6 snap-x snap-mandatory hide-scrollbar pb-4"
+          >
             {relatedProducts.map((product, i) => (
               <div
                 key={i}
-                className="w-[280px] md:w-[360px] snap-start shrink-0 border border-[#C9C9C9] group cursor-pointer"
+                data-related-card
+                className="border border-[#C9C9C9] rounded bg-white w-[260px] md:w-[360px] snap-start shrink-0 group flex flex-col md:rounded-none"
               >
-                <div className="relative h-[220px] md:h-[280px] bg-gray-100 overflow-hidden">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                    <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-[#0D0D0D] text-white text-[6.5px] font-medium px-3 py-1.5 uppercase tracking-wider">
-                      Quick View
-                    </span>
+                <Link href={product.href} className="block p-2 md:p-0">
+                  <div className="relative aspect-square md:aspect-auto md:h-[280px] bg-gray-100 overflow-hidden rounded-sm md:rounded-none">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="hidden md:flex absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors items-center justify-center">
+                      <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-[#0D0D0D] text-white text-[10px] font-medium px-4 py-2 uppercase tracking-wider">
+                        Quick View
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <div className="px-3 py-3 md:px-4 md:py-3 flex flex-col md:flex-row md:items-center justify-between gap-2 md:gap-0">
-                  <span className="text-[12px] leading-[15px] tracking-[0px] font-bold text-[#0D0D0D] text-left uppercase md:text-[10px]">
+                </Link>
+
+                <div className="px-3 pb-3 flex flex-col gap-2 md:px-5 md:py-4 md:flex-row md:items-center md:justify-between md:gap-0 mt-auto border-t border-transparent md:border-gray-200">
+                  <span className="text-[14px] leading-[18px] tracking-[0px] font-bold text-[#0D0D0D] text-left md:uppercase">
                     {product.name}
                   </span>
-                  <button className="text-[10px] leading-[12px] tracking-[0px] font-bold text-[#0D0D0D] text-left uppercase border border-[#0D0D0D] px-2 py-1.5 md:py-1 hover:bg-[#0D0D0D] hover:text-white transition-colors self-start md:self-auto md:text-[8px] md:font-medium">
-                    Request Quote
-                  </button>
+                  <Link
+                    href={product.href}
+                    className="
+                      text-[12px] leading-[14px] tracking-[0px] font-bold text-[#0D0D0D] underline
+                      md:no-underline md:border md:border-[#0D0D0D] md:px-3 md:py-1.5
+                      md:uppercase md:hover:bg-[#0D0D0D] md:hover:text-white md:transition-colors
+                      md:text-[10px] md:font-medium text-center
+                    "
+                  >
+                    {product.cta}
+                  </Link>
                 </div>
               </div>
             ))}
@@ -734,6 +673,13 @@ export default function BoxingHeadGuardPage() {
         }
         .animate-marquee {
           animation: marquee 25s linear infinite;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
         }
       `}</style>
     </div>
