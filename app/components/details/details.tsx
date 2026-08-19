@@ -477,12 +477,6 @@ export default function DetailsComponent() {
               sarlam<br className="hidden md:block" /><span className="md:hidden"> </span>athletics
             </span>
           </Link>
-          <div className="flex flex-col md:items-end gap-2 md:gap-0">
-            <span className="md:hidden block text-[12px] leading-[16.8px] tracking-[0px] font-normal text-[#A5A5A5] text-left">
-              Website by Sanna Granqvist<br />© 2026
-            </span>
-            <span className="hidden md:block text-[12px] leading-[16px] font-normal text-[#0D0D0D]">© 2026</span>
-          </div>
         </div>
 
         <div className="bg-black">

@@ -172,7 +172,7 @@ export function Header() {
 
         {/* Desktop Right Nav */}
         <div className="hidden lg:flex items-center gap-0 h-[48px]">
-          <Link href="/privatelabel" className="h-[48px] flex items-center px-6 hover:opacity-70 transition" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", lineHeight: "18px", textTransform: "uppercase", color: "#0D0D0D" }}>About</Link>
+          <Link href="/aboutus" className="h-[48px] flex items-center px-6 hover:opacity-70 transition" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", lineHeight: "18px", textTransform: "uppercase", color: "#0D0D0D" }}>About</Link>
           <Link href="/contact" className="h-[48px] flex items-center hover:opacity-70 transition" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", lineHeight: "18px", textTransform: "uppercase", color: "#0D0D0D" }}>Contact</Link>
           <div className="w-[12px]" />
           <button className="w-[48px] h-[48px] flex items-center justify-center hover:opacity-70 transition text-[#0D0D0D]"><SearchIcon /></button>
