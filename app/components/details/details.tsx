@@ -419,8 +419,7 @@ export default function DetailsComponent() {
           </div>
         </div>
       </section>
-
-      {/* --- Footer --- */}
+{/* --- Footer --- */}
       <footer className="bg-white border-t border-[#D7DADE]">
         <div className="max-w-[2560px] mx-auto px-6 md:px-10 py-12 md:py-16 flex flex-col lg:flex-row justify-between gap-10 md:gap-12">
           <div className="lg:w-1/2">
@@ -432,38 +431,61 @@ export default function DetailsComponent() {
             </a>
           </div>
 
-          <div className="md:hidden space-y-0">
-            <FooterAccordion title="Navigation">
+          {/* Mobile Links */}
+          <div className="md:hidden flex flex-col gap-8">
+            <div className="flex flex-col gap-3">
               <FooterLink href="/">Home</FooterLink>
               <FooterLink href="/products">Products</FooterLink>
-              <FooterLink href="/private-label">Private Label</FooterLink>
-              <FooterLink href="/manufacturing">Manufacturing Process</FooterLink>
-              <FooterLink href="/about">About</FooterLink>
+              <FooterLink href="/privatelabel">Private Label</FooterLink>
+              <FooterLink href="/manufacture">Manufacturing Process</FooterLink>
+              <FooterLink href="/aboutus">About</FooterLink>
               <FooterLink href="/contact">Contact</FooterLink>
               <FooterLink href="/contact">Request Quote</FooterLink>
-            </FooterAccordion>
-            <FooterAccordion title="Products">
-              <FooterLink href="/products/boxing-gloves">Boxing Gloves</FooterLink>
-              <FooterLink href="/products/martial-arts">Martial Arts Uniforms</FooterLink>
-              <FooterLink href="/products/mma">MMA Gear</FooterLink>
-              <FooterLink href="/products/accessories">Training Accessories</FooterLink>
-            </FooterAccordion>
+            </div>
+            
+            <div className="flex flex-col gap-3">
+              <FooterLink href="/Boxingguard">Boxing Gloves</FooterLink>
+              <FooterLink href="/karatesuit">Martial Arts Uniforms</FooterLink>
+              <FooterLink href="/mma-gloves">MMA Gear</FooterLink>
+              <FooterLink href="/trainingpad">Training Accessories</FooterLink>
+            </div>
           </div>
 
+          {/* Desktop Links with mapping arrays */}
           <div className="hidden lg:flex gap-16">
             <div className="flex flex-col gap-3">
-              {["Home", "Products", "Private Label", "Manufacturing Process"].map((link) => (
-                <a key={link} href="#" className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px] font-normal text-[#000000]">{link}</a>
+              {[
+                { name: "Home", href: "/" },
+                { name: "Products", href: "/products" },
+                { name: "Private Label", href: "/privatelabel" },
+                { name: "Manufacturing Process", href: "/manufacture" }
+              ].map((link) => (
+                <a key={link.name} href={link.href} className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px] font-normal text-[#000000]">
+                  {link.name}
+                </a>
               ))}
             </div>
             <div className="flex flex-col gap-3">
-              {["About", "Contact", "Request Quote"].map((link) => (
-                <a key={link} href="#" className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px] font-normal text-[#000000]">{link}</a>
+              {[
+                { name: "About", href: "/aboutus" },
+                { name: "Contact", href: "/contactus" },
+                { name: "Request Quote", href: "/contactus" }
+              ].map((link) => (
+                <a key={link.name} href={link.href} className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px] font-normal text-[#000000]">
+                  {link.name}
+                </a>
               ))}
             </div>
             <div className="flex flex-col gap-3">
-              {["Boxing Gloves", "Martial Arts Uniforms", "MMA Gear", "Training Accessories"].map((link) => (
-                <a key={link} href="#" className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px] font-normal text-[#000000]">{link}</a>
+              {[
+                { name: "Boxing Gloves", href: "/Boxingguard" },
+                { name: "Martial Arts Uniforms", href: "/karate-suit" },
+                { name: "MMA Gear", href: "/mma-gloves" },
+                { name: "Training Accessories", href: "/trainingpads" }
+              ].map((link) => (
+                <a key={link.name} href={link.href} className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px] font-normal text-[#000000]">
+                  {link.name}
+                </a>
               ))}
             </div>
           </div>
