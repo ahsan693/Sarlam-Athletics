@@ -256,7 +256,7 @@ function Footer() {
   };
 
   return (
-    <footer className="bg-white">
+   <footer className="bg-white">
       <div className="h-px bg-[#D7DADE]" />
       <div className="max-w-[2560px] mx-auto flex flex-col lg:flex-row gap-10 md:gap-12 py-12 md:py-16 px-6 md:px-12">
         <div className="lg:w-1/2 space-y-4 md:space-y-6">
@@ -270,7 +270,7 @@ function Footer() {
         <div className="lg:w-1/2 flex flex-col md:grid md:grid-cols-3 gap-8">
           <div className="space-y-3 md:space-y-4">
             {footerNav.pages.map((link) => (
-              <div key={link.label} className="flex items-center justify-between group border-b border-gray-200 pb-2 md:border-b-0 md:pb-0">
+              <div key={link.label} className="flex items-center justify-between group border-b border-gray-200 pb-2">
                 <Link href={link.href} className="hover:opacity-70 transition-opacity text-[14px] leading-[17px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#000000" }}>{link.label}</Link>
                 <span className="text-black opacity-0 group-hover:opacity-100 transition-opacity hidden md:block"><ArrowUpRight /></span>
               </div>
@@ -278,7 +278,7 @@ function Footer() {
           </div>
           <div className="space-y-3 md:space-y-4">
             {footerNav.company.map((link) => (
-              <div key={link.label} className="flex items-center justify-between group border-b border-gray-200 pb-2 md:border-b-0 md:pb-0">
+              <div key={link.label} className="flex items-center justify-between group border-b border-gray-200 pb-2">
                 <Link href={link.href} className="hover:opacity-70 transition-opacity text-[14px] leading-[17px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#000000" }}>{link.label}</Link>
                 <span className="text-black opacity-0 group-hover:opacity-100 transition-opacity hidden md:block"><ArrowUpRight /></span>
               </div>
@@ -286,7 +286,7 @@ function Footer() {
           </div>
           <div className="space-y-3 md:space-y-4">
             {footerNav.products.map((link) => (
-              <div key={link.label} className="flex items-center justify-between group border-b border-gray-200 pb-2 md:border-b-0 md:pb-0">
+              <div key={link.label} className="flex items-center justify-between group border-b border-gray-200 pb-2">
                 <Link href={link.href} className="hover:opacity-70 transition-opacity text-[14px] leading-[17px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#000000" }}>{link.label}</Link>
                 <span className="text-black opacity-0 group-hover:opacity-100 transition-opacity hidden md:block"><ArrowUpRight /></span>
               </div>
