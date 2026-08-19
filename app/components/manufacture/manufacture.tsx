@@ -71,7 +71,7 @@ function HeroSection() {
       
       <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 md:px-12 text-center max-w-[2560px] mx-auto">
         <p className="mb-4 md:mb-5 text-[13px] md:text-[15px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "0.15em", textTransform: "uppercase", color: "#F0EDE9" }}>
-          ABOUT SARLAM ATHLETICS
+          MANUFACTORING
         </p>
         <h1 className="max-w-[1600px] mb-6 md:mb-8 uppercase text-[36px] leading-[40px] md:text-[72px] md:leading-[64px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1.01px", color: "#FFFFFF" }}>
           Private Label Sports Equipment Manufacturing Built for Growing Brands
