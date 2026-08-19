@@ -61,12 +61,15 @@ function HeroSection() {
         <div className="absolute inset-0 bg-black/50 z-[1]" />
         <div className="absolute inset-0 bg-cover bg-center z-0" style={{ backgroundImage: "url('/Page 6/01.png')" }} />
         <div className="relative z-[2] max-w-[1200px]">
-          <h1 style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "47px", lineHeight: "1.2", color: "#FFFFFF" }}>
-            Request a Private Label Manufacturing Quote
-          </h1>
-          <p className="mt-4 md:mt-6 max-w-[800px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "15px", lineHeight: "1.6", color: "#F0EDE9", textTransform: "uppercase", letterSpacing: "0.05em" }}>
-            Tell us what you want to manufacture, and our team will prepare a customized production plan, MOQ recommendation, material options, pricing estimate, and production timeline within 1–2 business days.
-          </p>
+         <h1 style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "47px", lineHeight: "1.2", color: "#FFFFFF" }}>
+  Request a Private Label <br />
+  Manufacturing Quote
+</h1>
+         <p className="mt-4 md:mt-6 max-w-[800px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "15px", lineHeight: "1.6", color: "#F0EDE9", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+  Tell us what you want to manufacture, and our team will prepare  a  <br className="hidden md:block" />
+ customized production plan, MOQ recommendation, material options, <br className="hidden md:block" />
+  pricing estimate, and production timeline within 1–2 business days.
+</p>
         </div>
       </div>
     </section>
