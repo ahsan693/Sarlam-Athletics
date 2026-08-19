@@ -205,7 +205,7 @@ export function Header() {
             <Link href="/products" onClick={() => setIsMobileMenuOpen(false)} className="block w-full text-[#0D0D0D] text-[14px] font-medium px-4 py-2.5 rounded-lg hover:bg-gray-100 transition-colors font-['FFF_Acid_Grotesk',sans-serif] uppercase tracking-wide">Products</Link>
             <Link href="/privatelabel" onClick={() => setIsMobileMenuOpen(false)} className="block w-full text-[#0D0D0D] text-[14px] font-medium px-4 py-2.5 rounded-lg hover:bg-gray-100 transition-colors font-['FFF_Acid_Grotesk',sans-serif] uppercase tracking-wide">Private Label</Link>
             <Link href="/manufacture" onClick={() => setIsMobileMenuOpen(false)} className="block w-full text-[#0D0D0D] text-[14px] font-medium px-4 py-2.5 rounded-lg hover:bg-gray-100 transition-colors font-['FFF_Acid_Grotesk',sans-serif] uppercase tracking-wide">Manufacturing</Link>
-            <Link href="/privatelabel" onClick={() => setIsMobileMenuOpen(false)} className="block w-full text-[#0D0D0D] text-[14px] font-medium px-4 py-2.5 rounded-lg hover:bg-gray-100 transition-colors font-['FFF_Acid_Grotesk',sans-serif] uppercase tracking-wide">About</Link>
+            <Link href="/aboutus" onClick={() => setIsMobileMenuOpen(false)} className="block w-full text-[#0D0D0D] text-[14px] font-medium px-4 py-2.5 rounded-lg hover:bg-gray-100 transition-colors font-['FFF_Acid_Grotesk',sans-serif] uppercase tracking-wide">About</Link>
             <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="block w-full text-[#0D0D0D] text-[14px] font-medium px-4 py-2.5 rounded-lg hover:bg-gray-100 transition-colors font-['FFF_Acid_Grotesk',sans-serif] uppercase tracking-wide">Contact</Link>
           </div>
         </>
