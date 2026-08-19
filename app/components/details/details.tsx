@@ -390,11 +390,6 @@ export default function DetailsComponent() {
                 Customize your products with branded logos, materials, colors, sizing, labels, retail packaging, and performance specifications that match your market and brand identity.
               </p>
             </div>
-            
-            <div className="flex items-center gap-[6px] shrink-0 z-10 relative pb-1 md:pb-2">
-              <button onClick={() => scrollCustomization(-1)} aria-label="Previous" className="w-[30px] h-[30px] flex items-center justify-center text-gray-400 hover:text-black transition"><ArrowLeft /></button>
-              <button onClick={() => scrollCustomization(1)} aria-label="Next" className="w-[30px] h-[30px] flex items-center justify-center text-black hover:opacity-70 transition"><ArrowRight /></button>
-            </div>
           </div>
 
           <div className="relative">

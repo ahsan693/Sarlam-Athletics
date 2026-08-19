@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion, useScroll } from "framer-motion";
 
 // ─── Import Centralized Header ──────────────────────────────────────────────
+// Ensure the path matches your actual file structure (e.g., "../home/home" or "./page")
 import { Header } from "../home/home";
 
 // ─── Rolling Text Button Component ──────────────────────────────────────────
@@ -63,7 +64,8 @@ const ChevronDown = ({ className = "" }: { className?: string }) => (
 // ─── Hero Section ───
 function HeroSection() {
   return (
-    <section className="relative w-full h-[540px] md:h-[620px] 2xl:h-[750px] bg-[#0D0D0D] overflow-hidden">
+    // Modified to match home page exactly: h-[500px] on mobile (was 540px)
+    <section className="relative w-full h-[500px] md:h-[620px] 2xl:h-[750px] bg-[#0D0D0D] overflow-hidden">
       <img src="/Page 4/01.png" alt="Boxing equipment manufacturing" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-[#3a0f14]/60 to-black/70" />
       
@@ -78,10 +80,11 @@ function HeroSection() {
           Simplifying production from prototype to worldwide delivery.
         </p>
         
+        {/* Adjusted to match Home Page button styling strictly */}
         <RollingButton
           href="/contactus"
-          className="bg-white uppercase px-10 py-3 rounded-none"
-          style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", lineHeight: "18px", color: "#000000" ,borderRadius: "8px"}}
+          className="bg-white uppercase px-6 py-3 rounded-[8px]"
+          style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", lineHeight: "18px", color: "#000000" }}
         >
           Request a Manufacturing Quote
         </RollingButton>
