@@ -74,8 +74,7 @@ function HeroSection() {
           MANUFACTORING
         </p>
         <h1 className="max-w-[1600px] mb-6 md:mb-8 uppercase text-[36px] leading-[40px] md:text-[72px] md:leading-[64px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1.01px", color: "#FFFFFF" }}>
-          Private Label Sports Equipment Manufacturing Built for Growing Brands
-        </h1>
+        Premium Athletic Wear Manufacturing: From Concept to Bulk Production     </h1>
         <p className="max-w-[1000px] mb-8 md:mb-10 text-[14px] leading-[20px] md:text-[18px] md:hidden block" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, letterSpacing: "0px", color: "#FFFFFF" }}>
           Simplifying production from prototype to worldwide delivery.
         </p>
