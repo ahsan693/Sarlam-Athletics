@@ -826,8 +826,7 @@ export default function SarlamAthleticsPage() {
           </div>
         </div>
       </section>
-
-      {/* --- Footer --- */}
+{/* --- Footer --- */}
       <footer className="w-full bg-white">
         <div className="border-t border-[#D7DADE]" />
 
@@ -852,26 +851,26 @@ export default function SarlamAthleticsPage() {
                   { label: "Private Label", href: "/privatelabel" },
                   { label: "Manufacturing Process", href: "/manufacture" },
                 ].map((link, idx) => (
-                  <Link key={idx} href={link.href} className="hover:opacity-70 transition" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "14px", lineHeight: "17px", color: "#000000" }}>{link.label}</Link>
+                  <Link key={idx} href={link.href} className="transition border-b border-gray-200 pb-2 hover:opacity-70" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "14px", lineHeight: "17px", color: "#000000" }}>{link.label}</Link>
                 ))}
               </div>
               <div className="flex flex-col gap-[10px] w-[203px]">
                 {[
-                  { label: "About", href: "/about" },
-                  { label: "Contact", href: "/contactus" },
-                  { label: "Request Quote", href: "/contactus" },
+                  { label: "About", href: "/aboutus" },
+                  { label: "Contact", href: "/contact" },
+                  { label: "Request Quote", href: "/contact" },
                 ].map((link, idx) => (
-                  <Link key={idx} href={link.href} className="hover:opacity-70 transition" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "14px", lineHeight: "17px", color: "#000000" }}>{link.label}</Link>
+                  <Link key={idx} href={link.href} className="transition border-b border-gray-200 pb-2 hover:opacity-70" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "14px", lineHeight: "17px", color: "#000000" }}>{link.label}</Link>
                 ))}
               </div>
               <div className="flex flex-col gap-[10px] w-[203px]">
                 {[
-                  { label: "Boxing Gloves", href: "/products" },
-                  { label: "Martial Arts Uniforms", href: "/products" },
-                  { label: "MMA Gear", href: "/products" },
-                  { label: "Training Accessories", href: "/products" },
+                  { label: "Boxing Gloves", href: "/details" },
+                  { label: "Martial Arts Uniforms", href: "/karatesuit" },
+                  { label: "MMA Gear", href: "/mmagloves" },
+                  { label: "Training Accessories", href: "/trainingpad" },
                 ].map((link, idx) => (
-                  <Link key={idx} href={link.href} className="hover:opacity-70 transition" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "14px", lineHeight: "17px", color: "#000000" }}>{link.label}</Link>
+                  <Link key={idx} href={link.href} className="transition border-b border-gray-200 pb-2 hover:opacity-70" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "14px", lineHeight: "17px", color: "#000000" }}>{link.label}</Link>
                 ))}
               </div>
             </div>
@@ -887,36 +886,27 @@ export default function SarlamAthleticsPage() {
                 { label: "Products", href: "/products" },
                 { label: "Private Label", href: "/privatelabel" },
                 { label: "Manufacturing Process", href: "/manufacture" },
-              ].map((link, idx, arr) => (
-                <div key={idx}>
-                  <Link href={link.href} className="block hover:opacity-70 transition" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "14px", lineHeight: "17px", color: "#000000" }}>{link.label}</Link>
-                  {idx < arr.length - 1 && <div className="border-b border-gray-200 mt-3" />}
-                </div>
+              ].map((link, idx) => (
+                <Link key={idx} href={link.href} className="block transition border-b border-gray-200 pb-2 hover:opacity-70" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "14px", lineHeight: "17px", color: "#000000" }}>{link.label}</Link>
               ))}
             </div>
             <div className="flex flex-col gap-3">
               {[
-                { label: "About", href: "/about" },
-                { label: "Contact", href: "/contactus" },
-                { label: "Request Quote", href: "/contactus" },
-              ].map((link, idx, arr) => (
-                <div key={idx}>
-                  <Link href={link.href} className="block hover:opacity-70 transition" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "14px", lineHeight: "17px", color: "#000000" }}>{link.label}</Link>
-                  {idx < arr.length - 1 && <div className="border-b border-gray-200 mt-3" />}
-                </div>
+                { label: "About", href: "/aboutus" },
+                { label: "Contact", href: "/contact" },
+                { label: "Request Quote", href: "/contact" },
+              ].map((link, idx) => (
+                <Link key={idx} href={link.href} className="block transition border-b border-gray-200 pb-2 hover:opacity-70" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "14px", lineHeight: "17px", color: "#000000" }}>{link.label}</Link>
               ))}
             </div>
             <div className="flex flex-col gap-3">
               {[
-                { label: "Boxing Gloves", href: "/products" },
-                { label: "Martial Arts Uniforms", href: "/products" },
-                { label: "MMA Gear", href: "/products" },
-                { label: "Training Accessories", href: "/products" },
-              ].map((link, idx, arr) => (
-                <div key={idx}>
-                  <Link href={link.href} className="block hover:opacity-70 transition" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "14px", lineHeight: "17px", color: "#000000" }}>{link.label}</Link>
-                  {idx < arr.length - 1 && <div className="border-b border-gray-200 mt-3" />}
-                </div>
+                { label: "Boxing Gloves", href: "/details" },
+                { label: "Martial Arts Uniforms", href: "/karatesuit" },
+                { label: "MMA Gear", href: "/mmagloves" },
+                { label: "Training Accessories", href: "/trainingpad" },
+              ].map((link, idx) => (
+                <Link key={idx} href={link.href} className="block transition border-b border-gray-200 pb-2 hover:opacity-70" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "14px", lineHeight: "17px", color: "#000000" }}>{link.label}</Link>
               ))}
             </div>
           </div>

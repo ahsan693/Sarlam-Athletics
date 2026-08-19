@@ -362,50 +362,73 @@ export default function KarateSuitDetailsPage() {
         </div>
       </section>
 
-      {/* ── Footer ── */}
+    --- Footer --- */
       <footer className="bg-white border-t border-[#D7DADE]">
-        <div className="max-w-[2560px] mx-auto px-6 md:px-10 py-10 md:py-12 flex flex-col lg:flex-row justify-between gap-10 md:gap-12">
+        <div className="max-w-[2560px] mx-auto px-6 md:px-10 py-12 md:py-16 flex flex-col lg:flex-row justify-between gap-10 md:gap-12">
           <div className="lg:w-1/2">
-            <h3 className="mb-4 text-[32px] leading-[38px] md:text-[47px] md:leading-[58px] font-medium tracking-tight text-[#0D0D0D]">
+            <h3 className="mb-4 md:mb-6 text-[47px] leading-[58px] tracking-[-1.9px] font-medium text-[#000000] text-left md:text-[#0D0D0D] md:tracking-tight">
               Start Your Private Label<br className="hidden md:block" /><span className="md:hidden"> </span>Manufacturing Project
             </h3>
-            <a href="mailto:hello@sarlamathletics.com" className="transition break-all hover:text-black text-[22px] leading-[30px] md:text-[47px] md:leading-[58px] font-medium text-[#A5A5A5] tracking-tight">
+            <a href="mailto:hello@sarlamathletics.com" className="text-[47px] leading-[58px] tracking-[-1.9px] font-medium text-[#A5A5A5] text-left transition break-all hover:text-[#000000] md:tracking-tight block">
               hello@sarlamathletics.com
             </a>
           </div>
 
-          <div className="md:hidden space-y-0">
-            <FooterAccordion title="Navigation">
+          {/* Mobile Links */}
+          <div className="md:hidden flex flex-col gap-8">
+            <div className="flex flex-col gap-3">
               <FooterLink href="/">Home</FooterLink>
               <FooterLink href="/products">Products</FooterLink>
-              <FooterLink href="/private-label">Private Label</FooterLink>
-              <FooterLink href="/manufacturing">Manufacturing Process</FooterLink>
-              <FooterLink href="/about">About</FooterLink>
+              <FooterLink href="/privatelabel">Private Label</FooterLink>
+              <FooterLink href="/manufacture">Manufacturing Process</FooterLink>
+              <FooterLink href="/aboutus">About</FooterLink>
               <FooterLink href="/contact">Contact</FooterLink>
               <FooterLink href="/contact">Request Quote</FooterLink>
-            </FooterAccordion>
-            <FooterAccordion title="Products">
-              <FooterLink href="/products/boxing-gloves">Boxing Gloves</FooterLink>
-              <FooterLink href="/products/martial-arts">Martial Arts Uniforms</FooterLink>
-              <FooterLink href="/products/mma">MMA Gear</FooterLink>
-              <FooterLink href="/products/accessories">Training Accessories</FooterLink>
-            </FooterAccordion>
+            </div>
+            
+            <div className="flex flex-col gap-3">
+              <FooterLink href="/details">Boxing Gloves</FooterLink>
+              <FooterLink href="/karatesuit">Martial Arts Uniforms</FooterLink>
+              <FooterLink href="/mmagloves">MMA Gear</FooterLink>
+              <FooterLink href="/trainingpad">Training Accessories</FooterLink>
+            </div>
           </div>
 
+          {/* Desktop Links with mapping arrays */}
           <div className="hidden lg:flex gap-16">
             <div className="flex flex-col gap-3">
-              {["Home", "Products", "Private Label", "Manufacturing Process"].map((link) => (
-                <a key={link} href="#" className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px] font-normal text-[#000000]">{link}</a>
+              {[
+                { name: "Home", href: "/" },
+                { name: "Products", href: "/products" },
+                { name: "Private Label", href: "/privatelabel" },
+                { name: "Manufacturing Process", href: "/manufacture" }
+              ].map((link) => (
+                <a key={link.name} href={link.href} className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px] font-normal text-[#000000]">
+                  {link.name}
+                </a>
               ))}
             </div>
             <div className="flex flex-col gap-3">
-              {["About", "Contact", "Request Quote"].map((link) => (
-                <a key={link} href="#" className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px] font-normal text-[#000000]">{link}</a>
+              {[
+                { name: "About", href: "/aboutus" },
+                { name: "Contact", href: "/contact" },
+                { name: "Request Quote", href: "/contact" }
+              ].map((link) => (
+                <a key={link.name} href={link.href} className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px] font-normal text-[#000000]">
+                  {link.name}
+                </a>
               ))}
             </div>
             <div className="flex flex-col gap-3">
-              {["Boxing Gloves", "Martial Arts Uniforms", "MMA Gear", "Training Accessories"].map((link) => (
-                <a key={link} href="#" className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px] font-normal text-[#000000]">{link}</a>
+              {[
+                { name: "Boxing Gloves", href: "/details" },
+                { name: "Martial Arts Uniforms", href: "/karatesuit" },
+                { name: "MMA Gear", href: "/mmagloves" },
+                { name: "Training Accessories", href: "/trainingpad" }
+              ].map((link) => (
+                <a key={link.name} href={link.href} className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px] font-normal text-[#000000]">
+                  {link.name}
+                </a>
               ))}
             </div>
           </div>
@@ -415,29 +438,24 @@ export default function KarateSuitDetailsPage() {
 
         <div className="max-w-[2560px] mx-auto px-6 md:px-10 py-8 md:py-10 flex flex-col md:flex-row items-start md:items-end justify-between gap-4 md:gap-0">
           <Link href="/" className="block">
-            <span className="uppercase tracking-tight text-[56px] leading-[85%] md:text-[101px] md:leading-[85%] font-bold italic text-[#0D0D0D]">
+            <span className="text-[69px] leading-[85%] tracking-[-0.03em] font-bold italic text-[#000000] text-left uppercase md:text-[101px] md:tracking-tight md:text-[#0D0D0D]">
               sarlam<br className="hidden md:block" /><span className="md:hidden"> </span>athletics
             </span>
           </Link>
-          <div className="flex flex-col md:items-end gap-2 md:gap-0">
-            <span className="md:hidden block text-[12px] leading-[16px] font-normal text-[#0D0D0D]">
-              Website by Sanna Granqvist<br />© 2026
-            </span>
-            <span className="hidden md:block text-[12px] leading-[16px] font-normal text-[#0D0D0D]">© 2026</span>
-          </div>
         </div>
 
-        <div className="bg-[#0D0D0D]">
+        <div className="bg-black">
           <div className="max-w-[2560px] mx-auto px-6 md:px-10 py-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-0">
-            <span className="text-[12px] leading-[16px] font-normal text-[#E3E2E2]">
+            <span className="text-[12px] leading-[16px] tracking-[0px] font-normal text-[#E3E2E2] text-left">
               © 2026 Sarlam Athletics. Private-label sports equipment manufacturer for combat sports brands.
             </span>
-            <span className="uppercase text-[12px] leading-[18px] font-medium text-[#FFFFFF]">
+            <span className="text-[12px] leading-[18px] tracking-[0px] font-medium text-[#FFFFFF] text-center md:text-left uppercase">
               USA (USD $) / English
             </span>
           </div>
         </div>
       </footer>
+
 
       {/* ── CSS Animations ── */}
       <style dangerouslySetInnerHTML={{
