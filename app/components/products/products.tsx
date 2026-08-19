@@ -744,7 +744,7 @@ export default function ProductPage() {
         </div>
       </section>
 
-      {/* ───── 11. Footer ───── */}
+     {/* ───── 11. Footer ───── */}
       <footer className="w-full bg-white flex flex-col items-center">
         <div className="w-full border-t border-gray-200" />
         <div className="w-full max-w-[2560px] px-4 md:px-10 py-12 md:py-16 flex flex-col lg:flex-row justify-between gap-10 md:gap-12">
@@ -759,18 +759,32 @@ export default function ProductPage() {
 
           <div className="lg:w-1/2 flex flex-col md:flex-row gap-8 md:gap-16">
             <div className="flex flex-col gap-3 md:gap-4">
-              {["Home", "Products", "Private Label", "Manufacturing Process"].map((link) => (
-                <a key={link} href="#" className="transition border-b border-gray-200 pb-2 md:border-b-0 md:pb-0 hover:opacity-70 text-[14px] leading-[17px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, letterSpacing: "0px", color: "#000000" }}>{link}</a>
+              {[
+                { name: "Home", href: "/" },
+                { name: "Products", href: "/products" },
+                { name: "Private Label", href: "/privatelabel" },
+                { name: "Manufacturing Process", href: "/manufacture" }
+              ].map((link) => (
+                <a key={link.name} href={link.href} className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, letterSpacing: "0px", color: "#000000" }}>{link.name}</a>
               ))}
             </div>
             <div className="flex flex-col gap-3 md:gap-4">
-              {["About", "Contact", "Request Quote"].map((link) => (
-                <a key={link} href="#" className="transition border-b border-gray-200 pb-2 md:border-b-0 md:pb-0 hover:opacity-70 text-[14px] leading-[17px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, letterSpacing: "0px", color: "#000000" }}>{link}</a>
+              {[
+                { name: "About", href: "/aboutus" },
+                { name: "Contact", href: "/contact" },
+                { name: "Request Quote", href: "/contact" }
+              ].map((link) => (
+                <a key={link.name} href={link.href} className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, letterSpacing: "0px", color: "#000000" }}>{link.name}</a>
               ))}
             </div>
             <div className="flex flex-col gap-3 md:gap-4">
-              {["Boxing Gloves", "Martial Arts Uniforms", "MMA Gear", "Training Accessories"].map((link) => (
-                <a key={link} href="#" className="transition border-b border-gray-200 pb-2 md:border-b-0 md:pb-0 hover:opacity-70 text-[14px] leading-[17px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, letterSpacing: "0px", color: "#000000" }}>{link}</a>
+              {[
+                { name: "Boxing Gloves", href: "/details" },
+                { name: "Martial Arts Uniforms", href: "/karatesuit" },
+                { name: "MMA Gear", href: "/mmagloves" },
+                { name: "Training Accessories", href: "/trainingpad" }
+              ].map((link) => (
+                <a key={link.name} href={link.href} className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, letterSpacing: "0px", color: "#000000" }}>{link.name}</a>
               ))}
             </div>
           </div>

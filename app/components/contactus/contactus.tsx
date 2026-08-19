@@ -354,7 +354,7 @@ function Footer() {
       <div className="max-w-[2560px] mx-auto px-5 lg:px-12 pt-12 lg:pt-16 pb-6 lg:pb-16 flex flex-col lg:flex-row gap-6 lg:gap-12">
         <div className="lg:w-1/2 space-y-4">
           <h2 className="text-[47px] leading-[58px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1.9px", color: "#000000" }}>
-           Ready To Menufacture Your Product ?
+         Ready To Menufacture Your Products ?
           </h2>
           <a href="mailto:hello@sarlamathletics.com" className="hover:text-[#0D0D0D] transition-colors block text-[47px] leading-[58px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1.9px", color: "#A5A5A5" }}>
             hello@sarlamathletics.com

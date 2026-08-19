@@ -436,7 +436,7 @@ export default function PrivateLabel() {
         </div>
       </section>
 
-      {/* ─── FOOTER ─── */}
+    {/* ─── FOOTER ─── */}
       <footer className="bg-white border-t border-gray-100">
         <div className="max-w-[2560px] mx-auto px-5 md:px-8 pt-[48px] pb-[40px] md:py-16">
           <div className="flex flex-col lg:flex-row justify-between gap-[16px] md:gap-12">
@@ -450,9 +450,9 @@ export default function PrivateLabel() {
                   color: "#000000",
                 }}
               >
-                Start Your Private Label
+               Ready Build Your Sports
                 <br className="hidden md:block" />
-                <span className="md:hidden"> </span>Manufacturing Project
+                <span className="md:hidden"> </span>Equipment Brand ?
               </h3>
               <a
                 href="mailto:hello@sarlamathletics.com"
@@ -468,45 +468,69 @@ export default function PrivateLabel() {
               </a>
             </div>
 
-            {/* Mobile Footer Navigation — flat list with arrows */}
+            {/* Mobile Footer Navigation — standard links to match desktop underline styling */}
             <div className="md:hidden mt-8 flex flex-col gap-[40px] pb-0">
-              {/* Group 1: Main Navigation */}
               <div className="flex flex-col gap-[12px]">
-                <FooterNavRow label="Home" href="/" />
-                <FooterNavRow label="Products" href="/products" />
-                <FooterNavRow label="Private Label" href="/private-label" />
-                <FooterNavRow
-                  label="Manufacturing Process"
-                  href="/manufacturing"
-                  showDivider={false}
-                />
+                {[
+                  { name: "Home", href: "/" },
+                  { name: "Products", href: "/products" },
+                  { name: "Private Label", href: "/privatelabel" },
+                  { name: "Manufacturing Process", href: "/manufacture" }
+                ].map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className="block transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px]"
+                    style={{
+                      fontFamily: "'FFF Acid Grotesk', sans-serif",
+                      fontWeight: 400,
+                      color: "#000000",
+                    }}
+                  >
+                    {link.name}
+                  </a>
+                ))}
               </div>
-              {/* Group 2: Secondary Navigation */}
               <div className="flex flex-col gap-[12px]">
-                <FooterNavRow label="About" href="/about" />
-                <FooterNavRow label="Contact" href="/contact" />
-                <FooterNavRow
-                  label="Request Quote"
-                  href="/contact"
-                  showDivider={false}
-                />
+                {[
+                  { name: "About", href: "/aboutus" },
+                  { name: "Contact", href: "/contact" },
+                  { name: "Request Quote", href: "/contact" }
+                ].map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className="block transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px]"
+                    style={{
+                      fontFamily: "'FFF Acid Grotesk', sans-serif",
+                      fontWeight: 400,
+                      color: "#000000",
+                    }}
+                  >
+                    {link.name}
+                  </a>
+                ))}
               </div>
-              {/* Group 3: Products */}
               <div className="flex flex-col gap-[12px]">
-                <FooterNavRow
-                  label="Boxing Gloves"
-                  href="/products/boxing-gloves"
-                />
-                <FooterNavRow
-                  label="Martial Arts Uniforms"
-                  href="/products/martial-arts"
-                />
-                <FooterNavRow label="MMA Gear" href="/products/mma" />
-                <FooterNavRow
-                  label="Training Accessories"
-                  href="/products/accessories"
-                  showDivider={false}
-                />
+                {[
+                  { name: "Boxing Gloves", href: "/details" },
+                  { name: "Martial Arts Uniforms", href: "/karatesuit" },
+                  { name: "MMA Gear", href: "/mmagloves" },
+                  { name: "Training Accessories", href: "/trainingpad" }
+                ].map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className="block transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px]"
+                    style={{
+                      fontFamily: "'FFF Acid Grotesk', sans-serif",
+                      fontWeight: 400,
+                      color: "#000000",
+                    }}
+                  >
+                    {link.name}
+                  </a>
+                ))}
               </div>
             </div>
 
@@ -514,14 +538,14 @@ export default function PrivateLabel() {
             <div className="hidden lg:flex gap-16">
               <div className="flex flex-col gap-3">
                 {[
-                  "Home",
-                  "Products",
-                  "Private Label",
-                  "Manufacturing Process",
+                  { name: "Home", href: "/" },
+                  { name: "Products", href: "/products" },
+                  { name: "Private Label", href: "/privatelabel" },
+                  { name: "Manufacturing Process", href: "/manufacture" }
                 ].map((link) => (
                   <a
-                    key={link}
-                    href="#"
+                    key={link.name}
+                    href={link.href}
                     className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px]"
                     style={{
                       fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -529,36 +553,19 @@ export default function PrivateLabel() {
                       color: "#000000",
                     }}
                   >
-                    {link}
-                  </a>
-                ))}
-              </div>
-              <div className="flex flex-col gap-3">
-                {["About", "Contact", "Request Quote"].map((link) => (
-                  <a
-                    key={link}
-                    href="#"
-                    className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px]"
-                    style={{
-                      fontFamily: "'FFF Acid Grotesk', sans-serif",
-                      fontWeight: 400,
-                      color: "#000000",
-                    }}
-                  >
-                    {link}
+                    {link.name}
                   </a>
                 ))}
               </div>
               <div className="flex flex-col gap-3">
                 {[
-                  "Boxing Gloves",
-                  "Martial Arts Uniforms",
-                  "MMA Gear",
-                  "Training Accessories",
+                  { name: "About", href: "/aboutus" },
+                  { name: "Contact", href: "/contact" },
+                  { name: "Request Quote", href: "/contact" }
                 ].map((link) => (
                   <a
-                    key={link}
-                    href="#"
+                    key={link.name}
+                    href={link.href}
                     className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px]"
                     style={{
                       fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -566,7 +573,28 @@ export default function PrivateLabel() {
                       color: "#000000",
                     }}
                   >
-                    {link}
+                    {link.name}
+                  </a>
+                ))}
+              </div>
+              <div className="flex flex-col gap-3">
+                {[
+                  { name: "Boxing Gloves", href: "/details" },
+                  { name: "Martial Arts Uniforms", href: "/karatesuit" },
+                  { name: "MMA Gear", href: "/mmagloves" },
+                  { name: "Training Accessories", href: "/trainingpad" }
+                ].map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px]"
+                    style={{
+                      fontFamily: "'FFF Acid Grotesk', sans-serif",
+                      fontWeight: 400,
+                      color: "#000000",
+                    }}
+                  >
+                    {link.name}
                   </a>
                 ))}
               </div>

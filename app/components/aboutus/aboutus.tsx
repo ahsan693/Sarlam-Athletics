@@ -170,7 +170,7 @@ function Footer() {
       <div className="max-w-[2560px] mx-auto flex flex-col lg:flex-row gap-10 md:gap-12 py-12 md:py-16 px-6 md:px-12">
         <div className="lg:w-1/2 space-y-4 md:space-y-6">
           <h2 className="max-w-[800px] text-[32px] leading-[38px] md:text-[47px] md:leading-[58px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1.9px", color: "#000000" }}>
-            Start Your Private Label Manufacturing Project
+           Let's Build Your Sports Equipment Brand
           </h2>
           <a href="mailto:hello@sarlamathletics.com" className="hover:text-[#0D0D0D] transition-colors block text-[22px] leading-[30px] md:text-[47px] md:leading-[58px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1px", color: "#A5A5A5" }}>
             hello@sarlamathletics.com
