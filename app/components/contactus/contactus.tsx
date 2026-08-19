@@ -467,22 +467,6 @@ function Footer() {
   );
 }
 
-// ─── BOTTOM BAR COMPONENT ─────────────────────────────────────
-function BottomBar() {
-  return (
-    <div className="bg-[#0D0D0D]">
-      <div className="max-w-[2560px] mx-auto py-6 lg:py-4 px-5 lg:px-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 lg:gap-0">
-        <div className="flex flex-col gap-1" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "12px", lineHeight: "16px", color: "#E3E2E2" }}>
-          <span>© 2026 Sarlam Athletics.</span>
-          <span>Private-label sports equipment manufacturer for combat sports brands.</span>
-        </div>
-        <div className="uppercase text-[12px] leading-[18px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, color: "#FFFFFF" }}>
-          USA (USD $) / ENGLISH
-        </div>
-      </div>
-    </div>
-  );
-}
 
 // ─── CONTACT PAGE ──────────────────────────────────────────────────
 export default function ContactPage() {
@@ -497,7 +481,6 @@ export default function ContactPage() {
         <FAQSection />
       </main>
       <Footer />
-      <BottomBar />
-    </div>
+     </div>
   );
 }
