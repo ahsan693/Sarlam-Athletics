@@ -444,9 +444,9 @@ export default function DetailsComponent() {
             </div>
             
             <div className="flex flex-col gap-3">
-              <FooterLink href="/Boxingguard">Boxing Gloves</FooterLink>
+              <FooterLink href="/details">Boxing Gloves</FooterLink>
               <FooterLink href="/karatesuit">Martial Arts Uniforms</FooterLink>
-              <FooterLink href="/mma-gloves">MMA Gear</FooterLink>
+              <FooterLink href="/mmagloves">MMA Gear</FooterLink>
               <FooterLink href="/trainingpad">Training Accessories</FooterLink>
             </div>
           </div>
@@ -468,8 +468,8 @@ export default function DetailsComponent() {
             <div className="flex flex-col gap-3">
               {[
                 { name: "About", href: "/aboutus" },
-                { name: "Contact", href: "/contactus" },
-                { name: "Request Quote", href: "/contactus" }
+                { name: "Contact", href: "/contact" },
+                { name: "Request Quote", href: "/contact" }
               ].map((link) => (
                 <a key={link.name} href={link.href} className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px] font-normal text-[#000000]">
                   {link.name}
@@ -479,9 +479,9 @@ export default function DetailsComponent() {
             <div className="flex flex-col gap-3">
               {[
                 { name: "Boxing Gloves", href: "/Boxingguard" },
-                { name: "Martial Arts Uniforms", href: "/karate-suit" },
-                { name: "MMA Gear", href: "/mma-gloves" },
-                { name: "Training Accessories", href: "/trainingpads" }
+                { name: "Martial Arts Uniforms", href: "/karatesuit" },
+                { name: "MMA Gear", href: "/mmagloves" },
+                { name: "Training Accessories", href: "/trainingpad" }
               ].map((link) => (
                 <a key={link.name} href={link.href} className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px] font-normal text-[#000000]">
                   {link.name}
