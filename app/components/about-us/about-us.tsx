@@ -51,8 +51,22 @@ const industries = [
 ];
 
 const testimonials = [
-  { quote: "Sarlam helped us launch our private label boxing equipment range on schedule. The product quality was consistent, communication was excellent, and the manufacturing process was transparent from sampling through delivery.", name: "Linnéa Moberg", role: "CEO, Stackflow", avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=150" },
-  { quote: "Most advisors hand you a template and call it strategy. Delta actually sat in the room with us, rewrote the model, and prepped us for every question investors asked.", name: "Erik Sandell", role: "Co-founder, Waypoint Health", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150" },
+  {
+    quote:
+      "Sarlam helped us launch our private label boxing equipment range on schedule. The product quality was consistent, communication was excellent, and the manufacturing process was transparent from sampling through delivery.",
+    name: "Linnéa Moberg",
+    role: "CEO, IronHand Gym",
+    avatar:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=150",
+  },
+  {
+    quote:
+      "Unlike many manufacturers, Sarlam worked closely with our team to refine materials, branding, and packaging before production. The finished products matched our specifications exactly.",
+    name: "Erik Sandell",
+    role: "Co-founder, Waypoint Athletics",
+    avatar:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150",
+  },
 ];
 
 export default function PrivateLabel() {
@@ -61,133 +75,362 @@ export default function PrivateLabel() {
       <Header />
 
       {/* ─── HERO SECTION ─── */}
-      <section className="relative h-[600px] md:h-[495px] 2xl:h-[650px] bg-[#0D0D0D] overflow-hidden -mt-[52px] pt-[52px] md:-mt-[0px] md:pt-[0px]">
-        <img src="/Page 5/01.png" alt="Boxing training ring" className="absolute inset-0 w-full h-full object-cover" />
+      <section className="relative h-[600px] md:h-[534px] 2xl:h-[650px] bg-[#0D0D0D] overflow-hidden -mt-[52px] pt-[52px] md:-mt-[0px] md:pt-[0px]">
+        <img
+          src="/Page 5/01.png"
+          alt="Boxing training ring"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-black/10 md:bg-gradient-to-r md:from-black md:via-black/60 md:to-black/10 bg-black/50" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/40 md:bg-gradient-to-t md:from-black/70 md:via-transparent md:to-black/40" />
 
-        <div className="relative z-20 max-w-[2560px] mx-auto px-5 md:px-8 py-16 md:py-24 h-full flex flex-col justify-center mt-12 md:mt-0">
+        <div className="relative z-20 max-w-[2560px] mx-auto px-5 md:px-16 h-full flex flex-col justify-end pb-[144px] mt-12 md:mt-0">
           <div>
-            <p className="uppercase mb-4 md:hidden text-[12px] leading-[18px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "0.15em", color: "#FFFFFF" }}>HOME / SERVICES</p>
-            <h1 className="max-w-2xl uppercase text-[36px] leading-[40px] md:text-[56px] md:leading-[105%]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-2px", color: "#FFFFFF" }}>
+            <p
+              className="uppercase mb-4 md:hidden text-[12px] leading-[18px]"
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 500,
+                letterSpacing: "0.15em",
+                color: "#FFFFFF",
+              }}
+            >
+              HOME / SERVICES
+            </p>
+            <h1
+              className="max-w-2xl text-[36px] leading-[40px] md:text-[47px] md:leading-[58px]"
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 500,
+                letterSpacing: "-1.9px",
+                color: "#FFFFFF",
+              }}
+            >
               Private Label Manufacturing
             </h1>
-            <p className="md:hidden mt-4 max-w-sm text-[14px] leading-[20px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "rgba(255,255,255,0.7)" }}>
-              Sarlam Athletics delivers high-end custom manufacturing for premium combat sports brands worldwide.
+            <p
+              className="md:hidden mt-4 max-w-sm text-[14px] leading-[20px]"
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 400,
+                color: "rgba(255,255,255,0.7)",
+              }}
+            >
+              Sarlam Athletics delivers high-end custom manufacturing for
+              premium combat sports brands worldwide.
             </p>
           </div>
 
-          <div className="mt-10 md:mt-16 flex flex-col md:flex-row md:items-start gap-6 md:gap-16">
-            <div className="space-y-1 border-t border-white/20 pt-4 md:border-t-0 md:pt-0">
-              <p className="uppercase" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", lineHeight: "18px", color: "rgba(255,255,255,0.5)" }}>Production Timeline</p>
-              <p className="text-[14px] leading-[16px] md:text-[15px] md:leading-[16px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "rgba(255,255,255,0.9)" }}>Production: 4–8 Weeks (After Sample Approval)</p>
+          <div className="mt-[72px] flex flex-col md:flex-row md:items-start gap-6 md:gap-[72px]">
+            <div className="space-y-[12px] border-t border-white/20 pt-4 md:border-t-0 md:pt-0">
+              <p
+                className="uppercase"
+                style={{
+                  fontFamily: "'FFF Acid Grotesk', sans-serif",
+                  fontWeight: 500,
+                  fontSize: "15px",
+                  lineHeight: "17px",
+                  letterSpacing: "0.4px",
+                  color: "#FFFFFF",
+                }}
+              >
+                Production Timeline
+              </p>
+              <p
+                className="text-[14px] leading-[16px] md:text-[15px] md:leading-[16px]"
+                style={{
+                  fontFamily: "'FFF Acid Grotesk', sans-serif",
+                  fontWeight: 400,
+                  color: "#FFFFFF",
+                }}
+              >
+                Production: 4–8 Weeks (After Sample Approval)
+              </p>
             </div>
-            <div className="space-y-1 border-t border-white/20 pt-4 md:border-t-0 md:pt-0">
-              <p className="uppercase" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", lineHeight: "18px", color: "rgba(255,255,255,0.5)" }}>Ideal For</p>
-              <p className="text-[14px] leading-[16px] md:text-[15px] md:leading-[16px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "rgba(255,255,255,0.9)" }}>Sports Brands, Gyms, Retailers & Distributors</p>
+            <div className="space-y-[12px] border-t border-white/20 pt-4 md:border-t-0 md:pt-0">
+              <p
+                className="uppercase"
+                style={{
+                  fontFamily: "'FFF Acid Grotesk', sans-serif",
+                  fontWeight: 500,
+                  fontSize: "15px",
+                  lineHeight: "17px",
+                  letterSpacing: "0.4px",
+                  color: "#FFFFFF",
+                }}
+              >
+                Ideal For
+              </p>
+              <p
+                className="text-[14px] leading-[16px] md:text-[15px] md:leading-[16px]"
+                style={{
+                  fontFamily: "'FFF Acid Grotesk', sans-serif",
+                  fontWeight: 400,
+                  color: "#FFFFFF",
+                }}
+              >
+                Sports Brands, Gyms, Retailers & Distributors
+              </p>
             </div>
-            <div className="space-y-1 border-t border-white/20 pt-4 md:border-t-0 md:pt-0">
-              <p className="uppercase" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", lineHeight: "18px", color: "rgba(255,255,255,0.5)" }}>Manufacturing Model</p>
-              <p className="text-[14px] leading-[16px] md:text-[15px] md:leading-[16px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "rgba(255,255,255,0.9)" }}>OEM & Private Label Production</p>
+            <div className="space-y-[12px] border-t border-white/20 pt-4 md:border-t-0 md:pt-0">
+              <p
+                className="uppercase"
+                style={{
+                  fontFamily: "'FFF Acid Grotesk', sans-serif",
+                  fontWeight: 500,
+                  fontSize: "15px",
+                  lineHeight: "17px",
+                  letterSpacing: "0.4px",
+                  color: "#FFFFFF",
+                }}
+              >
+                Manufacturing Model
+              </p>
+              <p
+                className="text-[14px] leading-[16px] md:text-[15px] md:leading-[16px]"
+                style={{
+                  fontFamily: "'FFF Acid Grotesk', sans-serif",
+                  fontWeight: 400,
+                  color: "#FFFFFF",
+                }}
+              >
+                OEM & Private Label Production
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* ─── PROCESS OVERVIEW ─── */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-[2560px] mx-auto px-5 md:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
-            <h2 className="max-w-xl text-[28px] leading-[32px] md:text-[37px] md:leading-[45.6px] mb-6 md:mb-0" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, letterSpacing: "-1.52px", color: "#000000" }}>
+      <section className="pt-[80px] md:pt-[120px] bg-white">
+        <div className="max-w-[2560px] mx-auto px-5 md:px-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-[36px] pb-[64px]">
+            <h2
+              className="max-w-[622px] text-[28px] leading-[32px] md:text-[22px] md:leading-[26px] mb-6 md:mb-0"
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 500,
+                letterSpacing: "-0.4px",
+                color: "#000000",
+              }}
+            >
               How Our Private Label Manufacturing Process Works
             </h2>
-            <div className="space-y-4 md:space-y-6 max-w-[800px]">
-              <p className="text-[14px] leading-[22px] md:text-[16px] md:leading-[24px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#434343" }}>
-                Sarlam Athletics helps sports brands develop, manufacture, and launch custom combat sports equipment through a complete OEM and private label production process. From product planning and material selection to sampling, branding, manufacturing, and worldwide delivery, every stage is managed by our production team.
+            <div className="max-w-[622px]">
+              <p
+                className="text-[14px] leading-[22px] md:text-[15px] md:leading-[16px]"
+                style={{
+                  fontFamily: "'FFF Acid Grotesk', sans-serif",
+                  fontWeight: 400,
+                  color: "#434343",
+                }}
+              >
+                Sarlam Athletics helps sports brands develop, manufacture, and
+                launch custom combat sports equipment through a complete OEM and
+                private label production process. From product planning and
+                material selection to sampling, branding, manufacturing, and
+                worldwide delivery, every stage is managed by our production
+                team.
               </p>
-              <p className="text-[14px] leading-[22px] md:text-[16px] md:leading-[24px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#434343" }}>
-                We manufacture boxing gloves, MMA gear, BJJ uniforms, karate apparel, hand wraps, protective equipment, and training accessories using premium materials, consistent quality control, and scalable wholesale production.
+              <p
+                className="mt-[20px] text-[14px] leading-[22px] md:text-[15px] md:leading-[16px]"
+                style={{
+                  fontFamily: "'FFF Acid Grotesk', sans-serif",
+                  fontWeight: 400,
+                  color: "#434343",
+                }}
+              >
+                We manufacture boxing gloves, MMA gear, BJJ uniforms, karate
+                apparel, hand wraps, protective equipment, and training
+                accessories using premium materials, consistent quality control,
+                and scalable wholesale production.
               </p>
-              <p className="text-[14px] leading-[22px] md:text-[16px] md:leading-[24px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#434343" }}>
-                Whether you're launching a new sports brand or expanding an existing product line, we provide flexible production, custom branding, and reliable manufacturing support from prototype to shipment.
+              <p
+                className="mt-[20px] text-[14px] leading-[22px] md:text-[15px] md:leading-[16px]"
+                style={{
+                  fontFamily: "'FFF Acid Grotesk', sans-serif",
+                  fontWeight: 400,
+                  color: "#434343",
+                }}
+              >
+                Whether you're launching a new sports brand or expanding an
+                existing product line, we provide flexible production, custom
+                branding, and reliable manufacturing support from prototype to
+                shipment.
               </p>
             </div>
           </div>
         </div>
-        <div className="w-full h-[280px] md:h-[520px] 2xl:h-[700px] mt-10 md:mt-16 overflow-hidden max-w-[2560px] mx-auto">
-          <img src="/Page 5/03.png" alt="MMA training in the cage" className="w-full h-full object-cover" />
+        <div className="w-full h-[280px] md:h-[422px] 2xl:h-[700px] overflow-hidden max-w-[2560px] mx-auto md:px-4">
+          <img
+            src="/Page 5/03.png"
+            alt="MMA training in the cage"
+            className="w-full h-full object-cover"
+          />
         </div>
       </section>
 
       {/* ─── DETAIL LIST SECTIONS ─── */}
-      <section className="max-w-[2560px] mx-auto px-5 md:px-8 bg-white">
-        <div className="divide-y divide-gray-200 border-b border-gray-200">
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 py-16 md:py-24">
-            <h2 className="max-w-xl uppercase text-[22px] leading-[26px] md:text-[26px] md:leading-[26px] mb-4 md:mb-0" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, letterSpacing: "-0.5px", color: "#0D0D0D" }}>
-              What's Included in Our Manufacturing Service
-            </h2>
-            <ul className="space-y-3 md:space-y-4 max-w-[800px]">
-              {includedItems.map((item, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <span style={{ fontSize: "17px", color: "#0D0D0D" }}>•</span>
-                  <span className="text-[14px] leading-[22px] md:text-[15px] md:leading-[24px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#434343" }}>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 py-16 md:py-24">
-            <h2 className="max-w-xl uppercase text-[22px] leading-[26px] md:text-[26px] md:leading-[26px] mb-4 md:mb-0" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, letterSpacing: "-0.5px", color: "#0D0D0D" }}>
-              Start Your Manufacturing Project
-            </h2>
-            <p className="max-w-[800px] text-[14px] leading-[22px] md:text-[15px] md:leading-[24px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#434343" }}>
-              Most manufacturing partnerships start with a conversation. Tell us about your product idea, branding, materials, estimated order quantity, and timeline. We'll recommend the right manufacturing approach and prepare a tailored quotation.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 py-16 md:py-24">
-            <h2 className="max-w-xl uppercase text-[22px] leading-[26px] md:text-[26px] md:leading-[26px] mb-4 md:mb-0" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, letterSpacing: "-0.5px", color: "#0D0D0D" }}>
-              Industries We Serve
-            </h2>
-            <ul className="space-y-3 md:space-y-4 max-w-[800px]">
-              {industries.map((item, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <span style={{ fontSize: "17px", color: "#0D0D0D" }}>•</span>
-                  <span className="text-[14px] leading-[22px] md:text-[15px] md:leading-[24px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#434343" }}>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+      <section className="max-w-[2560px] mx-auto px-5 md:px-16 bg-white pt-[72px]">
+        {/* What's Included */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-[36px] pb-[64px] border-b border-[#D7DADF]">
+          <h2
+            className="max-w-[622px] text-[22px] leading-[26px] md:text-[22px] md:leading-[26px] mb-4 md:mb-0"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 500,
+              letterSpacing: "-0.4px",
+              color: "#000000",
+            }}
+          >
+            What's Included in Our Manufacturing Service
+          </h2>
+          <ul className="space-y-[10px] max-w-[622px]">
+            {includedItems.map((item, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span
+                  style={{
+                    fontSize: "17px",
+                    lineHeight: "16px",
+                    color: "#434343",
+                  }}
+                >
+                  •
+                </span>
+                <span
+                  className="text-[14px] leading-[22px] md:text-[15px] md:leading-[16px]"
+                  style={{
+                    fontFamily: "'FFF Acid Grotesk', sans-serif",
+                    fontWeight: 400,
+                    color: "#434343",
+                  }}
+                >
+                  {item}
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <div className="flex justify-center pb-16 md:pb-24 pt-12 md:pt-16 w-full">
+        {/* Industries We Serve */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-[36px] py-[64px] md:pt-[72px] md:pb-[64px] border-b border-[#D7DADF]">
+          <h2
+            className="max-w-[622px] text-[22px] leading-[26px] md:text-[22px] md:leading-[26px] mb-4 md:mb-0"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 500,
+              letterSpacing: "-0.4px",
+              color: "#000000",
+            }}
+          >
+            Industries We Serve
+          </h2>
+          <ul className="space-y-[10px] max-w-[622px]">
+            {industries.map((item, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span
+                  style={{
+                    fontSize: "17px",
+                    lineHeight: "16px",
+                    color: "#434343",
+                  }}
+                >
+                  •
+                </span>
+                <span
+                  className="text-[14px] leading-[22px] md:text-[15px] md:leading-[16px]"
+                  style={{
+                    fontFamily: "'FFF Acid Grotesk', sans-serif",
+                    fontWeight: 400,
+                    color: "#434343",
+                  }}
+                >
+                  {item}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="flex justify-center py-[60px] w-full">
           <RollingButton
             href="/contact"
-            className="bg-[#0D0D0D] px-8 py-4 uppercase w-full md:w-auto text-[14px] text-white"
-            style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, letterSpacing: "5%", borderRadius: "8px" }}
+            className="bg-black px-5 py-3 w-full md:w-auto text-white"
+            style={{
+              fontFamily: "'FFF Acid Grotesk', sans-serif",
+              fontWeight: 400,
+              fontSize: "15px",
+              lineHeight: "16px",
+              borderRadius: "4px",
+            }}
           >
-            Request A Quote
+            Request a Manufacturing Quote
           </RollingButton>
         </div>
       </section>
 
       {/* ─── TESTIMONIALS ─── */}
-      <section className="max-w-[2560px] mx-auto px-5 md:px-8 py-16 md:py-24 bg-white">
-        <h2 className="mb-10 md:mb-16 text-[28px] leading-[32px] md:text-[37px] md:leading-[46px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1.5px", color: "#000000" }}>
+      <section className="max-w-[2560px] mx-auto px-5 md:px-16 pt-[80px] pb-[120px] bg-white">
+        <h2
+          className="mb-[48px] text-[28px] leading-[32px] md:text-[37px] md:leading-[46px]"
+          style={{
+            fontFamily: "'FFF Acid Grotesk', sans-serif",
+            fontWeight: 500,
+            letterSpacing: "-1.5px",
+            color: "#000000",
+          }}
+        >
           Testimonials
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 border-t border-gray-200">
+        <div className="grid grid-cols-1 md:grid-cols-2 border-t border-[#D7DADF]">
           {testimonials.map((t, i) => (
-            <div key={i} className={`py-10 md:py-12 flex flex-col justify-between ${i === 0 ? "md:pr-16 md:border-r border-b md:border-b-0 border-gray-200" : "md:pl-16"}`}>
-              <p className="mb-6 md:mb-8 text-[18px] leading-[22px] md:text-[22px] md:leading-[1.2]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, color: "#000000" }}>
+            <div
+              key={i}
+              className={`py-8 md:py-8 flex flex-col justify-between ${
+                i === 0
+                  ? "md:pr-8 md:border-r border-b md:border-b-0 border-[#D7DADF]"
+                  : "md:pl-8"
+              }`}
+              style={{ minHeight: "380px" }}
+            >
+              <p
+                className="mb-6 md:mb-0 text-[18px] leading-[22px] md:text-[22px] md:leading-[26px] max-w-[540px]"
+                style={{
+                  fontFamily: "'FFF Acid Grotesk', sans-serif",
+                  fontWeight: 500,
+                  letterSpacing: "-0.4px",
+                  color: "#000000",
+                }}
+              >
                 &ldquo;{t.quote}&rdquo;
               </p>
               <div className="flex items-center gap-4">
-                <img src={t.avatar} alt={t.name} className="w-10 h-10 md:w-12 md:h-12 rounded-[16px] md:rounded-[20px] object-cover" />
+                <img
+                  src={t.avatar}
+                  alt={t.name}
+                  className="w-[44px] h-[44px] rounded-full object-cover"
+                />
                 <div>
-                  <p className="text-[14px] leading-[18px] md:text-[15px] md:leading-[20px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, color: "#000000" }}>{t.name}</p>
-                  <p className="text-[13px] leading-[16px] md:text-[15px] md:leading-[20px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#757575" }}>{t.role}</p>
+                  <p
+                    className="text-[14px] leading-[16px] md:text-[15px] md:leading-[16px]"
+                    style={{
+                      fontFamily: "'FFF Acid Grotesk', sans-serif",
+                      fontWeight: 400,
+                      color: "#434343",
+                    }}
+                  >
+                    {t.name}
+                  </p>
+                  <p
+                    className="text-[13px] leading-[16px] md:text-[15px] md:leading-[16px]"
+                    style={{
+                      fontFamily: "'FFF Acid Grotesk', sans-serif",
+                      fontWeight: 400,
+                      color: "#434343",
+                    }}
+                  >
+                    {t.role}
+                  </p>
                 </div>
               </div>
             </div>
