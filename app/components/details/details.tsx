@@ -478,7 +478,7 @@ export default function DetailsComponent() {
             </div>
             <div className="flex flex-col gap-3">
               {[
-                { name: "Boxing Gloves", href: "/Boxingguard" },
+                { name: "Boxing Gloves", href: "/details" },
                 { name: "Martial Arts Uniforms", href: "/karatesuit" },
                 { name: "MMA Gear", href: "/mmagloves" },
                 { name: "Training Accessories", href: "/trainingpad" }
