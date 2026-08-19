@@ -327,73 +327,140 @@ function FAQSection() {
 function Footer() {
   const footerNav = {
     pages: [ { label: "Home", href: "/" }, { label: "Products", href: "/products" }, { label: "Private Label", href: "/privatelabel" }, { label: "Manufacturing Process", href: "/manufacture" } ],
-    company: [ { label: "About", href: "/about" }, { label: "Contact", href: "/contactus" }, { label: "Request Quote", href: "/contactus" } ],
-    products: [ { label: "Boxing Gloves", href: "/products" }, { label: "Martial Arts Uniforms", href: "/products" }, { label: "MMA Gear", href: "/products" }, { label: "Training Accessories", href: "/products" } ],
+    company: [ { label: "About", href: "/aboutus" }, { label: "Contact", href: "/contact" }, { label: "Request Quote", href: "/contact" } ],
+    products: [ { label: "Boxing Gloves", href: "/details" }, { label: "Martial Arts Uniforms", href: "/karatesuit" }, { label: "MMA Gear", href: "/mmagloves" }, { label: "Training Accessories", href: "/trainingpad" } ],
   };
 
   const NavGroup = ({ links }: { links: { label: string; href: string }[] }) => (
     <div className="flex flex-col gap-3 lg:gap-4">
-      {links.map((link, i) => (
-        <div key={link.label}>
-          <div className="flex items-center justify-between group">
-            <Link href={link.href} className="hover:opacity-70 transition-opacity text-[14px] leading-[17px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#000000" }}>{link.label}</Link>
-            <span className="text-black opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block"><ArrowUpRight /></span>
-          </div>
-          {/* Mobile: show bottom border on all but last item in group */}
-          {i < links.length - 1 && <div className="h-px bg-gray-200 mt-3 lg:hidden" />}
+      {links.map((link) => (
+        <div key={link.label} className="flex items-center justify-between group border-b border-gray-200 pb-2">
+          <Link href={link.href} className="hover:opacity-70 transition-opacity text-[14px] leading-[17px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#000000" }}>{link.label}</Link>
+          <span className="text-black opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block"><ArrowUpRight /></span>
         </div>
       ))}
     </div>
   );
 
   return (
-    <footer className="bg-white">
-      <div className="h-px bg-[#D7DADE]" />
+ <footer className="w-full bg-white">
+      <div className="border-t border-[#D7DADE]" />
 
-      {/* Top Content: heading + email */}
-      <div className="max-w-[2560px] mx-auto px-5 lg:px-12 pt-12 lg:pt-16 pb-6 lg:pb-16 flex flex-col lg:flex-row gap-6 lg:gap-12">
-        <div className="lg:w-1/2 space-y-4">
-          <h2 className="text-[47px] leading-[58px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1.9px", color: "#000000" }}>
-         Ready To Menufacture Your Products ?
-          </h2>
-          <a href="mailto:hello@sarlamathletics.com" className="hover:text-[#0D0D0D] transition-colors block text-[47px] leading-[58px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1.9px", color: "#A5A5A5" }}>
+      {/* Footer Top Content */}
+      <div className="max-w-[2560px] mx-auto px-5 md:px-12 py-12 md:py-16 flex flex-col lg:flex-row justify-between gap-10 md:gap-12">
+        <div className="lg:w-1/2">
+          <h3 className="max-w-[672px] mb-4 md:mb-6 text-[47px] leading-[58px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1.9px", color: "#000000" }}>
+            Let&apos;s Build Your Sports{"\n"}Brand Together
+          </h3>
+          <a href="mailto:hello@sarlamathletics.com" className="block hover:text-black transition break-all text-[47px] leading-[58px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1.9px", color: "#A5A5A5" }}>
             hello@sarlamathletics.com
           </a>
         </div>
 
-        {/* Desktop: 3-column nav grid */}
-        <div className="hidden lg:grid lg:w-1/2 lg:grid-cols-3 gap-8">
-          <NavGroup links={footerNav.pages} />
-          <NavGroup links={footerNav.company} />
-          <NavGroup links={footerNav.products} />
+        {/* Desktop Navigation Links */}
+        <div className="hidden lg:flex lg:w-1/2 flex-row gap-8 lg:gap-16">
+          <div className="flex flex-col gap-3 md:gap-4 w-full">
+            {[
+              { label: "Home", href: "/" },
+              { label: "Products", href: "/products" },
+              { label: "Private Label", href: "/privatelabel" },
+              { label: "Manufacturing Process", href: "/manufacture" },
+            ].map((link, idx) => (
+              <Link key={idx} href={link.href} className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#000000" }}>
+                {link.label}
+              </Link>
+            ))}
+          </div>
+          <div className="flex flex-col gap-3 md:gap-4 w-full">
+            {[
+              { label: "About", href: "/aboutus" },
+              { label: "Contact", href: "/contact" },
+              { label: "Request Quote", href: "/contact" },
+            ].map((link, idx) => (
+              <Link key={idx} href={link.href} className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#000000" }}>
+                {link.label}
+              </Link>
+            ))}
+          </div>
+          <div className="flex flex-col gap-3 md:gap-4 w-full">
+            {[
+              { label: "Boxing Gloves", href: "/details" },
+              { label: "Martial Arts Uniforms", href: "/karatesuit" },
+              { label: "MMA Gear", href: "/mmagloves" },
+              { label: "Training Accessories", href: "/trainingpad" },
+            ].map((link, idx) => (
+              <Link key={idx} href={link.href} className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#000000" }}>
+                {link.label}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Mobile: stacked nav groups with bottom borders */}
-      <div className="lg:hidden px-5 pb-12 flex flex-col gap-10">
-        <NavGroup links={footerNav.pages} />
-        <NavGroup links={footerNav.company} />
-        <NavGroup links={footerNav.products} />
+      {/* Mobile Navigation Links */}
+      <div className="lg:hidden px-5 pb-12">
+        <div className="flex flex-col gap-10">
+          <div className="flex flex-col gap-3">
+            {[
+              { label: "Home", href: "/" },
+              { label: "Products", href: "/products" },
+              { label: "Private Label", href: "/privatelabel" },
+              { label: "Manufacturing Process", href: "/manufacture" },
+            ].map((link, idx) => (
+              <Link key={idx} href={link.href} className="block transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#000000" }}>
+                {link.label}
+              </Link>
+            ))}
+          </div>
+          <div className="flex flex-col gap-3">
+            {[
+              { label: "About", href: "/aboutus" },
+              { label: "Contact", href: "/contact" },
+              { label: "Request Quote", href: "/contact" },
+            ].map((link, idx) => (
+              <Link key={idx} href={link.href} className="block transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#000000" }}>
+                {link.label}
+              </Link>
+            ))}
+          </div>
+          <div className="flex flex-col gap-3">
+            {[
+              { label: "Boxing Gloves", href: "/details" },
+              { label: "Martial Arts Uniforms", href: "/karatesuit" },
+              { label: "MMA Gear", href: "/mmagloves" },
+              { label: "Training Accessories", href: "/trainingpad" },
+            ].map((link, idx) => (
+              <Link key={idx} href={link.href} className="block transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#000000" }}>
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
 
+      {/* Divider line */}
+      <div className="w-full border-t border-[#D7DADE]" />
+
       {/* Brand Section */}
-      <div className="max-w-[2560px] mx-auto px-5 lg:px-12 py-10 lg:py-10">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
-          <Link href="/" className="block">
-            <span className="uppercase tracking-tight block" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, fontStyle: "italic", color: "#000000" }}>
-              {/* Mobile: 69px, Desktop: 101px */}
-              <span className="text-[69px] leading-[85%] tracking-[-3%] lg:text-[101px] lg:leading-[85%]">
-                sarlam{"\n"}athletics
-              </span>
-            </span>
-          </Link>
-          <div className="flex flex-col gap-2 lg:items-end">
-            {/* Mobile: show "Website by" + year */}
-            <span className="block lg:hidden text-[12px] leading-[17px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#A5A5A5" }}>
-              Website by Sanna Granqvist
-            </span>
-            <span className="block text-[14px] leading-[17px] lg:text-[12px] lg:leading-[16px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#434343" }}>© 2026</span>
+      <div className="max-w-[2560px] mx-auto px-5 md:px-12 py-10 md:py-12 flex flex-col md:flex-row md:items-end justify-between gap-8 md:gap-0">
+        <Link href="/" className="block">
+          <p className="uppercase text-[69px] leading-[85%] md:text-[101px] md:leading-[85%]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, fontStyle: "italic", letterSpacing: "-3%", color: "#000000" }}>
+            sarlam<br />athletics
+          </p>
+        </Link>
+        <div className="flex flex-col md:flex-row md:items-end gap-[10px]">
+          <span className="block md:hidden text-[12px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#A5A5A5" }}>Website by Sanna Granqvist</span>
+          <span className="block text-[14px] md:text-[12px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, lineHeight: "17px", color: "#434343" }}>© 2026</span>
+        </div>
+      </div>
+
+      {/* Bottom bar */}
+      <div className="w-full bg-[#0D0D0D] py-4 md:py-6">
+        <div className="max-w-[2560px] mx-auto px-5 md:px-12 flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-0">
+          <div className="flex flex-col md:flex-row md:items-center gap-1 text-[12px] leading-[16px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#E3E2E2" }}>
+            <span>© 2026 Sarlam Athletics. Private-label sports equipment manufacturer for combat sports brands.</span>
           </div>
+          <span className="uppercase text-[12px] leading-[18px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, color: "#FFFFFF" }}>USA (USD $) / English</span>
         </div>
       </div>
     </footer>
