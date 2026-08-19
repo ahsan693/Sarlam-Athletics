@@ -37,39 +37,32 @@ const RollingButton = ({ href, children, className = "", style = {}, onClick, ty
 const ArrowUpRight = () => (
   <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 9L9 3M9 3H4M9 3v5" /></svg>
 );
-const SearchOutline = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>
-);
-const LinkIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></svg>
-);
-const TargetIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" /></svg>
-);
-const HandshakeIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z" /></svg>
-);
-const ChevronDown = ({ className = "" }: { className?: string }) => (
-  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" className={className}><path d="M4 7l5 5 5-5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+
+// ─── Badge Icon (checkmark in circle) ───
+const BadgeCheckIcon = () => (
+  <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+    <path d="M9 15L13 19L21 11" stroke="#0D0D0D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
 );
 
 // ─── HERO SECTION ──────────────────────────────────────────────────
 function HeroSection() {
   return (
-    <section className="w-full bg-white px-2 pt-[42px] lg:px-0 lg:pt-0 flex justify-center">
-      <div className="relative w-full max-w-[2560px] bg-[#F0EDE9] rounded-xl overflow-hidden px-5 py-20 lg:rounded-none lg:px-12 lg:pt-[164px] lg:pb-[180px]">
+    <section className="w-full bg-white lg:px-0 lg:pt-0 flex justify-center">
+      <div className="relative w-full max-w-[2560px] bg-[#F0EDE9] overflow-hidden px-5 py-20 lg:rounded-none lg:px-12 lg:pt-[164px] lg:pb-[180px]">
         <div className="absolute inset-0 bg-black/50 z-[1]" />
         <div className="absolute inset-0 bg-cover bg-center z-0" style={{ backgroundImage: "url('/Page 6/01.png')" }} />
         <div className="relative z-[2] max-w-[1200px]">
-         <h1 style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "47px", lineHeight: "1.2", color: "#FFFFFF" }}>
-  Request a Private Label <br />
-  Manufacturing Quote
-</h1>
-         <p className="mt-4 md:mt-6 max-w-[800px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "15px", lineHeight: "1.6", color: "#F0EDE9", textTransform: "uppercase", letterSpacing: "0.05em" }}>
-  Tell us what you want to manufacture, and our team will prepare  a  <br className="hidden md:block" />
- customized production plan, MOQ recommendation, material options, <br className="hidden md:block" />
-  pricing estimate, and production timeline within 1–2 business days.
-</p>
+          {/* Mobile: 28px/34px, Desktop: 47px */}
+          <h1 style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, color: "#FFFFFF" }}
+              className="text-[28px] leading-[34px] tracking-[-1px] lg:text-[47px] lg:leading-[1.2] lg:tracking-normal">
+            Request a Private Label Manufacturing Quote
+          </h1>
+          {/* Mobile: 14px/20px normal case, Desktop: 15px/1.6 uppercase */}
+          <p className="mt-4 md:mt-6 max-w-[800px] text-[14px] leading-[20px] tracking-normal lg:text-[15px] lg:leading-[1.6] lg:uppercase lg:tracking-[0.05em]"
+             style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, color: "#F0EDE9" }}>
+            Tell us what you want to manufacture, and our team will prepare a customized production plan, MOQ recommendation, material options, pricing estimate, and production timeline within 1–2 business days.
+          </p>
         </div>
       </div>
     </section>
@@ -79,32 +72,54 @@ function HeroSection() {
 // ─── QUOTE FORM SECTION ────────────────────────────────────────────
 function QuoteFormSection() {
   return (
-    <section className="w-full bg-white px-4 lg:px-3 py-16 md:py-24">
-      <div className="max-w-[440px] mx-auto flex flex-col gap-8 md:gap-10">
-        <div className="flex flex-col gap-3 md:gap-4">
-          <h2 style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "22px", color: "#0D0D0D" }}>
+    <section className="w-full bg-white px-4 lg:px-3 py-10 lg:py-24">
+      <div className="max-w-[440px] mx-auto flex flex-col gap-6 lg:gap-10">
+        <div className="flex flex-col gap-2 lg:gap-4">
+          <h2 style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "22px", lineHeight: "28px", color: "#0D0D0D" }}>
             Tell Us About Your Project
           </h2>
-          <p style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "16px", lineHeight: "1.5", color: "#707070" }}>
+          <p className="text-[14px] leading-[20px] lg:text-[16px] lg:leading-[1.5]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>
             Complete the form below and we&apos;ll contact you with manufacturing recommendations, estimated pricing, production timelines, and the next steps for your project.
           </p>
         </div>
 
         <form className="flex flex-col gap-4">
-          <input type="text" placeholder="Full Name*" className="border border-[#C9C9C9] rounded px-3 py-3.5 bg-transparent outline-none placeholder:text-[#707070]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "14px", color: "#707070" }} />
-          <input type="email" placeholder="Business Email*" className="border border-[#C9C9C9] rounded px-3 py-3.5 bg-transparent outline-none placeholder:text-[#707070]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "14px", color: "#707070" }} />
-          <input type="tel" placeholder="Phone Number (Optional)" className="border border-[#C9C9C9] rounded px-3 py-3.5 bg-transparent outline-none placeholder:text-[#707070]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "14px", color: "#707070" }} />
-          
-          <div className="grid grid-cols-2 gap-3">
-            <input type="text" placeholder="Product Category*" className="border border-[#C9C9C9] rounded px-3 py-3.5 bg-transparent outline-none placeholder:text-[#707070] min-w-0" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "14px", color: "#707070" }} />
-            <input type="text" placeholder="Estimated Order Quantity" className="border border-[#C9C9C9] rounded px-3 py-3.5 bg-transparent outline-none placeholder:text-[#707070] min-w-0" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "14px", color: "#707070" }} />
+          {/* Each input: label on top, value/placeholder below — matching Figma's 2-line input pattern */}
+          <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
+            <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Full Name*</span>
+            <input type="text" placeholder="e.g. John Doe" className="bg-transparent outline-none placeholder:text-[#0D0D0D] text-[14px] leading-[18px] mt-0" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} />
           </div>
 
-          <textarea placeholder="Project Details*" rows={3} className="border border-[#C9C9C9] rounded px-3 py-3.5 bg-transparent outline-none resize-none placeholder:text-[#707070]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "14px", color: "#707070" }} />
+          <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
+            <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Business Email*</span>
+            <input type="email" placeholder="e.g. john@yourbrand.com" className="bg-transparent outline-none placeholder:text-[#0D0D0D] text-[14px] leading-[18px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} />
+          </div>
+
+          <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
+            <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Phone Number (Optional)</span>
+            <input type="tel" placeholder="e.g. +1 (555) 000-0000" className="bg-transparent outline-none placeholder:text-[#0D0D0D] text-[14px] leading-[18px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} />
+          </div>
+
+          {/* On mobile: single column. On desktop: 2-col grid */}
+          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 lg:gap-3">
+            <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
+              <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Product Category*</span>
+              <input type="text" placeholder="Select Category (e.g. Boxing Gloves)" className="bg-transparent outline-none placeholder:text-[#0D0D0D] text-[14px] leading-[18px] min-w-0" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} />
+            </div>
+            <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
+              <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Estimated Order Quantity*</span>
+              <input type="text" placeholder="e.g. 500 pairs" className="bg-transparent outline-none placeholder:text-[#0D0D0D] text-[14px] leading-[18px] min-w-0" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} />
+            </div>
+          </div>
+
+          <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
+            <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Project Details*</span>
+            <textarea placeholder="Tell us about your branding, materials, colors, logo requirements, packaging, target market, or any other details." rows={3} className="bg-transparent outline-none resize-none placeholder:text-[#0D0D0D] text-[14px] leading-[18px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} />
+          </div>
 
           <RollingButton
             type="submit"
-            className="w-full bg-[#0D0D0D] py-[12px] px-10 mt-2 rounded-[4px]"
+            className="w-full bg-[#0D0D0D] py-[7px] px-10 mt-0 rounded-[4px]"
             style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.05em", color: "#FFFFFF" }}
           >
             Request Manufacturing Quote
@@ -116,10 +131,6 @@ function QuoteFormSection() {
 }
 
 // ─── TRUST BADGES / WHY CONTACT ────────────────────────────────────
-const CheckIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0D0D0D" strokeWidth="2"><path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" /></svg>
-);
-
 const badges = [
   { label: "Factory-Direct Manufacturing" },
   { label: "OEM & Private Label Production" },
@@ -127,16 +138,32 @@ const badges = [
   { label: "Worldwide Shipping" },
 ];
 
+const CheckIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0D0D0D" strokeWidth="2"><path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+);
+
 function TrustBadgesSection() {
   return (
-    <section className="w-full bg-white border-t border-[#C9C9C9] px-4 lg:px-10 py-16 md:py-24 flex justify-center">
+    <section className="w-full bg-white border-t border-[#C9C9C9] px-4 lg:px-10 py-10 lg:py-24 flex justify-center">
       <div className="w-full max-w-[2560px]">
-        <p className="text-center mb-10 md:mb-16" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "15px", textTransform: "uppercase", letterSpacing: "0.05em", color: "#0D0D0D" }}>
+        <p className="text-center mb-6 lg:mb-16" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "15px", textTransform: "uppercase", letterSpacing: "0.4px", color: "#0D0D0D" }}>
           Why Contact Sarlam Athletics?
         </p>
-        <div className="flex flex-wrap justify-between gap-6 md:gap-8 lg:gap-4">
+
+        {/* Mobile: 2x2 card grid with icon above text */}
+        <div className="flex flex-wrap gap-3 lg:hidden">
           {badges.map((badge, i) => (
-            <div key={i} className="flex items-start gap-2 basis-[45%] lg:basis-auto">
+            <div key={i} className="flex flex-col gap-2 p-3 basis-[calc(50%-6px)]">
+              <BadgeCheckIcon />
+              <p style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", lineHeight: "16px", color: "#0D0D0D" }}>{badge.label}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop: inline row with checkmarks */}
+        <div className="hidden lg:flex flex-wrap justify-between gap-4">
+          {badges.map((badge, i) => (
+            <div key={i} className="flex items-start gap-2 basis-auto">
               <div className="w-5 h-5 flex-shrink-0 mt-0.5"><CheckIcon /></div>
               <p style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "15px", lineHeight: "1.2", textTransform: "uppercase", color: "#0D0D0D" }}>{badge.label}</p>
             </div>
@@ -152,7 +179,7 @@ const steps = [
   { num: "1", text: "We review your requirements." },
   { num: "2", text: "Our manufacturing team prepares a quotation." },
   { num: "3", text: "We recommend materials, branding, and production options." },
-  { num: "4", text: "Prototype development begins after approval. This reduces uncertainty." },
+  { num: "4", text: "Prototype development begins after approval." },
 ];
 
 function WhatHappensNextSection() {
@@ -192,12 +219,14 @@ function WhatHappensNextSection() {
   const lines = [l1, l2, l3];
 
   return (
-    <section className="w-full bg-[#232323] px-4 lg:px-20 py-16 md:py-24 flex justify-center" ref={containerRef}>
+    <section className="w-full bg-[#232323] px-4 lg:px-20 py-12 lg:py-24 flex justify-center" ref={containerRef}>
       <div className="w-full max-w-[2560px] text-center">
-        <h2 className="mb-10 md:mb-16" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "47px", lineHeight: "1.2", color: "#FFFFFF" }}>
+        {/* Mobile: 35px/42px, Desktop: 47px */}
+        <h2 className="mb-8 lg:mb-16 text-[35px] leading-[42px] tracking-[-0.7px] lg:text-[47px] lg:leading-[1.2] lg:tracking-normal" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, color: "#FFFFFF" }}>
           What Happens Next?
         </h2>
 
+        {/* Desktop: animated horizontal stepper */}
         <div className="hidden lg:flex items-start relative max-w-[1440px] mx-auto">
           {steps.map((step, i) => (
             <div key={i} className="flex-1 relative flex flex-col items-center">
@@ -206,8 +235,7 @@ function WhatHappensNextSection() {
                   <motion.div className="absolute top-0 left-0 h-full bg-white origin-left" style={{ width: lines[i] }} />
                 </div>
               )}
-
-              <div className="w-[48px] h-[48px] rounded-full flex items-center justify-center mb-6 md:mb-8 relative z-[10]">
+              <div className="w-[48px] h-[48px] rounded-full flex items-center justify-center mb-8 relative z-[10]">
                 <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <circle cx="24" cy="24" r="23" stroke="rgba(255,255,255,0.2)" strokeWidth="2" />
                   <motion.circle cx="24" cy="24" r="23" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" style={{ pathLength: rings[i] }} />
@@ -217,7 +245,6 @@ function WhatHappensNextSection() {
                   {step.num}
                 </motion.span>
               </div>
-
               <motion.p className="max-w-[296px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "15px", lineHeight: "1.4", color: "#FFFFFF", opacity: opacities[i] }}>
                 {step.text}
               </motion.p>
@@ -225,13 +252,14 @@ function WhatHappensNextSection() {
           ))}
         </div>
 
-        <div className="grid grid-cols-2 gap-6 md:gap-8 lg:hidden">
+        {/* Mobile: 2x2 grid with white circles */}
+        <div className="flex flex-wrap gap-3 lg:hidden">
           {steps.map((step, i) => (
-            <div key={i} className="flex flex-col items-center gap-3 md:gap-4">
+            <div key={i} className="flex flex-col items-center gap-3 basis-[calc(50%-6px)]">
               <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center">
-                <span style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, fontSize: "24px", color: "#0D0D0D" }}>{step.num}</span>
+                <span style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, fontSize: "18px", color: "#232323" }}>{step.num}</span>
               </div>
-              <p className="text-center" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "15px", lineHeight: "1.4", color: "#FFFFFF" }}>{step.text}</p>
+              <p className="text-center" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "12px", lineHeight: "16px", color: "#FFFFFF" }}>{step.text}</p>
             </div>
           ))}
         </div>
@@ -253,36 +281,41 @@ function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="w-full bg-white px-4 lg:px-20 py-16 md:py-24">
-      <div className="max-w-[800px] mx-auto flex flex-col gap-10 md:gap-16">
-        <h2 className="text-center" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "37px", lineHeight: "1.2", color: "#000000" }}>
+    <section className="w-full bg-white px-4 lg:px-20 py-12 lg:py-24">
+      <div className="max-w-[800px] mx-auto flex flex-col gap-6 lg:gap-16">
+        {/* Mobile: 35px/42px, Desktop: 37px */}
+        <h2 className="text-center text-[35px] leading-[42px] tracking-[-0.7px] lg:text-[37px] lg:leading-[1.2] lg:tracking-normal" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, color: "#000000" }}>
           Before You Request a Quote
         </h2>
 
         <div className="flex flex-col">
           {faqs.map((faq, i) => (
             <div key={i} className="border-b border-[#C9C9C9]">
-              <button onClick={() => setOpenIndex(openIndex === i ? null : i)} className="w-full flex items-center justify-between py-4 text-left">
-                <span className="pr-4" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "22px", lineHeight: "1.2", color: "#0D0D0D" }}>{faq.question}</span>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0D0D0D" strokeWidth="1.5" className={`flex-shrink-0 transition-transform duration-300 ${openIndex === i ? "rotate-45" : ""}`}><path d="M12 5v14M5 12h14" /></svg>
+              <button onClick={() => setOpenIndex(openIndex === i ? null : i)} className="w-full flex items-center justify-between py-3 text-left">
+                {/* Mobile: 20px/26px weight 400, Desktop: 22px weight 500 */}
+                <span className="pr-4 text-[20px] leading-[26px] tracking-[-0.6px] lg:text-[22px] lg:leading-[1.2] lg:tracking-normal" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }}>{faq.question}</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0D0D0D" strokeWidth="1.5" className={`flex-shrink-0 transition-transform duration-300 ${openIndex === i ? "rotate-45" : ""}`}><path d="M12 5v14M5 12h14" /></svg>
               </button>
-              <div className={`overflow-hidden transition-all duration-300 ${openIndex === i ? "max-h-[200px] pb-4 md:pb-6" : "max-h-0"}`}>
+              <div className={`overflow-hidden transition-all duration-300 ${openIndex === i ? "max-h-[200px] pb-4" : "max-h-0"}`}>
                 <p style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "16px", lineHeight: "1.5", color: "#0D0D0D" }}>{faq.answer}</p>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="flex flex-col gap-6 md:gap-8 items-center text-center mt-4">
-          <p style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "15px", lineHeight: "1.5", color: "#434343" }}>
+        <div className="flex flex-col gap-4 items-center text-center mt-0 lg:mt-4 lg:gap-8">
+          <p className="text-[15px] leading-[16px] lg:leading-[1.5]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#434343" }}>
             If you have any further questions or just want to reach our team, click the button below.
           </p>
+          {/* Mobile: full width, white bg, black border, rounded-[6px], text 15px normal case weight 400 */}
+          {/* Desktop: border, rounded-[8px], uppercase, weight 700 */}
           <RollingButton
             href="/contactus"
-            className="border border-black rounded-[8px] text-black w-full lg:w-auto px-10 py-3.5 text-[14px]"
-            style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em" }}
+            className="border border-black w-full lg:w-auto px-5 lg:px-10 py-3 lg:py-3.5 rounded-[6px] lg:rounded-[8px]"
+            style={{ fontFamily: "'FFF Acid Grotesk', sans-serif" }}
           >
-            Get in touch
+            <span className="block lg:hidden text-[15px] font-normal text-black">Get in touch</span>
+            <span className="hidden lg:block text-[14px] font-bold uppercase tracking-[0.05em] text-black">Get in touch</span>
           </RollingButton>
         </div>
       </div>
@@ -290,7 +323,7 @@ function FAQSection() {
   );
 }
 
-// ─── NEW FOOTER COMPONENT ─────────────────────────────────────────
+// ─── FOOTER COMPONENT ─────────────────────────────────────────
 function Footer() {
   const footerNav = {
     pages: [ { label: "Home", href: "/" }, { label: "Products", href: "/products" }, { label: "Private Label", href: "/privatelabel" }, { label: "Manufacturing Process", href: "/manufacture" } ],
@@ -298,74 +331,83 @@ function Footer() {
     products: [ { label: "Boxing Gloves", href: "/products" }, { label: "Martial Arts Uniforms", href: "/products" }, { label: "MMA Gear", href: "/products" }, { label: "Training Accessories", href: "/products" } ],
   };
 
+  const NavGroup = ({ links }: { links: { label: string; href: string }[] }) => (
+    <div className="flex flex-col gap-3 lg:gap-4">
+      {links.map((link, i) => (
+        <div key={link.label}>
+          <div className="flex items-center justify-between group">
+            <Link href={link.href} className="hover:opacity-70 transition-opacity text-[14px] leading-[17px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#000000" }}>{link.label}</Link>
+            <span className="text-black opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block"><ArrowUpRight /></span>
+          </div>
+          {/* Mobile: show bottom border on all but last item in group */}
+          {i < links.length - 1 && <div className="h-px bg-gray-200 mt-3 lg:hidden" />}
+        </div>
+      ))}
+    </div>
+  );
+
   return (
     <footer className="bg-white">
       <div className="h-px bg-[#D7DADE]" />
-      <div className="max-w-[2560px] mx-auto flex flex-col lg:flex-row gap-10 md:gap-12 py-12 md:py-16 px-6 md:px-12">
-        <div className="lg:w-1/2 space-y-4 md:space-y-6">
-          <h2 className="text-[32px] leading-[38px] md:text-[47px] md:leading-[58px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1.9px", color: "#000000" }}>
+
+      {/* Top Content: heading + email */}
+      <div className="max-w-[2560px] mx-auto px-5 lg:px-12 pt-12 lg:pt-16 pb-6 lg:pb-16 flex flex-col lg:flex-row gap-6 lg:gap-12">
+        <div className="lg:w-1/2 space-y-4">
+          <h2 className="text-[47px] leading-[58px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1.9px", color: "#000000" }}>
             Start Your Private Label Manufacturing Project
           </h2>
-          <a href="mailto:hello@sarlamathletics.com" className="hover:text-[#0D0D0D] transition-colors block text-[22px] leading-[30px] md:text-[47px] md:leading-[58px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1px", color: "#A5A5A5" }}>
+          <a href="mailto:hello@sarlamathletics.com" className="hover:text-[#0D0D0D] transition-colors block text-[47px] leading-[58px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1.9px", color: "#A5A5A5" }}>
             hello@sarlamathletics.com
           </a>
         </div>
 
-        <div className="lg:w-1/2 flex flex-col md:grid md:grid-cols-3 gap-8">
-          <div className="space-y-3 md:space-y-4">
-            {footerNav.pages.map((link) => (
-              <div key={link.label} className="flex items-center justify-between group border-b border-gray-200 pb-2 md:border-b-0 md:pb-0">
-                <Link href={link.href} className="hover:opacity-70 transition-opacity text-[14px] leading-[17px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#000000" }}>{link.label}</Link>
-                <span className="text-black opacity-0 group-hover:opacity-100 transition-opacity hidden md:block"><ArrowUpRight /></span>
-              </div>
-            ))}
-          </div>
-          <div className="space-y-3 md:space-y-4">
-            {footerNav.company.map((link) => (
-              <div key={link.label} className="flex items-center justify-between group border-b border-gray-200 pb-2 md:border-b-0 md:pb-0">
-                <Link href={link.href} className="hover:opacity-70 transition-opacity text-[14px] leading-[17px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#000000" }}>{link.label}</Link>
-                <span className="text-black opacity-0 group-hover:opacity-100 transition-opacity hidden md:block"><ArrowUpRight /></span>
-              </div>
-            ))}
-          </div>
-          <div className="space-y-3 md:space-y-4">
-            {footerNav.products.map((link) => (
-              <div key={link.label} className="flex items-center justify-between group border-b border-gray-200 pb-2 md:border-b-0 md:pb-0">
-                <Link href={link.href} className="hover:opacity-70 transition-opacity text-[14px] leading-[17px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#000000" }}>{link.label}</Link>
-                <span className="text-black opacity-0 group-hover:opacity-100 transition-opacity hidden md:block"><ArrowUpRight /></span>
-              </div>
-            ))}
-          </div>
+        {/* Desktop: 3-column nav grid */}
+        <div className="hidden lg:grid lg:w-1/2 lg:grid-cols-3 gap-8">
+          <NavGroup links={footerNav.pages} />
+          <NavGroup links={footerNav.company} />
+          <NavGroup links={footerNav.products} />
         </div>
       </div>
 
-      <div className="h-px bg-[#D7DADE]" />
-      <div className="max-w-[2560px] mx-auto flex flex-col md:flex-row items-start md:items-end justify-between px-6 md:px-12 py-8 md:py-10 gap-4 md:gap-0">
-        <div className="flex-1">
+      {/* Mobile: stacked nav groups with bottom borders */}
+      <div className="lg:hidden px-5 pb-12 flex flex-col gap-10">
+        <NavGroup links={footerNav.pages} />
+        <NavGroup links={footerNav.company} />
+        <NavGroup links={footerNav.products} />
+      </div>
+
+      {/* Brand Section */}
+      <div className="max-w-[2560px] mx-auto px-5 lg:px-12 py-10 lg:py-10">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
           <Link href="/" className="block">
-            <span className="uppercase tracking-tight text-[56px] leading-[85%] md:text-[101px] md:leading-[85%]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, fontStyle: "italic", letterSpacing: "-3%", color: "#000000", display: "block" }}>
-              sarlam<br className="hidden md:block" /><span className="md:hidden"> </span>athletics
+            <span className="uppercase tracking-tight block" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, fontStyle: "italic", color: "#000000" }}>
+              {/* Mobile: 69px, Desktop: 101px */}
+              <span className="text-[69px] leading-[85%] tracking-[-3%] lg:text-[101px] lg:leading-[85%]">
+                sarlam{"\n"}athletics
+              </span>
             </span>
           </Link>
-        </div>
-        <div className="flex flex-col md:items-end gap-2 md:gap-0">
-          <span className="block md:hidden text-[12px] leading-[16px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#000000" }}>
-            Website by Sanna Granqvist<br />© 2026
-          </span>
-          <span className="hidden md:block text-[12px] leading-[16px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#434343" }}>© 2026</span>
+          <div className="flex flex-col gap-2 lg:items-end">
+            {/* Mobile: show "Website by" + year */}
+            <span className="block lg:hidden text-[12px] leading-[17px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#A5A5A5" }}>
+              Website by Sanna Granqvist
+            </span>
+            <span className="block text-[14px] leading-[17px] lg:text-[12px] lg:leading-[16px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#434343" }}>© 2026</span>
+          </div>
         </div>
       </div>
     </footer>
   );
 }
 
-// ─── NEW BOTTOM BAR COMPONENT ─────────────────────────────────────
+// ─── BOTTOM BAR COMPONENT ─────────────────────────────────────
 function BottomBar() {
   return (
-    <div className="bg-black">
-      <div className="max-w-[2560px] mx-auto py-4 px-6 md:px-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-0">
-        <div className="flex flex-col md:flex-row md:items-center gap-1 text-[12px] leading-[16px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#E3E2E2" }}>
-          <span>© 2026 Sarlam Athletics. Private-label sports equipment manufacturer for combat sports brands.</span>
+    <div className="bg-[#0D0D0D]">
+      <div className="max-w-[2560px] mx-auto py-6 lg:py-4 px-5 lg:px-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 lg:gap-0">
+        <div className="flex flex-col gap-1" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "12px", lineHeight: "16px", color: "#E3E2E2" }}>
+          <span>© 2026 Sarlam Athletics.</span>
+          <span>Private-label sports equipment manufacturer for combat sports brands.</span>
         </div>
         <div className="uppercase text-[12px] leading-[18px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, color: "#FFFFFF" }}>
           USA (USD $) / ENGLISH
