@@ -419,6 +419,7 @@ export default function DetailsComponent() {
           </div>
         </div>
       </section>
+      
 {/* --- Footer --- */}
       <footer className="bg-white border-t border-[#D7DADE]">
         <div className="max-w-[2560px] mx-auto px-6 md:px-10 py-12 md:py-16 flex flex-col lg:flex-row justify-between gap-10 md:gap-12">

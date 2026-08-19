@@ -376,7 +376,7 @@ export default function KarateSuitDetailsPage() {
         </div>
       </section>
 
-      {/* --- Footer --- */}
+    --- Footer --- */
       <footer className="bg-white border-t border-[#D7DADE]">
         <div className="max-w-[2560px] mx-auto px-6 md:px-10 py-12 md:py-16 flex flex-col lg:flex-row justify-between gap-10 md:gap-12">
           <div className="lg:w-1/2">
@@ -388,38 +388,61 @@ export default function KarateSuitDetailsPage() {
             </a>
           </div>
 
-          <div className="md:hidden space-y-0">
-            <FooterAccordion title="Navigation">
+          {/* Mobile Links */}
+          <div className="md:hidden flex flex-col gap-8">
+            <div className="flex flex-col gap-3">
               <FooterLink href="/">Home</FooterLink>
               <FooterLink href="/products">Products</FooterLink>
-              <FooterLink href="/private-label">Private Label</FooterLink>
-              <FooterLink href="/manufacturing">Manufacturing Process</FooterLink>
-              <FooterLink href="/about">About</FooterLink>
+              <FooterLink href="/privatelabel">Private Label</FooterLink>
+              <FooterLink href="/manufacture">Manufacturing Process</FooterLink>
+              <FooterLink href="/aboutus">About</FooterLink>
               <FooterLink href="/contact">Contact</FooterLink>
               <FooterLink href="/contact">Request Quote</FooterLink>
-            </FooterAccordion>
-            <FooterAccordion title="Products">
-              <FooterLink href="/products/boxing-gloves">Boxing Gloves</FooterLink>
-              <FooterLink href="/products/martial-arts">Martial Arts Uniforms</FooterLink>
-              <FooterLink href="/products/mma">MMA Gear</FooterLink>
-              <FooterLink href="/products/accessories">Training Accessories</FooterLink>
-            </FooterAccordion>
+            </div>
+            
+            <div className="flex flex-col gap-3">
+              <FooterLink href="/details">Boxing Gloves</FooterLink>
+              <FooterLink href="/karatesuit">Martial Arts Uniforms</FooterLink>
+              <FooterLink href="/mmagloves">MMA Gear</FooterLink>
+              <FooterLink href="/trainingpad">Training Accessories</FooterLink>
+            </div>
           </div>
 
+          {/* Desktop Links with mapping arrays */}
           <div className="hidden lg:flex gap-16">
-            <div className="flex flex-col gap-3 md:gap-4">
-              {["Home", "Products", "Private Label", "Manufacturing Process"].map((link) => (
-                <a key={link} href="#" className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px] font-normal text-[#000000]">{link}</a>
+            <div className="flex flex-col gap-3">
+              {[
+                { name: "Home", href: "/" },
+                { name: "Products", href: "/products" },
+                { name: "Private Label", href: "/privatelabel" },
+                { name: "Manufacturing Process", href: "/manufacture" }
+              ].map((link) => (
+                <a key={link.name} href={link.href} className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px] font-normal text-[#000000]">
+                  {link.name}
+                </a>
               ))}
             </div>
-            <div className="flex flex-col gap-3 md:gap-4">
-              {["About", "Contact", "Request Quote"].map((link) => (
-                <a key={link} href="#" className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px] font-normal text-[#000000]">{link}</a>
+            <div className="flex flex-col gap-3">
+              {[
+                { name: "About", href: "/aboutus" },
+                { name: "Contact", href: "/contact" },
+                { name: "Request Quote", href: "/contact" }
+              ].map((link) => (
+                <a key={link.name} href={link.href} className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px] font-normal text-[#000000]">
+                  {link.name}
+                </a>
               ))}
             </div>
-            <div className="flex flex-col gap-3 md:gap-4">
-              {["Boxing Gloves", "Martial Arts Uniforms", "MMA Gear", "Training Accessories"].map((link) => (
-                <a key={link} href="#" className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px] font-normal text-[#000000]">{link}</a>
+            <div className="flex flex-col gap-3">
+              {[
+                { name: "Boxing Gloves", href: "/details" },
+                { name: "Martial Arts Uniforms", href: "/karatesuit" },
+                { name: "MMA Gear", href: "/mmagloves" },
+                { name: "Training Accessories", href: "/trainingpad" }
+              ].map((link) => (
+                <a key={link.name} href={link.href} className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px] font-normal text-[#000000]">
+                  {link.name}
+                </a>
               ))}
             </div>
           </div>
@@ -433,12 +456,6 @@ export default function KarateSuitDetailsPage() {
               sarlam<br className="hidden md:block" /><span className="md:hidden"> </span>athletics
             </span>
           </Link>
-          <div className="flex flex-col md:items-end gap-2 md:gap-0">
-            <span className="md:hidden block text-[12px] leading-[16.8px] tracking-[0px] font-normal text-[#A5A5A5] text-left">
-              Website by Sanna Granqvist<br />© 2026
-            </span>
-            <span className="hidden md:block text-[12px] leading-[16px] font-normal text-[#0D0D0D]">© 2026</span>
-          </div>
         </div>
 
         <div className="bg-black">
@@ -452,6 +469,7 @@ export default function KarateSuitDetailsPage() {
           </div>
         </div>
       </footer>
+
 
       {/* --- CSS Animations --- */}
       <style dangerouslySetInnerHTML={{
