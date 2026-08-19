@@ -921,7 +921,6 @@ export default function SarlamAthleticsPage() {
             sarlam<br />athletics
           </p>
           <div className="flex flex-col md:flex-row md:items-end gap-[10px]">
-            <span className="block text-[12px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#A5A5A5" }}>Website by Sanna Granqvist</span>
             <span className="block text-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, lineHeight: "17px", color: "#434343" }}>© 2026</span>
           </div>
         </div>
