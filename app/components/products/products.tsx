@@ -200,7 +200,7 @@ export default function ProductPage() {
                 </p>
               </div>
               <RollingButton
-                href="/contactus"
+                href="/contact"
                 className="mt-4 md:mt-0 w-full md:w-fit bg-white px-10 py-3.5 text-[12px] md:text-[14px]"
                 style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "0px", color: "#0D0D0D", borderRadius: "8px" }}
               >
@@ -424,7 +424,7 @@ export default function ProductPage() {
         style={{ paddingTop: "8px", paddingLeft: "21px", paddingRight: "20px" }}
       >
         <RollingButton
-          href="/contactus"
+          href="/contact"
           className="w-full bg-white text-black uppercase flex items-center justify-center"
           style={{
             fontFamily: "'FFF Acid Grotesk', sans-serif",
