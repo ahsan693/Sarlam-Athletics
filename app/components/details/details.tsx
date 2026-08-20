@@ -410,7 +410,7 @@ export default function DetailsComponent() {
 
           <div className="flex justify-center mt-10 md:mt-16">
             <RollingButton
-              href="/contactus"
+              href="/contact"
               className="bg-[#0D0D0D] text-white w-full md:w-auto uppercase px-10 py-4 text-[14px] rounded-[8px]"
               style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "5%" }}
             >

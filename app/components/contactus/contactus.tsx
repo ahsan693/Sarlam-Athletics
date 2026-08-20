@@ -310,7 +310,7 @@ function FAQSection() {
           {/* Mobile: full width, white bg, black border, rounded-[6px], text 15px normal case weight 400 */}
           {/* Desktop: border, rounded-[8px], uppercase, weight 700 */}
           <RollingButton
-            href="/contactus"
+            href="/contact"
             className="border border-black w-full lg:w-auto px-5 lg:px-10 py-3 lg:py-3.5 rounded-[6px] lg:rounded-[8px]"
             style={{ fontFamily: "'FFF Acid Grotesk', sans-serif" }}
           >
