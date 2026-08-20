@@ -81,7 +81,7 @@ function HeroSection() {
         
         {/* Adjusted to match Home Page button styling strictly */}
         <RollingButton
-          href="/contactus"
+          href="/contact"
           className="bg-white uppercase px-6 py-3 rounded-[8px]"
           style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", lineHeight: "18px", color: "#000000" }}
         >
@@ -168,7 +168,7 @@ function TimelineSection() {
             Ready to Launch Your Private Label Sports Brand?
           </h2>
           <RollingButton
-            href="/contactus"
+            href="/contact"
             className="w-full md:w-auto text-center border border-white bg-white px-8 py-3.5 rounded-md text-[14px]"
             style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, letterSpacing: "5%", textTransform: "uppercase", color: "#000000" }}
           >
