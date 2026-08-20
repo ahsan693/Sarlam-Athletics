@@ -576,7 +576,7 @@ export default function SarlamAthleticsPage() {
               className="uppercase"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
-                fontWeight: 500,
+                fontWeight: 600,
                 fontSize: '14px',
                 lineHeight: '18px',
                 color: '#0D0D0D',
@@ -622,7 +622,7 @@ export default function SarlamAthleticsPage() {
               className="uppercase"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
-                fontWeight: 500,
+                fontWeight: 600,
                 fontSize: '15px',
                 lineHeight: '21px',
                 letterSpacing: '0.45px',

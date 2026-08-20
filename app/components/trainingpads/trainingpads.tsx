@@ -141,7 +141,7 @@ export default function TrainingPadsPage() {
         </div>
       </section>
 
-      {/* ── Product Presentation Grid ── */}
+     {/* ── Product Presentation Grid ── */}
       <section className="px-5 md:px-16 py-10 md:py-20">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-32 max-w-[2560px] mx-auto lg:justify-center">
           {/* Left: Product Image */}
