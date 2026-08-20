@@ -82,6 +82,13 @@ const SearchIcon = () => (
   </svg>
 );
 
+const CloseIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="18" y1="6" x2="6" y2="18"></line>
+    <line x1="6" y1="6" x2="18" y2="18"></line>
+  </svg>
+);
+
 const ArrowLeft = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
     <line x1="19" y1="12" x2="5" y2="12"></line>
@@ -140,9 +147,32 @@ const FAQItem = ({ question, answer }: { question: string; answer: string }) => 
   );
 };
 
+// ─── Search Database ────────────────────────────────────────────────────────
+const searchProducts = [
+  { name: "Private Label Boxing Gloves", href: "/details", keywords: ["boxing", "glove", "gloves", "boxingglove", "private"] },
+  { name: "BJJ Gis and Jiu-Jitsu Uniforms", href: "/jitsu", keywords: ["bjj", "gi", "gis", "jiu", "jitsu", "jiujitsu", "uniform", "uniforms", "martial", "arts"] },
+  { name: "MMA Fight Gloves", href: "/mmagloves", keywords: ["mma", "fight", "glove", "gloves", "mmaglove"] },
+  { name: "Professional MMA Training Gloves", href: "/ultimategloves", keywords: ["mma", "training", "glove", "gloves", "professional"] },
+  { name: "Boxing Focus Mitts and Training Pads", href: "/trainingpad", keywords: ["boxing", "focus", "mitt", "mitts", "training", "pad", "pads"] },
+  { name: "Boxing Sparring Gloves", href: "/sparinggloves", keywords: ["boxing", "sparring", "sparing", "glove", "gloves"] },
+  { name: "Custom Boxing Headguards", href: "/Boxingguard", keywords: ["custom", "boxing", "head", "guard", "headguard", "headguards", "protective"] },
+  { name: "Private Label Karate Uniforms", href: "/karatesuit", keywords: ["private", "label", "karate", "uniform", "uniforms", "suit", "martial", "arts"] },
+];
+
 // --- Header Component ---
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // Search Logic
+  const filteredProducts = searchQuery.trim() === "" ? [] : searchProducts.filter(product => {
+    const normalizedQuery = searchQuery.toLowerCase().replace(/\s+/g, '');
+    const normalizedName = product.name.toLowerCase().replace(/\s+/g, '');
+    const matchesName = normalizedName.includes(normalizedQuery);
+    const matchesKeyword = product.keywords.some(kw => kw.includes(normalizedQuery) || normalizedQuery.includes(kw));
+    return matchesName || matchesKeyword;
+  });
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white border-b border-gray-100 relative">
@@ -175,7 +205,12 @@ export function Header() {
           <Link href="/aboutus" className="h-[48px] flex items-center px-6 hover:opacity-70 transition" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", lineHeight: "18px", textTransform: "uppercase", color: "#0D0D0D" }}>About</Link>
           <Link href="/contact" className="h-[48px] flex items-center hover:opacity-70 transition" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", lineHeight: "18px", textTransform: "uppercase", color: "#0D0D0D" }}>Contact</Link>
           <div className="w-[12px]" />
-          <button className="w-[48px] h-[48px] flex items-center justify-center hover:opacity-70 transition text-[#0D0D0D]"><SearchIcon /></button>
+          <button 
+            onClick={() => { setIsSearchOpen(!isSearchOpen); setIsMobileMenuOpen(false); setSearchQuery(""); }} 
+            className="w-[48px] h-[48px] flex items-center justify-center hover:opacity-70 transition text-[#0D0D0D]"
+          >
+            {isSearchOpen ? <CloseIcon /> : <SearchIcon />}
+          </button>
         </div>
 
         {/* Mobile Logo */}
@@ -188,16 +223,65 @@ export function Header() {
           />
         </Link>
 
-        <button
-          className="flex lg:hidden items-center p-2 -mr-2 text-[#0D0D0D]"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle Menu"
-        >
-          <MenuIcon />
-        </button>
+        {/* Mobile Right Controls */}
+        <div className="flex lg:hidden items-center gap-2">
+          <button 
+            onClick={() => { setIsSearchOpen(!isSearchOpen); setIsMobileMenuOpen(false); setSearchQuery(""); }} 
+            className="flex items-center p-2 text-[#0D0D0D]"
+            aria-label="Toggle Search"
+          >
+            {isSearchOpen ? <CloseIcon /> : <SearchIcon />}
+          </button>
+          <button
+            className="flex items-center p-2 -mr-2 text-[#0D0D0D]"
+            onClick={() => { setIsMobileMenuOpen(!isMobileMenuOpen); setIsSearchOpen(false); }}
+            aria-label="Toggle Menu"
+          >
+            {isMobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Dropdown */}
+      {/* ─── Search Overlay Dropdown ─── */}
+      {isSearchOpen && (
+        <div className="absolute top-[76px] lg:top-[52px] left-0 w-full bg-white border-b border-gray-200 shadow-lg z-50 p-4 md:p-6 flex flex-col items-center">
+          <div className="w-full max-w-[800px] relative">
+            <input 
+              type="text" 
+              placeholder="Search products (e.g. Boxing Gloves, BJJ Gis)..." 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full border border-gray-300 rounded-md py-3 px-4 text-[14px] outline-none focus:border-black transition-colors"
+              style={{ fontFamily: "'FFF Acid Grotesk', sans-serif" }}
+              autoFocus
+            />
+          </div>
+
+          {searchQuery.trim() !== "" && (
+            <div className="w-full max-w-[800px] mt-4 max-h-[300px] overflow-y-auto flex flex-col gap-2">
+              {filteredProducts.length > 0 ? (
+                filteredProducts.map((product, idx) => (
+                  <Link 
+                    key={idx} 
+                    href={product.href} 
+                    onClick={() => { setIsSearchOpen(false); setSearchQuery(""); }}
+                    className="block px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-md transition-colors text-[14px] font-medium"
+                    style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", color: "#0D0D0D" }}
+                  >
+                    {product.name}
+                  </Link>
+                ))
+              ) : (
+                <p className="text-center text-gray-500 py-4 text-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif" }}>
+                  No products found for "{searchQuery}".
+                </p>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Mobile Menu Dropdown */}
       {isMobileMenuOpen && (
         <>
           <div className="fixed inset-0 z-40 lg:hidden" onClick={() => setIsMobileMenuOpen(false)} />
