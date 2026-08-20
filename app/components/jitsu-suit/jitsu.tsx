@@ -369,16 +369,7 @@ export default function KarateSuitDetailsPage() {
       </section>
 
       {/* --- CTA Section --- */}
-      <section className="bg-white px-6 md:px-16 py-16 md:py-24 border-t border-gray-100 flex justify-center">
-        <div className="max-w-[2560px] w-full text-center">
-          <h2 className="text-[26px] leading-[32px] md:text-[37px] md:leading-[46px] font-bold text-[#0D0D0D] mb-6 md:mb-8 tracking-tight">
-            Start Your Private Label Manufacturing Project
-          </h2>
-          <a href="mailto:hello@sarlamathletics.com" className="text-[16px] md:text-lg text-[#0D0D0D] underline font-medium hover:opacity-70 transition-opacity">
-            hello@sarlamathletics.com
-          </a>
-        </div>
-      </section>
+
 
    
       <footer className="bg-white border-t border-[#D7DADE]">

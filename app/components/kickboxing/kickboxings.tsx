@@ -576,21 +576,6 @@ export default function KickBoxingGlovesPage() {
         </div>
       </section>
 
-      {/* ── CTA Section ── */}
-      <section className="bg-white px-6 md:px-16 py-12 md:py-20 border-t border-gray-100">
-        <div className="max-w-[1312px] mx-auto text-center">
-          <h2 className="text-[26px] leading-[32px] md:text-[37px] md:leading-[46px] font-bold text-[#0D0D0D] mb-4 tracking-tight">
-            Start Your Private Label Manufacturing Project
-          </h2>
-      <a 
-  href="mailto:hello@sarlamathletics.com" 
-  /* --- CHANGED HERE: Changed text-[47px] to text-[28px] and leading-[58px] to leading-[36px] for mobile. Added md:text-[47px] and md:leading-[58px] to maintain desktop size. --- */
-  className="text-[28px] leading-[36px] md:text-[47px] md:leading-[58px] tracking-[-1.9px] font-medium text-[#A5A5A5] text-left transition break-all hover:text-[#000000] md:tracking-tight block"
->
-  hello@sarlamathletics.com
-</a>
-        </div>
-      </section>
 
       {/* ── Footer ── */}
       <footer className="bg-white border-t border-[#D7DADE]">
