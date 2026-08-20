@@ -529,7 +529,7 @@ export default function ProductPage() {
 
       <div className="flex justify-center py-10 md:py-16 px-6 md:px-0">
         <RollingButton
-          href="/contactus"
+          href="/contact"
           className="w-full md:w-auto bg-white text-black uppercase px-10 py-4 border border-black text-[14px]"
           style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "5%", borderRadius: "8px" }}
         >
@@ -597,7 +597,7 @@ export default function ProductPage() {
 
           <div className="hidden md:flex justify-center mt-10 md:mt-16">
             <RollingButton
-              href="/contactus"
+              href="/contact"
               className="w-full md:w-auto bg-[#0D0D0D] text-white uppercase px-10 py-4 text-[14px]"
               style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "5%", borderRadius: "8px" }}
             >
