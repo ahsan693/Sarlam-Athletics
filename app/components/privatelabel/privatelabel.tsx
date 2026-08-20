@@ -621,17 +621,7 @@ export default function PrivateLabel() {
             <div className="flex flex-col md:items-end gap-2 md:gap-0">
               {/* Mobile credits */}
               <div className="md:hidden flex flex-col gap-[8px]">
-                <span
-                  className="text-[12px] leading-[16px]"
-                  style={{
-                    fontFamily: "'FFF Acid Grotesk', sans-serif",
-                    fontWeight: 400,
-                    color: "#A5A5A5",
-                  }}
-                >
-                  Website by Sanna Granqvist
-                </span>
-                <span
+              <span
                   className="text-[14px] leading-[17px]"
                   style={{
                     fontFamily: "'FFF Acid Grotesk', sans-serif",

@@ -806,9 +806,6 @@ export default function ProductPage() {
             sarlam<br />athletics
           </p>
           <div className="flex flex-col md:flex-row md:items-center justify-between">
-            <span className="block text-[12px] md:text-[12px] mb-2 md:mb-0 md:hidden" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#000000" }}>
-              Website by Sanna Granqvist
-            </span>
             <span className="block text-[14px] md:hidden" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, lineHeight: "16px", color: "#000000" }}>
               © 2026
             </span>

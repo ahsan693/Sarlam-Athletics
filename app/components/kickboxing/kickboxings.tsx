@@ -689,11 +689,6 @@ export default function KickBoxingGlovesPage() {
             </span>
           </Link>
           <div className="flex flex-col md:items-end gap-2 md:gap-0">
-            <span className="md:hidden block text-[12px] leading-[16px] font-normal text-[#0D0D0D]">
-              Website by Sanna Granqvist
-              <br />
-              © 2026
-            </span>
             <span className="hidden md:block text-[12px] leading-[16px] font-normal text-[#0D0D0D]">
               © 2026
             </span>
