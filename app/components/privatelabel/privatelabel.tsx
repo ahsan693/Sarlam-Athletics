@@ -456,7 +456,7 @@ export default function PrivateLabel() {
               </h3>
               <a
                 href="mailto:hello@sarlamathletics.com"
-                className="transition break-all hover:text-black text-[47px] leading-[58px] md:text-[47px] md:leading-[58px]"
+                className="transition break-all hover:text-black text-[32px] leading-[58px] md:text-[47px] md:leading-[58px]"
                 style={{
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
                   fontWeight: 500,

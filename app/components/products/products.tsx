@@ -752,9 +752,19 @@ export default function ProductPage() {
             <h3 className="mb-4 text-[47px] leading-[85%] md:text-[47px] md:leading-[58px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1.9px", color: "#000000" }}>
               Start Your Private Label Manufacturing Project
             </h3>
-            <a href="mailto:hello@sarlamathletics.com" className="transition break-all text-[47px] leading-[85%] md:text-[47px] md:leading-[58px] hover:text-black" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "-1px", color: "#A5A5A5" }}>
-              hello@sarlamathletics.com
-            </a>
+          <a 
+  href="mailto:hello@sarlamathletics.com" 
+  /* --- CHANGED HERE: Changed base text-[47px] to text-[28px] for mobile. Desktop (md:) remains 47px. --- */
+  className="transition break-all text-[32px] leading-[85%] md:text-[47px] md:leading-[58px] hover:text-black" 
+  style={{ 
+    fontFamily: "'FFF Acid Grotesk', sans-serif", 
+    fontWeight: 500, 
+    letterSpacing: "-1px", 
+    color: "#A5A5A5" 
+  }}
+>
+  hello@sarlamathletics.com
+</a>
           </div>
 
           <div className="lg:w-1/2 flex flex-col md:flex-row gap-8 md:gap-16">

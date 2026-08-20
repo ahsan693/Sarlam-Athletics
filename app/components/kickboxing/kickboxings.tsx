@@ -582,12 +582,13 @@ export default function KickBoxingGlovesPage() {
           <h2 className="text-[26px] leading-[32px] md:text-[37px] md:leading-[46px] font-bold text-[#0D0D0D] mb-4 tracking-tight">
             Start Your Private Label Manufacturing Project
           </h2>
-          <a
-            href="mailto:hello@sarlamathletics.com"
-            className="text-[16px] md:text-lg text-[#0D0D0D] underline font-medium hover:opacity-70 transition-opacity"
-          >
-            hello@sarlamathletics.com
-          </a>
+      <a 
+  href="mailto:hello@sarlamathletics.com" 
+  /* --- CHANGED HERE: Changed text-[47px] to text-[28px] and leading-[58px] to leading-[36px] for mobile. Added md:text-[47px] and md:leading-[58px] to maintain desktop size. --- */
+  className="text-[28px] leading-[36px] md:text-[47px] md:leading-[58px] tracking-[-1.9px] font-medium text-[#A5A5A5] text-left transition break-all hover:text-[#000000] md:tracking-tight block"
+>
+  hello@sarlamathletics.com
+</a>
         </div>
       </section>
 

@@ -364,9 +364,13 @@ export default function MMAFullFightGlovesPage() {
             <h3 className="mb-4 md:mb-6 text-[47px] leading-[58px] tracking-[-1.9px] font-medium text-[#000000] text-left md:text-[#0D0D0D] md:tracking-tight">
               Start Your Private Label<br className="hidden md:block" /><span className="md:hidden"> </span>Manufacturing Project
             </h3>
-            <a href="mailto:hello@sarlamathletics.com" className="text-[47px] leading-[58px] tracking-[-1.9px] font-medium text-[#A5A5A5] text-left transition break-all hover:text-[#000000] md:tracking-tight block">
-              hello@sarlamathletics.com
-            </a>
+           <a 
+  href="mailto:hello@sarlamathletics.com" 
+  /* --- CHANGED HERE: Changed text-[47px] to text-[28px] and leading-[58px] to leading-[36px] for mobile. Added md:text-[47px] and md:leading-[58px] to maintain desktop size. --- */
+  className="text-[28px] leading-[36px] md:text-[47px] md:leading-[58px] tracking-[-1.9px] font-medium text-[#A5A5A5] text-left transition break-all hover:text-[#000000] md:tracking-tight block"
+>
+  hello@sarlamathletics.com
+</a>
           </div>
 
           {/* Mobile Links */}
