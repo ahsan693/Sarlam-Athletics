@@ -214,20 +214,19 @@ export default function UltimateMmaFightGlovesPage() {
           </h1>
         </div>
       </section>
-
-      {/* ── Product Presentation Grid ── */}
-      <section className="px-5 md:px-16 py-10 md:py-20">
-        <div className="flex flex-col lg:flex-row gap-10 lg:gap-32 max-w-[1440px] mx-auto">
-          {/* Left: Product Image */}
-          <div className="w-full lg:w-[616px] shrink-0">
-            <div className="bg-[#F9F9F9] rounded-none p-4 md:p-2 aspect-[4/5] md:aspect-square flex items-center justify-center lg:sticky lg:top-24">
-   <img
-  src="/Products/MMATrainingGloves.png"
-  alt="Ultimate MMA Fight Gloves"
-  className="w-[100%] h-[100%] md:w-[600px] md:h-[600px] object-cover md:object-contain mix-blend-multiply"
-/>
-            </div>
-          </div>
+{/* ── Product Presentation Grid ── */}
+<section className="px-5 md:px-16 py-10 md:py-20">
+  <div className="flex flex-col lg:flex-row gap-10 lg:gap-32 max-w-[1440px] mx-auto">
+    {/* Left: Product Image */}
+    <div className="w-full lg:w-[616px] shrink-0">
+      <div className="w-full h-[320px] md:h-auto md:aspect-square bg-[#F9F9F9] rounded-[6px] md:rounded-none border border-gray-200 md:border-none p-4 md:p-2 flex items-center justify-center lg:sticky lg:top-24">
+        <img
+          src="/Products/MMATrainingGloves.png"
+          alt="Ultimate MMA Fight Gloves"
+          className="w-full h-full md:w-[600px] md:h-[600px] object-cover md:object-contain mix-blend-multiply"
+        />
+      </div>
+    </div>
 
           {/* Right: Product Configuration Panel */}
           <div className="flex-1 max-w-full lg:max-w-[616px]">
