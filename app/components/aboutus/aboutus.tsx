@@ -82,7 +82,7 @@ function HeroSection() {
         
         {/* Adjusted to match Home Page button styling strictly */}
         <RollingButton
-          href="/contactus"
+          href="/contact"
           className="bg-white uppercase px-6 py-3 rounded-[8px]"
           style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", lineHeight: "18px", color: "#000000" }}
         >
