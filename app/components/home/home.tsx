@@ -927,7 +927,7 @@ export default function SarlamAthleticsPage() {
               If you have any further questions or just want to reach our team, click the button below.
             </p>
             <RollingButton
-              href="/contactus"
+              href="/contact"
               className="border border-black text-black uppercase px-5 py-3 rounded-[6px] inline-flex"
               style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "15px", lineHeight: "16px" }}
             >
