@@ -429,7 +429,7 @@ export default function SarlamAthleticsPage() {
               From concept development and sampling to mass production and packaging, our experienced manufacturing team supports every stage of your product launch. Whether you&apos;re building a new sports brand or expanding an existing product line, we deliver reliable manufacturing solutions designed for long-term growth.
             </p>
             <RollingButton
-              href="/contactus"
+              href="/contact"
               className="w-full md:w-auto text-center border border-white uppercase px-5 py-3 rounded-[4px] md:rounded-sm"
               style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "15px", lineHeight: "16px", color: "#FFFFFF" }}
             >
@@ -815,7 +815,7 @@ export default function SarlamAthleticsPage() {
                   Partner with Sarlam Athletics to manufacture premium private label boxing gloves, MMA gear, BJJ uniforms, karate apparel, belts, wraps, and training accessories with flexible MOQs, expert quality control, and worldwide delivery.
                 </p>
                 <RollingButton
-                  href="/contactus"
+                  href="/contact"
                   className="w-full md:w-auto border border-white text-white uppercase px-6 md:px-5 py-3.5 rounded-[6px]"
                   style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "15px", lineHeight: "16px" }}
                 >
