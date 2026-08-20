@@ -150,16 +150,19 @@ export default function DetailsComponent() {
         </div>
       </section>
 
-      {/* --- Product Presentation Grid --- */}
-      <section className="px-5 md:px-16 py-16 md:py-24">
-        <div className="flex flex-col lg:flex-row gap-10 lg:gap-32 max-w-[2560px] mx-auto lg:justify-center">
-          {/* Left: Product Image */}
-          <div className="w-full lg:w-[616px] shrink-0">
-            <div className="bg-[#F9F9F9] rounded-none p-4 md:p-2 aspect-square flex items-center justify-center lg:sticky lg:top-24 max-w-[800px] mx-auto">
-              <img src="/Products/01 Private Label Boxing Gloves.png" alt="Boxing Gloves" className="w-[100%] h-[100%] md:w-[600px] md:h-[600px] object-contain" />
-            </div>
-          </div>
-
+     {/* --- Product Presentation Grid --- */}
+<section className="px-5 md:px-16 py-16 md:py-24">
+  <div className="flex flex-col lg:flex-row gap-10 lg:gap-32 max-w-[2560px] mx-auto lg:justify-center">
+    {/* Left: Product Image */}
+    <div className="w-full lg:w-[616px] shrink-0">
+      <div className="w-full h-[320px] lg:h-auto lg:aspect-square bg-[#F9F9F9] rounded-[6px] lg:rounded-none border border-gray-200 lg:border-none p-4 md:p-2 flex items-center justify-center lg:sticky lg:top-24 max-w-[800px] mx-auto">
+        <img 
+          src="/Products/01 Private Label Boxing Gloves.png" 
+          alt="Boxing Gloves" 
+          className="w-full h-full md:w-[600px] md:h-[600px] object-contain" 
+        />
+      </div>
+    </div>
           {/* Right: Product Configuration Panel */}
           <div className="flex-1 max-w-full lg:max-w-[616px] mx-auto lg:mx-0">
             <nav className="flex items-center gap-2 font-['PP_Mori',sans-serif] text-[12px] leading-[16px] tracking-[0px] text-[#6A7282] font-normal md:font-['FFF_Acid_Grotesk',sans-serif] md:text-xs md:font-medium mb-6 md:mb-8 text-left">
