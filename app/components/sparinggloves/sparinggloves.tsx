@@ -4,70 +4,17 @@ import { useState, useRef } from "react";
 import Link from "next/link";
 import { Header } from "../home/home";
 
-// ─── Rolling Text Button Component ──────────────────────────────────────────
-const RollingButton = ({ href, children, className = "", style = {}, onClick, type = "button" }: any) => {
-  const content = (
-    <span className="relative flex items-center justify-center overflow-hidden w-full h-full">
-      <span className="flex items-center justify-center w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/btn:-translate-y-full">
-        {children}
-      </span>
-      <span className="absolute inset-0 flex items-center justify-center w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] translate-y-full group-hover/btn:translate-y-0">
-        {children}
-      </span>
-    </span>
-  );
-
-  if (href) {
-    return (
-      <Link href={href} className={`group/btn relative inline-flex items-center justify-center overflow-hidden ${className}`} style={style}>
-        {content}
-      </Link>
-    );
-  }
-  return (
-    <button type={type} onClick={onClick} className={`group/btn relative inline-flex items-center justify-center overflow-hidden ${className}`} style={style}>
-      {content}
-    </button>
-  );
-};
-
-// ─── Image Placeholder ───
-const ImagePlaceholder = ({ className = "", label = "Image", src }: { className?: string; label?: string; src?: string; }) => {
-  if (src) return <img src={src} alt={label} className={`object-cover ${className}`} />;
-  return (
-    <div className={`bg-gray-200 flex items-center justify-center text-gray-400 text-sm ${className}`}>
-      <span className="text-center px-4">[{label}]</span>
-    </div>
-  );
-};
-
-// ─── Icons (inline SVGs) ───
-const ArrowLeft = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>;
-const ArrowRight = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>;
-function CheckIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-      <path d="M3.5 9.5L7 13L14.5 5" stroke="#0D0D0D" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-function InfoIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" />
-      <line x1="8" y1="11" x2="8" y2="7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      <circle cx="8" cy="4.5" r="1" fill="currentColor" />
-    </svg>
-  );
-}
-
-// ─── Data ───
-const finishOptions = ["STANDARD", "PREMIUM HEAVY-DUTY"];
-const fitOptions = ["UNISEX"];
-const materialOptions = ["GENUINE LEATHER", "MULTI-LAYERED SHOCK ABSORBING FOAM", "MICROFIBER LEATHER"];
-const brandingOptions = ["DIGITAL / SCREEN PRINT", "SUBLIMATED LOGO", "EMBROIDERY", "WOVEN LABEL / 3D RUBBER"];
-const packagingOptions = ["POLY BAG", "MESH BAG", "CUSTOM RETAIL BOX"];
-const sizeOptions = ["STANDARD FOCUS MITT", "STANDARD THAI PAD", "CUSTOM SHAPE/SIZE"];
+// ─── Data Arrays ────────────────────────────────────────────────────────────
+const allProducts = [
+  { name: "Private Label Boxing Gloves", category: "Boxing Equipment", cta: "View Product +", mobileCta: "View Product →", href: "/details", swatches: ["#B91C1C", "#0D0D0D"], image: "/Products/01 Private Label Boxing Gloves.png" },
+  { name: "BJJ Gis and Jiu-Jitsu Uniforms", category: "Martial Arts Uniforms", cta: "View Product +", mobileCta: "View Product →", href: "/jitsu", swatches: ["#0D0D0D", "#E5E5E5"], image: "/Products/02 BJJ Gis and Jiu-Jitsu Uniforms.png" },
+  { name: "MMA Fight Gloves", category: "MMA Equipment", cta: "View Product +", mobileCta: "View Product →", href: "/mmagloves", swatches: ["#B91C1C", "#0D0D0D"], image: "/Products/03 MMA Fight Gloves.png" },
+  { name: "Professional MMA Training Gloves", category: "MMA Equipment", cta: "View Product +", mobileCta: "View Product →", href: "/ultimategloves", swatches: ["#B91C1C", "#0D0D0D"], image: "/Products/MMATrainingGloves.png" },
+  { name: "Boxing Focus Mitts and Training Pads", category: "Training Equipment", cta: "View Product +", mobileCta: "View Product →", href: "/trainingpad", swatches: ["#B91C1C", "#0D0D0D"], image: "/Products/05 Boxing Mitts and Training Pads.png" },
+  { name: "Boxing Sparring Gloves", category: "Boxing Equipment", cta: "View Product +", mobileCta: "View Product →", href: "/sparinggloves", swatches: ["#B91C1C", "#0D0D0D"], image: "/Products/06 Boxing Sparring Gloves.png" },
+  { name: "Custom Boxing Headguards", category: "Protective Equipment", cta: "View Product +", mobileCta: "View Product →", href: "/Boxingguard", swatches: ["#B91C1C", "#0D0D0D"], image: "/Products/07 Custom Boxing Headguards.png" },
+  { name: "Private Label Karate Uniforms", category: "Martial Arts Uniforms", cta: "View Product +", mobileCta: "View Product →", href: "/karatesuit", swatches: ["#E5E5E5", "#0D0D0D"], image: "/Products/karateuniform.png" },
+];
 
 const relatedProducts = [
   { name: "Jiu Jitsu Suit (Gi)", href: "/jitsu", cta: "View Product", image: "/Products/02 BJJ Gis and Jiu-Jitsu Uniforms.png" },
@@ -89,14 +36,57 @@ const features = [
   { text: "Worldwide Shipping" },
 ];
 
-export default function TrainingPadsPage() {
-  const [selectedFinish, setSelectedFinish] = useState<string[]>(["STANDARD"]);
-  const [selectedFit, setSelectedFit] = useState<string[]>(["UNISEX"]);
-  const [selectedMaterial, setSelectedMaterial] = useState<string[]>(["GENUINE LEATHER"]);
-  const [selectedBranding, setSelectedBranding] = useState<string[]>(["DIGITAL / SCREEN PRINT"]);
-  const [selectedSize, setSelectedSize] = useState<string[]>(["STANDARD FOCUS MITT"]);
-  const [selectedPackaging, setSelectedPackaging] = useState<string[]>(["POLY BAG"]);
+// ─── Rolling Text Button Component ──────────────────────────────────────────
+const RollingButton = ({ href, children, className = "", style = {}, onClick, type = "button", disabled }: any) => {
+  const content = (
+    <span className="relative flex items-center justify-center overflow-hidden w-full h-full">
+      <span className="flex items-center justify-center w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/btn:-translate-y-full">
+        {children}
+      </span>
+      <span className="absolute inset-0 flex items-center justify-center w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] translate-y-full group-hover/btn:translate-y-0">
+        {children}
+      </span>
+    </span>
+  );
 
+  if (href) {
+    return (
+      <Link href={href} className={`group/btn relative inline-flex items-center justify-center overflow-hidden ${className} ${disabled ? 'opacity-70 cursor-not-allowed' : ''}`} style={style}>
+        {content}
+      </Link>
+    );
+  }
+  return (
+    <button type={type} onClick={onClick} disabled={disabled} className={`group/btn relative inline-flex items-center justify-center overflow-hidden ${className} ${disabled ? 'opacity-70 cursor-not-allowed' : ''}`} style={style}>
+      {content}
+    </button>
+  );
+};
+
+// ─── Image Placeholder ───
+const ImagePlaceholder = ({ className = "", label = "Image", src }: { className?: string; label?: string; src?: string; }) => {
+  if (src) return <img src={src} alt={label} className={`object-cover ${className}`} />;
+  return (
+    <div className={`bg-gray-200 flex items-center justify-center text-gray-400 text-sm ${className}`}>
+      <span className="text-center px-4">[{label}]</span>
+    </div>
+  );
+};
+
+// ─── Icons (inline SVGs) ───
+const ArrowLeft = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>;
+const ArrowRight = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>;
+const ChevronDownIcon = () => <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="pointer-events-none"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>;
+function CheckIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <path d="M3.5 9.5L7 13L14.5 5" stroke="#0D0D0D" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+export default function SparringGlovesPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const relatedScrollerRef = useRef<HTMLDivElement>(null);
 
   const scrollRelated = (dir: 1 | -1) => {
@@ -107,8 +97,36 @@ export default function TrainingPadsPage() {
     el.scrollBy({ left: dir * cardWidth, behavior: "smooth" });
   };
 
-  const toggleOption = (option: string, state: string[], setState: React.Dispatch<React.SetStateAction<string[]>>) => {
-    setState((prev) => prev.includes(option) ? prev.filter((o) => o !== option) : [...prev, option]);
+  // --- WEB3FORMS FORMDATA SUBMISSION HANDLER ---
+  const handleQuoteSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    
+    // Add Web3Forms API credentials
+    formData.append("access_key", "39dc5b13-90fe-40da-97f9-2440b5c7aaf3");
+    formData.append("subject", "New Private Label Quote Request - Boxing Sparring Gloves");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        alert("Success! Your manufacturing quote request has been sent successfully.");
+        form.reset(); // Clear the form on success
+      } else {
+        alert("Error: There was an issue submitting your form. Please try again.");
+      }
+    } catch (error) {
+      alert("Error: Network connection failed. Please check your internet and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -141,21 +159,21 @@ export default function TrainingPadsPage() {
         </div>
       </section>
 
-     {/* ── Product Presentation Grid ── */}
-<section className="px-5 md:px-16 py-10 md:py-20">
-  <div className="flex flex-col lg:flex-row gap-10 lg:gap-32 max-w-[2560px] mx-auto lg:justify-center">
-    {/* Left: Product Image */}
-    <div className="w-full lg:w-[616px] shrink-0">
-      <div className="w-full h-[320px] md:h-auto md:aspect-square bg-[#F9F9F9] rounded-[6px] md:rounded-none border border-gray-200 md:border-none p-4 md:p-2 flex items-center justify-center lg:sticky lg:top-24 max-w-[800px] mx-auto">
-        <img 
-          src="\Products\06 Boxing Sparring Gloves.png" 
-          alt="Training Pads" 
-          className="w-full h-full md:w-[600px] md:h-[600px] object-cover md:object-contain mix-blend-multiply" 
-        />
-      </div>
-    </div>
+      {/* ── Product Presentation Grid ── */}
+      <section className="px-5 md:px-16 py-10 md:py-20">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-32 max-w-[2560px] mx-auto lg:justify-center">
+          {/* Left: Product Image */}
+          <div className="w-full lg:w-[616px] shrink-0">
+            <div className="w-full h-[320px] md:h-auto md:aspect-square bg-[#F9F9F9] rounded-[6px] md:rounded-none border border-gray-200 md:border-none p-4 md:p-2 flex items-center justify-center lg:sticky lg:top-24 max-w-[800px] mx-auto">
+              <img 
+                src="/Products/06 Boxing Sparring Gloves.png" 
+                alt="Boxing Sparring Gloves" 
+                className="w-full h-full md:w-[600px] md:h-[600px] object-cover md:object-contain mix-blend-multiply" 
+              />
+            </div>
+          </div>
 
-                  {/* Right: Product Configuration Panel */}
+          {/* Right: Product Configuration Panel */}
           <div className="flex-1 max-w-full lg:max-w-[616px] mx-auto lg:mx-0">
             <nav className="flex items-center flex-wrap gap-2 text-[10px] md:text-xs text-[#6A7282] mb-6 md:mb-8 font-medium uppercase tracking-wide">
               <a href="/" className="hover:underline">Home</a><span>/</span>
@@ -192,54 +210,119 @@ export default function TrainingPadsPage() {
               </h3>
             </div>
 
-            <OptionGroup label="Select Finish" options={finishOptions} selectedOptions={selectedFinish} onSelect={(val) => toggleOption(val, selectedFinish, setSelectedFinish)} />
-            <OptionGroup label="Fit/Gender" guideLabel="Gender Guide" options={fitOptions} selectedOptions={selectedFit} onSelect={(val) => toggleOption(val, selectedFit, setSelectedFit)} />
-            <OptionGroup label="Materials/Fabric" guideLabel="Fabric Guide" options={materialOptions} selectedOptions={selectedMaterial} onSelect={(val) => toggleOption(val, selectedMaterial, setSelectedMaterial)} />
-            <OptionGroup label="Branding Method" options={brandingOptions} selectedOptions={selectedBranding} onSelect={(val) => toggleOption(val, selectedBranding, setSelectedBranding)} />
-
-            <div className="mb-6 md:mb-8">
-              <div className="flex items-center justify-between mb-3">
-                <label className="text-[13px] md:text-sm font-bold text-[#0D0D0D] uppercase">Size/Weight Range</label>
-                <button className="text-[11px] md:text-xs text-[#666666] hover:underline font-medium">Fitting Guide</button>
+            {/* --- FORM WRAPPER --- */}
+            <form onSubmit={handleQuoteSubmit} className="flex flex-col gap-4">
+              
+              <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
+                <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Full Name*</span>
+                <input 
+                  type="text" 
+                  name="name"
+                  required
+                  onInput={(e) => (e.currentTarget.value = e.currentTarget.value.replace(/[^A-Za-z\s]/g, ""))}
+                  placeholder="e.g. John Doe" 
+                  className="bg-transparent outline-none text-[14px] leading-[18px] mt-0 placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
+                  style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
+                />
               </div>
-              <div className="space-y-4">
-                <div className="flex flex-wrap gap-2 md:gap-3">
-                  {sizeOptions.map((size) => (
-                    <button key={size} onClick={() => toggleOption(size, selectedSize, setSelectedSize)} className={`px-4 py-3 md:px-5 md:py-[15px] border text-[13px] md:text-[15px] font-medium transition-all ${selectedSize.includes(size) ? "border-[#0D0D0D] text-[#0D0D0D] bg-white" : "border-gray-200 text-[#0D0D0D] hover:border-gray-400"}`}>
-                      {size}
-                    </button>
-                  ))}
+
+              <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
+                <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Business Email*</span>
+                <input 
+                  type="email" 
+                  name="email"
+                  required
+                  placeholder="e.g. john@yourbrand.com" 
+                  className="bg-transparent outline-none text-[14px] leading-[18px] placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
+                  style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
+                />
+              </div>
+
+              <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
+                <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Phone Number (Optional)</span>
+                <input 
+                  type="tel" 
+                  name="phone"
+                  onInput={(e) => (e.currentTarget.value = e.currentTarget.value.replace(/[^0-9\+\-\(\)\s]/g, ""))}
+                  placeholder="e.g. +1 (555) 000-0000" 
+                  className="bg-transparent outline-none text-[14px] leading-[18px] placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
+                  style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
+                />
+              </div>
+
+              {/* 2-col grid for Category & Quantity */}
+              <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 lg:gap-3">
+                
+                {/* Product Category Dropdown with chevron */}
+                <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0 relative">
+                  <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Product Category*</span>
+                  <select 
+                    name="category"
+                    required
+                    defaultValue=""
+                    className="bg-transparent outline-none text-[13px] leading-[18px] mt-0.5 min-w-0 text-[#0D0D0D] cursor-pointer appearance-none pr-6 text-ellipsis overflow-hidden whitespace-nowrap" 
+                    style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400 }} 
+                  >
+                    <option value="" disabled hidden className="text-[#9CA3AF]">Select Category</option>
+                    {allProducts.map((product, index) => (
+                      <option key={index} value={product.name}>{product.name}</option>
+                    ))}
+                  </select>
+                  <div className="absolute right-3 top-[60%] -translate-y-1/2 pointer-events-none text-[#707070]">
+                    <ChevronDownIcon />
+                  </div>
                 </div>
-                <div>
-                  <span className="block text-[11px] md:text-xs font-medium text-[#666666] mb-2 uppercase">Custom</span>
-                  <input type="text" placeholder="Any other size" className="border border-gray-200 px-4 py-3 md:py-[15px] w-full text-[13px] md:text-[15px] focus:outline-none focus:border-[#0D0D0D] font-medium" />
+
+                {/* Estimated Order Quantity Datalist with chevron */}
+                <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0 relative">
+                  <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Estimated Order Quantity*</span>
+                  <input 
+                    type="text" 
+                    name="quantity"
+                    required
+                    list="quantity-options"
+                    placeholder="e.g. 500 pairs" 
+                    className="bg-transparent outline-none text-[13px] leading-[18px] mt-0.5 min-w-0 placeholder:text-[#9CA3AF] focus:placeholder-transparent pr-6 text-ellipsis overflow-hidden whitespace-nowrap [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:right-0 [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:cursor-pointer" 
+                    style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
+                  />
+                  <div className="absolute right-3 top-[60%] -translate-y-1/2 pointer-events-none text-[#707070]">
+                    <ChevronDownIcon />
+                  </div>
+                  <datalist id="quantity-options">
+                    <option value="100" />
+                    <option value="200" />
+                    <option value="300" />
+                    <option value="500" />
+                    <option value="1000" />
+                  </datalist>
                 </div>
+                
               </div>
-            </div>
 
-            <OptionGroup label="Packaging Method" options={packagingOptions} selectedOptions={selectedPackaging} onSelect={(val) => toggleOption(val, selectedPackaging, setSelectedPackaging)} />
-
-            <div className="mb-6 md:mb-8">
-              <div className="flex items-center justify-between mb-3">
-                <label className="text-[13px] md:text-sm font-bold text-[#0D0D0D] uppercase">Quantity</label>
-                <span className="text-[11px] md:text-xs text-[#666666] font-medium">Quantity Guide</span>
+              <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0 mb-4">
+                <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Project Details*</span>
+                <textarea 
+                  name="message"
+                  required
+                  placeholder="Tell us about your branding, materials, colors, logo requirements, packaging, target market, or any other details." 
+                  rows={3} 
+                  className="bg-transparent outline-none resize-none text-[14px] leading-[18px] mt-1 placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
+                  style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
+                />
               </div>
-              <input type="number" placeholder="Enter quantity" className="border border-gray-200 px-4 py-3 md:py-[15px] w-full text-[13px] md:text-[15px] focus:outline-none focus:border-[#0D0D0D] font-medium" />
-              <div className="flex items-center gap-2 mt-3">
-                <span className="text-[#D92D20] shrink-0"><InfoIcon /></span>
-                <span className="text-[#D92D20] text-[11px] md:text-[12px] font-medium tracking-wide">Please select: Glove Finish, Branding Method, Size Range, Quantity</span>
-              </div>
-            </div>
 
-            <div className="space-y-3 md:space-y-4 mb-4 mt-8 md:mt-12">
-              <RollingButton className="w-full bg-[#0D0D0D] text-white text-[13px] md:text-sm font-normal py-4 md:py-[18px] uppercase tracking-wide rounded-[4px]">
-                Request Manufacturing Quote
-              </RollingButton>
-              <RollingButton className="w-full border border-[#0D0D0D] text-[#0D0D0D] text-[13px] md:text-sm font-normal py-4 md:py-[18px] uppercase tracking-wide rounded-[4px]">
-                Ask About Samples
-              </RollingButton>
-            </div>
-            <p className="text-[11px] md:text-xs text-[#999999] text-center font-normal">
+              {/* CTA Buttons */}
+              <div className="space-y-3 md:space-y-4 mb-4 mt-8 md:mt-12">
+                <RollingButton type="submit" disabled={isSubmitting} className={`w-full bg-[#0D0D0D] text-white text-[13px] md:text-sm font-normal py-4 md:py-[18px] uppercase tracking-wide rounded-[4px] ${isSubmitting ? 'opacity-70 cursor-wait' : ''}`}>
+                  {isSubmitting ? "Submitting..." : "Request Manufacturing Quote"}
+                </RollingButton>
+                <RollingButton type="button" className="w-full border border-[#0D0D0D] text-[#0D0D0D] text-[13px] md:text-sm font-normal py-4 md:py-[18px] uppercase tracking-wide rounded-[4px]">
+                  Ask About Samples
+                </RollingButton>
+              </div>
+            </form>
+
+            <p className="text-[11px] md:text-xs text-[#999999] text-center font-normal mt-6 md:mt-8">
               Share your product specs and our team will respond with MOQ, sample, and wholesale production options.
             </p>
           </div>
@@ -341,42 +424,19 @@ export default function TrainingPadsPage() {
           </div>
         </div>
       </section>
+
       <footer className="bg-white border-t border-[#D7DADE]">
         <div className="max-w-[2560px] mx-auto px-6 md:px-10 py-12 md:py-16 flex flex-col lg:flex-row justify-between gap-10 md:gap-12">
           <div className="lg:w-1/2">
             <h3 className="mb-4 md:mb-6 text-[47px] leading-[58px] tracking-[-1.9px] font-medium text-[#000000] text-left md:text-[#0D0D0D] md:tracking-tight">
               Start Your Private Label<br className="hidden md:block" /><span className="md:hidden"> </span>Manufacturing Project
             </h3>
-         <a 
-  href="mailto:hello@sarlamathletics.com" 
-  /* --- CHANGED HERE: Changed text-[47px] to text-[28px] and leading-[58px] to leading-[36px] for mobile. Added md:text-[47px] and md:leading-[58px] to maintain desktop size. --- */
-  className="text-[28px] leading-[36px] md:text-[47px] md:leading-[58px] tracking-[-1.9px] font-medium text-[#A5A5A5] text-left transition break-all hover:text-[#000000] md:tracking-tight block"
->
-  hello@sarlamathletics.com
-</a>
+            <a href="mailto:hello@sarlamathletics.com" className="text-[28px] leading-[36px] md:text-[47px] md:leading-[58px] tracking-[-1.9px] font-medium text-[#A5A5A5] text-left transition break-all hover:text-[#000000] md:tracking-tight block">
+              hello@sarlamathletics.com
+            </a>
           </div>
 
-          {/* Mobile Links */}
-          <div className="md:hidden flex flex-col gap-8">
-            <div className="flex flex-col gap-3">
-              <FooterLink href="/">Home</FooterLink>
-              <FooterLink href="/products">Products</FooterLink>
-              <FooterLink href="/privatelabel">Private Label</FooterLink>
-              <FooterLink href="/manufacture">Manufacturing Process</FooterLink>
-              <FooterLink href="/aboutus">About</FooterLink>
-              <FooterLink href="/contact">Contact</FooterLink>
-              <FooterLink href="/contact">Request Quote</FooterLink>
-            </div>
-            
-            <div className="flex flex-col gap-3">
-              <FooterLink href="/details">Boxing Gloves</FooterLink>
-              <FooterLink href="/karatesuit">Martial Arts Uniforms</FooterLink>
-              <FooterLink href="/mmagloves">MMA Gear</FooterLink>
-              <FooterLink href="/trainingpad">Training Accessories</FooterLink>
-            </div>
-          </div>
-
-          {/* Desktop Links with mapping arrays */}
+          {/* Desktop Navigation Links */}
           <div className="hidden lg:flex gap-16">
             <div className="flex flex-col gap-3">
               {[
@@ -438,7 +498,6 @@ export default function TrainingPadsPage() {
         </div>
       </footer>
 
-
       {/* ── CSS Animations ── */}
       <style dangerouslySetInnerHTML={{
         __html: `
@@ -462,40 +521,6 @@ export default function TrainingPadsPage() {
   );
 }
 
-/* ── Reusable Option Group Selector ── */
-function OptionGroup({ label, guideLabel, options, selectedOptions, onSelect }: { label: string; guideLabel?: string; options: string[]; selectedOptions: string[]; onSelect: (val: string) => void; }) {
-  return (
-    <div className="mb-6 md:mb-8">
-      <div className="flex items-center justify-between mb-3">
-        <label className="text-[13px] md:text-sm font-bold text-[#0D0D0D] uppercase">{label}</label>
-        {guideLabel && <button className="text-[11px] md:text-xs text-[#666666] hover:underline font-medium">{guideLabel}</button>}
-      </div>
-      <div className="flex flex-wrap gap-2 md:gap-3">
-        {options.map((opt) => (
-          <button key={opt} onClick={() => onSelect(opt)} className={`px-4 py-3 md:px-5 md:py-[15px] border text-[13px] md:text-[15px] font-medium transition-all ${selectedOptions.includes(opt) ? "border-[#0D0D0D] text-[#0D0D0D] bg-white" : "border-gray-200 text-[#0D0D0D] hover:border-gray-400"}`}>
-            {opt}
-          </button>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-/* ─── FOOTER ACCORDION (Mobile) ─── */
-function FooterAccordion({ title, children }: { title: string; children: React.ReactNode; }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className="border-b border-gray-200">
-      <button className="w-full flex items-center justify-between py-4 text-left text-[14px] font-medium text-[#0D0D0D]" onClick={() => setOpen(!open)}>
-        {title}
-        <svg className={`w-4 h-4 transition-transform ${open ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
-      </button>
-      {open && <div className="pb-4 flex flex-col gap-3">{children}</div>}
-    </div>
-  );
-}
-
-/* ─── FOOTER LINK ─── */
 function FooterLink({ href, children }: { href: string; children: React.ReactNode; }) {
   return <a href={href} className="hover:text-[#0D0D0D] transition block text-[14px] leading-[17px] font-normal text-[#757575]">{children}</a>;
 }
