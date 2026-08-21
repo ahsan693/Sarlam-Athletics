@@ -49,7 +49,7 @@ const ArrowUpRight = () => (
 );
 
 const ChevronDownIcon = () => (
-  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="pointer-events-none">
     <path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
@@ -79,26 +79,16 @@ function InfoIcon() {
 }
 
 // ─── Data ───
-const finishOptions = ["MATTE", "GLOSSY", "STANDARD"];
-const fitOptions = ["MEN", "WOMEN", "UNISEX", "KIDS"];
-const materialOptions = [
-  "PREMIUM LEATHER",
-  "SYNTHETIC LEATHER",
-  "HIGH-GRADE MICROFIBER",
+const allProducts = [
+  { name: "Private Label Boxing Gloves", category: "Boxing Equipment", cta: "View Product +", mobileCta: "View Product →", href: "/details", swatches: ["#B91C1C", "#0D0D0D"], image: "/Products/01 Private Label Boxing Gloves.png" },
+  { name: "BJJ Gis and Jiu-Jitsu Uniforms", category: "Martial Arts Uniforms", cta: "View Product +", mobileCta: "View Product →", href: "/jitsu", swatches: ["#0D0D0D", "#E5E5E5"], image: "/Products/02 BJJ Gis and Jiu-Jitsu Uniforms.png" },
+  { name: "MMA Fight Gloves", category: "MMA Equipment", cta: "View Product +", mobileCta: "View Product →", href: "/mmagloves", swatches: ["#B91C1C", "#0D0D0D"], image: "/Products/03 MMA Fight Gloves.png" },
+  { name: "Professional MMA Training Gloves", category: "MMA Equipment", cta: "View Product +", mobileCta: "View Product →", href: "/ultimategloves", swatches: ["#B91C1C", "#0D0D0D"], image: "/Products/MMATrainingGloves.png" },
+  { name: "Boxing Focus Mitts and Training Pads", category: "Training Equipment", cta: "View Product +", mobileCta: "View Product →", href: "/trainingpad", swatches: ["#B91C1C", "#0D0D0D"], image: "/Products/05 Boxing Mitts and Training Pads.png" },
+  { name: "Boxing Sparring Gloves", category: "Boxing Equipment", cta: "View Product +", mobileCta: "View Product →", href: "/sparinggloves", swatches: ["#B91C1C", "#0D0D0D"], image: "/Products/06 Boxing Sparring Gloves.png" },
+  { name: "Custom Boxing Headguards", category: "Protective Equipment", cta: "View Product +", mobileCta: "View Product →", href: "/Boxingguard", swatches: ["#B91C1C", "#0D0D0D"], image: "/Products/07 Custom Boxing Headguards.png" },
+  { name: "Private Label Karate Uniforms", category: "Martial Arts Uniforms", cta: "View Product +", mobileCta: "View Product →", href: "/karatesuit", swatches: ["#E5E5E5", "#0D0D0D"], image: "/Products/karateuniform.png" },
 ];
-const brandingOptions = [
-  "SCREEN PRINT",
-  "EMBROIDERY",
-  "3D RUBBER PATCH / WOVEN LABEL",
-];
-const packagingOptions = [
-  "ZIP PE BAG",
-  "POLY BAG",
-  "CUSTOM DRAWSTRING BAG"
-];
-
-const sizeOptionsWeight = ["4OZ (PROFESSIONAL FIGHT WEIGHT)", "6-7OZ (AMATEUR/SPARRING)"];
-const sizeOptionsStandard = ["S", "M", "L", "XL"];
 
 const relatedProducts = [
   {
@@ -152,14 +142,35 @@ const features = [
   { text: "Worldwide Shipping" },
 ];
 
-export default function UltimateMmaFightGlovesPage() {
-  const [selectedFinish, setSelectedFinish] = useState<string[]>(["MATTE"]);
-  const [selectedFit, setSelectedFit] = useState<string[]>(["UNISEX"]);
-  const [selectedMaterial, setSelectedMaterial] = useState<string[]>(["PREMIUM LEATHER"]);
-  const [selectedBranding, setSelectedBranding] = useState<string[]>(["SCREEN PRINT"]);
-  const [selectedSize, setSelectedSize] = useState<string[]>(["4OZ (PROFESSIONAL FIGHT WEIGHT)"]);
-  const [selectedPackaging, setSelectedPackaging] = useState<string[]>(["ZIP PE BAG"]);
+// ─── Rolling Text Button Component ──────────────────────────────────────────
+const RollingButton = ({ href, children, className = "", style = {}, onClick, type = "button", disabled }: any) => {
+  const content = (
+    <span className="relative flex items-center justify-center overflow-hidden w-full h-full">
+      <span className="flex items-center justify-center w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/btn:-translate-y-full">
+        {children}
+      </span>
+      <span className="absolute inset-0 flex items-center justify-center w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] translate-y-full group-hover/btn:translate-y-0">
+        {children}
+      </span>
+    </span>
+  );
 
+  if (href) {
+    return (
+      <Link href={href} className={`group/btn relative inline-flex items-center justify-center overflow-hidden ${className} ${disabled ? 'opacity-70 cursor-not-allowed' : ''}`} style={style}>
+        {content}
+      </Link>
+    );
+  }
+  return (
+    <button type={type} onClick={onClick} disabled={disabled} className={`group/btn relative inline-flex items-center justify-center overflow-hidden ${className} ${disabled ? 'opacity-70 cursor-not-allowed' : ''}`} style={style}>
+      {content}
+    </button>
+  );
+};
+
+export default function UltimateMmaFightGlovesPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const relatedScrollerRef = useRef<HTMLDivElement>(null);
 
   const scrollRelated = (dir: 1 | -1) => {
@@ -170,14 +181,36 @@ export default function UltimateMmaFightGlovesPage() {
     el.scrollBy({ left: dir * cardWidth, behavior: "smooth" });
   };
 
-  const toggleOption = (
-    option: string,
-    state: string[],
-    setState: React.Dispatch<React.SetStateAction<string[]>>
-  ) => {
-    setState((prev) =>
-      prev.includes(option) ? prev.filter((o) => o !== option) : [...prev, option]
-    );
+  // --- WEB3FORMS FORMDATA SUBMISSION HANDLER ---
+  const handleQuoteSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    
+    // Add Web3Forms API credentials
+    formData.append("access_key", "39dc5b13-90fe-40da-97f9-2440b5c7aaf3");
+    formData.append("subject", "New Private Label Quote Request - Ultimate MMA Fight Gloves");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        alert("Success! Your manufacturing quote request has been sent successfully.");
+        form.reset(); // Clear the form on success
+      } else {
+        alert("Error: There was an issue submitting your form. Please try again.");
+      }
+    } catch (error) {
+      alert("Error: Network connection failed. Please check your internet and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -199,11 +232,11 @@ export default function UltimateMmaFightGlovesPage() {
       {/* ── Hero Banner ── */}
       <section className="relative h-[320px] md:h-[480px] overflow-hidden">
         <div className="absolute inset-0 bg-black">
-  <img
-  src="/Page 7/01-1.png"
-  alt="Private Label Sports Equipment Manufacturing"
-  className="w-full h-full object-cover opacity-60"
-/>
+          <img
+            src="/Page 7/01-1.png"
+            alt="Private Label Sports Equipment Manufacturing"
+            className="w-full h-full object-cover opacity-60"
+          />
         </div>
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
           <span className="text-[13px] md:text-[15px] font-medium mb-3 md:mb-4 tracking-wide text-[#CCCCCC] uppercase">
@@ -214,19 +247,20 @@ export default function UltimateMmaFightGlovesPage() {
           </h1>
         </div>
       </section>
-{/* ── Product Presentation Grid ── */}
-<section className="px-5 md:px-16 py-10 md:py-20">
-  <div className="flex flex-col lg:flex-row gap-10 lg:gap-32 max-w-[1440px] mx-auto">
-    {/* Left: Product Image */}
-    <div className="w-full lg:w-[616px] shrink-0">
-      <div className="w-full h-[320px] md:h-auto md:aspect-square bg-[#F9F9F9] rounded-[6px] md:rounded-none border border-gray-200 md:border-none p-4 md:p-2 flex items-center justify-center lg:sticky lg:top-24">
-        <img
-          src="/Products/MMATrainingGloves.png"
-          alt="Ultimate MMA Fight Gloves"
-          className="w-full h-full md:w-[600px] md:h-[600px] object-cover md:object-contain mix-blend-multiply"
-        />
-      </div>
-    </div>
+
+      {/* ── Product Presentation Grid ── */}
+      <section className="px-5 md:px-16 py-10 md:py-20">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-32 max-w-[1440px] mx-auto">
+          {/* Left: Product Image */}
+          <div className="w-full lg:w-[616px] shrink-0">
+            <div className="w-full h-[320px] md:h-auto md:aspect-square bg-[#F9F9F9] rounded-[6px] md:rounded-none border border-gray-200 md:border-none p-4 md:p-2 flex items-center justify-center lg:sticky lg:top-24">
+              <img
+                src="/Products/MMATrainingGloves.png"
+                alt="Ultimate MMA Fight Gloves"
+                className="w-full h-full md:w-[600px] md:h-[600px] object-cover md:object-contain mix-blend-multiply"
+              />
+            </div>
+          </div>
 
           {/* Right: Product Configuration Panel */}
           <div className="flex-1 max-w-full lg:max-w-[616px]">
@@ -272,131 +306,119 @@ export default function UltimateMmaFightGlovesPage() {
               </h3>
             </div>
 
-            {/* Option Groups */}
-            <OptionGroup
-              label="Select Finish"
-              options={finishOptions}
-              selectedOptions={selectedFinish}
-              onSelect={(val) => toggleOption(val, selectedFinish, setSelectedFinish)}
-            />
-
-            <OptionGroup
-              label="Fit/Gender"
-              guideLabel="Gender Guide"
-              options={fitOptions}
-              selectedOptions={selectedFit}
-              onSelect={(val) => toggleOption(val, selectedFit, setSelectedFit)}
-            />
-
-            <OptionGroup
-              label="Material/Fabric"
-              guideLabel="Fabric Guide"
-              options={materialOptions}
-              selectedOptions={selectedMaterial}
-              onSelect={(val) => toggleOption(val, selectedMaterial, setSelectedMaterial)}
-            />
-
-            <OptionGroup
-              label="Branding Method"
-              options={brandingOptions}
-              selectedOptions={selectedBranding}
-              onSelect={(val) => toggleOption(val, selectedBranding, setSelectedBranding)}
-            />
-
-            {/* Size/Weight Selector - Grouped layout */}
-            <div className="mb-6 md:mb-8">
-              <div className="flex items-center justify-between mb-3">
-                <label className="text-[13px] md:text-sm font-bold text-[#0D0D0D] uppercase">Size/Weight Options</label>
-                <button className="text-[11px] md:text-xs text-[#666666] hover:underline font-medium">
-                  Weight Guide
-                </button>
-              </div>
+            {/* --- FORM WRAPPER --- */}
+            <form onSubmit={handleQuoteSubmit} className="flex flex-col gap-4">
               
-              <div className="space-y-4">
-                <div className="flex flex-wrap gap-2 md:gap-3">
-                  {sizeOptionsWeight.map((size) => (
-                    <button
-                      key={size}
-                      onClick={() => toggleOption(size, selectedSize, setSelectedSize)}
-                      className={`px-4 py-3 md:px-5 md:py-[15px] border text-[13px] md:text-[15px] font-medium transition-all ${
-                        selectedSize.includes(size)
-                          ? "border-[#0D0D0D] text-[#0D0D0D] bg-white"
-                          : "border-gray-200 text-[#0D0D0D] hover:border-gray-400"
-                      }`}
-                    >
-                      {size}
-                    </button>
-                  ))}
-                </div>
-                <div className="flex flex-wrap gap-2 md:gap-3">
-                  {sizeOptionsStandard.map((size) => (
-                    <button
-                      key={size}
-                      onClick={() => toggleOption(size, selectedSize, setSelectedSize)}
-                      className={`px-4 py-3 md:px-5 md:py-[15px] border text-[13px] md:text-[15px] font-medium transition-all ${
-                        selectedSize.includes(size)
-                          ? "border-[#0D0D0D] text-[#0D0D0D] bg-white"
-                          : "border-gray-200 text-[#0D0D0D] hover:border-gray-400"
-                      }`}
-                    >
-                      {size}
-                    </button>
-                  ))}
+              <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
+                <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Full Name*</span>
+                <input 
+                  type="text" 
+                  name="name"
+                  required
+                  onInput={(e) => (e.currentTarget.value = e.currentTarget.value.replace(/[^A-Za-z\s]/g, ""))}
+                  placeholder="e.g. John Doe" 
+                  className="bg-transparent outline-none text-[14px] leading-[18px] mt-0 placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
+                  style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
+                />
+              </div>
+
+              <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
+                <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Business Email*</span>
+                <input 
+                  type="email" 
+                  name="email"
+                  required
+                  placeholder="e.g. john@yourbrand.com" 
+                  className="bg-transparent outline-none text-[14px] leading-[18px] placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
+                  style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
+                />
+              </div>
+
+              <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
+                <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Phone Number (Optional)</span>
+                <input 
+                  type="tel" 
+                  name="phone"
+                  onInput={(e) => (e.currentTarget.value = e.currentTarget.value.replace(/[^0-9\+\-\(\)\s]/g, ""))}
+                  placeholder="e.g. +1 (555) 000-0000" 
+                  className="bg-transparent outline-none text-[14px] leading-[18px] placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
+                  style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
+                />
+              </div>
+
+              {/* 2-col grid for Category & Quantity */}
+              <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 lg:gap-3">
+                
+                {/* Product Category Dropdown with chevron */}
+                <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0 relative">
+                  <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Product Category*</span>
+                  <select 
+                    name="category"
+                    required
+                    defaultValue=""
+                    className="bg-transparent outline-none text-[13px] leading-[18px] mt-0.5 min-w-0 text-[#0D0D0D] cursor-pointer appearance-none pr-6 text-ellipsis overflow-hidden whitespace-nowrap" 
+                    style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400 }} 
+                  >
+                    <option value="" disabled hidden className="text-[#9CA3AF]">Select Category</option>
+                    {allProducts.map((product, index) => (
+                      <option key={index} value={product.name}>{product.name}</option>
+                    ))}
+                  </select>
+                  <div className="absolute right-3 top-[60%] -translate-y-1/2 pointer-events-none text-[#707070]">
+                    <ChevronDownIcon />
+                  </div>
                 </div>
 
-                {/* Other Input Field */}
-                <div>
-                  <span className="block text-[11px] md:text-xs font-medium text-[#666666] mb-2 uppercase">
-                    Other
-                  </span>
+                {/* Estimated Order Quantity Datalist with chevron */}
+                <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0 relative">
+                  <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Estimated Order Quantity*</span>
                   <input 
                     type="text" 
-                    placeholder="Any other" 
-                    className="border border-gray-200 px-4 py-3 md:py-[15px] w-full text-[13px] md:text-[15px] focus:outline-none focus:border-[#0D0D0D] font-medium"
+                    name="quantity"
+                    required
+                    list="quantity-options"
+                    placeholder="e.g. 500 pairs" 
+                    className="bg-transparent outline-none text-[13px] leading-[18px] mt-0.5 min-w-0 placeholder:text-[#9CA3AF] focus:placeholder-transparent pr-6 text-ellipsis overflow-hidden whitespace-nowrap [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:right-0 [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:cursor-pointer" 
+                    style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
                   />
+                  <div className="absolute right-3 top-[60%] -translate-y-1/2 pointer-events-none text-[#707070]">
+                    <ChevronDownIcon />
+                  </div>
+                  <datalist id="quantity-options">
+                    <option value="100" />
+                    <option value="200" />
+                    <option value="300" />
+                    <option value="500" />
+                    <option value="1000" />
+                  </datalist>
                 </div>
+                
               </div>
-            </div>
 
-            <OptionGroup
-              label="Packaging Method"
-              options={packagingOptions}
-              selectedOptions={selectedPackaging}
-              onSelect={(val) => toggleOption(val, selectedPackaging, setSelectedPackaging)}
-            />
-
-            {/* Quantity Input */}
-            <div className="mb-6 md:mb-8">
-              <div className="flex items-center justify-between mb-3">
-                <label className="text-[13px] md:text-sm font-bold text-[#0D0D0D] uppercase">
-                  Quantity
-                </label>
+              <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0 mb-4">
+                <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Project Details*</span>
+                <textarea 
+                  name="message"
+                  required
+                  placeholder="Tell us about your branding, materials, colors, logo requirements, packaging, target market, or any other details." 
+                  rows={3} 
+                  className="bg-transparent outline-none resize-none text-[14px] leading-[18px] mt-1 placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
+                  style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
+                />
               </div>
-              <input 
-                type="number" 
-                placeholder="Enter quantity" 
-                className="border border-gray-200 px-4 py-3 md:py-[15px] w-full text-[13px] md:text-[15px] focus:outline-none focus:border-[#0D0D0D] font-medium"
-              />
-              <div className="flex items-center gap-2 mt-3">
-                <span className="text-[#D92D20] shrink-0">
-                  <InfoIcon />
-                </span>
-                <span className="text-[#D92D20] text-[11px] md:text-[12px] font-medium tracking-wide">
-                  Please ensure your order meets our Minimum Quantity
-                </span>
-              </div>
-            </div>
 
-            {/* CTA Buttons */}
-            <div className="space-y-3 md:space-y-4 mb-4 mt-8 md:mt-12">
-              <button className="w-full bg-[#0D0D0D] text-white text-[13px] md:text-sm font-normal py-4 md:py-[18px] hover:bg-black/90 transition-colors uppercase tracking-wide">
-                Request Manufacturing Quote
-              </button>
-              <button className="w-full border border-[#0D0D0D] text-[#0D0D0D] text-[13px] md:text-sm font-normal py-4 md:py-[18px] hover:bg-gray-50 transition-colors uppercase tracking-wide">
-                Ask About Samples
-              </button>
-            </div>
-            <p className="text-[11px] md:text-xs text-[#999999] text-center font-normal">
+              {/* Buttons matching the Ultimate MMA Page Layout */}
+              <div className="space-y-3 md:space-y-4 mb-4 mt-8 md:mt-12">
+                <RollingButton type="submit" disabled={isSubmitting} className={`w-full bg-[#0D0D0D] text-white text-[13px] md:text-sm font-normal py-4 md:py-[18px] hover:bg-black/90 transition-colors uppercase tracking-wide rounded-[4px] ${isSubmitting ? 'opacity-70 cursor-wait' : ''}`}>
+                  {isSubmitting ? "Submitting..." : "Request Manufacturing Quote"}
+                </RollingButton>
+                <RollingButton type="button" className="w-full border border-[#0D0D0D] text-[#0D0D0D] text-[13px] md:text-sm font-normal py-4 md:py-[18px] hover:bg-gray-50 transition-colors uppercase tracking-wide rounded-[4px]">
+                  Ask About Samples
+                </RollingButton>
+              </div>
+            </form>
+
+            <p className="text-[11px] md:text-xs text-[#999999] text-center font-normal mt-6 md:mt-8">
               Share your product specs and our team will respond with MOQ, sample, and wholesale production options.
             </p>
           </div>
@@ -420,7 +442,7 @@ export default function UltimateMmaFightGlovesPage() {
         </div>
       </section>
 
-    {/* --- You May Also Like (Proper Functioning Horizontal Scroll) --- */}
+      {/* --- You May Also Like (Proper Functioning Horizontal Scroll) --- */}
       <section className="bg-white px-4 md:px-16 py-10 md:py-24 border-y border-[#C9C9C9] md:border-y-0 md:border-t md:border-gray-100">
         <div className="max-w-[1440px] mx-auto overflow-hidden">
           
@@ -508,7 +530,7 @@ export default function UltimateMmaFightGlovesPage() {
                       text-[10px] leading-[12px] font-bold text-[#0D0D0D] underline
                       md:no-underline md:border md:border-[#0D0D0D] md:px-3 md:py-1.5
                       md:uppercase md:hover:bg-[#0D0D0D] md:hover:text-white md:transition-colors
-                      md:text-[10px] md:font-medium text-left
+                      md:text-[10px] md:font-medium text-left rounded-[4px]
                     "
                   >
                     {product.cta}
@@ -519,6 +541,7 @@ export default function UltimateMmaFightGlovesPage() {
           </div>
         </div>
       </section>
+
       {/* ── Quality Control Banner ── */}
       <section className="px-0 md:px-6 py-0">
         <div className="relative rounded-none overflow-hidden max-w-[1380px] mx-auto">
@@ -571,7 +594,6 @@ export default function UltimateMmaFightGlovesPage() {
             </h3>
            <a 
   href="mailto:hello@sarlamathletics.com" 
-  /* --- CHANGED HERE: Changed text-[47px] to text-[28px] and leading-[58px] to leading-[36px] for mobile. Added md:text-[47px] and md:leading-[58px] to maintain desktop size. --- */
   className="text-[28px] leading-[36px] md:text-[47px] md:leading-[58px] tracking-[-1.9px] font-medium text-[#A5A5A5] text-left transition break-all hover:text-[#000000] md:tracking-tight block"
 >
   hello@sarlamathletics.com
@@ -660,7 +682,6 @@ export default function UltimateMmaFightGlovesPage() {
         </div>
       </footer>
 
-
       {/* ── CSS Animations ── */}
       <style jsx>{`
         @keyframes marquee {
@@ -678,49 +699,6 @@ export default function UltimateMmaFightGlovesPage() {
           scrollbar-width: none;
         }
       `}</style>
-    </div>
-  );
-}
-
-/* ── Reusable Option Group Selector ── */
-function OptionGroup({
-  label,
-  guideLabel,
-  options,
-  selectedOptions,
-  onSelect,
-}: {
-  label: string;
-  guideLabel?: string;
-  options: string[];
-  selectedOptions: string[];
-  onSelect: (val: string) => void;
-}) {
-  return (
-    <div className="mb-6 md:mb-8">
-      <div className="flex items-center justify-between mb-3">
-        <label className="text-[13px] md:text-sm font-bold text-[#0D0D0D] uppercase">{label}</label>
-        {guideLabel && (
-          <button className="text-[11px] md:text-xs text-[#666666] hover:underline font-medium">
-            {guideLabel}
-          </button>
-        )}
-      </div>
-      <div className="flex flex-wrap gap-2 md:gap-3">
-        {options.map((opt) => (
-          <button
-            key={opt}
-            onClick={() => onSelect(opt)}
-            className={`px-4 py-3 md:px-5 md:py-[15px] border text-[13px] md:text-[15px] font-medium transition-all ${
-              selectedOptions.includes(opt)
-                ? "border-[#0D0D0D] text-[#0D0D0D] bg-white"
-                : "border-gray-200 text-[#0D0D0D] hover:border-gray-400"
-            }`}
-          >
-            {opt}
-          </button>
-        ))}
-      </div>
     </div>
   );
 }
