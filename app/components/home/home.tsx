@@ -976,7 +976,7 @@ export default function SarlamAthleticsPage() {
             <a 
   href="mailto:hello@sarlamathletics.com" 
   /* --- CHANGED HERE: Added text-[28px] for mobile, and moved text-[47px] to md:text-[47px] for desktop. Also adjusted leading for mobile. --- */
-  className="block hover:text-black transition break-all text-[32px] md:text-[47px] leading-[36px] md:leading-[58px]" 
+  className="block hover:text-black transition break-all text-[28px] md:text-[47px] leading-[36px] md:leading-[58px]" 
   style={{ 
     fontFamily: "'FFF Acid Grotesk', sans-serif", 
     fontWeight: 500, 
