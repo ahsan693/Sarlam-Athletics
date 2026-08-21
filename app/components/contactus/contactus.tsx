@@ -7,7 +7,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Header } from "../home/home";
 
 // ─── Rolling Text Button Component ──────────────────────────────────────────
-const RollingButton = ({ href, children, className = "", style = {}, onClick, type = "button" }: any) => {
+const RollingButton = ({ href, children, className = "", style = {}, onClick, type = "button", disabled }: any) => {
   const content = (
     <span className="relative flex items-center justify-center overflow-hidden w-full h-full">
       <span className="flex items-center justify-center w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/btn:-translate-y-full">
@@ -21,13 +21,13 @@ const RollingButton = ({ href, children, className = "", style = {}, onClick, ty
 
   if (href) {
     return (
-      <Link href={href} className={`group/btn relative inline-flex items-center justify-center overflow-hidden ${className}`} style={style}>
+      <Link href={href} className={`group/btn relative inline-flex items-center justify-center overflow-hidden ${className} ${disabled ? 'opacity-70 cursor-not-allowed' : ''}`} style={style}>
         {content}
       </Link>
     );
   }
   return (
-    <button type={type} onClick={onClick} className={`group/btn relative inline-flex items-center justify-center overflow-hidden ${className}`} style={style}>
+    <button type={type} onClick={onClick} disabled={disabled} className={`group/btn relative inline-flex items-center justify-center overflow-hidden ${className} ${disabled ? 'opacity-70 cursor-not-allowed' : ''}`} style={style}>
       {content}
     </button>
   );
@@ -71,6 +71,39 @@ function HeroSection() {
 
 // ─── QUOTE FORM SECTION ────────────────────────────────────────────
 function QuoteFormSection() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    
+    // Add Web3Forms settings
+    formData.append("access_key", "39dc5b13-90fe-40da-97f9-2440b5c7aaf3");
+    formData.append("subject", "New Private Label Quote Request");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        alert("Success! Your quote request has been sent to our team.");
+        form.reset(); // Clear the form on success
+      } else {
+        alert("Error: Could not submit the form. Please try again.");
+      }
+    } catch (error) {
+      alert("Error: Network connection failed. Please check your internet and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className="w-full bg-white px-4 lg:px-3 py-10 lg:py-24">
       <div className="max-w-[440px] mx-auto flex flex-col gap-6 lg:gap-10">
@@ -83,78 +116,92 @@ function QuoteFormSection() {
           </p>
         </div>
 
-      <form className="flex flex-col gap-4">
-  {/* Each input: label on top, value/placeholder below — matching Figma's 2-line input pattern */}
-  <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
-    <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Full Name*</span>
-    <input 
-      type="text" 
-      placeholder="e.g. John Doe" 
-      className="bg-transparent outline-none text-[14px] leading-[18px] mt-0 placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
-      style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
-    />
-  </div>
+        <form onSubmit={onSubmit} className="flex flex-col gap-4">
+          {/* Each input: label on top, value/placeholder below — matching Figma's 2-line input pattern */}
+          <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
+            <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Full Name*</span>
+            <input 
+              type="text" 
+              name="name"
+              required
+              onInput={(e) => (e.currentTarget.value = e.currentTarget.value.replace(/[^A-Za-z\s]/g, ""))}
+              placeholder="e.g. John Doe" 
+              className="bg-transparent outline-none text-[14px] leading-[18px] mt-0 placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
+              style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
+            />
+          </div>
 
-  <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
-    <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Business Email*</span>
-    <input 
-      type="email" 
-      placeholder="e.g. john@yourbrand.com" 
-      className="bg-transparent outline-none text-[14px] leading-[18px] placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
-      style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
-    />
-  </div>
+          <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
+            <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Business Email*</span>
+            <input 
+              type="email" 
+              name="email"
+              required
+              placeholder="e.g. john@yourbrand.com" 
+              className="bg-transparent outline-none text-[14px] leading-[18px] placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
+              style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
+            />
+          </div>
 
-  <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
-    <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Phone Number (Optional)</span>
-    <input 
-      type="tel" 
-      placeholder="e.g. +1 (555) 000-0000" 
-      className="bg-transparent outline-none text-[14px] leading-[18px] placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
-      style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
-    />
-  </div>
+          <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
+            <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Phone Number (Optional)</span>
+            <input 
+              type="tel" 
+              name="phone"
+              onInput={(e) => (e.currentTarget.value = e.currentTarget.value.replace(/[^0-9\+\-\(\)\s]/g, ""))}
+              placeholder="e.g. +1 (555) 000-0000" 
+              className="bg-transparent outline-none text-[14px] leading-[18px] placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
+              style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
+            />
+          </div>
 
-  {/* On mobile: single column. On desktop: 2-col grid */}
-  <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 lg:gap-3">
-    <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
-      <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Product Category*</span>
-      <input 
-        type="text" 
-        placeholder="Select Category (e.g. Boxing Gloves)" 
-        className="bg-transparent outline-none text-[14px] leading-[18px] min-w-0 placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
-        style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
-      />
-    </div>
-    <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
-      <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Estimated Order Quantity*</span>
-      <input 
-        type="text" 
-        placeholder="e.g. 500 pairs" 
-        className="bg-transparent outline-none text-[14px] leading-[18px] min-w-0 placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
-        style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
-      />
-    </div>
-  </div>
+          {/* On mobile: single column. On desktop: 2-col grid */}
+          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 lg:gap-3">
+            <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
+              <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Product Category*</span>
+              <input 
+                type="text" 
+                name="category"
+                required
+                placeholder="Select Category (e.g. Boxing Gloves)" 
+                className="bg-transparent outline-none text-[14px] leading-[18px] min-w-0 placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
+                style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
+              />
+            </div>
+            <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
+              <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Estimated Order Quantity*</span>
+              <input 
+                type="text" 
+                name="quantity"
+                required
+                placeholder="e.g. 500 pairs" 
+                className="bg-transparent outline-none text-[14px] leading-[18px] min-w-0 placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
+                style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
+              />
+            </div>
+          </div>
 
-  <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
-    <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Project Details*</span>
-    <textarea 
-      placeholder="Tell us about your branding, materials, colors, logo requirements, packaging, target market, or any other details." 
-      rows={3} 
-      className="bg-transparent outline-none resize-none text-[14px] leading-[18px] placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
-      style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
-    />
-  </div>
+          <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
+            <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Project Details*</span>
+            <textarea 
+              name="message"
+              required
+              placeholder="Tell us about your branding, materials, colors, logo requirements, packaging, target market, or any other details." 
+              rows={3} 
+              className="bg-transparent outline-none resize-none text-[14px] leading-[18px] placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
+              style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
+            />
+          </div>
 
-  <RollingButton
-    type="submit"
-    className="w-full bg-[#0D0D0D] py-[7px] px-10 mt-0 rounded-[4px]"
-    style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.05em", color: "#FFFFFF" }}
-  >
-    Request Manufacturing Quote
-  </RollingButton>
-</form>
+          <RollingButton
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full bg-[#0D0D0D] py-[7px] px-10 mt-0 rounded-[4px]"
+            style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.05em", color: "#FFFFFF" }}
+          >
+            {isSubmitting ? "Submitting..." : "Request Manufacturing Quote"}
+          </RollingButton>
+        </form>
       </div>
     </section>
   );
@@ -492,7 +539,6 @@ function Footer() {
     </footer>
   );
 }
-
 
 // ─── CONTACT PAGE ──────────────────────────────────────────────────
 export default function ContactPage() {

@@ -99,6 +99,8 @@ export default function DetailsComponent() {
   const [selectedFinish, setSelectedFinish] = useState<number>(0);
   const [selectedWeight, setSelectedWeight] = useState<string>("8 oz");
   const [selectedLogos, setSelectedLogos] = useState<string[]>(["Screen Print"]);
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const toggleLogo = (logo: string) => {
     setSelectedLogos((prev) => prev.includes(logo) ? prev.filter((l) => l !== logo) : [...prev, logo]);
@@ -120,12 +122,42 @@ export default function DetailsComponent() {
     el.scrollBy({ left: dir * cardWidth, behavior: "smooth" });
   };
 
-  // --- Silent Submission Handler ---
-  const handleQuoteSubmit = () => {
-    // Show alert slightly after submission so the form can trigger first
-    setTimeout(() => {
-      alert("Thank you! Your manufacturing quote request has been successfully submitted. We will be in touch shortly.");
-    }, 300);
+  // --- WEB3FORMS FORMDATA SUBMISSION HANDLER ---
+  const handleQuoteSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+
+    const formData = new FormData(event.currentTarget);
+    formData.append("access_key", "39dc5b13-90fe-40da-97f9-2440b5c7aaf3");
+    
+    // Append the custom state selections directly into the form data
+    formData.append("Subject", "New Quote Request - Boxing Gloves");
+    formData.append("Selected Finish", finishes[selectedFinish].name);
+    formData.append("Selected Weight", selectedWeight);
+    formData.append("Logo Application", selectedLogos.join(", "));
+    formData.append("Materials", "Genuine Leather");
+    formData.append("Padding", "IMF Foam");
+    formData.append("Closure", "Velcro");
+    formData.append("Packaging", "Poly Bag");
+    formData.append("MOQ", "100–300");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        alert("Success! Your manufacturing quote request has been sent successfully.");
+      } else {
+        alert("Error: There was an issue submitting your form. Please try again.");
+      }
+    } catch (error) {
+      alert("Error: Network connection failed. Please check your internet and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -209,22 +241,8 @@ export default function DetailsComponent() {
               </p>
             </div>
 
-            {/* --- Invisible Iframe for Silent Form Submission --- */}
-            <iframe name="hidden_iframe" id="hidden_iframe" style={{ display: "none" }}></iframe>
-
-            {/* --- FormSubmit HTML Form Wrapper targeting the hidden iframe --- */}
-            <form action="https://formsubmit.co/el/hiyaye" method="POST" target="hidden_iframe" onSubmit={handleQuoteSubmit}>
-              <input type="hidden" name="_subject" value="New Quote Request - Boxing Gloves" />
-              <input type="hidden" name="Selected Finish" value={finishes[selectedFinish].name} />
-              <input type="hidden" name="Selected Weight" value={selectedWeight} />
-              <input type="hidden" name="Logo Application" value={selectedLogos.join(", ")} />
-              <input type="hidden" name="Materials" value="Genuine Leather" />
-              <input type="hidden" name="Padding" value="IMF Foam" />
-              <input type="hidden" name="Closure" value="Velcro" />
-              <input type="hidden" name="Packaging" value="Poly Bag" />
-              <input type="hidden" name="MOQ" value="100–300" />
-              <input type="hidden" name="_captcha" value="false" />
-
+            {/* --- FORM WRAPPER --- */}
+            <form onSubmit={handleQuoteSubmit}>
               <div className="mb-6 md:mb-8">
                 <label className="text-[14px] leading-[18px] tracking-[0.1px] font-bold text-[#0D0D0D] block mb-3 uppercase text-left md:text-sm md:tracking-normal">
                   Select Finish
@@ -287,8 +305,8 @@ export default function DetailsComponent() {
               </p>
 
               <div className="space-y-3 md:space-y-4 mb-4">
-                <RollingButton type="submit" className="w-full bg-[#0D0D0D] text-white text-[14px] leading-[18px] tracking-[0.1px] font-normal py-4 md:py-[18px] uppercase md:tracking-wide rounded-[4px]">
-                  Request Manufacturing Quote
+                <RollingButton type="submit" className={`w-full bg-[#0D0D0D] text-white text-[14px] leading-[18px] tracking-[0.1px] font-normal py-4 md:py-[18px] uppercase md:tracking-wide rounded-[4px] ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}>
+                  {isSubmitting ? "Submitting..." : "Request Manufacturing Quote"}
                 </RollingButton>
                 <RollingButton type="button" className="w-full border border-[#0D0D0D] text-[#0D0D0D] text-[13px] tracking-[0px] font-normal py-4 md:py-[18px] uppercase md:text-sm md:tracking-wide rounded-[4px]">
                   Ask About Samples
