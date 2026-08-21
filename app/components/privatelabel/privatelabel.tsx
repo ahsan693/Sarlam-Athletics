@@ -70,17 +70,13 @@ const testimonials = [
       "Sarlam helped us launch our private label boxing equipment range on schedule. The product quality was consistent, communication was excellent, and the manufacturing process was transparent from sampling through delivery.",
     name: "Linnéa Moberg",
     role: "CEO, IronHand Gym",
-    avatar:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=150",
-  },
+     },
   {
     quote:
       "Unlike many manufacturers, Sarlam worked closely with our team to refine materials, branding, and packaging before production. The finished products matched our specifications exactly.",
     name: "Erik Sandell",
     role: "Co-founder, Waypoint Athletics",
-    avatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150",
-  },
+     },
 ];
 
 // ─── Footer Navigation Row (Mobile flat list with arrows) ──────────────────
@@ -357,11 +353,7 @@ export default function PrivateLabel() {
                 &ldquo;{t.quote}&rdquo;
               </p>
               <div className="flex items-center gap-4">
-                <img
-                  src={t.avatar}
-                  alt={t.name}
-                  className="w-[44px] h-[44px] rounded-full object-cover"
-                />
+              
                 <div>
                   <p
                     className="text-[15px] leading-[22.5px] md:text-[15px] md:leading-[16px] text-[#47433B] md:text-[#434343]"
