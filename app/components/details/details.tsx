@@ -4,65 +4,17 @@ import React, { useRef, useState } from "react";
 import Link from "next/link";
 import { Header } from "../home/home";
 
-// ─── Rolling Text Button Component ──────────────────────────────────────────
-const RollingButton = ({ href, children, className = "", style = {}, onClick, type = "button" }: any) => {
-  const content = (
-    <span className="relative flex items-center justify-center overflow-hidden w-full h-full">
-      <span className="flex items-center justify-center w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/btn:-translate-y-full">
-        {children}
-      </span>
-      <span className="absolute inset-0 flex items-center justify-center w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] translate-y-full group-hover/btn:translate-y-0">
-        {children}
-      </span>
-    </span>
-  );
-
-  if (href) {
-    return (
-      <Link href={href} className={`group/btn relative inline-flex items-center justify-center overflow-hidden ${className}`} style={style}>
-        {content}
-      </Link>
-    );
-  }
-  return (
-    <button type={type} onClick={onClick} className={`group/btn relative inline-flex items-center justify-center overflow-hidden ${className}`} style={style}>
-      {content}
-    </button>
-  );
-};
-
-// ─── Image Placeholder ──────────────────────────────────────────────────────
-const ImagePlaceholder = ({ className = "", label = "Image", src }: { className?: string; label?: string; src?: string; }) => {
-  if (src) return <img src={src} alt={label} className={`object-cover ${className}`} />;
-  return (
-    <div className={`bg-gray-200 flex items-center justify-center text-gray-400 text-sm ${className}`}>
-      <span className="text-center px-4">[{label}]</span>
-    </div>
-  );
-};
-
-// ─── Icons ──────────────────────────────────────────────────────────────────
-const ChevronRightIcon = () => <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>;
-const ChevronDownIcon = () => <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>;
-const ArrowLeft = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>;
-const ArrowRight = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>;
-function CheckIcon() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M5 12l5 5L20 7" stroke="#0D0D0D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
 // ─── Data Arrays ────────────────────────────────────────────────────────────
-const finishes = [
-  { name: "Black", color: "#000000", selected: true },
-  { name: "White", color: "#FFFFFF", selected: false },
-  { name: "Navy", color: "#152238", selected: false },
+const allProducts = [
+  { name: "Private Label Boxing Gloves", category: "Boxing Equipment", cta: "View Product +", mobileCta: "View Product →", href: "/details", swatches: ["#B91C1C", "#0D0D0D"], image: "/Products/01 Private Label Boxing Gloves.png" },
+  { name: "BJJ Gis and Jiu-Jitsu Uniforms", category: "Martial Arts Uniforms", cta: "View Product +", mobileCta: "View Product →", href: "/jitsu", swatches: ["#0D0D0D", "#E5E5E5"], image: "/Products/02 BJJ Gis and Jiu-Jitsu Uniforms.png" },
+  { name: "MMA Fight Gloves", category: "MMA Equipment", cta: "View Product +", mobileCta: "View Product →", href: "/mmagloves", swatches: ["#B91C1C", "#0D0D0D"], image: "/Products/03 MMA Fight Gloves.png" },
+  { name: "Professional MMA Training Gloves", category: "MMA Equipment", cta: "View Product +", mobileCta: "View Product →", href: "/ultimategloves", swatches: ["#B91C1C", "#0D0D0D"], image: "/Products/MMATrainingGloves.png" },
+  { name: "Boxing Focus Mitts and Training Pads", category: "Training Equipment", cta: "View Product +", mobileCta: "View Product →", href: "/trainingpad", swatches: ["#B91C1C", "#0D0D0D"], image: "/Products/05 Boxing Mitts and Training Pads.png" },
+  { name: "Boxing Sparring Gloves", category: "Boxing Equipment", cta: "View Product +", mobileCta: "View Product →", href: "/sparinggloves", swatches: ["#B91C1C", "#0D0D0D"], image: "/Products/06 Boxing Sparring Gloves.png" },
+  { name: "Custom Boxing Headguards", category: "Protective Equipment", cta: "View Product +", mobileCta: "View Product →", href: "/Boxingguard", swatches: ["#B91C1C", "#0D0D0D"], image: "/Products/07 Custom Boxing Headguards.png" },
+  { name: "Private Label Karate Uniforms", category: "Martial Arts Uniforms", cta: "View Product +", mobileCta: "View Product →", href: "/karatesuit", swatches: ["#E5E5E5", "#0D0D0D"], image: "/Products/karateuniform.png" },
 ];
-
-const weightOptions = ["8 oz", "10 oz", "12 oz", "14 oz", "16 oz"];
-const logoOptions = ["Screen Print", "Embroidery", "Rubber Patch", "Heat Transfer", "Debossed Logo"];
 
 const customizationOptions = [
   { title: "Custom Logo Branding", desc: "Add your logo using embroidery, screen printing, heat transfer, woven labels, rubber patches, embossing, or debossing", image: "/Page 2/Images/02.png" },
@@ -91,20 +43,61 @@ const features = [
   { text: "Worldwide Shipping" },
 ];
 
+// ─── Rolling Text Button Component ──────────────────────────────────────────
+const RollingButton = ({ href, children, className = "", style = {}, onClick, type = "button", disabled }: any) => {
+  const content = (
+    <span className="relative flex items-center justify-center overflow-hidden w-full h-full">
+      <span className="flex items-center justify-center w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/btn:-translate-y-full">
+        {children}
+      </span>
+      <span className="absolute inset-0 flex items-center justify-center w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] translate-y-full group-hover/btn:translate-y-0">
+        {children}
+      </span>
+    </span>
+  );
+
+  if (href) {
+    return (
+      <Link href={href} className={`group/btn relative inline-flex items-center justify-center overflow-hidden ${className} ${disabled ? 'opacity-70 cursor-not-allowed' : ''}`} style={style}>
+        {content}
+      </Link>
+    );
+  }
+  return (
+    <button type={type} onClick={onClick} disabled={disabled} className={`group/btn relative inline-flex items-center justify-center overflow-hidden ${className} ${disabled ? 'opacity-70 cursor-not-allowed' : ''}`} style={style}>
+      {content}
+    </button>
+  );
+};
+
+// ─── Image Placeholder ──────────────────────────────────────────────────────
+const ImagePlaceholder = ({ className = "", label = "Image", src }: { className?: string; label?: string; src?: string; }) => {
+  if (src) return <img src={src} alt={label} className={`object-cover ${className}`} />;
+  return (
+    <div className={`bg-gray-200 flex items-center justify-center text-gray-400 text-sm ${className}`}>
+      <span className="text-center px-4">[{label}]</span>
+    </div>
+  );
+};
+
+// ─── Icons ──────────────────────────────────────────────────────────────────
+const ChevronDownIcon = () => <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>;
+const ArrowLeft = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>;
+const ArrowRight = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>;
+function CheckIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M5 12l5 5L20 7" stroke="#0D0D0D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 // ─── Main Details Page Component ────────────────────────────────────────────
 export default function DetailsComponent() {
   const customizationScrollerRef = useRef<HTMLDivElement>(null);
   const relatedScrollerRef = useRef<HTMLDivElement>(null);
-
-  const [selectedFinish, setSelectedFinish] = useState<number>(0);
-  const [selectedWeight, setSelectedWeight] = useState<string>("8 oz");
-  const [selectedLogos, setSelectedLogos] = useState<string[]>(["Screen Print"]);
   
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const toggleLogo = (logo: string) => {
-    setSelectedLogos((prev) => prev.includes(logo) ? prev.filter((l) => l !== logo) : [...prev, logo]);
-  };
 
   const scrollCustomization = (dir: 1 | -1) => {
     const el = customizationScrollerRef.current;
@@ -127,19 +120,12 @@ export default function DetailsComponent() {
     event.preventDefault();
     setIsSubmitting(true);
 
-    const formData = new FormData(event.currentTarget);
-    formData.append("access_key", "39dc5b13-90fe-40da-97f9-2440b5c7aaf3");
+    const form = event.currentTarget;
+    const formData = new FormData(form);
     
-    // Append the custom state selections directly into the form data
-    formData.append("Subject", "New Quote Request - Boxing Gloves");
-    formData.append("Selected Finish", finishes[selectedFinish].name);
-    formData.append("Selected Weight", selectedWeight);
-    formData.append("Logo Application", selectedLogos.join(", "));
-    formData.append("Materials", "Genuine Leather");
-    formData.append("Padding", "IMF Foam");
-    formData.append("Closure", "Velcro");
-    formData.append("Packaging", "Poly Bag");
-    formData.append("MOQ", "100–300");
+    // Add Web3Forms API credentials
+    formData.append("access_key", "39dc5b13-90fe-40da-97f9-2440b5c7aaf3");
+    formData.append("subject", "New Private Label Quote Request - Product Details Page");
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -150,6 +136,7 @@ export default function DetailsComponent() {
       const data = await response.json();
       if (data.success) {
         alert("Success! Your manufacturing quote request has been sent successfully.");
+        form.reset(); // Clear the form on success
       } else {
         alert("Error: There was an issue submitting your form. Please try again.");
       }
@@ -241,71 +228,110 @@ export default function DetailsComponent() {
               </p>
             </div>
 
-            {/* --- FORM WRAPPER --- */}
-            <form onSubmit={handleQuoteSubmit}>
-              <div className="mb-6 md:mb-8">
-                <label className="text-[14px] leading-[18px] tracking-[0.1px] font-bold text-[#0D0D0D] block mb-3 uppercase text-left md:text-sm md:tracking-normal">
-                  Select Finish
-                </label>
-                <div className="flex gap-3">
-                  {finishes.map((finish, i) => (
-                    <button type="button" key={finish.name} onClick={() => setSelectedFinish(i)} className={`w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center border-2 transition-all ${selectedFinish === i ? "border-[#0D0D0D]" : "border-transparent"}`}>
-                      <span className="w-5 h-5 md:w-6 md:h-6 rounded-full border border-[#0D0D0D]" style={{ backgroundColor: finish.color }} />
-                    </button>
-                  ))}
-                </div>
+            {/* --- FORM WRAPPER (Updated to use Contact Us Fields) --- */}
+            <form onSubmit={handleQuoteSubmit} className="flex flex-col gap-4">
+              
+              <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
+                <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Full Name*</span>
+                <input 
+                  type="text" 
+                  name="name"
+                  required
+                  onInput={(e) => (e.currentTarget.value = e.currentTarget.value.replace(/[^A-Za-z\s]/g, ""))}
+                  placeholder="e.g. John Doe" 
+                  className="bg-transparent outline-none text-[14px] leading-[18px] mt-0 placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
+                  style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
+                />
               </div>
 
-              <DropdownSelector label="Materials" guideLabel="Material Guide" value="Genuine Leather" />
-              <DropdownSelector label="Padding" guideLabel="Padding Guide" value="IMF Foam" />
-              <DropdownSelector label="Closure" guideLabel="Closure Guide" value="Velcro" />
-
-              <div className="mb-6 md:mb-8">
-                <div className="flex items-center justify-between mb-3">
-                  <label className="text-[14px] leading-[18px] tracking-[0.1px] font-bold text-[#0D0D0D] uppercase text-left md:text-sm md:tracking-normal">Weight</label>
-                  <button type="button" className="text-[12px] leading-[16px] tracking-[0px] font-normal text-[#666666] hover:underline text-left md:font-medium md:text-xs">Weight Guide</button>
-                </div>
-                <div className="flex flex-wrap gap-2 md:gap-3">
-                  {weightOptions.map((weight) => (
-                    <button type="button" key={weight} onClick={() => setSelectedWeight(weight)} className={`px-4 py-3 md:px-5 md:py-[15px] border text-[15px] leading-[17px] tracking-[0.4px] font-medium text-left transition-all md:tracking-normal ${selectedWeight === weight ? "border-[#0D0D0D] text-[#0D0D0D] bg-white" : "border-gray-200 text-[#0D0D0D] hover:border-gray-400"}`}>
-                      {weight}
-                    </button>
-                  ))}
-                </div>
+              <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
+                <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Business Email*</span>
+                <input 
+                  type="email" 
+                  name="email"
+                  required
+                  placeholder="e.g. john@yourbrand.com" 
+                  className="bg-transparent outline-none text-[14px] leading-[18px] placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
+                  style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
+                />
               </div>
 
-              <div className="mb-6 md:mb-8">
-                <div className="flex items-center justify-between mb-3">
-                  <label className="text-[14px] leading-[18px] tracking-[0.1px] font-bold text-[#0D0D0D] uppercase text-left md:text-sm md:tracking-normal">Logo Application</label>
-                  <button type="button" className="text-[12px] leading-[16px] tracking-[0px] font-normal text-[#666666] hover:underline text-left md:font-medium md:text-xs">Logo Guide</button>
-                </div>
-                <div className="flex flex-wrap gap-2 md:gap-3">
-                  {logoOptions.map((logo) => (
-                    <button type="button" key={logo} onClick={() => toggleLogo(logo)} className={`px-4 py-3 md:px-5 md:py-[15px] border text-[15px] leading-[17px] tracking-[0.4px] font-medium text-left transition-all md:tracking-normal ${selectedLogos.includes(logo) ? "border-[#0D0D0D] text-[#0D0D0D] bg-white" : "border-gray-200 text-[#0D0D0D] hover:border-gray-400"}`}>
-                      {logo}
-                    </button>
-                  ))}
-                </div>
+              <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
+                <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Phone Number (Optional)</span>
+                <input 
+                  type="tel" 
+                  name="phone"
+                  onInput={(e) => (e.currentTarget.value = e.currentTarget.value.replace(/[^0-9\+\-\(\)\s]/g, ""))}
+                  placeholder="e.g. +1 (555) 000-0000" 
+                  className="bg-transparent outline-none text-[14px] leading-[18px] placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
+                  style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
+                />
               </div>
 
-              <DropdownSelector label="Packaging" guideLabel="Packaging Guide" value="Poly Bag" />
+              {/* 2-col grid for Category & Quantity */}
+              <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 lg:gap-3">
+                
+                {/* Product Category Dropdown with chevron */}
+                <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0 relative">
+                  <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Product Category*</span>
+                  <select 
+                    name="category"
+                    required
+                    defaultValue=""
+                    className="bg-transparent outline-none text-[13px] leading-[18px] mt-0.5 min-w-0 text-[#0D0D0D] cursor-pointer appearance-none pr-6 text-ellipsis overflow-hidden whitespace-nowrap" 
+                    style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400 }} 
+                  >
+                    <option value="" disabled hidden className="text-[#9CA3AF]">Select Category</option>
+                    {allProducts.map((product, index) => (
+                      <option key={index} value={product.name}>{product.name}</option>
+                    ))}
+                  </select>
+                  <div className="absolute right-3 top-[60%] -translate-y-1/2 pointer-events-none text-[#707070]">
+                    <ChevronDownIcon />
+                  </div>
+                </div>
 
-              <div className="mb-2 md:mb-4">
-                <div className="flex items-center justify-between mb-3">
-                  <label className="text-[14px] leading-[18px] tracking-[0.1px] font-bold text-[#0D0D0D] uppercase text-left md:text-sm md:tracking-normal">MOQ</label>
-                  <button type="button" className="text-[12px] leading-[16px] tracking-[0px] font-normal text-[#666666] hover:underline text-left md:font-medium md:text-xs">Quantity Guide</button>
+                {/* Estimated Order Quantity Datalist with chevron */}
+                <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0 relative">
+                  <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Estimated Order Quantity*</span>
+                  <input 
+                    type="text" 
+                    name="quantity"
+                    required
+                    list="quantity-options"
+                    placeholder="e.g. 500 pairs" 
+                    className="bg-transparent outline-none text-[13px] leading-[18px] mt-0.5 min-w-0 placeholder:text-[#9CA3AF] focus:placeholder-transparent pr-6 text-ellipsis overflow-hidden whitespace-nowrap [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:right-0 [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:cursor-pointer" 
+                    style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
+                  />
+                  <div className="absolute right-3 top-[60%] -translate-y-1/2 pointer-events-none text-[#707070]">
+                    <ChevronDownIcon />
+                  </div>
+                  <datalist id="quantity-options">
+                    <option value="100" />
+                    <option value="200" />
+                    <option value="300" />
+                    <option value="500" />
+                    <option value="1000" />
+                  </datalist>
                 </div>
-                <div className="border border-gray-200 px-4 py-3 md:py-[15px]">
-                  <span className="text-[14px] md:text-[15px] font-medium text-[#0D0D0D]">100–300</span>
-                </div>
+                
               </div>
 
-              <p className="text-[12px] leading-[16px] tracking-[0px] font-normal text-[#666666] mb-8 md:mb-10 text-left md:text-xs">
-                MOQ starts from 100 pairs
-              </p>
+              <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0 mb-4">
+                <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Project Details*</span>
+                <textarea 
+                  name="message"
+                  required
+                  placeholder="Tell us about your branding, materials, colors, logo requirements, packaging, target market, or any other details." 
+                  rows={3} 
+                  className="bg-transparent outline-none resize-none text-[14px] leading-[18px] mt-1 placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
+                  style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
+                />
+              </div>
 
+              {/* These Buttons maintain the Exact Details Page styling requested */}
               <div className="space-y-3 md:space-y-4 mb-4">
-                <RollingButton type="submit" className={`w-full bg-[#0D0D0D] text-white text-[14px] leading-[18px] tracking-[0.1px] font-normal py-4 md:py-[18px] uppercase md:tracking-wide rounded-[4px] ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}>
+                <RollingButton type="submit" disabled={isSubmitting} className={`w-full bg-[#0D0D0D] text-white text-[14px] leading-[18px] tracking-[0.1px] font-normal py-4 md:py-[18px] uppercase md:tracking-wide rounded-[4px] ${isSubmitting ? 'opacity-70 cursor-wait' : ''}`}>
                   {isSubmitting ? "Submitting..." : "Request Manufacturing Quote"}
                 </RollingButton>
                 <RollingButton type="button" className="w-full border border-[#0D0D0D] text-[#0D0D0D] text-[13px] tracking-[0px] font-normal py-4 md:py-[18px] uppercase md:text-sm md:tracking-wide rounded-[4px]">
@@ -467,42 +493,19 @@ export default function DetailsComponent() {
         </div>
       </section>
       
-{/* --- Footer --- */}
+      {/* --- Footer --- */}
       <footer className="bg-white border-t border-[#D7DADE]">
         <div className="max-w-[2560px] mx-auto px-6 md:px-10 py-12 md:py-16 flex flex-col lg:flex-row justify-between gap-10 md:gap-12">
           <div className="lg:w-1/2">
             <h3 className="mb-4 md:mb-6 text-[47px] leading-[58px] tracking-[-1.9px] font-medium text-[#000000] text-left md:text-[#0D0D0D] md:tracking-tight">
               Start Your Private Label<br className="hidden md:block" /><span className="md:hidden"> </span>Manufacturing Project
             </h3>
-         <a 
-  href="mailto:hello@sarlamathletics.com" 
-  className="text-[28px] leading-[36px] md:text-[47px] md:leading-[58px] tracking-[-1.9px] font-medium text-[#A5A5A5] text-left transition break-all hover:text-[#000000] md:tracking-tight block"
->
-  hello@sarlamathletics.com
-</a>
+            <a href="mailto:hello@sarlamathletics.com" className="text-[28px] leading-[36px] md:text-[47px] md:leading-[58px] tracking-[-1.9px] font-medium text-[#A5A5A5] text-left transition break-all hover:text-[#000000] md:tracking-tight block">
+              hello@sarlamathletics.com
+            </a>
           </div>
 
-          {/* Mobile Links */}
-          <div className="md:hidden flex flex-col gap-8">
-            <div className="flex flex-col gap-3">
-              <FooterLink href="/">Home</FooterLink>
-              <FooterLink href="/products">Products</FooterLink>
-              <FooterLink href="/privatelabel">Private Label</FooterLink>
-              <FooterLink href="/manufacture">Manufacturing Process</FooterLink>
-              <FooterLink href="/aboutus">About</FooterLink>
-              <FooterLink href="/contact">Contact</FooterLink>
-              <FooterLink href="/contact">Request Quote</FooterLink>
-            </div>
-            
-            <div className="flex flex-col gap-3">
-              <FooterLink href="/details">Boxing Gloves</FooterLink>
-              <FooterLink href="/karatesuit">Martial Arts Uniforms</FooterLink>
-              <FooterLink href="/mmagloves">MMA Gear</FooterLink>
-              <FooterLink href="/trainingpad">Training Accessories</FooterLink>
-            </div>
-          </div>
-
-          {/* Desktop Links with mapping arrays */}
+          {/* Desktop Navigation Links */}
           <div className="hidden lg:flex gap-16">
             <div className="flex flex-col gap-3">
               {[
@@ -587,37 +590,6 @@ export default function DetailsComponent() {
   );
 }
 
-/* --- Reusable Dropdown Selector --- */
-function DropdownSelector({ label, guideLabel, value }: { label: string; guideLabel: string; value: string; }) {
-  return (
-    <div className="mb-6 md:mb-8">
-      <div className="flex items-center justify-between mb-3">
-        <label className="text-[14px] leading-[18px] tracking-[0.1px] font-bold text-[#0D0D0D] uppercase text-left md:text-sm md:tracking-normal">{label}</label>
-        <button type="button" className="text-[12px] leading-[16px] tracking-[0px] font-normal text-[#666666] hover:underline text-left md:font-medium md:text-xs">{guideLabel}</button>
-      </div>
-      <div className="border border-gray-200 px-4 py-3 md:py-[15px] flex items-center justify-between cursor-pointer hover:border-gray-400 transition-colors">
-        <span className="text-[15px] leading-[17px] tracking-[0.4px] font-medium text-[#0D0D0D] text-left md:tracking-normal">{value}</span>
-        <ChevronDownIcon />
-      </div>
-    </div>
-  );
-}
-
-/* --- FOOTER ACCORDION (Mobile) --- */
-function FooterAccordion({ title, children }: { title: string; children: React.ReactNode; }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className="border-b border-gray-200">
-      <button className="w-full flex items-center justify-between py-4 md:py-6 text-left" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "14px", color: "#000000" }} onClick={() => setOpen(!open)}>
-        {title}
-        <svg className={`w-4 h-4 transition-transform ${open ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
-      </button>
-      {open && <div className="pb-4 md:pb-6 flex flex-col gap-3 md:gap-4">{children}</div>}
-    </div>
-  );
-}
-
-/* --- FOOTER LINK --- */
 function FooterLink({ href, children }: { href: string; children: React.ReactNode; }) {
   return (
     <a href={href} className="hover:text-[#0D0D0D] transition block" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "14px", lineHeight: "17px", color: "#757575" }}>{children}</a>
