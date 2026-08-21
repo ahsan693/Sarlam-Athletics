@@ -805,14 +805,7 @@ export default function ProductPage() {
           <p className="uppercase text-[69px] leading-[85%] md:text-[101px] md:leading-[85%]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, fontStyle: "italic", letterSpacing: "-3%", color: "#000000" }}>
             sarlam<br />athletics
           </p>
-          <div className="flex flex-col md:flex-row md:items-center justify-between">
-            <span className="block text-[14px] md:hidden" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, lineHeight: "16px", color: "#000000" }}>
-              © 2026
-            </span>
-            <span className="hidden md:block text-[12px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, lineHeight: "16px", color: "#000000" }}>
-              © 2026
-            </span>
-          </div>
+     
         </div>
 
         <div className="w-full bg-[#0D0D0D] py-4">

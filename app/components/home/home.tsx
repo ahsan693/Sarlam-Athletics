@@ -1066,9 +1066,6 @@ export default function SarlamAthleticsPage() {
           <p className="uppercase text-[69px] leading-[85%] md:text-[101px] md:leading-[85%]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, fontStyle: "italic", letterSpacing: "-3%", color: "#000000" }}>
             sarlam<br />athletics
           </p>
-          <div className="flex flex-col md:flex-row md:items-end gap-[10px]">
-            <span className="block text-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, lineHeight: "17px", color: "#434343" }}>© 2026</span>
-          </div>
         </div>
 
         {/* Bottom bar */}

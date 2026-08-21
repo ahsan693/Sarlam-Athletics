@@ -673,11 +673,6 @@ export default function KickBoxingGlovesPage() {
               <span className="md:hidden"> </span>athletics
             </span>
           </Link>
-          <div className="flex flex-col md:items-end gap-2 md:gap-0">
-            <span className="hidden md:block text-[12px] leading-[16px] font-normal text-[#0D0D0D]">
-              © 2026
-            </span>
-          </div>
         </div>
 
         <div className="bg-[#0D0D0D]">

@@ -213,9 +213,6 @@ function Footer() {
             </span>
           </Link>
         </div>
-        <div className="flex flex-col md:items-end gap-2 md:gap-0">
-          <span className="hidden md:block text-[12px] leading-[16px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#434343" }}>© 2026</span>
-        </div>
       </div>
 
       <div className="bg-[#0D0D0D] py-4 md:py-6 px-6 md:px-12">
