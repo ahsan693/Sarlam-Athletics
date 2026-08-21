@@ -92,19 +92,44 @@ function HeroSection() {
   );
 }
 
-// ─── Products We Manufacture Section ───
-const productTags = ["Private Label Boxing Gloves", "BJJ Uniforms", "Karate Gis", "Martial Arts Belts", "Boxing Hand Wraps", "Protective Equipment", "Training Jump Ropes", "Combat Accessories"];
+const productTags = [
+  "Private Label Boxing Gloves",
+  "BJJ Uniforms",
+  "Karate Gis",
+  "Martial Arts Belts",
+  "Boxing Hand Wraps",
+  "Protective Equipment",
+  "Training Jump Ropes",
+  "Combat Training Accessories",
+];
 
 function ProductsSection() {
   return (
-    <section className="py-16 md:py-24 px-6 md:px-10 bg-white">
-      <div className="max-w-[2560px] mx-auto space-y-6 md:space-y-8">
-        <h2 className="text-[28px] leading-[32px] md:text-[37px] md:leading-[46px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, letterSpacing: "-1.5px", color: "#0D0D0D" }}>
+    <section className="bg-white py-[52px] px-5 md:py-[92px] md:px-[80px]">
+      <div className="max-w-[1280px] mx-auto flex flex-col items-center gap-[16px] md:gap-[20px]">
+        <h2
+          className="w-full text-center text-[26px] leading-[32px] md:text-[37px] md:leading-[46px]"
+          style={{
+            fontFamily: "'FFF Acid Grotesk', sans-serif",
+            fontWeight: 700,
+            letterSpacing: "0px",
+            color: "#0D0D0D",
+          }}
+        >
           Combat Sports Equipment We Manufacture
         </h2>
-        <div className="flex flex-wrap gap-3 md:gap-4">
+        <div className="w-full max-w-[1001px] flex flex-wrap justify-center gap-3 md:gap-4">
           {productTags.map((tag, i) => (
-            <Link key={i} href={`/products`} className="px-4 py-2 md:px-6 md:py-3.5 bg-[#F5F5F5] border border-[#DADADA] rounded-md hover:bg-[#E8E8E8] transition-colors text-[13px] md:text-[15px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, lineHeight: "1.4", color: "#0D0D0D" }}>
+            <Link
+              key={i}
+              href="/products"
+              className="px-4 py-3 md:px-6 md:py-4 bg-[#F5F5F5] border border-black rounded-[4px] hover:bg-[#E8E8E8] transition-colors text-[14px] leading-[14px] md:text-[16px] md:leading-[16px]"
+              style={{
+                fontFamily: "'FFF Acid Grotesk', sans-serif",
+                fontWeight: 400,
+                color: "#0D0D0D",
+              }}
+            >
               {tag}
             </Link>
           ))}
