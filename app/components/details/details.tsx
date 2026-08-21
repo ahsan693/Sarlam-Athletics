@@ -120,6 +120,14 @@ export default function DetailsComponent() {
     el.scrollBy({ left: dir * cardWidth, behavior: "smooth" });
   };
 
+  // --- Silent Submission Handler ---
+  const handleQuoteSubmit = () => {
+    // Show alert slightly after submission so the form can trigger first
+    setTimeout(() => {
+      alert("Thank you! Your manufacturing quote request has been successfully submitted. We will be in touch shortly.");
+    }, 300);
+  };
+
   return (
     <div className="min-h-screen bg-white font-['FFF_Acid_Grotesk',sans-serif]">
       <Header />
@@ -150,19 +158,19 @@ export default function DetailsComponent() {
         </div>
       </section>
 
-     {/* --- Product Presentation Grid --- */}
-<section className="px-5 md:px-16 py-16 md:py-24">
-  <div className="flex flex-col lg:flex-row gap-10 lg:gap-32 max-w-[2560px] mx-auto lg:justify-center">
-    {/* Left: Product Image */}
-    <div className="w-full lg:w-[616px] shrink-0">
-      <div className="w-full h-[320px] lg:h-auto lg:aspect-square bg-[#F9F9F9] rounded-[6px] lg:rounded-none border border-gray-200 lg:border-none p-4 md:p-2 flex items-center justify-center lg:sticky lg:top-24 max-w-[800px] mx-auto">
-        <img 
-          src="/Products/01 Private Label Boxing Gloves.png" 
-          alt="Boxing Gloves" 
-          className="w-full h-full md:w-[600px] md:h-[600px] object-contain" 
-        />
-      </div>
-    </div>
+      {/* --- Product Presentation Grid --- */}
+      <section className="px-5 md:px-16 py-16 md:py-24">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-32 max-w-[2560px] mx-auto lg:justify-center">
+          {/* Left: Product Image */}
+          <div className="w-full lg:w-[616px] shrink-0">
+            <div className="w-full h-[320px] lg:h-auto lg:aspect-square bg-[#F9F9F9] rounded-[6px] lg:rounded-none border border-gray-200 lg:border-none p-4 md:p-2 flex items-center justify-center lg:sticky lg:top-24 max-w-[800px] mx-auto">
+              <img 
+                src="/Products/01 Private Label Boxing Gloves.png" 
+                alt="Boxing Gloves" 
+                className="w-full h-full md:w-[600px] md:h-[600px] object-contain" 
+              />
+            </div>
+          </div>
           {/* Right: Product Configuration Panel */}
           <div className="flex-1 max-w-full lg:max-w-[616px] mx-auto lg:mx-0">
             <nav className="flex items-center gap-2 font-['PP_Mori',sans-serif] text-[12px] leading-[16px] tracking-[0px] text-[#6A7282] font-normal md:font-['FFF_Acid_Grotesk',sans-serif] md:text-xs md:font-medium mb-6 md:mb-8 text-left">
@@ -201,75 +209,93 @@ export default function DetailsComponent() {
               </p>
             </div>
 
-            <div className="mb-6 md:mb-8">
-              <label className="text-[14px] leading-[18px] tracking-[0.1px] font-bold text-[#0D0D0D] block mb-3 uppercase text-left md:text-sm md:tracking-normal">
-                Select Finish
-              </label>
-              <div className="flex gap-3">
-                {finishes.map((finish, i) => (
-                  <button key={finish.name} onClick={() => setSelectedFinish(i)} className={`w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center border-2 transition-all ${selectedFinish === i ? "border-[#0D0D0D]" : "border-transparent"}`}>
-                    <span className="w-5 h-5 md:w-6 md:h-6 rounded-full border border-[#0D0D0D]" style={{ backgroundColor: finish.color }} />
-                  </button>
-                ))}
-              </div>
-            </div>
+            {/* --- Invisible Iframe for Silent Form Submission --- */}
+            <iframe name="hidden_iframe" id="hidden_iframe" style={{ display: "none" }}></iframe>
 
-            <DropdownSelector label="Materials" guideLabel="Material Guide" value="Genuine Leather" />
-            <DropdownSelector label="Padding" guideLabel="Padding Guide" value="IMF Foam" />
-            <DropdownSelector label="Closure" guideLabel="Closure Guide" value="Velcro" />
+            {/* --- FormSubmit HTML Form Wrapper targeting the hidden iframe --- */}
+            <form action="https://formsubmit.co/el/hiyaye" method="POST" target="hidden_iframe" onSubmit={handleQuoteSubmit}>
+              <input type="hidden" name="_subject" value="New Quote Request - Boxing Gloves" />
+              <input type="hidden" name="Selected Finish" value={finishes[selectedFinish].name} />
+              <input type="hidden" name="Selected Weight" value={selectedWeight} />
+              <input type="hidden" name="Logo Application" value={selectedLogos.join(", ")} />
+              <input type="hidden" name="Materials" value="Genuine Leather" />
+              <input type="hidden" name="Padding" value="IMF Foam" />
+              <input type="hidden" name="Closure" value="Velcro" />
+              <input type="hidden" name="Packaging" value="Poly Bag" />
+              <input type="hidden" name="MOQ" value="100–300" />
+              <input type="hidden" name="_captcha" value="false" />
 
-            <div className="mb-6 md:mb-8">
-              <div className="flex items-center justify-between mb-3">
-                <label className="text-[14px] leading-[18px] tracking-[0.1px] font-bold text-[#0D0D0D] uppercase text-left md:text-sm md:tracking-normal">Weight</label>
-                <button className="text-[12px] leading-[16px] tracking-[0px] font-normal text-[#666666] hover:underline text-left md:font-medium md:text-xs">Weight Guide</button>
+              <div className="mb-6 md:mb-8">
+                <label className="text-[14px] leading-[18px] tracking-[0.1px] font-bold text-[#0D0D0D] block mb-3 uppercase text-left md:text-sm md:tracking-normal">
+                  Select Finish
+                </label>
+                <div className="flex gap-3">
+                  {finishes.map((finish, i) => (
+                    <button type="button" key={finish.name} onClick={() => setSelectedFinish(i)} className={`w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center border-2 transition-all ${selectedFinish === i ? "border-[#0D0D0D]" : "border-transparent"}`}>
+                      <span className="w-5 h-5 md:w-6 md:h-6 rounded-full border border-[#0D0D0D]" style={{ backgroundColor: finish.color }} />
+                    </button>
+                  ))}
+                </div>
               </div>
-              <div className="flex flex-wrap gap-2 md:gap-3">
-                {weightOptions.map((weight) => (
-                  <button key={weight} onClick={() => setSelectedWeight(weight)} className={`px-4 py-3 md:px-5 md:py-[15px] border text-[15px] leading-[17px] tracking-[0.4px] font-medium text-left transition-all md:tracking-normal ${selectedWeight === weight ? "border-[#0D0D0D] text-[#0D0D0D] bg-white" : "border-gray-200 text-[#0D0D0D] hover:border-gray-400"}`}>
-                    {weight}
-                  </button>
-                ))}
-              </div>
-            </div>
 
-            <div className="mb-6 md:mb-8">
-              <div className="flex items-center justify-between mb-3">
-                <label className="text-[14px] leading-[18px] tracking-[0.1px] font-bold text-[#0D0D0D] uppercase text-left md:text-sm md:tracking-normal">Logo Application</label>
-                <button className="text-[12px] leading-[16px] tracking-[0px] font-normal text-[#666666] hover:underline text-left md:font-medium md:text-xs">Logo Guide</button>
-              </div>
-              <div className="flex flex-wrap gap-2 md:gap-3">
-                {logoOptions.map((logo) => (
-                  <button key={logo} onClick={() => toggleLogo(logo)} className={`px-4 py-3 md:px-5 md:py-[15px] border text-[15px] leading-[17px] tracking-[0.4px] font-medium text-left transition-all md:tracking-normal ${selectedLogos.includes(logo) ? "border-[#0D0D0D] text-[#0D0D0D] bg-white" : "border-gray-200 text-[#0D0D0D] hover:border-gray-400"}`}>
-                    {logo}
-                  </button>
-                ))}
-              </div>
-            </div>
+              <DropdownSelector label="Materials" guideLabel="Material Guide" value="Genuine Leather" />
+              <DropdownSelector label="Padding" guideLabel="Padding Guide" value="IMF Foam" />
+              <DropdownSelector label="Closure" guideLabel="Closure Guide" value="Velcro" />
 
-            <DropdownSelector label="Packaging" guideLabel="Packaging Guide" value="Poly Bag" />
-
-            <div className="mb-2 md:mb-4">
-              <div className="flex items-center justify-between mb-3">
-                <label className="text-[14px] leading-[18px] tracking-[0.1px] font-bold text-[#0D0D0D] uppercase text-left md:text-sm md:tracking-normal">MOQ</label>
-                <button className="text-[12px] leading-[16px] tracking-[0px] font-normal text-[#666666] hover:underline text-left md:font-medium md:text-xs">Quantity Guide</button>
+              <div className="mb-6 md:mb-8">
+                <div className="flex items-center justify-between mb-3">
+                  <label className="text-[14px] leading-[18px] tracking-[0.1px] font-bold text-[#0D0D0D] uppercase text-left md:text-sm md:tracking-normal">Weight</label>
+                  <button type="button" className="text-[12px] leading-[16px] tracking-[0px] font-normal text-[#666666] hover:underline text-left md:font-medium md:text-xs">Weight Guide</button>
+                </div>
+                <div className="flex flex-wrap gap-2 md:gap-3">
+                  {weightOptions.map((weight) => (
+                    <button type="button" key={weight} onClick={() => setSelectedWeight(weight)} className={`px-4 py-3 md:px-5 md:py-[15px] border text-[15px] leading-[17px] tracking-[0.4px] font-medium text-left transition-all md:tracking-normal ${selectedWeight === weight ? "border-[#0D0D0D] text-[#0D0D0D] bg-white" : "border-gray-200 text-[#0D0D0D] hover:border-gray-400"}`}>
+                      {weight}
+                    </button>
+                  ))}
+                </div>
               </div>
-              <div className="border border-gray-200 px-4 py-3 md:py-[15px]">
-                <span className="text-[14px] md:text-[15px] font-medium text-[#0D0D0D]">100–300</span>
+
+              <div className="mb-6 md:mb-8">
+                <div className="flex items-center justify-between mb-3">
+                  <label className="text-[14px] leading-[18px] tracking-[0.1px] font-bold text-[#0D0D0D] uppercase text-left md:text-sm md:tracking-normal">Logo Application</label>
+                  <button type="button" className="text-[12px] leading-[16px] tracking-[0px] font-normal text-[#666666] hover:underline text-left md:font-medium md:text-xs">Logo Guide</button>
+                </div>
+                <div className="flex flex-wrap gap-2 md:gap-3">
+                  {logoOptions.map((logo) => (
+                    <button type="button" key={logo} onClick={() => toggleLogo(logo)} className={`px-4 py-3 md:px-5 md:py-[15px] border text-[15px] leading-[17px] tracking-[0.4px] font-medium text-left transition-all md:tracking-normal ${selectedLogos.includes(logo) ? "border-[#0D0D0D] text-[#0D0D0D] bg-white" : "border-gray-200 text-[#0D0D0D] hover:border-gray-400"}`}>
+                      {logo}
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
 
-            <p className="text-[12px] leading-[16px] tracking-[0px] font-normal text-[#666666] mb-8 md:mb-10 text-left md:text-xs">
-              MOQ starts from 100 pairs
-            </p>
+              <DropdownSelector label="Packaging" guideLabel="Packaging Guide" value="Poly Bag" />
 
-            <div className="space-y-3 md:space-y-4 mb-4">
-              <RollingButton className="w-full bg-[#0D0D0D] text-white text-[14px] leading-[18px] tracking-[0.1px] font-normal py-4 md:py-[18px] uppercase md:tracking-wide rounded-[4px]">
-                Request Manufacturing Quote
-              </RollingButton>
-              <RollingButton className="w-full border border-[#0D0D0D] text-[#0D0D0D] text-[13px] tracking-[0px] font-normal py-4 md:py-[18px] uppercase md:text-sm md:tracking-wide rounded-[4px]">
-                Ask About Samples
-              </RollingButton>
-            </div>
+              <div className="mb-2 md:mb-4">
+                <div className="flex items-center justify-between mb-3">
+                  <label className="text-[14px] leading-[18px] tracking-[0.1px] font-bold text-[#0D0D0D] uppercase text-left md:text-sm md:tracking-normal">MOQ</label>
+                  <button type="button" className="text-[12px] leading-[16px] tracking-[0px] font-normal text-[#666666] hover:underline text-left md:font-medium md:text-xs">Quantity Guide</button>
+                </div>
+                <div className="border border-gray-200 px-4 py-3 md:py-[15px]">
+                  <span className="text-[14px] md:text-[15px] font-medium text-[#0D0D0D]">100–300</span>
+                </div>
+              </div>
+
+              <p className="text-[12px] leading-[16px] tracking-[0px] font-normal text-[#666666] mb-8 md:mb-10 text-left md:text-xs">
+                MOQ starts from 100 pairs
+              </p>
+
+              <div className="space-y-3 md:space-y-4 mb-4">
+                <RollingButton type="submit" className="w-full bg-[#0D0D0D] text-white text-[14px] leading-[18px] tracking-[0.1px] font-normal py-4 md:py-[18px] uppercase md:tracking-wide rounded-[4px]">
+                  Request Manufacturing Quote
+                </RollingButton>
+                <RollingButton type="button" className="w-full border border-[#0D0D0D] text-[#0D0D0D] text-[13px] tracking-[0px] font-normal py-4 md:py-[18px] uppercase md:text-sm md:tracking-wide rounded-[4px]">
+                  Ask About Samples
+                </RollingButton>
+              </div>
+            </form>
+
             <p className="text-[12px] leading-[16px] tracking-[0px] font-normal text-[#999999] text-center md:text-xs">
               Share your product specs and our team will respond with MOQ, sample, and wholesale production options.
             </p>
@@ -432,7 +458,6 @@ export default function DetailsComponent() {
             </h3>
          <a 
   href="mailto:hello@sarlamathletics.com" 
-  /* --- CHANGED HERE: Changed text-[47px] to text-[28px] and leading-[58px] to leading-[36px] for mobile. Added md:text-[47px] and md:leading-[58px] to maintain desktop size. --- */
   className="text-[28px] leading-[36px] md:text-[47px] md:leading-[58px] tracking-[-1.9px] font-medium text-[#A5A5A5] text-left transition break-all hover:text-[#000000] md:tracking-tight block"
 >
   hello@sarlamathletics.com
@@ -550,7 +575,7 @@ function DropdownSelector({ label, guideLabel, value }: { label: string; guideLa
     <div className="mb-6 md:mb-8">
       <div className="flex items-center justify-between mb-3">
         <label className="text-[14px] leading-[18px] tracking-[0.1px] font-bold text-[#0D0D0D] uppercase text-left md:text-sm md:tracking-normal">{label}</label>
-        <button className="text-[12px] leading-[16px] tracking-[0px] font-normal text-[#666666] hover:underline text-left md:font-medium md:text-xs">{guideLabel}</button>
+        <button type="button" className="text-[12px] leading-[16px] tracking-[0px] font-normal text-[#666666] hover:underline text-left md:font-medium md:text-xs">{guideLabel}</button>
       </div>
       <div className="border border-gray-200 px-4 py-3 md:py-[15px] flex items-center justify-between cursor-pointer hover:border-gray-400 transition-colors">
         <span className="text-[15px] leading-[17px] tracking-[0.4px] font-medium text-[#0D0D0D] text-left md:tracking-normal">{value}</span>
