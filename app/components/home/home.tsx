@@ -180,9 +180,6 @@ export function Header() {
 
         {/* Desktop Left Nav */}
         <div className="hidden lg:flex items-center gap-0 h-[48px]">
-          <button className="w-[64px] h-[48px] flex items-center justify-center">
-            <MenuIcon />
-          </button>
           <nav className="flex items-center h-[48px]">
             <Link href="/products" className="h-[48px] flex items-center px-2 hover:opacity-70 transition" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", lineHeight: "18px", textTransform: "uppercase", color: "#0D0D0D" }}>Products</Link>
             <Link href="/privatelabel" className="h-[48px] flex items-center px-2 hover:opacity-70 transition" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", lineHeight: "18px", textTransform: "uppercase", color: "#0D0D0D" }}>Private Label</Link>
