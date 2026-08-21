@@ -6,6 +6,18 @@ import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Header } from "../home/home";
 
+// ─── Data Arrays ────────────────────────────────────────────────────────────
+const allProducts = [
+  { name: "Private Label Boxing Gloves", category: "Boxing Equipment", cta: "View Product +", mobileCta: "View Product →", href: "/details", swatches: ["#B91C1C", "#0D0D0D"], image: "/Products/01 Private Label Boxing Gloves.png" },
+  { name: "BJJ Gis and Jiu-Jitsu Uniforms", category: "Martial Arts Uniforms", cta: "View Product +", mobileCta: "View Product →", href: "/jitsu", swatches: ["#0D0D0D", "#E5E5E5"], image: "/Products/02 BJJ Gis and Jiu-Jitsu Uniforms.png" },
+  { name: "MMA Fight Gloves", category: "MMA Equipment", cta: "View Product +", mobileCta: "View Product →", href: "/mmagloves", swatches: ["#B91C1C", "#0D0D0D"], image: "/Products/03 MMA Fight Gloves.png" },
+  { name: "Professional MMA Training Gloves", category: "MMA Equipment", cta: "View Product +", mobileCta: "View Product →", href: "/ultimategloves", swatches: ["#B91C1C", "#0D0D0D"], image: "/Products/MMATrainingGloves.png" },
+  { name: "Boxing Focus Mitts and Training Pads", category: "Training Equipment", cta: "View Product +", mobileCta: "View Product →", href: "/trainingpad", swatches: ["#B91C1C", "#0D0D0D"], image: "/Products/05 Boxing Mitts and Training Pads.png" },
+  { name: "Boxing Sparring Gloves", category: "Boxing Equipment", cta: "View Product +", mobileCta: "View Product →", href: "/sparinggloves", swatches: ["#B91C1C", "#0D0D0D"], image: "/Products/06 Boxing Sparring Gloves.png" },
+  { name: "Custom Boxing Headguards", category: "Protective Equipment", cta: "View Product +", mobileCta: "View Product →", href: "/Boxingguard", swatches: ["#B91C1C", "#0D0D0D"], image: "/Products/07 Custom Boxing Headguards.png" },
+  { name: "Private Label Karate Uniforms", category: "Martial Arts Uniforms", cta: "View Product +", mobileCta: "View Product →", href: "/karatesuit", swatches: ["#E5E5E5", "#0D0D0D"], image: "/Products/karateuniform.png" },
+];
+
 // ─── Rolling Text Button Component ──────────────────────────────────────────
 const RollingButton = ({ href, children, className = "", style = {}, onClick, type = "button", disabled }: any) => {
   const content = (
@@ -38,10 +50,16 @@ const ArrowUpRight = () => (
   <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 9L9 3M9 3H4M9 3v5" /></svg>
 );
 
-// ─── Badge Icon (checkmark in circle) ───
 const BadgeCheckIcon = () => (
   <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
     <path d="M9 15L13 19L21 11" stroke="#0D0D0D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+// Custom Dropdown Chevron Icon
+const ChevronDown = () => (
+  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="pointer-events-none">
+    <path d="M2.5 4.5L6 8l3.5-3.5" stroke="#707070" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
@@ -53,12 +71,10 @@ function HeroSection() {
         <div className="absolute inset-0 bg-black/50 z-[1]" />
         <div className="absolute inset-0 bg-cover bg-center z-0" style={{ backgroundImage: "url('/Page 6/01.png')" }} />
         <div className="relative z-[2] max-w-[1200px]">
-          {/* Mobile: 28px/34px, Desktop: 47px */}
           <h1 style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, color: "#FFFFFF" }}
               className="text-[28px] leading-[34px] tracking-[-1px] lg:text-[47px] lg:leading-[1.2] lg:tracking-normal">
             Request a Private Label Manufacturing Quote
           </h1>
-          {/* Mobile: 14px/20px normal case, Desktop: 15px/1.6 uppercase */}
           <p className="mt-4 md:mt-6 max-w-[800px] text-[14px] leading-[20px] tracking-normal lg:text-[15px] lg:leading-[1.6] lg:uppercase lg:tracking-[0.05em]"
              style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, color: "#F0EDE9" }}>
             Tell us what you want to manufacture, and our team will prepare a customized production plan, MOQ recommendation, material options, pricing estimate, and production timeline within 1–2 business days.
@@ -117,7 +133,7 @@ function QuoteFormSection() {
         </div>
 
         <form onSubmit={onSubmit} className="flex flex-col gap-4">
-          {/* Each input: label on top, value/placeholder below — matching Figma's 2-line input pattern */}
+          
           <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
             <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Full Name*</span>
             <input 
@@ -155,30 +171,56 @@ function QuoteFormSection() {
             />
           </div>
 
-          {/* On mobile: single column. On desktop: 2-col grid */}
+          {/* 2-col grid for Category & Quantity */}
           <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 lg:gap-3">
-            <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
+            
+            {/* UPDATED: Product Category Dropdown with chevron & smaller font */}
+            <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0 relative">
               <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Product Category*</span>
-              <input 
-                type="text" 
+              <select 
                 name="category"
                 required
-                placeholder="Select Category (e.g. Boxing Gloves)" 
-                className="bg-transparent outline-none text-[14px] leading-[18px] min-w-0 placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
-                style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
-              />
+                defaultValue=""
+                className="bg-transparent outline-none text-[11px] leading-[18px] mt-0.5 min-w-0 text-[#0D0D0D] cursor-pointer appearance-none pr-6 text-ellipsis overflow-hidden whitespace-nowrap" 
+                style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400 }} 
+              >
+                <option value="" disabled hidden className="text-[#9CA3AF]">Select Category</option>
+                {allProducts.map((product, index) => (
+                  <option key={index} value={product.name}>{product.name}</option>
+                ))}
+              </select>
+              {/* Custom Chevron Icon */}
+              <div className="absolute right-3 top-[60%] -translate-y-1/2 pointer-events-none">
+                <ChevronDown />
+              </div>
             </div>
-            <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
+
+            {/* UPDATED: Estimated Order Quantity Datalist with chevron & smaller font */}
+            <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0 relative">
               <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Estimated Order Quantity*</span>
               <input 
                 type="text" 
                 name="quantity"
                 required
+                list="quantity-options"
                 placeholder="e.g. 500 pairs" 
-                className="bg-transparent outline-none text-[14px] leading-[18px] min-w-0 placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
+                /* Added specific pseudo-selectors to hide the default browser datalist arrow */
+                className="bg-transparent outline-none text-[13px] leading-[18px] mt-0.5 min-w-0 placeholder:text-[#9CA3AF] focus:placeholder-transparent pr-6 text-ellipsis overflow-hidden whitespace-nowrap [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:right-0 [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:cursor-pointer" 
                 style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
               />
+              {/* Custom Chevron Icon */}
+              <div className="absolute right-3 top-[60%] -translate-y-1/2 pointer-events-none">
+                <ChevronDown />
+              </div>
+              <datalist id="quantity-options">
+                <option value="100" />
+                <option value="200" />
+                <option value="300" />
+                <option value="500" />
+                <option value="1000" />
+              </datalist>
             </div>
+            
           </div>
 
           <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
