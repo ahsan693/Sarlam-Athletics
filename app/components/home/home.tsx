@@ -330,11 +330,7 @@ export default function SarlamAthleticsPage() {
     { question: "Do you handle quality control before shipping?", answer: "Every product undergoes detailed inspection for stitching, material quality, sizing, padding density, logo placement, and packaging before shipment." },
   ];
 
-  const testimonialAvatars = [
-    "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=150",
-    "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150",
-    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150",
-  ];
+
 
   const processSteps = [
     { num: "01", title: "Consultation & Product Specs", desc: "Tell us what you want to manufacture, including product type, materials, colors, logo placement, packaging, order quantity, and target price.", imageSrc: "/Page 1/Img/Rectangle 1.png" },
@@ -761,14 +757,6 @@ export default function SarlamAthleticsPage() {
             <span style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "15px", lineHeight: "16px", color: "#FFFFFF" }}>Marcus Vance</span>
             <span style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "17px", lineHeight: "25px", color: "#C9BFB5" }}>/</span>
             <span style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "15px", lineHeight: "16px", color: "#F0EDE9" }}>Founder, Apex Strike Gear</span>
-          </div>
-
-          <div className="flex items-center justify-center gap-3">
-            {testimonialAvatars.map((src, i) => (
-              <div key={i} className={`w-[44px] h-[44px] md:w-[56px] md:h-[56px] rounded-xl md:rounded-[12px] overflow-hidden border-2 ${i === 1 ? "border-white" : "border-white/30"}`}>
-                <ImagePlaceholder className="w-full h-full" label={`Avatar ${i + 1}`} src={src} />
-              </div>
-            ))}
           </div>
         </div>
       </section>
