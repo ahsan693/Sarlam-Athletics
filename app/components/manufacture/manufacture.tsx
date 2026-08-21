@@ -242,13 +242,12 @@ function ServicesSection() {
 
 // ─── Industries We Serve Section ───
 const industries = [
-  { title: "Sports Brands", image: "https://images.unsplash.com/photo-1515523110800-9415d13b84a8?auto=format&fit=crop&q=80&w=600" },
+  { title: "Sports Brands", image: "/Page 4/1.png" },
   { title: "Gyms & Martial Arts Academies", image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=600" },
   { title: "Retailers & eCommerce Brands", image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=600" },
   { title: "Wholesale Distributors", image: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&q=80&w=600" },
-  { title: "Sports Equipment Companies", image: "https://images.unsplash.com/photo-1515523110800-9415d13b84a8?auto=format&fit=crop&q=80&w=600" },
+  { title: "Sports Equipment Companies", image: "/Page 4/2 (2).png" },
 ];
-
 function IndustriesSection() {
   return (
     <section className="py-16 md:py-24 px-6 md:px-10 bg-white">
