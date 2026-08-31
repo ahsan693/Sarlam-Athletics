@@ -50,7 +50,7 @@ const RollingButton = ({ href, children, className = "", style = {}, onClick, ty
       <span className="flex items-center justify-center w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/btn:-translate-y-full">
         {children}
       </span>
-      <span className="absolute inset-0 flex items-center justify-center w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] translate-y-full group-hover/btn:translate-y-0">
+      <span aria-hidden="true" className="absolute inset-0 flex items-center justify-center w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] translate-y-full group-hover/btn:translate-y-0">
         {children}
       </span>
     </span>
@@ -151,6 +151,8 @@ export default function DetailsComponent() {
     <div className="min-h-screen bg-white font-['FFF_Acid_Grotesk',sans-serif]">
       <Header />
 
+      <main id="main-content">
+
       {/* --- Announcement Banner --- */}
       <div className="bg-[#0D0D0D] h-[34px] flex items-center justify-center overflow-hidden">
         <div aria-hidden="true" className="flex animate-marquee whitespace-nowrap">
@@ -232,8 +234,9 @@ export default function DetailsComponent() {
             <form onSubmit={handleQuoteSubmit} className="flex flex-col gap-4">
               
               <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
-                <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Full Name*</span>
+                <label htmlFor="details-name" className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Full Name*</label>
                 <input 
+                  id="details-name"
                   type="text" 
                   name="name"
                   required
@@ -245,8 +248,9 @@ export default function DetailsComponent() {
               </div>
 
               <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
-                <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Business Email*</span>
+                <label htmlFor="details-email" className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Business Email*</label>
                 <input 
+                  id="details-email"
                   type="email" 
                   name="email"
                   required
@@ -257,8 +261,9 @@ export default function DetailsComponent() {
               </div>
 
               <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
-                <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Phone Number (Optional)</span>
+                <label htmlFor="details-phone" className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Phone Number (Optional)</label>
                 <input 
+                  id="details-phone"
                   type="tel" 
                   name="phone"
                   onInput={(e) => (e.currentTarget.value = e.currentTarget.value.replace(/[^0-9\+\-\(\)\s]/g, ""))}
@@ -273,8 +278,9 @@ export default function DetailsComponent() {
                 
                 {/* Product Name Input (Read-only) */}
                 <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0 bg-[#F9F9F9]">
-                  <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Product Name*</span>
+                  <label htmlFor="details-product" className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Product Name*</label>
                   <input 
+                    id="details-product"
                     type="text"
                     name="productName"
                     aria-label="Product name"
@@ -287,8 +293,9 @@ export default function DetailsComponent() {
 
                 {/* Estimated Order Quantity Datalist with chevron */}
                 <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0 relative">
-                  <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Estimated Order Quantity*</span>
+                  <label htmlFor="details-quantity" className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Estimated Order Quantity*</label>
                   <input 
+                    id="details-quantity"
                     type="text" 
                     name="quantity"
                     required
@@ -312,8 +319,9 @@ export default function DetailsComponent() {
               </div>
 
               <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0 mb-4">
-                <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Project Details*</span>
+                <label htmlFor="details-message" className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Project Details*</label>
                 <textarea 
+                  id="details-message"
                   name="message"
                   required
                   placeholder="Tell us about your branding, materials, colors, logo requirements, packaging, target market, or any other details." 
@@ -334,7 +342,7 @@ export default function DetailsComponent() {
               </div>
             </form>
 
-            <p className="text-[12px] leading-[16px] tracking-[0px] font-normal text-[#999999] text-center md:text-xs">
+            <p className="text-[12px] leading-[16px] tracking-[0px] font-normal text-[#666666] text-center md:text-xs">
               Share your product specs and our team will respond with MOQ, sample, and wholesale production options.
             </p>
           </div>
@@ -363,24 +371,24 @@ export default function DetailsComponent() {
             <h2 className="text-[26px] leading-[26px] md:text-[37px] md:leading-[46px] tracking-[-0.5px] font-bold text-[#0D0D0D] uppercase max-w-[302px] md:max-w-none md:tracking-normal md:normal-case">
               Martial Arts Uniform Manufacturing Options
             </h2>
-            <a href="#" className="text-[14px] leading-[18px] font-bold text-[#0D0D0D] whitespace-nowrap shrink-0 md:hidden">View all</a>
+            <a href="/products" className="text-[14px] leading-[18px] font-bold text-[#0D0D0D] whitespace-nowrap shrink-0 md:hidden">View all</a>
             <div className="hidden md:flex items-center gap-[6px] shrink-0 z-10 relative pb-2">
-              <button onClick={() => scrollRelated(-1)} aria-label="Previous" className="w-[30px] h-[30px] flex items-center justify-center text-gray-400 hover:text-black transition"><ArrowLeft /></button>
-              <button onClick={() => scrollRelated(1)} aria-label="Next" className="w-[30px] h-[30px] flex items-center justify-center text-black hover:opacity-70 transition"><ArrowRight /></button>
+              <button onClick={() => scrollRelated(-1)} aria-label="Previous related products" className="w-[30px] h-[30px] flex items-center justify-center text-gray-400 hover:text-black transition"><ArrowLeft /></button>
+              <button onClick={() => scrollRelated(1)} aria-label="Next related products" className="w-[30px] h-[30px] flex items-center justify-center text-black hover:opacity-70 transition"><ArrowRight /></button>
             </div>
           </div>
 
           <div ref={relatedScrollerRef} tabIndex={0} aria-label="Related products" className="grid grid-cols-2 gap-3 md:flex md:overflow-x-auto md:gap-6 md:snap-x md:snap-mandatory hide-scrollbar md:pb-4">
             {relatedProducts.map((product, i) => (
               <div key={i} data-related-card className="border border-[#C9C9C9] rounded bg-white flex flex-col md:w-[360px] md:snap-start md:shrink-0 md:rounded-none group">
-                <Link href={product.href} className="block p-2 md:p-0">
+                <div className="block p-2 md:p-0">
                   <div className="relative flex items-center justify-center aspect-square md:aspect-auto md:h-[280px] bg-gray-100 overflow-hidden rounded-sm md:rounded-none">
                     <img src={product.image} alt={product.name} className="w-full h-full object-contain p-4 md:p-0 md:object-cover group-hover:scale-105 transition-transform duration-300" />
                     <div className="hidden md:flex absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors items-center justify-center">
-                      <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-[#0D0D0D] text-white text-[10px] font-medium px-4 py-2 uppercase tracking-wider">Quick View</span>
+                      <span aria-hidden="true" className="opacity-0 group-hover:opacity-100 transition-opacity bg-[#0D0D0D] text-white text-[10px] font-medium px-4 py-2 uppercase tracking-wider">Quick View</span>
                     </div>
                   </div>
-                </Link>
+                </div>
                 <div className="px-2 pb-2 flex flex-col gap-2 md:px-5 md:py-4 md:flex-row md:items-center md:justify-between md:gap-0 mt-auto border-t border-transparent md:border-gray-200">
                   <span className="text-[12px] leading-[15px] font-bold text-[#0D0D0D] text-left md:text-[14px] md:leading-[18px] md:uppercase">{product.name}</span>
                   <RollingButton
@@ -560,6 +568,8 @@ export default function DetailsComponent() {
           </div>
         </div>
       </footer>
+
+      </main>
 
       {/* --- CSS Animations --- */}
       <style dangerouslySetInnerHTML={{
