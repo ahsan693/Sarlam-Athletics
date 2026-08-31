@@ -5,13 +5,13 @@ import Link from "next/link";
 import Image from "next/image";
 
 // --- Rolling Text Button Component ---
-const RollingButton = ({ href, children, className = "", style = {}, onClick }: any) => {
+const RollingButton = ({ href, children, className = "", style = {}, onClick, ...props }: any) => {
   const content = (
     <span className="relative flex items-center justify-center overflow-hidden w-full h-full">
       <span className="flex items-center justify-center w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/btn:-translate-y-full">
         {children}
       </span>
-      <span className="absolute inset-0 flex items-center justify-center w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] translate-y-full group-hover/btn:translate-y-0">
+      <span aria-hidden="true" className="absolute inset-0 flex items-center justify-center w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] translate-y-full group-hover/btn:translate-y-0">
         {children}
       </span>
     </span>
@@ -19,13 +19,13 @@ const RollingButton = ({ href, children, className = "", style = {}, onClick }: 
 
   if (href) {
     return (
-      <Link href={href} className={`group/btn relative inline-flex items-center justify-center overflow-hidden ${className}`} style={style}>
+      <Link href={href} className={`group/btn relative inline-flex items-center justify-center overflow-hidden ${className}`} style={style} {...props}>
         {content}
       </Link>
     );
   }
   return (
-    <button onClick={onClick} className={`group/btn relative inline-flex items-center justify-center overflow-hidden ${className}`} style={style}>
+    <button onClick={onClick} className={`group/btn relative inline-flex items-center justify-center overflow-hidden ${className}`} style={style} {...props}>
       {content}
     </button>
   );
@@ -53,6 +53,7 @@ const ImagePlaceholder = ({
 
   return (
     <div
+      aria-hidden="true"
       className={`bg-gray-200 flex items-center justify-center text-gray-400 ${className}`}
       style={{
         fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -197,6 +198,9 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white border-b border-gray-100 relative">
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:text-black">
+        Skip to main content
+      </a>
       <div className="relative w-full max-w-[2560px] mx-auto flex items-center justify-between px-4 lg:px-0 h-[76px] lg:h-[52px]">
 
         {/* Desktop Left Nav */}
@@ -376,6 +380,8 @@ export default function SarlamAthleticsPage() {
 
       <Header />
 
+      <main id="main-content">
+
       {/* --- Hero Section --- */}
       <section className="relative w-full h-[500px] md:h-[620px] 2xl:h-[750px] bg-[#0D0D0D] overflow-hidden">
         <img
@@ -440,10 +446,10 @@ export default function SarlamAthleticsPage() {
 
     {/* Arrows - visible on both mobile and desktop */}
     <div className="flex items-center gap-[6px] shrink-0 z-10 relative pb-2 pr-[12px]">
-      <button onClick={() => scrollByCard(-1)} aria-label="Previous" className="w-[30px] h-[30px] flex items-center justify-center text-gray-400 hover:text-black transition">
+      <button onClick={() => scrollByCard(-1)} aria-label="Previous products" className="w-[30px] h-[30px] flex items-center justify-center text-gray-400 hover:text-black transition">
         <ArrowLeft />
       </button>
-      <button onClick={() => scrollByCard(1)} aria-label="Next" className="w-[30px] h-[30px] flex items-center justify-center text-black hover:opacity-70 transition">
+      <button onClick={() => scrollByCard(1)} aria-label="Next products" className="w-[30px] h-[30px] flex items-center justify-center text-black hover:opacity-70 transition">
         <ArrowRight />
       </button>
     </div>
@@ -499,6 +505,7 @@ export default function SarlamAthleticsPage() {
 
               <RollingButton
                 href={product.href}
+                aria-label={`View ${product.name}`}
                 className="w-fit h-[18px] flex items-center gap-1"
                 style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, fontSize: "14px", lineHeight: "18px", letterSpacing: "0.1px", color: "#0D0D0D" }}
               >
@@ -519,6 +526,7 @@ export default function SarlamAthleticsPage() {
     ))}
   </div>
 </section>
+  </main>
 
 
       {/* --- About Section --- */}
@@ -597,7 +605,7 @@ export default function SarlamAthleticsPage() {
             className="shrink-0 w-[30px] h-[30px] object-contain"
           />
           <div className="flex flex-col gap-[2px]">
-            <h4
+            <h3
               className="uppercase"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -608,7 +616,7 @@ export default function SarlamAthleticsPage() {
               }}
             >
               {cap.title}
-            </h4>
+            </h3>
             <p
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -643,7 +651,7 @@ export default function SarlamAthleticsPage() {
             className="shrink-0 w-[30px] h-[30px] object-contain"
           />
           <div className="flex flex-col" style={{ maxWidth: '205px', gap: '0px' }}>
-            <h4
+            <h3
               className="uppercase"
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
@@ -655,7 +663,7 @@ export default function SarlamAthleticsPage() {
               }}
             >
               {cap.title}
-            </h4>
+            </h3>
             <p
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
