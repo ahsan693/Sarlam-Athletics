@@ -467,7 +467,7 @@ export default function SarlamAthleticsPage() {
         className="w-[100vw] md:w-[500px] h-[392px] md:h-[619px] shrink-0 snap-start flex flex-col p-0 gap-0 group relative bg-white border-r border-[#C9C9C9] last:border-r-0"
       >
         {/* Image area */}
-        <Link href={product.href} className="w-full h-[258px] md:h-[479px] flex items-center justify-center bg-white relative overflow-hidden">
+        <div className="w-full h-[258px] md:h-[479px] flex items-center justify-center bg-white relative overflow-hidden">
           <ImagePlaceholder className="w-full h-full !object-contain transition-transform duration-300 group-hover:scale-105" label={product.name} src={product.image} />
 
           {/* Quick View button overlay - desktop only */}
@@ -486,7 +486,7 @@ export default function SarlamAthleticsPage() {
               Quick View
             </div>
           </div>
-        </Link>
+        </div>
 
         {/* Card info area */}
         <div className="w-full p-[12px]">
@@ -526,16 +526,15 @@ export default function SarlamAthleticsPage() {
     ))}
   </div>
 </section>
-  </main>
 
 
       {/* --- About Section --- */}
       <section className="w-full bg-[#000000] py-16 md:py-[140px]">
         <div className="max-w-[2560px] mx-auto px-4 md:px-10 flex flex-col lg:flex-row gap-6 md:gap-8">
           <div className="lg:w-[449px] shrink-0">
-            <p className="uppercase" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "15px", lineHeight: "17px", letterSpacing: "0.4px", color: "rgba(255,255,255,0.7)" }}>
+            <h2 className="uppercase" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "15px", lineHeight: "17px", letterSpacing: "0.4px", color: "#FFFFFF" }}>
               Trusted Private Label Sports Equipment Manufacturing for Growing Brands
-            </p>
+            </h2>
           </div>
 
           <div className="flex-1 max-w-[879px]">
@@ -987,6 +986,7 @@ export default function SarlamAthleticsPage() {
           </div>
         </div>
       </section>
+      </main>
 {/* --- Footer --- */}
       <footer className="w-full bg-white">
         <div className="border-t border-[#D7DADE]" />
@@ -1006,7 +1006,7 @@ export default function SarlamAthleticsPage() {
     fontFamily: "'FFF Acid Grotesk', sans-serif", 
     fontWeight: 500, 
     letterSpacing: "-1.9px", 
-    color: "#A5A5A5" 
+    color: "#666666" 
   }}
 >
   hello@sarlamathletics.com
