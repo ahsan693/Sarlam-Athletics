@@ -265,7 +265,7 @@ export default function KickBoxingGlovesPage() {
 
       {/* ── Announcement Banner ── */}
       <div className="bg-[#0D0D0D] h-[34px] flex items-center justify-center overflow-hidden">
-        <div className="flex animate-marquee whitespace-nowrap">
+        <div aria-hidden="true" className="flex animate-marquee whitespace-nowrap">
           {[...Array(6)].map((_, i) => (
             <span key={i} className="text-white text-xs font-medium mx-8 tracking-widest md:tracking-normal uppercase">
               SAMPLES, MOQS, AND CUSTOM PRODUCTION OPTIONS FOR YOUR BRAND.

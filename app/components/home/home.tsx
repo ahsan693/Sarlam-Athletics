@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -119,11 +119,14 @@ const ChevronDown = ({ className = "" }: { className?: string }) => (
 // --- FAQ Accordion Item ---
 const FAQItem = ({ question, answer }: { question: string; answer: string }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const panelId = useId();
 
   return (
     <div className="border-b border-gray-200">
       <button
         onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
+        aria-controls={panelId}
         className="w-full flex items-center justify-between py-4 text-left"
       >
         <span
@@ -135,7 +138,7 @@ const FAQItem = ({ question, answer }: { question: string; answer: string }) => 
         <ChevronDown className={`shrink-0 text-black transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
       </button>
       {isOpen && (
-        <div className="pb-4">
+        <div id={panelId} className="pb-4">
           <p
             style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "16px", lineHeight: "20px", color: "#434343" }}
           >
@@ -164,6 +167,24 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const searchTriggerRef = useRef<HTMLButtonElement>(null);
+  const menuTriggerRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      if (isSearchOpen) {
+        setIsSearchOpen(false);
+        searchTriggerRef.current?.focus();
+      }
+      if (isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+        menuTriggerRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
+  }, [isMobileMenuOpen, isSearchOpen]);
 
   // Search Logic
   const filteredProducts = searchQuery.trim() === "" ? [] : searchProducts.filter(product => {
@@ -205,6 +226,10 @@ export function Header() {
           <button 
             onClick={() => { setIsSearchOpen(!isSearchOpen); setIsMobileMenuOpen(false); setSearchQuery(""); }} 
             className="w-[48px] h-[48px] flex items-center justify-center hover:opacity-70 transition text-[#0D0D0D]"
+            ref={searchTriggerRef}
+            aria-label={isSearchOpen ? "Close search" : "Open search"}
+            aria-expanded={isSearchOpen}
+            aria-controls="site-search"
           >
             {isSearchOpen ? <CloseIcon /> : <SearchIcon />}
           </button>
@@ -225,14 +250,20 @@ export function Header() {
           <button 
             onClick={() => { setIsSearchOpen(!isSearchOpen); setIsMobileMenuOpen(false); setSearchQuery(""); }} 
             className="flex items-center p-2 text-[#0D0D0D]"
+            ref={searchTriggerRef}
             aria-label="Toggle Search"
+            aria-expanded={isSearchOpen}
+            aria-controls="site-search"
           >
             {isSearchOpen ? <CloseIcon /> : <SearchIcon />}
           </button>
           <button
             className="flex items-center p-2 -mr-2 text-[#0D0D0D]"
             onClick={() => { setIsMobileMenuOpen(!isMobileMenuOpen); setIsSearchOpen(false); }}
-            aria-label="Toggle Menu"
+            ref={menuTriggerRef}
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="site-menu"
           >
             {isMobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
           </button>
@@ -241,9 +272,10 @@ export function Header() {
 
       {/* ─── Search Overlay Dropdown ─── */}
       {isSearchOpen && (
-        <div className="absolute top-[76px] lg:top-[52px] left-0 w-full bg-white border-b border-gray-200 shadow-lg z-50 p-4 md:p-6 flex flex-col items-center">
+        <div id="site-search" role="search" className="absolute top-[76px] lg:top-[52px] left-0 w-full bg-white border-b border-gray-200 shadow-lg z-50 p-4 md:p-6 flex flex-col items-center">
           <div className="w-full max-w-[800px] relative">
             <input 
+              aria-label="Search products"
               type="text" 
               placeholder="Search products (e.g. Boxing Gloves, BJJ Gis)..." 
               value={searchQuery}
@@ -281,14 +313,14 @@ export function Header() {
       {/* Mobile Menu Dropdown */}
       {isMobileMenuOpen && (
         <>
-          <div className="fixed inset-0 z-40 lg:hidden" onClick={() => setIsMobileMenuOpen(false)} />
-          <div className="lg:hidden absolute top-[76px] right-4 w-[200px] bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-100 flex flex-col p-2 z-50">
+          <button type="button" aria-label="Close menu" className="fixed inset-0 z-40 lg:hidden" onClick={() => { setIsMobileMenuOpen(false); menuTriggerRef.current?.focus(); }} />
+          <nav id="site-menu" aria-label="Mobile navigation" className="lg:hidden absolute top-[76px] right-4 w-[200px] bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-100 flex flex-col p-2 z-50">
             <Link href="/products" onClick={() => setIsMobileMenuOpen(false)} className="block w-full text-[#0D0D0D] text-[14px] font-medium px-4 py-2.5 rounded-lg hover:bg-gray-100 transition-colors font-['FFF_Acid_Grotesk',sans-serif] uppercase tracking-wide">Products</Link>
             <Link href="/privatelabel" onClick={() => setIsMobileMenuOpen(false)} className="block w-full text-[#0D0D0D] text-[14px] font-medium px-4 py-2.5 rounded-lg hover:bg-gray-100 transition-colors font-['FFF_Acid_Grotesk',sans-serif] uppercase tracking-wide">Private Label</Link>
             <Link href="/manufacture" onClick={() => setIsMobileMenuOpen(false)} className="block w-full text-[#0D0D0D] text-[14px] font-medium px-4 py-2.5 rounded-lg hover:bg-gray-100 transition-colors font-['FFF_Acid_Grotesk',sans-serif] uppercase tracking-wide">Manufacturing</Link>
             <Link href="/aboutus" onClick={() => setIsMobileMenuOpen(false)} className="block w-full text-[#0D0D0D] text-[14px] font-medium px-4 py-2.5 rounded-lg hover:bg-gray-100 transition-colors font-['FFF_Acid_Grotesk',sans-serif] uppercase tracking-wide">About</Link>
             <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="block w-full text-[#0D0D0D] text-[14px] font-medium px-4 py-2.5 rounded-lg hover:bg-gray-100 transition-colors font-['FFF_Acid_Grotesk',sans-serif] uppercase tracking-wide">Contact</Link>
-          </div>
+          </nav>
         </>
       )}
     </header>
@@ -378,7 +410,7 @@ export default function SarlamAthleticsPage() {
 
       {/* --- Announcement Bar --- */}
       <div className="w-full bg-[#0D0D0D] overflow-hidden border-t border-white/20">
-        <div className="flex animate-marquee whitespace-nowrap py-2">
+        <div aria-hidden="true" className="flex animate-marquee whitespace-nowrap py-2">
           {[...Array(6)].map((_, i) => (
             <span
               key={i}

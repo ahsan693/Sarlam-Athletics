@@ -153,7 +153,7 @@ export default function DetailsComponent() {
 
       {/* --- Announcement Banner --- */}
       <div className="bg-[#0D0D0D] h-[34px] flex items-center justify-center overflow-hidden">
-        <div className="flex animate-marquee whitespace-nowrap">
+        <div aria-hidden="true" className="flex animate-marquee whitespace-nowrap">
           {[...Array(6)].map((_, i) => (
             <span key={i} className="text-white text-[12px] font-medium mx-8 tracking-widest md:tracking-normal">
               Request samples, MOQs, and custom production options for your brand.
@@ -277,6 +277,7 @@ export default function DetailsComponent() {
                   <input 
                     type="text"
                     name="productName"
+                    aria-label="Product name"
                     value="Private Label Boxing Gloves"
                     readOnly
                     className="bg-transparent outline-none text-[13px] leading-[18px] mt-0.5 min-w-0 text-[#0D0D0D] text-ellipsis overflow-hidden whitespace-nowrap" 
@@ -369,7 +370,7 @@ export default function DetailsComponent() {
             </div>
           </div>
 
-          <div ref={relatedScrollerRef} className="grid grid-cols-2 gap-3 md:flex md:overflow-x-auto md:gap-6 md:snap-x md:snap-mandatory hide-scrollbar md:pb-4">
+          <div ref={relatedScrollerRef} tabIndex={0} aria-label="Related products" className="grid grid-cols-2 gap-3 md:flex md:overflow-x-auto md:gap-6 md:snap-x md:snap-mandatory hide-scrollbar md:pb-4">
             {relatedProducts.map((product, i) => (
               <div key={i} data-related-card className="border border-[#C9C9C9] rounded bg-white flex flex-col md:w-[360px] md:snap-start md:shrink-0 md:rounded-none group">
                 <Link href={product.href} className="block p-2 md:p-0">

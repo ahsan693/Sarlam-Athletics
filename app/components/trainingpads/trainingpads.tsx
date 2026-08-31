@@ -135,7 +135,7 @@ export default function TrainingPadsPage() {
 
       {/* ── Announcement Banner ── */}
       <div className="bg-[#0D0D0D] h-[34px] flex items-center justify-center overflow-hidden">
-        <div className="flex animate-marquee whitespace-nowrap">
+        <div aria-hidden="true" className="flex animate-marquee whitespace-nowrap">
           {[...Array(6)].map((_, i) => (
             <span key={i} className="text-white text-xs font-medium mx-8 tracking-widest md:tracking-normal uppercase">
               SAMPLES, MOQS, AND CUSTOM PRODUCTION OPTIONS FOR YOUR BRAND.
@@ -255,6 +255,7 @@ export default function TrainingPadsPage() {
                   <input 
                     type="text"
                     name="productName"
+                    aria-label="Product name"
                     value="Training Pads (Focus Mitts & Thai Pads)"
                     readOnly
                     className="bg-transparent outline-none text-[13px] leading-[18px] mt-0.5 min-w-0 text-[#0D0D0D] text-ellipsis overflow-hidden whitespace-nowrap" 

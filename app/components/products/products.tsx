@@ -168,7 +168,7 @@ export default function ProductPage() {
 
       {/* ───── 1. Announcement Bar ───── */}
       <div className="w-full bg-[#0D0D0D] overflow-hidden">
-        <div className="flex animate-marquee whitespace-nowrap py-2.5">
+        <div aria-hidden="true" className="flex animate-marquee whitespace-nowrap py-2.5">
           {[...Array(6)].map((_, i) => (
             <span key={i} className="inline-block mx-8 text-[12px] leading-[16px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#FFFFFF" }}>
               Wholesale and OEM manufacturing for combat sports and martial arts equipment.

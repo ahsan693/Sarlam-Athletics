@@ -5,6 +5,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Header } from "../home/home";
+import { QuoteForm } from "../quote-form";
 
 // ─── Data Arrays ────────────────────────────────────────────────────────────
 const allProducts = [
@@ -56,13 +57,6 @@ const BadgeCheckIcon = () => (
   </svg>
 );
 
-// Custom Dropdown Chevron Icon
-const ChevronDown = () => (
-  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="pointer-events-none">
-    <path d="M2.5 4.5L6 8l3.5-3.5" stroke="#707070" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
 // ─── HERO SECTION ──────────────────────────────────────────────────
 function HeroSection() {
   return (
@@ -87,38 +81,6 @@ function HeroSection() {
 
 // ─── QUOTE FORM SECTION ────────────────────────────────────────────
 function QuoteFormSection() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setIsSubmitting(true);
-    
-    const form = event.currentTarget;
-    const formData = new FormData(form);
-    
-    // Add Web3Forms settings
-    formData.append("access_key", "39dc5b13-90fe-40da-97f9-2440b5c7aaf3");
-    formData.append("subject", "New Private Label Quote Request");
-
-    try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formData
-      });
-
-      const data = await response.json();
-      if (data.success) {
-        alert("Success! Your quote request has been sent to our team.");
-        form.reset(); // Clear the form on success
-      } else {
-        alert("Error: Could not submit the form. Please try again.");
-      }
-    } catch (error) {
-      alert("Error: Network connection failed. Please check your internet and try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   return (
     <section className="w-full bg-white px-4 lg:px-3 py-10 lg:py-24">
@@ -132,118 +94,7 @@ function QuoteFormSection() {
           </p>
         </div>
 
-        <form onSubmit={onSubmit} className="flex flex-col gap-4">
-          
-          <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
-            <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Full Name*</span>
-            <input 
-              type="text" 
-              name="name"
-              required
-              onInput={(e) => (e.currentTarget.value = e.currentTarget.value.replace(/[^A-Za-z\s]/g, ""))}
-              placeholder="e.g. John Doe" 
-              className="bg-transparent outline-none text-[14px] leading-[18px] mt-0 placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
-              style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
-            />
-          </div>
-
-          <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
-            <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Business Email*</span>
-            <input 
-              type="email" 
-              name="email"
-              required
-              placeholder="e.g. john@yourbrand.com" 
-              className="bg-transparent outline-none text-[14px] leading-[18px] placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
-              style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
-            />
-          </div>
-
-          <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
-            <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Phone Number (Optional)</span>
-            <input 
-              type="tel" 
-              name="phone"
-              onInput={(e) => (e.currentTarget.value = e.currentTarget.value.replace(/[^0-9\+\-\(\)\s]/g, ""))}
-              placeholder="e.g. +1 (555) 000-0000" 
-              className="bg-transparent outline-none text-[14px] leading-[18px] placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
-              style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
-            />
-          </div>
-
-          {/* 2-col grid for Category & Quantity */}
-          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 lg:gap-3">
-            
-            {/* UPDATED: Product Category Dropdown with chevron & smaller font */}
-            <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0 relative">
-              <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Product Category*</span>
-              <select 
-                name="category"
-                required
-                defaultValue=""
-                className="bg-transparent outline-none text-[11px] leading-[18px] mt-0.5 min-w-0 text-[#0D0D0D] cursor-pointer appearance-none pr-6 text-ellipsis overflow-hidden whitespace-nowrap" 
-                style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400 }} 
-              >
-                <option value="" disabled hidden className="text-[#9CA3AF]">Select Category</option>
-                {allProducts.map((product, index) => (
-                  <option key={index} value={product.name}>{product.name}</option>
-                ))}
-              </select>
-              {/* Custom Chevron Icon */}
-              <div className="absolute right-3 top-[60%] -translate-y-1/2 pointer-events-none">
-                <ChevronDown />
-              </div>
-            </div>
-
-            {/* UPDATED: Estimated Order Quantity Datalist with chevron & smaller font */}
-            <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0 relative">
-              <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Estimated Order Quantity*</span>
-              <input 
-                type="text" 
-                name="quantity"
-                required
-                list="quantity-options"
-                placeholder="e.g. 500 pairs" 
-                /* Added specific pseudo-selectors to hide the default browser datalist arrow */
-                className="bg-transparent outline-none text-[13px] leading-[18px] mt-0.5 min-w-0 placeholder:text-[#9CA3AF] focus:placeholder-transparent pr-6 text-ellipsis overflow-hidden whitespace-nowrap [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:right-0 [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:cursor-pointer" 
-                style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
-              />
-              {/* Custom Chevron Icon */}
-              <div className="absolute right-3 top-[60%] -translate-y-1/2 pointer-events-none">
-                <ChevronDown />
-              </div>
-              <datalist id="quantity-options">
-                <option value="100" />
-                <option value="200" />
-                <option value="300" />
-                <option value="500" />
-                <option value="1000" />
-              </datalist>
-            </div>
-            
-          </div>
-
-          <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
-            <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Project Details*</span>
-            <textarea 
-              name="message"
-              required
-              placeholder="Tell us about your branding, materials, colors, logo requirements, packaging, target market, or any other details." 
-              rows={3} 
-              className="bg-transparent outline-none resize-none text-[14px] leading-[18px] placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
-              style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
-            />
-          </div>
-
-          <RollingButton
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full bg-[#0D0D0D] py-[7px] px-10 mt-0 rounded-[4px]"
-            style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.05em", color: "#FFFFFF" }}
-          >
-            {isSubmitting ? "Submitting..." : "Request Manufacturing Quote"}
-          </RollingButton>
-        </form>
+        <QuoteForm productOptions={allProducts.map((product) => product.name)} subject="New Private Label Quote Request" />
       </div>
     </section>
   );
@@ -410,12 +261,12 @@ function FAQSection() {
         <div className="flex flex-col">
           {faqs.map((faq, i) => (
             <div key={i} className="border-b border-[#C9C9C9]">
-              <button onClick={() => setOpenIndex(openIndex === i ? null : i)} className="w-full flex items-center justify-between py-3 text-left">
+              <button onClick={() => setOpenIndex(openIndex === i ? null : i)} aria-expanded={openIndex === i} aria-controls={`contact-faq-${i}`} className="w-full flex items-center justify-between py-3 text-left">
                 {/* Mobile: 20px/26px weight 400, Desktop: 22px weight 500 */}
                 <span className="pr-4 text-[20px] leading-[26px] tracking-[-0.6px] lg:text-[22px] lg:leading-[1.2] lg:tracking-normal" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }}>{faq.question}</span>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0D0D0D" strokeWidth="1.5" className={`flex-shrink-0 transition-transform duration-300 ${openIndex === i ? "rotate-45" : ""}`}><path d="M12 5v14M5 12h14" /></svg>
               </button>
-              <div className={`overflow-hidden transition-all duration-300 ${openIndex === i ? "max-h-[200px] pb-4" : "max-h-0"}`}>
+              <div id={`contact-faq-${i}`} hidden={openIndex !== i} className="pb-4">
                 <p style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "16px", lineHeight: "1.5", color: "#0D0D0D" }}>{faq.answer}</p>
               </div>
             </div>
