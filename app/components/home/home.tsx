@@ -1006,7 +1006,7 @@ export default function SarlamAthleticsPage() {
     fontFamily: "'FFF Acid Grotesk', sans-serif", 
     fontWeight: 500, 
     letterSpacing: "-1.9px", 
-    color: "#666666" 
+    color: "#000000" 
   }}
 >
   hello@sarlamathletics.com
