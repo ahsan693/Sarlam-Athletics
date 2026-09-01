@@ -166,7 +166,7 @@ export default function ProductPage({ product }: { product: ProductConfig }) {
           <img src={product.heroImage} alt={product.name} className="w-full h-full object-cover opacity-60" />
         </div>
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6 max-w-[2560px] mx-auto">
-          <span className="text-[15px] leading-[17px] tracking-[0.4px] text-[#CBCBCB] font-medium md:tracking-wide md:text-[#CCCCCC] mb-3 md:mb-4 uppercase text-center md:text-left">
+          <span className="text-[15px] leading-[17px] tracking-[0.4px] text-white font-medium md:tracking-wide md:text-white mb-3 md:mb-4 uppercase text-center md:text-left">
             Products
           </span>
           <h1 className="text-[37px] leading-[46px] tracking-[-1.5px] font-medium text-white md:text-[44px] md:leading-tight md:font-normal md:tracking-normal max-w-[664px] uppercase text-center">
