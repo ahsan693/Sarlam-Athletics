@@ -17,7 +17,7 @@ const RollingButton = ({
       <span className="flex items-center justify-center w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/btn:-translate-y-full">
         {children}
       </span>
-      <span className="absolute inset-0 flex items-center justify-center w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] translate-y-full group-hover/btn:translate-y-0">
+      <span aria-hidden="true" className="absolute inset-0 flex items-center justify-center w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] translate-y-full group-hover/btn:translate-y-0">
         {children}
       </span>
     </span>
@@ -126,6 +126,7 @@ export default function PrivateLabel() {
   return (
     <div className="min-h-screen bg-white font-sans">
       <Header />
+      <main id="main-content">
 
       {/* ─── HERO SECTION ─── */}
       <section className="relative h-[537px] md:h-[534px] 2xl:h-[650px] bg-[#0D0D0D] overflow-hidden -mt-[52px] pt-[52px] md:-mt-[0px] md:pt-[0px]">
@@ -453,7 +454,7 @@ export default function PrivateLabel() {
                   fontFamily: "'FFF Acid Grotesk', sans-serif",
                   fontWeight: 500,
                   letterSpacing: "-1.9px",
-                  color: "#A5A5A5",
+                  color: "#666666",
                 }}
               >
                 hello@sarlamathletics.com
@@ -664,6 +665,7 @@ export default function PrivateLabel() {
           </div>
         </div>
       </footer>
+      </main>
     </div>
   );
 }

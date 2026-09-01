@@ -149,7 +149,7 @@ const RollingButton = ({ href, children, className = "", style = {}, onClick, ty
       <span className="flex items-center justify-center w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/btn:-translate-y-full">
         {children}
       </span>
-      <span className="absolute inset-0 flex items-center justify-center w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] translate-y-full group-hover/btn:translate-y-0">
+      <span aria-hidden="true" className="absolute inset-0 flex items-center justify-center w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] translate-y-full group-hover/btn:translate-y-0">
         {children}
       </span>
     </span>
@@ -217,6 +217,8 @@ export default function UltimateMmaFightGlovesPage() {
     <div className="min-h-screen bg-white font-['FFF_Acid_Grotesk',sans-serif]">
       
       <Header />
+
+      <main id="main-content">
 
       {/* ── Announcement Banner ── */}
       <div className="bg-[#0D0D0D] h-[34px] flex items-center justify-center overflow-hidden">
@@ -310,8 +312,9 @@ export default function UltimateMmaFightGlovesPage() {
             <form onSubmit={handleQuoteSubmit} className="flex flex-col gap-4">
               
               <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
-                <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Full Name*</span>
+                <label htmlFor="ultimate-name" className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Full Name*</label>
                 <input 
+                  id="ultimate-name"
                   type="text" 
                   name="name"
                   required
@@ -323,8 +326,9 @@ export default function UltimateMmaFightGlovesPage() {
               </div>
 
               <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
-                <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Business Email*</span>
+                <label htmlFor="ultimate-email" className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Business Email*</label>
                 <input 
+                  id="ultimate-email"
                   type="email" 
                   name="email"
                   required
@@ -335,8 +339,9 @@ export default function UltimateMmaFightGlovesPage() {
               </div>
 
               <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
-                <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Phone Number (Optional)</span>
+                <label htmlFor="ultimate-phone" className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Phone Number (Optional)</label>
                 <input 
+                  id="ultimate-phone"
                   type="tel" 
                   name="phone"
                   onInput={(e) => (e.currentTarget.value = e.currentTarget.value.replace(/[^0-9\+\-\(\)\s]/g, ""))}
@@ -351,8 +356,9 @@ export default function UltimateMmaFightGlovesPage() {
                 
                 {/* Product Name Input (Read-only) */}
                 <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0 bg-[#F9F9F9]">
-                  <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Product Name*</span>
+                  <label htmlFor="ultimate-product" className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Product Name*</label>
                   <input 
+                    id="ultimate-product"
                     type="text"
                     name="productName"
                     aria-label="Product name"
@@ -365,8 +371,9 @@ export default function UltimateMmaFightGlovesPage() {
 
                 {/* Estimated Order Quantity Datalist with chevron */}
                 <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0 relative">
-                  <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Estimated Order Quantity*</span>
+                  <label htmlFor="ultimate-quantity" className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Estimated Order Quantity*</label>
                   <input 
+                    id="ultimate-quantity"
                     type="text" 
                     name="quantity"
                     required
@@ -390,8 +397,9 @@ export default function UltimateMmaFightGlovesPage() {
               </div>
 
               <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0 mb-4">
-                <span className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Project Details*</span>
+                <label htmlFor="ultimate-message" className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Project Details*</label>
                 <textarea 
+                  id="ultimate-message"
                   name="message"
                   required
                   placeholder="Tell us about your branding, materials, colors, logo requirements, packaging, target market, or any other details." 
@@ -412,7 +420,7 @@ export default function UltimateMmaFightGlovesPage() {
               </div>
             </form>
 
-            <p className="text-[11px] md:text-xs text-[#999999] text-center font-normal mt-6 md:mt-8">
+            <p className="text-[11px] md:text-xs text-[#666666] text-center font-normal mt-6 md:mt-8">
               Share your product specs and our team will respond with MOQ, sample, and wholesale production options.
             </p>
           </div>
@@ -473,14 +481,14 @@ export default function UltimateMmaFightGlovesPage() {
               </Link>
               <button 
                 onClick={() => scrollRelated(-1)} 
-                aria-label="Previous" 
+                aria-label="Previous related products"
                 className="w-[30px] h-[30px] flex items-center justify-center text-gray-400 hover:text-black transition"
               >
                 <ArrowLeft />
               </button>
               <button 
                 onClick={() => scrollRelated(1)} 
-                aria-label="Next" 
+                aria-label="Next related products"
                 className="w-[30px] h-[30px] flex items-center justify-center text-black hover:opacity-70 transition"
               >
                 <ArrowRight />
@@ -499,7 +507,7 @@ export default function UltimateMmaFightGlovesPage() {
                 data-related-card
                 className="border border-[#C9C9C9] rounded bg-white flex flex-col md:w-[360px] md:snap-start md:shrink-0 md:rounded-none group"
               >
-                <Link href={product.href} className="block p-2 md:p-0">
+                <div className="block p-2 md:p-0">
                   <div className="relative flex items-center justify-center aspect-square md:aspect-auto md:h-[280px] bg-gray-100 overflow-hidden rounded-sm md:rounded-none">
                     <img
                       src={product.image}
@@ -512,7 +520,7 @@ export default function UltimateMmaFightGlovesPage() {
                       </span>
                     </div>
                   </div>
-                </Link>
+                </div>
 
                 <div className="px-2 pb-2 flex flex-col gap-2 md:px-5 md:py-4 md:flex-row md:items-center md:justify-between md:gap-0 mt-auto border-t border-transparent md:border-gray-200">
                   <span className="text-[12px] leading-[15px] font-bold text-[#0D0D0D] text-left md:text-[14px] md:leading-[18px] md:uppercase">
@@ -675,6 +683,8 @@ export default function UltimateMmaFightGlovesPage() {
           </div>
         </div>
       </footer>
+
+      </main>
 
       {/* ── CSS Animations ── */}
       <style jsx>{`

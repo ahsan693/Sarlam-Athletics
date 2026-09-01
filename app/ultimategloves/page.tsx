@@ -1,9 +1,6 @@
-import UltimateFightGloves from "../components/ultimate-fightgloves/ultimate-fightgloves";
+import ProductPage from "../components/allproducts/details/details";
+import { products } from "../components/allproducts/data";
 
 export default function FightglovesPage() {
-  return (
-    <main>
-      <UltimateFightGloves />
-    </main>
-  );
+  return <ProductPage product={products.ultimategloves} />;
 }

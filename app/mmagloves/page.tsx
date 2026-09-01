@@ -1,9 +1,6 @@
-import Mmagloves from "../components/mma-gloves/mmagloves";
+import ProductPage from "../components/allproducts/details/details";
+import { products } from "../components/allproducts/data";
 
 export default function MmaPage() {
-  return (
-    <main>
-      <Mmagloves />
-    </main>
-  );
+  return <ProductPage product={products.mmagloves} />;
 }

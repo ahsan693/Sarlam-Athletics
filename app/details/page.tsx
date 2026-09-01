@@ -1,9 +1,6 @@
-import DetailsComponent from "../components/details/details";
+import ProductPage from "../components/allproducts/details/details";
+import { products } from "../components/allproducts/data";
 
 export default function DetailsPage() {
-  return (
-    <main>
-      <DetailsComponent />
-    </main>
-  );
+  return <ProductPage product={products.details} />;
 }

@@ -110,7 +110,7 @@ function Header() {
         {/* ─── DESKTOP VIEW ─── */}
         <div className="hidden lg:flex items-center justify-between w-full h-full">
           <div className="flex items-center gap-4">
-            <button>
+            <button type="button" aria-label="Open menu">
               <MenuIcon />
             </button>
             <div className="w-[2px] h-12 bg-gray-300" />
@@ -127,7 +127,7 @@ function Header() {
             <Link href="/privatelabel" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">About</Link>
             <Link href="/contact" className="hover:opacity-70 transition text-[12px] font-medium uppercase font-['FFF_Acid_Grotesk',sans-serif] text-[#0D0D0D]">Contact</Link>
             <div className="w-[2px] h-12 bg-gray-300" />
-            <button className="hover:opacity-70 transition text-[#0D0D0D]">
+            <button type="button" aria-label="Search" className="hover:opacity-70 transition text-[#0D0D0D]">
               <SearchIcon />
             </button>
           </div>
@@ -139,7 +139,8 @@ function Header() {
             <LogoMark className="w-[18px] h-[20px]" />
             <span className="whitespace-nowrap tracking-tight">Sarlam Athletics</span>
           </Link>
-          <button 
+          <button
+            type="button"
             className="flex items-center p-2 -mr-2 text-[#0D0D0D]"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle Menu"
@@ -262,6 +263,7 @@ export default function KickBoxingGlovesPage() {
     <div className="min-h-screen bg-white font-['FFF_Acid_Grotesk',sans-serif]">
       
       <Header />
+      <main id="main-content">
 
       {/* ── Announcement Banner ── */}
       <div className="bg-[#0D0D0D] h-[34px] flex items-center justify-center overflow-hidden">
@@ -386,7 +388,7 @@ export default function KickBoxingGlovesPage() {
             <div className="mb-6 md:mb-8">
               <div className="flex items-center justify-between mb-3">
                 <label className="text-[13px] md:text-sm font-bold text-[#0D0D0D] uppercase">Size/Weight Options</label>
-                <button className="text-[11px] md:text-xs text-[#666666] hover:underline font-medium">
+                <button type="button" className="text-[11px] md:text-xs text-[#666666] hover:underline font-medium">
                   Weight Guide
                 </button>
               </div>
@@ -395,6 +397,7 @@ export default function KickBoxingGlovesPage() {
                 <div className="flex flex-wrap gap-2 md:gap-3">
                   {sizeOptions.map((size) => (
                     <button
+                      type="button"
                       key={size}
                       onClick={() => toggleOption(size, selectedSize, setSelectedSize)}
                       className={`px-4 py-3 md:px-5 md:py-[15px] border text-[13px] md:text-[15px] font-medium transition-all ${
@@ -453,14 +456,14 @@ export default function KickBoxingGlovesPage() {
 
             {/* CTA Buttons */}
             <div className="space-y-3 md:space-y-4 mb-4 mt-8 md:mt-12">
-              <button className="w-full bg-[#0D0D0D] text-white text-[13px] md:text-sm font-bold py-4 md:py-[18px] hover:bg-black/90 transition-colors uppercase tracking-wide">
+              <button type="button" className="w-full bg-[#0D0D0D] text-white text-[13px] md:text-sm font-bold py-4 md:py-[18px] hover:bg-black/90 transition-colors uppercase tracking-wide">
                 Request Manufacturing Quote
               </button>
-              <button className="w-full border border-[#0D0D0D] text-[#0D0D0D] text-[13px] md:text-sm font-bold py-4 md:py-[18px] hover:bg-gray-50 transition-colors uppercase tracking-wide">
+              <button type="button" className="w-full border border-[#0D0D0D] text-[#0D0D0D] text-[13px] md:text-sm font-bold py-4 md:py-[18px] hover:bg-gray-50 transition-colors uppercase tracking-wide">
                 Ask About Samples
               </button>
             </div>
-            <p className="text-[11px] md:text-xs text-[#999999] text-center font-normal">
+            <p className="text-[11px] md:text-xs text-[#666666] text-center font-normal">
               Share your product specs and our team will respond with MOQ, sample, and wholesale production options.
             </p>
           </div>
@@ -523,7 +526,7 @@ export default function KickBoxingGlovesPage() {
                   <span className="text-[11px] md:text-[10px] font-bold text-[#0D0D0D] uppercase">
                     {product.name}
                   </span>
-                  <button className="text-[10px] md:text-[8px] font-medium text-[#0D0D0D] border border-[#0D0D0D] px-2 py-1.5 md:py-1 hover:bg-[#0D0D0D] hover:text-white transition-colors uppercase self-start md:self-auto">
+                  <button type="button" className="text-[10px] md:text-[8px] font-medium text-[#0D0D0D] border border-[#0D0D0D] px-2 py-1.5 md:py-1 hover:bg-[#0D0D0D] hover:text-white transition-colors uppercase self-start md:self-auto">
                     Request Quote
                   </button>
                 </div>
@@ -688,6 +691,8 @@ export default function KickBoxingGlovesPage() {
         </div>
       </footer>
 
+      </main>
+
       {/* ── CSS Animations ── */}
       <style jsx>{`
         @keyframes marquee {
@@ -725,7 +730,7 @@ function OptionGroup({
       <div className="flex items-center justify-between mb-3">
         <label className="text-[13px] md:text-sm font-bold text-[#0D0D0D] uppercase">{label}</label>
         {guideLabel && (
-          <button className="text-[11px] md:text-xs text-[#666666] hover:underline font-medium">
+          <button type="button" className="text-[11px] md:text-xs text-[#666666] hover:underline font-medium">
             {guideLabel}
           </button>
         )}
@@ -733,6 +738,7 @@ function OptionGroup({
       <div className="flex flex-wrap gap-2 md:gap-3">
         {options.map((opt) => (
           <button
+            type="button"
             key={opt}
             onClick={() => onSelect(opt)}
             className={`px-4 py-3 md:px-5 md:py-[15px] border text-[13px] md:text-[15px] font-medium transition-all ${

@@ -1,9 +1,6 @@
-import KarateSuitsComponent from "../components/karate-suit/karate-suit";
+import ProductPage from "../components/allproducts/details/details";
+import { products } from "../components/allproducts/data";
 
 export default function KarateSuitPage() {
-  return (
-    <main>
-      <KarateSuitsComponent />
-    </main>
-  );
+  return <ProductPage product={products.karatesuit} />;
 }

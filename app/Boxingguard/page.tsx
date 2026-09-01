@@ -1,9 +1,6 @@
-import Boxingguard from "../components/Boxingguard/boxingguard";
+import ProductPage from "../components/allproducts/details/details";
+import { products } from "../components/allproducts/data";
 
 export default function BoxingguardPage() {
-  return (
-    <main>
-      <Boxingguard />
-    </main>
-  );
+  return <ProductPage product={products.Boxingguard} />;
 }
