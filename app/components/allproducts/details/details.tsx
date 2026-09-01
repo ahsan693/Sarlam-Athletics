@@ -164,6 +164,7 @@ export default function ProductPage({ product }: { product: ProductConfig }) {
       <section className="relative h-[320px] md:h-[480px] overflow-hidden flex justify-center">
         <div className="absolute inset-0 bg-black max-w-[2560px] mx-auto w-full">
           <img src={product.heroImage} alt={product.name} className="w-full h-full object-cover opacity-50" />
+          <div className="absolute inset-0 bg-black/45" aria-hidden="true" />
         </div>
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6 max-w-[2560px] mx-auto">
           <span className="text-[15px] leading-[17px] tracking-[0.4px] text-white font-medium md:tracking-wide md:text-white mb-3 md:mb-4 uppercase text-center md:text-left">
@@ -405,12 +406,13 @@ export default function ProductPage({ product }: { product: ProductConfig }) {
         <div className="relative rounded-none overflow-hidden max-w-[2560px] w-full mx-auto">
           <div className="absolute inset-0 bg-black">
             <img src="/Page 3/Box.png" alt="Quality Control" className="w-full h-full object-cover opacity-50" />
+            <div className="absolute inset-0 bg-black/35" aria-hidden="true" />
           </div>
           <div className="relative z-10 flex flex-col items-center justify-center text-center py-20 px-6 md:py-36 md:px-8">
             <h2 className="font-['Switzer',sans-serif] text-[32px] leading-[38.4px] tracking-[-0.32px] font-semibold text-[#FFFFFF] text-center mb-6 md:mb-8 max-w-[654px] uppercase md:font-['FFF_Acid_Grotesk',sans-serif] md:text-[26px] md:font-bold md:leading-tight md:tracking-normal">
               Quality Control for Every Production Run
             </h2>
-            <p className="text-[15px] leading-[18px] tracking-[0px] font-normal text-[#FFFFFF] text-center max-w-[654px] md:text-base md:text-white/80 md:leading-relaxed">
+            <p className="text-[15px] leading-[18px] tracking-[0px] font-normal text-[#FFFFFF] text-center max-w-[654px] md:text-base md:leading-relaxed">
               Every approved sample becomes the benchmark for bulk manufacturing. We check sizing, stitching, fabric finish, reinforcement points, logo placement, labeling, and packaging before production moves into final delivery.
             </p>
           </div>
