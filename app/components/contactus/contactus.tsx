@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef } from "react"; 
 import Head from "next/head";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
