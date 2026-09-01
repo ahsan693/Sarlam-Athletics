@@ -2,6 +2,8 @@
 
 import React, { useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
+import { Footer } from "../footer";
+import { footerTaglines } from "../footer/footer";
 import Image from "next/image";
 
 // --- Rolling Text Button Component ---
@@ -988,7 +990,7 @@ export default function SarlamAthleticsPage() {
       </section>
       </main>
 {/* --- Footer --- */}
-      <footer className="w-full bg-white">
+      {false && <footer className="w-full bg-white">
         <div className="border-t border-[#D7DADE]" />
 
         {/* Footer Top Content */}
@@ -1102,7 +1104,9 @@ export default function SarlamAthleticsPage() {
             <span className="uppercase" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "12px", lineHeight: "18px", color: "#FFFFFF" }}>USA (USD $) / English</span>
           </div>
         </div>
-      </footer>
+      </footer>}
+
+      <Footer tagline={footerTaglines.home} />
 
       {/* --- CSS Styles --- */}
       <style dangerouslySetInnerHTML={{

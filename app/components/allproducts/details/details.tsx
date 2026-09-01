@@ -3,6 +3,8 @@
 import React, { useRef, useState } from "react";
 import Link from "next/link";
 import { Header } from "../../home/home";
+import { Footer } from "../../footer";
+import { footerTaglines } from "../../footer/footer";
 import { ProductConfig, relatedProducts } from "../data";
 
 // ─── Data Arrays ────────────────────────────────────────────────────────────
@@ -489,79 +491,7 @@ export default function ProductPage({ product }: { product: ProductConfig }) {
         </div>
       </section>
       
-      {/* --- Footer --- */}
-      <footer className="bg-white border-t border-[#D7DADE]">
-        <div className="max-w-[2560px] mx-auto px-6 md:px-10 py-12 md:py-16 flex flex-col lg:flex-row justify-between gap-10 md:gap-12">
-          <div className="lg:w-1/2">
-            <h3 className="mb-4 md:mb-6 text-[47px] leading-[58px] tracking-[-1.9px] font-medium text-[#000000] text-left md:text-[#0D0D0D] md:tracking-tight">
-              Start Your Private Label<br className="hidden md:block" /><span className="md:hidden"> </span>Manufacturing Project
-            </h3>
-            <a href="mailto:hello@sarlamathletics.com" className="text-[28px] leading-[36px] md:text-[47px] md:leading-[58px] tracking-[-1.9px] font-medium text-[#A5A5A5] text-left transition break-all hover:text-[#000000] md:tracking-tight block">
-              hello@sarlamathletics.com
-            </a>
-          </div>
-
-          {/* Desktop Navigation Links */}
-          <div className="hidden lg:flex gap-16">
-            <div className="flex flex-col gap-3">
-              {[
-                { name: "Home", href: "/" },
-                { name: "Products", href: "/products" },
-                { name: "Private Label", href: "/privatelabel" },
-                { name: "Manufacturing Process", href: "/manufacture" }
-              ].map((link) => (
-                <a key={link.name} href={link.href} className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px] font-normal text-[#000000]">
-                  {link.name}
-                </a>
-              ))}
-            </div>
-            <div className="flex flex-col gap-3">
-              {[
-                { name: "About", href: "/aboutus" },
-                { name: "Contact", href: "/contact" },
-                { name: "Request Quote", href: "/contact" }
-              ].map((link) => (
-                <a key={link.name} href={link.href} className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px] font-normal text-[#000000]">
-                  {link.name}
-                </a>
-              ))}
-            </div>
-            <div className="flex flex-col gap-3">
-              {[
-                { name: "Boxing Gloves", href: "/details" },
-                { name: "Martial Arts Uniforms", href: "/karatesuit" },
-                { name: "MMA Gear", href: "/mmagloves" },
-                { name: "Training Accessories", href: "/trainingpad" }
-              ].map((link) => (
-                <a key={link.name} href={link.href} className="transition border-b border-gray-200 pb-2 hover:opacity-70 text-[14px] leading-[17px] font-normal text-[#000000]">
-                  {link.name}
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="border-t border-gray-200 mt-0" />
-
-        <div className="max-w-[2560px] mx-auto px-6 md:px-10 py-8 md:py-10 flex flex-col md:flex-row items-start md:items-end justify-between gap-4 md:gap-0">
-          <Link href="/" className="block">
-            <span className="text-[69px] leading-[85%] tracking-[-0.03em] font-bold italic text-[#000000] text-left uppercase md:text-[101px] md:tracking-tight md:text-[#0D0D0D]">
-              sarlam<br className="hidden md:block" /><span className="md:hidden"> </span>athletics
-            </span>
-          </Link>
-        </div>
-
-        <div className="bg-black">
-          <div className="max-w-[2560px] mx-auto px-6 md:px-10 py-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-0">
-            <span className="text-[12px] leading-[16px] tracking-[0px] font-normal text-[#E3E2E2] text-left">
-              © 2026 Sarlam Athletics. Private-label sports equipment manufacturer for combat sports brands.
-            </span>
-            <span className="text-[12px] leading-[18px] tracking-[0px] font-medium text-[#FFFFFF] text-center md:text-left uppercase">
-              USA (USD $) / English
-            </span>
-          </div>
-        </div>
-      </footer>
+      <Footer tagline={footerTaglines.product} />
 
       </main>
 
@@ -588,8 +518,3 @@ export default function ProductPage({ product }: { product: ProductConfig }) {
   );
 }
 
-function FooterLink({ href, children }: { href: string; children: React.ReactNode; }) {
-  return (
-    <a href={href} className="hover:text-[#0D0D0D] transition block" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "14px", lineHeight: "17px", color: "#757575" }}>{children}</a>
-  );
-}

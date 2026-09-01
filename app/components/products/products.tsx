@@ -2,6 +2,8 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
+import { Footer } from "../footer";
+import { footerTaglines } from "../footer/footer";
 import Image from "next/image";
 
 // ─── Import Centralized Header ──────────────────────────────────────────────
@@ -745,7 +747,7 @@ export default function ProductPage() {
       </section>
 
      {/* ───── 11. Footer ───── */}
-      <footer className="w-full bg-white flex flex-col items-center">
+      {false && <footer className="w-full bg-white flex flex-col items-center">
         <div className="w-full border-t border-gray-200" />
         <div className="w-full max-w-[2560px] px-4 md:px-10 py-12 md:py-16 flex flex-col lg:flex-row justify-between gap-10 md:gap-12">
           <div className="lg:w-1/2">
@@ -823,7 +825,9 @@ export default function ProductPage() {
             </span>
           </div>
         </div>
-      </footer>
+      </footer>}
+
+      <Footer tagline={footerTaglines.products} />
 
       {/* ───── Marquee Animation ───── */}
       <style dangerouslySetInnerHTML={{

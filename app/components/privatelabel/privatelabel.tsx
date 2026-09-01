@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { Footer } from "../footer";
+import { footerTaglines } from "../footer/footer";
 import { Header } from "../home/home";
 
 // ─── Rolling Text Button Component ──────────────────────────────────────────
@@ -430,7 +432,7 @@ export default function PrivateLabel() {
       </section>
 
     {/* ─── FOOTER ─── */}
-      <footer className="bg-white border-t border-gray-100">
+      {false && <footer className="bg-white border-t border-gray-100">
         <div className="max-w-[2560px] mx-auto px-5 md:px-8 pt-[48px] pb-[40px] md:py-16">
           <div className="flex flex-col lg:flex-row justify-between gap-[16px] md:gap-12">
             <div className="lg:w-1/2">
@@ -664,7 +666,9 @@ export default function PrivateLabel() {
             </span>
           </div>
         </div>
-      </footer>
+      </footer>}
+
+      <Footer tagline={footerTaglines.privateLabel} />
       </main>
     </div>
   );

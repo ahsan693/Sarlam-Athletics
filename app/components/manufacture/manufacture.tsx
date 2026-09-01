@@ -8,6 +8,8 @@ import { motion, useScroll } from "framer-motion";
 // ─── Import Centralized Header ──────────────────────────────────────────────
 // Ensure the path matches your actual file structure (e.g., "../home/home" or "./page")
 import { Header } from "../home/home";
+import { Footer } from "../footer";
+import { footerTaglines } from "../footer/footer";
 
 // ─── Rolling Text Button Component ──────────────────────────────────────────
 const RollingButton = ({ href, children, className = "", style = {}, onClick }: any) => {
@@ -272,7 +274,7 @@ function IndustriesSection() {
 }
 
 // ─── Footer ───
-function Footer() {
+export function LegacyFooter() {
   const footerNav = {
     pages: [ { label: "Home", href: "/" }, { label: "Products", href: "/products" }, { label: "Private Label", href: "/privatelabel" }, { label: "Manufacturing Process", href: "/manufacture" } ],
     company: [ { label: "About", href: "/about" }, { label: "Contact", href: "/contactus" }, { label: "Request Quote", href: "/contactus" } ],
@@ -358,7 +360,7 @@ export default function PrivateLabelPage() {
         <ServicesSection />
         <IndustriesSection />
       </main>
-      <Footer />
+      <Footer tagline={footerTaglines.manufacture} />
     </>
   );
 }

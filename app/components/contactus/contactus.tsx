@@ -5,6 +5,8 @@ import Head from "next/head";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Header } from "../home/home";
+import { Footer } from "../footer";
+import { footerTaglines } from "../footer/footer";
 import { QuoteForm } from "../quote-form";
 
 // ─── Data Arrays ────────────────────────────────────────────────────────────
@@ -294,7 +296,7 @@ function FAQSection() {
 }
 
 // ─── FOOTER COMPONENT ─────────────────────────────────────────
-function Footer() {
+export function LegacyFooter() {
   const footerNav = {
     pages: [ { label: "Home", href: "/" }, { label: "Products", href: "/products" }, { label: "Private Label", href: "/privatelabel" }, { label: "Manufacturing Process", href: "/manufacture" } ],
     company: [ { label: "About", href: "/aboutus" }, { label: "Contact", href: "/contact" }, { label: "Request Quote", href: "/contact" } ],
@@ -445,7 +447,7 @@ export default function ContactPage() {
         <WhatHappensNextSection />
         <FAQSection />
       </main>
-      <Footer />
+      <Footer tagline={footerTaglines.contact} />
      </div>
   );
 }
