@@ -163,13 +163,13 @@ export default function ProductPage({ product }: { product: ProductConfig }) {
       {/* --- Hero Banner --- */}
       <section className="relative h-[320px] md:h-[480px] overflow-hidden flex justify-center">
         <div className="absolute inset-0 bg-black max-w-[2560px] mx-auto w-full">
-          <img src={product.heroImage} alt={product.name} className="w-full h-full object-cover opacity-60" />
+          <img src={product.heroImage} alt={product.name} className="w-full h-full object-cover opacity-50" />
         </div>
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6 max-w-[2560px] mx-auto">
           <span className="text-[15px] leading-[17px] tracking-[0.4px] text-white font-medium md:tracking-wide md:text-white mb-3 md:mb-4 uppercase text-center md:text-left">
             Products
           </span>
-          <h1 className="text-[37px] leading-[46px] tracking-[-1.5px] font-medium text-white md:text-[44px] md:leading-tight md:font-normal md:tracking-normal max-w-[664px] uppercase text-center">
+          <h1 className="product-hero-title bg-transparent text-[37px] leading-[46px] tracking-[-1.5px] font-medium text-white md:text-[44px] md:leading-tight md:font-normal md:tracking-normal max-w-[664px] uppercase text-center">
             {product.heroTitle}
           </h1>
         </div>
@@ -190,14 +190,14 @@ export default function ProductPage({ product }: { product: ProductConfig }) {
           </div>
           {/* Right: Product Configuration Panel */}
           <div className="flex-1 max-w-full lg:max-w-[616px] mx-auto lg:mx-0">
-            <nav className="flex items-center gap-2 font-['PP_Mori',sans-serif] text-[12px] leading-[16px] tracking-[0px] text-[#6A7282] font-normal md:font-['FFF_Acid_Grotesk',sans-serif] md:text-xs md:font-medium mb-6 md:mb-8 text-left">
+            <nav className="flex items-center gap-2 font-['PP_Mori',sans-serif] text-[12px] leading-[16px] tracking-[0px] text-[#4A5568] font-normal md:font-['FFF_Acid_Grotesk',sans-serif] md:text-xs md:font-medium mb-6 md:mb-8 text-left">
               <a href="/" className="hover:underline">Home</a><span>/</span>
               <a href="/products" className="hover:underline">Products</a><span>/</span>
               <span className="text-[#0D0D0D]">{product.name}</span>
             </nav>
 
             <div className="mb-6 md:mb-8">
-              <p className="text-[14px] leading-[18px] tracking-[0.1px] font-bold text-[#666666] uppercase text-left md:text-sm md:tracking-normal">{product.eyebrow}</p>
+              <p className="text-[14px] leading-[18px] tracking-[0.1px] font-bold text-[#4A4A4A] uppercase text-left md:text-sm md:tracking-normal">{product.eyebrow}</p>
               <h2 className="text-[37px] leading-[46px] tracking-[-1.5px] font-medium text-[#0D0D0D] mt-2 text-left md:text-[44px] md:leading-tight md:font-bold md:tracking-normal">
                 {product.title}
               </h2>
@@ -209,10 +209,10 @@ export default function ProductPage({ product }: { product: ProductConfig }) {
             <hr className="border-t border-gray-200 mb-6 md:mb-8" />
 
             <div className="mb-8 md:mb-10">
-              <p className="text-[16px] leading-[20px] tracking-[0px] font-normal text-[#666666] text-left md:text-base md:leading-relaxed">
+              <p className="text-[16px] leading-[20px] tracking-[0px] font-normal text-[#4A4A4A] text-left md:text-base md:leading-relaxed">
                 {product.details}
               </p>
-              <p className="text-[16px] leading-[20px] tracking-[0px] font-normal text-[#666666] text-left md:text-base md:leading-relaxed mt-4">
+              <p className="text-[16px] leading-[20px] tracking-[0px] font-normal text-[#4A4A4A] text-left md:text-base md:leading-relaxed mt-4">
                 Customize every aspect of your products, including materials, padding, sizing, stitching, logo placement, colors, labels, and retail packaging to match your brand requirements.
               </p>
             </div>
@@ -221,7 +221,7 @@ export default function ProductPage({ product }: { product: ProductConfig }) {
               <h3 className="text-[26px] leading-[26px] tracking-[-0.5px] font-bold text-[#101828] text-left md:tracking-normal">
                 Customize Your {product.title}
               </h3>
-              <p className="text-[12px] leading-[16px] tracking-[0px] font-normal text-[#6A7282] mt-1 md:mt-2 text-left md:font-medium md:text-[#99A1B0]">
+              <p className="text-[12px] leading-[16px] tracking-[0px] font-normal text-[#4A5568] mt-1 md:mt-2 text-left md:font-medium md:text-[#4A5568]">
                 Select your requirements and we&apos;ll prepare a detailed quote.
               </p>
             </div>
@@ -238,7 +238,7 @@ export default function ProductPage({ product }: { product: ProductConfig }) {
                   required
                   onInput={(e) => (e.currentTarget.value = e.currentTarget.value.replace(/[^A-Za-z\s]/g, ""))}
                   placeholder="e.g. John Doe" 
-                  className="bg-transparent outline-none text-[14px] leading-[18px] mt-0 placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
+                  className="bg-transparent outline-none text-[14px] leading-[18px] mt-0 placeholder:text-[#6B6B6B] focus:placeholder-transparent"
                   style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
                 />
               </div>
@@ -251,7 +251,7 @@ export default function ProductPage({ product }: { product: ProductConfig }) {
                   name="email"
                   required
                   placeholder="e.g. john@yourbrand.com" 
-                  className="bg-transparent outline-none text-[14px] leading-[18px] placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
+                  className="bg-transparent outline-none text-[14px] leading-[18px] placeholder:text-[#6B6B6B] focus:placeholder-transparent"
                   style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
                 />
               </div>
@@ -264,7 +264,7 @@ export default function ProductPage({ product }: { product: ProductConfig }) {
                   name="phone"
                   onInput={(e) => (e.currentTarget.value = e.currentTarget.value.replace(/[^0-9\+\-\(\)\s]/g, ""))}
                   placeholder="e.g. +1 (555) 000-0000" 
-                  className="bg-transparent outline-none text-[14px] leading-[18px] placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
+                  className="bg-transparent outline-none text-[14px] leading-[18px] placeholder:text-[#6B6B6B] focus:placeholder-transparent"
                   style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
                 />
               </div>
@@ -297,7 +297,7 @@ export default function ProductPage({ product }: { product: ProductConfig }) {
                     required
                     list="quantity-options"
                     placeholder="e.g. 500 pairs" 
-                    className="bg-transparent outline-none text-[13px] leading-[18px] mt-0.5 min-w-0 placeholder:text-[#9CA3AF] focus:placeholder-transparent pr-6 text-ellipsis overflow-hidden whitespace-nowrap [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:right-0 [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:cursor-pointer" 
+                    className="bg-transparent outline-none text-[13px] leading-[18px] mt-0.5 min-w-0 placeholder:text-[#6B6B6B] focus:placeholder-transparent pr-6 text-ellipsis overflow-hidden whitespace-nowrap [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:right-0 [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:cursor-pointer"
                     style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
                   />
                   <div className="absolute right-3 top-[60%] -translate-y-1/2 pointer-events-none text-[#707070]">
@@ -322,7 +322,7 @@ export default function ProductPage({ product }: { product: ProductConfig }) {
                   required
                   placeholder="Tell us about your branding, materials, colors, logo requirements, packaging, target market, or any other details." 
                   rows={3} 
-                  className="bg-transparent outline-none resize-none text-[14px] leading-[18px] mt-1 placeholder:text-[#9CA3AF] focus:placeholder-transparent" 
+                  className="bg-transparent outline-none resize-none text-[14px] leading-[18px] mt-1 placeholder:text-[#6B6B6B] focus:placeholder-transparent"
                   style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }} 
                 />
               </div>
@@ -338,7 +338,7 @@ export default function ProductPage({ product }: { product: ProductConfig }) {
               </div>
             </form>
 
-            <p className="text-[12px] leading-[16px] tracking-[0px] font-normal text-[#666666] text-center md:text-xs">
+            <p className="text-[12px] leading-[16px] tracking-[0px] font-normal text-[#4A4A4A] text-center md:text-xs">
               Share your product specs and our team will respond with MOQ, sample, and wholesale production options.
             </p>
           </div>
@@ -423,14 +423,14 @@ export default function ProductPage({ product }: { product: ProductConfig }) {
           <h2 className="text-[22px] leading-[28px] tracking-[0px] font-bold text-[#0D0D0D] text-left mb-6 md:mb-8 md:text-[37px] md:leading-[46px] md:tracking-tight">
             MOQ, Pricing, and Samples
           </h2>
-          <p className="text-[13px] leading-[20px] tracking-[0px] font-normal text-[#434343] text-left mb-10 md:mb-16 max-w-[1280px] md:text-base md:text-[#666666] md:leading-relaxed">
+          <p className="text-[13px] leading-[20px] tracking-[0px] font-normal text-[#434343] text-left mb-10 md:mb-16 max-w-[1280px] md:text-base md:text-[#4A4A4A] md:leading-relaxed">
             Minimum order quantities and pricing depend on fabric selection, customization level, branding method, packaging, and total order volume. Share your requirements and we&apos;ll recommend the best starting point for your martial arts uniform project.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             {moqCards.map((card, i) => (
               <div key={i} className="bg-[#F5F5F5] p-6 md:p-8">
                 <h3 className="text-[15px] leading-[20px] tracking-[0px] font-bold text-[#0D0D0D] text-left mb-3 md:mb-4 uppercase md:text-sm md:tracking-wide">{card.title}</h3>
-                <p className="text-[12px] leading-[18px] tracking-[0px] font-normal text-[#434343] text-left md:text-sm md:text-[#666666] md:leading-relaxed">{card.description}</p>
+                <p className="text-[12px] leading-[18px] tracking-[0px] font-normal text-[#434343] text-left md:text-sm md:text-[#4A4A4A] md:leading-relaxed">{card.description}</p>
               </div>
             ))}
           </div>

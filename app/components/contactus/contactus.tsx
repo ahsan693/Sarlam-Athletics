@@ -91,7 +91,7 @@ function QuoteFormSection() {
           <h2 style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "22px", lineHeight: "28px", color: "#0D0D0D" }}>
             Tell Us About Your Project
           </h2>
-          <p className="text-[14px] leading-[20px] lg:text-[16px] lg:leading-[1.5]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>
+          <p className="text-[14px] leading-[20px] lg:text-[16px] lg:leading-[1.5]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#4A4A4A" }}>
             Complete the form below and we&apos;ll contact you with manufacturing recommendations, estimated pricing, production timelines, and the next steps for your project.
           </p>
         </div>

@@ -218,7 +218,7 @@ export default function ProductPage() {
         <div className="w-full max-w-[2560px] px-4 md:px-10 flex flex-col lg:flex-row gap-8 md:gap-12 lg:gap-20">
           <div className="lg:w-1/2">
             <h2>
-              <span className="block text-[24px] leading-[30px] md:text-[37px] md:leading-[46px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, letterSpacing: "-1.52px", color: "#757575" }}>
+              <span className="block text-[24px] leading-[30px] md:text-[37px] md:leading-[46px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, letterSpacing: "-1.52px", color: "#4A4A4A" }}>
                 Why Brands Choose
               </span>
               <span className="block text-[24px] leading-[30px] md:text-[37px] md:leading-[46px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, letterSpacing: "-1.52px", color: "#000000" }}>
@@ -550,7 +550,7 @@ export default function ProductPage() {
             <h2 className="mb-4 md:mb-6 text-[22px] leading-[26px] md:text-[37px] md:leading-[46px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, letterSpacing: "0px", color: "#0D0D0D" }}>
               Private Label Customization Options
             </h2>
-            <p className="max-w-[800px] text-[13px] leading-[18px] md:text-[16px] md:leading-[24px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, letterSpacing: "0px", color: "#757575" }}>
+              <p className="max-w-[800px] text-[13px] leading-[18px] md:text-[16px] md:leading-[24px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, letterSpacing: "0px", color: "#4A4A4A" }}>
               Customize your products with branded logos, materials, colors, sizing, labels, retail packaging, and performance specifications that match your market and brand identity.
             </p>
           </div>

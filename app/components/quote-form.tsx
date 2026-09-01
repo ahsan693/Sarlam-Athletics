@@ -70,7 +70,7 @@ export function QuoteForm({ productName, productOptions, subject }: QuoteFormPro
     }
   };
 
-  const fieldClass = "mt-1 w-full bg-transparent text-[14px] leading-[18px] placeholder:text-[#9CA3AF]";
+  const fieldClass = "mt-1 w-full bg-transparent text-[14px] leading-[18px] placeholder:text-[#6B6B6B]";
   const wrapperClass = "rounded border px-3 py-3";
 
   return (

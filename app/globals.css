@@ -25,6 +25,24 @@ body {
   outline-offset: 3px;
 }
 
+/* Keep legacy component tokens readable without changing the visual palette. */
+.text-\[\#A5A5A5\],
+.text-\[\#757575\],
+[style*="#A5A5A5"],
+[style*="#757575"],
+[style*="#707070"] {
+  color: #4a4a4a !important;
+}
+
+.text-\[\#9CA3AF\]::placeholder {
+  color: #6b6b6b !important;
+  opacity: 1;
+}
+
+.product-hero-title {
+  background-color: transparent !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
