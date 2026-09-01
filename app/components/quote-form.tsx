@@ -77,25 +77,25 @@ export function QuoteForm({ productName, productOptions, subject }: QuoteFormPro
     <form noValidate onSubmit={onSubmit} className="flex flex-col gap-4">
       <p className="sr-only" id="quote-required-note">Fields marked required are required.</p>
       <div className={`${wrapperClass} ${errors.name ? "border-red-700" : "border-[#C9C9C9]"}`}>
-        <label htmlFor="quote-name" className="block text-[11px] leading-[14px] text-[#707070]">Full Name <span aria-hidden="true">*</span></label>
+        <label htmlFor="quote-name" className="block text-[11px] leading-[14px] text-[#0D0D0D]">Full Name <span aria-hidden="true">*</span></label>
         <input id="quote-name" type="text" name="name" required aria-required="true" aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? "quote-name-error" : "quote-required-note"} onInput={(event) => (event.currentTarget.value = event.currentTarget.value.replace(/[^A-Za-z\s]/g, ""))} placeholder="e.g. John Doe" className={fieldClass} />
         {errors.name && <p id="quote-name-error" className="mt-1 text-xs text-red-700">{errors.name}</p>}
       </div>
 
       <div className={`${wrapperClass} ${errors.email ? "border-red-700" : "border-[#C9C9C9]"}`}>
-        <label htmlFor="quote-email" className="block text-[11px] leading-[14px] text-[#707070]">Business Email <span aria-hidden="true">*</span></label>
+        <label htmlFor="quote-email" className="block text-[11px] leading-[14px] text-[#0D0D0D]">Business Email <span aria-hidden="true">*</span></label>
         <input id="quote-email" type="email" name="email" required aria-required="true" aria-invalid={Boolean(errors.email)} aria-describedby={errors.email ? "quote-email-error" : "quote-required-note"} placeholder="e.g. john@yourbrand.com" className={fieldClass} />
         {errors.email && <p id="quote-email-error" className="mt-1 text-xs text-red-700">{errors.email}</p>}
       </div>
 
       <div className={`${wrapperClass} border-[#C9C9C9]`}>
-        <label htmlFor="quote-phone" className="block text-[11px] leading-[14px] text-[#707070]">Phone Number (optional)</label>
+        <label htmlFor="quote-phone" className="block text-[11px] leading-[14px] text-[#0D0D0D]">Phone Number (optional)</label>
         <input id="quote-phone" type="tel" name="phone" onInput={(event) => (event.currentTarget.value = event.currentTarget.value.replace(/[^0-9+\-()\s]/g, ""))} placeholder="e.g. +1 (555) 000-0000" className={fieldClass} />
       </div>
 
       {hasCategory ? (
         <div className={`${wrapperClass} ${errors.category ? "border-red-700" : "border-[#C9C9C9]"}`}>
-          <label htmlFor="quote-category" className="block text-[11px] leading-[14px] text-[#707070]">Product Category <span aria-hidden="true">*</span></label>
+          <label htmlFor="quote-category" className="block text-[11px] leading-[14px] text-[#0D0D0D]">Product Category <span aria-hidden="true">*</span></label>
           <select id="quote-category" name="category" required aria-required="true" aria-invalid={Boolean(errors.category)} aria-describedby={errors.category ? "quote-category-error" : "quote-required-note"} defaultValue="" className={fieldClass}>
             <option value="" disabled>Select a product</option>
             {productOptions!.map((product) => <option key={product} value={product}>{product}</option>)}
@@ -104,20 +104,20 @@ export function QuoteForm({ productName, productOptions, subject }: QuoteFormPro
         </div>
       ) : productName ? (
         <div className={`${wrapperClass} border-[#C9C9C9] bg-[#F9F9F9]`}>
-          <label htmlFor="quote-product" className="block text-[11px] leading-[14px] text-[#707070]">Product Name</label>
+          <label htmlFor="quote-product" className="block text-[11px] leading-[14px] text-[#0D0D0D]">Product Name</label>
           <input id="quote-product" type="text" name="productName" value={productName} readOnly className={fieldClass} />
         </div>
       ) : null}
 
       <div className={`${wrapperClass} ${errors.quantity ? "border-red-700" : "border-[#C9C9C9]"}`}>
-        <label htmlFor="quote-quantity" className="block text-[11px] leading-[14px] text-[#707070]">Estimated Order Quantity <span aria-hidden="true">*</span></label>
+        <label htmlFor="quote-quantity" className="block text-[11px] leading-[14px] text-[#0D0D0D]">Estimated Order Quantity <span aria-hidden="true">*</span></label>
         <input id="quote-quantity" type="text" name="quantity" required aria-required="true" aria-invalid={Boolean(errors.quantity)} aria-describedby={errors.quantity ? "quote-quantity-error" : "quote-required-note"} list="quote-quantity-options" placeholder="e.g. 500 pairs" className={fieldClass} />
         <datalist id="quote-quantity-options"><option value="100" /><option value="200" /><option value="300" /><option value="500" /><option value="1000" /></datalist>
         {errors.quantity && <p id="quote-quantity-error" className="mt-1 text-xs text-red-700">{errors.quantity}</p>}
       </div>
 
       <div className={`${wrapperClass} ${errors.message ? "border-red-700" : "border-[#C9C9C9]"}`}>
-        <label htmlFor="quote-message" className="block text-[11px] leading-[14px] text-[#707070]">Project Details <span aria-hidden="true">*</span></label>
+        <label htmlFor="quote-message" className="block text-[11px] leading-[14px] text-[#0D0D0D]">Project Details <span aria-hidden="true">*</span></label>
         <textarea id="quote-message" name="message" required aria-required="true" aria-invalid={Boolean(errors.message)} aria-describedby={errors.message ? "quote-message-error" : "quote-required-note"} rows={3} placeholder="Tell us about your branding, materials, colors, logo requirements, packaging, target market, or any other details." className={`${fieldClass} resize-none`} />
         {errors.message && <p id="quote-message-error" className="mt-1 text-xs text-red-700">{errors.message}</p>}
       </div>
