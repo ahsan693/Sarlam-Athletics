@@ -175,14 +175,14 @@ export default function TrainingPadsPage() {
 
           {/* Right: Product Configuration Panel */}
           <div className="flex-1 max-w-full lg:max-w-[616px] mx-auto lg:mx-0">
-            <nav className="flex items-center flex-wrap gap-2 text-[10px] md:text-xs text-[#6A7282] mb-6 md:mb-8 font-medium uppercase tracking-wide">
+            <nav className="flex items-center flex-wrap gap-2 text-[10px] md:text-xs text-[#4A4A4A] mb-6 md:mb-8 font-medium uppercase tracking-wide">
               <a href="/" className="hover:underline">Home</a><span>/</span>
               <a href="/products" className="hover:underline">Boxing Equipment</a><span>/</span>
               <span className="text-[#0D0D0D]">Training Pads</span>
             </nav>
 
             <div className="mb-6">
-              <p className="text-[12px] md:text-sm font-bold text-[#666666] uppercase">
+              <p className="text-[12px] md:text-sm font-bold text-[#4A4A4A] uppercase">
                 Martial Arts Equipment Manufacturing
               </p>
               <h2 className="text-[32px] leading-[36px] md:text-[44px] md:leading-tight font-bold text-[#0D0D0D] mt-2">
@@ -196,10 +196,10 @@ export default function TrainingPadsPage() {
             <hr className="border-t border-gray-200 mb-6" />
 
             <div className="mb-8 md:mb-6">
-              <p className="text-[14px] leading-[22px] md:text-base text-[#666666] md:leading-relaxed font-normal">
+              <p className="text-[14px] leading-[22px] md:text-base text-[#4A4A4A] md:leading-relaxed font-normal">
                 Sarlam Athletics manufactures custom athletic pads and shields (focus mitts, Thai pads, kick shields, belly pads) for combat sports brands, martial arts academies, gyms, retailers, and distributors. We support custom materials, padding, wrist/arm straps, labels, packaging, and branding details for wholesale production.
               </p>
-              <p className="text-[14px] leading-[22px] md:text-base text-[#666666] md:leading-relaxed mt-4 font-normal">
+              <p className="text-[14px] leading-[22px] md:text-base text-[#4A4A4A] md:leading-relaxed mt-4 font-normal">
                 Samples can be developed before bulk manufacturing so your team can review fit, shock absorption, material feel, logo placement, and final presentation before approving a larger order.
               </p>
             </div>
@@ -322,7 +322,7 @@ export default function TrainingPadsPage() {
               </div>
             </form>
 
-            <p className="text-[11px] md:text-xs text-[#666666] text-center font-normal mt-6 md:mt-8">
+            <p className="text-[11px] md:text-xs text-[#4A4A4A] text-center font-normal mt-6 md:mt-8">
               Share your product specs and our team will respond with MOQ, sample, and wholesale production options.
             </p>
           </div>
@@ -398,7 +398,7 @@ export default function TrainingPadsPage() {
             <h2 className="text-[24px] md:text-[26px] font-bold text-white mb-4 max-w-[654px] uppercase leading-tight">
               Quality Control for Every Production Run
             </h2>
-            <p className="text-[14px] md:text-base text-white/80 max-w-[654px] leading-relaxed font-normal">
+            <p className="text-[14px] md:text-base text-white max-w-[654px] leading-relaxed font-normal">
               Every approved sample becomes the benchmark for bulk manufacturing. We check sizing, stitching, fabric finish, reinforcement points, logo placement, labeling, and packaging before production moves into final delivery.
             </p>
           </div>
@@ -411,14 +411,14 @@ export default function TrainingPadsPage() {
           <h2 className="text-[26px] leading-[32px] md:text-[37px] md:leading-[46px] font-bold text-[#0D0D0D] mb-4 md:mb-6 tracking-tight">
             MOQ, Pricing, and Samples
           </h2>
-          <p className="text-[14px] leading-[22px] md:text-base text-[#666666] md:leading-relaxed mb-8 md:mb-10 max-w-[1280px] font-normal">
+          <p className="text-[14px] leading-[22px] md:text-base text-[#4A4A4A] md:leading-relaxed mb-8 md:mb-10 max-w-[1280px] font-normal">
             Minimum order quantities and pricing depend on fabric selection, customization level, branding method, packaging, and total order volume. Share your requirements and we'll recommend the best starting point for your martial arts uniform project.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
             {moqCards.map((card, i) => (
               <div key={i} className="bg-[#F5F5F5] p-6 md:p-8">
                 <h3 className="text-[16px] md:text-sm font-bold text-[#0D0D0D] mb-2 md:mb-3 uppercase tracking-wide">{card.title}</h3>
-                <p className="text-[14px] md:text-sm text-[#666666] leading-relaxed font-normal">{card.description}</p>
+                <p className="text-[14px] md:text-sm text-[#4A4A4A] leading-relaxed font-normal">{card.description}</p>
               </div>
             ))}
           </div>

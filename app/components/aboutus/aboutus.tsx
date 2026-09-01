@@ -116,7 +116,7 @@ function VideoSection() {
         </div>
         <div className="relative w-full aspect-[4/3] md:aspect-[24/9] rounded-lg overflow-hidden bg-gray-200 group cursor-pointer">
           <img src="/Page 4/02.png" alt="Martial arts training" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-black/15 group-hover:bg-black/25 transition-colors" />
+          <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
         </div>
       </div>
     </section>

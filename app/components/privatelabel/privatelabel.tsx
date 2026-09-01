@@ -408,7 +408,7 @@ export default function PrivateLabel() {
               style={{
                 fontFamily: "'FFF Acid Grotesk', sans-serif",
                 fontWeight: 400,
-                color: "rgba(255,255,255,0.8)",
+                color: "#FFFFFF",
               }}
             >
               Tell us what you want to manufacture, and our team will prepare a

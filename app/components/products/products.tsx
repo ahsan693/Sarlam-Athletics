@@ -455,12 +455,12 @@ export default function ProductPage() {
 
         <div className="flex flex-col md:flex-row md:items-center justify-between py-4 border-b border-gray-200 gap-4 md:gap-0">
           <div className="flex items-center justify-between md:justify-start gap-4 w-full md:w-auto">
-            <span className="uppercase text-[11px] md:text-[12px] leading-[18px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "0px", color: "#707070" }}>
+            <span className="uppercase text-[11px] md:text-[12px] leading-[18px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "0px", color: "#4A4A4A" }}>
               Items: {filteredProducts.length}
             </span>
 
             <div className="flex items-center gap-1.5 relative" ref={dropdownRef}>
-              <span className="uppercase text-[11px] md:text-[12px] leading-[18px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "0px", color: "#707070" }}>
+              <span className="uppercase text-[11px] md:text-[12px] leading-[18px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, letterSpacing: "0px", color: "#4A4A4A" }}>
                 Category:
               </span>
               <button onClick={() => setIsFilterOpen(!isFilterOpen)} className="flex items-center gap-1 uppercase text-[12px] leading-[18px] hover:opacity-70 transition" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 700, letterSpacing: "0px", color: "#0D0D0D" }}>
@@ -568,7 +568,7 @@ export default function ProductPage() {
                   <h3 className="mb-1.5 text-[16px] leading-[20px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 700, letterSpacing: "0px", color: "#0D0D0D" }}>
                     {option.title}
                   </h3>
-                  <p className="text-[12px] leading-[16px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, letterSpacing: "0px", color: "#757575" }}>
+                  <p className="text-[12px] leading-[16px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, letterSpacing: "0px", color: "#4A4A4A" }}>
                     {option.mobileDesc}
                   </p>
                 </div>
