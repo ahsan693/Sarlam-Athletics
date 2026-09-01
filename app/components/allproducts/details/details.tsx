@@ -228,7 +228,7 @@ export default function ProductPage({ product }: { product: ProductConfig }) {
             <form onSubmit={handleQuoteSubmit} className="flex flex-col gap-4">
               
               <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
-                <label htmlFor={`${product.slug}-name`} className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Full Name*</label>
+                <label htmlFor={`${product.slug}-name`} className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }}>Full Name*</label>
                 <input 
                   id={`${product.slug}-name`}
                   type="text" 
@@ -242,7 +242,7 @@ export default function ProductPage({ product }: { product: ProductConfig }) {
               </div>
 
               <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
-                <label htmlFor={`${product.slug}-email`} className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Business Email*</label>
+                <label htmlFor={`${product.slug}-email`} className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }}>Business Email*</label>
                 <input 
                   id={`${product.slug}-email`}
                   type="email" 
@@ -255,7 +255,7 @@ export default function ProductPage({ product }: { product: ProductConfig }) {
               </div>
 
               <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
-                <label htmlFor={`${product.slug}-phone`} className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Phone Number (Optional)</label>
+                <label htmlFor={`${product.slug}-phone`} className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }}>Phone Number (Optional)</label>
                 <input 
                   id={`${product.slug}-phone`}
                   type="tel" 
@@ -272,7 +272,7 @@ export default function ProductPage({ product }: { product: ProductConfig }) {
                 
                 {/* Product Name Input (Read-only) */}
                 <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0 bg-[#F9F9F9]">
-                  <label htmlFor={`${product.slug}-product`} className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Product Name*</label>
+                  <label htmlFor={`${product.slug}-product`} className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }}>Product Name*</label>
                   <input 
                     id={`${product.slug}-product`}
                     type="text"
@@ -287,7 +287,7 @@ export default function ProductPage({ product }: { product: ProductConfig }) {
 
                 {/* Estimated Order Quantity Datalist with chevron */}
                 <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0 relative">
-                  <label htmlFor={`${product.slug}-quantity`} className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Estimated Order Quantity*</label>
+                  <label htmlFor={`${product.slug}-quantity`} className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }}>Estimated Order Quantity*</label>
                   <input 
                     id={`${product.slug}-quantity`}
                     type="text" 
@@ -313,7 +313,7 @@ export default function ProductPage({ product }: { product: ProductConfig }) {
               </div>
 
               <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0 mb-4">
-                <label htmlFor={`${product.slug}-message`} className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#707070" }}>Project Details*</label>
+                <label htmlFor={`${product.slug}-message`} className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }}>Project Details*</label>
                 <textarea 
                   id={`${product.slug}-message`}
                   name="message"
