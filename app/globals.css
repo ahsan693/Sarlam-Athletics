@@ -43,6 +43,12 @@ body {
   background-color: transparent !important;
 }
 
+@media (min-width: 768px) {
+  .home-card-step-number {
+    color: #6b6254 !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

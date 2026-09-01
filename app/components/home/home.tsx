@@ -707,7 +707,7 @@ export default function SarlamAthleticsPage() {
               { num: "03", title: "Private Label & Customization", desc: "Customize logos, colors, materials, sizing, stitching, labels, and packaging across boxing gloves, martial arts uniforms, belts, wraps, and training gear.", imageSrc: "/Page 1/Img/3.png" },
             ].map((step, i) => (
               <div key={i} className="py-[21px] border-t border-white/20">
-                <span className="block mb-4" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "15px", lineHeight: "17px", letterSpacing: "2px", color: "#8F8778" }}>{step.num}</span>
+                <span className="home-card-step-number block mb-4" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "15px", lineHeight: "17px", letterSpacing: "2px", color: "#8F8778" }}>{step.num}</span>
                 <h3 className="mb-4" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "22px", lineHeight: "26px", color: "#FFFFFF" }}>{step.title}</h3>
                 <p className="mb-4" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "15px", lineHeight: "16px", color: "#B7B7B7" }}>{step.desc}</p>
                 <div className="w-full h-[180px] rounded-[8px] overflow-hidden bg-gray-800">
@@ -726,7 +726,7 @@ export default function SarlamAthleticsPage() {
             ].map((step, i) => (
               <div key={i} className={`p-8 flex flex-col gap-8 ${i < 2 ? "border-r border-[#D7DADE]" : ""}`}>
                 <div className="flex flex-col gap-4">
-                  <span style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "15px", lineHeight: "17px", letterSpacing: "2px", color: "#8F8778" }}>{step.num}</span>
+                  <span className="home-card-step-number" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "15px", lineHeight: "17px", letterSpacing: "2px", color: "#8F8778" }}>{step.num}</span>
                   <h3 style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 500, fontSize: "22px", lineHeight: "26px", color: "#000000" }}>{step.title}</h3>
                   <p style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, fontSize: "15px", lineHeight: "16px", color: "#434343" }}>{step.desc}</p>
                 </div>
