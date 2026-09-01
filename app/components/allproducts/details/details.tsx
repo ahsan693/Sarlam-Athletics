@@ -230,7 +230,7 @@ export default function ProductPage({ product }: { product: ProductConfig }) {
             {/* --- FORM WRAPPER (Updated to use Contact Us Fields) --- */}
             <form onSubmit={handleQuoteSubmit} className="flex flex-col gap-4">
               
-              <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
+              <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-1">
                 <label htmlFor={`${product.slug}-name`} className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }}>Full Name*</label>
                 <input 
                   id={`${product.slug}-name`}
@@ -244,7 +244,7 @@ export default function ProductPage({ product }: { product: ProductConfig }) {
                 />
               </div>
 
-              <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
+              <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-1">
                 <label htmlFor={`${product.slug}-email`} className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }}>Business Email*</label>
                 <input 
                   id={`${product.slug}-email`}
@@ -257,7 +257,7 @@ export default function ProductPage({ product }: { product: ProductConfig }) {
                 />
               </div>
 
-              <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0">
+              <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-1">
                 <label htmlFor={`${product.slug}-phone`} className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }}>Phone Number (Optional)</label>
                 <input 
                   id={`${product.slug}-phone`}
@@ -274,7 +274,7 @@ export default function ProductPage({ product }: { product: ProductConfig }) {
               <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 lg:gap-3">
                 
                 {/* Product Name Input (Read-only) */}
-                <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0 bg-[#F9F9F9]">
+                <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-1 bg-[#F9F9F9]">
                   <label htmlFor={`${product.slug}-product`} className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }}>Product Name*</label>
                   <input 
                     id={`${product.slug}-product`}
@@ -289,7 +289,7 @@ export default function ProductPage({ product }: { product: ProductConfig }) {
                 </div>
 
                 {/* Estimated Order Quantity Datalist with chevron */}
-                <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0 relative">
+                <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-1 relative">
                   <label htmlFor={`${product.slug}-quantity`} className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }}>Estimated Order Quantity*</label>
                   <input 
                     id={`${product.slug}-quantity`}
@@ -315,7 +315,7 @@ export default function ProductPage({ product }: { product: ProductConfig }) {
                 
               </div>
 
-              <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-0 mb-4">
+              <div className="border border-[#C9C9C9] rounded px-3 py-3 flex flex-col gap-1 mb-4">
                 <label htmlFor={`${product.slug}-message`} className="text-[11px] leading-[14px]" style={{ fontFamily: "'FFF Acid Grotesk', sans-serif", fontWeight: 400, color: "#0D0D0D" }}>Project Details*</label>
                 <textarea 
                   id={`${product.slug}-message`}
