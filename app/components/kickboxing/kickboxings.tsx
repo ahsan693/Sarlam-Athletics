@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { Footer } from "../footer";
+import { footerTaglines } from "../footer/footer";
 
 // ─── Image Placeholder ───
 const ImagePlaceholder = ({
@@ -581,7 +583,7 @@ export default function KickBoxingGlovesPage() {
 
 
       {/* ── Footer ── */}
-      <footer className="bg-white border-t border-[#D7DADE]">
+      {false && <footer className="bg-white border-t border-[#D7DADE]">
         <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-10 md:py-12 flex flex-col lg:flex-row justify-between gap-10 md:gap-12">
           {/* Left */}
           <div className="lg:w-1/2">
@@ -689,7 +691,9 @@ export default function KickBoxingGlovesPage() {
             </span>
           </div>
         </div>
-      </footer>
+      </footer>}
+
+      <Footer tagline={footerTaglines.product} />
 
       </main>
 

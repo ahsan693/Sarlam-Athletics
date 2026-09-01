@@ -3,6 +3,8 @@
 import { useState, useRef } from "react";
 import Link from "next/link";
 import { Header } from "../home/home";
+import { Footer } from "../footer";
+import { footerTaglines } from "../footer/footer";
 
 // ─── Image Placeholder ───
 const ImagePlaceholder = ({
@@ -588,7 +590,7 @@ export default function UltimateMmaFightGlovesPage() {
       </section>
 
       {/* ── Footer ── */}
-      <footer className="bg-white border-t border-[#D7DADE]">
+      {false && <footer className="bg-white border-t border-[#D7DADE]">
         <div className="max-w-[2560px] mx-auto px-6 md:px-10 py-12 md:py-16 flex flex-col lg:flex-row justify-between gap-10 md:gap-12">
           <div className="lg:w-1/2">
             <h3 className="mb-4 md:mb-6 text-[47px] leading-[58px] tracking-[-1.9px] font-medium text-[#000000] text-left md:text-[#0D0D0D] md:tracking-tight">
@@ -682,7 +684,9 @@ export default function UltimateMmaFightGlovesPage() {
             </span>
           </div>
         </div>
-      </footer>
+      </footer>}
+
+      <Footer tagline={footerTaglines.product} />
 
       </main>
 
